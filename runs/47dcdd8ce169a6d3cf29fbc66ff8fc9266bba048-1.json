@@ -1,0 +1,66 @@
+{
+ "attempt": 1,
+ "commit": "47dcdd8ce169a6d3cf29fbc66ff8fc9266bba048",
+ "conclusion": "failure",
+ "jobs": [
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "build"
+  },
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 84,
+     "message": "Process completed with exit code 1.",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 58,
+     "message": "python -I tools/sketches.py check --engine engine --slangc /home/runner/work/_temp/slang-2026.20/bin/slangc exited 1:\n/home/runner/work/strata-engine-docs/strata-engine-docs/sketches/draw-batching-passes.cpp:66:35: error: invalid user-defined conversion from \u2018main()::<lambda(uint32_t)>\u2019 to \u2018uint64_t (*)(uint32_t)\u2019 {aka \u2018long unsigned int (*)(unsigned int)\u2019} [-fpermissive]\n   66 |         Report(\"all eight bytes\", [](uint32_t i) { return static_cast<uint64_t>(i) * 0x0101010101010101ull; });\n      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n/home/runner/work/strata-engine-docs/strata-engine-docs/sketches/draw-batching-passes.cpp:66:35: note: candidate is: \u2018constexpr main()::<lambda(uint32_t)>::operator long long unsigned int (*)(uint32_t)() const\u2019 (near match)\n   66 |         Report(\"all eight bytes\", [](uint32_t i) { return static_cast<uint64_t>(i) * 0x0101010101010101ull; });\n      |                                   ^\n/home/runner/work/strata-engine-docs/strata-engine-docs/sketches/draw-batching-passes.cpp:66:35: note:   no known conversion from \u2018long long unsigned int (*)(uint32_t)\u2019 {aka \u2018long long unsigned int (*)(unsigned int)\u2019} to \u2018uint64_t (*)(uint32_t)\u2019 {aka \u2018long unsigned int (*)(unsigned int)\u2019}\n/home/runner/work/strata-engine-docs/strata-engine-docs/sketches/draw-batching-passes.cpp:42:50: note:   initializing argument 2 of \u2018void {anonymous}::Report(const char*, uint64_t (*)(uint32_t))\u2019\n   42 |         void Report(const char* name, uint64_t (*makeKey)(uint32_t))\n      |                                       ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~\nsrc/content/docs/scripting/crash-containment.md:238: the fence differs from what sketches/scripting-crash-containment-toy.cpp prints: run python -I tools/sketches.py fill\nsrc/content/docs/scripting/shared-libraries.md:120: the fence differs from what sketches/scripting-shared-libraries-layout.cpp prints: run python -I tools/sketches.py fill\nsketches/draw-batching-passes.cpp:1: sketches/draw-batching-passes.cpp does not compile:\n/home/runner/work/strata-engine-docs/strata-engine-docs/sketches/draw-batching-passes.cpp: In function \u2018int main()\u2019:\n/home/runner/work/strata-engine-docs/strata-engine-docs/sketches/draw-batching-passes.cpp:66:35: error: invalid user-defined conversion from \u2018main()::<lambda(uint32_t)>\u2019 to \u2018uint64_t (*)(uint32_t)\u2019 {aka \u2018long unsigned int (*)(unsigned int)\u2019} [-fpermissive]\n   66 |         Report(\"all eight bytes\", [](uint32_t i) { return static_cast<uint64_t>(i) * 0x0101010101010101ull; });\n      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n/home/runner/work/strata-engine-docs/strata-engine-docs/sketches/draw-batching-passes.cpp:66:35: note: candidate is: \u2018constexpr main()::<lambda(uint32_t)>::operator long long unsigned int (*)(uint32_t)() const\u2019 (near match)\n   66 |         Report(\"all eight bytes\", [](uint32_t i) { return static_cast<uint64_t>(i) * 0x0101010101010101ull; });\n      |                                   ^\n/home/runner/work/strata-engine-docs/strata-engine-docs/sketches/draw-batching-passes.cpp:66:35: note:   no known conversion from \u2018long long unsigned int (*)(uint32_t)\u2019 {aka \u2018long long unsigned int (*)(unsigned int)\u2019} to \u2018uint64_t (*)(uint32_t)\u2019 {aka \u2018long unsigned int (*)(unsigned int)\u2019}\n/home/runner/work/strata-engine-docs/strata-engine-docs/sketches/draw-batching-passes.cpp:42:50: note:   initializing argument 2 of \u2018void {anonymous}::Report(const char*, uint64_t (*)(uint32_t))\u2019\n   42 |         void Report(const char* name, uint64_t (*makeKey)(uint32_t))\n      |                                       ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~\nsketches: 6 problems",
+     "path": ".github",
+     "title": "Sketches (check 4)"
+    }
+   ],
+   "failedSteps": [
+    "Sketches compile and print what the pages show (check 4)"
+   ],
+   "name": "excerpts"
+  },
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 484,
+     "message": "Process completed with exit code 1.",
+     "path": ".github",
+     "title": ""
+    }
+   ],
+   "failedSteps": [
+    "Unit tests of the build and of the tools (check 13)"
+   ],
+   "name": "lint"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "release"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "serve-test"
+  }
+ ],
+ "run": {
+  "event": "push",
+  "ref": "refs/heads/ci/site",
+  "url": "https://github.com/2042Third/strata-engine-docs/actions/runs/45703925896"
+ }
+}
