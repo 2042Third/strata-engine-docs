@@ -112,8 +112,11 @@ jobs:
           # Each suite within a time of its own (locally under 1 and 5 minutes), so that a test that hangs fails its
           # suite with the last lines it printed (the tools' suite names each test) instead of the job's timeout,
           # which leaves no annotation. timeout signals the command's whole process group.
-          python -I tools/cistatus.py step --title "Unit tests of the build (npm test)" -- timeout -k 20 600 npm test
-          python -I tools/cistatus.py step --title "Unit tests of the tools" -- timeout -k 20 900 python -I -m unittest discover -v -s tools/tests -t .
+          # Both suites run, and the step fails after them when either failed, so one run reports both.
+          status=0
+          python -I tools/cistatus.py step --title "Unit tests of the build (npm test)" -- timeout -k 20 600 npm test || status=1
+          python -I tools/cistatus.py step --title "Unit tests of the tools" -- timeout -k 20 900 python -I -m unittest discover -v -s tools/tests -t . || status=1
+          exit "$status"
 
   # Checks 3 to 8 that read the engine at the pin (pipelines.md §13): its public repository from engine.pin's
   # repository line (rulings 6, R25), in the folder engine.
@@ -197,12 +200,29 @@ jobs:
           release=()
           if [ "$RELEASE_TAG" = true ]; then release=(--release); fi
           python -I tools/cistatus.py step --title "Quotes (check 3)" -- python -I tools/excerpts.py check --engine engine "${release[@]}"
+      # The Slang sketches compile with the slangc of the release the engine pins (CMake/StrataSlang.cmake at the pin),
+      # fetched from its URL and checked against its SHA-256 there, as the engine's own build does.
+      - name: Slang at the pin (the sketches' slangc)
+        run: |
+          . .tools/env.sh
+          slang() { sed -n "s/^set(STRATA_SLANG_$1 \"\(.*\)\")$/\1/p" engine/CMake/StrataSlang.cmake; }
+          version=$(slang VERSION)
+          url=$(slang URL)
+          archive=$(slang ARCHIVE_LINUX_X86_64)
+          sha256=$(slang SHA256_LINUX_X86_64)
+          test -n "$version" && test -n "$url" && test -n "$archive" && test -n "$sha256"
+          folder="$RUNNER_TEMP/slang-$version"
+          mkdir -p "$folder"
+          curl -fsSL --retry 3 -o "$RUNNER_TEMP/$archive" "$url/$archive"
+          echo "$sha256  $RUNNER_TEMP/$archive" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/$archive" -C "$folder"
+          echo "SLANGC=$folder/bin/slangc" >> "$GITHUB_ENV"
       - name: Sketches compile and print what the pages show (check 4)
         env:
           CXX: g++
         run: |
           . .tools/env.sh
-          python -I tools/cistatus.py step --title "Sketches (check 4)" -- python -I tools/sketches.py check --engine engine
+          python -I tools/cistatus.py step --title "Sketches (check 4)" -- python -I tools/sketches.py check --engine engine --slangc "$SLANGC"
       - name: Figures, tutorials, the generated reference, names, the pin (checks 5 to 8)
         run: |
           . .tools/env.sh

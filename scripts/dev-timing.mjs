@@ -36,9 +36,19 @@ export function endTree(child) {
 	if (child.exitCode !== null || child.signalCode !== null) return;
 	try {
 		if (process.platform === 'win32') execFileSync('taskkill', ['/PID', String(child.pid), '/T', '/F'], { stdio: 'ignore' });
-		else process.kill(-child.pid, 'SIGKILL');
+		else endGroup(child);
 	} catch {
 		// The process ended between the check and the call.
+	}
+}
+
+// A child started detached leads a process group of its own, which ends with every process in it. One started without
+// detached has no group of its id (kill fails with ESRCH), so it is ended alone.
+function endGroup(child) {
+	try {
+		process.kill(-child.pid, 'SIGKILL');
+	} catch {
+		child.kill('SIGKILL');
 	}
 }
 

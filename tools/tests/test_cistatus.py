@@ -119,6 +119,25 @@ class RecordTests(unittest.TestCase):
         finally:
             shutil.rmtree(folder, ignore_errors=True)
 
+    def test_a_record_is_printed_in_utf_8_whatever_the_console_s_code_page(self):
+        # node --test marks passing tests with "✔", which Windows' cp1252 cannot write: the program, its output piped
+        # as a reader's terminal or a script pipes it, prints the record without failing.
+        folder = tempfile.mkdtemp(prefix='cistatus-utf8-')
+        try:
+            with open(os.path.join(folder, 'jobs.json'), 'w', encoding='utf-8') as file:
+                json.dump(c_Jobs, file)
+            os.makedirs(os.path.join(folder, 'annotations'))
+            with open(os.path.join(folder, 'annotations', '12.json'), 'w', encoding='utf-8') as file:
+                json.dump([dict(c_Annotations[12][0], message='npm test exited 124:\n✔ a test that passed')], file)
+            script = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'cistatus.py')
+            result = subprocess.run([sys.executable, '-I', script, 'record', '--jobs', os.path.join(folder, 'jobs.json'),
+                                     '--annotations', os.path.join(folder, 'annotations'), '--commit', c_Commit, '--attempt', '1',
+                                     '--out', os.path.join(folder, 'out.json')], capture_output=True)
+            self.assertEqual(result.returncode, 0, result.stderr.decode('utf-8', 'replace'))
+            self.assertIn('✔ a test that passed', result.stdout.decode('utf-8'))
+        finally:
+            shutil.rmtree(folder, ignore_errors=True)
+
 
 class PublishAndReadTests(unittest.TestCase):
     """A bare repository stands for GitHub; two clones stand for two runs, and a third for the authoring machine."""

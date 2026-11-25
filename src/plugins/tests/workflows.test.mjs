@@ -101,7 +101,7 @@ test('a check that does not run through tools/cistatus.py step fails, and so doe
 	assertOne(bookWith('python -I tools/cistatus.py step --title "Gate (a) at /" -- python -I tools/crawl.py', 'python -I tools/crawl.py'),
 		/runs "python -I tools\/crawl\.py --dist dist-root .*" without tools\/cistatus\.py step/);
 	assertOne(bookWith('python -I tools/cistatus.py step --title "Spelling (check 8)" -- typos', 'typos'), /runs "typos" without/);
-	assertOne(bookWith('python -I tools/cistatus.py step --title "Unit tests of the build (npm test)" -- timeout -k 20 600 npm test', 'npm test'), /runs "npm test" without/);
+	assertOne(bookWith('python -I tools/cistatus.py step --title "Unit tests of the build (npm test)" -- timeout -k 20 600 npm test || status=1', 'npm test'), /runs "npm test" without/);
 });
 
 test('a cache whose key is not plan/site.md\'s fails, and Playwright\'s key names package.json\'s version', () => {

@@ -328,5 +328,14 @@ def main(argv=None):
         return 2
 
 
+def utf8_output():
+    """Writes in UTF-8 whatever the console's code page: a record quotes what a step printed (node --test's "✔"), which
+    Windows' cp1252, the default of a piped Python there, cannot write."""
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, 'reconfigure') and (stream.encoding or '').lower().replace('-', '') != 'utf8':
+            stream.reconfigure(encoding='utf-8', errors='replace')
+
+
 if __name__ == '__main__':
+    utf8_output()
     sys.exit(main())
