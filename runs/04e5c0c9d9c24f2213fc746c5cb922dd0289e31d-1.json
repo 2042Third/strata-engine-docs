@@ -1,0 +1,72 @@
+{
+ "attempt": 1,
+ "commit": "04e5c0c9d9c24f2213fc746c5cb922dd0289e31d",
+ "conclusion": "failure",
+ "jobs": [
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "build"
+  },
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 20,
+     "message": "Process completed with exit code 2.",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 18,
+     "message": "python -I tools/sketches.py check --engine engine exited 2:\nsketches: no slangc found: pass --slangc <path> to the slangc of Slang 2026.20 (CMake/StrataSlang.cmake at the pin)",
+     "path": ".github",
+     "title": "Sketches (check 4)"
+    }
+   ],
+   "failedSteps": [
+    "Sketches compile and print what the pages show (check 4)"
+   ],
+   "name": "excerpts"
+  },
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 526,
+     "message": "Process completed with exit code 124.",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 485,
+     "message": "timeout -k 20 600 npm test exited 124:\n\u2714 a how-to offers its tutorial file's last stage at the end of its Result, and no other stage (24.156965ms)\n\u2714 the checkpoint box prints whole, with its picture (0.231238ms)\n\u2714 a value takes the place of its mark, as the file writes it (42.803637ms)\n\u2714 a value reads as plain words: in a title it names the aside, and a bare :value is prose (16.217693ms)\n\u2714 the words of a value are the engine's, so the glossary links no term in them (14.074891ms)\n\u2714 an unknown key fails at its line and names the keys it may have meant (10.063773ms)\n\u2714 a mark needs its key, takes no text in brackets and no other attribute (25.179536ms)\n\u2714 a heading holds no value, because its anchor would change with the engine (6.568144ms)\n\u2714 a missing or broken values.json fails every mark, and a page without marks does not need it (40.711768ms)\n\u2714 loadValues reads a flat map of numbers and strings, and refuses anything else (2.00696ms)\n\u2714 a values.json the build read is part of the inputs digest, so a new value renders every page again (5.425026ms)\n\u2714 the committed values.json names the clone's pin, and every value is one a mark can show (9.429661ms)\n\u2714 the committed workflows follow plan/site.md's \"CI\" (22.626707ms)\n\u2714 a run script's logical lines join continued lines and leave comments out (0.184885ms)\n\u2714 an action named by a tag, not by its commit, fails (9.725699ms)\n\u2714 a default permission other than \"contents: read\" fails, and so does a write outside report and release (19.590273ms)\n\u2714 book.yml runs on every push, pull requests and by hand, and cancels superseded runs except for tags (22.267796ms)\n\u2714 the jobs are plan/site.md's, with their needs; release runs on book-v* tags and report always but for pull requests (27.969962ms)\n\u2714 a repository variable, a secret or DOCS_SITE in book.yml fails; a comment that names DOCS_SITE does not (12.32771ms)\n\u2714 a step after the bootstrap that does not source .tools/env.sh fails (9.392671ms)\n\u2714 a check that does not run through tools/cistatus.py step fails, and so does one continued over two lines (14.116598ms)\n\u2714 a cache whose key is not plan/site.md's fails, and Playwright's key names package.json's version (12.021527ms)\n\u2714 a job that restores Playwright's browsers without installing their system libraries fails (2.885535ms)\n\u2714 a checkout deeper than one commit fails (4.022083ms)\n\u2714 links.yml runs on Mondays at 06:00 UTC and by hand, reports lychee's findings and fails above 1 GB (2.629909ms)\n\u2714 a file that is not YAML fails with its name (1.137143ms)\n\u2139 tests 423\n\u2139 suites 0\n\u2139 pass 422\n\u2139 fail 0\n\u2139 cancelled 1\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 599909.026158\n\n\u2716 failing tests:\n\ntest at src/plugins/tests/measure-scripts.test.mjs:1:1\n\u2716 src/plugins/tests/measure-scripts.test.mjs (590995.068526ms)\n  'Promise resolution is still pending but the event loop has already resolved'",
+     "path": ".github",
+     "title": "Unit tests of the build (npm test)"
+    }
+   ],
+   "failedSteps": [
+    "Unit tests of the build and of the tools (check 13)"
+   ],
+   "name": "lint"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "release"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "serve-test"
+  }
+ ],
+ "run": {
+  "event": "push",
+  "ref": "refs/heads/ci/site",
+  "url": "https://github.com/2042Third/strata-engine-docs/actions/runs/45700604541"
+ }
+}
