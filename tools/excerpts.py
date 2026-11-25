@@ -553,8 +553,8 @@ class Sources:
             if not commit:
                 raise ExcerptError('vendor:%s: %s is not a submodule of the engine at %s (the libraries are the folders of '
                                    'Strata/vendor that are submodules)' % (source.lib, folder, pin[:8]))
-            submodule = self.engine.submodule(folder)
             try:
+                submodule = self.engine.submodule(folder)
                 lines = submodule.read(commit, source.path)
             except repo.EngineError as error:
                 raise ExcerptError('vendor:%s: %s; run git submodule update --init --recursive --depth 1 in the clone' % (source.lib, error))
@@ -589,8 +589,9 @@ class Sources:
         commit = self.engine.gitlink(pin, inside[0])
         try:
             return self.engine.submodule(inside[0]).exists(commit, inside[1])
-        except repo.EngineError:
-            return False
+        except repo.EngineError as error:
+            # Not "does not exist": the path cannot be checked until the clone has the library.
+            raise ExcerptError('%s is inside the submodule %s, which cannot be read: %s' % (path, inside[0], error))
 
 
 def quoted_lines(sources, source, attributes, pin):
@@ -839,7 +840,12 @@ def check_text(text, sources, pin, layout, release, vendors):
         problems.append((1, 'a page of kind internals quotes the engine at least %d times; this one quotes it %d time%s: quote the code the page explains' % (
             c_MinInternalsQuotes, count, '' if count == 1 else 's')))
     for number, path in engine_paths(text, sources.top_level(pin)):
-        if not sources.exists(pin, path):
+        try:
+            found = sources.exists(pin, path)
+        except ExcerptError as error:
+            problems.append((number, str(error)))
+            continue
+        if not found:
             problems.append((number, '`%s` does not exist in the engine at %s: check the path (git ls-tree -r %s)' % (path, pin[:8], pin[:12])))
     return problems, notes
 

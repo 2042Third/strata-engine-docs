@@ -303,8 +303,8 @@ def section_b(layout, notices, engine, pin):
                             'written: quote a library the engine lists (plan/pipelines.md §3.2)' % lib)
             continue
         folder = 'Strata/vendor/' + lib
-        library = engine.submodule(folder)
         try:
+            library = engine.submodule(folder)
             commit = library.resolve(record['commit'])
         except repo.EngineError as error:
             raise Missing('%s: %s (run git submodule update --init in the clone)' % (folder, error))

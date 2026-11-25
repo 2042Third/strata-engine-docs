@@ -109,8 +109,11 @@ jobs:
         run: |
           command -v rsync >/dev/null || { sudo apt-get update -q && sudo apt-get install -y -q rsync; }
           . .tools/env.sh
-          python -I tools/cistatus.py step --title "Unit tests of the build (npm test)" -- npm test
-          python -I tools/cistatus.py step --title "Unit tests of the tools" -- python -I -m unittest discover -s tools/tests -t .
+          # Each suite within a time of its own (locally under 1 and 5 minutes), so that a test that hangs fails its
+          # suite with the last lines it printed (the tools' suite names each test) instead of the job's timeout,
+          # which leaves no annotation. timeout signals the command's whole process group.
+          python -I tools/cistatus.py step --title "Unit tests of the build (npm test)" -- timeout -k 20 600 npm test
+          python -I tools/cistatus.py step --title "Unit tests of the tools" -- timeout -k 20 900 python -I -m unittest discover -v -s tools/tests -t .
 
   # Checks 3 to 8 that read the engine at the pin (pipelines.md §13): its public repository from engine.pin's
   # repository line (rulings 6, R25), in the folder engine.
@@ -168,9 +171,14 @@ jobs:
           git -C engine fetch -q --filter=blob:none origin 'refs/tags/v*:refs/tags/v*'
           git -C engine checkout -q --detach "$pin"
           git -C engine backfill --no-sparse
+          # Also each library whose files a page names by path (excerpts.py check verifies those paths): the folders
+          # of Strata/vendor that pages name and that are submodules at the pin.
           {
             printf '%s\n' glm entt
             if [ -f src/generated/vendor.json ]; then jq -r '.libraries | keys[]' src/generated/vendor.json; fi
+            grep -rhoE 'Strata/vendor/[A-Za-z0-9_.-]+/' src/content/docs | cut -d/ -f3 | while read -r named; do
+              if git -C engine ls-tree "$pin" "Strata/vendor/$named" | grep -q '^160000 '; then echo "$named"; fi
+            done
           } | sort -u | while read -r library; do
             git -C engine submodule update --init --depth 1 "Strata/vendor/$library"
           done

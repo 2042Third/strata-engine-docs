@@ -224,6 +224,24 @@ class ExcerptTests(unittest.TestCase):
         self.assertIn('Strata/vendor/imgui is not a submodule of the engine', output)
         self.assertIn('is inside the submodule Strata/vendor/glm: quote it as vendor:glm/glm/vec3.hpp', output)
 
+    def test_a_path_into_a_submodule_the_clone_has_not_checked_out_says_so(self):
+        # CI's engine is a partial clone that checks out only the libraries it needs: a page that names a file of another
+        # one must say that the library is missing, not that the path is wrong, and the tool must end cleanly.
+        imgui = self.engine_repo.add_submodule('Strata/vendor/imgui', {'imgui.h': '#pragma once\n'}, 'https://github.com/ocornut/imgui.git')
+        self.assertTrue(imgui)
+        pin = self.engine_repo.commit({'Strata/src/Imgui.cpp': '// Uses Strata/vendor/imgui/imgui.h.\n'})
+        self.book.write('engine.pin', 'commit %s\nrelease 0.8.0\nprerelease yes\nrepository https://github.com/2042Third/GameEngine\n' % pin)
+        self.page(['The header is `Strata/vendor/imgui/imgui.h`; glm\'s is `Strata/vendor/glm/glm/vec3.hpp`.'])
+        code, output = self.run_tool('check')
+        self.assertEqual(code, 0, output)
+        helpers.remove_tree(os.path.join(self.engine_repo.root, 'Strata', 'vendor', 'imgui', '.git'))
+        code, output = self.run_tool('check')
+        self.assertEqual(code, 1, output)
+        self.assertIn('Strata/vendor/imgui/imgui.h is inside the submodule Strata/vendor/imgui, which cannot be read: the clone has no '
+                      'checkout of the submodule Strata/vendor/imgui', output)
+        self.assertNotIn('does not exist in the engine', output)
+        self.assertNotIn('Traceback', output)
+
     def test_a_vendor_library_must_be_in_the_engine_s_notices(self):
         engine = self.engine_repo.commit({'ThirdPartyNotices.md': '# Third-Party Notices\n'})
         self.book.write('engine.pin', 'commit %s\nrelease 0.8.0\nprerelease yes\nrepository https://github.com/2042Third/GameEngine\n' % engine)

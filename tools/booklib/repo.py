@@ -217,9 +217,15 @@ class Engine:
         return None
 
     def submodule(self, folder):
-        """The reader of a submodule's repository in the clone (its checkout at <clone>/<folder>)."""
+        """The reader of a submodule's repository in the clone (its checkout at <clone>/<folder>). Raises EngineError
+        when the clone has not checked the submodule out: git would then answer from the engine's own repository, and a
+        partial clone would try to fetch the library's commit from the engine's remote, fail and end its batch process."""
         if folder not in self.submodules:
-            self.submodules[folder] = Engine(os.path.join(self.path, *folder.split('/')))
+            path = os.path.join(self.path, *folder.split('/'))
+            if not os.path.exists(os.path.join(path, '.git')):
+                raise EngineError('the clone has no checkout of the submodule %s: run git -C %s submodule update --init --depth 1 %s'
+                                  % (folder, self.path, folder))
+            self.submodules[folder] = Engine(path)
         return self.submodules[folder]
 
     def submodule_urls(self, commit):
@@ -240,7 +246,10 @@ class Engine:
 
     def close(self):
         if self.batch is not None:
-            self.batch.stdin.close()
+            try:
+                self.batch.stdin.close()
+            except BrokenPipeError:
+                pass  # the process already ended (a git error); wait() collects it all the same
             self.batch.wait()
             self.batch.stdout.close()
             self.batch = None
