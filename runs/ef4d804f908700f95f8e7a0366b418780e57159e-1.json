@@ -1,0 +1,72 @@
+{
+ "attempt": 1,
+ "commit": "ef4d804f908700f95f8e7a0366b418780e57159e",
+ "conclusion": "failure",
+ "jobs": [
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "build"
+  },
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 49,
+     "message": "Process completed with exit code 1.",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 33,
+     "message": "python -I tools/excerpts.py check --engine engine exited 1:\nexcerpts: [Errno 32] Broken pipe\nsrc/content/docs/basics/data-formats.md:124: `Strata/vendor/json/include/nlohmann/detail/output/serializer.hpp` does not exist in the engine at 319075e3: check the path (git ls-tree -r 319075e3f92b)\nsrc/content/docs/core/first-change.md:154: `Strata/vendor/glfw/CMakeLists.txt` does not exist in the engine at 319075e3: check the path (git ls-tree -r 319075e3f92b)\nsrc/content/docs/editor-ui/imgui.md:467: `Strata/vendor/imgui/imgui.h` does not exist in the engine at 319075e3: check the path (git ls-tree -r 319075e3f92b)\nTraceback (most recent call last):\n  File \"/home/runner/work/strata-engine-docs/strata-engine-docs/tools/excerpts.py\", line 1173, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/home/runner/work/strata-engine-docs/strata-engine-docs/tools/excerpts.py\", line 1169, in main\n    engine.close()\n  File \"/home/runner/work/strata-engine-docs/strata-engine-docs/tools/booklib/repo.py\", line 248, in close\n    submodule.close()\n  File \"/home/runner/work/strata-engine-docs/strata-engine-docs/tools/booklib/repo.py\", line 243, in close\n    self.batch.stdin.close()\nBrokenPipeError: [Errno 32] Broken pipe",
+     "path": ".github",
+     "title": "Quotes (check 3)"
+    }
+   ],
+   "failedSteps": [
+    "Quotes match the engine (check 3)"
+   ],
+   "name": "excerpts"
+  },
+  {
+   "conclusion": "cancelled",
+   "errors": [
+    {
+     "line": 1,
+     "message": "The job has exceeded the maximum execution time of 30m0s",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 295,
+     "message": "The operation was canceled.",
+     "path": ".github",
+     "title": ""
+    }
+   ],
+   "failedSteps": [
+    "Unit tests of the build and of the tools (check 13)"
+   ],
+   "name": "lint"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "release"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "serve-test"
+  }
+ ],
+ "run": {
+  "event": "push",
+  "ref": "refs/heads/ci/site",
+  "url": "https://github.com/2042Third/strata-engine-docs/actions/runs/45692987316"
+ }
+}
