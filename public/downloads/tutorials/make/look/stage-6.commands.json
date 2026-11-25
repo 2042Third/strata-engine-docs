@@ -1,0 +1,99 @@
+[
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Height Fog",
+			"components": {
+				"HeightFog": {}
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Height Fog"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "HeightFog",
+			"values": {
+				"Density": 0.01,
+				"BaseHeight": -2,
+				"HeightFalloff": 0.1
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Height Fog"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "HeightFog",
+			"values": {
+				"ColorFromSky": false,
+				"SunScattering": 1
+			},
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Height Fog"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "HeightFog",
+			"values": {
+				"ColorFromSky": true,
+				"SunScattering": 0.5
+			},
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Camera"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "Camera",
+			"values": {
+				"PerspectiveFar": 300
+			},
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	}
+]

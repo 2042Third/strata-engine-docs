@@ -1,0 +1,62 @@
+[
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.stop",
+		"parameters": {}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Main Camera"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "Camera",
+			"values": {
+				"Primary": false
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "edit.undo",
+		"parameters": {}
+	},
+	{
+		"command": "editor.activity",
+		"parameters": {
+			"source": "Automation"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Main Camera"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Camera",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	}
+]

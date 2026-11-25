@@ -1,0 +1,13 @@
+{
+	"version": 6,
+	"configurePresets": [
+		{ "name": "base", "hidden": true, "binaryDir": "${sourceDir}/build/${presetName}" },
+		{ "name": "windows", "inherits": "base", "displayName": "Windows", "generator": "Visual Studio 18 2026" }
+	],
+	"buildPresets": [
+		{ "name": "windows-debug", "configurePreset": "windows", "configuration": "Debug" }
+	],
+	"testPresets": [
+		{ "name": "windows-debug", "configurePreset": "windows", "configuration": "Debug", "filter": { "exclude": { "label": "perf" } } }
+	]
+}

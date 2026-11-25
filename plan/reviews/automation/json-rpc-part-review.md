@@ -1,0 +1,3 @@
+# Part review: automation/json-rpc
+
+No correction. Checked at the pin (319075e3): the 76-, 39- and 60-byte counts, the `Unknown parameter` message and the schema of `entity.create` (components, name, parent; no other properties), the line reader table and the limit-8 cases of `Network.JsonRpc`, `c_MaxJsonDepth` 256, `c_MaxSocketTimeout` 24 h, `SO_EXCLUSIVEADDRUSE` and `SO_REUSEADDR`, `TCP_NODELAY` on both sides, `SocketReceiveStatus`, the replace handler of `Serialize`, the `Network` layer (Tooling, includes only Core), `RpcClient::Call`'s 30 s default and its skipping of other ids but not null ids.

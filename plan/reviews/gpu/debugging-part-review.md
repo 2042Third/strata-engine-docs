@@ -1,0 +1,3 @@
+# Part review: gpu/debugging (group 1 of 2)
+
+No corrections: the four lowered reports (VulkanDebugMessages.cpp), the Vulkan callback's count on line 127 of VulkanGraphicsDevice.cpp, the NVRHI callback, the missing-layer warning, NVRHI's "Graphics state is not set before a draw call.", the three editor renderers (Viewport, GameView, ViewportCapture), the renderer-name prefix of targets, the pass markers, the debug view list and its colors (ViewportPanel.cpp:669-689, the debugView schema), the capture switches (CaptureRendererSwitches) and the project-relative output path hold at the pin; no contradiction with the digest.

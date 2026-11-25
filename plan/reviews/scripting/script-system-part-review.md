@@ -1,0 +1,3 @@
+# Part review of `scripting/script-system`
+
+No corrections. Checked at the pin: the 15 callbacks and their enum order, the frame order (GameUI before Scripting; Animation, Physics, Audio and World after it; animation events in the update phase before the fixed steps), `c_MaxSyncRounds` 64, the prefetch distances 12 and 4, compaction at `m_RemovalsSinceCompaction > m_PlacedCount / 8`, `OnCreate` marked before its call, disabled instances getting no `OnDestroy`, the stop order and the asset pins cleared after it, the reconciliation reports, the "A copy" comments, the asset requests (normal priority, shared by the scene).

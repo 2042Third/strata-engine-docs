@@ -1,0 +1,88 @@
+[
+	{
+		"command": "inputActions.setMap",
+		"parameters": {
+			"map": "Gameplay"
+		},
+		"expect": {
+			"/created": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Move",
+			"kind": "Vector2"
+		},
+		"expect": {
+			"/created": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Move",
+			"bindings": [
+				"2D:Key/W,Key/S,Key/A,Key/D"
+			]
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Move",
+			"bindings": [
+				"2D:Key/W,Key/S,Key/A,Key/D",
+				"2D:Key/Up,Key/Down,Key/Left,Key/Right",
+				"Gamepad/LeftStick"
+			]
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "input.action",
+		"parameters": {
+			"action": "Gameplay/Move",
+			"value": [
+				0.0,
+				1.0
+			],
+			"steps": 60
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ball"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

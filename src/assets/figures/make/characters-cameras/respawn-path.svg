@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 422">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: side view, 1 m = 30 px; edge x 360, ground top y 120, FallHeight y 360; fall x = 5t, y = -4.905 t^2, crosses -8 m at t = 1.28 s, x = 6.39 m; teleport quadratic control (720, -40), top y 42; H = 406 + 16 -->
+<rect x="24" y="120" width="336" height="50" class="plate line-ink"/>
+<text x="150" y="150" class="ink small" text-anchor="middle">spawn point</text>
+<text x="350" y="150" class="ink small" text-anchor="end">ground, top at y = 0</text>
+<line x1="24" y1="360" x2="744" y2="360" class="line-red" fill="none" stroke-dasharray="4 3" stroke-width="2"/>
+<text x="28" y="352" class="red bold">FallHeight −8 m</text>
+<rect x="141" y="66.0" width="18" height="54" rx="9" class="plate line-ink"/>
+<line x1="162" y1="120" x2="360" y2="120" class="line-ink" fill="none" stroke-width="2.5"/>
+<polygon points="285,106 275,109.5 275,102.5" class="muted"/>
+<line x1="195" y1="106" x2="275" y2="106" class="line-muted" fill="none"/>
+<text x="240" y="98" class="muted small" text-anchor="middle">5 m/s</text>
+<polyline points="360,120 364.8,120.2 369.6,120.6 374.4,121.3 379.2,122.4 383.9,123.8 388.7,125.4 393.5,127.3 398.3,129.6 403.1,132.2 407.9,135 412.7,138.2 417.5,141.6 422.3,145.3 427,149.4 431.8,153.8 436.6,158.4 441.4,163.3 446.2,168.6 451,174.2 455.8,180 460.6,186.2 465.4,192.6 470.2,199.4 474.9,206.4 479.7,213.8 484.5,221.4 489.3,229.4 494.1,237.6 498.9,246.2 503.7,255 508.5,264.1 513.3,273.6 518,283.4 522.8,293.4 527.6,303.8 532.4,314.4 537.2,325.3 542,336.6 546.8,348.2 551.6,360" class="line-ink" fill="none" stroke-width="2.5"/>
+<circle cx="551.6" cy="360" r="5" class="orange"/>
+<text x="466" y="218.2" class="ink" text-anchor="end">falls 8 m in 1.28 s</text>
+<polygon points="150,64 161,57.4 162.6,66.3" class="orange"/>
+<polyline points="551.6,353 557,340 562,327.4 566.6,314.9 570.7,302.8 574.5,291 577.9,279.4 580.8,268.1 583.4,257 585.5,246.3 587.2,235.8 588.5,225.6 589.4,215.7 589.9,206 590,196.7 589.6,187.6 588.9,178.7 587.7,170.2 586.2,161.9 584.2,153.9 581.8,146.2 579,138.8 575.8,131.6 572.2,124.7 568.2,118.1 563.7,111.8 558.9,105.7 553.6,99.9 548,94.4 541.9,89.2 535.4,84.2 528.5,79.6 521.2,75.2 513.5,71 505.3,67.2 496.8,63.6 487.9,60.3 478.5,57.3 468.7,54.6 458.5,52.1 448,49.9 437,48 425.5,46.3 413.7,45 401.5,43.9 388.8,43.1 375.8,42.5 362.3,42.3 348.5,42.3 334.2,42.6 319.5,43.1 304.4,44 288.9,45.1 272.9,46.5 256.6,48.2 239.9,50.1 222.7,52.3 205.2,54.8 187.2,57.6 168.8,60.7 161.8,61.8" class="line-orange" fill="none" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="612" y="176" class="orange bold">Teleport, at once:</text>
+<text x="612" y="196" class="orange">the next frame</text>
+<text x="612" y="216" class="orange">draws the player</text>
+<text x="612" y="236" class="orange">at the spawn point</text>
+<text x="24" y="392" class="muted small">The camera follows at once: its pivot jumps more than 8 m.</text>
+</svg>

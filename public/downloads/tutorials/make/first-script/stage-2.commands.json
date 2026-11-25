@@ -1,0 +1,122 @@
+[
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"class": "Coin",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "prefab.apply",
+		"parameters": {
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"class": "Coin",
+			"field": "DegreesPerSecond",
+			"value": 180,
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 60
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 60
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin (2)"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin"
+		},
+		"bind": {
+			"entityName.5": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.5"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

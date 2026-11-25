@@ -1,0 +1,11 @@
+.git
+.tools
+.cache
+.astro
+node_modules
+dist
+stage
+release
+originals
+plan
+**/__pycache__

@@ -1,0 +1,495 @@
+[
+	{
+		"command": "scene.save"
+	},
+	{
+		"command": "scene.new"
+	},
+	{
+		"command": "scene.saveAs",
+		"parameters": {
+			"path": "Scenes/MainMenu.stscene"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "canvas",
+			"name": "Menu"
+		},
+		"bind": {
+			"menu": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "panel",
+			"parent": {
+				"$ref": "menu"
+			},
+			"name": "Buttons",
+			"anchor": "middleCenter",
+			"size": [
+				480,
+				360
+			]
+		},
+		"bind": {
+			"buttons": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "verticalLayout",
+			"parent": {
+				"$ref": "buttons"
+			},
+			"name": "Column",
+			"anchor": "stretch"
+		},
+		"bind": {
+			"column": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "text",
+			"parent": {
+				"$ref": "column"
+			},
+			"name": "Title",
+			"text": "Platformer",
+			"size": [
+				400,
+				80
+			]
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"parent": {
+				"$ref": "column"
+			},
+			"name": "Play",
+			"text": "Play",
+			"size": [
+				320,
+				64
+			]
+		},
+		"bind": {
+			"play": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"parent": {
+				"$ref": "column"
+			},
+			"name": "Quit",
+			"text": "Quit",
+			"size": [
+				320,
+				64
+			]
+		},
+		"bind": {
+			"quit": "/entity"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "menu"
+			},
+			"class": "MainMenu",
+			"fields": {
+				"Level": "Scenes/Course.stscene",
+				"PlayButton": {
+					"$ref": "play"
+				}
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "play"
+				},
+				{
+					"$ref": "quit"
+				}
+			],
+			"component": "UIButton",
+			"values": {
+				"EventTarget": {
+					"$ref": "menu"
+				}
+			}
+		}
+	},
+	{
+		"command": "project.setStartScene",
+		"parameters": {
+			"scene": "Scenes/MainMenu.stscene"
+		}
+	},
+	{
+		"command": "scene.save"
+	},
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/Course.stscene"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "canvas",
+			"name": "Pause"
+		},
+		"bind": {
+			"pause": "/entity"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "pause"
+			},
+			"component": "UICanvas",
+			"values": {
+				"SortOrder": 10
+			}
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "panel",
+			"parent": {
+				"$ref": "pause"
+			},
+			"name": "PausePanel",
+			"anchor": "middleCenter",
+			"size": [
+				480,
+				360
+			]
+		},
+		"bind": {
+			"pausePanel": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"parent": {
+				"$ref": "pausePanel"
+			},
+			"name": "Resume",
+			"text": "Resume",
+			"anchor": "topCenter",
+			"position": [
+				0,
+				60
+			],
+			"size": [
+				320,
+				64
+			]
+		},
+		"bind": {
+			"resume": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"parent": {
+				"$ref": "pausePanel"
+			},
+			"name": "Restart",
+			"text": "Restart",
+			"anchor": "topCenter",
+			"position": [
+				0,
+				150
+			],
+			"size": [
+				320,
+				64
+			]
+		},
+		"bind": {
+			"restart": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"parent": {
+				"$ref": "pausePanel"
+			},
+			"name": "MenuButton",
+			"text": "Main Menu",
+			"anchor": "topCenter",
+			"position": [
+				0,
+				240
+			],
+			"size": [
+				320,
+				64
+			]
+		},
+		"bind": {
+			"menuButton": "/entity"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Game"
+		},
+		"bind": {
+			"game": "/entities/0"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "game"
+			},
+			"class": "PauseMenu",
+			"fields": {
+				"Panel": {
+					"$ref": "pausePanel"
+				},
+				"ResumeButton": {
+					"$ref": "resume"
+				},
+				"RestartButton": {
+					"$ref": "restart"
+				},
+				"MenuButton": {
+					"$ref": "menuButton"
+				},
+				"MainMenuScene": "Scenes/MainMenu.stscene"
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "resume"
+				},
+				{
+					"$ref": "restart"
+				},
+				{
+					"$ref": "menuButton"
+				}
+			],
+			"component": "UIButton",
+			"values": {
+				"EventTarget": {
+					"$ref": "game"
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Complete"
+		},
+		"bind": {
+			"complete": "/entities/0"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"parent": {
+				"$ref": "complete"
+			},
+			"name": "PlayAgain",
+			"text": "Play Again",
+			"anchor": "bottomCenter",
+			"position": [
+				-160,
+				-40
+			],
+			"size": [
+				280,
+				64
+			]
+		},
+		"bind": {
+			"playAgain": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"parent": {
+				"$ref": "complete"
+			},
+			"name": "CompleteMenu",
+			"text": "Main Menu",
+			"anchor": "bottomCenter",
+			"position": [
+				160,
+				-40
+			],
+			"size": [
+				280,
+				64
+			]
+		},
+		"bind": {
+			"completeMenu": "/entity"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "playAgain"
+				},
+				{
+					"$ref": "completeMenu"
+				}
+			],
+			"component": "UIButton",
+			"values": {
+				"EventTarget": {
+					"$ref": "game"
+				}
+			}
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"entity": {
+				"$ref": "game"
+			},
+			"class": "CourseState",
+			"field": "PlayAgainButton",
+			"value": {
+				"$ref": "playAgain"
+			}
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"entity": {
+				"$ref": "game"
+			},
+			"class": "CourseState",
+			"field": "CompleteMenuButton",
+			"value": {
+				"$ref": "completeMenu"
+			}
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"entity": {
+				"$ref": "game"
+			},
+			"class": "CourseState",
+			"field": "MainMenuScene",
+			"value": "Scenes/MainMenu.stscene"
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "physics.stats",
+		"expect": {
+			"/waitingForMeshes": {
+				"equals": false
+			}
+		},
+		"until": {
+			"seconds": 60
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "Escape",
+			"action": "press"
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"entity": {
+				"$ref": "game"
+			},
+			"class": "PauseMenu"
+		},
+		"expect": {
+			"/scripts/0/fields/Paused": {
+				"equals": true
+			}
+		},
+		"until": {
+			"seconds": 5
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "Escape",
+			"action": "release"
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

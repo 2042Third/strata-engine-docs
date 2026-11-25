@@ -1,0 +1,425 @@
+[
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/Main.stscene"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Post Process"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "PostProcess",
+			"values": {
+				"AntiAliasing": true,
+				"AntiAliasingMethod": "Morphological"
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Post Process"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "PostProcess",
+			"values": {
+				"AntiAliasingMethod": "TAA",
+				"TAAPreset": "Original"
+			},
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "project.settings",
+		"parameters": {
+			"section": "Renderer.Quality"
+		}
+	},
+	{
+		"command": "project.setSettings",
+		"parameters": {
+			"section": "Renderer.Quality",
+			"value": {
+				"Preset": "Low"
+			}
+		}
+	},
+	{
+		"command": "project.setSettings",
+		"parameters": {
+			"section": "Renderer.Quality",
+			"value": {
+				"Preset": "High"
+			}
+		}
+	},
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"quality": "ultra"
+		}
+	},
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"quality": "project"
+		}
+	},
+	{
+		"command": "scene.save"
+	},
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/MainMenu.stscene"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "SettingsPanel"
+		},
+		"bind": {
+			"panel": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "SettingsColumn"
+		},
+		"bind": {
+			"column": "/entities/0"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "horizontalLayout",
+			"name": "GraphicsRow",
+			"parent": {
+				"$ref": "column"
+			},
+			"size": [
+				480,
+				50
+			]
+		},
+		"bind": {
+			"row": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "toggle",
+			"name": "GraphicsLow",
+			"parent": {
+				"$ref": "row"
+			},
+			"text": "Low",
+			"size": [
+				115,
+				50
+			]
+		},
+		"bind": {
+			"GraphicsLow": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "toggle",
+			"name": "GraphicsMedium",
+			"parent": {
+				"$ref": "row"
+			},
+			"text": "Medium",
+			"size": [
+				115,
+				50
+			]
+		},
+		"bind": {
+			"GraphicsMedium": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "toggle",
+			"name": "GraphicsHigh",
+			"parent": {
+				"$ref": "row"
+			},
+			"text": "High",
+			"size": [
+				115,
+				50
+			]
+		},
+		"bind": {
+			"GraphicsHigh": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "toggle",
+			"name": "GraphicsUltra",
+			"parent": {
+				"$ref": "row"
+			},
+			"text": "Ultra",
+			"size": [
+				115,
+				50
+			]
+		},
+		"bind": {
+			"GraphicsUltra": "/entity"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "GraphicsLow"
+			},
+			"component": "UIToggle",
+			"values": {
+				"Group": {
+					"$ref": "row"
+				},
+				"EventTarget": {
+					"$ref": "panel"
+				},
+				"IsOn": false
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "GraphicsMedium"
+			},
+			"component": "UIToggle",
+			"values": {
+				"Group": {
+					"$ref": "row"
+				},
+				"EventTarget": {
+					"$ref": "panel"
+				},
+				"IsOn": false
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "GraphicsHigh"
+			},
+			"component": "UIToggle",
+			"values": {
+				"Group": {
+					"$ref": "row"
+				},
+				"EventTarget": {
+					"$ref": "panel"
+				},
+				"IsOn": false
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "GraphicsUltra"
+			},
+			"component": "UIToggle",
+			"values": {
+				"Group": {
+					"$ref": "row"
+				},
+				"EventTarget": {
+					"$ref": "panel"
+				},
+				"IsOn": false
+			}
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"entity": {
+				"$ref": "panel"
+			},
+			"class": "SettingsMenu",
+			"field": "GraphicsLow",
+			"value": {
+				"$ref": "GraphicsLow"
+			}
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"entity": {
+				"$ref": "panel"
+			},
+			"class": "SettingsMenu",
+			"field": "GraphicsMedium",
+			"value": {
+				"$ref": "GraphicsMedium"
+			}
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"entity": {
+				"$ref": "panel"
+			},
+			"class": "SettingsMenu",
+			"field": "GraphicsHigh",
+			"value": {
+				"$ref": "GraphicsHigh"
+			}
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"entity": {
+				"$ref": "panel"
+			},
+			"class": "SettingsMenu",
+			"field": "GraphicsUltra",
+			"value": {
+				"$ref": "GraphicsUltra"
+			}
+		}
+	},
+	{
+		"command": "prefab.apply",
+		"parameters": {
+			"entity": {
+				"$ref": "panel"
+			}
+		}
+	},
+	{
+		"command": "scene.save"
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 2
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 2
+			}
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "GraphicsHigh"
+			},
+			"component": "UIToggle"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "GraphicsLow"
+			},
+			"component": "UIToggle"
+		}
+	},
+	{
+		"command": "input.click",
+		"parameters": {
+			"entity": {
+				"$ref": "GraphicsLow"
+			},
+			"wait": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 3
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "GraphicsLow"
+			},
+			"component": "UIToggle"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "GraphicsHigh"
+			},
+			"component": "UIToggle"
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "graphics.resetPlayerOptions"
+	},
+	{
+		"command": "graphics.resetPlayerOptions"
+	}
+]

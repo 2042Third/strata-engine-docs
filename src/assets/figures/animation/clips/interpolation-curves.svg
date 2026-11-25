@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 440">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- the drawing: roles as classes (plan/card/drawing.md) -->
+<!-- Plan: x = 96 + 160 t (t 0 to 3.5 s: 96 to 656), y = 332 - 120 v (v -0.3 to 2.5: 368 to 32).
+     Keys (0, 0), (1, 2), (3, 1). Step holds the earlier key. Cubic: glTF Hermite drawn as exact Beziers,
+     segment 0 tangents 2 and 2 (on the line), segment 1 out-tangent 1 and in-tangent -2 (the page's example; peak 2.33 at t 1.67,
+     2.25 at t 2). Axis at y 368, tick labels 392, axis title 420, H 440. -->
+<g class="line-faint" fill="none" stroke-width="1">
+	<line x1="96" y1="332" x2="656" y2="332"/>
+	<line x1="96" y1="212" x2="656" y2="212"/>
+	<line x1="96" y1="92" x2="656" y2="92"/>
+</g>
+<g class="line-muted" fill="none">
+	<line x1="96" y1="368" x2="656" y2="368"/>
+	<line x1="96" y1="368" x2="96" y2="374"/>
+	<line x1="256" y1="368" x2="256" y2="374"/>
+	<line x1="416" y1="368" x2="416" y2="374"/>
+	<line x1="576" y1="368" x2="576" y2="374"/>
+	<line x1="656" y1="368" x2="656" y2="374"/>
+</g>
+<g class="muted" text-anchor="middle">
+	<text x="96" y="392">0</text>
+	<text x="256" y="392">1</text>
+	<text x="416" y="392">2</text>
+	<text x="576" y="392">3</text>
+	<text x="656" y="392">3.5</text>
+	<text x="376" y="422">time in seconds</text>
+	<text x="52" y="212" transform="rotate(-90 52 212)">value</text>
+</g>
+<g class="muted" text-anchor="end">
+	<text x="84" y="337">0</text>
+	<text x="84" y="217">1</text>
+	<text x="84" y="97">2</text>
+</g>
+<path class="line-orange" fill="none" stroke-width="2.5" stroke-dasharray="9 5" d="M 96 332 H 256 V 92 H 576 V 212 H 656"/>
+<path class="line-blue" fill="none" stroke-width="2.5" d="M 96 332 L 256 92 L 576 212 H 656"/>
+<path class="line-green" fill="none" stroke-width="2.5" stroke-dasharray="0.5 4.5" stroke-linecap="round" d="M 96 332 C 149.33 252 202.67 172 256 92 C 362.67 12 469.33 52 576 212 H 656"/>
+<g class="line-muted" fill="none">
+	<line x1="200" y1="134" x2="312" y2="50"/>
+	<line x1="536" y1="152" x2="608" y2="260"/>
+</g>
+<g class="ink">
+	<circle cx="96" cy="332" r="5"/>
+	<circle cx="256" cy="92" r="5"/>
+	<circle cx="576" cy="212" r="5"/>
+</g>
+<text class="orange" x="176" y="354" text-anchor="middle">step</text>
+<text class="blue" x="420" y="194">linear</text>
+<text class="green" x="400" y="40" text-anchor="middle">cubic spline</text>
+<text class="muted small" x="192" y="130" text-anchor="end">out-tangent 1</text>
+<text class="muted small" x="614" y="276">in-tangent −2</text>
+</svg>

@@ -1,0 +1,31 @@
+{
+	"comment": "The scene and world limits of the generated reference (plan/pipelines.md §7.1): each a constant at the pin, named with its class or namespace as pages write it, and the file that declares it. tools/reference.py parse evaluates each and fails when one does not resolve; render lists them in limits.md and as limits.<name> in values.json (:: written as .). A constant whose expression names another file's constant gives it in substitute: {\"<text of the expression>\": {\"file\", \"line\", \"name\"}}, checked at the pin (a vendored file at its submodule's commit).",
+	"limits": [
+		{ "file": "Strata/src/Strata/Scene/Scene.h", "name": "Scene::c_MaxEntities",
+			"substitute": { "entt::entt_traits<entt::entity>::entity_mask": { "file": "Strata/vendor/entt/src/entt/entity/entity.hpp", "line": 38, "name": "entity_mask" } } },
+		{ "file": "Strata/src/Strata/Scene/Scene.h", "name": "Scene::c_MaxHierarchyMoves" },
+		{ "file": "Strata/src/Strata/Scene/Scene.h", "name": "Scene::c_MaxTransformChanges" },
+		{ "file": "Strata/src/Strata/Scene/Scene.h", "name": "Scene::c_MaxSubSceneMillisecondsPerFrame" },
+		{ "file": "Strata/src/Strata/Scene/Scene.h", "name": "Scene::c_MaxInterpolatedSpeed" },
+		{ "file": "Strata/src/Strata/Scene/Scene.h", "name": "PhysicsCapacitySettings::c_MaxBodiesLimit" },
+		{ "file": "Strata/src/Strata/Scene/Scene.h", "name": "PhysicsCapacitySettings::c_MaxContactConstraintsLimit" },
+		{ "file": "Strata/src/Strata/Scene/Scene.h", "name": "SceneSettings::c_MaxEntitiesInstantiatedLimit" },
+		{ "file": "Strata/src/Strata/Scene/Scene.h", "name": "SceneSettings::c_MaxEntitiesDestroyedLimit" },
+		{ "file": "Strata/src/Strata/Scene/ProjectSceneTiming.h", "name": "ProjectSceneTiming::c_MaxStepsLimit" },
+		{ "file": "Strata/src/Strata/Scene/PhysicsLayerSettings.h", "name": "PhysicsLayerSettings::c_MaxNameLength" },
+		{ "file": "Strata/src/Strata/World/WorldAsset.h", "name": "WorldData::c_MaxLayers" },
+		{ "file": "Strata/src/Strata/World/WorldAsset.h", "name": "WorldData::c_MaxCells" },
+		{ "file": "Strata/src/Strata/World/WorldAsset.h", "name": "WorldData::c_MinCellSize" },
+		{ "file": "Strata/src/Strata/World/WorldAsset.h", "name": "WorldData::c_MaxCellSize" },
+		{ "file": "Strata/src/Strata/World/WorldAsset.h", "name": "WorldData::c_MaxStreamingDistance" },
+		{ "file": "Strata/src/Strata/World/WorldAsset.h", "name": "WorldData::c_MaxExtent" },
+		{ "file": "Strata/src/Strata/World/WorldAsset.h", "name": "WorldData::c_SupportedExtent" },
+		{ "file": "Strata/src/Strata/World/WorldGrid.h", "name": "WorldCellKey::c_MaxCoordinate" },
+		{ "file": "Strata/src/Strata/World/WorldStreamer.h", "name": "WorldStreamer::c_MaxConcurrentCellLoads" },
+		{ "file": "Strata/src/Strata/Physics/PhysicsWorld.cpp", "name": "c_MaxBodyCoordinate" },
+		{ "file": "Strata/src/Strata/Physics/PhysicsWorld.cpp", "name": "c_MaxRaycastDistance" },
+		{ "file": "Strata/src/Strata/Physics/PhysicsWorld.h", "name": "PhysicsWorld::c_MaxBodiesReservedAtCreation" },
+		{ "file": "Strata/src/Strata/Core/SettingsRegistry.h", "name": "SettingsSection::c_MaxValueBytes" },
+		{ "file": "Strata/src/Strata/Core/ProjectSettings.h", "name": "ProjectSettingsValues::c_MaxStoredBytes" }
+	]
+}

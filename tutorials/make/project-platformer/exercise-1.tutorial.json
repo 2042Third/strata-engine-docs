@@ -1,0 +1,19 @@
+{
+	"page": "make/project-platformer",
+	"startsFrom": { "tutorial": "make/project-platformer" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "scene.open", "parameters": { "scene": "Scenes/Course.stscene" } },
+				{ "command": "entity.create", "parameters": { "name": "Lantern", "components": {
+					"Transform": { "Translation": [ 2, 2.5, -9 ] },
+					"PointLight": { "Color": [ 1, 0.75, 0.4 ], "Intensity": 400, "Range": 12, "CastShadows": true } } },
+					"bind": { "lantern": "/id" } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "lantern" }, "component": "PointLight" },
+					"expect": { "/values/CastShadows": { "equals": true } },
+					"checks": [ { "pointer": "/values/Range", "approx": 12, "tolerance": 0.001 } ] }
+			]
+		}
+	]
+}

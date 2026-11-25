@@ -1,0 +1,2205 @@
+{
+	"prefab": "Prefabs/Coin.stprefab",
+	"instances": [
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-19,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-17,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-15,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-13,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-11,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-9,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-7,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-5,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-3,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-1,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						1,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						3,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						5,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						7,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						9,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						11,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						13,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						15,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						17,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						19,
+						0.8,
+						-9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-19,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-17,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-15,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-13,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-11,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-9,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-7,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-5,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-3,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-1,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						1,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						3,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						5,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						7,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						9,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						11,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						13,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						15,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						17,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						19,
+						0.8,
+						-7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-19,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-17,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-15,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-13,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-11,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-9,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-7,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-5,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-3,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-1,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						1,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						3,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						5,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						7,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						9,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						11,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						13,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						15,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						17,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						19,
+						0.8,
+						-5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-19,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-17,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-15,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-13,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-11,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-9,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-7,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-5,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-3,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-1,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						1,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						3,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						5,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						7,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						9,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						11,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						13,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						15,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						17,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						19,
+						0.8,
+						-3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-19,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-17,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-15,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-13,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-11,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-9,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-7,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-5,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-3,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-1,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						1,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						3,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						5,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						7,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						9,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						11,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						13,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						15,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						17,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						19,
+						0.8,
+						-1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-19,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-17,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-15,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-13,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-11,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-9,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-7,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-5,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-3,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-1,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						1,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						3,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						5,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						7,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						9,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						11,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						13,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						15,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						17,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						19,
+						0.8,
+						1
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-19,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-17,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-15,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-13,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-11,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-9,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-7,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-5,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-3,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-1,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						1,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						3,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						5,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						7,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						9,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						11,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						13,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						15,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						17,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						19,
+						0.8,
+						3
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-19,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-17,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-15,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-13,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-11,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-9,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-7,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-5,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-3,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-1,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						1,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						3,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						5,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						7,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						9,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						11,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						13,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						15,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						17,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						19,
+						0.8,
+						5
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-19,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-17,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-15,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-13,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-11,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-9,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-7,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-5,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-3,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-1,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						1,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						3,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						5,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						7,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						9,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						11,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						13,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						15,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						17,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						19,
+						0.8,
+						7
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-19,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-17,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-15,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-13,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-11,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-9,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-7,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-5,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-3,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						-1,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						1,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						3,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						5,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						7,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						9,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						11,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						13,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						15,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						17,
+						0.8,
+						9
+					]
+				}
+			}
+		},
+		{
+			"components": {
+				"Transform": {
+					"Translation": [
+						19,
+						0.8,
+						9
+					]
+				}
+			}
+		}
+	]
+}

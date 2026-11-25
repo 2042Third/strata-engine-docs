@@ -1,0 +1,136 @@
+[
+	{
+		"command": "animation.setController",
+		"parameters": {
+			"controller": "Animations/Player.stanimator",
+			"states": [
+				{
+					"Name": "Idle",
+					"Clip": "E9C1D4AC112447DE"
+				},
+				{
+					"Name": "Walk",
+					"Clip": "57D5825B3AB8DCFD",
+					"Events": [
+						{
+							"Name": "Footstep",
+							"Time": 0.02
+						},
+						{
+							"Name": "Footstep",
+							"Time": 0.5
+						}
+					]
+				},
+				{
+					"Name": "Run",
+					"Clip": "76CC7E24795F51DA",
+					"Events": [
+						{
+							"Name": "Footstep",
+							"Time": 0.28
+						},
+						{
+							"Name": "Footstep",
+							"Time": 0.76
+						}
+					]
+				},
+				{
+					"Name": "Jump",
+					"Clip": "5C84360EC5B352B3",
+					"Loop": false
+				}
+			]
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"class": "Footsteps",
+			"fields": {
+				"Step1": "Sounds/Footsteps/Grass1.ogg",
+				"Step2": "Sounds/Footsteps/Grass2.ogg",
+				"Step3": "Sounds/Footsteps/Grass3.ogg",
+				"Step4": "Sounds/Footsteps/Grass4.ogg"
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 10
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 10
+			}
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "W",
+			"steps": 150
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 151
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 151
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"class": "Footsteps",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

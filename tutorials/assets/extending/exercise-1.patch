@@ -1,0 +1,144 @@
+diff --git a/Strata/src/Strata/Asset/AssetImporters.cpp b/Strata/src/Strata/Asset/AssetImporters.cpp
+index c8bf9774..c1c90363 100644
+--- a/Strata/src/Strata/Asset/AssetImporters.cpp
++++ b/Strata/src/Strata/Asset/AssetImporters.cpp
+@@ -156,21 +156,78 @@ namespace Strata
+ 			}
+ 		};
+ 
+-		// Plain text files, stored as written once they are valid.
++		// Plain text files, valid UTF-8 with one line end unless the setting says otherwise.
+ 		class TextImporter final : public AssetImporter
+ 		{
+ 		public:
+ 			AssetType GetType() const override { return AssetType::Text; }
+ 			std::vector<std::string> GetExtensions() const override { return { ".sttxt" }; }
+-			uint32_t GetVersion() const override { return 1; }
+-			bool StoresSourceDirectly() const override { return true; }
++			// 2: the stored text has one line ending by default, where version 1 stored the file as written.
++			uint32_t GetVersion() const override { return 2; }
++
++			nlohmann::json GetDefaultSettings(const std::filesystem::path&) const override
++			{
++				nlohmann::json settings = nlohmann::json::object();
++				settings["NormalizeLineEndings"] = true;
++				settings["Newline"] = "LF";
++				return settings;
++			}
++
++			std::vector<PropertyInfo> GetSettingsProperties() const override
++			{
++				std::vector<PropertyInfo> properties;
++				ImportSettingsBuilder(properties)
++					.Bool("NormalizeLineEndings", true)
++						.Tooltip("Store every line end in one form, so the text reads the same on every system")
++					.Enum("Newline", { "LF", "CRLF" }, "LF")
++						.Tooltip("The line end of the stored text");
++				return properties;
++			}
++
++			std::string GetInactiveReason(std::string_view setting, const nlohmann::json& settings) const override
++			{
++				if (setting == "Newline" && !IsNormalizing(settings))
++					return "Newline applies only when Normalize Line Endings is on";
++				return {};
++			}
+ 
+ 			bool Import(const ImportContext& context, ImportResult& result, std::string* outError) const override
+ 			{
+-				if (!ReadSource(context, result.Data, outError))
++				std::vector<uint8_t> source;
++				if (!ReadSource(context, source, outError))
+ 					return false;
++				if (!IsNormalizing(context.Settings))
++				{
++					result.Data = std::move(source);
++					return TextAsset::Create(result.Data, outError) != nullptr;
++				}
++
++				const nlohmann::json* newline = JsonUtils::Find(context.Settings, "Newline");
++				const bool crlf = newline && newline->is_string() && newline->get<std::string>() == "CRLF";
++				result.Data.reserve(source.size());
++				for (size_t index = 0; index < source.size(); index++)
++				{
++					// The line feed of a carriage return and line feed pair writes the line end.
++					if (source[index] == '\r' && index + 1 < source.size() && source[index + 1] == '\n')
++						continue;
++					if (source[index] == '\r' || source[index] == '\n')
++					{
++						if (crlf)
++							result.Data.push_back('\r');
++						result.Data.push_back('\n');
++					}
++					else
++						result.Data.push_back(source[index]);
++				}
+ 				return TextAsset::Create(result.Data, outError) != nullptr;
+ 			}
++
++		private:
++			static bool IsNormalizing(const nlohmann::json& settings)
++			{
++				const nlohmann::json* normalize = JsonUtils::Find(settings, "NormalizeLineEndings");
++				return !normalize || !normalize->is_boolean() || normalize->get<bool>();
++			}
+ 		};
+ 
+ 	}
+diff --git a/StrataTests/FeatureTest/Assets/Text/Notes.sttxt.meta b/StrataTests/FeatureTest/Assets/Text/Notes.sttxt.meta
+index 916a8860..018fbfe6 100644
+--- a/StrataTests/FeatureTest/Assets/Text/Notes.sttxt.meta
++++ b/StrataTests/FeatureTest/Assets/Text/Notes.sttxt.meta
+@@ -1,6 +1,9 @@
+ {
+ 	"Handle": "F7A0000000000013",
+-	"ImportSettings": {},
++	"ImportSettings": {
++		"Newline": "LF",
++		"NormalizeLineEndings": true
++	},
+ 	"Strata": {
+ 		"Format": "AssetMeta",
+ 		"Version": 1
+diff --git a/StrataTests/src/Scene/TextAssetTests.cpp b/StrataTests/src/Scene/TextAssetTests.cpp
+index 0432a403..71513be4 100644
+--- a/StrataTests/src/Scene/TextAssetTests.cpp
++++ b/StrataTests/src/Scene/TextAssetTests.cpp
+@@ -52,4 +52,37 @@ TEST_SUITE("Scene.TextAsset")
+ 		CHECK_FALSE(importer->Import(context, rejected, &error));
+ 		CHECK_FALSE(error.empty());
+ 	}
++
++	TEST_CASE("The importer writes one line end, and Newline is inactive without it")
++	{
++		const AssetImporter* importer = AssetImporterRegistry::FindByExtension(".sttxt");
++		REQUIRE(importer);
++		CHECK(importer->GetVersion() == 2);
++
++		const std::filesystem::path directory = Tests::CreateTemporaryDirectory("TextNewlines");
++		const std::filesystem::path path = directory / "Mixed.sttxt";
++		std::ofstream(path, std::ios::binary) << "a\r\nb\rc\n";
++		const auto importWith = [&](bool normalize, const char* newline)
++		{
++			ImportContext context;
++			context.SourcePath = path;
++			context.AssetDirectory = directory;
++			context.Settings = nlohmann::json::object();
++			context.Settings["NormalizeLineEndings"] = normalize;
++			context.Settings["Newline"] = newline;
++			ImportResult result;
++			std::string error;
++			REQUIRE_MESSAGE(importer->Import(context, result, &error), error);
++			return std::string(result.Data.begin(), result.Data.end());
++		};
++		CHECK(importWith(true, "LF") == "a\nb\nc\n");
++		CHECK(importWith(true, "CRLF") == "a\r\nb\r\nc\r\n");
++		CHECK(importWith(false, "LF") == "a\r\nb\rc\n");
++
++		nlohmann::json settings = importer->GetDefaultSettings(path);
++		CHECK(importer->GetInactiveReason("Newline", settings).empty());
++		settings["NormalizeLineEndings"] = false;
++		CHECK_FALSE(importer->GetInactiveReason("Newline", settings).empty());
++		CHECK(importer->GetInactiveReason("NormalizeLineEndings", settings).empty());
++	}
+ }

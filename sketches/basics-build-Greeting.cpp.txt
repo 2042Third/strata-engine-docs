@@ -1,0 +1,6 @@
+#include "Greeting.h"
+
+std::string MakeGreeting(const std::string& name)
+{
+	return "Hello, " + name + "!";
+}

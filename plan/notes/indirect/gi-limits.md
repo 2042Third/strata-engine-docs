@@ -1,0 +1,56 @@
+# Notes: indirect/gi-limits
+
+## New terms
+
+None proposed. The brief names no term the glossary homes here, and the page defines none in bold.
+
+## Since
+
+0.8.0: `Docs/Releases/0.8.0.md` lists "Global illumination (experimental)" as new in 0.8.0 (the 0.7.0 notes do not name it), with its debug views **Voxels**, **GI**, **Open** and **Probes**.
+
+## Requests
+
+- Figures (`src/content/figures/indirect/gi-limits.json`), none taken: `cornell-notches` (shot `lookdev.cornell` at the High row), `thin-wall-voxels` (the look-dev `Scenes/Cornell.stscene`, its setup creates an entity `Thin Wall` of 2 x 2.4 x 0.06 m with the cube mesh `0000000000000001` and `Materials/CornellWhite.stmat`, debug view `voxels`, camera [0, 1.6, 4.2] to [0, 1.2, 1]), `yard-field-edge` (shot `lookdev.yard.lit.gi`). No layout needed (all are scene figures).
+- Sketch: `sketches/indirect-gi-limits-rest.cpp` (exercise 2). Patch: `tutorials/indirect/gi-limits/exercise-3.patch` (exercise 3; `git apply --check` passes at the pin).
+- Links to pages written by other agents: `../indirect/gi-cascades.md`, `../make/gi.md`, `../gpu/frame-tour.md`, `../appendix/not-in-strata.md`, `../basics/programming-2.md`, `../basics/programming-3.md`.
+- Link hosts used in Further reading: `docs.godotengine.org`, `docs.unity3d.com` (both in `tools/external-hosts.txt`). The Epic Games Lumen documentation is cited without a link (no host on the list).
+
+## Not verified
+
+- No take of a figure was made or looked at. The captions and alts state what the pictures should show. The yard picture's alt (a faint line where the field ends) and the claim that its edge is visible in that shot rest on the brief; the Known issues say only that "the edge of that bubble can show" outdoors. The notches are expected in the Cornell shot from the guide's description, not from a take.
+- That the built-in sphere mesh (`0000000000000002`) has a radius of 0.5 m, so the ball's scale of 1.8 makes it 0.9 m in radius and the worked example's numbers (5, 9 and 15 cm gaps, 0.41 m) hold. The numbers use the guide's own figure (a gap of 6-15 cm at 0.3-0.5 m from the contact), which they match to within a centimetre.
+- That the voxel grid's layer boundaries sit at multiples of 10 cm from the floor's top (the "0.41 m" of the example).
+- The table's "Used by" column and the paragraphs on other engines are from the sources in Further reading as I know them; none was opened. Lumen's use of screen, distance-field and triangle tracing, Godot's signed-distance-field GI keeping moving objects out of its light, and the probe grid's blending over frames are the claims to check.
+- The test `A moved proxy queues its old and new bounds` was read, not run: that it still passes with `c_GIMoverRestSeconds` 0.1 follows from its code (frame time 0.4 times the constant, three frames), and the other tests of the suite that use the constant were read only partly.
+- Which meshes sit in the Static arena: the page says "not skinned" after the guide's "Static arena (meshes of the Skinned arena are left out)".
+
+## Findings not applied
+
+- Brief, `render-indirect:515` and the covers: "movers wait 30 frames" and "no popping of light". At the pin a mover rests by the clock (`c_GIMoverRestSeconds`, 0.25 s), is a box in a dynamic layer while it moves and fades in over 0.25 s; the guide says the hold of 30 frames was replaced. The page teaches the pin and keeps the 30 frames only as a `:::history` aside. Skinned meshes still never enter (they receive the field).
+- Brief, `render-indirect:510` and the covers: "GI off still spends 0.010 to 0.014 ms more in `GPU.Opaque` because the gather is compiled in". At the pin the forward pass has twin shaders (`Scene/Forward*Field.frag`) and a frame without GI draws with shaders that hold nothing of the field; the guide measures `GPU.Opaque` at -0.010 to +0.007 ms from the build before batch 2. The page states that.
+- Brief, `new:32`: the patch exercise "c_GIMovingFrames 1" does not exist at the pin. Exercise 3 changes `c_GIMoverRestSeconds` instead (0.25 to 0.1).
+- Brief: the "ambient cube is exact only for normals along the axes". At the pin surfaces read the larger of the harmonics' and the faces' light; the page states only the measured effect (a wall at 30 degrees glows 2.2 to 2.7 times its shadowed part).
+- Brief: "the spec's list below the cut", quoted "and never dated": the page lists the items as not built without quoting the spec; items 2 and 3 of D18 (moving objects, posed skinned meshes) are partly at the pin (moving objects as boxes) and partly not (skinned meshes).
+- Brief: the figure of the thin wall "a recipe": written as a recipe (see Requests); the `Thin Wall` setup is untested.
+- Exercises: the brief's "Basic" three scenes and "Medium" patch are kept; the Medium of the brief became exercise 3 (Hard), and a sketch exercise (exercise 2) was added for the clock-against-frames rule.
+- Not covered for lack of room: the GI memory (155.7 MiB at High, 24.9 MiB at Low), the settling frames per room beyond three numbers, the 4.2 ms stage's split.
+
+## Movable claims
+
+- Every number of the limits table and of the field: voxel levels (four of 128 x 64 x 128 at High from 10 cm, three from 20 cm at Low), probes 0.5 m and 1 m apart, the reach (7.5 m and 5.5 m at High, 7 m and 2.8 m at Low, fade 2 m), 256 submeshes, 65,408 nits, the 1.8 times of Low's one bounce.
+- The mover rules: 0.25 s rest and 0.25 s fade, at most 64 moving parts, 512 bricks at High and 256 at Low, a 1 m box about 50 bricks, the 26 % and 27.6 % steps, and that characters never enter.
+- The costs: about 4.2 ms for `GPU.RadianceCascades` at 3840 x 2160 and High, the forward gather's 0.3 to 0.8 ms, `GPU.Opaque` -0.010 to +0.007 ms without GI, the 4.4 and 6.5 ms spread of the stage and its unknown cause.
+- The settling frames: 13 (room lit by the sun), 18 (Cornell box) and 39 (closed white box).
+- The list of what Strata does not do: local lights, characters, specular light from GI, the open share in specular occlusion, an `Ultra` row, a color per voxel from the texture, hardware ray queries, nested probe fields, denser probes near surfaces; the rect-light double count.
+- That GI is experimental, off by default and off in every sample.
+- That a GI debug view at the Off row runs High's layout, and that `ForBake()` takes Medium's row.
+
+## Figures
+
+Taken at the pin 319075e3 (v0.8.0), Release build, High row, 2026-11-23.
+
+- `cornell-notches` (published). Round 1: shot `lookdev.cornell` came back incomplete, `/previewLighting` true: the Cornell box has only an emissive panel, so the capture's editor camera adds the preview sun and sky. Round 2: `camera: "scene"` with setup steps that move the scene's `Main Camera` to [1.15, 0.7, 2.4], pitch -9.5, fov 35 (no preview lighting, close and low under the ball's rim). The picture shows a black band with stair-stepped edges under the ball and faint lighter streaks at its left, as the guide describes. Caption, alt and shows rewritten to what is in the frame (no red wall in view; the cause stated as the gap thinner than a voxel, after the guide).
+- `thin-wall-voxels` (published). Round 1: incomplete for the same preview lighting; moved to `camera: "scene"` with the scene camera set to the recipe's position. Round 2: the 6 cm wall at z = 1.0 drew dark grey, not in the error color: its faces (0.97 and 1.03) fall into two different 10 cm voxels, so neither voxel is two-sided. Round 3: the wall at z = 1.05, inside one voxel layer: the whole face draws in the error color (a flat salmon red). The page's words still hold ("too thin to keep its two sides apart"), but a wall this thin straddling a voxel boundary is not marked; a page that wants to say so can use the round 2 picture. Alt rewritten (the room's walls show their own colors, the ball as grey blocks).
+- `yard-field-edge` (not published; recipe left as written). Round 1: shot `lookdev.yard.lit.gi` is complete, but no edge of the field shows: the ground, fence, hut and car look as they would without the edge. Round 2: the same shot with the `gi` debug view: the bounce light is even over the open ground; no bubble shows. Round 3: camera [-4.5, 1.6, -6.5] toward the hut's shaded south wall ([3, 1.2, -0.1], fov 50), lit and `gi` view, so that the field's 7.5 m reach and 2 m fade cross the wall: the car hides the wall, and the `gi` view shows no step on the ground or the walls. Open ground gets about the same light from the field as from the sky light beyond it, so the edge shows only where bounce light is strong (a shaded wall or overhang facing sunlit ground) and the fade spreads it over 2 m. Nearest honest picture: a `gi`-view pair with the camera moved by about 10 m along a long shaded wall facing sunlit ground (the hut's east wall, x = 6.1, with the camera north or south of it and nothing between), so the same wall is bounce-lit in one and not in the other; that needs `::figure{id=yard-field-edge variant=...}` lines and new words for the third paragraph ("Beyond it the ground keeps the plain light" is not what the pin shows on open ground).
+- Mending, 2026-11-23 (a viewer's faults; no retake, the published pictures stand). `cornell-notches`: the picture shows one connected black band about 350 px wide with three stair steps, not a row of notches; the caption now says "a black band with stair-stepped edges" under the ball's rim, as the alt did, and drops the "faint lighter streaks" (a small pale fleck and a faint arc left of the band, too small to find at page size and not explained by the page). The page's second paragraph still says "a row of small, hard-edged black notches": it should say "a black band with stair-stepped edges" (words for the writer). `thin-wall-voxels`: the caption now says the slab is white and that its flat salmon red is the view's error color, not its paint and not light from the red wall beside it; the alt says "salmon red".
+- Finishing, 2026-11-24 (pin 319075e3, final). `yard-field-edge` stays untaken: the tool's additions (renderer switches, files, launcher, runtime and live kinds) give no view of the field's weight, and the `gi` view draws the field inside and today's light beyond it (`ST_LIGHTING_VIEW_GLOBAL_ILLUMINATION`, `Strata/shaders/Include/Scene.slang:49`), so the edge stays as hard to see as in the three rounds above. Marked `blocked` with that reason (the request for a later edition: a debug view of the field's weight, or a scene with a long shaded wall facing sunlit ground). Stand-in: the drawing `field-edge-plan` (seen from above at High, to scale: full weight to 7.5 m, a straight fade over 2 m, a shaded wall crossing the edge beside sunlit ground, and a graph of the weight; numbers from `GlobalIlluminationLayout.cpp:196-197` and `GetFieldWeight`, `GIField.slang:41-44`). The page places it; the opening paragraph now says two scenes and a drawing, the third paragraph introduces the drawing ("bubble" became "box", as the field is a box), and "the yard" in the naive answer became "the drawn edge". To keep the page within size M (3,987 prose words), the yard's blocked caption and alt were shortened, the open-ground point moved from the third paragraph into the drawing's caption, and the cost paragraph's repeat of the 4.4 and 6.5 ms spread was folded into the common mistake that states it ("with no known cause").

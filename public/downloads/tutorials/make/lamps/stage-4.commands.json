@@ -1,0 +1,196 @@
+[
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Lantern",
+			"components": {
+				"Transform": {
+					"Translation": [
+						-4,
+						3.34,
+						1
+					]
+				}
+			}
+		},
+		"bind": {
+			"lantern": "/id"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Lamp"
+		},
+		"bind": {
+			"lamp": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Bulb"
+		},
+		"bind": {
+			"bulb": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.setParent",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "lamp"
+				},
+				{
+					"$ref": "bulb"
+				}
+			],
+			"parent": {
+				"$ref": "lantern"
+			}
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "lamp"
+			},
+			"component": "Transform"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "bulb"
+			},
+			"component": "Transform"
+		}
+	},
+	{
+		"command": "entity.rename",
+		"parameters": {
+			"entity": {
+				"$ref": "lamp"
+			},
+			"name": "Light"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Housing",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cylinder"
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						-0.19,
+						0
+					],
+					"Scale": [
+						0.3,
+						0.3,
+						0.3
+					]
+				}
+			},
+			"parent": {
+				"$ref": "lantern"
+			}
+		}
+	},
+	{
+		"command": "prefab.create",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "lantern"
+				}
+			],
+			"path": "Prefabs/Lantern.stprefab"
+		}
+	},
+	{
+		"command": "prefab.instantiate",
+		"parameters": {
+			"prefab": "Prefabs/Lantern.stprefab",
+			"components": {
+				"Transform": {
+					"Translation": [
+						-4,
+						3.34,
+						-5
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "prefab.instantiate",
+		"parameters": {
+			"prefab": "Prefabs/Lantern.stprefab",
+			"components": {
+				"Transform": {
+					"Translation": [
+						4,
+						3.34,
+						-5
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Arm"
+		},
+		"bind": {
+			"armEntity": "/entities/0"
+		}
+	},
+	{
+		"command": "prefab.instantiate",
+		"parameters": {
+			"prefab": "Prefabs/Lantern.stprefab",
+			"parent": {
+				"$ref": "armEntity"
+			},
+			"components": {
+				"Transform": {
+					"Translation": [
+						1.2,
+						0.38,
+						0
+					]
+				}
+			}
+		},
+		"bind": {
+			"armLantern": "/id"
+		}
+	},
+	{
+		"command": "entity.rename",
+		"parameters": {
+			"entity": {
+				"$ref": "armLantern"
+			},
+			"name": "Lantern (3)"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"component": "PointLight"
+		}
+	},
+	{
+		"command": "scene.save"
+	}
+]

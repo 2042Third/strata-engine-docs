@@ -1,0 +1,54 @@
+[
+	{
+		"command": "lighting.applySkyPreset",
+		"parameters": {
+			"preset": "Clear",
+			"sunElevation": 25,
+			"sunAzimuth": 20
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Sun"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "DirectionalLight",
+			"values": {
+				"ShadowDistance": 30,
+				"ShadowSoftness": 2
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Sun"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "DirectionalLight",
+			"values": {
+				"ShadowSoftness": 0.53,
+				"CascadeBlend": 0.1
+			},
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	}
+]

@@ -1,0 +1,102 @@
+[
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Gold.stmat",
+			"properties": {
+				"EmissiveColor": [
+					1.0,
+					0.6,
+					0.1
+				],
+				"EmissiveIntensity": 50.0
+			}
+		}
+	},
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/Scratch.stmat",
+			"properties": {
+				"BaseColor": [
+					0.2,
+					0.5,
+					1.0,
+					0.4
+				]
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Scratch",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Scratch.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						1.5,
+						0
+					]
+				}
+			}
+		},
+		"bind": {
+			"scratch": "/id"
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Scratch.stmat",
+			"properties": {
+				"AlphaMode": "Mask",
+				"AlphaCutoff": 0.3
+			}
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Scratch.stmat",
+			"properties": {
+				"AlphaMode": "Blend"
+			}
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Scratch.stmat",
+			"properties": {
+				"AlphaMode": "Opaque",
+				"BaseColor": [
+					1,
+					1,
+					1,
+					1
+				],
+				"Roughness": 0.0,
+				"Transmission": 1.0,
+				"IOR": 1.5
+			}
+		}
+	},
+	{
+		"command": "entity.delete",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "scratch"
+				}
+			]
+		}
+	},
+	{
+		"command": "scene.save"
+	}
+]

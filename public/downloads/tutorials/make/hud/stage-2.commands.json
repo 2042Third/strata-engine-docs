@@ -1,0 +1,187 @@
+[
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "HUD"
+		},
+		"bind": {
+			"hud": "/entities/0"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "panel",
+			"name": "Backdrop",
+			"parent": {
+				"$ref": "hud"
+			},
+			"anchor": "topStretch",
+			"size": [
+				0,
+				90
+			]
+		},
+		"bind": {
+			"backdrop": "/entity"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "backdrop"
+			},
+			"component": "UIImage",
+			"values": {
+				"Type": "Sliced",
+				"Texture": "UI/button_square_flat.png",
+				"SliceBorders": [
+					12,
+					12,
+					12,
+					12
+				],
+				"Color": [
+					0.1,
+					0.12,
+					0.18,
+					0.85
+				]
+			}
+		}
+	},
+	{
+		"command": "entity.setParent",
+		"parameters": {
+			"entity": {
+				"$ref": "backdrop"
+			},
+			"parent": {
+				"$ref": "hud"
+			},
+			"index": 0
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "backdrop"
+			},
+			"component": "UIImage"
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"entity": {
+				"$ref": "hud"
+			},
+			"screen": [
+				1920,
+				1080
+			]
+		}
+	},
+	{
+		"command": "ui.hitTest",
+		"parameters": {
+			"position": [
+				960,
+				45
+			],
+			"screen": [
+				1920,
+				1080
+			]
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "hud"
+			},
+			"component": "UICanvas",
+			"values": {
+				"ReceivesInput": false
+			}
+		}
+	},
+	{
+		"command": "ui.hitTest",
+		"parameters": {
+			"position": [
+				960,
+				45
+			],
+			"screen": [
+				1920,
+				1080
+			]
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "image",
+			"name": "TimeBar",
+			"parent": {
+				"$ref": "hud"
+			},
+			"anchor": "bottomStretch",
+			"position": [
+				0,
+				-20
+			],
+			"size": [
+				-80,
+				24
+			]
+		},
+		"bind": {
+			"timebar": "/entity"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "timebar"
+			},
+			"component": "UIImage",
+			"values": {
+				"Type": "Filled",
+				"FillAmount": 0.6,
+				"Color": [
+					0.95,
+					0.75,
+					0.2,
+					1
+				]
+			}
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "timebar"
+			},
+			"component": "UIImage"
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"entity": {
+				"$ref": "timebar"
+			},
+			"screen": [
+				1920,
+				1080
+			]
+		}
+	}
+]

@@ -1,0 +1,25 @@
+{
+	"files": {
+		"script-run.txt": {
+			"kind": "text",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": null,
+			"figure": "script-run",
+			"variant": null,
+			"crop": null,
+			"original": "f070d0a82425c413aa2affa3894b0ec616b9c586e11cb9e8666bddeec456eef0",
+			"recorded": {},
+			"checkedAt": [],
+			"sha256": "f070d0a82425c413aa2affa3894b0ec616b9c586e11cb9e8666bddeec456eef0",
+			"encoder": null
+		}
+	}
+}

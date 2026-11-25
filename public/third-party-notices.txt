@@ -1,0 +1,537 @@
+Third-party notices of the Strata Engine Book
+
+Written by python -I tools/notices.py write; do not edit. The book itself is all rights reserved (license.txt); this
+file names the work of others that the site ships, that the book quotes and that it shows and gives out, each with its
+license and its copyright lines as its own notice states them.
+
+The layout: three sections, each starting with a line "==== <letter>. <title> ====", then the license texts, starting
+with the line "==== License texts ====". Each license text starts with a line "---- text <name>: <license> ----", and
+an entry names the text it is under with "(text <name>)". A text is the license file without its copyright lines
+(the entry states them), and its name is the first 8 hex digits of the SHA-256 of the text.
+
+==== A. What this site ships ====
+
+Inter (font)
+  Package: @fontsource-variable/inter 5.3.0
+  License: OFL-1.1 (text c11c06ca)
+  Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter)
+  In the site: _astro/inter-*.woff2
+
+JetBrains Mono (font)
+  Package: @fontsource-variable/jetbrains-mono 5.3.0
+  License: OFL-1.1 (text c11c06ca)
+  Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono)
+  In the site: _astro/jetbrains-mono-*.woff2
+
+Source Serif 4 (font)
+  Package: @fontsource-variable/source-serif-4 5.3.1
+  License: OFL-1.1 (text c11c06ca)
+  © 2014 - 2021 Adobe Systems Incorporated (http://www.adobe.com/), with Reserved Font Name ‘Source’.
+  Where the copyright lines stand: the copyright string (name 0) of the package's font files: the font is Adobe's, and
+    the package's LICENSE names Google Inc. in its place.
+  In the site: _astro/source-serif-4-*.woff2
+
+KaTeX
+  Package: katex 0.16.47
+  License: MIT (text c0fc02a8)
+  Copyright (c) 2013-2020 Khan Academy and other contributors
+
+KaTeX fonts
+  Package: katex 0.16.47
+  License: OFL-1.1 (text c11c06ca)
+  Copyright (c) 2009-2010 Design Science, Inc.
+  Copyright (c) 2014-2018 Khan Academy
+  Where the copyright lines stand: the copyright string (name 0) of the font files in katex/dist/fonts/, whose license
+    string (name 13) gives the SIL Open Font License 1.1 with the reserved font name KaTeX_<font> of each file; the
+    package holds no copy of the license, and the text is the one of the other fonts.
+  In the site: _astro/KaTeX_*
+
+Starlight
+  Package: @astrojs/starlight 0.42.10
+  License: MIT (text 508a77d2)
+  Copyright (c) 2023 [Astro contributors](https://github.com/withastro/starlight/graphs/contributors)
+  In the site: _astro/MobileTableOfContents.astro_astro_type_script_index_*_lang.*.js,
+    _astro/TableOfContents.astro_astro_type_script_index_*_lang.*.js,
+    _astro/Search.astro_astro_type_script_index_*_lang.*.js, _astro/starlight-toc.*.js
+
+Night Owl (the code theme Starlight ships)
+  Package: @astrojs/starlight 0.42.10
+  License: MIT (text 508a77d2)
+  Copyright (c) 2018 Sarah Drasner
+
+Astro
+  Package: astro 7.4.8
+  License: MIT (text c4eaec50)
+  Copyright (c) 2021 Fred K. Schott
+  Copyright (c) 2020 [these people](https://github.com/sveltejs/kit/graphs/contributors)
+  Copyright (c) 2019-present, Yuxi (Evan) You and Vite contributors
+  In the site: _astro/page.*.js
+
+Vite
+  Package: vite 8.3.7
+  License: MIT (text a833d265)
+  Copyright (c) 2019-present, VoidZero Inc. and Vite contributors
+
+Expressive Code
+  Package: astro-expressive-code 0.44.3, @expressive-code/core 0.44.3, @expressive-code/plugin-collapsible-sections
+    0.44.3, @expressive-code/plugin-frames 0.44.3, @expressive-code/plugin-line-numbers 0.44.3,
+    @expressive-code/plugin-shiki 0.44.3, @expressive-code/plugin-text-markers 0.44.3, expressive-code 0.44.3,
+    rehype-expressive-code 0.44.3
+  License: MIT (text 508a77d2)
+  Copyright (c) 2023 Tibor Schiemann
+  In the site: _astro/ec.*.js
+
+Pagefind
+  Package: pagefind 1.6.0
+  License: MIT (text 54dbb6c0)
+  Copyright (c) Pagefind
+  In the site: pagefind/pagefind.js, pagefind/pagefind-worker.js, pagefind/pagefind-highlight.js,
+    pagefind/pagefind-modular-ui.js, pagefind/pagefind-component-ui.js, pagefind/wasm.*.pagefind
+
+Pagefind's default UI
+  Package: @pagefind/default-ui 1.6.0
+  License: MIT (text 54dbb6c0)
+  Copyright (c) Pagefind
+  In the site: pagefind/pagefind-ui.js, _astro/ui-core.*.js
+
+==== B. What this book quotes ====
+
+box3d (vendor:box3d)
+  Version: efca0c1, commit efca0c184d40fd6a82016983f1601c4d23965867 of https://github.com/erincatto/box3d
+    (Strata/vendor/box3d at the pin)
+  License: MIT (text 508a77d2; the file LICENSE)
+  Copyright (c) 2026 Erin Catto
+
+EnTT (vendor:entt)
+  Version: 3.16.0, commit b4e58bdd364ad72246c123a0c28538eab3252672 of https://github.com/skypjack/entt
+    (Strata/vendor/entt at the pin)
+  License: MIT (text c8498691; the file LICENSE)
+  Copyright (c) 2017-2025 Michele Caini, author of EnTT
+
+radiance-cascades-lab
+  Code derived from it that the book quotes: Strata/shaders/Include/Voxelize.slang,
+    Strata/shaders/Include/GIMarch.slang, Strata/shaders/Include/GIField.slang, Strata/shaders/GI/VoxelFill.comp.slang,
+    Strata/shaders/GI/VoxelFinalize.comp.slang, Strata/shaders/GI/VoxelInject.comp.slang,
+    Strata/shaders/GI/CascadeMarch.comp.slang
+  Version: as of 2026-11-03, https://github.com/dequevedo/radiance-cascades-lab
+  License: MIT (text 508a77d2)
+  Copyright (c) 2026 Daniel Quevedo
+
+ltc_code
+  Code derived from it that the book quotes: Strata/src/Strata/Renderer/AreaLights.cpp,
+    Strata/shaders/Include/AreaLights.slang
+  Version: 31e5e96b, https://github.com/selfshadow/ltc_code
+  License: BSD 2-Clause with a third condition: a reference to the paper (text c7753e6f)
+  Copyright (c) 2017, Eric Heitz, Jonathan Dupuy, Stephen Hill and David Neubelt.
+
+==== C. What this book shows and gives out ====
+
+Samples/OpenWorld/CREDITS.md at the engine's commit 319075e3f92b316db5cdd30560de08c1ffe0ae26 (used by
+src/content/figures/animation/culling.json and other files of the book):
+
+    # Credits
+
+    Every file the importers read in this sample, where it comes from and what was changed. CC0 files are in the public
+    domain; the CC BY 4.0 parts of the fox ask for the attribution below, which the game's credits (Esc > Credits) and
+    `ThirdPartyNotices.md` show.
+
+    | Files | Source | Author | License | Attribution | Changes |
+    | --- | --- | --- | --- | --- | --- |
+    | `Assets/Terrain/` | `Tools/GenerateIslandTerrain.py` (terrain) | Strata | Strata | | none: the generator's output as it writes it |
+    | `Assets/Models/Nature/` | https://kenney.nl/assets/nature-kit (version 2.1) | Kenney | CC0-1.0 | | 35 of 329 glTF models; the scene of each lists its root node (the exporter listed a child node, which glTF forbids) and the colors are dielectric (metallic 0, where the exporter wrote 1 for colors it meant unlit) |
+    | `Assets/Models/Fox/Fox.glb` | https://github.com/KhronosGroup/glTF-Sample-Assets/tree/edc7c9e67c639d230715049ee31f9a96a6babbbe/Models/Fox | PixelMannen (model); tomkranis (rigging and animation); @AsoboStudio and @scurest (glTF conversion) | CC-BY-4.0 | Fox: model by PixelMannen (CC0 1.0); rigging and animation by tomkranis (CC BY 4.0), © 2014, tomkranis; glTF conversion by @AsoboStudio and @scurest (CC BY 4.0), © 2017, @AsoboStudio and @scurest; from the Khronos glTF Sample Assets | none |
+    | `Assets/Fonts/KenneyFuture.ttf` | https://kenney.nl/assets/kenney-fonts | Kenney | CC0-1.0 | | `Kenney Future.ttf`, renamed |
+    | `Assets/Icon.png` | A render of the sample: a 256 x 256 `viewport.capture` of the island (its trees and mountain), the exported game's icon (`project.setGameInfo`) | Strata | Strata | | none |
+
+Samples/PhysicsPlayground/CREDITS.md at the engine's commit 319075e3f92b316db5cdd30560de08c1ffe0ae26 (used by
+src/content/figures/audio/clips-voices-sources.json and other files of the book):
+
+    # Credits
+
+    Every file the importers read in this sample, where it comes from and what was changed. CC0 files are in the public
+    domain; the authors are named as thanks.
+
+    | Files | Source | Author | License | Attribution | Changes |
+    | --- | --- | --- | --- | --- | --- |
+    | `Assets/Textures/Floor/` | https://ambientcg.com/view?id=Tiles101 | ambientCG | CC0-1.0 | | 1K-JPG set: the Color, NormalGL and Roughness maps, re-encoded as JPEG quality 80 |
+    | `Assets/Textures/Bricks/` | https://ambientcg.com/view?id=Bricks076C | ambientCG | CC0-1.0 | | 1K-JPG set: the Color, NormalGL and Roughness maps, re-encoded as JPEG quality 80 |
+    | `Assets/Textures/Planks/` | https://ambientcg.com/view?id=Planks037B | ambientCG | CC0-1.0 | | 1K-JPG set: the Color, NormalGL and Roughness maps, re-encoded as JPEG quality 80 |
+    | `Assets/Textures/Concrete/` | https://ambientcg.com/view?id=Concrete034 | ambientCG | CC0-1.0 | | 1K-JPG set: the Color, NormalGL and Roughness maps, re-encoded as JPEG quality 80 |
+    | `Assets/Textures/Plastic/` | https://ambientcg.com/view?id=Plastic010 | ambientCG | CC0-1.0 | | 1K-JPG set: the Color, NormalGL and Roughness maps, re-encoded as JPEG quality 80 |
+    | `Assets/Textures/Metal/` | https://ambientcg.com/view?id=Metal032 | ambientCG | CC0-1.0 | | 1K-JPG set: the Color and NormalGL maps re-encoded as JPEG quality 80; the Roughness and Metalness maps packed into `Metal032_MetallicRoughness.jpg` (green roughness, blue metalness, as glTF reads them) |
+    | `Assets/Sounds/Impacts/` | https://kenney.nl/assets/impact-sounds | Kenney | CC0-1.0 | | 3 of 130 files: `impactWood_heavy_000.ogg`, `impactMetal_medium_000.ogg` and `impactSoft_medium_000.ogg`, renamed `Wood.ogg`, `Metal.ogg` and `Soft.ogg` |
+    | `Assets/Sounds/UI/Shot.ogg` | https://kenney.nl/assets/impact-sounds | Kenney | CC0-1.0 | | `impactPunch_medium_000.ogg`, renamed |
+    | `Assets/Sounds/UI/Goal.ogg` | https://kenney.nl/assets/interface-sounds | Kenney | CC0-1.0 | | `confirmation_002.ogg`, renamed |
+    | `Assets/Fonts/KenneyFuture.ttf` | https://kenney.nl/assets/kenney-fonts | Kenney | CC0-1.0 | | `Kenney Future.ttf`, renamed |
+    | `Assets/UI/` | https://kenney.nl/assets/ui-pack (version 2.0) | Kenney | CC0-1.0 | | 2 of 870 PNGs: `Blue/Default/button_rectangle_depth_gradient.png` and `Grey/Default/button_square_flat.png` (the buttons' and panels' sliced images) |
+    | `Assets/Icon.png` | A render of the sample: a 256 x 256 `viewport.capture` of its crate pyramid and tower, the exported game's icon (`project.setGameInfo`) | Strata | Strata | | none |
+
+Samples/Showcase/CREDITS.md at the engine's commit 319075e3f92b316db5cdd30560de08c1ffe0ae26 (used by
+src/content/figures/assets/residency.json and other files of the book):
+
+    # Credits
+
+    Every file the importers read in this sample, where it comes from and what was changed. The scans are Poly Haven's
+    (https://polyhaven.com, license: https://polyhaven.com/license), CC0 1.0: in the public domain, credited here and in
+    `ThirdPartyNotices.md` because their authors deserve it.
+
+    | Files | Source | Author | License | Attribution | Changes |
+    | --- | --- | --- | --- | --- | --- |
+    | `Assets/Icon.png` | A render of the sample: a 256 x 256 `viewport.capture` of shot 2, the game's icon (`project.setGameInfo`) | Strata | Strata | | none: the capture as the editor writes it |
+    | `Assets/Generated/Props/` | `Tools/GenerateShowcaseProps.py` (props) | Strata | Strata | | none: the generator's output as it writes it |
+    | `Assets/Generated/Terrain/` | `Tools/GenerateShowcaseTerrain.py` (terrain) | Strata | Strata | | none: the generator's output as it writes it |
+    | `Assets/Lighting/Outpost/` | Baked in the editor from `Scenes/Outpost.stscene` (`lighting.bakeProbes`, `Tools/GenerateShowcaseTerrain.py bake`): six probes, the yard and the hut at dawn, golden hour and dusk | Strata | Strata | | none: the bake's output as it writes it |
+    | `Assets/Scans/Barrel_01_1k/` | https://polyhaven.com/a/Barrel_01 (1K glTF) | Jorge Camacho | CC0-1.0 | | none: the glTF with its .bin and textures as downloaded |
+    | `Assets/Scans/Barrel_02_1k/` | https://polyhaven.com/a/Barrel_02 (1K glTF) | Jorge Camacho | CC0-1.0 | | none: the glTF with its .bin and textures as downloaded |
+    | `Assets/Scans/barrel_03_1k/` | https://polyhaven.com/a/barrel_03 (1K glTF) | Serhii Khromov | CC0-1.0 | | none: the glTF with its .bin and textures as downloaded |
+    | `Assets/Scans/covered_car_1k/` | https://polyhaven.com/a/covered_car (1K glTF) | MP | CC0-1.0 | | none: the glTF with its .bin and textures as downloaded |
+    | `Assets/Scans/dry_branches_medium_01_1k/` | https://polyhaven.com/a/dry_branches_medium_01 (1K glTF) | Rico Cilliers | CC0-1.0 | | none: the glTF with its .bin and textures as downloaded |
+    | `Assets/Scans/ladder_sectioned_01_1k/` | https://polyhaven.com/a/ladder_sectioned_01 (1K glTF) | MP | CC0-1.0 | | none: the glTF with its .bin and textures as downloaded |
+    | `Assets/Scans/Lantern_01_1k/` | https://polyhaven.com/a/Lantern_01 (1K glTF) | Rajil Jose Macatangay | CC0-1.0 | | none: the glTF with its .bin and textures as downloaded |
+    | `Assets/Scans/namaqualand_boulder_02_1k/` | https://polyhaven.com/a/namaqualand_boulder_02 (1K glTF) | Greg Zaal, Rico Cilliers | CC0-1.0 | | none: the glTF with its .bin and textures as downloaded |
+    | `Assets/Scans/namaqualand_boulder_03_1k/` | https://polyhaven.com/a/namaqualand_boulder_03 (1K glTF) | Jenelle van Heerden, Dario Barresi | CC0-1.0 | | none: the glTF with its .bin and textures as downloaded |
+    | `Assets/Scans/namaqualand_cliff_01_1k/` | https://polyhaven.com/a/namaqualand_cliff_01 (1K glTF) | Jenelle van Heerden, Rico Cilliers | CC0-1.0 | | none: the glTF with its .bin and textures as downloaded |
+    | `Assets/Scans/old_tyre_1k/` | https://polyhaven.com/a/old_tyre (1K glTF) | MP | CC0-1.0 | | none: the glTF with its .bin and textures as downloaded |
+    | `Assets/Scans/stone_fire_pit_1k/` | https://polyhaven.com/a/stone_fire_pit (1K glTF) | Sebastian Platen | CC0-1.0 | | none: the glTF with its .bin and textures as downloaded |
+    | `Assets/Textures/asphalt_02/` | https://polyhaven.com/a/asphalt_02 (2K JPG) | Rob Tuytel | CC0-1.0 | | 3 of the set's maps (diff, nor_gl, arm) |
+    | `Assets/Textures/beige_wall_001/` | https://polyhaven.com/a/beige_wall_001 (2K JPG) | Dimitrios Savva, Rico Cilliers | CC0-1.0 | | 3 of the set's maps (diff, nor_gl, arm) |
+    | `Assets/Textures/brown_mud_03/` | https://polyhaven.com/a/brown_mud_03 (1K JPG) | Rob Tuytel | CC0-1.0 | | 3 of the set's maps (diff, nor_gl, arm) |
+    | `Assets/Textures/dry_ground_01/` | https://polyhaven.com/a/dry_ground_01 (2K JPG) | Rob Tuytel | CC0-1.0 | | 3 of the set's maps (diff, nor_gl, arm) |
+    | `Assets/Textures/green_metal_rust/` | https://polyhaven.com/a/green_metal_rust (2K JPG) | Rob Tuytel | CC0-1.0 | | 3 of the set's maps (diff, nor_gl, arm) |
+    | `Assets/Textures/rocky_terrain_02/` | https://polyhaven.com/a/rocky_terrain_02 (1K JPG) | Amal Kumar | CC0-1.0 | | 3 of the set's maps (diff, nor_gl, arm) |
+    | `Assets/Textures/rusty_corrugated_iron/` | https://polyhaven.com/a/rusty_corrugated_iron (1K JPG) | Charlotte Baglioni | CC0-1.0 | | 3 of the set's maps (diff, nor_gl, arm) |
+    | `Assets/Textures/rusty_metal_03/` | https://polyhaven.com/a/rusty_metal_03 (1K JPG) | Amal Kumar | CC0-1.0 | | 3 of the set's maps (diff, nor_gl, arm) |
+    | `Assets/Textures/rusty_painted_metal/` | https://polyhaven.com/a/rusty_painted_metal (1K JPG) | Amal Kumar | CC0-1.0 | | 3 of the set's maps (diff, nor_gl, arm) |
+    | `Assets/Textures/weathered_brown_planks/` | https://polyhaven.com/a/weathered_brown_planks (1K JPG) | Dimitrios Savva, Rico Cilliers | CC0-1.0 | | 3 of the set's maps (diff, nor_gl, arm) |
+
+Samples/Tetris/CREDITS.md at the engine's commit 319075e3f92b316db5cdd30560de08c1ffe0ae26 (used by
+src/content/figures/audio/testing.json and other files of the book):
+
+    # Credits
+
+    | Files | Source | Author | License | Attribution | Changes |
+    | --- | --- | --- | --- | --- | --- |
+    | `Assets/Sounds/` | Generated by the agent that made the sample (sine and noise tones written as WAV) | Strata | Strata | | none |
+    | `Assets/Icon.png` | A render of the sample: a 256 x 256 `viewport.capture` of a game in play, the exported game's icon (`project.setGameInfo`) | Strata | Strata | | none |
+
+Samples/ThirdPerson/CREDITS.md at the engine's commit 319075e3f92b316db5cdd30560de08c1ffe0ae26 (used by
+src/content/figures/animation/blending.json and other files of the book):
+
+    # Credits
+
+    Every file the importers read in this sample, where it comes from and what was changed. CC0 files are in the public
+    domain; the authors are named as thanks, and the game's credits (Main Menu > Credits) name them too.
+
+    | Files | Source | Author | License | Attribution | Changes |
+    | --- | --- | --- | --- | --- | --- |
+    | `Assets/Models/Robot/RobotExpressive.glb` | https://github.com/mrdoob/three.js/blob/f67dcda032208b367f5965bbd835c16f839909c8/examples/models/gltf/RobotExpressive/RobotExpressive.glb | Tomás Laulhé (Quaternius); modifications by Don McCurdy | CC0-1.0 | | none |
+    | `Assets/Models/Platformer/` | https://kenney.nl/assets/platformer-kit (version 4.1) | Kenney | CC0-1.0 | | 20 of 153 GLB models and their shared `Textures/colormap.png` |
+    | `Assets/Environment/kloofendal_48d_partly_cloudy_puresky_1k.hdr` | https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky | Greg Zaal; sky edits by Jarod Guest (Poly Haven) | CC0-1.0 | | none: the 1K HDR file |
+    | `Assets/Sounds/Footsteps/` | https://kenney.nl/assets/impact-sounds (version 1.0) | Kenney | CC0-1.0 | | `footstep_grass_000.ogg` to `footstep_grass_003.ogg`, renamed `Grass1.ogg` to `Grass4.ogg` |
+    | `Assets/Sounds/Land.ogg` | https://kenney.nl/assets/impact-sounds (version 1.0) | Kenney | CC0-1.0 | | `impactSoft_heavy_000.ogg`, renamed |
+    | `Assets/Sounds/Jump.ogg` | https://kenney.nl/assets/interface-sounds (version 1.0) | Kenney | CC0-1.0 | | `maximize_004.ogg`, renamed |
+    | `Assets/Sounds/Coin.ogg` | https://kenney.nl/assets/interface-sounds (version 1.0) | Kenney | CC0-1.0 | | `confirmation_001.ogg`, renamed |
+    | `Assets/Sounds/Complete.ogg` | https://kenney.nl/assets/interface-sounds (version 1.0) | Kenney | CC0-1.0 | | `confirmation_004.ogg`, renamed |
+    | `Assets/Sounds/Bounce.ogg` | https://kenney.nl/assets/interface-sounds (version 1.0) | Kenney | CC0-1.0 | | `pluck_002.ogg`, renamed |
+    | `Assets/Sounds/UI/` | https://kenney.nl/assets/ui-pack (version 2.0) | Kenney | CC0-1.0 | | `click-a.ogg`, `tap-a.ogg` and `switch-a.ogg`, renamed `Click.ogg`, `Hover.ogg` and `Toggle.ogg` |
+    | `Assets/UI/` | https://kenney.nl/assets/ui-pack (version 2.0) | Kenney | CC0-1.0 | | 2 of 870 PNGs: `Blue/Default/button_rectangle_depth_gradient.png` and `Grey/Default/button_square_flat.png` (the buttons' and panels' sliced images) |
+    | `Assets/Fonts/KenneyFuture.ttf` | https://kenney.nl/assets/kenney-fonts | Kenney | CC0-1.0 | | `Kenney Future.ttf`, renamed |
+    | `Assets/Lighting/Course/` | Baked in the editor from `Scenes/Course.stscene` (`lighting.bakeProbes`): what its reflection probes see of the models and sky above | Strata | Strata | | none: the bake's output as it writes it |
+    | `Assets/Icon.png` | A render of the sample: a 256 x 256 `viewport.capture` of its main menu scene (the robot among the trees and flowers), the exported game's icon (`project.setGameInfo`) | Strata | Strata | | none |
+
+Fox (Samples/OpenWorld/Assets/Models/Fox/Fox.glb), from the Khronos glTF Sample Assets
+  License: CC0-1.0 (model by PixelMannen); CC-BY-4.0 (rigging and animation by tomkranis; glTF conversion by
+    @AsoboStudio and @scurest)
+  © 2014, tomkranis.
+  © 2017, @AsoboStudio and @scurest.
+  Source: https://github.com/KhronosGroup/glTF-Sample-Assets/tree/edc7c9e67c639d230715049ee31f9a96a6babbbe/Models/Fox
+  The full credit, copied from the license file beside the model at that commit (rulings 6, R22). The sample's own
+    credit line at the pin leaves the two copyright lines out.
+
+==== License texts ====
+
+---- text 508a77d2: MIT ----
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---- text 54dbb6c0: MIT ----
+
+pagefind
+
+All rights reserved.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Includes other software related under the MIT license:
+- vscode-ripgrep, Copyright Microsoft Corporation. For licensing see /LICENSE/LICENSE-vscode-ripgrep
+
+---- text a833d265: MIT ----
+
+# Vite core license
+Vite is released under the MIT license:
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---- text c0fc02a8: MIT ----
+
+The MIT License (MIT)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---- text c11c06ca: OFL-1.1 ----
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded,
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+
+---- text c4eaec50: MIT ----
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+"""
+This license applies to parts of the `packages/create-astro` and `packages/astro` subdirectories originating from the https://github.com/sveltejs/kit repository:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+"""
+
+"""
+This license applies to parts of the `packages/create-astro` and `packages/astro` subdirectories originating from the https://github.com/vitejs/vite repository:
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+
+---- text c7753e6f: BSD 2-Clause with a third condition: a reference to the paper ----
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* If you use (or adapt) the source code in your own work, please include a
+  reference to the paper:
+
+  Real-Time Polygonal-Light Shading with Linearly Transformed Cosines.
+  Eric Heitz, Jonathan Dupuy, Stephen Hill and David Neubelt.
+  ACM Transactions on Graphics (Proceedings of ACM SIGGRAPH 2016) 35(4), 2016.
+  Project page: https://eheitzresearch.wordpress.com/415-2/
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+---- text c8498691: MIT ----
+
+The MIT License (MIT)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copy of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copy or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

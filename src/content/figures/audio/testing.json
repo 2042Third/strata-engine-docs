@@ -1,0 +1,22 @@
+{
+	"figures": [
+		{
+			"id": "audio-state-answer",
+			"kind": "text",
+			"shows": "The answer of audio.state for the Tetris sample after a hard drop (Space) and a pause: the lock sound's one-shot voice, paused, one one-shot played, the listener and master volume",
+			"caption": "audio.state's answer in Tetris after play.start, a tap of Space (input.key, a hard drop that plays the lock sound) and play.pause with paused true. The lock sound's one-shot reads playing and paused at once, because a paused voice still counts as playing. Without the drop the voices list is empty.",
+			"alt": "A block of JSON text: a voices list with one entry for the lock sound clip, marked both playing and paused. Below it stand one-shot counts of 1 playing, 1 played and 0 dropped, the listener entity with its position, and a master volume of 1.",
+			"project": { "sample": "Tetris" },
+			"setup": [
+				{ "command": "play.start" },
+				{ "command": "editor.wait", "parameters": { "frames": 60 } },
+				{ "command": "input.key", "parameters": { "key": "Space" } },
+				{ "command": "play.pause", "parameters": { "paused": true } }
+			],
+			"text": {
+				"command": { "command": "audio.state" },
+				"keep": ["/voices", "/oneShots", "/listener", "/masterVolume"]
+			}
+		}
+	]
+}

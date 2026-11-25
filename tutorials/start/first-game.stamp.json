@@ -1,0 +1,97 @@
+{
+	"page": "start/first-game",
+	"runs": [
+		{
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/tutorials/start/first-game/stage-1.commands.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+				"public/downloads/tutorials/start/first-game/stage-2.commands.json": "02bf172992e79214b07c6de2ef6df2400bb6c7056f5e797e4895d109f8cf7abb",
+				"public/downloads/tutorials/start/first-game/stage-3.commands.json": "f029ec155d26d9a94c7cfd26b6544ec2a11e992cf9c023d1501b3595a546b1bd",
+				"public/downloads/tutorials/start/first-game/stage-4.commands.json": "3913f4eb6898a83057ff7b90516cc7c3489550f8e2028d17a0edd08704c9bc3a",
+				"public/downloads/tutorials/start/first-game/stage-5.commands.json": "6afb98884272df1a6cf92574c77058dba26e4bc9376e15c9800125b8eaecf147",
+				"tutorials/start/first-game.tutorial.json": "35d352f202bd3ad2ea10075c6f61430678bacfc0248192fa89566a54a1515776",
+				"tutorials/start/first-game/Spinner-360.cpp": "253fc48644a15f380d0f9e7d78766b769099f9bab5da438f799bffbb0f47d65c",
+				"tutorials/start/first-game/Spinner.cpp": "14a312f6e05c1fef78dbfe1fc7c8b5250726969793f9736856bfddc26e9f4396"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				},
+				{
+					"step": 2,
+					"passed": true
+				},
+				{
+					"step": 3,
+					"passed": true
+				},
+				{
+					"step": 4,
+					"passed": true
+				},
+				{
+					"step": 5,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		},
+		{
+			"build": {
+				"kind": "package",
+				"configuration": "Strata-0.8.0-windows-x64",
+				"editorSha256": "bcff21bcd56e8f51003861fc7aafb4b8ab638ad7cc521c8c0c7829c4361673be",
+				"package": "Strata-0.8.0-windows-x64.zip",
+				"packageSha256": "47a151b64d0d6bb6f2c77147ca4b477b5eaa479b7dfeafee07ccec3911a00d11"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/tutorials/start/first-game/stage-1.commands.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+				"public/downloads/tutorials/start/first-game/stage-2.commands.json": "02bf172992e79214b07c6de2ef6df2400bb6c7056f5e797e4895d109f8cf7abb",
+				"public/downloads/tutorials/start/first-game/stage-3.commands.json": "f029ec155d26d9a94c7cfd26b6544ec2a11e992cf9c023d1501b3595a546b1bd",
+				"public/downloads/tutorials/start/first-game/stage-4.commands.json": "3913f4eb6898a83057ff7b90516cc7c3489550f8e2028d17a0edd08704c9bc3a",
+				"public/downloads/tutorials/start/first-game/stage-5.commands.json": "6afb98884272df1a6cf92574c77058dba26e4bc9376e15c9800125b8eaecf147",
+				"tutorials/start/first-game.tutorial.json": "35d352f202bd3ad2ea10075c6f61430678bacfc0248192fa89566a54a1515776",
+				"tutorials/start/first-game/Spinner-360.cpp": "253fc48644a15f380d0f9e7d78766b769099f9bab5da438f799bffbb0f47d65c",
+				"tutorials/start/first-game/Spinner.cpp": "14a312f6e05c1fef78dbfe1fc7c8b5250726969793f9736856bfddc26e9f4396"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				},
+				{
+					"step": 2,
+					"passed": true
+				},
+				{
+					"step": 3,
+					"passed": true
+				},
+				{
+					"step": 4,
+					"passed": true
+				},
+				{
+					"step": 5,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		}
+	]
+}

@@ -1,0 +1,597 @@
+{
+	"commands": {
+		"pin": "@PIN@",
+		"engineCommit": "@PIN12@",
+		"command": "editor.commands",
+		"result": {
+			"commands": [
+				{
+					"name": "asset.import",
+					"kind": "Edit",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"directories": {
+								"description": "Absolute paths of folders to import with their trees",
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"directory": {
+								"description": "Target folder relative to the asset directory (default: the root)",
+								"type": "string"
+							},
+							"file": {
+								"description": "Absolute path of a file to import",
+								"type": "string"
+							},
+							"files": {
+								"description": "Absolute paths of files to import",
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"keepOnFailure": {
+								"description": "Keep the files of failed imports in the project, with their errors (default false: they are removed)",
+								"type": "boolean"
+							},
+							"wait": {
+								"description": "Answer when the imports are done (default true)",
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				},
+				{
+					"name": "component.get",
+					"kind": "Query",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"component": {
+								"description": "Component type",
+								"type": "string"
+							},
+							"entity": {
+								"description": "Entity (entity ID)",
+								"pattern": "^[0-9A-Fa-f]{1,16}$",
+								"type": "string"
+							}
+						},
+						"required": [
+							"entity",
+							"component"
+						],
+						"type": "object"
+					}
+				},
+				{
+					"name": "editor.batch",
+					"kind": "Edit",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"atomic": {
+								"description": "Undo every step when one fails (default true)",
+								"type": "boolean"
+							},
+							"steps": {
+								"description": "The commands: [{command, parameters?, bind?, expect?}]",
+								"items": {
+									"type": "object"
+								},
+								"maxItems": 1000,
+								"minItems": 1,
+								"type": "array"
+							}
+						},
+						"required": [
+							"steps"
+						],
+						"type": "object"
+					}
+				},
+				{
+					"name": "editor.status",
+					"kind": "Query",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"sections": {
+								"description": "Sections to add to the compact answer: engine, project, selection, undo, sceneLoad, memory, automation, assets, game, recovery, world, editor, or all",
+								"items": {
+									"type": "string"
+								},
+								"type": "array",
+								"uniqueItems": true
+							}
+						},
+						"type": "object"
+					}
+				},
+				{
+					"name": "editor.wait",
+					"kind": "Query",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"frames": {
+								"description": "Frames to wait (default 1)",
+								"maximum": 1000000,
+								"minimum": 1,
+								"type": "integer"
+							}
+						},
+						"type": "object"
+					}
+				},
+				{
+					"name": "entity.create",
+					"kind": "Edit",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"components": {
+								"description": "Components and property values, e.g. {\"Transform\": {\"Translation\": [0, 1, 0]}, \"MeshRenderer\": {\"Mesh\": \"<handle>\"}}",
+								"type": "object"
+							},
+							"name": {
+								"description": "Entity name (default \"Entity\")",
+								"type": "string"
+							},
+							"parent": {
+								"description": "Parent; null or omitted for a top-level entity (entity ID or null)",
+								"type": [
+									"string",
+									"null"
+								]
+							}
+						},
+						"type": "object"
+					}
+				},
+				{
+					"name": "entity.find",
+					"kind": "Query",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"box": {
+								"additionalProperties": false,
+								"description": "A world-space box {min: [x, y, z], max: [x, y, z]}",
+								"properties": {
+									"max": {
+										"description": "Highest corner",
+										"items": {
+											"type": "number"
+										},
+										"maxItems": 3,
+										"minItems": 3,
+										"type": "array"
+									},
+									"min": {
+										"description": "Lowest corner",
+										"items": {
+											"type": "number"
+										},
+										"maxItems": 3,
+										"minItems": 3,
+										"type": "array"
+									}
+								},
+								"required": [
+									"min",
+									"max"
+								],
+								"type": "object"
+							},
+							"component": {
+								"description": "Component type, e.g. \"PointLight\"",
+								"type": "string"
+							},
+							"limit": {
+								"description": "Most entities returned (default: all)",
+								"maximum": 1048575,
+								"minimum": 1,
+								"type": "integer"
+							},
+							"name": {
+								"description": "Exact entity name",
+								"type": "string"
+							},
+							"tag": {
+								"description": "Tag",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				},
+				{
+					"name": "log.read",
+					"kind": "Query",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"after": {
+								"description": "Only messages with a sequence number above this (default 0)",
+								"maximum": 9223372036854775807,
+								"minimum": 0,
+								"type": "integer"
+							},
+							"before": {
+								"description": "Only messages with a sequence number below this (default: none)",
+								"maximum": 9223372036854775807,
+								"minimum": 1,
+								"type": "integer"
+							},
+							"limit": {
+								"description": "Maximum number of messages (default 200)",
+								"maximum": 10000,
+								"minimum": 1,
+								"type": "integer"
+							},
+							"logger": {
+								"description": "Only messages of this logger (exact name, e.g. Strata, App, Script)",
+								"type": "string"
+							},
+							"maxCount": {
+								"description": "The former name of limit",
+								"maximum": 10000,
+								"minimum": 1,
+								"type": "integer"
+							},
+							"minLevel": {
+								"description": "Lowest level returned (default Info)",
+								"enum": [
+									"Trace",
+									"Info",
+									"Warn",
+									"Error",
+									"Critical"
+								],
+								"type": "string"
+							},
+							"newest": {
+								"description": "Newest first: the latest messages (default false: oldest first)",
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				},
+				{
+					"name": "play.start",
+					"kind": "Session",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"build": {
+								"description": "Build the scripts first when they need it (default true); false plays what is loaded",
+								"type": "boolean"
+							},
+							"paused": {
+								"description": "Start paused before the first fixed step (default false)",
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				},
+				{
+					"name": "play.state",
+					"kind": "Query",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {},
+						"type": "object"
+					}
+				},
+				{
+					"name": "play.step",
+					"kind": "Session",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"frames": {
+								"description": "Same as steps (an older name: each step runs in a frame of its own)",
+								"maximum": 100000,
+								"minimum": 1,
+								"type": "integer"
+							},
+							"steps": {
+								"description": "Fixed steps to run (default 1)",
+								"maximum": 100000,
+								"minimum": 1,
+								"type": "integer"
+							},
+							"wait": {
+								"description": "Answer once the steps ran (default true); false answers at once",
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				},
+				{
+					"name": "play.stop",
+					"kind": "Session",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {},
+						"type": "object"
+					}
+				},
+				{
+					"name": "preferences.set",
+					"kind": "Session",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"reset": {
+								"description": "Back to the section's default instead of a value (default false)",
+								"type": "boolean"
+							},
+							"section": {
+								"description": "The section's id, \"<Module>.<Name>\"",
+								"type": "string"
+							},
+							"value": {
+								"description": "The section's new value, matching its schema (preferences.get)"
+							}
+						},
+						"required": [
+							"section"
+						],
+						"type": "object"
+					}
+				},
+				{
+					"name": "project.create",
+					"kind": "Session",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"directory": {
+								"description": "Absolute directory for the project",
+								"type": "string"
+							},
+							"force": {
+								"description": "Go on although the edited scene has unsaved changes, discarding them (default false: the command fails instead). Discarded changes are kept as recovery data of the project (scene.recoveryStatus), and the person at the editor is told who discarded them",
+								"type": "boolean"
+							},
+							"name": {
+								"description": "Project name",
+								"type": "string"
+							},
+							"template": {
+								"description": "What the project starts with (default \"empty\"; see project.templates)",
+								"enum": [
+									"empty",
+									"basic3d"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"directory",
+							"name"
+						],
+						"type": "object"
+					}
+				},
+				{
+					"name": "scene.save",
+					"kind": "Edit",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"wait": {
+								"description": "Answer once the document is written (default true); false answers at once with the save's saveId",
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				},
+				{
+					"name": "script.add",
+					"kind": "Edit",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"class": {
+								"description": "Script class name as registered with ST_SCRIPT_CLASS (see script.status)",
+								"type": "string"
+							},
+							"entity": {
+								"description": "Entity (entity ID)",
+								"pattern": "^[0-9A-Fa-f]{1,16}$",
+								"type": "string"
+							},
+							"fields": {
+								"description": "Field overrides by name, e.g. {\"Speed\": 2.5, \"Target\": \"<entity id>\", \"Prefab\": \"Prefabs/Bullet.stprefab\"}",
+								"type": "object"
+							}
+						},
+						"required": [
+							"entity",
+							"class"
+						],
+						"type": "object"
+					}
+				},
+				{
+					"name": "script.build",
+					"kind": "Edit",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"wait": {
+								"description": "Return when the build finished, with its result (default true); false returns at once (poll script.status)",
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				},
+				{
+					"name": "viewport.capture",
+					"kind": "Query",
+					"parameters": {
+						"additionalProperties": false,
+						"properties": {
+							"atFixedStep": {
+								"description": "live: the first frame the view renders once the game's fixedSteps reached this",
+								"maximum": 9007199254740991,
+								"minimum": 1,
+								"type": "integer"
+							},
+							"camera": {
+								"description": "\"editor\": the editor camera; \"scene\": the scene's primary camera (fails without one)",
+								"enum": [
+									"editor",
+									"scene"
+								],
+								"type": "string"
+							},
+							"debugView": {
+								"description": "\"streaming\" tints entities by streaming state (pending Sulfur, failed Cinnabar, missing meshes as boxes), \"lod\" by level of detail, \"mip\" by the mip levels their textures lack, \"motion\" colors pixels by their motion since the capture's previous frame (rendered twice for it: still scenes show none), \"shadows\" colors receivers by screen pixels per shadow texel and outlines the cascades; \"lighting\" white surfaces, \"ao\" ambient occlusion, \"indirect\" indirect light only, \"luminance\" EV100 bands, \"albedo\" base colors (outside 0.03-0.85 marked), each with debugView.lighting: {view, surfaceShare, surfaceEv100 {p05, p50, p95}, backgroundEv100, value {median, p05} (ao, albedo), belowRangeShare, aboveRangeShare (albedo), sunIlluminance, skyIlluminance (lux on flat ground), sunToSkyRatio}; \"voxels\" the GI's voxels, with debugView.globalIllumination {ran, settled, voxelLevels, memoryMiB}; \"none\" not at all (default: the viewport's debug view)",
+								"enum": [
+									"none",
+									"streaming",
+									"lod",
+									"mip",
+									"motion",
+									"shadows",
+									"lighting",
+									"ao",
+									"indirect",
+									"luminance",
+									"albedo",
+									"voxels",
+									"gi",
+									"open",
+									"probes"
+								],
+								"type": "string"
+							},
+							"fov": {
+								"description": "Vertical field of view in degrees of the capture's own camera",
+								"maximum": 170.0,
+								"minimum": 1.0,
+								"type": "number"
+							},
+							"frames": {
+								"description": "live: that frame and the next ones, as numbered files beside path above 1 (default 1)",
+								"maximum": 16,
+								"minimum": 1,
+								"type": "integer"
+							},
+							"height": {
+								"description": "Image height in pixels; without width the viewport's aspect ratio is kept",
+								"maximum": 4096,
+								"minimum": 16,
+								"type": "integer"
+							},
+							"live": {
+								"description": "Return what the view (camera: required) presented, with its history as it is, instead of rendering",
+								"type": "boolean"
+							},
+							"overlays": {
+								"description": "Draw the editor overlays enabled in the viewport (default: on for the editor camera, off for the scene camera)",
+								"type": "boolean"
+							},
+							"overwrite": {
+								"description": "Replace an existing file at path (default false: an existing file is an error)",
+								"type": "boolean"
+							},
+							"path": {
+								"description": "Also save the PNG to this .png file: relative to the project directory (needs an open project) or absolute; folders are created, network and device paths are refused",
+								"type": "string"
+							},
+							"position": {
+								"description": "Look from this point (a camera of the capture's own; the editor camera does not move)",
+								"items": {
+									"type": "number"
+								},
+								"maxItems": 3,
+								"minItems": 3,
+								"type": "array"
+							},
+							"quality": {
+								"description": "The quality the picture is drawn at (default: the quality of the view it shows: the Scene view's for the editor camera and cameras of the capture's own, the game's for the scene's camera: the project's, with the players' options while playing)",
+								"enum": [
+									"project",
+									"low",
+									"medium",
+									"high",
+									"ultra"
+								],
+								"type": "string"
+							},
+							"target": {
+								"description": "Look at this point (a camera of the capture's own; the editor camera does not move)",
+								"items": {
+									"type": "number"
+								},
+								"maxItems": 3,
+								"minItems": 3,
+								"type": "array"
+							},
+							"waitForAssets": {
+								"description": "Render again on the following frames while assets of the view are still loading, up to about five seconds, while textures lack the mip levels the view wants, up to about two, and while new mesh renderers are on their way to the GPU (default true); false takes the picture at once",
+								"type": "boolean"
+							},
+							"width": {
+								"description": "Image width in pixels; without height the viewport's aspect ratio is kept",
+								"maximum": 4096,
+								"minimum": 16,
+								"type": "integer"
+							}
+						},
+						"type": "object"
+					}
+				}
+			]
+		}
+	},
+	"samples": {
+		"pin": "@PIN@",
+		"engineCommit": "@PIN12@",
+		"command": "project.samples",
+		"result": {
+			"samples": [
+				{
+					"id": "Showcase"
+				},
+				{
+					"id": "ThirdPerson"
+				},
+				{
+					"id": "OpenWorld"
+				},
+				{
+					"id": "PhysicsPlayground"
+				},
+				{
+					"id": "Tetris"
+				}
+			]
+		}
+	},
+	"tests": {
+		"pin": "@PIN@",
+		"suites": [
+			"Architecture.Layering",
+			"Core.Time",
+			"World.ECS"
+		],
+		"ctest": [
+			"StrataTests.FeatureTest"
+		]
+	}
+}

@@ -1,0 +1,195 @@
+[
+	{
+		"command": "inputActions.setMap",
+		"parameters": {
+			"map": "Gameplay"
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Lamp",
+			"kind": "Button",
+			"bindings": [
+				"Key/L"
+			]
+		}
+	},
+	{
+		"command": "script.create",
+		"parameters": {
+			"class": "LanternSwitch"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Arm"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"class": "Spinner",
+			"fields": {
+				"DegreesPerSecond": 40
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Arm"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"class": "LanternSwitch",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"component": "PointLight",
+			"box": {
+				"min": [
+					5.1,
+					3.3,
+					0.9
+				],
+				"max": [
+					5.3,
+					3.5,
+					1.1
+				]
+			},
+			"name": "Light"
+		},
+		"bind": {
+			"armLight": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Arm"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"class": "LanternSwitch",
+			"field": "Lamp",
+			"value": {
+				"$ref": "armLight"
+			},
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "scene.save"
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 60
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Arm"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"class": "Spinner",
+			"field": "DegreesPerSecond",
+			"value": 0,
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "L"
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 5
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "armLight"
+			},
+			"component": "PointLight"
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "L"
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 5
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "armLight"
+			},
+			"component": "PointLight"
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

@@ -1,0 +1,33 @@
+{
+	"page": "editor-ui/imgui",
+	"runs": [
+		{
+			"build": {
+				"kind": "patch-build",
+				"configuration": "Release",
+				"buildDirectory": "build/docs-patch"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": null,
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"tutorials/editor-ui/imgui/exercise-1.patch": "d80138dd67b6c10fc180f004f494600e82e645925bcf0dec3da7e57fc3bd84de"
+			},
+			"stages": [],
+			"tests": [
+				{
+					"suite": "Architecture.Layering",
+					"testCases": 18,
+					"passed": true
+				}
+			],
+			"ctest": {
+				"test": "StrataTests.FeatureTest",
+				"passed": true
+			},
+			"readerCopies": false,
+			"passed": true
+		}
+	]
+}

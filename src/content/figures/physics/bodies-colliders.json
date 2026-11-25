@@ -1,0 +1,114 @@
+{
+	"figures": [
+		{
+			"id": "colliders-gizmos",
+			"shows": "The Physics Playground's crate stack in the Scene view, once with the viewport's All Colliders setting off and once with it on, when green wire boxes outline every crate, the column of crates and the walls",
+			"caption": "With the setting on, every body shows its collider as a green wire box; each crate's box lies on its cube's edges.",
+			"alt": "Two pictures of one view of wooden crates stacked in a pyramid, with stone walls behind. The first shows only the crates. In the second, thin green lines trace every crate and the top of the walls.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"target": [
+								-7.95,
+								2.6,
+								-12
+							],
+							"yaw": 25,
+							"pitch": -15,
+							"distance": 10,
+							"fov": 40
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 10
+						}
+					}
+				]
+			},
+			"variants": {
+				"off": {
+					"setup": [
+						{
+							"command": "viewport.setSettings",
+							"parameters": {
+								"allColliders": false
+							}
+						}
+					]
+				},
+				"on": {
+					"setup": [
+						{
+							"command": "viewport.setSettings",
+							"parameters": {
+								"allColliders": true
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "rigid-body-inspector",
+			"shows": "The Inspector of one crate of the Physics Playground, with its Rigid Body and Box Collider sections open below its Transform, Tag and Mesh Renderer",
+			"caption": "The Rigid Body section lists type, mass, both damping fields, gravity scale, friction, restitution, the locks and the layer. The Box Collider holds half extents and an offset. The values are this crate's own, not the listing's defaults.",
+			"alt": "The editor's Inspector for a crate. A Rigid Body section shows the type Dynamic, a mass of 20, more number fields and clear tick boxes. A Box Collider section shows half extents of 0.5 and an offset of 0.",
+			"kind": "editor",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"editorWindow": {
+				"layout": "layouts/physics-bodies-inspector.ini",
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Crate (20)"
+						},
+						"bind": {
+							"crate": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 10
+						}
+					}
+				],
+				"windowSize": [
+					1280,
+					1118
+				]
+			}
+		}
+	]
+}

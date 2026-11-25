@@ -1,0 +1,6 @@
+{
+	"description": "The test entry of the moved pages (plan/site.md, \"Moved pages\"): until src/redirects.json has an entry of its own, the build at the base /x/y adds this one (DOCS_EXTRA_REDIRECTS=tools/tests/release-redirects.json), so that the fallback page, the server rules of tools/release.py and their 301 are tested. core/time is a sample page that stays in the book.",
+	"redirects": [
+		{ "from": "core/moved-test-page", "to": "core/time" }
+	]
+}

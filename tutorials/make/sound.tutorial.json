@@ -1,0 +1,136 @@
+{
+	"page": "make/sound",
+	"startsFrom": { "tutorial": "make/physics" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "asset.import", "parameters": { "file": "@RELEASE@/Samples/ThirdPerson/Assets/Sounds/Coin.ogg", "directory": "Sounds" } },
+				{ "command": "asset.info", "parameters": { "asset": "Sounds/Coin.ogg" },
+					"until": { "seconds": 120 }, "expect": { "/importing": { "equals": false } } },
+				{ "command": "entity.create", "bind": { "hum": "/id" },
+					"parameters": { "name": "Hum", "components": { "AudioSource": { "Clip": "Sounds/Coin.ogg", "Loop": true } } } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "hum" }, "component": "AudioSource" },
+					"checks": [
+						{ "pointer": "/values/PlayOnStart", "equals": true },
+						{ "pointer": "/values/Volume", "approx": 1, "tolerance": 0.001 },
+						{ "pointer": "/values/Pitch", "approx": 1, "tolerance": 0.001 },
+						{ "pointer": "/values/Spatial", "equals": true },
+						{ "pointer": "/values/Loop", "equals": true },
+						{ "pointer": "/values/MinDistance", "approx": 1, "tolerance": 0.001 },
+						{ "pointer": "/values/MaxDistance", "approx": 50, "tolerance": 0.001 },
+						{ "pointer": "/values/Rolloff", "approx": 1, "tolerance": 0.001 }
+					] },
+				{ "command": "play.start" },
+				{ "command": "audio.state", "until": { "seconds": 60 }, "expect": { "/voices/0/playing": { "equals": true } },
+					"checks": [
+						{ "pointer": "/voices", "length": 1 },
+						{ "pointer": "/voices/0/clip/path", "equals": "Sounds/Coin.ogg" },
+						{ "pointer": "/voices/0/looping", "equals": true }
+					] },
+				{ "command": "component.set", "entityName": "Hum", "parameters": { "component": "Transform", "values": { "Translation": [0, 0.5, 30] } } },
+				{ "command": "component.set", "entityName": "Hum", "parameters": { "component": "AudioSource", "values": { "MaxDistance": 5, "Rolloff": 3 } } },
+				{ "command": "audio.state",
+					"checks": [ { "pointer": "/voices/0/position/2", "approx": 30, "tolerance": 0.01 } ] },
+				{ "command": "play.stop" },
+				{ "command": "component.add", "entityName": "Ball", "parameters": { "component": "AudioListener" } },
+				{ "command": "component.set", "entityName": "Main Camera", "parameters": { "component": "AudioListener", "values": { "Active": false } } },
+				{ "command": "component.get", "entityName": "Main Camera", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/2", "approx": 13, "tolerance": 0.01 } ] },
+				{ "command": "play.start" },
+				{ "command": "audio.state", "until": { "seconds": 60 }, "expect": { "/voices/0/playing": { "equals": true } },
+					"checks": [
+						{ "pointer": "/listener/position/0", "approx": 0, "tolerance": 0.01 },
+						{ "pointer": "/listener/position/2", "approx": 0, "tolerance": 0.01 }
+					] },
+				{ "command": "play.stop" },
+				{ "command": "entity.delete", "parameters": { "entities": [ { "$ref": "hum" } ] } }
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"files": [ { "from": "book:tutorials/make/sound/Coin.cpp", "to": "Scripts/Coin.cpp" } ],
+			"commands": [
+				{ "command": "asset.list", "parameters": { "type": "AudioClip" },
+					"checks": [ { "pointer": "/assets", "contains": "Sounds/Coin.ogg" } ] },
+				{ "command": "play.start", "parameters": { "paused": true } },
+				{ "command": "script.status", "checks": [ { "pointer": "/build/last/success", "equals": true } ] },
+				{ "command": "input.sequence", "parameters": { "events": [ { "step": 0, "key": "S", "action": "tap", "steps": 150 } ], "steps": 180 } },
+				{ "command": "audio.state",
+					"checks": [
+						{ "pointer": "/oneShots/played", "equals": 1 },
+						{ "pointer": "/oneShots/dropped", "equals": 0 }
+					] },
+				{ "command": "play.stop" },
+				{ "command": "play.start", "parameters": { "paused": true },
+					"files": [ { "from": "book:tutorials/make/sound/CoinNoRequest.cpp", "to": "Scripts/Coin.cpp" } ] },
+				{ "command": "input.sequence", "parameters": { "events": [ { "step": 0, "key": "S", "action": "tap", "steps": 150 } ], "steps": 180 } },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 50 } },
+				{ "command": "play.stop" },
+				{ "command": "script.build", "files": [ { "from": "book:tutorials/make/sound/Coin.cpp", "to": "Scripts/Coin.cpp" } ],
+					"expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"commands": [
+				{ "command": "asset.import", "parameters": { "file": "@RELEASE@/Samples/PhysicsPlayground/Assets/Sounds/Impacts/Soft.ogg", "directory": "Sounds/Impacts" } },
+				{ "command": "asset.info", "parameters": { "asset": "Sounds/Impacts/Soft.ogg" },
+					"until": { "seconds": 120 }, "expect": { "/importing": { "equals": false } } },
+				{ "command": "script.create", "parameters": { "class": "Bump" } },
+				{ "command": "script.build", "files": [ { "from": "book:tutorials/make/sound/Bump.cpp", "to": "Scripts/Bump.cpp" } ],
+					"expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.status", "checks": [ { "pointer": "/classes", "contains": "Bump" } ] },
+				{ "command": "script.add", "entityName": "Ball", "parameters": { "class": "Bump" } },
+				{ "command": "play.start", "parameters": { "paused": true } },
+				{ "command": "play.step", "parameters": { "steps": 120 }, "expect": { "/stepsRun": { "equals": 120 } } },
+				{ "command": "audio.state",
+					"checks": [
+						{ "pointer": "/oneShots/played", "equals": 1 },
+						{ "pointer": "/oneShots/dropped", "equals": 0 }
+					] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"commands": [
+				{ "command": "asset.import", "parameters": { "file": "@RELEASE@/Samples/ThirdPerson/Assets/Sounds/Complete.ogg", "directory": "Sounds/Music" } },
+				{ "command": "asset.info", "parameters": { "asset": "Sounds/Music/Complete.ogg" },
+					"until": { "seconds": 120 }, "expect": { "/importing": { "equals": false } },
+					"checks": [ { "pointer": "/importSettings/LoadMode", "equals": "Decompressed" } ] },
+				{ "command": "asset.setImportSettings", "parameters": { "asset": "Sounds/Music/Complete.ogg", "settings": { "LoadMode": "Streamed" } },
+					"checks": [ { "pointer": "/importSettings/LoadMode", "equals": "Streamed" } ] },
+				{ "command": "entity.create",
+					"parameters": { "name": "Music", "components": { "AudioSource": { "Clip": "Sounds/Music/Complete.ogg", "Loop": true, "Spatial": false } } } },
+				{ "command": "script.create", "parameters": { "class": "VolumeKeys" } },
+				{ "command": "script.build", "files": [ { "from": "book:tutorials/make/sound/VolumeKeys.cpp", "to": "Scripts/VolumeKeys.cpp" } ],
+					"expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "entity.create", "bind": { "game": "/id" }, "parameters": { "name": "Game" } },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "game" }, "class": "VolumeKeys" } },
+				{ "command": "play.start" },
+				{ "command": "audio.state", "until": { "seconds": 60 }, "expect": { "/voices/0/playing": { "equals": true } },
+					"checks": [
+						{ "pointer": "/voices", "length": 1 },
+						{ "pointer": "/voices/0/clip/path", "equals": "Sounds/Music/Complete.ogg" },
+						{ "pointer": "/voices/0/looping", "equals": true },
+						{ "pointer": "/voices/0/spatial", "equals": false },
+						{ "pointer": "/masterVolume", "approx": 1, "tolerance": 0.001 }
+					] },
+				{ "command": "input.key", "parameters": { "key": "Minus" } },
+				{ "command": "audio.state", "checks": [ { "pointer": "/masterVolume", "approx": 0.9, "tolerance": 0.001 } ] },
+				{ "command": "input.key", "parameters": { "key": "Equal" } },
+				{ "command": "input.key", "parameters": { "key": "Equal" } },
+				{ "command": "audio.state", "checks": [ { "pointer": "/masterVolume", "approx": 1.1, "tolerance": 0.001 } ] },
+				{ "command": "play.stop" },
+				{ "command": "play.start", "parameters": { "build": false } },
+				{ "command": "audio.state", "checks": [ { "pointer": "/masterVolume", "approx": 1, "tolerance": 0.001 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		}
+	]
+}

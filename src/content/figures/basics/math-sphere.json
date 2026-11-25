@@ -1,0 +1,52 @@
+{
+	"figures": [
+		{
+			"id": "polar-azimuth",
+			"shows": "A unit sphere with the up axis, a direction drawn as an arrow from the centre to a point on the surface, the polar angle between the up axis and the arrow, and the azimuth as an angle on the flat circle of the ground, measured from the X axis toward the Z axis",
+			"caption": "The polar angle counts down from the up axis, and the azimuth counts around it.",
+			"alt": "A sphere with an arrow from its centre to a point on its surface. One arc marks the angle from the up axis to the arrow. A second arc, on the flat ground circle, marks the angle from the X axis to the arrow's shadow.",
+			"kind": "diagram",
+			"numbers": "Unit sphere; axes +Y up, viewed from azimuth 150 degrees so that +X recedes up and to the right and +Z comes down and to the right; the example direction (0.5, 0.5, 0.7071) with the polar angle 60 degrees from +Y and the azimuth 54.7 degrees from +X toward +Z; the point's shadow on the ground plane marked at (0.5, 0, 0.7071)."
+		},
+		{
+			"id": "equirect-map",
+			"shows": "An equirectangular map as a rectangle twice as wide as it is tall, with the azimuth from -180 to 180 degrees along the bottom and the polar angle from 0 to 180 degrees down the side, with three rows of equal height drawn as circles on a small sphere beside it, to show that the rows near the top are much smaller circles than the middle one",
+			"caption": "Every row has the same number of pixels, so rows near the top and bottom stretch sideways.",
+			"alt": "A wide rectangle with three shaded horizontal bands of equal height. Beside it, a sphere shows the same bands as rings: a wide ring in the middle and small circles near the top and bottom.",
+			"kind": "diagram",
+			"numbers": "Map 1024 by 512 pixels; columns from azimuth -180 degrees (column 0) to 180 degrees (column 1024); rows from polar angle 0 (row 0) to 180 degrees (row 512); the bands at polar angles 10, 60 and 90 degrees with the circle lengths 0.17, 0.87 and 1.0 of the horizon circle; the pixel (667, 170) marked for the direction (0.5, 0.5, 0.7071)."
+		},
+		{
+			"id": "cube-map",
+			"shows": "A cube map unfolded into a cross of six squares, labelled +X, -X, +Y, -Y, +Z and -Z, beside a cube with an arrow from its centre through the -Z face, and the point (-0.222, 0.333) marked on that face",
+			"caption": "The largest coordinate names the face, and the other two, divided by it, name the place on it.",
+			"alt": "A cross of six labelled squares. Beside it, a cube with an arrow from its middle through the face labelled minus Z, ending in a dot a little left of the face's centre and above it.",
+			"kind": "diagram",
+			"numbers": "Cross layout: a row of four squares (-X, +Z, +X, -Z) with +Y above and -Y below the +Z square; the direction (-0.2, 0.3, -0.9) leaves through the -Z face at the place (-0.222, 0.333) after division by 0.9; Strata's face order +X, -X, +Y, -Y, +Z, -Z."
+		},
+		{
+			"id": "octahedral-unfolded",
+			"shows": "An octahedron with its eight triangles, and below it the same surface unfolded into a square: the upper four triangles form a diamond in the middle, and the lower four triangles are folded out into the four corners, with the example vector (-0.2, 0.4, -0.8944) marked at (-0.7323, 0.8662)",
+			"caption": "The upper half becomes the diamond, and the lower half folds out into the four corners of the square.",
+			"alt": "An octahedron, two pyramids joined at their bases. Below it, a square with a diamond in the middle and a triangle in each corner. A dot in the top left corner triangle marks the example vector.",
+			"kind": "diagram",
+			"numbers": "Octahedron with corners at (1,0,0), (-1,0,0), (0,1,0), (0,-1,0), (0,0,1), (0,0,-1); square [-1,1]^2 with the diamond |x| + |y| <= 1 holding z >= 0, the four corners holding z < 0, the centre (0, 0) for +Z and all four corners for -Z; the dot at (-0.7323, 0.8662); sample point (0.6, 0, 0.8) at (0.4286, 0)."
+		},
+		{
+			"id": "cone-solid-angle",
+			"shows": "A side view of a cone of directions with its tip at the centre of a unit sphere, an angular radius alpha between the axis and the edge, and the cap that the cone cuts from the sphere shaded, with the cap's height 1 - cos alpha marked on the axis",
+			"caption": "The cone cuts a cap from the unit sphere, and the area of the cap is the solid angle.",
+			"alt": "A circle seen from the side. Two lines leave its centre and meet the top, making an angle alpha with the vertical axis. The arc between them is shaded, and a bracket along the axis marks the cap's height.",
+			"kind": "diagram",
+			"numbers": "Unit circle; axis vertical; alpha = 60 degrees; the cap from height cos 60 = 0.5 up to 1, so the height is 0.5; solid angle 2 pi times 0.5 = pi steradians; the other cones 30 degrees (0.84 steradians) and 90 degrees (2 pi) drawn in outline."
+		},
+		{
+			"id": "sh-patterns",
+			"shows": "The nine spherical harmonics of bands 0 to 2 drawn as nine small spheres in rows of 1, 3 and 5, with the positive regions of each pattern in one colour and the negative regions in another",
+			"caption": "Band 0 is one level, band 1 leans toward an axis, and band 2 splits the sphere into four regions or a ring.",
+			"alt": "Nine small spheres in rows of one, three and five. The first is one colour. The three below are each half in one colour and half in the other. The five in the bottom row show four regions or a ring.",
+			"kind": "diagram",
+			"numbers": "Rows: band 0 holds pattern 0; band 1 holds patterns 1, 2, 3 (0.488603 y, z, x); band 2 holds patterns 4 to 8 (1.092548 x y, y z, 0.315392 (3 z^2 - 1), 1.092548 x z, 0.546274 (x^2 - y^2)); positive in one colour, negative in another; Strata's order of ProbeSHBasis."
+		}
+	]
+}

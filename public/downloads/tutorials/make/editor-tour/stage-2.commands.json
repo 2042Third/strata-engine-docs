@@ -1,0 +1,39 @@
+[
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ground"
+		},
+		"bind": {
+			"ground": "/entities/0"
+		}
+	},
+	{
+		"command": "selection.set",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "ground"
+				}
+			]
+		}
+	},
+	{
+		"command": "camera.set",
+		"parameters": {
+			"yaw": 45,
+			"pitch": -30,
+			"distance": 10
+		}
+	},
+	{
+		"command": "camera.focus",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "ground"
+				}
+			]
+		}
+	}
+]

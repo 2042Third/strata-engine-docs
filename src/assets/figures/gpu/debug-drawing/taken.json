@@ -1,0 +1,100 @@
+{
+	"files": {
+		"entity-tints.avif": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1280,
+				720
+			],
+			"figure": "entity-tints",
+			"variant": null,
+			"crop": null,
+			"original": "617806c3939fb83339993f10d60829840889b9f1d5a04dddba73d7968004cb0b",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 80,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "f35a4a5570bfad1aee482a37e3e6b9b1ef9aac2c3c0cd05e951374cdd2703edd"
+		},
+		"overlays-off.avif": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				797,
+				499
+			],
+			"figure": "overlays-off",
+			"variant": null,
+			"crop": null,
+			"original": "cb5777a5c1b11748abe9b6796cfa58f711e1fb3113b378b007368f997c708546",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 90,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "748a32c90bc718067dec2ee17812e04c87b253dccc25806bc8d22b33ba23163a"
+		},
+		"overlays-on.avif": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				797,
+				499
+			],
+			"figure": "overlays-on",
+			"variant": null,
+			"crop": null,
+			"original": "6f214c464c58a5a1571a99363c5b3080f50fd756f11ddf70e9a8d3eb8f0bb1dc",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 90,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "d7f1ef538d87309b23d921af0e0333bfb8500971c15c7e3d9870cb0cd57432c8"
+		}
+	}
+}

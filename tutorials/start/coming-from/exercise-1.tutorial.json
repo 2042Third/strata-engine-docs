@@ -1,0 +1,24 @@
+{
+	"page": "start/coming-from",
+	"startsFrom": { "sample": "ThirdPerson" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "scene.open", "parameters": { "scene": "Scenes/Course.stscene" } },
+				{ "command": "entity.find", "parameters": { "name": "Camera" }, "checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "entity.find", "parameters": { "name": "Player" },
+					"checks": [ { "pointer": "/entities", "length": 1 }, { "pointer": "/entities/0", "equals": "AAE2EAF90F8A1799" } ] },
+				{ "command": "component.get", "entityName": "Camera", "parameters": { "component": "Camera" },
+					"checks": [ { "pointer": "/values/Primary", "equals": true } ] },
+				{ "command": "component.get", "entityName": "Camera", "parameters": { "component": "AudioListener" },
+					"checks": [ { "pointer": "/values/Active", "equals": true } ] },
+				{ "command": "component.get", "entityName": "Camera", "parameters": { "component": "Script" },
+					"checks": [
+						{ "pointer": "/values/Scripts/0/Class", "equals": "FollowCamera" },
+						{ "pointer": "/values/Scripts/0/Fields/Target/Value", "equals": "AAE2EAF90F8A1799" }
+					] }
+			]
+		}
+	]
+}

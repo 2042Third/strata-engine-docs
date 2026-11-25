@@ -1,0 +1,49 @@
+diff --git a/StrataEditor/src/Editor/Commands/WindCommands.cpp b/StrataEditor/src/Editor/Commands/WindCommands.cpp
+index 760c091..ae7e0f0 100644
+--- a/StrataEditor/src/Editor/Commands/WindCommands.cpp
++++ b/StrataEditor/src/Editor/Commands/WindCommands.cpp
+@@ -119,10 +119,16 @@ namespace Strata
+ 					return arguments.Fail();
+ 				if (!strength && !radius && !mode)
+ 					return EditorCommandResult::InvalidParameters("Give at least one of 'strength', 'radius' and 'mode'");
++				nlohmann::json without = nlohmann::json::array();
+ 				for (const Entity entity : entities)
+ 				{
+ 					if (!entity.HasComponent<WindZoneComponent>())
+-						return EditorCommandResult::InvalidParameters(fmt::format("Parameter 'entities': '{}' has no WindZone component", entity.GetName()));
++						without.push_back({ { "entity", UUIDToJson(entity.GetUUID()) }, { "name", entity.GetName() } });
++				}
++				if (!without.empty())
++				{
++					return EditorCommandResult::Fail(fmt::format("Parameter 'entities': {} of them have no WindZone component", without.size()),
++						{ { "withoutWindZone", std::move(without) } }, EditorCommandError::InvalidParameters);
+ 				}
+ 
+ 				// Everything is checked: from here on the command changes the scene.
+diff --git a/StrataTests/src/Editor/EditorWindCommandTests.cpp b/StrataTests/src/Editor/EditorWindCommandTests.cpp
+index 5dce36d..6ea507c 100644
+--- a/StrataTests/src/Editor/EditorWindCommandTests.cpp
++++ b/StrataTests/src/Editor/EditorWindCommandTests.cpp
+@@ -143,6 +143,22 @@ TEST_SUITE("Editor.WindCommands")
+ 		CHECK_FALSE(harness.Execute("edit.undo").Success);
+ 	}
+ 
++	TEST_CASE("wind.set names every entity without a zone in the error's data")
++	{
++		WindHarness harness;
++		const UUID breeze = harness.AddZone("Breeze", 10.0f, 5.0f).GetUUID();
++		const UUID rock = harness.GetScene().CreateEntity("Rock").GetUUID();
++		const UUID lamp = harness.GetScene().CreateEntity("Lamp").GetUUID();
++
++		const EditorCommandResult result = harness.Execute("wind.set", { { "entities", WindHarness::Ids({ breeze, rock, lamp }) },
++			{ "strength", 20.0 } });
++		REQUIRE_FALSE(result.Success);
++		REQUIRE(result.ErrorData["withoutWindZone"].size() == 2);
++		CHECK(result.ErrorData["withoutWindZone"][0]["name"] == "Rock");
++		CHECK(result.ErrorData["withoutWindZone"][1]["entity"] == UUIDToJson(lamp));
++		CHECK(harness.Wind(breeze).Strength == doctest::Approx(10.0f));
++	}
++
+ 	TEST_CASE("wind.set while playing changes the running copy and says so")
+ 	{
+ 		WindHarness harness;

@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 508">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!--
+Plan. Left x 24 to 204: the two selected entities and their components. Middle x 236 to 472: the popup, the filter
+"li" typed, then each category (alphabetical: std::map) with its rows in registration order, 24 apart. Right from x 504:
+notes, each with an arrow pointing left whose tip stops 2 short of the popup (x 474). H = popup bottom 492 + 16.
+Facts at 319075e3 (InspectorPanel.cpp DrawAddComponentPopup; registrations): a row is listed when its display name,
+lowered, contains the filter and some selected entity lacks the component. Display names with "li": Audio Listener
+(Audio); Directional, Point, Spot, Rect Light, Light Surface, Sky Light (Lighting); Box, Sphere, Capsule, Mesh Collider
+(Physics); UI Slider (UI). Both entities have Point Light, so it is not listed.
+-->
+<text class="ink bold" x="24" y="36">The selection</text>
+<rect class="plate" x="24" y="52" width="180" height="92" rx="6"/>
+<text class="ink bold" x="40" y="78">Lamp A</text>
+<text class="ink small" x="40" y="102">Transform</text>
+<text class="ink small" x="40" y="124">Point Light</text>
+<rect class="plate" x="24" y="160" width="180" height="114" rx="6"/>
+<text class="ink bold" x="40" y="186">Lamp B</text>
+<text class="ink small" x="40" y="210">Transform</text>
+<text class="ink small" x="40" y="232">Point Light</text>
+<text class="ink small" x="40" y="254">Audio Listener</text>
+<text class="ink small" x="24" y="320">Choosing a row runs</text>
+<text class="ink small" x="24" y="340"><tspan class="mono">component.add</tspan> for both</text>
+<text class="ink small" x="24" y="360">selected entities.</text>
+
+<rect class="ground line-ink" x="236" y="24" width="236" height="468" rx="6"/>
+<rect class="plate" x="248" y="36" width="212" height="32" rx="4"/>
+<text class="ink mono" x="260" y="57">li</text>
+<line class="line-ink" x1="280" y1="42" x2="280" y2="62"/>
+
+<text class="muted small bold" x="252" y="96">Audio</text>
+<line class="line-faint" x1="300" y1="91" x2="460" y2="91" stroke-width="1"/>
+<text class="ink" x="252" y="122">Audio Listener</text>
+
+<text class="muted small bold" x="252" y="156">Lighting</text>
+<line class="line-faint" x1="318" y1="151" x2="460" y2="151" stroke-width="1"/>
+<text class="ink" x="252" y="182">Directional Light</text>
+<text class="ink" x="252" y="206">Spot Light</text>
+<text class="ink" x="252" y="230">Rect Light</text>
+<text class="ink" x="252" y="254">Light Surface</text>
+<text class="ink" x="252" y="278">Sky Light</text>
+
+<text class="muted small bold" x="252" y="312">Physics</text>
+<line class="line-faint" x1="314" y1="307" x2="460" y2="307" stroke-width="1"/>
+<text class="ink" x="252" y="338">Box Collider</text>
+<text class="ink" x="252" y="362">Sphere Collider</text>
+<text class="ink" x="252" y="386">Capsule Collider</text>
+<text class="ink" x="252" y="410">Mesh Collider</text>
+
+<text class="muted small bold" x="252" y="444">UI</text>
+<line class="line-faint" x1="276" y1="439" x2="460" y2="439" stroke-width="1"/>
+<text class="ink" x="252" y="470">UI Slider</text>
+
+<line class="line-orange" x1="500" y1="52" x2="484" y2="52"/>
+<polygon class="orange" points="474,52 484,48.5 484,55.5"/>
+<text class="orange small" x="504" y="48">Typing filters by display name,</text>
+<text class="orange small" x="504" y="66">in upper or lower case</text>
+
+<line class="line-orange" x1="500" y1="117" x2="484" y2="117"/>
+<polygon class="orange" points="474,117 484,113.5 484,120.5"/>
+<text class="orange small" x="504" y="121">Lamp A lacks it, so it is listed</text>
+
+<line class="line-orange" x1="500" y1="194" x2="484" y2="194"/>
+<polygon class="orange" points="474,194 484,190.5 484,197.5"/>
+<text class="orange small" x="504" y="190">No Point Light here: every</text>
+<text class="orange small" x="504" y="208">selected entity has it</text>
+
+<line class="line-orange" x1="500" y1="362" x2="484" y2="362"/>
+<polygon class="orange" points="474,362 484,358.5 484,365.5"/>
+<text class="orange small" x="504" y="358">“li” inside “Collider” matches</text>
+<text class="orange small" x="504" y="376">too: any part of the name counts</text>
+
+<line class="line-orange" x1="500" y1="440" x2="484" y2="440"/>
+<polygon class="orange" points="474,440 484,436.5 484,443.5"/>
+<text class="orange small" x="504" y="436">Categories in alphabetical order,</text>
+<text class="orange small" x="504" y="454">rows in registration order</text>
+</svg>

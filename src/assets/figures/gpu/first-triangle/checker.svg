@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 460">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- 64 by 64 image at 5 units a pixel; drawn in the group's frame (translate 32 4): origin (176, 80), cells of 8 pixels = 40 units; cell (col, row) yellow/green above row 4, red/black below, red channel 1 when col + row is even; cell column numbers above, cell row numbers left with their titles; rings on the five read pixels, (12, 4) led up past the column numbers, (12, 52) down below the image; H 460 -->
+<g transform="translate(32 4)">
+<rect x="176" y="80" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="216" y="80" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="256" y="80" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="296" y="80" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="336" y="80" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="376" y="80" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="416" y="80" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="456" y="80" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="176" y="120" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="216" y="120" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="256" y="120" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="296" y="120" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="336" y="120" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="376" y="120" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="416" y="120" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="456" y="120" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="176" y="160" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="216" y="160" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="256" y="160" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="296" y="160" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="336" y="160" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="376" y="160" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="416" y="160" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="456" y="160" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="176" y="200" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="216" y="200" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="256" y="200" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="296" y="200" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="336" y="200" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="376" y="200" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="416" y="200" width="40" height="40" class="swatch" fill="#00ff00"/>
+<rect x="456" y="200" width="40" height="40" class="swatch" fill="#ffff00"/>
+<rect x="176" y="240" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="216" y="240" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="256" y="240" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="296" y="240" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="336" y="240" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="376" y="240" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="416" y="240" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="456" y="240" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="176" y="280" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="216" y="280" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="256" y="280" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="296" y="280" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="336" y="280" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="376" y="280" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="416" y="280" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="456" y="280" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="176" y="320" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="216" y="320" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="256" y="320" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="296" y="320" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="336" y="320" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="376" y="320" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="416" y="320" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="456" y="320" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="176" y="360" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="216" y="360" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="256" y="360" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="296" y="360" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="336" y="360" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="376" y="360" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="416" y="360" width="40" height="40" class="swatch" fill="#000000"/>
+<rect x="456" y="360" width="40" height="40" class="swatch" fill="#ff0000"/>
+<rect x="176" y="80" width="320" height="320" fill="none" class="line-ink"/>
+<text x="196.0" y="72" text-anchor="middle" class="muted small">0</text>
+<text x="168" y="105.0" text-anchor="end" class="muted small">0</text>
+<text x="236.0" y="72" text-anchor="middle" class="muted small">1</text>
+<text x="168" y="145.0" text-anchor="end" class="muted small">1</text>
+<text x="276.0" y="72" text-anchor="middle" class="muted small">2</text>
+<text x="168" y="185.0" text-anchor="end" class="muted small">2</text>
+<text x="316.0" y="72" text-anchor="middle" class="muted small">3</text>
+<text x="168" y="225.0" text-anchor="end" class="muted small">3</text>
+<text x="356.0" y="72" text-anchor="middle" class="muted small">4</text>
+<text x="168" y="265.0" text-anchor="end" class="muted small">4</text>
+<text x="396.0" y="72" text-anchor="middle" class="muted small">5</text>
+<text x="168" y="305.0" text-anchor="end" class="muted small">5</text>
+<text x="436.0" y="72" text-anchor="middle" class="muted small">6</text>
+<text x="168" y="345.0" text-anchor="end" class="muted small">6</text>
+<text x="476.0" y="72" text-anchor="middle" class="muted small">7</text>
+<text x="168" y="385.0" text-anchor="end" class="muted small">7</text>
+<text x="336" y="50" text-anchor="middle" class="muted small">cell column</text>
+<text x="144" y="240" text-anchor="middle" transform="rotate(-90 144 240)" class="muted small">cell row</text>
+<line x1="504" y1="240" x2="720" y2="240" class="line-muted" stroke-dasharray="4 3"/>
+<text x="520" y="230" class="ink small">upper half, V &lt; 0.5: green 1</text>
+<text x="520" y="262" class="ink small">lower half, V &gt; 0.5: green 0</text>
+<polyline points="192.5,96.5 152,52" fill="none" class="line-ground" stroke-width="4"/>
+<polyline points="192.5,96.5 152,52" fill="none" class="line-ink"/>
+<rect x="192.5" y="96.5" width="12" height="12" fill="none" class="line-ground" stroke-width="4"/>
+<rect x="192.5" y="96.5" width="12" height="12" fill="none" class="line-ink"/>
+<text x="146" y="48" text-anchor="end" class="ink">pixel (4, 4): yellow</text>
+<polyline points="244.5,96.5 256,36" fill="none" class="line-ground" stroke-width="4"/>
+<polyline points="244.5,96.5 256,36" fill="none" class="line-ink"/>
+<rect x="232.5" y="96.5" width="12" height="12" fill="none" class="line-ground" stroke-width="4"/>
+<rect x="232.5" y="96.5" width="12" height="12" fill="none" class="line-ink"/>
+<text x="256" y="28" text-anchor="middle" class="ink">pixel (12, 4): green</text>
+<polyline points="192.5,348.5 152,420" fill="none" class="line-ground" stroke-width="4"/>
+<polyline points="192.5,348.5 152,420" fill="none" class="line-ink"/>
+<rect x="192.5" y="336.5" width="12" height="12" fill="none" class="line-ground" stroke-width="4"/>
+<rect x="192.5" y="336.5" width="12" height="12" fill="none" class="line-ink"/>
+<text x="146" y="436" text-anchor="end" class="ink">pixel (4, 52): red</text>
+<polyline points="244.5,348.5 274,420" fill="none" class="line-ground" stroke-width="4"/>
+<polyline points="244.5,348.5 274,420" fill="none" class="line-ink"/>
+<rect x="232.5" y="336.5" width="12" height="12" fill="none" class="line-ground" stroke-width="4"/>
+<rect x="232.5" y="336.5" width="12" height="12" fill="none" class="line-ink"/>
+<text x="280" y="436" class="ink">pixel (12, 52): black</text>
+<polyline points="484.5,382.5 512,382.5" fill="none" class="line-ground" stroke-width="4"/>
+<polyline points="484.5,382.5 512,382.5" fill="none" class="line-ink"/>
+<rect x="472.5" y="376.5" width="12" height="12" fill="none" class="line-ground" stroke-width="4"/>
+<rect x="472.5" y="376.5" width="12" height="12" fill="none" class="line-ink"/>
+<text x="520" y="387.5" class="ink">pixel (60, 60): red</text>
+</g>
+</svg>

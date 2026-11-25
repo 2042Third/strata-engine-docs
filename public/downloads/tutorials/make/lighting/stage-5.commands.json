@@ -1,0 +1,86 @@
+[
+	{
+		"command": "scene.save"
+	},
+	{
+		"command": "scene.new",
+		"parameters": {
+			"name": "Dark"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Cube",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Camera",
+			"components": {
+				"Transform": {
+					"Translation": [
+						0,
+						1,
+						5
+					]
+				},
+				"Camera": {
+					"Primary": true
+				}
+			}
+		}
+	},
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"previewLighting": false
+		}
+	},
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"previewLighting": true
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Directional Light",
+			"components": {
+				"DirectionalLight": {}
+			}
+		}
+	},
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/Main.stscene",
+			"force": true
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Sun"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "DirectionalLight",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	}
+]

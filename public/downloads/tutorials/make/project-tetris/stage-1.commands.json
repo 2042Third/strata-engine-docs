@@ -1,0 +1,268 @@
+[
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ground"
+		},
+		"bind": {
+			"groundId": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.delete",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "groundId"
+				}
+			]
+		}
+	},
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/Wall.stmat",
+			"properties": {
+				"BaseColor": [
+					0.35,
+					0.38,
+					0.45,
+					1.0
+				],
+				"Metallic": 0.2,
+				"Roughness": 0.7
+			}
+		}
+	},
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/Backdrop.stmat",
+			"properties": {
+				"BaseColor": [
+					0.04,
+					0.045,
+					0.06,
+					1.0
+				],
+				"Roughness": 0.9
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Well"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Well"
+		},
+		"bind": {
+			"wellId": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "LeftWall",
+			"parent": {
+				"$ref": "wellId"
+			},
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Wall.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						-1,
+						9.5,
+						0
+					],
+					"Scale": [
+						1,
+						22,
+						1
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Well"
+		},
+		"bind": {
+			"wellId": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "RightWall",
+			"parent": {
+				"$ref": "wellId"
+			},
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Wall.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						10,
+						9.5,
+						0
+					],
+					"Scale": [
+						1,
+						22,
+						1
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Well"
+		},
+		"bind": {
+			"wellId": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Floor",
+			"parent": {
+				"$ref": "wellId"
+			},
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Wall.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						4.5,
+						-1,
+						0
+					],
+					"Scale": [
+						10,
+						1,
+						1
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Well"
+		},
+		"bind": {
+			"wellId": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Backdrop",
+			"parent": {
+				"$ref": "wellId"
+			},
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Backdrop.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						4.5,
+						9.5,
+						-0.75
+					],
+					"Scale": [
+						10,
+						20,
+						0.5
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Well"
+		},
+		"bind": {
+			"wellId": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "PreviewBackdrop",
+			"parent": {
+				"$ref": "wellId"
+			},
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Backdrop.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						13.5,
+						16,
+						-0.75
+					],
+					"Scale": [
+						5,
+						4,
+						0.5
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Main Camera"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "Transform",
+			"values": {
+				"Translation": [
+					5.5,
+					9.5,
+					30
+				],
+				"Rotation": [
+					0,
+					0,
+					0
+				]
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	}
+]

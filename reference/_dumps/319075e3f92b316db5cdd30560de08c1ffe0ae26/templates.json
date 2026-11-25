@@ -1,0 +1,22 @@
+{
+	"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+	"engineCommit": "319075e3f92b",
+	"command": "project.templates",
+	"result": {
+		"default": "empty",
+		"templates": [
+			{
+				"description": "A project with no scene: start from nothing.",
+				"id": "empty",
+				"name": "Empty",
+				"startScene": null
+			},
+			{
+				"description": "A lit 3D start scene: a main camera with an audio listener, a sun and the physical atmosphere, a 20 x 20 ground plane of dark stone (Materials/Ground.stmat) with a box collider, so bodies and characters stand on it, and post-processing (Filmic tone mapping, automatic exposure).",
+				"id": "basic3d",
+				"name": "Basic 3D",
+				"startScene": "Scenes/Main.stscene"
+			}
+		]
+	}
+}

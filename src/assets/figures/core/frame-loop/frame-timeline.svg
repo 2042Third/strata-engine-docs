@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 288">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- the drawing: roles as classes (plan/card/drawing.md) -->
+<!-- plan: 40 units per ms, t = 0 at x 50, 16.7 ms at x 718; blocks y 92 to 148; brackets y 74 to 84; labels below the blocks at baselines 184 and 214; axis y 240; H 288 -->
+<text x="50" y="30" class="blue bold">work time: 0.3 + 0.7 + 4.0 + 0.5 + 4.0 = 9.5 ms</text>
+<text x="752" y="30" text-anchor="end" class="muted">waits: 6.0 + 1.2 = 7.2 ms</text>
+<path d="M50 84 V74 H90 V84" fill="none" class="line-blue" stroke-width="2"/>
+<path d="M330 84 V74 H670 V84" fill="none" class="line-blue" stroke-width="2"/>
+<text x="70" y="62" text-anchor="middle" class="blue">work 1.0 ms</text>
+<text x="500" y="62" text-anchor="middle" class="blue">work 4.0 + 0.5 + 4.0 = 8.5 ms</text>
+<rect x="50" y="92" width="12" height="56" class="blue-area line-blue"/>
+<rect x="62" y="92" width="28" height="56" class="blue-area line-blue"/>
+<rect x="90" y="92" width="240" height="56" class="plate"/>
+<line x1="90" y1="97" x2="95" y2="92" class="line-muted"/>
+<line x1="90" y1="107" x2="105" y2="92" class="line-muted"/>
+<line x1="90" y1="117" x2="115" y2="92" class="line-muted"/>
+<line x1="90" y1="127" x2="125" y2="92" class="line-muted"/>
+<line x1="90" y1="137" x2="135" y2="92" class="line-muted"/>
+<line x1="90" y1="147" x2="145" y2="92" class="line-muted"/>
+<line x1="99" y1="148" x2="155" y2="92" class="line-muted"/>
+<line x1="109" y1="148" x2="165" y2="92" class="line-muted"/>
+<line x1="119" y1="148" x2="175" y2="92" class="line-muted"/>
+<line x1="129" y1="148" x2="185" y2="92" class="line-muted"/>
+<line x1="139" y1="148" x2="195" y2="92" class="line-muted"/>
+<line x1="149" y1="148" x2="205" y2="92" class="line-muted"/>
+<line x1="159" y1="148" x2="215" y2="92" class="line-muted"/>
+<line x1="169" y1="148" x2="225" y2="92" class="line-muted"/>
+<line x1="179" y1="148" x2="235" y2="92" class="line-muted"/>
+<line x1="189" y1="148" x2="245" y2="92" class="line-muted"/>
+<line x1="199" y1="148" x2="255" y2="92" class="line-muted"/>
+<line x1="209" y1="148" x2="265" y2="92" class="line-muted"/>
+<line x1="219" y1="148" x2="275" y2="92" class="line-muted"/>
+<line x1="229" y1="148" x2="285" y2="92" class="line-muted"/>
+<line x1="239" y1="148" x2="295" y2="92" class="line-muted"/>
+<line x1="249" y1="148" x2="305" y2="92" class="line-muted"/>
+<line x1="259" y1="148" x2="315" y2="92" class="line-muted"/>
+<line x1="269" y1="148" x2="325" y2="92" class="line-muted"/>
+<line x1="279" y1="148" x2="330" y2="97" class="line-muted"/>
+<line x1="289" y1="148" x2="330" y2="107" class="line-muted"/>
+<line x1="299" y1="148" x2="330" y2="117" class="line-muted"/>
+<line x1="309" y1="148" x2="330" y2="127" class="line-muted"/>
+<line x1="319" y1="148" x2="330" y2="137" class="line-muted"/>
+<line x1="329" y1="148" x2="330" y2="147" class="line-muted"/>
+<rect x="90" y="92" width="240" height="56" fill="none" class="line-muted"/>
+<rect x="330" y="92" width="160" height="56" class="blue-area line-blue"/>
+<rect x="490" y="92" width="20" height="56" class="blue-area line-blue"/>
+<rect x="510" y="92" width="160" height="56" class="blue-area line-blue"/>
+<rect x="670" y="92" width="48" height="56" class="plate"/>
+<line x1="670" y1="97" x2="675" y2="92" class="line-muted"/>
+<line x1="670" y1="107" x2="685" y2="92" class="line-muted"/>
+<line x1="670" y1="117" x2="695" y2="92" class="line-muted"/>
+<line x1="670" y1="127" x2="705" y2="92" class="line-muted"/>
+<line x1="670" y1="137" x2="715" y2="92" class="line-muted"/>
+<line x1="670" y1="147" x2="718" y2="99" class="line-muted"/>
+<line x1="679" y1="148" x2="718" y2="109" class="line-muted"/>
+<line x1="689" y1="148" x2="718" y2="119" class="line-muted"/>
+<line x1="699" y1="148" x2="718" y2="129" class="line-muted"/>
+<line x1="709" y1="148" x2="718" y2="139" class="line-muted"/>
+<rect x="670" y="92" width="48" height="56" fill="none" class="line-muted"/>
+<text x="210" y="116" text-anchor="middle" class="ink halo">wait for the display</text>
+<text x="210" y="138" text-anchor="middle" class="ink halo">6.0 ms</text>
+<text x="410" y="116" text-anchor="middle" class="ink">layers</text>
+<text x="410" y="138" text-anchor="middle" class="ink">4.0 ms</text>
+<text x="590" y="116" text-anchor="middle" class="ink">user interface</text>
+<text x="590" y="138" text-anchor="middle" class="ink">4.0 ms</text>
+<line x1="56" y1="148" x2="56" y2="198" class="line-muted"/>
+<text x="50" y="214" class="ink">main-thread queue (0.3 ms)</text>
+<line x1="76" y1="148" x2="76" y2="168" class="line-muted"/>
+<text x="70" y="184" class="ink">input (0.7 ms)</text>
+<line x1="500" y1="148" x2="500" y2="168" class="line-muted"/>
+<text x="500" y="184" text-anchor="middle" class="ink">modules’ update (0.5 ms)</text>
+<line x1="694" y1="148" x2="694" y2="168" class="line-muted"/>
+<text x="750" y="184" text-anchor="end" class="ink">present (1.2 ms)</text>
+<line x1="50" y1="240" x2="718" y2="240" class="line-ink"/>
+<line x1="50" y1="240" x2="50" y2="248" class="line-ink"/>
+<text x="50" y="266" text-anchor="middle" class="small muted">0 ms</text>
+<line x1="130" y1="240" x2="130" y2="248" class="line-ink"/>
+<text x="130" y="266" text-anchor="middle" class="small muted">2 ms</text>
+<line x1="210" y1="240" x2="210" y2="248" class="line-ink"/>
+<text x="210" y="266" text-anchor="middle" class="small muted">4 ms</text>
+<line x1="290" y1="240" x2="290" y2="248" class="line-ink"/>
+<text x="290" y="266" text-anchor="middle" class="small muted">6 ms</text>
+<line x1="370" y1="240" x2="370" y2="248" class="line-ink"/>
+<text x="370" y="266" text-anchor="middle" class="small muted">8 ms</text>
+<line x1="450" y1="240" x2="450" y2="248" class="line-ink"/>
+<text x="450" y="266" text-anchor="middle" class="small muted">10 ms</text>
+<line x1="530" y1="240" x2="530" y2="248" class="line-ink"/>
+<text x="530" y="266" text-anchor="middle" class="small muted">12 ms</text>
+<line x1="610" y1="240" x2="610" y2="248" class="line-ink"/>
+<text x="610" y="266" text-anchor="middle" class="small muted">14 ms</text>
+<line x1="718" y1="240" x2="718" y2="248" class="line-ink"/>
+<text x="718" y="266" text-anchor="middle" class="small muted">16.7 ms</text>
+</svg>

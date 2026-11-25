@@ -1,0 +1,53 @@
+{
+	"page": "start/what-an-engine-is",
+	"runs": [
+		{
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/solutions/start/what-an-engine-is/exercise-2.zip": "d0fde3829fa2525ee1617968d0bf46038a20e79b47c49039e4f2ea59ff1483e1",
+				"tutorials/start/what-an-engine-is/exercise-2.tutorial.json": "4f63157d3211dd255cd54b8966ad5b3819de9c6549e8e2ebc9ffb12234aa0340"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		},
+		{
+			"build": {
+				"kind": "package",
+				"configuration": "Strata-0.8.0-windows-x64",
+				"editorSha256": "bcff21bcd56e8f51003861fc7aafb4b8ab638ad7cc521c8c0c7829c4361673be",
+				"package": "Strata-0.8.0-windows-x64.zip",
+				"packageSha256": "47a151b64d0d6bb6f2c77147ca4b477b5eaa479b7dfeafee07ccec3911a00d11"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/solutions/start/what-an-engine-is/exercise-2.zip": "d0fde3829fa2525ee1617968d0bf46038a20e79b47c49039e4f2ea59ff1483e1",
+				"tutorials/start/what-an-engine-is/exercise-2.tutorial.json": "4f63157d3211dd255cd54b8966ad5b3819de9c6549e8e2ebc9ffb12234aa0340"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"camera": "scene",
+	"images": [
+		{
+			"fixedSteps": 47,
+			"height": 720,
+			"path": "G:/GameEngineAI/.worktrees/docs-work/photo/last-animation-blending/live/animation.blending.halfway.halfway/take-1/frame.png",
+			"temporalFrames": 53,
+			"width": 960
+		}
+	],
+	"live": true
+}

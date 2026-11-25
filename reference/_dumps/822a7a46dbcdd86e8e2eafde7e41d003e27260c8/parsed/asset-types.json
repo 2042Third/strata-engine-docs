@@ -1,0 +1,190 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"file": "Strata/src/Strata/Asset/AssetTypes.h",
+	"types": [
+		{
+			"name": "None",
+			"value": 0,
+			"line": 16,
+			"comment": ""
+		},
+		{
+			"name": "Scene",
+			"value": 1,
+			"line": 17,
+			"comment": ""
+		},
+		{
+			"name": "Prefab",
+			"value": 2,
+			"line": 18,
+			"comment": ""
+		},
+		{
+			"name": "Model",
+			"value": 3,
+			"line": 19,
+			"comment": "Imported model file (e.g. glTF): owns mesh/material/texture sub-assets, instantiates as a hierarchy"
+		},
+		{
+			"name": "Mesh",
+			"value": 4,
+			"line": 20,
+			"comment": ""
+		},
+		{
+			"name": "Material",
+			"value": 5,
+			"line": 21,
+			"comment": ""
+		},
+		{
+			"name": "Texture",
+			"value": 6,
+			"line": 22,
+			"comment": ""
+		},
+		{
+			"name": "AudioClip",
+			"value": 7,
+			"line": 23,
+			"comment": ""
+		},
+		{
+			"name": "Font",
+			"value": 8,
+			"line": 24,
+			"comment": ""
+		},
+		{
+			"name": "Skeleton",
+			"value": 9,
+			"line": 26,
+			"comment": "Joint hierarchy and rest pose of an imported model (Animation/Skeleton.h)"
+		},
+		{
+			"name": "AnimationClip",
+			"value": 10,
+			"line": 27,
+			"comment": "Joint channels of an imported animation (Animation/AnimationClip.h)"
+		},
+		{
+			"name": "AnimationController",
+			"value": 11,
+			"line": 28,
+			"comment": "States, transitions and parameters (\".stanimator\", Animation/AnimationController.h)"
+		},
+		{
+			"name": "World",
+			"value": 12,
+			"line": 29,
+			"comment": "Layers and cells of a streamed world (\".stworld\", World/WorldAsset.h)"
+		},
+		{
+			"name": "ColorLookup",
+			"value": 13,
+			"line": 30,
+			"comment": "3D color lookup table of a grade, applied after the tone curve (\".cube\", Renderer/ColorLookup.h)"
+		}
+	],
+	"importers": [
+		{
+			"class": "NativeAssetImporter",
+			"type": "AnimationController",
+			"version": 1,
+			"extensions": [],
+			"file": "Strata/src/Strata/Asset/AssetImporters.cpp",
+			"line": 47,
+			"registered": "Strata/src/Strata/Asset/AssetImporters.cpp:166"
+		},
+		{
+			"class": "AudioClipImporter",
+			"type": "AudioClip",
+			"version": 1,
+			"extensions": [
+				".wav",
+				".mp3",
+				".flac",
+				".ogg"
+			],
+			"file": "Strata/src/Strata/Asset/AssetImporters.cpp",
+			"line": 92
+		},
+		{
+			"class": "ColorLookupImporter",
+			"type": "ColorLookup",
+			"version": 1,
+			"extensions": [
+				".cube"
+			],
+			"file": "Strata/src/Strata/Asset/ColorLookupImporter.h",
+			"line": 49
+		},
+		{
+			"class": "FontImporter",
+			"type": "Font",
+			"version": 1,
+			"extensions": [
+				".ttf",
+				".otf"
+			],
+			"file": "Strata/src/Strata/Asset/AssetImporters.cpp",
+			"line": 146
+		},
+		{
+			"class": "NativeAssetImporter",
+			"type": "Material",
+			"version": 1,
+			"extensions": [],
+			"file": "Strata/src/Strata/Asset/AssetImporters.cpp",
+			"line": 47,
+			"registered": "Strata/src/Strata/Asset/AssetImporters.cpp:164"
+		},
+		{
+			"class": "GltfImporter",
+			"type": "Model",
+			"version": 11,
+			"extensions": [
+				".gltf",
+				".glb"
+			],
+			"file": "Strata/src/Strata/Asset/GltfImporter.h",
+			"line": 39
+		},
+		{
+			"class": "NativeAssetImporter",
+			"type": "Prefab",
+			"version": 1,
+			"extensions": [],
+			"file": "Strata/src/Strata/Asset/AssetImporters.cpp",
+			"line": 47,
+			"registered": "Strata/src/Strata/Asset/AssetImporters.cpp:163"
+		},
+		{
+			"class": "NativeAssetImporter",
+			"type": "Scene",
+			"version": 1,
+			"extensions": [],
+			"file": "Strata/src/Strata/Asset/AssetImporters.cpp",
+			"line": 47,
+			"registered": "Strata/src/Strata/Asset/AssetImporters.cpp:162"
+		},
+		{
+			"class": "TextureImporter",
+			"type": "Texture",
+			"version": 5,
+			"extensions": [],
+			"file": "Strata/src/Strata/Asset/TextureImporter.h",
+			"line": 89
+		},
+		{
+			"class": "NativeAssetImporter",
+			"type": "World",
+			"version": 1,
+			"extensions": [],
+			"file": "Strata/src/Strata/Asset/AssetImporters.cpp",
+			"line": 47,
+			"registered": "Strata/src/Strata/Asset/AssetImporters.cpp:168"
+		}
+	]
+}

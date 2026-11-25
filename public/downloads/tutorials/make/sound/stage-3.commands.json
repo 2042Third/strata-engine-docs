@@ -1,0 +1,81 @@
+[
+	{
+		"command": "asset.import",
+		"parameters": {
+			"file": "<release folder>/Samples/PhysicsPlayground/Assets/Sounds/Impacts/Soft.ogg",
+			"directory": "Sounds/Impacts"
+		}
+	},
+	{
+		"command": "asset.info",
+		"parameters": {
+			"asset": "Sounds/Impacts/Soft.ogg"
+		},
+		"expect": {
+			"/importing": {
+				"equals": false
+			}
+		},
+		"until": {
+			"seconds": 120
+		}
+	},
+	{
+		"command": "script.create",
+		"parameters": {
+			"class": "Bump"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.status"
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ball"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"class": "Bump",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 120
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 120
+			}
+		}
+	},
+	{
+		"command": "audio.state"
+	},
+	{
+		"command": "play.stop"
+	}
+]

@@ -1,0 +1,9 @@
+diff --git a/StrataTests/Perf/Budgets.json b/StrataTests/Perf/Budgets.json
+--- a/StrataTests/Perf/Budgets.json
++++ b/StrataTests/Perf/Budgets.json
+@@ -117,3 +117,5 @@
+ 	"Perf.Physics.Create10kBodies": { "Measured": 15.76, "Budget": 23.64, "Unit": "ms", "Target": 7.995 },
+ 	"Perf.Physics.Characters1000Step": { "Measured": 0.8108, "Budget": 1.2, "Unit": "ms", "Target": 0.70 },
++	"Perf.Physics.WindZoneStep": { "Unit": "ms", "Provisional": true },
++	"Perf.Physics.WindZoneSystem": { "Unit": "ms", "Provisional": true },
+ 	"PerfGPU.Editor.ImportSettings4kMaxFrame": { "Measured": 3.866, "Budget": 5.799, "Unit": "ms" },

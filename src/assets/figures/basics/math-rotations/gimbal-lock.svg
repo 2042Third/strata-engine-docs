@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 440">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: one plane pitched 90 degrees (nose along +Y), orthographic view azimuth -25 degrees, elevation 20 degrees, 105 units per model unit, origin 384,232; the vertical line is the world Y axis (yaw) and the nose axis (roll); the pitch axis is X; two spin arcs of 300 degrees around the one line, each with a head at both ends: with the nose up a positive yaw and a positive roll spin opposite ways, so the arcs show the line, not a sense. -->
+<line x1="384" y1="39.6" x2="384" y2="404.7" class="line-ink" stroke-width="2"/>
+<line x1="236.5" y1="208.5" x2="531.5" y2="255.5" class="line-muted" stroke-dasharray="4 3"/>
+<path d="M384 281.3 L365.4 328.6 L365.4 338.4 L384 314.9 Z" class="green-area line-green" stroke-width="2"/>
+<path d="M384 200.4 L479.2 259 L479.2 278.8 L384 249.8 L288.8 248.4 L288.8 228.7 Z" class="green-area line-green" stroke-width="2"/>
+<path d="M384 286.3 L424 315.3 L424 327.2 L384 314.9 L344 314.4 L344 302.6 Z" class="green-area line-green" stroke-width="2"/>
+<path d="M384 133.3 L394.5 156.7 L394.5 314.6 L373.5 311.2 L373.5 153.4 Z" class="green-area line-green" stroke-width="2"/>
+<path d="M417.6 93.8 L419.1 93.2 L420.4 92.5 L421.7 91.9 L422.8 91.2 L423.9 90.5 L424.8 89.7 L425.6 89.0 L426.3 88.3 L426.9 87.5 L427.4 86.7 L427.7 85.9 L428.0 85.1 L428.1 84.4 L428.1 83.6 L428.0 82.8 L427.7 82.0 L427.3 81.2 L426.9 80.4 L426.3 79.7 L425.5 78.9 L424.7 78.2 L423.8 77.5 L422.7 76.8 L421.5 76.1 L420.3 75.4 L418.9 74.8 L417.5 74.2 L415.9 73.6 L414.3 73.0 L412.6 72.5 L410.8 72.0 L408.9 71.5 L406.9 71.1 L404.9 70.7 L402.9 70.4 L400.8 70.0 L398.6 69.8 L396.4 69.5 L394.2 69.3 L391.9 69.1 L389.6 69.0 L387.3 68.9 L385.0 68.9 L382.7 68.9 L380.4 68.9 L378.1 69.0 L375.8 69.2 L373.6 69.3 L371.4 69.5 L369.2 69.8 L367.0 70.1 L364.9 70.4 L362.9 70.7 L360.9 71.1 L358.9 71.6 L357.1 72.0 L355.3 72.5 L353.6 73.1 L351.9 73.6 L350.4 74.2 L348.9 74.8 L347.6 75.5 L346.3 76.1 L345.2 76.8 L344.1 77.5 L343.2 78.3 L342.4 79.0 L341.7 79.7 L341.1 80.5 L340.6 81.3 L340.3 82.1 L340.0 82.9 L339.9 83.6 L339.9 84.4 L340.0 85.2 L340.3 86.0 L340.7 86.8 L341.1 87.6 L341.7 88.3 L342.5 89.1 L343.3 89.8 L344.2 90.5 L345.3 91.2 L346.5 91.9 L347.7 92.6 L349.1 93.2 L350.4 93.8" fill="none" class="line-blue" stroke-width="2.5"/>
+<polygon points="406.1,97.1 416.4,89.5 418.8,98.1" class="blue"/>
+<polygon points="361.9,97.1 349.2,98.1 351.6,89.5" class="blue"/>
+<text x="436" y="95.4" class="blue bold">yaw</text>
+<path d="M417.6 375.0 L419.1 374.4 L420.4 373.7 L421.7 373.1 L422.8 372.4 L423.9 371.7 L424.8 370.9 L425.6 370.2 L426.3 369.5 L426.9 368.7 L427.4 367.9 L427.7 367.1 L428.0 366.3 L428.1 365.6 L428.1 364.8 L428.0 364.0 L427.7 363.2 L427.3 362.4 L426.9 361.6 L426.3 360.9 L425.5 360.1 L424.7 359.4 L423.8 358.7 L422.7 358.0 L421.5 357.3 L420.3 356.6 L418.9 356.0 L417.5 355.4 L415.9 354.8 L414.3 354.2 L412.6 353.7 L410.8 353.2 L408.9 352.7 L406.9 352.3 L404.9 351.9 L402.9 351.6 L400.8 351.2 L398.6 351.0 L396.4 350.7 L394.2 350.5 L391.9 350.3 L389.6 350.2 L387.3 350.1 L385.0 350.1 L382.7 350.1 L380.4 350.1 L378.1 350.2 L375.8 350.4 L373.6 350.5 L371.4 350.7 L369.2 351.0 L367.0 351.3 L364.9 351.6 L362.9 351.9 L360.9 352.3 L358.9 352.8 L357.1 353.2 L355.3 353.7 L353.6 354.3 L351.9 354.8 L350.4 355.4 L348.9 356.0 L347.6 356.7 L346.3 357.3 L345.2 358.0 L344.1 358.7 L343.2 359.5 L342.4 360.2 L341.7 360.9 L341.1 361.7 L340.6 362.5 L340.3 363.3 L340.0 364.1 L339.9 364.8 L339.9 365.6 L340.0 366.4 L340.3 367.2 L340.7 368.0 L341.1 368.8 L341.7 369.5 L342.5 370.3 L343.3 371.0 L344.2 371.7 L345.3 372.4 L346.5 373.1 L347.7 373.8 L349.1 374.4 L350.4 375.0" fill="none" class="line-purple" stroke-width="2.5"/>
+<polygon points="406.1,378.3 416.4,370.7 418.8,379.3" class="purple"/>
+<polygon points="361.9,378.3 349.2,379.3 351.6,370.7" class="purple"/>
+<text x="436" y="376.6" class="purple bold">roll</text>
+<text x="394" y="43.6" class="blue">yaw axis</text>
+<text x="394" y="63.6" class="purple">roll axis</text>
+<text x="539.5" y="260.5" class="muted">pitch axis</text>
+<!-- nose 384,133.3; top 384,39.6; bottom 384,404.7 -->
+<text x="16" y="200" class="ink bold">Pitch 90°:</text>
+<text x="16" y="222" class="ink">the nose points</text>
+<text x="16" y="244" class="ink">straight up</text>
+<text x="560" y="112" class="orange bold">Two angles,</text>
+<text x="560" y="134" class="orange">one spin: one way of</text>
+<text x="560" y="156" class="orange">turning is lost</text>
+</svg>

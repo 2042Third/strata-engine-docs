@@ -1,0 +1,29 @@
+{
+	"page": "make/automated-playtests",
+	"startsFrom": { "sample": "Tetris" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "play.start", "expect": { "/state": { "equals": "Play" } } },
+				{ "command": "component.get", "parameters": { "entity": "893AE784EA121440", "component": "UIText" }, "expect": { "/values/Text": { "equals": "Score: 0" } } },
+				{ "command": "play.stop", "expect": { "/state": { "equals": "Edit" } } },
+				{ "command": "script.setField", "parameters": { "entity": "72E590A9EEB83AFC", "class": "TetrisBoard", "field": "LinesPerLevel", "value": 2 } },
+				{ "command": "script.setField", "parameters": { "entity": "72E590A9EEB83AFC", "class": "TetrisBoard", "field": "StartInterval", "value": 100 } },
+				{ "command": "play.start", "expect": { "/state": { "equals": "Play" } } },
+				{ "command": "input.sequence", "parameters": { "steps": 26, "events": [
+					{ "step": 0, "key": "Left", "action": "tap" }, { "step": 2, "key": "Left", "action": "tap" }, { "step": 4, "key": "Left", "action": "tap" }, { "step": 6, "key": "Space", "action": "tap" },
+					{ "step": 8, "key": "Up", "action": "tap" }, { "step": 10, "key": "Z", "action": "tap" }, { "step": 12, "key": "Down", "action": "tap" }, { "step": 14, "key": "Space", "action": "tap" },
+					{ "step": 16, "key": "Right", "action": "tap" }, { "step": 18, "key": "Right", "action": "tap" }, { "step": 20, "key": "Right", "action": "tap" }, { "step": 22, "key": "Right", "action": "tap" }, { "step": 24, "key": "Space", "action": "tap" }
+				] }, "expect": { "/stepsRun": { "equals": 26 } } },
+				{ "command": "component.get", "parameters": { "entity": "479A9674867A5955", "component": "UIText" }, "checks": [ { "pointer": "/values/Text", "equals": "Lines: 1" } ] },
+				{ "command": "component.get", "parameters": { "entity": "893AE784EA121440", "component": "UIText" }, "checks": [ { "pointer": "/values/Text", "equals": "Score: 209" } ] },
+				{ "command": "component.get", "parameters": { "entity": "25892A97AD67432E", "component": "UIText" }, "checks": [ { "pointer": "/values/Text", "equals": "Level: 1" } ] },
+				{ "command": "play.stop", "expect": { "/state": { "equals": "Edit" } } },
+				{ "command": "edit.undo" },
+				{ "command": "edit.undo" },
+				{ "command": "scene.info", "expect": { "/modified": { "equals": false } } }
+			]
+		}
+	]
+}

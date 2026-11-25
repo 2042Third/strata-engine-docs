@@ -1,0 +1,36 @@
+{
+	"figures": [
+		{
+			"id": "ramp-banding",
+			"shows": "Two horizontal gradient strips from black to white, each cut into the 256 levels of a byte: the upper strip stores the light in proportion to its amount and shows visible steps in its first few dozen codes, enlarged for the codes 0 to 31, the lower strip stores the sRGB values and looks smooth",
+			"caption": "The same smooth gradient in 256 levels: stored in proportion to light, the dark end shows stripes; stored as sRGB, the steps vanish.",
+			"alt": "Two strips of gray that run from black on the left to white on the right. The upper strip has clear stripes near black. The lower strip changes smoothly from end to end.",
+			"kind": "diagram",
+			"numbers": "Strip width 256 pixels, one pixel per code; upper strip: code c shows the light c / 255 and is drawn through the display curve; lower strip: code c shows the decoded sRGB value; mark the codes 0, 1 and 2 on the upper strip."
+		},
+		{
+			"id": "srgb-curve",
+			"shows": "A graph of the stored value against the linear light, both from 0 to 1, with the sRGB curve rising steeply at first, a dashed straight line for the stored value equal to the light, and a marked point at light 0.18 with stored value 0.4614",
+			"caption": "The curve lifts the dark values: a fifth of the light of white is stored as almost half of the range.",
+			"alt": "A graph with linear light on the horizontal axis and the sRGB stored value on the vertical axis. The curve bends above a dashed diagonal. A point marks the light 0.18 at the stored value 0.46.",
+			"kind": "diagram",
+			"numbers": "Both axes 0 to 1; curve s = 12.92 c below c = 0.0031308 and 1.055 c^(1/2.4) - 0.055 above; dashed diagonal s = c; marked points (0.18, 0.4614) and (0.5, 0.7354)."
+		},
+		{
+			"id": "blend-both-ways",
+			"shows": "Three gray patches side by side: a half mix of black and white blended on the stored sRGB values, a checkerboard of black and white pixels that looks from afar like the true half mix, and the same mix blended in linear light and encoded",
+			"caption": "A half mix of black and white: the blend of stored values is too dark next to the mix of light.",
+			"alt": "Three gray patches. The left one, a blend of stored values, is dark. The right one, a blend in linear light, is lighter and matches a fine black and white checkerboard between them.",
+			"kind": "diagram",
+			"numbers": "Left patch stored value 0.5 (byte 128, light 0.214); right patch stored value 0.7354 (byte 188, light 0.5); middle: a checkerboard of black and white pixels, one pixel per cell, which averages to the light 0.5."
+		},
+		{
+			"id": "chromaticity-diagram",
+			"shows": "The diagram of the colors of the eye, a shape with a round top and a straight bottom edge, on x from 0 to 0.8 and y from 0 to 0.9, with the Rec. 709 triangle drawn through its three primaries (0.64, 0.33), (0.30, 0.60), (0.15, 0.06) and the D65 white marked at (0.3127, 0.3290) inside it",
+			"caption": "The triangle is the gamut of Rec. 709; colors outside it need a negative channel. The dot in the middle is the D65 white.",
+			"alt": "A region with a curved upper edge and a straight lower edge. A triangle with its corners at red, green and blue lies inside it. A dot near the middle of the triangle marks the white point.",
+			"kind": "diagram",
+			"numbers": "Axes x 0 to 0.8, y 0 to 0.9; triangle corners (0.64, 0.33), (0.30, 0.60), (0.15, 0.06), each labelled with its color; white point (0.3127, 0.3290) labelled D65; spectral locus labelled with a few wavelengths."
+		}
+	]
+}

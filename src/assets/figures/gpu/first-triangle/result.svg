@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 416">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- 64 by 64 image at 5 units a pixel: origin (152, 64), 320 square; pixel p centered at origin + 5 (p + 0.5); triangle (0, 32) (64, 32) (32, 0); rings on (32, 16) and (32, 48), labels at x 512; H 416 -->
+<rect x="152" y="64" width="320" height="320" class="swatch" fill="#0000ff"/>
+<polygon points="152,224 472,224 312,64" class="swatch" fill="#ff0000"/>
+<rect x="152" y="64" width="320" height="320" fill="none" class="line-ink"/>
+<line x1="152" y1="44" x2="206" y2="44" class="line-muted"/>
+<polygon points="206,40.5 216,44 206,47.5" class="muted"/>
+<text x="224" y="49" class="muted">x</text>
+<line x1="132" y1="64" x2="132" y2="118" class="line-muted"/>
+<polygon points="128.5,118 132,128 135.5,118" class="muted"/>
+<text x="132" y="148" text-anchor="middle" class="muted">y</text>
+<text x="124" y="52" text-anchor="end" class="ink">(0, 0)</text>
+<text x="312" y="54" text-anchor="middle" class="ink">(32, 0)</text>
+<text x="144" y="229" text-anchor="end" class="ink">(0, 32)</text>
+<text x="480" y="229" class="ink">(64, 32)</text>
+<text x="480" y="389" class="ink">(64, 64)</text>
+<polyline points="320.5,146.5 504,146.5" fill="none" class="line-ground" stroke-width="4"/>
+<polyline points="320.5,146.5 504,146.5" fill="none" class="line-ink"/>
+<rect x="308.5" y="140.5" width="12" height="12" fill="none" class="line-ground" stroke-width="4"/>
+<rect x="308.5" y="140.5" width="12" height="12" fill="none" class="line-ink"/>
+<text x="512" y="143.5" class="ink bold">pixel (32, 16)</text>
+<text x="512" y="162.5" class="ink small">red (255, 0, 0, 255)</text>
+<polyline points="320.5,306.5 504,306.5" fill="none" class="line-ground" stroke-width="4"/>
+<polyline points="320.5,306.5 504,306.5" fill="none" class="line-ink"/>
+<rect x="308.5" y="300.5" width="12" height="12" fill="none" class="line-ground" stroke-width="4"/>
+<rect x="308.5" y="300.5" width="12" height="12" fill="none" class="line-ink"/>
+<text x="512" y="303.5" class="ink bold">pixel (32, 48)</text>
+<text x="512" y="322.5" class="ink small">blue (0, 0, 255, 255)</text>
+</svg>

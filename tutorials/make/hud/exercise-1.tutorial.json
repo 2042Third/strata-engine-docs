@@ -1,0 +1,84 @@
+{
+	"page": "make/hud",
+	"startsFrom": {
+		"tutorial": "make/hud"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "TimerText"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "TimerText",
+					"parameters": {
+						"component": "UIRect",
+						"values": {
+							"AnchorMin": [
+								0.5,
+								0
+							],
+							"AnchorMax": [
+								0.5,
+								0
+							],
+							"Pivot": [
+								0.5,
+								0
+							],
+							"Position": [
+								0,
+								24
+							]
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "TimerText",
+					"parameters": {
+						"component": "UIText",
+						"values": {
+							"Alignment": "Center"
+						}
+					}
+				},
+				{
+					"command": "component.get",
+					"entityName": "TimerText",
+					"parameters": {
+						"component": "UIRect"
+					},
+					"checks": [
+						{
+							"pointer": "/values/AnchorMin/0",
+							"approx": 0.5,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{ "command": "ui.layout", "entityName": "TimerText", "parameters": { "screen": [1440, 1080] },
+					"checks": [
+						{ "pointer": "/elements/0/rect/0", "approx": 564.115, "tolerance": 0.01 },
+						{ "pointer": "/elements/0/rect/1", "approx": 20.785, "tolerance": 0.01 }
+					] },
+				{ "command": "ui.layout", "entityName": "TimerText", "parameters": { "screen": [2520, 1080] },
+					"checks": [
+						{ "pointer": "/elements/0/rect/0", "approx": 1053.784, "tolerance": 0.01 }
+					] }
+			],
+			"endState": true
+		}
+	]
+}

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 376">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Grid: NDC square x 72..252, y 130..310 (90 per unit, centre (162, 220)); window 800 by 400 at x 324..684,
+     y 130..310 (0.45 per pixel). Point (0.375, 0.25) -> (195.75, 197.5); pixel (550, 150) -> (571.5, 197.5).
+     Corner arrows: (-1, 1) -> (0, 0) over the top, control (198, 50); (1, -1) -> (800, 400) under, control (468, 400).
+     Formulas at y 396 and 420. -->
+<!-- The grid above is in the group's units: the group moves it up by 64. -->
+<g transform="translate(0 -64)">
+<rect class="plate line-ink" x="72" y="130" width="180" height="180"/>
+<rect class="plate line-ink" x="324" y="130" width="360" height="180"/>
+<path class="line-muted" fill="none" d="M 72 130 Q 198 50 315.56 124.64"/>
+<polygon class="muted" points="324,130 313.68,127.59 317.44,121.69"/>
+<path class="line-muted" fill="none" d="M 252 310 Q 468 400 674.77 313.85"/>
+<polygon class="muted" points="684,310 676.12,317.08 673.42,310.62"/>
+<line class="line-orange" stroke-width="2" x1="201" y1="197.5" x2="556" y2="197.5"/>
+<polygon class="orange" points="566,197.5 556,194 556,201"/>
+<circle class="orange" cx="195.75" cy="197.5" r="5"/>
+<circle class="orange" cx="571.5" cy="197.5" r="5"/>
+<line class="line-ink" x1="48" y1="310" x2="48" y2="140"/>
+<polygon class="ink" points="48,130 44.5,140 51.5,140"/>
+<line class="line-ink" x1="704" y1="130" x2="704" y2="300"/>
+<polygon class="ink" points="704,310 700.5,300 707.5,300"/>
+<text class="ink" x="40" y="226" text-anchor="end">+Y</text>
+<text class="ink small" x="714" y="225">rows</text>
+<text class="ink small" x="80" y="148">(−1, 1)</text>
+<text class="ink small" x="244" y="148" text-anchor="end">(1, 1)</text>
+<text class="ink small" x="80" y="302">(−1, −1)</text>
+<text class="ink small" x="244" y="302" text-anchor="end">(1, −1)</text>
+<text class="ink small" x="332" y="148">(0, 0)</text>
+<text class="ink small" x="676" y="148" text-anchor="end">(800, 0)</text>
+<text class="ink small" x="332" y="302">(0, 400)</text>
+<text class="ink small" x="676" y="302" text-anchor="end">(800, 400)</text>
+<text class="ink" x="196" y="186" text-anchor="middle">(0.375, 0.25)</text>
+<text class="ink" x="571.5" y="186" text-anchor="middle">(550, 150)</text>
+<text class="ink" x="162" y="336" text-anchor="middle">NDC</text>
+<text class="ink" x="504" y="336" text-anchor="middle">window, 800 × 400 pixels</text>
+<text class="ink" x="504" y="396" text-anchor="middle">pixel x = (x × 0.5 + 0.5) × 800</text>
+<text class="ink" x="504" y="420" text-anchor="middle">pixel y = (0.5 − y × 0.5) × 400</text>
+</g>
+</svg>

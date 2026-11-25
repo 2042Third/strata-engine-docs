@@ -1,0 +1,62 @@
+[
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Ball.stmat",
+			"properties": {
+				"NormalMap": "Textures/Metal/Metal032_NormalGL.jpg"
+			}
+		}
+	},
+	{
+		"command": "asset.setImportSettings",
+		"parameters": {
+			"asset": "Textures/Metal/Metal032_NormalGL.jpg",
+			"settings": {
+				"Usage": "Color"
+			}
+		}
+	},
+	{
+		"command": "material.get",
+		"parameters": {
+			"material": "Materials/Ball.stmat"
+		}
+	},
+	{
+		"command": "asset.setImportSettings",
+		"parameters": {
+			"asset": "Textures/Metal/Metal032_NormalGL.jpg",
+			"settings": {
+				"Usage": "NormalMap"
+			}
+		}
+	},
+	{
+		"command": "material.get",
+		"parameters": {
+			"material": "Materials/Ball.stmat"
+		}
+	},
+	{
+		"command": "asset.setImportSettings",
+		"parameters": {
+			"asset": "Textures/Metal/Metal032_NormalGL.jpg",
+			"settings": {
+				"FlipGreen": true
+			}
+		}
+	},
+	{
+		"command": "asset.setImportSettings",
+		"parameters": {
+			"asset": "Textures/Metal/Metal032_NormalGL.jpg",
+			"settings": {
+				"FlipGreen": false
+			}
+		}
+	},
+	{
+		"command": "scene.save"
+	}
+]

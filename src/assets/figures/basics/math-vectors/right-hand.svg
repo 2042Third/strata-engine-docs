@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 340">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- View: x right, y up, z out of the page toward the reader (drawn end-on as a dot in a ring). Hand: origin 176, 230, arrows 180 long. Panels: 64 units a grid cell, origins 560, 110 (one cell, area 1) and 560, 300 (parallelogram 0,0 2,0 3,1 1,1: two cells, area 2). -->
+<line class="line-ink" x1="56" y1="236" x2="150" y2="236" stroke-width="72" stroke-linecap="round"/>
+<line class="line-ink" x1="196" y1="230" x2="306" y2="230" stroke-width="34" stroke-linecap="round"/>
+<line class="line-ink" x1="176" y1="200" x2="176" y2="106" stroke-width="32" stroke-linecap="round"/>
+<line class="line-plate" x1="56" y1="236" x2="150" y2="236" stroke-width="68" stroke-linecap="round"/>
+<line class="line-plate" x1="196" y1="230" x2="306" y2="230" stroke-width="30" stroke-linecap="round"/>
+<line class="line-plate" x1="176" y1="200" x2="176" y2="106" stroke-width="28" stroke-linecap="round"/>
+<circle class="plate line-ink" cx="176" cy="230" r="18" stroke-width="2"/>
+<line class="line-blue" x1="187" y1="230" x2="344" y2="230" stroke-width="2.5"/>
+<polygon class="blue" points="356,230 344,234.5 344,225.5"/>
+<line class="line-green" x1="176" y1="219" x2="176" y2="62" stroke-width="2.5"/>
+<polygon class="green" points="176,50 180.5,62 171.5,62"/>
+<circle class="line-orange" cx="176" cy="230" r="9" fill="none" stroke-width="2.5"/>
+<circle class="orange" cx="176" cy="230" r="3.5"/>
+<text class="blue bold" x="366" y="235">a = (1, 0, 0)</text>
+<text class="green bold" x="176" y="38" text-anchor="middle">b = (0, 1, 0)</text>
+<text class="orange bold" x="204" y="272">a × b = (0, 0, 1)</text>
+<text class="small muted" x="204" y="292">thumb, toward you</text>
+<text class="small muted" x="258" y="206" text-anchor="middle">first finger</text>
+<text class="small muted" x="200" y="130">middle finger</text>
+<rect class="orange-area" x="560" y="46" width="64" height="64"/>
+<path class="line-faint" d="M560 46V110M624 46V110M688 46V110M560 46H688M560 110H688" fill="none" stroke-width="1"/>
+<rect class="line-orange" x="560" y="46" width="64" height="64" fill="none" stroke-dasharray="4 3"/>
+<text class="small ink bold" x="592" y="83" text-anchor="middle">area 1</text>
+<line class="line-blue" x1="571" y1="110" x2="612" y2="110" stroke-width="2.5"/>
+<polygon class="blue" points="624,110 612,114.5 612,105.5"/>
+<line class="line-green" x1="560" y1="99" x2="560" y2="58" stroke-width="2.5"/>
+<polygon class="green" points="560,46 564.5,58 555.5,58"/>
+<circle class="line-orange" cx="560" cy="110" r="8" fill="none" stroke-width="2.5"/>
+<circle class="orange" cx="560" cy="110" r="3"/>
+<text class="small blue bold" x="572" y="130">a = (1, 0, 0)</text>
+<text class="small green bold" x="560" y="34" text-anchor="middle">b = (0, 1, 0)</text>
+<text class="small orange bold" x="544" y="100" text-anchor="end">a × b = (0, 0, 1)</text>
+<text class="small orange" x="544" y="118" text-anchor="end">length 1, toward you</text>
+<polygon class="orange-area" points="560,300 688,300 752,236 624,236"/>
+<path class="line-faint" d="M560 236V300M624 236V300M688 236V300M752 236V300M560 236H752M560 300H752" fill="none" stroke-width="1"/>
+<polygon class="line-orange" points="560,300 688,300 752,236 624,236" fill="none" stroke-dasharray="4 3"/>
+<text class="small ink bold" x="656" y="273" text-anchor="middle">area 2</text>
+<line class="line-blue" x1="571" y1="300" x2="676" y2="300" stroke-width="2.5"/>
+<polygon class="blue" points="688,300 676,304.5 676,295.5"/>
+<line class="line-green" x1="567.8" y1="292.2" x2="615.5" y2="244.5" stroke-width="2.5"/>
+<polygon class="green" points="624,236 618.7,247.7 612.3,241.3"/>
+<circle class="line-orange" cx="560" cy="300" r="8" fill="none" stroke-width="2.5"/>
+<circle class="orange" cx="560" cy="300" r="3"/>
+<text class="small blue bold" x="572" y="320">a = (2, 0, 0)</text>
+<text class="small green bold" x="624" y="224" text-anchor="middle">b = (1, 1, 0)</text>
+<text class="small orange bold" x="544" y="290" text-anchor="end">a × b = (0, 0, 2)</text>
+<text class="small orange" x="544" y="308" text-anchor="end">length 2, toward you</text>
+</svg>

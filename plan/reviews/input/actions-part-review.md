@@ -1,0 +1,4 @@
+# Part review of `input/actions`
+
+- contradiction: the menu section defined **key repeat** in bold as "the game's own repetition of a held key", while the glossary's home, `input/how-input-works`, defines key repeat as the events the operating system invents; the sentence now says the game makes the repetition itself and the operating system does the same for keys with its key repeat (marked, in its own sense), and the Where-it-lives line no longer marks the menu's repeat as the term.
+- wrong: the hysteresis was given as "down from 0.5, held until the value falls below 0.35" (the reserved UI map, the Evaluate paragraph, the ReadButton callout and its paragraph); `InputActions.cpp` at the pin holds while `value > c_Release` and presses on `value > c_Press`, so a reading of exactly 0.35 releases, as `input/gamepads` says ("at 0.35 or below"); the four places now say above 0.5 and at 0.35 or below.

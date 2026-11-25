@@ -1,0 +1,297 @@
+[
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/Plaster.stmat"
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Plaster.stmat",
+			"properties": {
+				"BaseColor": [
+					0.8,
+					0.78,
+					0.74,
+					1.0
+				],
+				"Metallic": 0.0,
+				"Roughness": 0.9
+			}
+		}
+	},
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/Soil.stmat"
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Soil.stmat",
+			"properties": {
+				"BaseColor": [
+					0.08,
+					0.05,
+					0.035,
+					1.0
+				],
+				"Metallic": 0.0,
+				"Roughness": 0.95
+			}
+		}
+	},
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/Steel.stmat"
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Steel.stmat",
+			"properties": {
+				"BaseColor": [
+					0.8,
+					0.8,
+					0.82,
+					1.0
+				],
+				"Metallic": 1.0,
+				"Roughness": 0.1
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Wall Back",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Plaster.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						1.5,
+						-2.1
+					],
+					"Scale": [
+						6.4,
+						3,
+						0.2
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Wall Left",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Plaster.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						-3.1,
+						1.5,
+						0
+					],
+					"Scale": [
+						0.2,
+						3,
+						4
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Wall Right",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Plaster.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						3.1,
+						1.5,
+						0
+					],
+					"Scale": [
+						0.2,
+						3,
+						4
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Wall Front Left",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Plaster.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						-1.9,
+						1.5,
+						2.1
+					],
+					"Scale": [
+						2.6,
+						3,
+						0.2
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Wall Front Right",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Plaster.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						1.9,
+						1.5,
+						2.1
+					],
+					"Scale": [
+						2.6,
+						3,
+						0.2
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Lintel",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Plaster.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						2.5,
+						2.1
+					],
+					"Scale": [
+						1.2,
+						1,
+						0.2
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Roof",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Plaster.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						3.1,
+						0
+					],
+					"Scale": [
+						6.4,
+						0.2,
+						4.4
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Soil Bed",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Soil.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						2,
+						0.15,
+						-1.5
+					],
+					"Scale": [
+						2,
+						0.3,
+						1
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Metal Sphere",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Sphere",
+					"Material": "Materials/Steel.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						-1.2,
+						0.5,
+						0.8
+					],
+					"Scale": [
+						1,
+						1,
+						1
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "lighting.applySkyPreset",
+		"parameters": {
+			"preset": "Clear",
+			"sunAzimuth": 70
+		}
+	},
+	{
+		"command": "material.get",
+		"parameters": {
+			"material": "Materials/Ground.stmat"
+		}
+	}
+]

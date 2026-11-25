@@ -1,0 +1,163 @@
+{
+	"page": "make/scripting-scene",
+	"startsFrom": { "tutorial": "make/first-script" },
+	"stages": [
+		{
+			"step": 1,
+			"files": [ { "from": "book:tutorials/make/scripting-scene/Coin.step1.cpp", "to": "Scripts/Coin.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 47 }, "expect": { "/stepsRun": { "equals": 47 } } },
+				{ "command": "component.get", "entityName": "Coin (3)", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/1", "approx": 1.1, "tolerance": 0.01 } ] },
+				{ "command": "play.step", "parameters": { "steps": 94 }, "expect": { "/stepsRun": { "equals": 94 } } },
+				{ "command": "component.get", "entityName": "Coin (3)", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/1", "approx": 0.9, "tolerance": 0.01 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"commands": [
+				{ "command": "entity.create", "bind": { "coins": "/id" }, "parameters": { "name": "Coins" } },
+				{ "command": "script.create", "parameters": { "class": "CoinPlacer" },
+					"checks": [ { "pointer": "/relativePath", "equals": "Scripts/CoinPlacer.cpp" } ] },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "coins" }, "class": "CoinPlacer" } },
+				{ "command": "script.get", "parameters": { "entity": { "$ref": "coins" } },
+					"checks": [ { "pointer": "/scripts/0/class", "equals": "CoinPlacer" }, { "pointer": "/scripts/0/known", "equals": true } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"files": [ { "from": "book:tutorials/make/scripting-scene/CoinPlacer.step3.cpp", "to": "Scripts/CoinPlacer.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"files": [ { "from": "book:tutorials/make/scripting-scene/CoinPlacer.cpp", "to": "Scripts/CoinPlacer.cpp" } ],
+			"commands": [
+				{ "command": "entity.find", "parameters": { "tag": "Coin" }, "bind": { "handPlaced": "/entities" },
+					"checks": [ { "pointer": "/entities", "length": 5 } ] },
+				{ "command": "entity.delete", "parameters": { "entities": { "$ref": "handPlaced" } },
+					"checks": [ { "pointer": "/deleted", "length": 5 } ] },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 60 }, "expect": { "/stepsRun": { "equals": 60 } } },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 50 },
+					"checks": [ { "pointer": "/messages", "contains": "Coins placed: 5" } ] },
+				{ "command": "entity.find", "parameters": { "tag": "Coin" }, "checks": [ { "pointer": "/entities", "length": 5 } ] },
+				{ "command": "play.stop" },
+				{ "command": "entity.find", "parameters": { "tag": "Coin" }, "checks": [ { "pointer": "/entities", "length": 0 } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 5,
+			"files": [ { "from": "book:tutorials/make/scripting-scene/Coin.step5.cpp", "to": "Scripts/Coin.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 1 }, "bind": { "before": "/messages/0/sequence" } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "log.read", "parameters": { "after": { "$ref": "before" }, "minLevel": "Warn" },
+					"checks": [ { "pointer": "/messages", "length": 0 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 6,
+			"commands": [
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 1 }, "bind": { "warmFrom": "/messages/0/sequence" } },
+				{ "command": "play.start", "parameters": { "build": false } },
+				{ "command": "log.read", "parameters": { "after": { "$ref": "warmFrom" }, "logger": "Script", "limit": 1 },
+					"until": { "seconds": 60 }, "expect": { "/messages/0/message": { "equals": "Coins placed: 5" } } },
+				{ "command": "play.stop" },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 47 }, "expect": { "/stepsRun": { "equals": 47 } } },
+				{ "command": "entity.find", "parameters": { "tag": "Coin" }, "bind": { "coin": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 5 } ] },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "coin" }, "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/0", "approx": -4, "tolerance": 0.001 },
+						{ "pointer": "/values/Translation/1", "approx": 0.9, "tolerance": 0.01 } ] },
+				{ "command": "play.step", "parameters": { "steps": 94 }, "expect": { "/stepsRun": { "equals": 94 } } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "coin" }, "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/1", "approx": 0.7, "tolerance": 0.01 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 7,
+			"files": [ { "from": "book:tutorials/make/scripting-scene/Coin.step7.cpp", "to": "Scripts/Coin.cpp" } ],
+			"commands": [
+				{ "command": "component.list" },
+				{ "command": "material.create", "parameters": { "path": "Materials/GoldGlow.stmat", "properties": { "BaseColor": [1.0, 0.77, 0.34, 1.0], "Metallic": 1.0, "Roughness": 0.3, "EmissiveColor": [1.0, 0.75, 0.3], "EmissiveIntensity": 1000 } },
+					"checks": [ { "pointer": "/warnings", "length": 0 } ] },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 8,
+			"files": [ { "from": "book:tutorials/make/scripting-scene/Coin.cpp", "to": "Scripts/Coin.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 1 }, "bind": { "warmFrom": "/messages/0/sequence" } },
+				{ "command": "play.start", "parameters": { "build": false } },
+				{ "command": "log.read", "parameters": { "after": { "$ref": "warmFrom" }, "logger": "Script", "limit": 1 },
+					"until": { "seconds": 60 }, "expect": { "/messages/0/message": { "equals": "Coins placed: 5" } } },
+				{ "command": "play.stop" },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "component.set", "entityName": "Ball", "parameters": { "component": "Transform", "values": { "Translation": [0, 0.8, 1.5] } } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "entity.find", "parameters": { "tag": "Coin" }, "bind": { "middleCoin": "/entities/2" },
+					"checks": [ { "pointer": "/entities", "length": 5 } ] },
+				{ "command": "entity.get", "parameters": { "entity": { "$ref": "middleCoin" } }, "bind": { "middleMesh": "/children/0" },
+					"checks": [ { "pointer": "/components/Transform/Translation/2", "approx": 3, "tolerance": 0.001 } ] },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "middleMesh" }, "component": "MeshRenderer" },
+					"bind": { "middleMaterial": "/values/Material" } },
+				{ "command": "material.get", "parameters": { "material": { "$ref": "middleMaterial" } },
+					"checks": [ { "pointer": "/values/EmissiveIntensity", "approx": 1000, "tolerance": 0.5 } ] },
+				{ "command": "component.set", "entityName": "Ball", "parameters": { "component": "Transform", "values": { "Translation": [0, 0.8, 2.6] } } },
+				{ "command": "play.step", "parameters": { "steps": 2 }, "expect": { "/stepsRun": { "equals": 2 } } },
+				{ "command": "entity.find", "parameters": { "tag": "Coin" }, "checks": [ { "pointer": "/entities", "length": 4 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 9,
+			"commands": [
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 1 }, "bind": { "warmFrom": "/messages/0/sequence" } },
+				{ "command": "play.start", "parameters": { "build": false } },
+				{ "command": "log.read", "parameters": { "after": { "$ref": "warmFrom" }, "logger": "Script", "limit": 1 },
+					"until": { "seconds": 60 }, "expect": { "/messages/0/message": { "equals": "Coins placed: 5" } } },
+				{ "command": "play.stop" },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "entity.find", "parameters": { "name": "Coins" }, "bind": { "coins": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "entity.get", "parameters": { "entity": { "$ref": "coins" } },
+					"checks": [ { "pointer": "/children", "length": 5 }, { "pointer": "/parent", "equals": null } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		}
+	]
+}

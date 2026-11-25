@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 500">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Circle: radius 1 is 200 units; the origin is at 384, 260; the point at 60 degrees is (0.5, 0.866) = 484, 86.8. -->
+<circle class="line-muted" cx="384" cy="260" r="200" fill="none" stroke-width="2"/>
+<line class="line-ink" x1="154" y1="260" x2="604" y2="260" stroke-width="1.5"/>
+<polygon class="ink" points="614,260 604,263.5 604,256.5"/>
+<line class="line-ink" x1="384" y1="484" x2="384" y2="46" stroke-width="1.5"/>
+<polygon class="ink" points="384,36 387.5,46 380.5,46"/>
+<text class="bold" x="622" y="265">x</text>
+<text class="bold" x="372" y="46" text-anchor="end">y</text>
+<path class="line-ink" d="M484 86.8V260M484 86.8H384" fill="none" stroke-dasharray="4 3"/>
+<line class="line-blue" x1="384" y1="260" x2="484" y2="260" stroke-width="5"/>
+<line class="line-green" x1="384" y1="260" x2="384" y2="86.8" stroke-width="5"/>
+<path class="line-orange" d="M436 260A52 52 0 0 0 410 215" fill="none" stroke-width="2"/>
+<text class="orange bold" x="448.1" y="229" text-anchor="middle">60°</text>
+<line class="line-ink" x1="384" y1="260" x2="484" y2="86.8" stroke-width="2.5"/>
+<text class="bold" x="418.4" y="168.4" text-anchor="middle">1</text>
+<text class="blue bold" x="394" y="282">cos 60° = 0.5</text>
+<text class="green bold" x="374" y="178.4" text-anchor="end">sin 60° = 0.866</text>
+<circle class="ink" cx="584" cy="260" r="4.5"/>
+<text class="small muted halo" x="592" y="282">(1, 0) at 0°</text>
+<circle class="ink" cx="384" cy="60" r="4.5"/>
+<text class="small muted halo" x="394" y="50">(0, 1) at 90°</text>
+<circle class="ink" cx="184" cy="260" r="4.5"/>
+<text class="small muted halo" x="176" y="282" text-anchor="end">(−1, 0) at 180°</text>
+<circle class="ink" cx="384" cy="460" r="4.5"/>
+<text class="small muted halo" x="394" y="482">(0, −1) at 270°</text>
+<circle class="ink" cx="384" cy="260" r="3.5"/>
+<circle class="orange" cx="484" cy="86.8" r="6"/>
+<text class="orange bold halo" x="496" y="78.8">(0.5, 0.866)</text>
+</svg>

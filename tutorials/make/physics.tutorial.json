@@ -1,0 +1,87 @@
+{
+	"page": "make/physics",
+	"startsFrom": { "tutorial": "make/input" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "component.set", "entityName": "Ball", "parameters": { "component": "Transform", "values": { "Translation": [0, 3, 0] } } },
+				{ "command": "component.add", "entityName": "Ball", "parameters": { "component": "RigidBody" } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 45 }, "expect": { "/stepsRun": { "equals": 45 } } },
+				{ "command": "component.get", "entityName": "Ball", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/1", "approx": 0.5, "tolerance": 0.1 } ] },
+				{ "command": "play.step", "parameters": { "steps": 75 }, "expect": { "/stepsRun": { "equals": 75 } } },
+				{ "command": "component.get", "entityName": "Ball", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/1", "approx": 0.5, "tolerance": 0.1 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"files": [ { "from": "book:tutorials/make/physics/step2/BallControl.cpp", "to": "Scripts/BallControl.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.remove", "entityName": "Ball", "parameters": { "class": "BallControl" } },
+				{ "command": "script.add", "entityName": "Ball", "parameters": { "class": "BallControl" } },
+				{ "command": "script.get", "entityName": "Ball", "parameters": { "class": "BallControl" },
+					"checks": [ { "pointer": "/scripts/0/fields/PushStrength", "equals": 12 }, { "pointer": "/scripts/0/fields/MaxSpeed", "equals": 8 } ] },
+				{ "command": "component.set", "entityName": "Ball",
+					"parameters": { "component": "RigidBody", "values": { "Friction": 0.6, "Restitution": 0.3, "LinearDamping": 0.5, "AngularDamping": 0.5, "ContinuousCollision": true } } },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 1 }, "bind": { "before": "/messages/0/sequence" } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 120 }, "expect": { "/stepsRun": { "equals": 120 } } },
+				{ "command": "log.read", "parameters": { "after": { "$ref": "before" }, "minLevel": "Warn" },
+					"checks": [ { "pointer": "/messages", "length": 0 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"files": [ { "from": "book:tutorials/make/physics/step3/BallControl.cpp", "to": "Scripts/BallControl.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 120 }, "expect": { "/stepsRun": { "equals": 120 } } },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"files": [ { "from": "book:tutorials/make/physics/step4/Coin.cpp", "to": "Scripts/Coin.cpp" } ],
+			"commands": [
+				{ "command": "prefab.instantiate", "parameters": { "prefab": "Prefabs/Coin.stprefab", "components": { "Transform": { "Translation": [0, 1, 4] } } }, "bind": { "coin": "/id" } },
+				{ "command": "component.add", "parameters": { "entity": { "$ref": "coin" }, "component": "SphereCollider" } },
+				{ "command": "component.add", "parameters": { "entity": { "$ref": "coin" }, "component": "RigidBody" } },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "coin" }, "component": "RigidBody", "values": { "Type": "Kinematic", "IsTrigger": true } } },
+				{ "command": "prefab.apply", "parameters": { "entity": { "$ref": "coin" } } },
+				{ "command": "entity.delete", "parameters": { "entities": [ { "$ref": "coin" } ] } },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 5,
+			"files": [ { "from": "book:tutorials/make/physics/step5/GhostSwitch.cpp", "to": "Scripts/GhostSwitch.cpp" } ],
+			"commands": [
+				{ "command": "project.setCollisionLayers",
+					"parameters": { "layerNames": { "1": "Ball", "2": "Ghost" }, "layerCollisions": [ { "layers": ["Ball", "Ghost"], "collide": false } ] } },
+				{ "command": "entity.create", "bind": { "wall": "/id" },
+					"parameters": { "name": "GhostWall", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "BoxCollider": { "HalfExtents": [0.5, 0.5, 0.5] }, "Transform": { "Translation": [4, 1, 0], "Scale": [0.5, 2, 4] } } } },
+				{ "command": "component.add", "parameters": { "entity": { "$ref": "wall" }, "component": "RigidBody" } },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "wall" }, "component": "RigidBody", "values": { "Type": "Static", "Layer": "Ghost" } } },
+				{ "command": "component.set", "entityName": "Ball", "parameters": { "component": "RigidBody", "values": { "Layer": "Ball" } } },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "wall" }, "class": "GhostSwitch" } }
+			],
+			"endState": true
+		}
+	]
+}

@@ -1,0 +1,11 @@
+{
+	"figures": [
+		{
+			"id": "recycle-gates",
+			"shows": "Two boxes with the stored contact points and the current relative pose: a move inside the recycle distance keeps the old points, and a stale point past the edge of the lower box shows the price",
+			"caption": "The old contact point stays where it was computed, so after the upper box slides past the edge, a point still seems to hold it up.",
+			"alt": "A side view of a small box on a larger box. A dot marks the contact point computed earlier. The upper box has moved sideways by a few centimetres and now overhangs the edge, while the dot still lies under it, past the lower box's edge.",
+			"kind": "diagram"
+		}
+	]
+}

@@ -1,0 +1,134 @@
+{
+	"figures": [
+		{
+			"id": "specular-aa-compare",
+			"kind": "scene",
+			"shows": "A smooth metal ball with the Showcase's asphalt normal map, hung in the yard at golden hour, with specular anti-aliasing off, then on, and a crop of the ball",
+			"caption": "The same smooth metal ball with a normal map of fine bumps, in the Showcase's yard at golden hour, with the image's own anti-aliasing disabled. Without the widening each pixel tests its one normal against the sun's narrow lobe, and most bumps tilt theirs out of it, so a still frame loses that light and motion makes it blink. With it each pixel's lobe covers its bumps' normals, and the light returns as a wide patch of glints around the sun's spot, whose centre stays white.",
+			"alt": "Two pictures of a mirror-like metal ball with a finely bumped surface, hanging in front of a cliff of yellow sand, a small hut and a green tank. The ball reflects a blue sky above and the dark yard below. In the first picture the low sun is one small bright spot near the middle of the ball. In the second the same spot is surrounded by a wide patch of bright glints that covers much of the middle of the ball.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"camera": {
+				"position": [
+					11.03,
+					7.0,
+					9.03
+				],
+				"target": [
+					4,
+					6,
+					2
+				],
+				"fov": 22
+			},
+			"antiAliasing": "off",
+			"size": [
+				768,
+				768
+			],
+			"quality": "high",
+			"publish": "lossless",
+			"crops": [
+				{
+					"name": "highlight",
+					"rect": [
+						0.35,
+						0.35,
+						0.65,
+						0.65
+					],
+					"scale": 3
+				}
+			],
+			"variants": {
+				"switch-off": {
+					"setup": [
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/BrdfBumpyMetalOff.stmat",
+								"properties": {
+									"BaseColor": [
+										0.9,
+										0.9,
+										0.9,
+										1
+									],
+									"Metallic": 1,
+									"Roughness": 0.03,
+									"NormalMap": "Textures/asphalt_02/asphalt_02_nor_gl_2k.jpg"
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Bumpy Sphere",
+								"components": {
+									"Transform": {
+										"Translation": [
+											4,
+											6,
+											2
+										]
+									},
+									"MeshRenderer": {
+										"Mesh": "0000000000000002",
+										"Material": "Materials/BrdfBumpyMetalOff.stmat"
+									}
+								}
+							}
+						}
+					],
+					"renderer": {
+						"SpecularAntiAliasing": false
+					}
+				},
+				"switch-on": {
+					"setup": [
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/BrdfBumpyMetalOn.stmat",
+								"properties": {
+									"BaseColor": [
+										0.9,
+										0.9,
+										0.9,
+										1
+									],
+									"Metallic": 1,
+									"Roughness": 0.03,
+									"NormalMap": "Textures/asphalt_02/asphalt_02_nor_gl_2k.jpg"
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Bumpy Sphere",
+								"components": {
+									"Transform": {
+										"Translation": [
+											4,
+											6,
+											2
+										]
+									},
+									"MeshRenderer": {
+										"Mesh": "0000000000000002",
+										"Material": "Materials/BrdfBumpyMetalOn.stmat"
+									}
+								}
+							}
+						}
+					],
+					"renderer": {
+						"SpecularAntiAliasing": true
+					}
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,8 @@
+# Part review: image/taa
+
+- wrong: the :::why aside said the point and spot lights' shadow filter still turns its noise with the TAA frame; at the pin `LocalShadowSampleRotation` (Strata/shaders/Include/LocalShadows.slang) is fixed per pixel, so only the Checkerboard reflections bend the rule.
+- wrong: Exercise 2's answer put `noiseTurn` on lines 3116 and 3117 (3250 and 3251 at the pin) and named `Include/LocalShadows.slang` as a reader of `TemporalParams.z`; the only reader is the screen-space reflections, and both shadow filters use fixed noise.
+- unclear: the hand example spoke of "the bar's right edge" covering 0.3 of a pixel, while the toy's bar covers 0.7 of its edge pixels; it now speaks of a bar's edge in general.
+
+Checked without change: the Halton phases and the hand average (0.375), the toy's output and callouts, the jitter and frame-constant quotes, the camera cut (10 units, cosine 0.7071), the history rules, 8 by 8 groups, the Catmull-Rom weights at 0.5, the variance-clip example (0.554), the blend, resampling and luminance-weight numbers, the disocclusion example, the sharpening exponent 8 and its two amounts, the preset table against `c_TAAOriginalSettings` and `c_TAASharpSettings`, the Manual's limits (17 frames, half and three quarters), settle frames and thumbnails, the Developer Guide's `TonemapParameters::Sharpening`, the test names of `GPU.SceneRenderer.TAA` and `Renderer.TAASharpening`.
+Not a page fault: pagecheck's figures step fails because tools/figures.py's placed_crops counts only ::figure directives, so the ground crops of taa-presets-slow-pan placed by ::compare count as unplaced.

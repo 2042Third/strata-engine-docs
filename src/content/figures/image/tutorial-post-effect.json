@@ -1,0 +1,65 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"kind": "diagram",
+			"shows": "Two frames of 1920 by 1080 pixels side by side: the whole image with the letterbox off, and the same image with a black bar of 138 rows above and below with it on",
+			"caption": "The same frame twice. With the effect on, a black bar covers the top and the bottom, and the picture between the bars is unchanged.",
+			"alt": "Two pictures of a yellow disc on a blue field. The first fills its frame. The second has a black bar across the top and another across the bottom, and the disc and the field between them look the same."
+		},
+		{
+			"id": "lens-group",
+			"kind": "diagram",
+			"shows": "The rows of the Post Process's group Lens in the inspector, in the pin's order (Vignette, Film Grain, Chromatic Aberration, Lens Flare), then the switch and the aspect field the change adds below Lens Flare, the aspect dimmed while the switch is off, and the next group, Motion",
+			"caption": "A drawing of the Lens group of the inspector, not a picture of the editor. Four rows are there before your change, and your switch and aspect field join them below Lens Flare, before the Motion group.",
+			"alt": "A panel headed Lens with the rows Vignette, Film Grain, Chromatic Aberration and Lens Flare, marked as the rows before your change. Below a dashed line, marked as what your change adds, come Letterbox with an empty check box and Letterbox Aspect with the value 2.39, gray because the switch is off. The heading Motion closes the panel."
+		},
+		{
+			"id": "editor-letterbox",
+			"kind": "editor",
+			"shows": "The editor built at the pin with the Post Process of the basic3d scene selected and its Lens group open in the Inspector, which ends with Lens Flare and has no letterbox rows yet",
+			"caption": "The Lens group of the Post Process before your change. Lens Flare is its last row, and the switch and the aspect field of the letterbox join the group below it once you build the editor again.",
+			"alt": "The Inspector of the Post Process at its Lens group: the rows Vignette, Film Grain, Chromatic Aberration and, last, Lens Flare.",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-scenes-entities-short.ini",
+				"windowSize": [
+					960,
+					440
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Post Process"
+						},
+						"bind": {
+							"post": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "post"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Inspector"
+						}
+					}
+				]
+			},
+			"waitsFor": "tier 3: a command that scrolls the Inspector to a section or property; editor.screenshot shows only the top of the panel, and the Post Process's group Lens begins about 2000 px below it, lower than the tallest window this display holds (1280 x 2130)",
+			"standIn": "lens-group"
+		}
+	]
+}

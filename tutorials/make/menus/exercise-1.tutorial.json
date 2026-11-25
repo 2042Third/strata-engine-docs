@@ -1,0 +1,31 @@
+{
+	"page": "make/menus",
+	"startsFrom": {
+		"tutorial": "make/menus"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"files": [ { "from": "book:tutorials/make/menus/exercise-1-SettingsMenu.cpp", "to": "Scripts/SettingsMenu.cpp" } ],
+			"commands": [
+				{ "command": "scene.open", "parameters": { "scene": "Scenes/MainMenu.stscene" } },
+				{ "command": "entity.find", "parameters": { "name": "SettingsPanel" }, "bind": { "panel": "/entities/0" }, "checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "entity.find", "parameters": { "name": "SettingsColumn" }, "bind": { "column": "/entities/0" }, "checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "entity.find", "parameters": { "name": "Settings" }, "bind": { "opener": "/entities/0" }, "checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "ui.create", "parameters": { "type": "button", "name": "Back", "parent": { "$ref": "column" }, "text": "Back", "size": [480, 50] },
+					"bind": { "back": "/entity" } },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "back" }, "component": "UIButton", "values": { "EventTarget": { "$ref": "panel" } } } },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.setField", "parameters": { "entity": { "$ref": "panel" }, "class": "SettingsMenu", "field": "OpenedFrom", "value": { "$ref": "opener" } } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 2 }, "expect": { "/stepsRun": { "equals": 2 } } },
+				{ "command": "input.click", "parameters": { "entity": { "$ref": "back" }, "wait": false } },
+				{ "command": "play.step", "parameters": { "steps": 3 } },
+				{ "command": "ui.layout", "parameters": { "entity": { "$ref": "panel" } }, "checks": [ { "pointer": "/elements/0/visible", "equals": false } ] },
+				{ "command": "ui.layout", "parameters": { "entity": { "$ref": "opener" } }, "checks": [ { "pointer": "/elements/0/focused", "equals": true } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		}
+	]
+}

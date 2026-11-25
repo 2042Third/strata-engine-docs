@@ -1,0 +1,35 @@
+{
+	"figures": [
+		{
+			"id": "scale-pair",
+			"kind": "editor",
+			"shows": "The default editor layout with the Showcase sample open, once at a UI scale of 1 and once at a UI scale of 2",
+			"caption": "The same layout at the normal scale and at the doubled scale. The text, paddings and borders double and the text stays sharp, while the panels keep the sizes the layout gives them, so each holds less.",
+			"alt": "Two pictures of the editor's default window layout. The first has a small interface. The second has the same panels with text, paddings and buttons twice as large.",
+			"project": { "sample": "Showcase" },
+			"editorWindow": {
+				"layout": "layouts/editor-shell-default.ini",
+				"windowSize": [960, 540],
+				"steps": []
+			},
+			"variants": {
+				"hundred": {
+					"editorWindow": { "layout": "layouts/editor-shell-default.ini", "windowSize": [960, 540], "steps": [] }
+				},
+				"double": {
+					"editorWindow": { "layout": "layouts/editor-shell-default.ini", "windowSize": [960, 540], "steps": [] }
+				}
+			},
+			"waitsFor": "tier 3: the editor drawn at a UI scale of 2; take starts every editor with --ui-scale 1, which wins over the preference, and no command sets the scale",
+			"standIn": "scale-rows"
+		},
+		{
+			"id": "scale-rows",
+			"kind": "diagram",
+			"numbers": "From the pin: body text 14 (StrataEditor/src/UI/EditorFonts.h, TextSize::Body); WindowPadding 8, FramePadding 8 and 4, ItemSpacing.y 6 and FrameRounding 4 (SetBaseSizes in StrataEditor/src/UI/Theme.cpp). A row is the text plus the frame padding twice plus the spacing: 14 + 8 + 6 = 28 at UI scale 1 and 56 at 2. The panel of 304 by 248 pixels holds (248 - 16 + 6) / 28 = 8.5, so eight rows at 1, and (248 - 32 + 12) / 56 = 4.07, so four rows at 2.",
+			"shows": "One panel of 304 by 248 pixels holding a column of labels with a field beside each, drawn to scale from the theme's sizes at UI scale 1 (body text 14, frame padding 8 and 4, row 28: eight rows fit) and at UI scale 2 (every size doubled, row 56: four rows fit)",
+			"caption": "One panel of fields at a UI scale of 1 and of 2, drawn to scale in pixels. At 2 the text, the paddings, the gaps and the rounding of the fields double, while the panel keeps its size, so it holds four rows where it held eight.",
+			"alt": "Two panels of the same size side by side, each a column of labels with a rounded field box beside each label. The left panel, at UI scale 1, holds eight rows of small text, 28 pixels apart. The right panel, at UI scale 2, holds the first four of those rows with text, boxes and gaps twice as large, 56 pixels apart. Lines below each panel give its text size, frame padding and row height."
+		}
+	]
+}

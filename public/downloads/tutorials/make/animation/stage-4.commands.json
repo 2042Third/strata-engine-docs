@@ -1,0 +1,181 @@
+[
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"robot": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Player"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"class": "PlayerAnimation",
+			"fields": {
+				"Robot": {
+					"$ref": "robot"
+				}
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Player"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"class": "PlayerController",
+			"field": "WalkSpeed",
+			"value": 3,
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "animation.setController",
+		"parameters": {
+			"controller": "Animations/Player.stanimator",
+			"parameters": [
+				{
+					"Name": "Speed",
+					"Type": "Float",
+					"Default": 0
+				},
+				{
+					"Name": "Grounded",
+					"Type": "Bool",
+					"Default": true
+				}
+			]
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 10
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 10
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "animation.info",
+		"parameters": {
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "W",
+			"steps": 90
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 60
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 60
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "animation.info",
+		"parameters": {
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 60
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 60
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.5": "/entities/0"
+		}
+	},
+	{
+		"command": "animation.info",
+		"parameters": {
+			"entity": {
+				"$ref": "entityName.5"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

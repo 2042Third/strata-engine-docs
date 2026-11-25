@@ -1,0 +1,110 @@
+{
+	"figures": [
+		{
+			"id": "graphics-quality-page",
+			"kind": "editor",
+			"shows": "The Graphics Quality page of the Project Settings panel with the preset chips, the table of rows by presets and the memory lines",
+			"caption": "The Graphics Quality page puts the presets side by side: the chosen column is highlighted, the Custom column can be edited, and the memory of each row sits under the table.",
+			"alt": "The Project Settings panel on its Graphics Quality page. Five chips name the presets. Below them a table lists the quality rows with one column for each preset, and two lines show the memory at two resolutions.",
+			"project": { "template": "basic3d" },
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"panel": "ProjectSettings",
+				"steps": [
+					{ "command": "editor.showPanel", "parameters": { "panel": "ProjectSettings" } }
+				]
+			},
+			"waitsFor": "tier 3: the Graphics Quality page of Project Settings; no command selects a Project Settings page (editor.showPanel takes no page, and the panel opens on Game)",
+			"standIn": "graphics-quality-table"
+		},
+		{
+			"id": "graphics-quality-table",
+			"kind": "diagram",
+			"shows": "The Graphics Quality page under the default preset, drawn from its code: the preset chips, the table with its first five rows, the highlighted chosen column, the Custom column's fields, the memory lines and the players' choices",
+			"caption": "A drawing of the Graphics Quality page under the default preset, High: its chip is on and its column is highlighted, the Custom column holds fields, and the memory lines close the table.",
+			"alt": "A row of five chips, Low, Medium, High, Ultra and Custom, with High on, stands above a table with a row for each setting and a column for each preset. The first five of the 16 rows are drawn, from Shadow resolution to Shadowed point and spot lights, with a note of the other eleven. The High column is highlighted, and the Custom column holds a field in each row with High's values, dimmed. Two lines for each column's total memory at 1920 x 1080 and at 3840 x 2160 close the table, with one dashed value for each column. Under the table the players' choices list Anti-aliasing, Motion blur, Depth of field, Film grain and Chromatic aberration, and numbered notes name the parts.",
+			"numbers": "Chips, columns, the chosen column on AccentMuted, Custom's widgets in secondary text under a named preset, the memory lines and Players' choices: StrataEditor/src/UI/GraphicsQualityPage.cpp (Draw, DrawPresets, DrawTable, DrawChoices). Row titles and preset values: Strata/src/Strata/Renderer/RendererQuality.cpp (c_*Row, c_RowTraits: 16 rows follow the preset, 5 do not; the section's fields and titles)."
+		},
+		{
+			"id": "collision-layers-matrix",
+			"kind": "editor",
+			"shows": "The Collision Layers page with the names of three layers and the matrix of which pairs collide",
+			"caption": "The matrix shows only the first layer, the named layers and the layers with a pair that does not collide, so a project with a few layers draws a small table.",
+			"alt": "The Project Settings panel on its Collision Layers page. A summary line and a list of layer names stand above a matrix of check boxes in a triangle, one for each pair of shown layers.",
+			"project": { "template": "basic3d" },
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"panel": "ProjectSettings",
+				"steps": [
+					{ "command": "project.setCollisionLayers", "parameters": { "layerNames": { "1": "Player", "2": "Enemy" } } },
+					{ "command": "editor.showPanel", "parameters": { "panel": "ProjectSettings" } }
+				]
+			},
+			"waitsFor": "tier 3: the Collision Layers page of Project Settings; no command selects a Project Settings page (editor.showPanel takes no page, and the panel opens on Game)",
+			"standIn": "collision-layers-table"
+		},
+		{
+			"id": "collision-layers-table",
+			"kind": "diagram",
+			"shows": "The Collision Layers page of a project with three named layers and two cleared pairs, drawn from its code: the summary, the name fields and the matrix with the layers it shows",
+			"caption": "A drawing of the Collision Layers page for three named layers: the matrix shows the first layer, the named ones and a layer without a name that has a cleared pair, and hides the rest.",
+			"alt": "A summary line reads 3 named, 2 pairs pass through. Three name fields hold Player, Enemy and Coin for layers 1 to 3, each with a clear button, above a Name a Layer button. Under the heading Which layers collide, a triangle of check boxes has rows and columns for layers 0, 1, 2, 3 and 5. Two boxes are cleared and drawn in orange: Enemy with Coin, and Player with Layer 5. Notes say that layer 0 is always shown, that layer 5 shows because of its cleared pair, and that layers 4 and 6 to 31 collide with every layer and have no row.",
+			"numbers": "Summary text, shown layers, labels and the triangle of boxes: StrataEditor/src/UI/CollisionLayersPage.cpp (Describe, DrawNames, DrawMatrix); unnamed layers read Layer <n>: Strata/src/Strata/Scene/PhysicsLayerSettings.cpp (GetDisplayName). The project (three names, two cleared pairs) is an example."
+		},
+		{
+			"id": "capture-listening",
+			"kind": "editor",
+			"shows": "The Input Actions page while a capture listens, with the countdown line and the Cancel button",
+			"caption": "While a capture listens, the page shows what it waits for, the seconds left and a Cancel button, and the rest of the editor ignores the keyboard.",
+			"alt": "The Project Settings panel on its Input Actions page. Under an action's binding chips a line asks for a key, mouse button or gamepad control and counts down seconds, with a Cancel button beside it.",
+			"project": { "sample": "ThirdPerson" },
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"panel": "ProjectSettings",
+				"steps": [
+					{ "command": "editor.showPanel", "parameters": { "panel": "ProjectSettings" } }
+				]
+			},
+			"waitsFor": "tier 3: the Input Actions page of Project Settings with a capture listening; no command selects a Project Settings page or starts a binding capture (only a click of the page's capture button does)",
+			"standIn": "capture-listening-line"
+		},
+		{
+			"id": "capture-listening-line",
+			"kind": "diagram",
+			"shows": "The Input Actions page while a capture listens for the ThirdPerson sample's Jump action, drawn from its code: the binding chips, the line with the seconds left and the Cancel button",
+			"caption": "A drawing of the Input Actions page while a capture listens for the Jump action: the line with the seconds left and the Cancel button stand where the buttons that add a binding were.",
+			"alt": "Under the heading Actions of Gameplay stands the Jump action: its name field, its kind Button, and its bindings as two chips, Key/Space and Gamepad/A. Below the chips a blue line reads Press a key, mouse button or gamepad control to bind (7 s), with a Cancel button under it. Notes say that the capture ends with no binding after ten seconds, and that a press on Cancel cancels instead of binding the left mouse button. They also say that the first control pressed becomes a third binding, and that the editor's shortcuts, focus moves and fields see no key meanwhile.",
+			"numbers": "Rows, chips, the line's text in the accent and Cancel with its kept rectangle: StrataEditor/src/UI/InputActionsPage.cpp (DrawActions, DrawBindings, DrawCaptureListening, AddBinding); ten seconds and the held keyboard: StrataEditor/src/UI/BindingCapture.cpp (c_TimeoutSeconds, HoldKeyboard). Jump's bindings: Samples/ThirdPerson/ThirdPerson.stproj. The seconds shown, 7, are an example."
+		},
+		{
+			"id": "preferences-interface",
+			"kind": "editor",
+			"shows": "The Preferences dialog on its Interface page, a generated page with the title, the section's description, the Scale list at Automatic and the dimmed Reset to Defaults button",
+			"caption": "The Interface page is generated from the fields of its section: a title, a line that describes the section, a list for the scale and the Reset to Defaults button. The button is dimmed because no value is stored yet.",
+			"alt": "The Preferences dialog over the editor. On the left a search field and the pages in two groups: External Editor under Scripts, then Interface and Frame Rate under Editor, with Interface selected. On the right the title Interface, one line of description, a Scale row whose list reads Automatic, and a dimmed Reset to Defaults button. A Close button sits at the bottom right.",
+			"project": { "template": "basic3d" },
+			"editorWindow": {
+				"layout": "layouts/dialogs.ini",
+				"windowSize": [960, 540],
+				"steps": [
+					{ "command": "editor.showDialog", "parameters": { "dialog": "preferences", "section": "Editor.Interface" } }
+				]
+			}
+		},
+		{
+			"id": "preferences-frame-rate",
+			"kind": "editor",
+			"shows": "The Preferences dialog on its Frame Rate page with its four default fields: Idle after 0.5 seconds, the idle frame rate 30, the idle frame rate in the background 10 and the active frame rate Unlimited",
+			"caption": "The Frame Rate page is generated too. A number field holds the seconds before the editor counts as idle, and three lists hold the frame rates of the idle editor, the idle editor in the background and the active editor.",
+			"alt": "The Preferences dialog with the Frame Rate page selected. Two lines of description stand under the title. Four rows hold the defaults: Idle after (seconds) 0.5, Idle frame rate 30, Idle frame rate in the background 10 and Active frame rate Unlimited. A dimmed Reset to Defaults button stands below them.",
+			"project": { "template": "basic3d" },
+			"editorWindow": {
+				"layout": "layouts/dialogs.ini",
+				"windowSize": [960, 540],
+				"steps": [
+					{ "command": "editor.showDialog", "parameters": { "dialog": "preferences", "section": "Editor.FrameRate" } }
+				]
+			}
+		}
+	]
+}

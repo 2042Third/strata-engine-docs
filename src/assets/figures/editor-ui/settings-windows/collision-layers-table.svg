@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 508">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!--
+Plan. A project with layers 1 Player, 2 Enemy and 3 Coin named, where Enemy and Coin pass through each other and so do
+Player and layer 5. Summary at y 32; the names, rows of 36 from y 48 (label x 24, field x 100 to 320, clear button
+at 340); Name a Layer at y 160 to 188. "Which layers collide" at y 222; header y 232 to 256 (column centers 148 + 32 i);
+rows of 32 from 256 to 416: shown layers 0, 1, 2, 3, 5. Notes at x 316 beside the rows; under the matrix from y 444.
+H = 488 + 20.
+Facts (StrataEditor/src/UI/CollisionLayersPage.cpp at 319075e3): Describe makes "3 named · 2 pairs pass through" and
+shows layer 0, the named layers and those that do not collide with all; labels "<index> · <name>", unnamed
+"Layer <index>" (PhysicsLayerSettings::GetDisplayName); a box for each pair once, the row's layer with every shown
+layer up to it; a cleared box lets the pair pass through each other.
+-->
+<text x="24" y="32" class="ink">3 named · 2 pairs pass through</text>
+<text x="24" y="69" class="ink small">Layer 1</text>
+<rect x="100" y="52" width="220" height="26" rx="3" class="plate line-faint"/>
+<text x="108" y="70" class="ink small">Player</text>
+<text x="340" y="70" text-anchor="middle" class="muted">×</text>
+<text x="24" y="105" class="ink small">Layer 2</text>
+<rect x="100" y="88" width="220" height="26" rx="3" class="plate line-faint"/>
+<text x="108" y="106" class="ink small">Enemy</text>
+<text x="340" y="106" text-anchor="middle" class="muted">×</text>
+<text x="24" y="141" class="ink small">Layer 3</text>
+<rect x="100" y="124" width="220" height="26" rx="3" class="plate line-faint"/>
+<text x="108" y="142" class="ink small">Coin</text>
+<text x="340" y="142" text-anchor="middle" class="muted">×</text>
+<rect x="24" y="160" width="124" height="28" rx="4" class="plate line-faint"/>
+<text x="86" y="179" text-anchor="middle" class="ink small">Name a Layer</text>
+<line x1="368" y1="54" x2="368" y2="150" class="line-muted"/>
+<line x1="362" y1="54" x2="368" y2="54" class="line-muted"/>
+<line x1="362" y1="150" x2="368" y2="150" class="line-muted"/>
+<text x="384" y="92" class="ink small">The named layers, edited in place: a name applies</text>
+<text x="384" y="112" class="ink small">when its field is left or Enter is pressed.</text>
+<text x="24" y="222" class="muted small">Which layers collide</text>
+<text x="148" y="250" text-anchor="middle" class="muted small mono">0</text>
+<text x="180" y="250" text-anchor="middle" class="muted small mono">1</text>
+<text x="212" y="250" text-anchor="middle" class="muted small mono">2</text>
+<text x="244" y="250" text-anchor="middle" class="muted small mono">3</text>
+<text x="276" y="250" text-anchor="middle" class="muted small mono">5</text>
+<text x="24" y="277" class="ink small">0 · Layer 0</text>
+<rect x="138" y="262" width="20" height="20" rx="3" class="plate line-muted"/>
+<polyline points="143,272 147,276 154,267" class="line-ink" fill="none" stroke-width="2"/>
+<text x="24" y="309" class="ink small">1 · Player</text>
+<rect x="138" y="294" width="20" height="20" rx="3" class="plate line-muted"/>
+<polyline points="143,304 147,308 154,299" class="line-ink" fill="none" stroke-width="2"/>
+<rect x="170" y="294" width="20" height="20" rx="3" class="plate line-muted"/>
+<polyline points="175,304 179,308 186,299" class="line-ink" fill="none" stroke-width="2"/>
+<text x="24" y="341" class="ink small">2 · Enemy</text>
+<rect x="138" y="326" width="20" height="20" rx="3" class="plate line-muted"/>
+<polyline points="143,336 147,340 154,331" class="line-ink" fill="none" stroke-width="2"/>
+<rect x="170" y="326" width="20" height="20" rx="3" class="plate line-muted"/>
+<polyline points="175,336 179,340 186,331" class="line-ink" fill="none" stroke-width="2"/>
+<rect x="202" y="326" width="20" height="20" rx="3" class="plate line-muted"/>
+<polyline points="207,336 211,340 218,331" class="line-ink" fill="none" stroke-width="2"/>
+<text x="24" y="373" class="ink small">3 · Coin</text>
+<rect x="138" y="358" width="20" height="20" rx="3" class="plate line-muted"/>
+<polyline points="143,368 147,372 154,363" class="line-ink" fill="none" stroke-width="2"/>
+<rect x="170" y="358" width="20" height="20" rx="3" class="plate line-muted"/>
+<polyline points="175,368 179,372 186,363" class="line-ink" fill="none" stroke-width="2"/>
+<rect x="202" y="358" width="20" height="20" rx="3" class="ground line-orange" stroke-width="2"/>
+<rect x="234" y="358" width="20" height="20" rx="3" class="plate line-muted"/>
+<polyline points="239,368 243,372 250,363" class="line-ink" fill="none" stroke-width="2"/>
+<text x="24" y="405" class="ink small">5 · Layer 5</text>
+<rect x="138" y="390" width="20" height="20" rx="3" class="plate line-muted"/>
+<polyline points="143,400 147,404 154,395" class="line-ink" fill="none" stroke-width="2"/>
+<rect x="170" y="390" width="20" height="20" rx="3" class="ground line-orange" stroke-width="2"/>
+<rect x="202" y="390" width="20" height="20" rx="3" class="plate line-muted"/>
+<polyline points="207,400 211,404 218,395" class="line-ink" fill="none" stroke-width="2"/>
+<rect x="234" y="390" width="20" height="20" rx="3" class="plate line-muted"/>
+<polyline points="239,400 243,404 250,395" class="line-ink" fill="none" stroke-width="2"/>
+<rect x="266" y="390" width="20" height="20" rx="3" class="plate line-muted"/>
+<polyline points="271,400 275,404 282,395" class="line-ink" fill="none" stroke-width="2"/>
+<text x="316" y="277" class="ink small">Layer 0, where every body starts: always shown</text>
+<line x1="304" y1="292" x2="304" y2="380" class="line-muted"/>
+<line x1="298" y1="292" x2="304" y2="292" class="line-muted"/>
+<line x1="298" y1="380" x2="304" y2="380" class="line-muted"/>
+<text x="316" y="341" class="ink small">The named layers</text>
+<text x="316" y="405" class="ink small">Layer 5 has no name but passes through Player</text>
+<text x="24" y="444" class="orange small">Cleared boxes, drawn in orange: Enemy and Coin pass through each other, and so do</text>
+<text x="24" y="464" class="orange small">Player and Layer 5.</text>
+<text x="24" y="488" class="ink small">Layers 4 and 6 to 31 collide with every layer, so no row shows them.</text>
+</svg>

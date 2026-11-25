@@ -1,0 +1,40 @@
+{
+	"page": "make/project-coin-run",
+	"startsFrom": { "tutorial": "make/project-coin-run" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "entity.find", "parameters": { "name": "HUD" }, "bind": { "hud": "/entities/0" } },
+				{ "command": "ui.create", "parameters": { "type": "text", "parent": { "$ref": "hud" }, "name": "ScoreText", "text": "Score: 0", "anchor": "topCenter", "position": [0, 24], "size": [360, 48] } },
+				{ "command": "prefab.instantiate", "bind": { "big": "/id" },
+					"parameters": { "prefab": "Prefabs/Coin.stprefab", "components": { "Transform": { "Translation": [0, 0.8, -3] }, "Tag": { "Tag": "BigCoin" } } } },
+				{ "command": "scene.save" },
+				{ "command": "script.build", "files": [ { "from": "book:tutorials/make/project-coin-run/exercise-1/CoinRunGame.cpp", "to": "Scripts/CoinRunGame.cpp" } ],
+					"expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "entity.find", "parameters": { "name": "ScoreText" }, "checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "entity.find", "parameters": { "tag": "BigCoin" }, "checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "component.get", "entityName": "CoinText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Text", "equals": "Coins left: 6" } ] },
+				{ "command": "component.get", "entityName": "ScoreText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Text", "equals": "Score: 0" } ] },
+				{ "command": "entity.find", "parameters": { "tag": "Coin" }, "bind": { "small": "/entities" },
+					"checks": [ { "pointer": "/entities", "length": 5 } ] },
+				{ "command": "entity.delete", "parameters": { "entities": { "$ref": "small" } } },
+				{ "command": "play.step", "parameters": { "steps": 2 }, "expect": { "/stepsRun": { "equals": 2 } } },
+				{ "command": "component.get", "entityName": "ScoreText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Text", "equals": "Score: 5" } ] },
+				{ "command": "entity.get", "entityName": "WinPanel", "checks": [ { "pointer": "/active", "equals": false } ] },
+				{ "command": "entity.find", "parameters": { "tag": "BigCoin" }, "bind": { "bigrunning": "/entities/0" } },
+				{ "command": "entity.delete", "parameters": { "entities": [ { "$ref": "bigrunning" } ] } },
+				{ "command": "play.step", "parameters": { "steps": 2 }, "expect": { "/stepsRun": { "equals": 2 } } },
+				{ "command": "component.get", "entityName": "ScoreText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Text", "equals": "Score: 10" } ] },
+				{ "command": "entity.get", "entityName": "WinPanel", "checks": [ { "pointer": "/active", "equals": true } ] },
+				{ "command": "play.stop" }
+			]
+		}
+	]
+}

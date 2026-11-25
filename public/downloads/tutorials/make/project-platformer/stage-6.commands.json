@@ -1,0 +1,796 @@
+[
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "canvas",
+			"name": "HUD"
+		},
+		"bind": {
+			"hud": "/entity"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "hud"
+			},
+			"component": "UICanvas",
+			"values": {
+				"ReceivesInput": false
+			}
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "text",
+			"parent": {
+				"$ref": "hud"
+			},
+			"name": "CoinsText",
+			"text": "0 / 8",
+			"anchor": "topLeft",
+			"position": [
+				24,
+				24
+			],
+			"size": [
+				240,
+				48
+			]
+		},
+		"bind": {
+			"coinsText": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "text",
+			"parent": {
+				"$ref": "hud"
+			},
+			"name": "TimeText",
+			"text": "0:00.0",
+			"anchor": "topRight",
+			"position": [
+				-24,
+				24
+			],
+			"size": [
+				240,
+				48
+			]
+		},
+		"bind": {
+			"timeText": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "panel",
+			"parent": {
+				"$ref": "hud"
+			},
+			"name": "Complete",
+			"anchor": "middleCenter",
+			"size": [
+				640,
+				360
+			]
+		},
+		"bind": {
+			"complete": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "text",
+			"parent": {
+				"$ref": "complete"
+			},
+			"name": "CompleteTime",
+			"text": "Time",
+			"anchor": "topCenter",
+			"position": [
+				0,
+				90
+			],
+			"size": [
+				600,
+				60
+			]
+		},
+		"bind": {
+			"completeTime": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "text",
+			"parent": {
+				"$ref": "complete"
+			},
+			"name": "CompleteBest",
+			"text": "Best",
+			"anchor": "topCenter",
+			"position": [
+				0,
+				170
+			],
+			"size": [
+				600,
+				60
+			]
+		},
+		"bind": {
+			"completeBest": "/entity"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Game"
+		},
+		"bind": {
+			"game": "/id"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "game"
+			},
+			"class": "CourseState",
+			"fields": {
+				"CoinsText": {
+					"$ref": "coinsText"
+				},
+				"TimeText": {
+					"$ref": "timeText"
+				},
+				"CompletePanel": {
+					"$ref": "complete"
+				},
+				"CompleteTimeText": {
+					"$ref": "completeTime"
+				},
+				"CompleteBestText": {
+					"$ref": "completeBest"
+				},
+				"CoinSound": "Sounds/Coin.ogg",
+				"CompleteSound": "Sounds/Complete.ogg"
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 2
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "coinsText"
+			},
+			"component": "UIText"
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Coin",
+			"components": {
+				"SphereCollider": {
+					"Radius": 0.7
+				},
+				"RigidBody": {
+					"Type": "Static",
+					"IsTrigger": true
+				},
+				"Tag": {
+					"Tag": "Coin"
+				}
+			}
+		},
+		"bind": {
+			"coin": "/id"
+		}
+	},
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Models/Platformer/coin-gold/coin-gold.glb",
+			"point": [
+				0,
+				0,
+				0
+			]
+		},
+		"bind": {
+			"coinModel": "/id"
+		}
+	},
+	{
+		"command": "entity.setParent",
+		"parameters": {
+			"entity": {
+				"$ref": "coinModel"
+			},
+			"parent": {
+				"$ref": "coin"
+			},
+			"keepWorldTransform": false
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "coin"
+			},
+			"class": "Coin"
+		}
+	},
+	{
+		"command": "prefab.create",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "coin"
+				}
+			],
+			"path": "Prefabs/Coin.stprefab"
+		}
+	},
+	{
+		"command": "entity.delete",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "coin"
+				}
+			]
+		}
+	},
+	{
+		"command": "prefab.instantiate",
+		"parameters": {
+			"prefab": "Prefabs/Coin.stprefab",
+			"instances": [
+				{
+					"components": {
+						"Transform": {
+							"Translation": [
+								2,
+								1,
+								0
+							]
+						}
+					}
+				},
+				{
+					"components": {
+						"Transform": {
+							"Translation": [
+								0,
+								1,
+								-12
+							]
+						}
+					}
+				},
+				{
+					"components": {
+						"Transform": {
+							"Translation": [
+								4,
+								1,
+								-12
+							]
+						}
+					}
+				},
+				{
+					"components": {
+						"Transform": {
+							"Translation": [
+								2,
+								1,
+								-21
+							]
+						}
+					}
+				},
+				{
+					"components": {
+						"Transform": {
+							"Translation": [
+								0,
+								1,
+								-28
+							]
+						}
+					}
+				},
+				{
+					"components": {
+						"Transform": {
+							"Translation": [
+								4,
+								1,
+								-28
+							]
+						}
+					}
+				},
+				{
+					"components": {
+						"Transform": {
+							"Translation": [
+								0,
+								7,
+								-40
+							]
+						}
+					}
+				},
+				{
+					"components": {
+						"Transform": {
+							"Translation": [
+								4,
+								7,
+								-40
+							]
+						}
+					}
+				}
+			]
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"tag": "Coin"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "JumpPad",
+			"components": {
+				"Transform": {
+					"Translation": [
+						2,
+						0,
+						-29
+					]
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.8,
+						0.5,
+						0.8
+					],
+					"Offset": [
+						0,
+						0.5,
+						0
+					]
+				},
+				"RigidBody": {
+					"Type": "Static",
+					"IsTrigger": true
+				},
+				"Tag": {
+					"Tag": "JumpPad"
+				}
+			}
+		},
+		"bind": {
+			"pad": "/id"
+		}
+	},
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Models/Platformer/spring/spring.glb",
+			"point": [
+				0,
+				0,
+				0
+			]
+		},
+		"bind": {
+			"spring": "/id"
+		}
+	},
+	{
+		"command": "entity.setParent",
+		"parameters": {
+			"entity": {
+				"$ref": "spring"
+			},
+			"parent": {
+				"$ref": "pad"
+			},
+			"keepWorldTransform": false
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "pad"
+			},
+			"class": "JumpPad",
+			"fields": {
+				"BounceSound": "Sounds/Bounce.ogg"
+			}
+		}
+	},
+	{
+		"command": "prefab.create",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "pad"
+				}
+			],
+			"path": "Prefabs/JumpPad.stprefab"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Checkpoint1",
+			"components": {
+				"Transform": {
+					"Translation": [
+						2,
+						0,
+						-12
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Checkpoint2",
+			"components": {
+				"Transform": {
+					"Translation": [
+						2,
+						0,
+						-28
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Goal",
+			"components": {
+				"Transform": {
+					"Translation": [
+						2,
+						6,
+						-40
+					]
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						1.4,
+						1.5,
+						1.4
+					],
+					"Offset": [
+						0,
+						1.5,
+						0
+					]
+				},
+				"RigidBody": {
+					"Type": "Static",
+					"IsTrigger": true
+				},
+				"Tag": {
+					"Tag": "Goal"
+				}
+			}
+		},
+		"bind": {
+			"goal": "/id"
+		}
+	},
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Models/Platformer/flag/flag.glb",
+			"point": [
+				0,
+				0,
+				0
+			]
+		},
+		"bind": {
+			"flag": "/id"
+		}
+	},
+	{
+		"command": "entity.setParent",
+		"parameters": {
+			"entity": {
+				"$ref": "flag"
+			},
+			"parent": {
+				"$ref": "goal"
+			},
+			"keepWorldTransform": false
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "goal"
+			},
+			"class": "Goal"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Player"
+		},
+		"bind": {
+			"player": "/entities/0"
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "physics.stats",
+		"expect": {
+			"/waitingForMeshes": {
+				"equals": false
+			}
+		},
+		"until": {
+			"seconds": 60
+		}
+	},
+	{
+		"command": "play.pause",
+		"parameters": {
+			"paused": true
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"entity": {
+				"$ref": "game"
+			},
+			"class": "CourseState"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "coinsText"
+			},
+			"component": "UIText"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "player"
+			},
+			"component": "Transform",
+			"values": {
+				"Translation": [
+					0,
+					0.1,
+					-12
+				]
+			}
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 30
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"entity": {
+				"$ref": "game"
+			},
+			"class": "CourseState"
+		},
+		"expect": {
+			"/scripts/0/fields/Coins": {
+				"min": 1
+			}
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"entity": {
+				"$ref": "player"
+			},
+			"class": "ThirdPersonPlayer"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "player"
+			},
+			"component": "Transform",
+			"values": {
+				"Translation": [
+					2,
+					-20,
+					-12
+				]
+			}
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 5
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "player"
+			},
+			"component": "Transform"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "player"
+			},
+			"component": "Transform",
+			"values": {
+				"Translation": [
+					2,
+					0.1,
+					-29
+				]
+			}
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 30
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "player"
+			},
+			"component": "Transform"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "player"
+			},
+			"component": "Transform",
+			"values": {
+				"Translation": [
+					2,
+					6.1,
+					-40
+				]
+			}
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 30
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"entity": {
+				"$ref": "game"
+			},
+			"class": "CourseState"
+		},
+		"expect": {
+			"/scripts/0/fields/Completed": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "completeBest"
+			},
+			"component": "UIText"
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

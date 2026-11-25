@@ -1,0 +1,6 @@
+# Part review: light/sun-shadows-1 (group 2 of 3)
+
+- wrong: "The limit of five stands in ... the three bits of the sort key": three bits hold eight cascades (`Strata/src/Strata/Renderer/SceneDrawKey.h`, `c_CascadeShift` 61); the limit stands in the shader's constants and the visibility bits (five cascades for each of two frames, `GetCascadeVisibility`), and the sentence now says so.
+- gap: the Summary repeated the four learn lines as instructions and stated nothing; each bullet now gives what the page taught (the splits from 1.5 m and the 7.5 m cap, the 1.178 radius and the texel over the map less 68; lens-only spheres and snapping in double; the cascade bits on both paths; the shadows view's colors and statistics).
+
+Checked at the pin and holding: `c_SplitStart` 1.5, `c_SharedCascades` 4, `c_MaxFirstSplit` 7.5, `c_MaxNearRadius` 2, `c_FilterReachTexels` 33 and the margin of 68, the 64 halvings of `GetRadiusLimit`, `c_MaxCascades` 5, `c_MaxShadowCasterDistance` 100 km, the splits at 80 m and 200 m, `c_ShadowCascadesRow` 3, 4, 5, 5 against the Manual's 3, 4, 4, 4 (`Docs/Manual/Lighting.md:234`: the erratum still holds), the cache key and contents, the occlusion pyramid at a quarter size and the 1-in-16 rule, the shadows view's colors, veil and statistics, `renderStats.cascades` and `cachedCascades`, the files of the functions named and the test suites.

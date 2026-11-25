@@ -1,0 +1,12 @@
+{
+	"page": "make/export",
+	"startsFrom": { "tutorial": "make/export" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "project.exportStatus" }
+			]
+		}
+	]
+}

@@ -1,0 +1,198 @@
+[
+	{
+		"command": "asset.import",
+		"parameters": {
+			"file": "<release folder>/Samples/ThirdPerson/Assets/Models/Platformer/flag.glb",
+			"directory": "Models"
+		}
+	},
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Models/flag/flag.glb",
+			"point": [
+				3,
+				0,
+				0
+			]
+		},
+		"bind": {
+			"flag": "/id"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"robot": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "FlagHolder",
+			"components": {
+				"AttachToJoint": {
+					"Animator": {
+						"$ref": "robot"
+					},
+					"Joint": "Palm2.R"
+				}
+			}
+		},
+		"bind": {
+			"holder": "/id"
+		}
+	},
+	{
+		"command": "entity.setParent",
+		"parameters": {
+			"entity": {
+				"$ref": "flag"
+			},
+			"parent": {
+				"$ref": "holder"
+			},
+			"keepWorldTransform": false
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "flag"
+			},
+			"component": "Transform",
+			"values": {
+				"Translation": [
+					0,
+					0.008,
+					0
+				],
+				"Rotation": [
+					180,
+					0,
+					0
+				],
+				"Scale": [
+					0.035,
+					0.035,
+					0.035
+				]
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "FlagHolder"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 30
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 30
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "FlagHolder"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "W",
+			"steps": 60
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 61
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 61
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Player"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "FlagHolder"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

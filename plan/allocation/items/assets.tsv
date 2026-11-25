@@ -1,0 +1,367 @@
+id	type	heading	label
+assets:38	feature	1.1 Identity: handles, types, metadata, sidecars	Asset handle
+assets:39	feature	1.1 Identity: handles, types, metadata, sidecars	Asset types
+assets:40	feature	1.1 Identity: handles, types, metadata, sidecars	Native extensions
+assets:41	feature	1.1 Identity: handles, types, metadata, sidecars	Asset states and priorities
+assets:42	feature	1.1 Identity: handles, types, metadata, sidecars	Asset base class
+assets:43	feature	1.1 Identity: handles, types, metadata, sidecars	Asset metadata
+assets:44	feature	1.1 Identity: handles, types, metadata, sidecars	`.meta` sidecars
+assets:45	feature	1.1 Identity: handles, types, metadata, sidecars	Sub-assets
+assets:46	feature	1.1 Identity: handles, types, metadata, sidecars	Derived sub-asset handles
+assets:47	feature	1.1 Identity: handles, types, metadata, sidecars	Built-in assets
+assets:48	feature	1.1 Identity: handles, types, metadata, sidecars	Duplicate `.meta` handles
+assets:54	feature	1.2 Registries and module seams (how the asset layer stays at the bottom)	Loader registry
+assets:55	feature	1.2 Registries and module seams (how the asset layer stays at the bottom)	Importer registry
+assets:56	feature	1.2 Registries and module seams (how the asset layer stays at the bottom)	Manager extensions
+assets:57	feature	1.2 Registries and module seams (how the asset layer stays at the bottom)	Mesh geometry registry
+assets:58	feature	1.2 Registries and module seams (how the asset layer stays at the bottom)	The upload seam
+assets:59	feature	1.2 Registries and module seams (how the asset layer stays at the bottom)	Layering
+assets:65	feature	1.3 The asset managers	`AssetManagerBase`
+assets:66	feature	1.3 The asset managers	Typed accessors
+assets:67	feature	1.3 The asset managers	`GetAsset` never blocks
+assets:68	feature	1.3 The asset managers	`PeekLoadedAsset`
+assets:69	feature	1.3 The asset managers	`TouchLoadedAssets`
+assets:70	feature	1.3 The asset managers	`LoadAssetSync`
+assets:71	feature	1.3 The asset managers	`ReplaceLoadedAsset`
+assets:72	feature	1.3 The asset managers	Memory assets
+assets:73	feature	1.3 The asset managers	Hot reload
+assets:74	feature	1.3 The asset managers	Generations
+assets:75	feature	1.3 The asset managers	Source revisions
+assets:76	feature	1.3 The asset managers	Content and metadata versions
+assets:77	feature	1.3 The asset managers	Active manager facade
+assets:78	feature	1.3 The asset managers	`EditorAssetManager`
+assets:79	feature	1.3 The asset managers	`RuntimeAssetManager`
+assets:80	feature	1.3 The asset managers	Awaiting import
+assets:86	feature	1.4 The loading pipeline	Streaming queue
+assets:87	feature	1.4 The loading pipeline	Read on I/O, decode on workers
+assets:88	feature	1.4 The loading pipeline	`AssetLoadData`
+assets:89	feature	1.4 The loading pipeline	Completion queue and `LoadState`
+assets:90	feature	1.4 The loading pipeline	Main-thread finalization
+assets:91	feature	1.4 The loading pipeline	Finalize contract
+assets:92	feature	1.4 The loading pipeline	Cancellation
+assets:93	feature	1.4 The loading pipeline	Exception containment
+assets:94	feature	1.4 The loading pipeline	Waiting helpers
+assets:100	feature	1.5 Residency (memory budgets, eviction, pins)	Memory pools
+assets:101	feature	1.5 Residency (memory budgets, eviction, pins)	Budgets
+assets:102	feature	1.5 Residency (memory budgets, eviction, pins)	LRU recency orders
+assets:103	feature	1.5 Residency (memory budgets, eviction, pins)	Eviction to budgets
+assets:104	feature	1.5 Residency (memory budgets, eviction, pins)	Eviction protections
+assets:105	feature	1.5 Residency (memory budgets, eviction, pins)	Pins
+assets:106	feature	1.5 Residency (memory budgets, eviction, pins)	Trims
+assets:107	feature	1.5 Residency (memory budgets, eviction, pins)	Room before arrival
+assets:108	feature	1.5 Residency (memory budgets, eviction, pins)	Statistics
+assets:109	feature	1.5 Residency (memory budgets, eviction, pins)	Script pins
+assets:110	feature	1.5 Residency (memory budgets, eviction, pins)	Budget controls
+assets:116	feature	1.6 Dependencies, references, bounds and group loads	Reference scanner
+assets:117	feature	1.6 Dependencies, references, bounds and group loads	Importer-recorded references and bounds
+assets:118	feature	1.6 Dependencies, references, bounds and group loads	Normalized references
+assets:119	feature	1.6 Dependencies, references, bounds and group loads	Dependency queries
+assets:120	feature	1.6 Dependencies, references, bounds and group loads	Dependency prefetch
+assets:121	feature	1.6 Dependencies, references, bounds and group loads	Group loads
+assets:122	feature	1.6 Dependencies, references, bounds and group loads	Reading without loading
+assets:123	feature	1.6 Dependencies, references, bounds and group loads	Referencers index
+assets:124	feature	1.6 Dependencies, references, bounds and group loads	Native documents' references
+assets:130	feature	1.7 Importing in the editor	Scan
+assets:131	feature	1.7 Importing in the editor	Import cache
+assets:132	feature	1.7 Importing in the editor	Import record store
+assets:133	feature	1.7 Importing in the editor	Cache validity
+assets:134	feature	1.7 Importing in the editor	Running an import
+assets:135	feature	1.7 Importing in the editor	Confined reads
+assets:136	feature	1.7 Importing in the editor	Import settings
+assets:137	feature	1.7 Importing in the editor	Background imports and hot reload
+assets:138	feature	1.7 Importing in the editor	Import cancellation
+assets:139	feature	1.7 Importing in the editor	Import memory admission
+assets:140	feature	1.7 Importing in the editor	External import
+assets:141	feature	1.7 Importing in the editor	File operations
+assets:142	feature	1.7 Importing in the editor	Folder index and browsing
+assets:143	feature	1.7 Importing in the editor	Native document writes
+assets:144	feature	1.7 Importing in the editor	Unobserved import failures
+assets:145	feature	1.7 Importing in the editor	Content stamp
+assets:146	feature	1.7 Importing in the editor	Shared file lock
+assets:152	feature	1.8 Importers and stored forms	Native importer
+assets:153	feature	1.8 Importers and stored forms	Texture importer
+assets:154	feature	1.8 Importers and stored forms	Format choice
+assets:155	feature	1.8 Importers and stored forms	Texture cooker
+assets:156	feature	1.8 Importers and stored forms	BC7 encoder
+assets:157	feature	1.8 Importers and stored forms	HDR sun finder
+assets:158	feature	1.8 Importers and stored forms	glTF importer
+assets:159	feature	1.8 Importers and stored forms	Audio importer
+assets:160	feature	1.8 Importers and stored forms	Font importer
+assets:161	feature	1.8 Importers and stored forms	Color lookup importer
+assets:162	feature	1.8 Importers and stored forms	Cooked texture `STTX` v2
+assets:163	feature	1.8 Importers and stored forms	Block sizes
+assets:164	feature	1.8 Importers and stored forms	BC decode fallback
+assets:165	feature	1.8 Importers and stored forms	Grayscale and normal conventions
+assets:166	feature	1.8 Importers and stored forms	Material texture usage warnings
+assets:172	feature	1.9 Asset packs and export	Pack format v2
+assets:173	feature	1.9 Asset packs and export	Validation on open
+assets:174	feature	1.9 Asset packs and export	Range reads
+assets:175	feature	1.9 Asset packs and export	Version 1 compatibility
+assets:176	feature	1.9 Asset packs and export	Pack writer
+assets:177	feature	1.9 Asset packs and export	Pack planning
+assets:178	feature	1.9 Asset packs and export	Pack consistency check
+assets:179	feature	1.9 Asset packs and export	Cooking documents for packs
+assets:180	feature	1.9 Asset packs and export	Patch packs
+assets:181	feature	1.9 Asset packs and export	Content hash
+assets:187	feature	1.10 Partial residency and mip streaming	Prefix loads
+assets:188	feature	1.10 Partial residency and mip streaming	Range reads of loaded assets
+assets:189	feature	1.10 Partial residency and mip streaming	Memory changes without replacement
+assets:190	feature	1.10 Partial residency and mip streaming	Texture streamer
+assets:191	feature	1.10 Partial residency and mip streaming	Raising and dropping levels
+assets:192	feature	1.10 Partial residency and mip streaming	First-load estimate
+assets:193	feature	1.10 Partial residency and mip streaming	Switch
+assets:199	feature	1.11 GPU uploads	Step budget
+assets:200	feature	1.11 GPU uploads	Step planning
+assets:201	feature	1.11 GPU uploads	Texture uploads
+assets:202	feature	1.11 GPU uploads	Staging pool
+assets:203	feature	1.11 GPU uploads	Transfer queue (optional)
+assets:204	feature	1.11 GPU uploads	One batch per update
+assets:205	feature	1.11 GPU uploads	Back buffer wait late
+assets:206	feature	1.11 GPU uploads	Per-frame slot resolution
+assets:212	feature	1.12 Tools and user-facing surface	Asset commands
+assets:213	feature	1.12 Tools and user-facing surface	Streaming panel
+assets:214	feature	1.12 Tools and user-facing surface	Debug views
+assets:215	feature	1.12 Tools and user-facing surface	Content Browser and Asset Inspector
+assets:216	feature	1.12 Tools and user-facing surface	Thumbnails
+assets:217	feature	1.12 Tools and user-facing surface	Export
+assets:218	feature	1.12 Tools and user-facing surface	Feature test
+assets:246	concept		What an asset is, and source versus runtime form
+assets:253	concept		Identity by handle, not by path
+assets:260	concept		Asset types and the registry pattern
+assets:266	concept		Importers, settings and versions (an incremental build system)
+assets:273	concept		Texture data for GPUs: mips, color spaces and block compression
+assets:281	concept		File layout for streaming (smallest level first)
+assets:286	concept		Asynchronous loading and the main-thread rule
+assets:292	concept		Futures without futures: generations
+assets:297	concept		Priority queues and backpressure
+assets:302	concept		Memory budgets and pools
+assets:307	concept		LRU eviction with protections
+assets:313	concept		Pins and group loads (loading screens)
+assets:318	concept		Dependency graphs
+assets:324	concept		Prefetching without hurting
+assets:329	concept		Budgeted GPU uploads and staging memory
+assets:335	concept		Room before arrival
+assets:339	concept		Partial residency and mip streaming
+assets:345	concept		Distribution formats: packs
+assets:351	concept		Untrusted input and corruption
+assets:355	concept		Crash-safe bookkeeping
+assets:359	concept		Cancellation and editor responsiveness
+assets:363	concept		Hot reload
+assets:366	concept		Bounds before load and culling unloaded meshes
+assets:375	code		`Strata/src/Strata/Asset/AssetTypes.h:10-31` - the handle alias and the type enum with its "append…
+assets:377	code		`Strata/src/Strata/Core/UUID.h` (whole class, about 25 lines) - a 64-bit id with a reserved null.…
+assets:378	code		A `.meta` file: `Samples/Showcase/Assets/Generated/Props/WeatheredSteel_arm.png.meta` (19 lines).…
+assets:380	code		`Strata/src/Strata/Asset/AssetImporter.cpp:264-271` - `DeriveSubAssetHandle`. Teaches…
+assets:382	code		`Strata/src/Strata/Asset/Asset.h:161-193` - the `Asset` base class. Teaches the contract every…
+assets:384	code		`Strata/src/Strata/Asset/AssetImporters.cpp:35-80` - `NativeAssetImporter`. Teaches the importer…
+assets:386	code		`Strata/src/Strata/Renderer/RendererRegistration.cpp:81-118` - how the renderer registers the…
+assets:389	code		`Strata/src/Strata/Asset/AssetImporter.cpp:312-343` - `ReadImportDependency`. Teaches sandboxed…
+assets:391	code		`Strata/src/Strata/Asset/EditorAssetManager.cpp:162-193` - `GetRecordableTime` and…
+assets:393	code		`Strata/src/Strata/Asset/EditorAssetManager.cpp:1959-1985` (head of `LoadCurrentImport`) - what…
+assets:395	code		`Strata/src/Strata/Asset/EditorAssetManager.cpp:2176-2236` - staging cache files, publishing them…
+assets:398	code		`Strata/src/Strata/Asset/TextureImporter.cpp:641-666` - `ChooseFormat`. Teaches the BC family…
+assets:400	code		`Strata/src/Strata/Asset/TextureCooker.cpp:275-309` - `CookLevels`: encode, then filter the next…
+assets:402	code		`Strata/src/Strata/Renderer/TextureFormat.cpp:53-65` - `GetMipByteSize`: rounding to 4x4 blocks.…
+assets:404	code		`Strata/src/Strata/Renderer/CookedTexture.cpp:339-360` - `ComputeCookedTextureLayout`: levels…
+assets:406	code		`Strata/src/Strata/Asset/AssetManager.cpp:330-349` and `440-484` - `GetAsset` and `RequestLoad`:…
+assets:408	code		`Strata/src/Strata/Asset/AssetStreamingQueue.h:119-120` with `AssetStreamingQueue.cpp:148-207` -…
+assets:411	code		`Strata/src/Strata/Asset/AssetManager.cpp:583-684` - `RunLoad`: read on I/O, prefetch, hand off to…
+assets:414	code		`Strata/src/Strata/Asset/AssetManager.cpp:1040-1274` - `ProcessCompletions`: room before arrival,…
+assets:417	code		`Strata/src/Strata/Asset/AssetResidency.cpp:325-349` - `TouchLocked`: O(1) LRU move with `extract`…
+assets:419	code		`Strata/src/Strata/Asset/AssetResidency.cpp:428-445` and `523-542` - `CanEvictLocked`,…
+assets:421	code		`Strata/src/Strata/Asset/AssetResidency.cpp:544-571` - `MakeRoomFor`. Needs: excerpt 21.
+assets:422	code		`Strata/src/Strata/Asset/AssetResidency.cpp:104-138` - `Pin`/`Unpin` with weak manager and…
+assets:424	code		`Strata/src/Strata/Asset/AssetManager.cpp:1450-1473` - breadth-first closure ("the list itself is…
+assets:426	code		`Strata/src/Strata/Asset/AssetManager.cpp:1567-1585` - `FitsPrefetchLocked`: headroom arithmetic…
+assets:428	code		`Strata/src/Strata/Asset/AssetPack.h:66-89` (format comment) and `177-216` (`Header`,…
+assets:430	code		`Strata/src/Strata/Asset/AssetPack.cpp:271-292` and `386-414` - checksums and the entry/block…
+assets:432	code		`Strata/src/Strata/Asset/AssetPack.cpp:681-744` - `DecodeBlock`: checksum, stored vs zstd, partial…
+assets:434	code		`Strata/src/Strata/Asset/AssetManager.cpp:1665-1697` - `ReadPrefix` with…
+assets:436	code		`Strata/src/Strata/Renderer/TextureStreamer.cpp:28-41` and `65-80` - `ComputeWantedLevel` and…
+assets:438	code		`Strata/src/Strata/Renderer/GPUUploadQueue.cpp:228-277` - `PlanStep`: sizing a step to bytes and…
+assets:440	code		`Strata/src/Strata/Renderer/Texture.cpp:584-676` - `UploadLevels`: stacking small levels, runs of…
+assets:442	code		`StrataScriptCore/Include/StrataScript/Scene.h:17-61` - the script-side `Assets` API. For game…
+assets:444	code		`StrataTests/src/Asset/AssetPackTests.cpp:1008-1030` - the "any single changed byte" sweep.…
+assets:453	figure		The whole pipeline, editor and game
+assets:456	figure		Handle derivation and the `.meta` sidecar
+assets:458	figure		Asset state machine
+assets:461	figure		The three-stage load timeline
+assets:464	figure		Streaming queue ordering and backpressure
+assets:466	figure		Memory pools and budgets
+assets:468	figure		LRU recency orders
+assets:470	figure		Room before arrival
+assets:472	figure		Import pipeline in the editor
+assets:474	figure		Cache validity decision tree
+assets:476	figure		Cooked texture layout
+assets:478	figure		BC block anatomy
+assets:480	figure		Pack file layout
+assets:483	figure		Pack read path
+assets:485	figure		Dependency graph and closures
+assets:487	figure		Mip streaming loop
+assets:489	figure		Upload step planning
+assets:491	figure		The layer seam
+assets:496	figure		Content Browser with an import running
+assets:498	figure		The same texture at Usage Color vs NormalMap vs Data
+assets:500	figure		Mip debug view
+assets:502	figure		Streaming debug view
+assets:504	figure		Streaming panel
+assets:506	figure		Mip fade-in
+assets:509	figure		A texture at its resident tail (32x32) vs level 0
+assets:511	figure		HDR sky with and without RemoveSun
+assets:512	figure		Export dialog
+assets:513	figure		Delete refused
+assets:514	figure		Status bar assets pill
+assets:520	rule		Reference assets by handle, never by path at runtime
+assets:522	rule		Move, rename and delete through the editor (or move the `.meta` along)
+assets:524	rule		Never overwrite an invalid `.meta`
+assets:526	rule		Bump `GetVersion()` whenever an importer's output changes
+assets:529	rule		Importers read other files only through `ReadImportDependency`
+assets:531	rule		Long importers check `ImportContext::IsCancelled` every few milliseconds
+assets:533	rule		Nothing in the editor waits for a background import; nothing touches files on the main thread
+assets:535	rule		Cache files are renamed into place before their record is set, under the exclusive lock, and only…
+assets:537	rule		`GetAsset` never blocks; handle "not loaded yet" every frame
+assets:539	rule		Hold handles across frames, not `Ref`s, and request what you use every frame
+assets:541	rule		Pin what gameplay must keep; release it
+assets:543	rule		Report shared data (`IsDataShared`) and accurate memory per pool (`GetMemoryUsage`,…
+assets:545	rule		Upload in steps of at most `c_AssetUploadStepBytes` within the context's budget; report bytes
+assets:547	rule		Texture sizes come from `GetMipByteSize`, never bytes per pixel
+assets:550	rule		Read cooked textures through `ParseCookedTexture`
+assets:552	rule		Every loader rejects truncated or garbage bytes without crashing; pack and cooked-scene format…
+assets:554	rule		Record references for any new document type
+assets:556	rule		Resolve bindless slots every frame; never cache them
+assets:557	rule		Stream scene documents; never build a DOM of a whole document
+assets:559	rule		Prefetches never evict and never chain; documents prefetch nothing; scenes are never prefetched
+assets:561	rule		Never free GPU memory a frame in flight may use
+assets:563	rule		Do not compress what does not compress
+assets:565	rule		The asset layer includes no graphics API
+assets:567	rule		Built-in handles are reserved
+assets:568	rule		Polling, not waiting
+assets:577	hands-on		Trace a load
+assets:579	hands-on		Read a `.meta` and a cache record
+assets:582	hands-on		Write a cooked-texture inspector
+assets:585	hands-on		Add a toy asset type
+assets:588	hands-on		Add an importer setting
+assets:591	hands-on		Drive the finalize contract without a GPU
+assets:594	hands-on		Prove LRU order
+assets:597	hands-on		Streaming queue puzzle
+assets:600	hands-on		Corrupt a pack
+assets:602	hands-on		Measure compression
+assets:604	hands-on		Wanted level by hand
+assets:606	hands-on		Extension stub
+assets:608	hands-on		Extend the BC7 encoder tests
+assets:613	hands-on		Import a model and textures
+assets:615	hands-on		Fix a normal map
+assets:617	hands-on		Fast vs High
+assets:619	hands-on		Watch streaming
+assets:622	hands-on		Loading screen
+assets:624	hands-on		Keep a sound loaded
+assets:626	hands-on		Export pruned
+assets:628	hands-on		Safe delete and restore
+assets:630	hands-on		Patch pack
+assets:637	term		Asset
+assets:638	term		Asset handle
+assets:639	term		Asset type
+assets:640	term		Source file / source asset
+assets:641	term		Stored form
+assets:642	term		Import / importer
+assets:643	term		Cook / cooked
+assets:644	term		`.meta` file / sidecar
+assets:645	term		Import settings
+assets:646	term		Importer version
+assets:647	term		Import cache
+assets:648	term		Import record
+assets:649	term		Import record store
+assets:650	term		Dependency (import)
+assets:651	term		Dependency / reference (runtime)
+assets:652	term		Dependency closure
+assets:653	term		Closure scope
+assets:654	term		Sub-asset
+assets:655	term		Derived handle
+assets:656	term		Built-in asset
+assets:657	term		Memory asset
+assets:658	term		Engine-native asset
+assets:659	term		Asset manager
+assets:660	term		Registry
+assets:661	term		Loader
+assets:662	term		Finalize
+assets:663	term		Publish
+assets:664	term		Asset state
+assets:665	term		Priority / score
+assets:666	term		Streaming queue
+assets:667	term		In flight
+assets:668	term		Backpressure
+assets:669	term		Generation
+assets:670	term		Source revision
+assets:671	term		Content version / change list
+assets:672	term		Hot reload
+assets:673	term		Residency
+assets:674	term		Memory pool
+assets:675	term		Budget
+assets:676	term		Device memory budget
+assets:677	term		Eviction
+assets:678	term		LRU (least recently used)
+assets:679	term		Recency order
+assets:680	term		Request (touch)
+assets:681	term		Grace window
+assets:682	term		Frames in flight
+assets:683	term		Pin (`AssetPin`)
+assets:684	term		Trim
+assets:685	term		Room before arrival
+assets:686	term		Reservation
+assets:687	term		Prefetch
+assets:688	term		Headroom
+assets:689	term		Group load / `AssetGroupRequest`
+assets:690	term		Upload
+assets:691	term		Upload step
+assets:692	term		Granule
+assets:693	term		Staging buffer
+assets:694	term		Staging pool
+assets:695	term		Fence / event query
+assets:696	term		Transfer queue
+assets:697	term		Queue ownership transfer
+assets:698	term		Upload context (`AssetUploadContext`)
+assets:699	term		Batch
+assets:700	term		Bindless slot
+assets:701	term		Texture table index
+assets:702	term		Mip / mip level / mip chain
+assets:703	term		Mip tail
+assets:704	term		Mip streaming
+assets:705	term		Partial load / prefix
+assets:706	term		Range read
+assets:707	term		Wanted level
+assets:708	term		Texel density / `UVPixels`
+assets:709	term		Fade-in
+assets:710	term		Block compression (BC1-BC7)
+assets:711	term		Endpoints / indices / partitions / p-bits / modes (BC7)
+assets:712	term		sRGB
+assets:713	term		Linear data
+assets:714	term		Normal map
+assets:715	term		HDR (RGBA16F)
+assets:716	term		Mitchell filter / box filter
+assets:717	term		Alpha weighting
+assets:718	term		`STTX`
+assets:719	term		Asset pack (`.stpak`)
+assets:720	term		Block (pack)
+assets:721	term		zstd
+assets:722	term		CRC-32C
+assets:723	term		FNV-1a
+assets:724	term		First-use order
+assets:725	term		Pruning / `AlwaysInclude`
+assets:726	term		Patch pack / mount
+assets:727	term		Cooked scene (`CookedScene`)
+assets:728	term		Import memory admission
+assets:729	term		Cancellation flag
+assets:730	term		Racily clean
+assets:731	term		Atomic write / staged file
+assets:732	term		File watcher
+assets:733	term		Referencers
+assets:734	term		Trash
+assets:735	term		Layer / layering test
+assets:736	term		Composition root
+assets:737	term		Engine service
+assets:789	open		Not read in full: `GltfImporter.cpp` (2,273 lines; read by function list and its header),…
+assets:795	open		Not read: the cooked mesh format (`Renderer/Mesh` serialization, "cooked meshes version 3"),…
+assets:799	open		Release dates: the docs date workstreams by wave; per-feature release for small items (most of 1.3…
+assets:801	open		Exact pixel-level screenshots: not taken (no editor or GPU runs allowed); the screenshot list says…
+assets:802	open		Whether GPU visibility feedback (wave 4, "asset requests and mip streaming driven by the GPU's…
+assets:805	open		The Manual (`Docs/Manual/`) has no chapter on assets, importing or export; the user-facing story…

@@ -1,0 +1,378 @@
+{
+	"page": "make/characters-cameras",
+	"startsFrom": {
+		"template": "basic3d"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "entity.create", "parameters": { "name": "Step03", "components": {
+					"MeshRenderer": { "Mesh": "Builtin/Cube" }, "BoxCollider": { "HalfExtents": [0.5, 0.5, 0.5] },
+					"Transform": { "Translation": [-5, 0.15, -2], "Scale": [2, 0.3, 1], "Rotation": [0, 0, 0] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Step05", "components": {
+					"MeshRenderer": { "Mesh": "Builtin/Cube" }, "BoxCollider": { "HalfExtents": [0.5, 0.5, 0.5] },
+					"Transform": { "Translation": [-2, 0.25, -2], "Scale": [2, 0.5, 1], "Rotation": [0, 0, 0] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Ramp40", "components": {
+					"MeshRenderer": { "Mesh": "Builtin/Cube" }, "BoxCollider": { "HalfExtents": [0.5, 0.5, 0.5] },
+					"Transform": { "Translation": [2, 1.4, -4], "Scale": [2, 0.2, 4], "Rotation": [40, 0, 0] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Ramp50", "components": {
+					"MeshRenderer": { "Mesh": "Builtin/Cube" }, "BoxCollider": { "HalfExtents": [0.5, 0.5, 0.5] },
+					"Transform": { "Translation": [6, 1.6, -4], "Scale": [2, 0.2, 4], "Rotation": [50, 0, 0] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Wall", "components": {
+					"MeshRenderer": { "Mesh": "Builtin/Cube" }, "BoxCollider": { "HalfExtents": [0.5, 0.5, 0.5] },
+					"Transform": { "Translation": [0, 2, 7], "Scale": [6, 4, 0.5], "Rotation": [0, 0, 0] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Ledge", "components": {
+					"MeshRenderer": { "Mesh": "Builtin/Cube" }, "BoxCollider": { "HalfExtents": [0.5, 0.5, 0.5] },
+					"Transform": { "Translation": [7, 0.5, 6], "Scale": [3, 1, 3], "Rotation": [0, 0, 0] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Crate", "components": {
+					"MeshRenderer": { "Mesh": "Builtin/Cube" }, "BoxCollider": { "HalfExtents": [0.5, 0.5, 0.5] },
+					"Transform": { "Translation": [-6, 0.5, 3], "Scale": [1, 1, 1], "Rotation": [0, 0, 0] } } } },
+				{ "command": "component.add", "entityName": "Crate", "parameters": { "component": "RigidBody" } },
+				{ "command": "entity.create", "parameters": { "name": "Platform", "components": {
+					"MeshRenderer": { "Mesh": "Builtin/Cube" }, "BoxCollider": { "HalfExtents": [0.5, 0.5, 0.5] },
+					"Transform": { "Translation": [-5, 0.15, -7.5], "Scale": [3, 0.3, 3], "Rotation": [0, 0, 0] } } } },
+				{ "command": "component.add", "entityName": "Platform", "parameters": { "component": "RigidBody" } },
+				{ "command": "component.set", "entityName": "Platform", "parameters": { "component": "RigidBody", "values": { "Type": "Kinematic" } } },
+				{ "command": "inputActions.setMap", "parameters": { "map": "Gameplay" } },
+				{ "command": "inputActions.setAction", "parameters": { "action": "Gameplay/Move", "kind": "Vector2",
+					"bindings": ["2D:Key/W,Key/S,Key/A,Key/D", "2D:Key/Up,Key/Down,Key/Left,Key/Right", "Gamepad/LeftStick"] } },
+				{ "command": "inputActions.setAction", "parameters": { "action": "Gameplay/Look", "kind": "Vector2", "bindings": ["Gamepad/RightStick"] } },
+				{ "command": "inputActions.setAction", "parameters": { "action": "Gameplay/Jump", "kind": "Button", "bindings": ["Key/Space", "Gamepad/A"] } },
+				{ "command": "entity.create", "parameters": { "name": "Player", "components": {
+					"Transform": { "Translation": [0, 0, 2] }, "CharacterController": { "Height": 1.8, "Radius": 0.3 } } } },
+				{ "command": "entity.find", "parameters": { "name": "Player" }, "bind": { "player": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "CharacterController" },
+					"checks": [
+						{ "pointer": "/values/Height", "approx": 1.8, "tolerance": 0.001 },
+						{ "pointer": "/values/Radius", "approx": 0.3, "tolerance": 0.001 },
+						{ "pointer": "/values/StepHeight", "approx": 0.35, "tolerance": 0.001 },
+						{ "pointer": "/values/MaxSlopeDegrees", "approx": 45, "tolerance": 0.001 },
+						{ "pointer": "/values/PushStrength", "approx": 200, "tolerance": 0.001 },
+						{ "pointer": "/values/Layer", "equals": 0 }
+					] },
+				{ "command": "entity.create", "parameters": { "name": "Body", "parent": { "$ref": "player" }, "components": {
+					"MeshRenderer": { "Mesh": "Builtin/Capsule" }, "Transform": { "Translation": [0, 0.9, 0], "Scale": [0.6, 0.9, 0.6] } } } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 60 }, "expect": { "/stepsRun": { "equals": 60 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": 0, "tolerance": 0.01 },
+						{ "pointer": "/values/Translation/1", "approx": 0, "tolerance": 0.05 },
+						{ "pointer": "/values/Translation/2", "approx": 2, "tolerance": 0.01 }
+					] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"files": [ { "from": "book:tutorials/make/characters-cameras/step2/PlayerController.cpp", "to": "Scripts/PlayerController.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "entity.find", "parameters": { "name": "Player" }, "bind": { "player": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "player" }, "class": "PlayerController" } },
+				{ "command": "script.get", "entityName": "Player", "parameters": { "class": "PlayerController" },
+					"checks": [
+						{ "pointer": "/scripts/0/fields/WalkSpeed", "approx": 5, "tolerance": 0.001 },
+						{ "pointer": "/scripts/0/fields/TurnSharpness", "approx": 12, "tolerance": 0.001 }
+					] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "input.key", "parameters": { "key": "W", "steps": 30 } },
+				{ "command": "play.step", "parameters": { "steps": 31 }, "expect": { "/stepsRun": { "equals": 31 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": 0, "tolerance": 0.02 },
+						{ "pointer": "/values/Translation/2", "approx": -0.5, "tolerance": 0.2 }
+					] },
+				{ "command": "input.key", "parameters": { "key": "S", "steps": 180 } },
+				{ "command": "play.step", "parameters": { "steps": 181 }, "expect": { "/stepsRun": { "equals": 181 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": 0, "tolerance": 0.02 },
+						{ "pointer": "/values/Translation/2", "approx": 6.45, "tolerance": 0.1 }
+					] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"files": [ { "from": "book:tutorials/make/characters-cameras/step3/PlayerController.cpp", "to": "Scripts/PlayerController.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.get", "entityName": "Player", "parameters": { "class": "PlayerController" },
+					"checks": [
+						{ "pointer": "/scripts/0/fields/JumpSpeed", "approx": 5, "tolerance": 0.001 },
+						{ "pointer": "/scripts/0/fields/CoyoteSeconds", "approx": 0.15, "tolerance": 0.001 },
+						{ "pointer": "/scripts/0/fields/GroundStateNumber", "equals": 0 }
+					] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "script.get", "entityName": "Player", "parameters": { "class": "PlayerController" },
+					"checks": [ { "pointer": "/scripts/0/fields/GroundStateNumber", "equals": 0 } ] },
+				{ "command": "input.key", "parameters": { "key": "Space", "steps": 1 } },
+				{ "command": "play.step", "parameters": { "steps": 32 }, "expect": { "/stepsRun": { "equals": 32 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/1", "approx": 1.27, "tolerance": 0.12 } ] },
+				{ "command": "script.get", "entityName": "Player", "parameters": { "class": "PlayerController" },
+					"checks": [ { "pointer": "/scripts/0/fields/GroundStateNumber", "equals": 3 } ] },
+				{ "command": "play.step", "parameters": { "steps": 60 }, "expect": { "/stepsRun": { "equals": 60 } } },
+				{ "command": "script.get", "entityName": "Player", "parameters": { "class": "PlayerController" },
+					"checks": [ { "pointer": "/scripts/0/fields/GroundStateNumber", "equals": 0 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"commands": [
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "input.key", "parameters": { "key": "A", "steps": 60 } },
+				{ "command": "play.step", "parameters": { "steps": 61 }, "expect": { "/stepsRun": { "equals": 61 } } },
+				{ "command": "input.key", "parameters": { "key": "W", "steps": 48 } },
+				{ "command": "play.step", "parameters": { "steps": 49 }, "expect": { "/stepsRun": { "equals": 49 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": -5, "tolerance": 0.2 },
+						{ "pointer": "/values/Translation/1", "approx": 0.3, "tolerance": 0.05 },
+						{ "pointer": "/values/Translation/2", "approx": -2, "tolerance": 0.3 }
+					] },
+				{ "command": "input.key", "parameters": { "key": "D", "steps": 36 } },
+				{ "command": "play.step", "parameters": { "steps": 40 }, "expect": { "/stepsRun": { "equals": 40 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": -3.3, "tolerance": 0.1 },
+						{ "pointer": "/values/Translation/1", "approx": 0, "tolerance": 0.05 }
+					] },
+				{ "command": "play.stop" },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "input.key", "parameters": { "key": "D", "steps": 24 } },
+				{ "command": "play.step", "parameters": { "steps": 25 }, "expect": { "/stepsRun": { "equals": 25 } } },
+				{ "command": "input.key", "parameters": { "key": "W", "steps": 72 } },
+				{ "command": "play.step", "parameters": { "steps": 73 }, "expect": { "/stepsRun": { "equals": 73 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/1", "approx": 1.5, "tolerance": 0.5 } ] },
+				{ "command": "play.stop" },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "input.key", "parameters": { "key": "D", "steps": 72 } },
+				{ "command": "play.step", "parameters": { "steps": 73 }, "expect": { "/stepsRun": { "equals": 73 } } },
+				{ "command": "input.key", "parameters": { "key": "W", "steps": 120 } },
+				{ "command": "play.step", "parameters": { "steps": 96 }, "expect": { "/stepsRun": { "equals": 96 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/1", "approx": 0, "tolerance": 0.05 },
+						{ "pointer": "/values/Translation/2", "approx": -2.39, "tolerance": 0.1 }
+					] },
+				{ "command": "script.get", "entityName": "Player", "parameters": { "class": "PlayerController" },
+					"checks": [ { "pointer": "/scripts/0/fields/GroundStateNumber", "equals": 0 } ] },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "entity.find", "parameters": { "name": "Player" }, "bind": { "player": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "input.sequence", "parameters": { "steps": 150,
+					"events": [ { "step": 0, "key": "W", "action": "press" }, { "step": 20, "key": "Space", "action": "tap", "steps": 1 } ],
+					"observe": [
+						{ "entity": { "$ref": "player" }, "script": "PlayerController", "field": "GroundStateNumber", "every": 1 },
+						{ "entity": { "$ref": "player" }, "world": true, "every": 1 }
+					] },
+					"expect": { "/stepsRun": { "equals": 150 } },
+					"checks": [
+						{ "pointer": "/samples/29/step", "equals": 30 },
+						{ "pointer": "/samples/29/values/0/value", "equals": 3 },
+						{ "pointer": "/samples/59/step", "equals": 60 },
+						{ "pointer": "/samples/59/values/0/value", "equals": 1 },
+						{ "pointer": "/samples/59/values/1/value/position/1", "approx": 1.18, "tolerance": 0.1 },
+						{ "pointer": "/samples/99/values/0/value", "equals": 1 },
+						{ "pointer": "/samples/99/values/1/value/position/1", "approx": 0.03, "tolerance": 0.1 }
+					] },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/1", "approx": 0, "tolerance": 0.05 },
+						{ "pointer": "/values/Translation/2", "approx": -2.39, "tolerance": 0.1 }
+					] },
+				{ "command": "script.get", "entityName": "Player", "parameters": { "class": "PlayerController" } },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 5,
+			"files": [ { "from": "book:tutorials/make/characters-cameras/step5/FollowCamera.cpp", "to": "Scripts/FollowCamera.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "entity.find", "parameters": { "name": "Player" }, "bind": { "player": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "entity.find", "parameters": { "name": "Main Camera" }, "bind": { "camera": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "camera" }, "class": "FollowCamera", "fields": { "Target": { "$ref": "player" } } } },
+				{ "command": "project.setSettings", "parameters": { "section": "Scene.Timing", "value": { "FixedRate": "30" } },
+					"expect": { "/value/FixedRate": { "equals": "30" } } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "component.get", "entityName": "Main Camera", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": 0, "tolerance": 0.02 },
+						{ "pointer": "/values/Translation/1", "approx": 3.89, "tolerance": 0.05 },
+						{ "pointer": "/values/Translation/2", "approx": 8.58, "tolerance": 0.05 }
+					] },
+				{ "command": "input.key", "parameters": { "key": "W", "steps": 15 } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "component.get", "entityName": "Main Camera", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/2", "approx": 6.08, "tolerance": 0.3 } ] },
+				{ "command": "play.stop" },
+				{ "command": "script.build",
+					"files": [ { "from": "book:tutorials/make/characters-cameras/step5b/FollowCamera.cpp", "to": "Scripts/FollowCamera.cpp" } ],
+					"expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "component.get", "entityName": "Main Camera", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/1", "approx": 3.89, "tolerance": 0.05 },
+						{ "pointer": "/values/Translation/2", "approx": 8.58, "tolerance": 0.05 }
+					] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 6,
+			"commands": [
+				{ "command": "project.setSettings", "parameters": { "section": "Scene.Timing", "value": { "FixedRate": "120", "Interpolation": false } },
+					"expect": { "/value/FixedRate": { "equals": "120" }, "/value/Interpolation": { "equals": false } } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 120 }, "expect": { "/stepsRun": { "equals": 120 } } },
+				{ "command": "play.stop" },
+				{ "command": "project.setSettings", "parameters": { "section": "Scene.Timing", "reset": true },
+					"expect": { "/isDefault": { "equals": true }, "/value/FixedRate": { "equals": "Scene" }, "/value/Interpolation": { "equals": true } } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 60 }, "expect": { "/stepsRun": { "equals": 60 } } },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 7,
+			"files": [ { "from": "book:tutorials/make/characters-cameras/step7/FollowCamera.cpp", "to": "Scripts/FollowCamera.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.get", "entityName": "Main Camera", "parameters": { "class": "FollowCamera" },
+					"checks": [
+						{ "pointer": "/scripts/0/fields/Yaw", "approx": 0, "tolerance": 0.001 },
+						{ "pointer": "/scripts/0/fields/Pitch", "approx": -18, "tolerance": 0.001 },
+						{ "pointer": "/scripts/0/fields/WallMargin", "approx": 0.3, "tolerance": 0.001 }
+					] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "component.get", "entityName": "Main Camera", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/1", "approx": 2.95, "tolerance": 0.05 },
+						{ "pointer": "/values/Translation/2", "approx": 6.46, "tolerance": 0.05 }
+					] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 8,
+			"files": [ { "from": "book:tutorials/make/characters-cameras/step8/MovingPlatform.cpp", "to": "Scripts/MovingPlatform.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "entity.find", "parameters": { "name": "Platform" }, "bind": { "platform": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "platform" }, "class": "MovingPlatform" } },
+				{ "command": "script.get", "entityName": "Platform", "parameters": { "class": "MovingPlatform" },
+					"checks": [
+						{ "pointer": "/scripts/0/fields/Travel/0", "approx": 6, "tolerance": 0.001 },
+						{ "pointer": "/scripts/0/fields/Travel/1", "approx": 0, "tolerance": 0.001 },
+						{ "pointer": "/scripts/0/fields/Travel/2", "approx": 0, "tolerance": 0.001 },
+						{ "pointer": "/scripts/0/fields/Period", "approx": 8, "tolerance": 0.001 }
+					] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 120 }, "expect": { "/stepsRun": { "equals": 120 } } },
+				{ "command": "component.get", "entityName": "Platform", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": -2, "tolerance": 0.05 },
+						{ "pointer": "/values/Translation/2", "approx": -7.5, "tolerance": 0.01 }
+					] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 9,
+			"files": [
+				{ "from": "book:tutorials/make/characters-cameras/step9/PlayerController.cpp", "to": "Scripts/PlayerController.cpp" },
+				{ "from": "book:tutorials/make/characters-cameras/step9/MovingPlatform.cpp", "to": "Scripts/MovingPlatform.cpp" }
+			],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.get", "entityName": "Player", "parameters": { "class": "PlayerController" },
+					"checks": [ { "pointer": "/scripts/0/fields/FallHeight", "approx": -8, "tolerance": 0.001 } ] },
+				{ "command": "script.get", "entityName": "Platform", "parameters": { "class": "MovingPlatform" },
+					"checks": [ { "pointer": "/scripts/0/fields/Loop", "equals": false } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "input.key", "parameters": { "key": "D", "steps": 132 } },
+				{ "command": "play.step", "parameters": { "steps": 150 }, "expect": { "/stepsRun": { "equals": 150 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/1", "approx": -1, "tolerance": 1 } ] },
+				{ "command": "play.step", "parameters": { "steps": 120 }, "expect": { "/stepsRun": { "equals": 120 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": 0, "tolerance": 0.05 },
+						{ "pointer": "/values/Translation/1", "approx": 0, "tolerance": 0.05 },
+						{ "pointer": "/values/Translation/2", "approx": 2, "tolerance": 0.05 }
+					] },
+				{ "command": "component.get", "entityName": "Main Camera", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/1", "approx": 2.95, "tolerance": 0.05 },
+						{ "pointer": "/values/Translation/2", "approx": 6.46, "tolerance": 0.05 }
+					] },
+				{ "command": "play.stop" },
+				{ "command": "script.setField", "entityName": "Platform", "parameters": { "class": "MovingPlatform", "field": "Loop", "value": true } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 490 }, "expect": { "/stepsRun": { "equals": 490 } } },
+				{ "command": "component.get", "entityName": "Platform", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/0", "approx": -4.875, "tolerance": 0.03 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 10,
+			"files": [ { "from": "book:tutorials/make/characters-cameras/step10/CameraSwitch.cpp", "to": "Scripts/CameraSwitch.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "entity.find", "parameters": { "name": "Main Camera" }, "bind": { "camera": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "entity.create", "parameters": { "name": "Top Camera", "components": {
+					"Camera": { "Primary": false }, "Transform": { "Translation": [0, 20, 6], "Rotation": [-70, 0, 0] } } } },
+				{ "command": "entity.find", "parameters": { "name": "Top Camera" }, "bind": { "top": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "camera" }, "class": "CameraSwitch", "fields": { "Other": { "$ref": "top" } } } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "input.key", "parameters": { "key": "C", "steps": 1 } },
+				{ "command": "play.step", "parameters": { "steps": 5 }, "expect": { "/stepsRun": { "equals": 5 } } },
+				{ "command": "component.get", "entityName": "Top Camera", "parameters": { "component": "Camera" },
+					"checks": [ { "pointer": "/values/Primary", "equals": true } ] },
+				{ "command": "component.get", "entityName": "Main Camera", "parameters": { "component": "Camera" },
+					"checks": [ { "pointer": "/values/Primary", "equals": false } ] },
+				{ "command": "input.key", "parameters": { "key": "C", "steps": 1 } },
+				{ "command": "play.step", "parameters": { "steps": 5 }, "expect": { "/stepsRun": { "equals": 5 } } },
+				{ "command": "component.get", "entityName": "Main Camera", "parameters": { "component": "Camera" },
+					"checks": [ { "pointer": "/values/Primary", "equals": true } ] },
+				{ "command": "component.get", "entityName": "Top Camera", "parameters": { "component": "Camera" },
+					"checks": [ { "pointer": "/values/Primary", "equals": false } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		}
+	]
+}

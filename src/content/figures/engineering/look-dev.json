@@ -1,0 +1,22 @@
+{
+	"figures": [
+		{
+			"id": "compare-page",
+			"kind": "tool",
+			"shows": "The index page that the compare command writes for one pair of capture sets: for each picture that differs, a title with its counts and its absolute and signed difference images, then the crops before beside after and the tables of GPU time ratios and metrics",
+			"caption": "Each differing picture's absolute and signed difference images, then crops and tables.",
+			"alt": "A dark web page of difference images, crops and tables.",
+			"takenBy": "owner",
+			"waitsFor": "tier 3: the compare page of two captures; no debug view shows a page that a tool writes",
+			"standIn": "compare-layout"
+		},
+		{
+			"id": "compare-layout",
+			"shows": "The layout of the page compare writes, index.html, as its writer puts it together: the heading with both set names; per differing picture a title with the differing pixels, the largest difference and the gains, the absolute image from diff and the signed image from signed; the crops before beside after; the GPU stages table of gpuBusy after over before; the metrics table when both sides measured metrics",
+			"caption": "The page compare writes, drawn: per differing picture two difference images, then crops and tables. Purple notes are not on the page.",
+			"alt": "Two black images, one with a grey band, one with a blue band; below, a crop pair and two tables.",
+			"kind": "diagram",
+			"numbers": "The gains, absolute 8 and signed 32 (the default of --signed-gain), and the section titles are those of compare_command and write_index in Tools/LookDev.py at the pin; the crops are the capture's, enlarged 4 times. The counts and cells are left as names: the drawing shows the layout, not one run."
+		}
+	]
+}

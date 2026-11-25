@@ -1,0 +1,882 @@
+{
+	"page": "make/look",
+	"startsFrom": {
+		"sample": "ThirdPerson"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "scene.open",
+					"parameters": {
+						"scene": "Scenes/Course.stscene"
+					}
+				},
+				{
+					"command": "component.get",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess"
+					},
+					"checks": [
+						{
+							"pointer": "/values/Tonemapper",
+							"equals": "Filmic"
+						},
+						{
+							"pointer": "/values/Exposure",
+							"approx": 0,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/AutoExposure",
+							"equals": true
+						},
+						{
+							"pointer": "/values/Bloom",
+							"equals": true
+						},
+						{
+							"pointer": "/values/BloomIntensity",
+							"approx": 0.04,
+							"tolerance": 0.0001
+						}
+					]
+				},
+				{
+					"command": "component.get",
+					"entityName": "Camera",
+					"parameters": {
+						"component": "Camera"
+					}
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"commands": [
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "luminance"
+					}
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "none"
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"Exposure": 1
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Exposure",
+							"approx": 1,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"Exposure": -1
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Exposure",
+							"approx": -1,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"Exposure": 0
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposureMetering": "Average"
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposureMetering": "CenterWeighted"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/AutoExposureMetering",
+							"equals": "CenterWeighted"
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposureLightSpeed": 0.3,
+							"AutoExposureSpeed": 0.3
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposureLightSpeed": 3,
+							"AutoExposureSpeed": 1.5
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposureKey": 0
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposureKey": 0.12
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/AutoExposureKey",
+							"approx": 0.12,
+							"tolerance": 0.001
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"commands": [
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/LanternGlow.stmat",
+						"properties": {
+							"EmissiveColor": [
+								1,
+								0.05,
+								0.02
+							],
+							"EmissiveIntensity": 4000
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"Tonemapper": "ACES",
+							"Exposure": 0.8
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"Tonemapper": "Filmic",
+							"Exposure": 0
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"Toe": 0.8,
+							"Shoulder": 1
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"Toe": 0.5,
+							"Shoulder": 0.5
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"Contrast": 1.2,
+							"Saturation": 0.8
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"Contrast": 1,
+							"Saturation": 1
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Saturation",
+							"approx": 1,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/LanternGlow.stmat",
+						"properties": {
+							"EmissiveColor": [
+								1,
+								0.72,
+								0.4
+							],
+							"EmissiveIntensity": 12
+						}
+					}
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"setup": [
+				{
+					"command": "asset.import",
+					"parameters": {
+						"file": "@BOOK@/tutorials/make/look/warm-look.cube",
+						"directory": "Lookups"
+					}
+				}
+			],
+			"commands": [
+				{
+					"command": "asset.info",
+					"parameters": {
+						"asset": "Lookups/warm-look.cube"
+					},
+					"until": {
+						"seconds": 120
+					},
+					"expect": {
+						"/importing": {
+							"equals": false
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/importSettings/Size",
+							"equals": "33"
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"WhiteBalanceTemperature": 8000
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"WhiteBalanceTemperature": 4500
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"WhiteBalanceTemperature": 6500
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"ColorOffset": [
+								0.02,
+								0,
+								0.03
+							]
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"ColorOffset": [
+								0,
+								0,
+								0
+							]
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"ColorLookup": "Lookups/warm-look.cube",
+							"ColorLookupIntensity": 0
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"ColorLookupIntensity": 0.5
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"ColorLookupIntensity": 1
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/ColorLookupIntensity",
+							"approx": 1,
+							"tolerance": 0.001
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 5,
+			"commands": [
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"BloomIntensity": 0.15
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"BloomIntensity": 0.04
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"Vignette": 0.5
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"Vignette": 0.12
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"LensFlare": 0.4
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"FilmGrain": 0.2,
+							"ChromaticAberration": 0.3
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"FilmGrain": 0,
+							"ChromaticAberration": 0
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/FilmGrain",
+							"approx": 0,
+							"tolerance": 0.001
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 6,
+			"commands": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Height Fog",
+						"components": {
+							"HeightFog": {}
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Height Fog",
+					"parameters": {
+						"component": "HeightFog",
+						"values": {
+							"Density": 0.01,
+							"BaseHeight": -2,
+							"HeightFalloff": 0.1
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/HeightFalloff",
+							"approx": 0.1,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Height Fog",
+					"parameters": {
+						"component": "HeightFog",
+						"values": {
+							"ColorFromSky": false,
+							"SunScattering": 1
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Height Fog",
+					"parameters": {
+						"component": "HeightFog",
+						"values": {
+							"ColorFromSky": true,
+							"SunScattering": 0.5
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Camera",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"PerspectiveFar": 300
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/PerspectiveFar",
+							"approx": 300,
+							"tolerance": 0.01
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 7,
+			"commands": [
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"MotionBlur": true
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/MotionBlur",
+							"equals": true
+						}
+					]
+				},
+				{
+					"command": "play.start",
+					"parameters": {}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"MotionBlurShutterAngle": 90
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/MotionBlurShutterAngle",
+							"approx": 90,
+							"tolerance": 0.01
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"MotionBlurShutterAngle": 180
+						}
+					}
+				},
+				{
+					"command": "play.stop",
+					"parameters": {}
+				},
+				{
+					"command": "component.get",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess"
+					},
+					"checks": [
+						{
+							"pointer": "/values/MotionBlur",
+							"equals": true
+						},
+						{
+							"pointer": "/values/MotionBlurShutterAngle",
+							"approx": 180,
+							"tolerance": 0.01
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 8,
+			"commands": [
+				{
+					"command": "component.set",
+					"entityName": "Camera",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"Projection": "Orthographic"
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Camera",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"Projection": "Perspective"
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Sky",
+					"parameters": {
+						"component": "SkyLight",
+						"values": {
+							"ShowBackground": false
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Camera",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"ClearColor": [
+								0.05,
+								0.1,
+								0.4,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Sky",
+					"parameters": {
+						"component": "SkyLight",
+						"values": {
+							"ShowBackground": true
+						}
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Robot"
+					},
+					"bind": {
+						"robot": "/entities/0"
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Camera",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"DepthOfField": true,
+							"FocusEntity": {
+								"$ref": "robot"
+							}
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/DepthOfField",
+							"equals": true
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Camera",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"Aperture": 2
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Aperture",
+							"approx": 2,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Camera",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"Aperture": 8
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Camera",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"Aperture": 2.8
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Aperture",
+							"approx": 2.8,
+							"tolerance": 0.001
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 9,
+			"commands": [
+				{
+					"command": "component.set",
+					"entityName": "Sun",
+					"parameters": {
+						"component": "DirectionalLight",
+						"values": {
+							"Intensity": 0.2
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Intensity",
+							"approx": 0.2,
+							"tolerance": 0.0001
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Sky",
+					"parameters": {
+						"component": "SkyLight",
+						"values": {
+							"Intensity": 0.001
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Intensity",
+							"approx": 0.001,
+							"tolerance": 1e-05
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"Exposure": -1.5,
+							"AutoExposureMinEV": -2.5,
+							"WhiteBalanceTemperature": 4500,
+							"Toe": 0.6,
+							"BloomIntensity": 0.06
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/WhiteBalanceTemperature",
+							"approx": 4500,
+							"tolerance": 0.5
+						},
+						{
+							"pointer": "/values/Exposure",
+							"approx": -1.5,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/AutoExposureMinEV",
+							"approx": -2.5,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "luminance"
+					}
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "none"
+					}
+				}
+			],
+			"endState": true
+		}
+	]
+}

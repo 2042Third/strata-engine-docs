@@ -1,0 +1,102 @@
+[
+	{
+		"command": "script.create",
+		"parameters": {
+			"class": "BallControl",
+			"fields": {
+				"Speed": "float"
+			}
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ball"
+		},
+		"bind": {
+			"ball": "/entities/0"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "ball"
+			},
+			"class": "BallControl",
+			"fields": {
+				"Speed": 4
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ball"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"class": "BallControl",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "W",
+			"steps": 60
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ball"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "Space"
+		}
+	},
+	{
+		"command": "log.read",
+		"parameters": {
+			"newest": true,
+			"limit": 50
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

@@ -1,0 +1,78 @@
+{
+	"figures": [
+		{
+			"id": "presets-compare",
+			"kind": "scene",
+			"shows": "The Physics Playground's green goal box under the funnel at the four presets, in the page's order Low, Medium, High, the highest preset: the funnel's shadow on the box's back inner wall steps at Low and sharpens toward the highest preset while exposure, curve and grade stay unchanged",
+			"caption": "The goal box under the funnel at each preset, top to bottom Low, Medium, High and the highest preset. At Low the funnel's shadow climbs the box's back inner wall in a jagged staircase. Medium smooths the staircase into a soft edge. High and the highest preset draw it sharper and differ little at this distance. The exposure, the curve and the grade stay as the scene set them.",
+			"alt": "Under the slanted gray panels of a funnel stands an open green box on a blue and white tiled floor, with a dark post in front of it on the right. The funnel's shadow falls across the floor on the left and into the box. The four pictures match in color and brightness; only the shadows' edges change, most plainly on the box's back inner wall: stepped at Low, soft at Medium, sharp at High and the highest preset.",
+			"project": { "sample": "PhysicsPlayground" },
+			"camera": { "position": [15.4, 3.5, 12.8], "target": [11.8, 0.6, 7.8], "fov": 28 },
+			"size": [1280, 720],
+			"publish": "lossless",
+			"crops": [
+				{ "name": "wall", "rect": [0.3125, 0.3056, 0.5625, 0.5556], "scale": 3 }
+			],
+			"variants": {
+				"low": { "quality": "low" },
+				"medium": { "quality": "medium" },
+				"high": { "quality": "high" },
+				"ultra": { "quality": "ultra" }
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "graphics-page",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The Scene view's row of chips after the view chose its own preset: the quality chip reads Low while the project stays at High",
+			"caption": "The Scene view's chips. The quality chip reads Low: this view alone draws at the Low preset, while the project, the Game view and the game keep the project's High.",
+			"alt": "The top of the editor's Scene view: a row of chips with icons and labels, from Camera to Game camera, above a narrow strip of the view with the playground far away. The chip second from the right reads Low and is drawn in orange, like the Grid, Outline and Gizmos chips that are on.",
+			"project": { "sample": "PhysicsPlayground" },
+			"editorWindow": {
+				"layout": "layouts/scene-toolbar-wide.ini",
+				"windowSize": [1280, 720],
+				"panel": "Viewport",
+				"steps": [
+					{ "command": "viewport.setSettings", "parameters": { "quality": "low" } },
+					{ "command": "editor.wait", "parameters": { "frames": 10 } }
+				]
+			}
+		},
+		{
+			"id": "third-person-menu",
+			"kind": "runtime",
+			"shows": "The Third-Person sample's settings menu with its Graphics row of four toggles",
+			"caption": "A game's own menu: a row of toggles, each calling the script's preset function and then its save function.",
+			"alt": "A game menu over a dim scene, with a row of four toggles labeled with the preset names and one of them switched on.",
+			"project": { "sample": "ThirdPerson" },
+			"runtime": { "resolution": [1280, 720], "seconds": 5, "quality": "high" },
+			"publish": "lossless",
+			"waitsFor": "tier 3: the settings menu open in the exported game; no debug view shows it",
+			"standIn": "third-person-settings"
+		},
+		{
+			"id": "third-person-settings",
+			"kind": "editor",
+			"shows": "The Third-Person sample's settings panel, opened by a click on Settings in its main menu during play in the editor's Game view, with the four preset toggles under Graphics and High, the preset in effect, checked",
+			"caption": "The Third-Person sample's settings panel, opened by a click on Settings during play in the editor's Game view. Under Graphics, four toggles name the presets in two rows. High is checked: the panel marks the preset in effect when it opens.",
+			"alt": "The editor's Game view shows the game Sky Islands. On the left is a menu of four blue buttons: Play, Settings, Credits and Quit. Beside it, a dark Settings panel holds two bars for the volume and the mouse, three check boxes, and under the word Graphics four check boxes, Low, Medium, High and Ultra, with High checked.",
+			"project": { "sample": "ThirdPerson" },
+			"play": { "steps": 240 },
+			"crops": [
+				{ "name": "view", "rect": [0, 0, 1, 0.94], "scale": 1 }
+			],
+			"editorWindow": {
+				"layout": "layouts/make-samples-wide.ini",
+				"windowSize": [1920, 1080],
+				"panel": "Game",
+				"steps": [
+					{ "command": "entity.find", "parameters": { "name": "SettingsOpen" }, "bind": { "open": "/entities/0" } },
+					{ "command": "input.click", "parameters": { "entity": { "$ref": "open" } } },
+					{ "command": "play.step", "parameters": { "steps": 60 } },
+					{ "command": "editor.wait", "parameters": { "frames": 600 } }
+				]
+			}
+		}
+	]
+}

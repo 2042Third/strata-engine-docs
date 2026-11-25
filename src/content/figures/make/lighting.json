@@ -1,0 +1,150 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "Basic 3D under the Clear preset with the sun 35 degrees up, a cube and a ball on the ground, each casting a crisp shadow",
+			"caption": "The lighting this chapter creates, tried on a cube and a ball. It has a blue sky, a sun low enough to throw a clear shadow beside each object, and a picture that is neither white nor gray.",
+			"alt": "A white cube and a white ball on gray stone ground below a strip of blue sky. Each casts a dark, sharp shadow to the left, about one and a half times as long as the object is tall.",
+			"kind": "scene",
+			"project": { "template": "basic3d" },
+			"camera": { "position": [-2.6, 1.9, 4.3], "target": [-0.2, 0.45, 0], "fov": 40 },
+			"size": [1920, 1080],
+			"quality": "high",
+			"setup": [
+				{ "command": "lighting.applySkyPreset", "parameters": { "preset": "Clear", "sunElevation": 35, "sunAzimuth": 20 } },
+				{ "command": "entity.create", "parameters": { "name": "Cube", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "Transform": { "Translation": [-1, 0.5, 0] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Ball", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere" }, "Transform": { "Translation": [1, 0.5, 0] } } } }
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "inspector-template",
+			"shows": "The Inspector with the Sun selected: its Directional Light with Intensity 120000, Angular Diameter 0.53 and Cast Shadows on",
+			"caption": "The sun of the Basic 3D template: its intensity is in lux, and the angular diameter is the size of the real sun's disk.",
+			"alt": "The Inspector of the Sun: a Directional Light with an intensity of 120000, an angular diameter of 0.53 and Cast Shadows checked.",
+			"kind": "editor",
+			"project": { "template": "basic3d" },
+			"editorWindow": {
+				"layout": "layouts/make-lighting.ini",
+				"steps": [
+					{ "command": "entity.find", "parameters": { "name": "Sun" }, "bind": { "sun": "/entities/0" } },
+					{ "command": "selection.set", "parameters": { "entities": [{ "$ref": "sun" }] } },
+					{ "command": "editor.showPanel", "parameters": { "panel": "Inspector" } }
+				],
+				"windowSize": [1280, 800],
+				"panel": "Inspector"
+			}
+		},
+		{
+			"id": "exposure-sweep",
+			"shows": "The same Basic 3D view with a cube under automatic exposure, manual exposure 0 (white) and manual exposure -15",
+			"caption": "Automatic exposure with its limits back at the defaults: under the full sun the picture comes out balanced, with a blue sky, mid-gray ground and a light cube, and nothing blown to white.",
+			"alt": "A white cube on gray stone ground under a blue sky, its face in the sun light gray and a sharp dark shadow beside it to the left.",
+			"kind": "scene",
+			"project": { "template": "basic3d" },
+			"camera": { "position": [-0.3, 1.2, 4.5], "target": [-0.8, 0.4, 0], "fov": 40 },
+			"size": [1280, 720],
+			"quality": "high",
+			"setup": [
+				{ "command": "entity.create", "parameters": { "name": "Cube", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "Transform": { "Translation": [0, 0.5, 0] } } } }
+			],
+			"variants": {
+				"auto": { "postProcess": { "AutoExposure": true, "Exposure": 0.25 } },
+				"zero": { "postProcess": { "AutoExposure": false, "Exposure": 0 } },
+				"minus15": { "postProcess": { "AutoExposure": false, "Exposure": -15 } }
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "sky-presets",
+			"shows": "Basic 3D under each of the four sky presets in turn",
+			"caption": "The four presets on one scene, in the order of the pictures: Clear, the preset with more haze, the preset with the even gray sky, and Golden Hour. Compare the top of the sky between the first two, the shadow under the gray sky of the third, and the length of the shadow at Golden Hour.",
+			"alt": "One of four pictures of a white cube on stone ground, in the order Clear, haze, gray sky, Golden Hour. Clear: a deep blue sky and a short, sharp, near-black shadow to the left. Haze: a paler, grayer blue overhead and a slightly lighter, slightly longer shadow. Gray sky: a gray sky and only a soft dark patch at the cube's foot. Golden Hour: a sky turning cream-yellow toward the horizon, a warm-tinted cube and a shadow running out of the picture to the left.",
+			"kind": "scene",
+			"project": { "template": "basic3d" },
+			"camera": { "position": [-0.3, 1.2, 4.5], "target": [-0.8, 0.4, 0], "fov": 40 },
+			"size": [1280, 720],
+			"quality": "high",
+			"setup": [
+				{ "command": "entity.create", "parameters": { "name": "Cube", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "Transform": { "Translation": [0, 0.5, 0] } } } }
+			],
+			"variants": {
+				"clear": { "setup": [ { "command": "lighting.applySkyPreset", "parameters": { "preset": "Clear" } } ] },
+				"hazy": { "setup": [ { "command": "lighting.applySkyPreset", "parameters": { "preset": "Hazy" } } ] },
+				"overcast": { "setup": [ { "command": "lighting.applySkyPreset", "parameters": { "preset": "Overcast" } } ] },
+				"golden-hour": { "setup": [ { "command": "lighting.applySkyPreset", "parameters": { "preset": "GoldenHour" } } ] }
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "sky-inspector",
+			"shows": "The Inspector with nothing selected: the scene's settings in closed sections, the last one Sky with its source Atmosphere",
+			"caption": "With nothing selected, the Inspector shows the scene's settings in closed sections; the Sky row names its source, Atmosphere.",
+			"alt": "The Inspector of the scene Main with the closed sections Physics, Streaming and Sky; the Sky row reads Atmosphere.",
+			"kind": "editor",
+			"project": { "template": "basic3d" },
+			"editorWindow": {
+				"layout": "layouts/make-lighting-short.ini",
+				"steps": [
+					{ "command": "selection.set", "parameters": { "entities": [] } },
+					{ "command": "editor.showPanel", "parameters": { "panel": "Inspector" } }
+				],
+				"windowSize": [960, 440],
+				"panel": "Inspector"
+			}
+		},
+		{
+			"id": "shadow-low-sun",
+			"shows": "Basic 3D with a cube, the Clear preset and the sun 25 degrees up, so the cube's shadow is long",
+			"caption": "A low sun: the shadow of the cube is about twice as long as the cube is high.",
+			"alt": "A white cube on gray stone ground, seen from above and in front, with a dark shadow stretching to the left about twice as far as the cube is high.",
+			"kind": "scene",
+			"project": { "template": "basic3d" },
+			"camera": { "position": [-0.8, 3.2, 4.2], "target": [-1, 0.2, 0], "fov": 35 },
+			"size": [1280, 720],
+			"quality": "high",
+			"setup": [
+				{ "command": "entity.create", "parameters": { "name": "Cube", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "Transform": { "Translation": [0, 0.5, 0] } } } },
+				{ "command": "lighting.applySkyPreset", "parameters": { "preset": "Clear", "sunElevation": 25, "sunAzimuth": 20 } }
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "preview-lighting",
+			"shows": "The whole editor with a new scene that holds a cube and a camera and no light: the Scene view shows the cube lit, the Game view shows it dim on black",
+			"caption": "The same new scene in two views: the Scene view's preview lighting shows a light and a shade side, and the Game view shows the cube dim on black.",
+			"alt": "A Scene view with a white cube, one side light and one in shade, and a Game view beside it, black but for a dim gray cube.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": { "template": "empty" },
+			"editorWindow": {
+				"layout": "layouts/make-lighting-side.ini",
+				"windowSize": [960, 540],
+				"steps": [
+					{ "command": "scene.new" },
+					{ "command": "entity.create", "parameters": { "name": "Cube", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" } } } },
+					{ "command": "entity.create", "parameters": { "name": "Camera", "components": { "Camera": { "Primary": true }, "Transform": { "Translation": [0, 1, 5] } } } },
+					{ "command": "selection.set", "parameters": { "entities": [] } },
+					{ "command": "camera.set", "parameters": { "position": [2.2, 1.8, 3.2], "target": [0, 0.3, 0] } },
+					{ "command": "editor.showPanel", "parameters": { "panel": "Game" } }
+				]
+			}
+		},
+		{
+			"id": "luminance-view",
+			"shows": "Basic 3D with a cube in the Luminance debug view: the sunlit ground sand yellow (band 9), the shadow yellow-green (band 7), a green rim (band 6), the sky and the cube's lit face cream and off-white",
+			"caption": "The Luminance view, one stop per band. The ground in the sun is sand yellow and its shadow yellow-green. The pure yellow band between them appears nowhere: two stops apart.",
+			"alt": "The scene in flat color bands. The cube's lit face and a strip of sky above the horizon are off-white, and the upper sky and the distance are cream. The ground in the sun is sand yellow, the cube's shadow yellow-green with a green rim at the cube's foot.",
+			"kind": "scene",
+			"project": { "template": "basic3d" },
+			"camera": { "position": [-0.3, 1.2, 4.5], "target": [-0.8, 0.4, 0], "fov": 40 },
+			"size": [1280, 720],
+			"quality": "high",
+			"debugView": "luminance",
+			"setup": [
+				{ "command": "entity.create", "parameters": { "name": "Cube", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "Transform": { "Translation": [0, 0.5, 0] } } } }
+			],
+			"expect": "complete"
+		}
+	]
+}

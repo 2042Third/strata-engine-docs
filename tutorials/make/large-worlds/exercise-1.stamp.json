@@ -1,0 +1,61 @@
+{
+	"page": "make/large-worlds",
+	"runs": [
+		{
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/solutions/make/large-worlds/exercise-1.zip": "ce2c1ebdf78efa7ed68ea6f74861b8decd8f8e1c6927164880853309687814e9",
+				"tutorials/make/large-worlds.tutorial.json": "a3b94492f6d642f239b021b54a61110ab258c4d4d61145a35de50845db5a371e",
+				"tutorials/make/large-worlds/Teleport.cpp": "51cd60ffc0d7abcf8f417d172409b3c1cabd51cf865a487219826ed09e1db77d",
+				"tutorials/make/large-worlds/TeleportNoPrefetch.cpp": "66fa93927ac874ad75233e26c3f6be4728eb7ad61129f674d217cffe758f2538",
+				"tutorials/make/large-worlds/exercise-1.tutorial.json": "e99c4e22365342beed9570641c615ae87c5534951850d36bd42776ca0f0e2e1f",
+				"tutorials/make/large-worlds/exercise-1/LayerToggle.cpp": "c16fe4bfc88c3a14d6da4ec6e40caec79c69b7c354717db626afa276f1de933a"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		},
+		{
+			"build": {
+				"kind": "package",
+				"configuration": "Strata-0.8.0-windows-x64",
+				"editorSha256": "bcff21bcd56e8f51003861fc7aafb4b8ab638ad7cc521c8c0c7829c4361673be",
+				"package": "Strata-0.8.0-windows-x64.zip",
+				"packageSha256": "47a151b64d0d6bb6f2c77147ca4b477b5eaa479b7dfeafee07ccec3911a00d11"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/solutions/make/large-worlds/exercise-1.zip": "ce2c1ebdf78efa7ed68ea6f74861b8decd8f8e1c6927164880853309687814e9",
+				"tutorials/make/large-worlds.tutorial.json": "a3b94492f6d642f239b021b54a61110ab258c4d4d61145a35de50845db5a371e",
+				"tutorials/make/large-worlds/Teleport.cpp": "51cd60ffc0d7abcf8f417d172409b3c1cabd51cf865a487219826ed09e1db77d",
+				"tutorials/make/large-worlds/TeleportNoPrefetch.cpp": "66fa93927ac874ad75233e26c3f6be4728eb7ad61129f674d217cffe758f2538",
+				"tutorials/make/large-worlds/exercise-1.tutorial.json": "e99c4e22365342beed9570641c615ae87c5534951850d36bd42776ca0f0e2e1f",
+				"tutorials/make/large-worlds/exercise-1/LayerToggle.cpp": "c16fe4bfc88c3a14d6da4ec6e40caec79c69b7c354717db626afa276f1de933a"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		}
+	]
+}

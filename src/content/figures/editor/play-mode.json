@@ -1,0 +1,22 @@
+{
+	"figures": [
+		{
+			"id": "scene-and-game-view",
+			"shows": "The Scene view and the Game view side by side while a sample plays",
+			"caption": "While the game plays, the Scene view on the left shows the bus and the tank close up through the editor camera, over its grid. The Game view on the right shows the same bus and tank from high above, through the scene's primary camera.",
+			"alt": "The editor in play mode, with the Scene view and the Game view side by side. On the left, the Scene view shows a bus and a tall tank close up, with the grid and the red and blue axis lines drawn over the ground. On the right, the Game view shows the same bus and tank small, from high above, with no grid. Green notes over the side panels read Playing: changes are discarded when play stops.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": { "sample": "Showcase" },
+			"editorWindow": {
+				"layout": "layouts/play-mode.ini",
+				"windowSize": [960, 540],
+				"steps": [
+					{ "command": "camera.set", "parameters": { "position": [30, 9, -17], "target": [14, 1, -1], "fov": 50 } },
+					{ "command": "play.start" },
+					{ "command": "editor.wait", "parameters": { "frames": 600 } }
+				]
+			}
+		}
+	]
+}

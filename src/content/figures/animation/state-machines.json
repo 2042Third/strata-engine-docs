@@ -1,0 +1,45 @@
+{
+	"figures": [
+		{
+			"id": "robot-asset-tab",
+			"kind": "editor",
+			"shows": "The editor's Asset tab with the robot's controller of the third-person sample open: the tables of parameters, states and transitions",
+			"caption": "The tables hold the same data as the document: five parameters, six states and fourteen transitions, one row each.",
+			"alt": "The Asset tab of the editor with the robot's controller open. A table of parameters stands above a table of states with their clips, and a table of transitions with their conditions, exit times and fades.",
+			"project": { "sample": "ThirdPerson" },
+			"editorWindow": {
+				"layout": "layouts/asset-tab-controller.ini",
+				"windowSize": [1280, 1280],
+				"panel": "AssetInspector",
+				"steps": [
+					{ "command": "selection.set", "parameters": { "asset": "Animations/Robot.stanimator" } }
+				]
+			}
+		},
+		{
+			"id": "robot-inspector-fade",
+			"kind": "editor",
+			"shows": "The Inspector of the robot in the third-person sample, paused in play during the cross-fade from Walk to Run, with the live state below the Animator's fields",
+			"caption": "During a fade the State row names both states: the one that fades out, an arrow, and the one that fades in.",
+			"alt": "The Inspector of the robot, paused in Play mode, with its Animator component. Below the fields, the State row reads Walk, an arrow, then Run, and the parameters list shows Speed at 6.500, above the threshold of 4.5.",
+			"project": { "sample": "ThirdPerson" },
+			"scene": "Scenes/Course.stscene",
+			"play": {
+				"steps": 47,
+				"input": [
+					{ "step": 0, "action": "Gameplay/Move", "mode": "press", "value": [0, 1] },
+					{ "step": 40, "action": "Gameplay/Run", "mode": "press" }
+				]
+			},
+			"editorWindow": {
+				"layout": "layouts/state-machines-inspector.ini",
+				"windowSize": [1280, 880],
+				"panel": "Inspector",
+				"steps": [
+					{ "command": "entity.find", "parameters": { "name": "Robot" }, "bind": { "robot": "/entities/0" } },
+					{ "command": "selection.set", "parameters": { "entities": [{ "$ref": "robot" }] } }
+				]
+			}
+		}
+	]
+}

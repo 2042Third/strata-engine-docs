@@ -1,0 +1,8 @@
+{
+	"page": "assets/extending",
+	"startsFrom": { "pin": true },
+	"patch": {
+		"file": "tutorials/assets/extending.patch",
+		"tests": [ "Scene.TextAsset", "Asset", "Editor.AssetOperations", "Architecture.Layering" ]
+	}
+}

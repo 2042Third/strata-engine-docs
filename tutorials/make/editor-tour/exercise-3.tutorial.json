@@ -1,0 +1,59 @@
+{
+	"page": "make/editor-tour",
+	"startsFrom": {
+		"tutorial": "make/editor-tour"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"Primary": false
+						}
+					},
+					"entityName": "Main Camera"
+				},
+				{
+					"command": "edit.undo",
+					"parameters": {}
+				},
+				{
+					"command": "component.get",
+					"parameters": {
+						"component": "Camera"
+					},
+					"entityName": "Main Camera",
+					"checks": [
+						{
+							"pointer": "/values/Primary",
+							"equals": true
+						}
+					]
+				},
+				{
+					"command": "editor.activity",
+					"parameters": {
+						"source": "Automation"
+					}
+				},
+				{
+					"command": "editor.activity",
+					"parameters": {
+						"source": "Automation",
+						"command": "component.set"
+					},
+					"checks": [
+						{
+							"pointer": "/entries/0/command",
+							"equals": "component.set"
+						}
+					]
+				}
+			]
+		}
+	]
+}

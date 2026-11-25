@@ -1,0 +1,201 @@
+[
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/MainMenu.stscene"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Menu"
+		},
+		"bind": {
+			"menu": "/entities/0"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "panel",
+			"name": "CreditsPanel",
+			"parent": {
+				"$ref": "menu"
+			},
+			"anchor": "bottomCenter",
+			"size": [
+				600,
+				360
+			]
+		},
+		"bind": {
+			"credits": "/entity"
+		}
+	},
+	{
+		"command": "component.add",
+		"parameters": {
+			"entity": {
+				"$ref": "credits"
+			},
+			"component": "UIMask"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "text",
+			"name": "CreditsText",
+			"parent": {
+				"$ref": "credits"
+			},
+			"text": "Strata Course\n\nDesign: you\nCode: you\nSound: you\n\nMade with Strata\n\nThanks for playing",
+			"anchor": "topCenter",
+			"position": [
+				0,
+				360
+			],
+			"size": [
+				560,
+				900
+			]
+		},
+		"bind": {
+			"content": "/entity"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "menu"
+			},
+			"class": "Credits",
+			"fields": {
+				"Content": {
+					"$ref": "content"
+				}
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 60
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 60
+			}
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "content"
+			},
+			"component": "UIRect"
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"entity": {
+				"$ref": "credits"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "scene.save"
+	},
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/Main.stscene"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "canvas",
+			"name": "Sign"
+		},
+		"bind": {
+			"sign": "/entity"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "sign"
+			},
+			"component": "UICanvas",
+			"values": {
+				"RenderMode": "WorldSpace"
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "sign"
+			},
+			"component": "Transform",
+			"values": {
+				"Translation": [
+					0,
+					2,
+					6
+				]
+			}
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"name": "SignButton",
+			"parent": {
+				"$ref": "sign"
+			},
+			"text": "Welcome",
+			"size": [
+				400,
+				200
+			]
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "sign"
+			},
+			"component": "UICanvas"
+		}
+	},
+	{
+		"command": "scene.save"
+	}
+]

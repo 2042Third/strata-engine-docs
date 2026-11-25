@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 336">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!--
+Plan. The Anti-aliasing group of the Post Process section, three rows of the property table: label column x 24 to 300,
+value column x 316 to 744 (divider x 308). Rows 32 high from y 48; the subject row, TAA Preset, y 128 to 168 on a plate.
+Under it two brackets, one per column (y 176 to 184), and the notes of each column from y 210, 20 apart; H = 316 + 4 + 16.
+Facts: PropertyLabel draws name, tooltip, bold and accent bar when overridden, disabled color and reason when inactive
+(InspectorPanel.cpp DrawPropertyRow); WithTemporalAntiAliasing's reason "Anti Aliasing is off"; options Sharp, Original,
+Custom; DrawTemporalAntiAliasingPreset sends one component.set with the preset and, for Custom, the start values.
+-->
+<text class="ink bold" x="24" y="36">Anti-aliasing</text>
+<line class="line-faint" x1="132" y1="31" x2="744" y2="31" stroke-width="1"/>
+<line class="line-faint" x1="308" y1="48" x2="308" y2="168" stroke-width="1"/>
+
+<text class="muted" x="40" y="69">Anti Aliasing</text>
+<rect class="line-muted" x="316" y="54" width="20" height="20" rx="3" fill="none"/>
+<path class="line-muted" d="M320,64 l4,5 l8,-10" fill="none" stroke-width="2"/>
+
+<text class="muted" x="40" y="109">Anti Aliasing Method</text>
+<rect class="line-muted" x="316" y="92" width="428" height="24" rx="4" fill="none"/>
+<text class="muted" x="328" y="109">TAA</text>
+<path class="line-muted" d="M720,101 l5,5 l5,-5" fill="none"/>
+
+<rect class="plate" x="24" y="128" width="720" height="40" rx="2"/>
+<text class="ink" x="40" y="153">TAA Preset</text>
+<rect class="ground line-ink" x="316" y="134" width="420" height="28" rx="4" stroke-width="2"/>
+<text class="ink" x="328" y="153">Sharp</text>
+<path class="line-ink" d="M712,145 l6,6 l6,-6" fill="none" stroke-width="2"/>
+
+<path class="line-blue" d="M24,176 v8 h276 v-8" fill="none" stroke-width="2"/>
+<path class="line-purple" d="M316,176 v8 h420 v-8" fill="none" stroke-width="2"/>
+
+<text class="blue bold" x="24" y="210">From the panel</text>
+<text class="ink small" x="24" y="234">The name, with its tooltip on hover</text>
+<text class="ink small" x="24" y="254">Overridden: a bold name and an</text>
+<text class="ink small" x="24" y="274">accent bar at the row's left edge</text>
+<text class="ink small" x="24" y="294">Inactive: drawn gray, the reason in</text>
+<text class="ink small" x="24" y="314">the tooltip (Anti Aliasing is off)</text>
+
+<text class="purple bold" x="316" y="210">From the property drawer</text>
+<text class="ink small" x="316" y="234">The generic drop-down: Sharp, Original, Custom</text>
+<text class="ink small" x="316" y="254">A choice sends one <tspan class="mono">component.set</tspan> with the preset</text>
+<text class="ink small" x="316" y="274">and, for Custom, the start of each tuning value,</text>
+<text class="ink small" x="316" y="294">so the whole choice is one undo step</text>
+</svg>

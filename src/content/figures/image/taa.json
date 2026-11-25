@@ -1,0 +1,138 @@
+{
+	"figures": [
+		{
+			"id": "taa-clamp-clip-axis",
+			"kind": "diagram",
+			"shows": "The worked example of the clamp on one brightness axis: eight pixels at 0.1 and a glint at 1.0, the range clamp from 0.1 to 1.0 that keeps a history of 1.0, and the variance box up to 0.554 that pulls it there",
+			"caption": "The worked example on one brightness axis. The range clamp reaches the glint, so a history of 1.0 stays; the variance box ends at 0.554, and the clip pulls the history down to it.",
+			"alt": "A brightness axis from 0 to 1.0. Eight pixels sit at 0.1 and one glint at 1.0. A blue bar from 0.1 to 1.0 keeps an orange history dot at 1.0. A green bar from 0.1 to 0.554 ends where an orange arrow brings the history from 1.0.",
+			"numbers": "The page's worked example: mean 0.2, deviation about 0.283, Clip Width 1.25 (Sharp), box top 0.554, box bottom the range's 0.1 (TAA.comp.slang lines 111 and 112 limit the box to the range)."
+		},
+		{
+			"id": "taa-presets-slow-pan",
+			"kind": "live",
+			"shows": "The same moment of the Showcase's fourth camera flight, over the grain of the wet apron, drawn with the Original and Sharp presets, cropped to the ground near the camera",
+			"caption": "The same moment of the camera's flight over the apron. Original blurs the grain of the ground, and Sharp keeps it crisper: its resampling term and the sharpening of the shown image both keep detail.",
+			"alt": "Two crops of the same rough ground, brown on the left and golden toward the sun on the right, seen from a moving camera. In the first the grain is soft and blurred. In the second the grain has sharp, dark edges.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"camera": "scene",
+			"crops": [
+				{ "name": "ground", "rect": [0.32, 0.7, 0.56, 0.88], "scale": 2 }
+			],
+			"setup": [
+				{ "command": "script.build", "parameters": {} },
+				{ "command": "script.setField", "entityName": "Outpost", "parameters": { "class": "Outpost", "field": "StartShot", "value": 4 } }
+			],
+			"variants": {
+				"original": {
+					"postProcess": { "AutoExposureSpeed": 0, "AutoExposureLightSpeed": 0, "MotionBlur": false, "AntiAliasing": true, "AntiAliasingMethod": "TAA", "TAAPreset": "Original" }
+				},
+				"sharp": {
+					"postProcess": { "AutoExposureSpeed": 0, "AutoExposureLightSpeed": 0, "MotionBlur": false, "AntiAliasing": true, "AntiAliasingMethod": "TAA", "TAAPreset": "Sharp" }
+				}
+			},
+			"play": { "steps": 604 },
+			"live": { "atFixedStep": 600, "frames": 4 },
+			"publish": "lossless",
+			"expect": "complete"
+		},
+		{
+			"id": "taa-trail-clamp-variance",
+			"kind": "live",
+			"blocked": "At the pin the take shows no trail to compare: in the fourth flight at step 600 the range clamp and variance clipping differ only in the fine noise of the apron and in a halo around the sun, and no crop of the frame shows a faint copy beside a glint that one removes and the other keeps (2026-11-24, three takes agreeing).",
+			"standIn": "taa-clamp-clip-axis",
+			"shows": "The Showcase's fourth camera shot in flight, around a glint, with the range clamp and with variance clipping",
+			"caption": "Where the moving view carries a dark edge past bright glints, the range clamp leaves a faint copy beside the glints, and variance clipping removes most of it.",
+			"alt": "Two crops of the same moving view around bright glints. The first has a faint trail beside the bright spots. The second has almost none.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"camera": "scene",
+			"crops": [
+				{ "name": "glint", "rect": [0.48, 0.55, 0.62, 0.75], "scale": 3 }
+			],
+			"setup": [
+				{ "command": "script.build", "parameters": {} },
+				{ "command": "script.setField", "entityName": "Outpost", "parameters": { "class": "Outpost", "field": "StartShot", "value": 4 } }
+			],
+			"variants": {
+				"range": {
+					"postProcess": { "AutoExposureSpeed": 0, "AutoExposureLightSpeed": 0, "MotionBlur": false, "AntiAliasing": true, "AntiAliasingMethod": "TAA", "TAAPreset": "Custom", "TAAHistoryClamp": "MinMax" }
+				},
+				"variance": {
+					"postProcess": { "AutoExposureSpeed": 0, "AutoExposureLightSpeed": 0, "MotionBlur": false, "AntiAliasing": true, "AntiAliasingMethod": "TAA", "TAAPreset": "Custom", "TAAHistoryClamp": "Variance" }
+				}
+			},
+			"play": { "steps": 604 },
+			"live": { "atFixedStep": 600, "frames": 4 },
+			"publish": "lossless",
+			"expect": "complete"
+		},
+		{
+			"id": "taa-disocclusion-ghost",
+			"kind": "live",
+			"blocked": "At the pin the clamp already removes the ghost of the falling crate: rejection off and on differ in 169 pixels by at most 5 levels, because the brown crate and the pale bricks and sky it uncovers differ in colour (2026-11-24, three takes agreeing). The case the paragraph names, a dark object leaving a dark wall, needs matching materials that no sample places.",
+			"noStandIn": "The code, the numbers and the flowchart of the disocclusion test that follow the paragraph teach the test fully, and a picture of the pin would show no ghost to remove.",
+			"shows": "A wooden crate falling in front of the Physics Playground's north brick wall, with disocclusion rejection off and on",
+			"caption": "With rejection off, the wall that the falling crate uncovers keeps a ghost of the crate for some frames. With it on, the wall is clean at once.",
+			"alt": "Two crops of a brick wall behind a falling crate. The first shows a pale ghost of the crate on the wall above it. The second shows a clean wall.",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"camera": "scene",
+			"crops": [
+				{ "name": "crate", "rect": [0.3, 0.05, 0.7, 0.75], "scale": 2 }
+			],
+			"setup": [
+				{ "command": "component.set", "entityName": "Main Camera", "parameters": { "component": "Transform", "values": { "Translation": [0, 2, -12], "Rotation": [0, 0, 0, 1] } } },
+				{ "command": "component.set", "entityName": "Main Camera", "parameters": { "component": "Camera", "values": { "PerspectiveFOV": 35 } } },
+				{ "command": "component.set", "entityName": "TowerTop", "parameters": { "component": "Transform", "values": { "Translation": [0, 4, -18], "Rotation": [0, 0, 0, 1] } } }
+			],
+			"variants": {
+				"off": {
+					"postProcess": { "AutoExposureSpeed": 0, "AutoExposureLightSpeed": 0, "MotionBlur": false, "AntiAliasing": true, "AntiAliasingMethod": "TAA", "TAAPreset": "Custom", "TAADisocclusionRejection": false }
+				},
+				"on": {
+					"postProcess": { "AutoExposureSpeed": 0, "AutoExposureLightSpeed": 0, "MotionBlur": false, "AntiAliasing": true, "AntiAliasingMethod": "TAA", "TAAPreset": "Custom", "TAADisocclusionRejection": true }
+				}
+			},
+			"play": { "steps": 34 },
+			"live": { "atFixedStep": 30, "frames": 4 },
+			"publish": "lossless",
+			"expect": "complete"
+		},
+		{
+			"id": "taa-transparent-weight",
+			"kind": "live",
+			"blocked": "At the pin the clamp already removes the drag of the Ghost boxes: with Transparent Weight 0 and 0.5 the falling boxes differ only in a line of pixels along their edges, which no reader sees, because the plain pale boxes fall outside the colours of the bricks and the sky around them (2026-11-24, three takes agreeing). A textured blended surface moving over a still background would show the drag; no sample holds one.",
+			"noStandIn": "The paragraph states the reactive mask rule and its coverage in full, and a picture of the pin would show no drag to remove.",
+			"shows": "The Physics Playground's see-through ghost boxes falling into the pit in front of the brick wall, with Transparent Weight 0 and 0.5",
+			"caption": "With no extra weight the falling see-through boxes drag their image behind them. With a half weight the drag is gone.",
+			"alt": "Two crops of see-through boxes falling in front of a brick wall. The first has a smeared copy above each box. The second shows the boxes cleanly.",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"camera": "scene",
+			"crops": [
+				{ "name": "ghosts", "rect": [0.3, 0.15, 0.7, 0.75], "scale": 2 }
+			],
+			"setup": [
+				{ "command": "component.set", "entityName": "Main Camera", "parameters": { "component": "Transform", "values": { "Translation": [10, 3, -3.5], "Rotation": [-0.0872, 0, 0, 0.9962] } } }
+			],
+			"variants": {
+				"zero": {
+					"postProcess": { "AutoExposureSpeed": 0, "AutoExposureLightSpeed": 0, "MotionBlur": false, "AntiAliasing": true, "AntiAliasingMethod": "TAA", "TAAPreset": "Custom", "TAATransparentWeight": 0 }
+				},
+				"half": {
+					"postProcess": { "AutoExposureSpeed": 0, "AutoExposureLightSpeed": 0, "MotionBlur": false, "AntiAliasing": true, "AntiAliasingMethod": "TAA", "TAAPreset": "Custom", "TAATransparentWeight": 0.5 }
+				}
+			},
+			"play": { "steps": 28 },
+			"live": { "atFixedStep": 24, "frames": 4 },
+			"publish": "lossless",
+			"expect": "complete"
+		}
+	]
+}

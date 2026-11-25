@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 344">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: 20 units per cm. Upper box 12 cm by 5 cm (240 by 100), lower box top y 204, its edge x 520.
+     Old pose x 390..630, centre 510 (0.5 cm inside the edge); the manifold's points were computed at its left
+     corner (390, 204) and at the edge (520, 204). Moved 1.5 cm = 30 to x 420..660, centre 540 (1 cm past the edge).
+     Stored points ride with the upper box: (420, 204) and (550, 204), the second 1.5 cm past the edge.
+     Recycle distance 5 cm = 100 (x 390..490). H = 324 + 16. -->
+<rect class="plate line-ink" x="64" y="204" width="456" height="120" stroke-width="2"/>
+<text class="ink" x="230" y="276" text-anchor="middle">lower box</text>
+<rect class="blue-area line-blue" x="420" y="104" width="240" height="100" stroke-width="2.5"/>
+<text class="blue" x="525" y="132" text-anchor="middle">upper box, now</text>
+<line class="line-blue" x1="534" y1="152" x2="546" y2="152" stroke-width="2"/>
+<line class="line-blue" x1="540" y1="146" x2="540" y2="158" stroke-width="2"/>
+<text class="blue small" x="525" y="182" text-anchor="middle">centre, 1 cm past the edge</text>
+<rect class="line-muted" fill="none" x="390" y="104" width="240" height="100" stroke-dasharray="4 3"/>
+<line class="line-muted" x1="390" y1="30" x2="390" y2="104" stroke-dasharray="4 3"/>
+<text class="muted" x="380" y="138" text-anchor="end">pose when the</text>
+<text class="muted" x="380" y="158" text-anchor="end">points were computed</text>
+<line class="line-ink" x1="390" y1="218" x2="410" y2="218"/>
+<polygon class="ink" points="410,214.5 420,218 410,221.5"/>
+<line class="line-orange" x1="520" y1="218" x2="540" y2="218"/>
+<polygon class="orange" points="540,214.5 550,218 540,221.5"/>
+<circle class="ground line-ink" cx="390" cy="204" r="5"/>
+<circle class="ground line-ink" cx="520" cy="204" r="5"/>
+<circle class="ink" cx="420" cy="204" r="6"/>
+<circle class="orange" cx="550" cy="204" r="6"/>
+<line class="line-ink" x1="509" y1="248" x2="517" y2="211" stroke-width="1"/>
+<text class="ink small" x="506" y="262" text-anchor="end">computed here</text>
+<line class="line-green" x1="390" y1="40" x2="490" y2="40"/>
+<line class="line-green" x1="490" y1="34" x2="490" y2="46"/>
+<line class="line-green" x1="390" y1="34" x2="390" y2="46"/>
+<text class="green" x="380" y="45" text-anchor="end">recycle distance 5 cm</text>
+<line class="line-ink" x1="390" y1="72" x2="410" y2="72"/>
+<polygon class="ink" points="410,68.5 420,72 410,75.5"/>
+<text class="ink" x="380" y="77" text-anchor="end">moved 1.5 cm, under 5 cm: points kept</text>
+<text class="orange" x="560" y="244">stored point rides with</text>
+<text class="orange" x="560" y="264">the upper box: now</text>
+<text class="orange" x="560" y="284">1.5 cm past the edge,</text>
+<text class="orange" x="560" y="304">pushes up where</text>
+<text class="orange" x="560" y="324">nothing is under it</text>
+</svg>

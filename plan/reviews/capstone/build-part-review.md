@@ -1,0 +1,4 @@
+# Part review: capstone/build
+
+- step: the patch changes `Docs/Architecture.md` (the `IWindZones` row of the scene services table: "as strength and as force"), which neither the files box nor any step named, though the page counts sixteen changed files; the files box lists it and step 1 of "Give scripts the force" tells the reader to update the row.
+- none other: the force cases and answers (12, 0, 16), (-20, 0, 0), (25, 0, -10) of about 26.93, the profile stage `Scene.Wind`, `RunsInSimulateMode`, the collider color, `AllColliders` off in the editor and `viewport.setSettings` `allColliders`, `selection.set`'s `entities`, `scene.new`'s `force`, `component.get`'s `inactive`, `ST_SCRIPT_HOST_FUNCTIONS` in `ScriptHostAPI.cpp` and `StrataCLI call ... --project` agree with the pin and the patch.

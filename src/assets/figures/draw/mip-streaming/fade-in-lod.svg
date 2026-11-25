@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 320">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Finest level sampled against time for a raise from level 4 to level 2, fade of 0.25 s at 60 frames per second.
+     Time -0.05 to 0.30 s maps to x 120 to 700 (1657 per second): 0 s at 203, 0.1 s at 369, 0.2 s at 534, 0.25 s at 617.
+     Level 4 at y 80, level 3 at 160, level 2 at 240; x axis at y 256. Frames k = 0 to 15: x 203 + 27.6 k, y 80 + 10.67 k. H 320. -->
+<text class="ink bold" x="16" y="30">finest level sampled</text>
+<g class="line-faint" stroke-width="1">
+<path d="M120 80H700M120 160H700M120 240H700" fill="none"/>
+</g>
+<g class="line-muted" fill="none" stroke-dasharray="4 3">
+<path d="M203 56V256M617 56V256"/>
+</g>
+<path class="line-ink" d="M120 64V256H700" fill="none"/>
+<g class="muted small" text-anchor="end">
+<text x="112" y="85">level 4</text>
+<text x="112" y="165">level 3</text>
+<text x="112" y="245">level 2</text>
+</g>
+<g class="muted small" text-anchor="middle">
+<text x="203" y="276">0 s</text>
+<text x="369" y="276">0.1 s</text>
+<text x="534" y="276">0.2 s</text>
+<text x="617" y="276">0.25 s</text>
+</g>
+<path class="line-ink" d="M369 256V262M534 256V262M203 256V262M617 256V262" fill="none"/>
+<text class="muted" x="410" y="304" text-anchor="middle">time since the raise landed</text>
+<path class="line-blue" d="M120 80H203L617 240H700" fill="none" stroke-width="2.5"/>
+<g class="blue">
+<circle cx="203" cy="80" r="4"/>
+<circle cx="230.6" cy="90.67" r="4"/>
+<circle cx="258.2" cy="101.33" r="4"/>
+<circle cx="285.8" cy="112" r="4"/>
+<circle cx="313.4" cy="122.67" r="4"/>
+<circle cx="341" cy="133.33" r="4"/>
+<circle cx="368.6" cy="144" r="4"/>
+<circle cx="396.2" cy="154.67" r="4"/>
+<circle cx="423.8" cy="165.33" r="4"/>
+<circle cx="451.4" cy="176" r="4"/>
+<circle cx="479" cy="186.67" r="4"/>
+<circle cx="506.6" cy="197.33" r="4"/>
+<circle cx="534.2" cy="208" r="4"/>
+<circle cx="561.8" cy="218.67" r="4"/>
+<circle cx="589.4" cy="229.33" r="4"/>
+<circle cx="617" cy="240" r="4"/>
+</g>
+<text class="ink" x="209" y="52">raise: levels 3 and 2 arrive</text>
+<text class="ink" x="611" y="52" text-anchor="end">fade ends</text>
+<text class="blue" x="212" y="210">one dot per frame at 60 per second:</text>
+<text class="blue" x="212" y="230">a little finer in each of 15 frames</text>
+<text class="muted small" x="128" y="72">before</text>
+<text class="muted small" x="692" y="232" text-anchor="end">new finest</text>
+</svg>

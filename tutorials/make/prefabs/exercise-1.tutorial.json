@@ -1,0 +1,48 @@
+{
+	"page": "make/prefabs",
+	"startsFrom": {
+		"tutorial": "make/prefabs"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "prefab.instantiate",
+					"parameters": {
+						"prefab": "Prefabs/Coin.stprefab",
+						"components": {
+							"Transform": {
+								"Translation": [
+									0,
+									3,
+									0
+								]
+							}
+						}
+					},
+					"bind": {
+						"sixth": "/id"
+					}
+				},
+				{
+					"command": "entity.dropToGround",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "sixth"
+							}
+						]
+					},
+					"checks": [
+						{
+							"pointer": "/moved",
+							"length": 1
+						}
+					]
+				}
+			],
+			"endState": true
+		}
+	]
+}

@@ -1,0 +1,8 @@
+{
+	"page": "capstone/build",
+	"startsFrom": { "tutorial": "capstone/plan" },
+	"patch": {
+		"file": "tutorials/capstone/build.patch",
+		"tests": [ "Physics.WindZone", "Scripting.Wind", "Editor.Journal", "FeatureTest", "Architecture.Layering" ]
+	}
+}

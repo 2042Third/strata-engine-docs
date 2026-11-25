@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 496">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- the drawing: roles as classes (plan/card/drawing.md) -->
+<!-- Plan: three Hierarchy panels 232 wide at x 16, 268, 520; panel y 48 to 224, rows 32 high from y 56 (A, B, X, Y, C; X and Y at depth 1, 20 per level).
+     Results at y 248. Zone row x 144 to 624, y 308 to 468: quarters 40, the middle half 80; fraction labels at x 636. H 496. -->
+<text class="ink bold" x="16" y="36">A dropped before C</text>
+<rect class="plate" x="16" y="48" width="232" height="176"/>
+<text class="ink" x="44" y="77">A</text>
+<polygon class="muted" points="28,100 38,100 33,107"/>
+<text class="ink" x="44" y="109">B</text>
+<text class="ink" x="64" y="141">X</text>
+<text class="ink" x="64" y="173">Y</text>
+<text class="ink" x="44" y="205">C</text>
+<line class="line-blue" stroke-width="2.5" x1="28" y1="184" x2="240" y2="184"/>
+<circle class="blue" cx="28" cy="184" r="4"/>
+<text class="ink small" x="16" y="248">parent null (top level), index 1</text>
+<text class="ink bold" x="268" y="36">A dropped inside C</text>
+<rect class="plate" x="268" y="48" width="232" height="176"/>
+<rect class="blue-area line-blue" stroke-width="2" x="272" y="184" width="224" height="32"/>
+<text class="ink" x="296" y="77">A</text>
+<polygon class="muted" points="280,100 290,100 285,107"/>
+<text class="ink" x="296" y="109">B</text>
+<text class="ink" x="316" y="141">X</text>
+<text class="ink" x="316" y="173">Y</text>
+<text class="ink" x="296" y="205">C</text>
+<text class="ink small" x="268" y="248">parent C, index 0</text>
+<text class="ink bold" x="520" y="36">A dropped after B, expanded</text>
+<rect class="plate" x="520" y="48" width="232" height="176"/>
+<text class="ink" x="548" y="77">A</text>
+<polygon class="muted" points="532,100 542,100 537,107"/>
+<text class="ink" x="548" y="109">B</text>
+<text class="ink" x="568" y="141">X</text>
+<text class="ink" x="568" y="173">Y</text>
+<text class="ink" x="548" y="205">C</text>
+<line class="line-blue" stroke-width="2.5" x1="552" y1="120" x2="744" y2="120"/>
+<circle class="blue" cx="552" cy="120" r="4"/>
+<text class="ink small" x="520" y="248">parent B, index 0</text>
+<text class="ink bold" x="144" y="292">The zones of one row, by the pointer&#8217;s height in it</text>
+<rect class="blue-area line-blue" stroke-width="2" x="144" y="348" width="480" height="80"/>
+<rect fill="none" class="line-muted" x="144" y="308" width="480" height="160"/>
+<line class="line-blue" stroke-width="2.5" x1="152" y1="308" x2="624" y2="308"/>
+<circle class="blue" cx="152" cy="308" r="4"/>
+<line class="line-blue" stroke-width="2.5" x1="152" y1="468" x2="624" y2="468"/>
+<circle class="blue" cx="152" cy="468" r="4"/>
+<text class="ink" text-anchor="middle" x="384" y="334">Top quarter: before the row&#8217;s entity</text>
+<text class="ink" text-anchor="middle" x="384" y="394">Middle half: inside, as its last child</text>
+<text class="ink" text-anchor="middle" x="384" y="454">Bottom quarter: after the row&#8217;s entity</text>
+<text class="muted small" x="636" y="313">0</text>
+<text class="muted small" x="636" y="353">0.25</text>
+<text class="muted small" x="636" y="433">0.75</text>
+<text class="muted small" x="636" y="473">1</text>
+</svg>

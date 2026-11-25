@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 320">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!--
+Plan. Top view, both panels: +X to the right, -Z up the page (+Z down), as the engine's and the book's top views; a yaw
+turns +Z toward +X (atan2(x, z)), so a positive yaw turns anticlockwise on the page. One unit of travel = 170 px.
+Left (clip-start frame): root starts at (96, 100) facing +Z (yaw 0, down the page); its path is a quarter circle of
+radius 170, centre (266, 100), ending at (266, 270) facing +X (yaw 90°). Travel = (1, 0, 1) units: the dashed chord,
+right and down.
+Right (world): entity at (470, 240) facing +X (yaw 90°). The same travel turned by 90°: RotateY((1, 0, 1), 90°) =
+(1, 0, −1): 170 right, 170 up the page, ending at (640, 70). The path turns with it: centre (470, 70).
+End heading 90° + 90° = 180°: facing −Z, up the page.
+Root glyph: dot r 7, nose tip 20 along the heading, base 6 along it, 7 to each side.
+Chord heads: tip on the end dot's edge (4.95 back along the diagonal), 10 long, 7 wide.
+-->
+<line class="line-faint" x1="384" y1="16" x2="384" y2="304" stroke-width="1"/>
+
+<!-- left: the clip -->
+<text class="ink bold" x="192" y="32" text-anchor="middle">In the clip-start frame</text>
+<path class="line-blue" d="M96,100 A170,170 0 0 0 266,270" fill="none" stroke-width="2.5"/>
+<text class="blue" x="134" y="234" text-anchor="end">root path</text>
+<line class="line-orange" x1="96" y1="100" x2="253.98" y2="257.98" stroke-width="2" stroke-dasharray="4 3"/>
+<polygon class="orange" points="261.05,265.05 251.51,260.45 256.45,255.51"/>
+<text class="orange" x="190" y="168">travel</text>
+<circle class="ink" cx="96" cy="100" r="7"/>
+<polygon class="ink" points="96,120 89,106 103,106"/>
+<text class="ink" x="96" y="82" text-anchor="middle">start, yaw 0</text>
+<circle class="ink" cx="266" cy="270" r="7"/>
+<polygon class="ink" points="286,270 272,263 272,277"/>
+<text class="ink" x="266" y="300" text-anchor="middle">end, yaw 90°</text>
+<line class="line-muted" x1="300" y1="70" x2="330" y2="70"/>
+<polygon class="muted" points="340,70 330,66.5 330,73.5"/>
+<text class="muted small" x="346" y="75">+X</text>
+<line class="line-muted" x1="300" y1="70" x2="300" y2="100"/>
+<polygon class="muted" points="300,110 296.5,100 303.5,100"/>
+<text class="muted small" x="300" y="128" text-anchor="middle">+Z</text>
+
+<!-- right: the world -->
+<text class="ink bold" x="576" y="32" text-anchor="middle">In the world</text>
+<path class="line-blue" d="M470,240 A170,170 0 0 0 640,70" fill="none" stroke-width="2.5"/>
+<text class="blue" x="604" y="200">turned path</text>
+<line class="line-orange" x1="470" y1="240" x2="627.98" y2="82.02" stroke-width="2" stroke-dasharray="4 3"/>
+<polygon class="orange" points="635.05,74.95 625.51,79.55 630.45,84.49"/>
+<text class="orange" x="552" y="140" text-anchor="end">same travel, turned</text>
+<circle class="ink" cx="470" cy="240" r="7"/>
+<polygon class="ink" points="490,240 476,233 476,247"/>
+<text class="ink" x="470" y="270" text-anchor="middle">entity, yaw 90°</text>
+<circle class="ink" cx="640" cy="70" r="7"/>
+<polygon class="ink" points="640,50 633,64 647,64"/>
+<text class="ink" x="656" y="75">end, yaw 180°</text>
+<line class="line-muted" x1="680" y1="240" x2="710" y2="240"/>
+<polygon class="muted" points="720,240 710,236.5 710,243.5"/>
+<text class="muted small" x="726" y="245">+X</text>
+<line class="line-muted" x1="680" y1="240" x2="680" y2="270"/>
+<polygon class="muted" points="680,280 676.5,270 683.5,270"/>
+<text class="muted small" x="680" y="298" text-anchor="middle">+Z</text>
+</svg>

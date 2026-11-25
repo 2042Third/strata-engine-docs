@@ -1,0 +1,59 @@
+{
+	"comment": "What the stand-in editor of tools/tests/test_reference.py answers, per command, in the shapes of the editor at the pin. @HOME@ and @BUILD@ stand for folders of the test machine, which the dump must remove or refuse.",
+	"editor.commands": { "commands": [
+		{ "name": "asset.list", "description": "The assets of the project.", "kind": "Query", "parameters": { "type": "object", "additionalProperties": false, "properties": {} } },
+		{ "name": "asset.setBudget", "description": "Sets a pool's budget.", "kind": "Session", "parameters": { "type": "object", "additionalProperties": false, "required": ["pool"],
+			"properties": { "pool": { "type": "string", "description": "The pool", "enum": ["cpu", "gpu"] } } } },
+		{ "name": "asset.stats", "description": "Asset memory and streaming: resident bytes per pool.", "kind": "Query", "parameters": { "type": "object", "properties": {} } },
+		{ "name": "editor.commands", "description": "Every editor command with its description and the schema of its parameters.", "kind": "Query", "parameters": { "type": "object", "properties": {} } },
+		{ "name": "editor.showPanel", "description": "Shows a panel.", "kind": "Session", "parameters": { "type": "object", "required": ["panel"], "properties": { "panel": { "type": "string", "description": "The panel" } } } },
+		{ "name": "entity.create", "description": "Creates an entity. Returns its ID.", "kind": "Edit", "parameters": { "type": "object", "properties": {
+			"name": { "type": "string", "description": "Entity name <with | a pipe> and `code`" },
+			"region": { "type": "object", "description": "Where", "properties": { "min": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 } } } } } },
+		{ "name": "scene.open", "description": "Opens a scene asset for editing.", "kind": "Session", "parameters": { "type": "object", "properties": {
+			"scene": { "type": "string", "description": "The scene" }, "force": { "type": "boolean", "description": "Discard changes", "default": false } } } },
+		{ "name": "viewport.capture", "description": "Renders the scene and returns the picture.", "kind": "Query", "parameters": { "type": "object", "properties": {
+			"debugView": { "type": "string", "description": "A debug view", "enum": ["none", "lod", "shadows"] } } } }
+	] },
+	"preferences.get": {
+		"sections": [
+			{ "id": "Editor.Interface", "title": "Interface", "category": "Editor", "description": "How the editor looks.", "version": 1,
+				"schema": { "type": "object", "properties": { "Scale": { "type": "string", "title": "Scale", "description": "The interface's size", "enum": ["Automatic", "125%"], "default": "Automatic" } } },
+				"value": { "Scale": "125%" }, "isDefault": false, "problem": null },
+			{ "id": "Editor.ExternalEditor", "title": "External editor", "category": "Editor", "description": "The code editor.", "version": 1,
+				"schema": { "type": "object", "properties": { "Command": { "type": "string", "description": "The command template" } } },
+				"value": { "Command": "@HOME@/editor.exe" }, "isDefault": false, "problem": null }
+		],
+		"unclaimed": [], "file": "@HOME@/Preferences.json", "fileState": "written", "fileError": null, "readOnly": null
+	},
+	"project.templates": { "templates": [ { "id": "empty", "name": "Empty", "description": "A project with no scene.", "startScene": null } ], "default": "empty" },
+	"project.samples": { "samples": [ { "id": "Tetris", "name": "Tetris", "description": "The falling-block classic.", "picture": "@BUILD@/Samples/Tetris/Picture.png" } ] },
+	"project.create": { "projectFile": "@HOME@/Empty/Empty.stproj", "template": "empty" },
+	"project.settings": {
+		"project": { "name": "Empty", "startScene": null },
+		"sections": [
+			{ "id": "Renderer.Quality", "title": "Graphics Quality", "category": "Rendering", "description": "What the renderer draws with.", "version": 6, "isDefault": true, "problem": null,
+				"schema": { "type": "object", "title": "Graphics Quality", "properties": {
+					"Preset": { "type": "string", "title": "Preset", "description": "The quality preset.", "enum": ["Low", "Medium", "High", "Ultra", "Custom"], "default": "High" },
+					"ShadowResolution": { "type": "string", "title": "Shadow resolution", "description": "Texels of a cascade.", "enum": ["Auto", "1024", "2048", "4096"], "default": "Auto" },
+					"ShadowCascades": { "type": "integer", "title": "Shadow cascades", "description": "Sun shadow cascades.", "minimum": 1, "maximum": 4, "default": 4 },
+					"LODErrorPixels": { "type": "number", "title": "Level of detail error", "description": "Pixels of error.", "minimum": 0.0, "maximum": 8.0, "default": 1.0 } } },
+				"value": { "Preset": "High", "ShadowResolution": "Auto", "ShadowCascades": 4, "LODErrorPixels": 1.0 } },
+			{ "id": "Input.Actions", "title": "Input actions", "category": "Input", "description": "The game's actions.", "version": 1, "isDefault": true, "problem": null,
+				"schema": { "type": "object", "properties": { "Maps": { "type": "array", "description": "The action maps" } } },
+				"value": { "Maps": [ { "Name": "UI" } ] } }
+		],
+		"unclaimed": []
+	},
+	"component.list": { "components": [
+		{ "name": "Camera", "displayName": "Camera", "category": "Rendering", "description": "Looks at the scene", "addable": true, "removable": true, "properties": [
+			{ "Name": "FieldOfView", "DisplayName": "Field Of View", "Type": "Float", "Min": 1.0, "Max": 179.0, "Description": "Degrees" },
+			{ "Name": "FocusDistance", "DisplayName": "Focus Distance", "Type": "Float", "Min": 0.0, "Max": 0.0 } ] },
+		{ "name": "PostProcess", "displayName": "Post Process", "category": "Rendering", "description": "The image", "addable": true, "removable": true, "properties": [
+			{ "Name": "Bloom", "DisplayName": "Bloom", "Type": "Bool" },
+			{ "Name": "BloomIntensity", "DisplayName": "Bloom Intensity", "Type": "Float", "Section": "Bloom" },
+			{ "Name": "HistoryFrames", "DisplayName": "History Frames", "Type": "UInt" } ] },
+		{ "name": "Broken", "displayName": "Broken", "category": "Rendering", "description": "Refused on a new entity", "addable": true, "removable": true, "properties": [] },
+		{ "name": "Name", "displayName": "Name", "category": "Core", "description": "", "addable": false, "removable": false, "properties": [ { "Name": "Name", "DisplayName": "Name", "Type": "String" } ] }
+	] }
+}

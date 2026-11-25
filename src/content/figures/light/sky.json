@@ -1,0 +1,269 @@
+{
+	"figures": [
+		{
+			"id": "sky-sources",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The ThirdPerson sample's course lit three times: by its environment map, by the procedural sky and by the atmosphere, with the same sun",
+			"caption": "The same course under three sources and one sun: the photograph's clouds, a smooth gradient and a physical atmosphere give three different skies.",
+			"alt": "Three pictures of one floating island course. The map's sky holds white clouds, the procedural sky is a smooth blue gradient that turns gray at the horizon, and the atmosphere's is a deeper blue, paler toward the horizon.",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"camera": {
+				"position": [
+					0.6,
+					2.6,
+					6.8
+				],
+				"target": [
+					0,
+					2.4,
+					-8
+				],
+				"fov": 55
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"entityName": "HUD",
+					"parameters": {
+						"active": false
+					}
+				},
+				{
+					"command": "entity.setActive",
+					"entityName": "Menus",
+					"parameters": {
+						"active": false
+					}
+				},
+				{
+					"command": "asset.setImportSettings",
+					"parameters": {
+						"asset": "A76F8BB1E806ACFF",
+						"settings": {
+							"RemoveSun": true
+						}
+					}
+				}
+			],
+			"variants": {
+				"map": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Sky",
+							"parameters": {
+								"component": "SkyLight",
+								"values": {
+									"Source": "EnvironmentMap"
+								}
+							}
+						}
+					]
+				},
+				"procedural": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Sky",
+							"parameters": {
+								"component": "SkyLight",
+								"values": {
+									"Source": "Procedural"
+								}
+							}
+						}
+					]
+				},
+				"atmosphere": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Sky",
+							"parameters": {
+								"component": "SkyLight",
+								"values": {
+									"Source": "Atmosphere"
+								}
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "sky-presets",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The Basic 3D scene with a cube after each of the four sky presets: Clear, Hazy, Overcast and GoldenHour",
+			"caption": "Presets change the sky's color, the sun's height and the shadows. The second has a whiter upper sky and a slightly longer shadow than the first.",
+			"alt": "Four pictures of a white cube. First a mid blue sky and a sharp dark shadow; a whiter upper sky and a slightly longer shadow; an even gray sky and a faint shadow; a low warm sun and a long shadow.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					1.6,
+					1.7,
+					4.6
+				],
+				"target": [
+					-0.6,
+					0.55,
+					-0.4
+				],
+				"fov": 40
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Cube",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"variants": {
+				"clear": {
+					"setup": [
+						{
+							"command": "lighting.applySkyPreset",
+							"parameters": {
+								"preset": "Clear"
+							}
+						}
+					]
+				},
+				"hazy": {
+					"setup": [
+						{
+							"command": "lighting.applySkyPreset",
+							"parameters": {
+								"preset": "Hazy"
+							}
+						}
+					]
+				},
+				"overcast": {
+					"setup": [
+						{
+							"command": "lighting.applySkyPreset",
+							"parameters": {
+								"preset": "Overcast"
+							}
+						}
+					]
+				},
+				"golden-hour": {
+					"setup": [
+						{
+							"command": "lighting.applySkyPreset",
+							"parameters": {
+								"preset": "GoldenHour"
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "extract-sun",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "A scene lit by an HDR map with its sun and no directional light, then after Extract Sun and Remove Sun",
+			"caption": "After Extract Sun and Remove Sun, the directional light casts the shadows and the map no longer holds the sun. The clouds look darker only because the exposure adapts to the brighter ground.",
+			"alt": "Two pictures of the same course. In the first nothing casts a shadow. In the second the grass is brighter, the clouds a darker gray, and the robot, sign, flowers, mushrooms and fence cast shadows toward the left.",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"entityName": "HUD",
+					"parameters": {
+						"active": false
+					}
+				},
+				{
+					"command": "entity.setActive",
+					"entityName": "Menus",
+					"parameters": {
+						"active": false
+					}
+				},
+				{
+					"command": "asset.setImportSettings",
+					"parameters": {
+						"asset": "A76F8BB1E806ACFF",
+						"settings": {
+							"RemoveSun": false
+						}
+					}
+				},
+				{
+					"command": "component.remove",
+					"entityName": "Sun",
+					"parameters": {
+						"component": "DirectionalLight"
+					}
+				}
+			],
+			"variants": {
+				"before": {
+					"setup": []
+				},
+				"after": {
+					"setup": [
+						{
+							"command": "lighting.extractSun",
+							"parameters": {}
+						},
+						{
+							"command": "asset.setImportSettings",
+							"parameters": {
+								"asset": "A76F8BB1E806ACFF",
+								"settings": {
+									"RemoveSun": true
+								}
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		}
+	]
+}

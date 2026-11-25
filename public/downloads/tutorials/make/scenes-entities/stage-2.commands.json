@@ -1,0 +1,204 @@
+[
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Walls"
+		},
+		"bind": {
+			"walls": "/id"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Wall",
+			"parent": {
+				"$ref": "walls"
+			},
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						0.5,
+						10
+					],
+					"Scale": [
+						20,
+						1,
+						0.5
+					]
+				}
+			}
+		},
+		"bind": {
+			"w0": "/id"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Wall (1)",
+			"parent": {
+				"$ref": "walls"
+			},
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						0.5,
+						-10
+					],
+					"Scale": [
+						20,
+						1,
+						0.5
+					]
+				}
+			}
+		},
+		"bind": {
+			"w1": "/id"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Wall (2)",
+			"parent": {
+				"$ref": "walls"
+			},
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						10,
+						0.5,
+						0
+					],
+					"Scale": [
+						0.5,
+						1,
+						20
+					]
+				}
+			}
+		},
+		"bind": {
+			"w2": "/id"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Wall (3)",
+			"parent": {
+				"$ref": "walls"
+			},
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						-10,
+						0.5,
+						0
+					],
+					"Scale": [
+						0.5,
+						1,
+						20
+					]
+				}
+			}
+		},
+		"bind": {
+			"w3": "/id"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Main Camera"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "Transform",
+			"values": {
+				"Translation": [
+					0,
+					16,
+					13
+				],
+				"Rotation": [
+					-0.4617,
+					0,
+					0,
+					0.887
+				]
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Main Camera"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	}
+]

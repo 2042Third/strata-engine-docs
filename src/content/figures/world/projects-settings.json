@@ -1,0 +1,69 @@
+{
+	"figures": [
+		{
+			"id": "timing-page",
+			"kind": "editor",
+			"blocked": "The pin's editor.showPanel takes ProjectSettings but no page: the panel opens on Game, and the Timing page is reached only by a click (its entry under Physics, or the Inspector's Fixed rate link through EditorLayer::ShowProjectSettings), and the choice is not kept across windows (2026-11-24, pin 319075e3). A picture needs a page parameter of editor.showPanel for ProjectSettings, Scene.Timing here.",
+			"standIn": "timing-page-drawing",
+			"shows": "The Project Settings window on its Timing page under Physics: the section's description under the title, the Fixed Rate list set to Scene and the Interpolation check box",
+			"caption": "The Timing page of the Project Settings window.",
+			"alt": "The Project Settings window on its Timing page.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"steps": []
+			}
+		},
+		{
+			"id": "timing-page-drawing",
+			"kind": "diagram",
+			"shows": "A drawing of the Project Settings window on its Timing page as the pin draws it: the pages listed by category (Game and Export under Project, Input Actions, Collision Layers, Timing selected, Simulation, Graphics Quality); the heading, the section's description, Fixed Rate as a list showing Scene with its options Scene, 30, 60, 120 and 240, Interpolation as a ticked check box, Reset to Defaults dimmed; the start of the Fixed Rate description as the tooltip of its name",
+			"caption": "A drawing of the Timing page: its description, a list of rates, a check box and a field's description as a tooltip.",
+			"alt": "A window with Timing selected under Physics. The page shows a description, a rate list, a ticked box and a tooltip.",
+			"numbers": "List: Game and Export first (SettingsBrowser::BuildEntries), then project sections by category in registration order (settings dump: Input.Actions; Scene.CollisionLayers, Scene.Timing, Physics.Simulation; Renderer.Quality). Page: StrataEditor/src/UI/SettingsPages.cpp DrawPage (heading, description) and GenericSettingsPage::Draw (property table, Reset to Defaults enabled only when stored); tooltip = field description (StrataEditor/src/UI/SettingsFieldProperty.cpp:23, StrataEditor/src/UI/PropertyWidgets.cpp:1130). Texts quoted from the Scene.Timing schema at the pin, the tooltip cut with ellipses."
+		},
+		{
+			"id": "inspector-project-rate",
+			"kind": "editor",
+			"shows": "The Inspector with nothing selected after the project's Fixed Rate is set to 120: the closed Physics section's line ends with 120 steps/s (project), and the line below the collision layers reads Fixed rate: the project's, 120 steps/s",
+			"caption": "With nothing selected the Inspector shows the scene's settings; the step rows stay inside the closed Physics section. The project's rate shows at the end of the Physics header, marked project, and in the Fixed rate line below it.",
+			"alt": "The editor's Inspector with no entity selected, for the Outpost scene. The closed Physics section's header ends with Gravity 9.81 and 120 steps per second, project in brackets. Below it, a line reads Fixed rate: the project's, 120 steps per second, beside a Project Settings link.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-lighting-short.ini",
+				"steps": [
+					{
+						"command": "project.setSettings",
+						"parameters": {
+							"section": "Scene.Timing",
+							"value": {
+								"FixedRate": "120"
+							}
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Inspector"
+						}
+					}
+				],
+				"windowSize": [
+					960,
+					440
+				],
+				"panel": "Inspector"
+			}
+		}
+	]
+}

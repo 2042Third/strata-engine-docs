@@ -1,0 +1,25 @@
+{
+	"page": "automation/agents",
+	"startsFrom": { "sample": "Tetris" },
+	"automation": true,
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "editor.status",
+					"checks": [ { "pointer": "/engineVersion", "contains": "." },
+						{ "pointer": "/project/name", "equals": "Tetris" },
+						{ "pointer": "/scene/name", "equals": "Main" },
+						{ "pointer": "/play/state", "equals": "Edit" } ] },
+				{ "command": "editor.status", "parameters": { "sections": [ "automation", "sceneLoad" ] },
+					"checks": [ { "pointer": "/engineVersion", "contains": "." },
+						{ "pointer": "/automation/running", "equals": true },
+						{ "pointer": "/automation/connectedClients", "contains": "StrataCLI" },
+						{ "pointer": "/sceneLoad", "equals": null } ] },
+				{ "command": "log.read", "parameters": { "minLevel": "Error" } },
+				{ "command": "editor.status",
+					"checks": [ { "pointer": "/errors/unread", "equals": 0 } ] }
+			]
+		}
+	]
+}

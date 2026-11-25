@@ -1,0 +1,79 @@
+[
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin (1)"
+		},
+		"bind": {
+			"first": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.get",
+		"parameters": {
+			"entity": {
+				"$ref": "first"
+			}
+		},
+		"bind": {
+			"mesh": "/children/0"
+		}
+	},
+	{
+		"command": "prefab.revert",
+		"parameters": {
+			"entity": {
+				"$ref": "mesh"
+			},
+			"component": "MeshRenderer",
+			"property": "Material"
+		}
+	},
+	{
+		"command": "prefab.status",
+		"parameters": {
+			"entity": {
+				"$ref": "mesh"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin (4)"
+		},
+		"bind": {
+			"last": "/entities/0"
+		}
+	},
+	{
+		"command": "prefab.unpack",
+		"parameters": {
+			"entity": {
+				"$ref": "last"
+			}
+		}
+	},
+	{
+		"command": "prefab.status",
+		"parameters": {
+			"entity": {
+				"$ref": "last"
+			}
+		}
+	},
+	{
+		"command": "edit.undo"
+	},
+	{
+		"command": "prefab.status",
+		"parameters": {
+			"entity": {
+				"$ref": "last"
+			}
+		}
+	},
+	{
+		"command": "scene.save"
+	}
+]

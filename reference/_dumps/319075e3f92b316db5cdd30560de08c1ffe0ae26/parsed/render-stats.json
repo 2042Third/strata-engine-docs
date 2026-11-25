@@ -1,0 +1,460 @@
+{
+	"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+	"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+	"line": 209,
+	"keys": [
+		{
+			"key": "quality",
+			"line": 239,
+			"comment": "What the frame drew with: the Renderer.Quality section's fields and values (project.setSettings takes them), the sun's cascades' size and the tiles of the shadowed point and spot lights (the first 64 by rank, and how many have each size)."
+		},
+		{
+			"key": "shadowMapSize",
+			"line": 240,
+			"comment": "",
+			"source": "SceneRendererStats::ShadowMapSize"
+		},
+		{
+			"key": "cascades",
+			"line": 241,
+			"comment": "",
+			"children": [
+				{
+					"key": "near",
+					"line": 233,
+					"comment": ""
+				},
+				{
+					"key": "far",
+					"line": 233,
+					"comment": ""
+				},
+				{
+					"key": "texelSize",
+					"line": 233,
+					"comment": ""
+				}
+			]
+		},
+		{
+			"key": "localShadowTileSizes",
+			"line": 242,
+			"comment": ""
+		},
+		{
+			"key": "localShadowTileSizeCounts",
+			"line": 243,
+			"comment": ""
+		},
+		{
+			"key": "gpuDriven",
+			"line": 244,
+			"comment": "",
+			"source": "SceneRendererStats::GPUDriven"
+		},
+		{
+			"key": "gpuCulled",
+			"line": 245,
+			"comment": "",
+			"source": "SceneRendererStats::GPUCulled"
+		},
+		{
+			"key": "gpuCounts",
+			"line": 246,
+			"comment": "",
+			"source": "SceneRendererStats::GPUDriven"
+		},
+		{
+			"key": "feedbackRequests",
+			"line": 247,
+			"comment": "",
+			"source": "SceneRendererStats::FeedbackRequests"
+		},
+		{
+			"key": "drawCommands",
+			"line": 248,
+			"comment": "",
+			"source": "SceneRendererStats::DrawCommands"
+		},
+		{
+			"key": "draws",
+			"line": 249,
+			"comment": "",
+			"source": "SceneRendererStats::DrawCalls"
+		},
+		{
+			"key": "opaqueDraws",
+			"line": 250,
+			"comment": "",
+			"source": "SceneRendererStats::OpaqueDrawCalls"
+		},
+		{
+			"key": "shadowDraws",
+			"line": 251,
+			"comment": "",
+			"source": "SceneRendererStats::ShadowDrawCalls"
+		},
+		{
+			"key": "instances",
+			"line": 252,
+			"comment": "",
+			"source": "SceneRendererStats::Instances"
+		},
+		{
+			"key": "shadowCasters",
+			"line": 253,
+			"comment": "",
+			"source": "SceneRendererStats::ShadowCasters"
+		},
+		{
+			"key": "triangles",
+			"line": 254,
+			"comment": "",
+			"source": "SceneRendererStats::Triangles"
+		},
+		{
+			"key": "visibleProxies",
+			"line": 255,
+			"comment": "",
+			"source": "SceneRendererStats::VisibleProxies"
+		},
+		{
+			"key": "occludedProxies",
+			"line": 256,
+			"comment": "",
+			"source": "SceneRendererStats::OccludedProxies"
+		},
+		{
+			"key": "occludedCasters",
+			"line": 257,
+			"comment": "",
+			"source": "SceneRendererStats::OccludedCasters"
+		},
+		{
+			"key": "cachedCascades",
+			"line": 258,
+			"comment": ""
+		},
+		{
+			"key": "localShadowRequested",
+			"line": 259,
+			"comment": "",
+			"source": "SceneRendererStats::LocalShadowRequested"
+		},
+		{
+			"key": "localShadowLights",
+			"line": 260,
+			"comment": "",
+			"source": "SceneRendererStats::LocalShadowLights"
+		},
+		{
+			"key": "localShadowFading",
+			"line": 261,
+			"comment": "",
+			"source": "SceneRendererStats::LocalShadowFading"
+		},
+		{
+			"key": "localShadowViewsDrawn",
+			"line": 262,
+			"comment": "",
+			"source": "SceneRendererStats::LocalShadowViewsDrawn"
+		},
+		{
+			"key": "localShadowViewsPending",
+			"line": 263,
+			"comment": "",
+			"source": "SceneRendererStats::LocalShadowViewsPending"
+		},
+		{
+			"key": "localShadowCasters",
+			"line": 264,
+			"comment": "",
+			"source": "SceneRendererStats::LocalShadowCasters"
+		},
+		{
+			"key": "reflectionProbes",
+			"line": 265,
+			"comment": "",
+			"source": "SceneRendererStats::ReflectionProbes"
+		},
+		{
+			"key": "reflectionProbesPending",
+			"line": 266,
+			"comment": "",
+			"source": "SceneRendererStats::ReflectionProbesPending"
+		},
+		{
+			"key": "culledProxies",
+			"line": 267,
+			"comment": "",
+			"source": "SceneRendererStats::CulledInstances"
+		},
+		{
+			"key": "instancesPerLod",
+			"line": 268,
+			"comment": ""
+		},
+		{
+			"key": "lights",
+			"line": 269,
+			"comment": "",
+			"source": "SceneRendererStats::Lights"
+		},
+		{
+			"key": "areaLights",
+			"line": 270,
+			"comment": "",
+			"source": "SceneRendererStats::AreaLights"
+		},
+		{
+			"key": "areaLightShading",
+			"line": 271,
+			"comment": "",
+			"source": "SceneRendererStats::AreaLightShading"
+		},
+		{
+			"key": "areaShadowMasks",
+			"line": 272,
+			"comment": "",
+			"source": "SceneRendererStats::AreaShadowMasks"
+		},
+		{
+			"key": "areaShadowTiles",
+			"line": 273,
+			"comment": "",
+			"source": "SceneRendererStats::AreaShadowTiles"
+		},
+		{
+			"key": "droppedLights",
+			"line": 274,
+			"comment": "",
+			"source": "SceneRendererStats::DroppedLights"
+		},
+		{
+			"key": "materials",
+			"line": 275,
+			"comment": "",
+			"source": "SceneRendererStats::Materials"
+		},
+		{
+			"key": "pendingAssets",
+			"line": 276,
+			"comment": "",
+			"source": "SceneRendererStats::PendingAssets"
+		},
+		{
+			"key": "extractMs",
+			"line": 277,
+			"comment": "",
+			"source": "SceneRendererStats::ExtractMs"
+		},
+		{
+			"key": "sortMs",
+			"line": 278,
+			"comment": "",
+			"source": "SceneRendererStats::SortMs"
+		},
+		{
+			"key": "proxyUpdates",
+			"line": 279,
+			"comment": "",
+			"source": "SceneRendererStats::ProxyUpdates"
+		},
+		{
+			"key": "instanceBytesUploaded",
+			"line": 280,
+			"comment": "",
+			"source": "SceneRendererStats::InstanceBytesUploaded"
+		},
+		{
+			"key": "deferredInstanceBytes",
+			"line": 281,
+			"comment": "",
+			"source": "SceneRendererStats::DeferredInstanceBytes"
+		},
+		{
+			"key": "sizeCulledProxies",
+			"line": 282,
+			"comment": "",
+			"source": "SceneRendererStats::SizeCulledProxies"
+		},
+		{
+			"key": "geometryPool",
+			"line": 283,
+			"comment": "",
+			"children": [
+				{
+					"key": "usedMB",
+					"line": 188,
+					"comment": ""
+				},
+				{
+					"key": "capacityMB",
+					"line": 189,
+					"comment": ""
+				},
+				{
+					"key": "allocations",
+					"line": 190,
+					"comment": "",
+					"source": "SceneRendererStats::Allocations"
+				},
+				{
+					"key": "fragmentation",
+					"line": 191,
+					"comment": "",
+					"source": "SceneRendererStats::VertexFragmentation"
+				},
+				{
+					"key": "moves",
+					"line": 192,
+					"comment": "",
+					"source": "SceneRendererStats::Moves"
+				},
+				{
+					"key": "growths",
+					"line": 193,
+					"comment": "",
+					"source": "SceneRendererStats::Growths"
+				}
+			]
+		},
+		{
+			"key": "sceneMirrorMB",
+			"line": 285,
+			"comment": "The scenes' GPU copies (a playing scene's clone doubles its scene's while it plays)."
+		},
+		{
+			"key": "exposure",
+			"line": 288,
+			"comment": "What automatic exposure metered (EV100 = log2 L + 3, frames late), its key's stops and the sun's gray card it compared with (null without a directional light); null with manual exposure.",
+			"source": "SceneRendererStats::ExposureLog2Luminance",
+			"children": [
+				{
+					"key": "ev100",
+					"line": 288,
+					"comment": "What automatic exposure metered (EV100 = log2 L + 3, frames late), its key's stops and the sun's gray card it compared with (null without a directional light); null with manual exposure."
+				},
+				{
+					"key": "keyStops",
+					"line": 289,
+					"comment": "",
+					"source": "SceneRendererStats::ExposureKeyStops"
+				},
+				{
+					"key": "cardEv100",
+					"line": 290,
+					"comment": "",
+					"source": "SceneRendererStats::ExposureKeyReferenceLog2"
+				}
+			]
+		},
+		{
+			"key": "motionBlur",
+			"line": 293,
+			"comment": "The motion blur's samples and tile size (pixels) on frames that blurred.",
+			"source": "SceneRendererStats::MotionBlurred",
+			"children": [
+				{
+					"key": "samples",
+					"line": 293,
+					"comment": "The motion blur's samples and tile size (pixels) on frames that blurred.",
+					"source": "SceneRendererStats::MotionBlurSamples"
+				},
+				{
+					"key": "tileSize",
+					"line": 293,
+					"comment": "The motion blur's samples and tile size (pixels) on frames that blurred.",
+					"source": "SceneRendererStats::MotionBlurTileSize"
+				}
+			]
+		},
+		{
+			"key": "depthOfField",
+			"line": 297,
+			"comment": "The lens of frames with depth of field (a scene camera's with DepthOfField on): focus distance (meters), focal length (millimeters), f-number and the blur's diameter (pixels) of a point infinitely far.",
+			"source": "SceneRendererStats::DepthOfField",
+			"children": [
+				{
+					"key": "focusDistance",
+					"line": 297,
+					"comment": "The lens of frames with depth of field (a scene camera's with DepthOfField on): focus distance (meters), focal length (millimeters), f-number and the blur's diameter (pixels) of a point infinitely far.",
+					"source": "SceneRendererStats::DepthOfFieldLens"
+				},
+				{
+					"key": "focalLength",
+					"line": 298,
+					"comment": "",
+					"source": "SceneRendererStats::DepthOfFieldLens"
+				},
+				{
+					"key": "fNumber",
+					"line": 298,
+					"comment": "",
+					"source": "SceneRendererStats::DepthOfFieldLens"
+				},
+				{
+					"key": "infinityBlurPixels",
+					"line": 299,
+					"comment": "",
+					"source": "SceneRendererStats::DepthOfFieldInfinityCoC"
+				}
+			]
+		},
+		{
+			"key": "colorLookup",
+			"line": 301,
+			"comment": "Whether the Post Process's color lookup was applied (false while it loads).",
+			"source": "SceneRendererStats::ColorLookup"
+		},
+		{
+			"key": "lensFlare",
+			"line": 303,
+			"comment": "Whether lens flares ran, and whether the directional light's disk was in front of the camera for their starburst.",
+			"source": "SceneRendererStats::LensFlare",
+			"children": [
+				{
+					"key": "sunInFront",
+					"line": 303,
+					"comment": "Whether lens flares ran, and whether the directional light's disk was in front of the camera for their starburst.",
+					"source": "SceneRendererStats::LensFlareSun"
+				}
+			]
+		},
+		{
+			"key": "globalIllumination",
+			"line": 305,
+			"comment": "Global illumination: the frame ran it (a GI view), its voxels were incomplete, nothing was left to voxelize.",
+			"source": "SceneRendererStats::GlobalIllumination",
+			"children": [
+				{
+					"key": "ran",
+					"line": 305,
+					"comment": "Global illumination: the frame ran it (a GI view), its voxels were incomplete, nothing was left to voxelize."
+				},
+				{
+					"key": "pending",
+					"line": 305,
+					"comment": "Global illumination: the frame ran it (a GI view), its voxels were incomplete, nothing was left to voxelize.",
+					"source": "SceneRendererStats::GlobalIlluminationPending"
+				},
+				{
+					"key": "settled",
+					"line": 306,
+					"comment": "",
+					"source": "SceneRendererStats::GlobalIlluminationSettled"
+				}
+			]
+		},
+		{
+			"key": "gpuMs",
+			"line": 307,
+			"comment": ""
+		},
+		{
+			"key": "gpuStatsFrame",
+			"line": 308,
+			"comment": ""
+		}
+	]
+}

@@ -1,0 +1,18 @@
+{
+	"page": "start/what-an-engine-is",
+	"startsFrom": { "sample": "Tetris" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "play.start" },
+				{ "command": "editor.perf", "parameters": { "frames": 120 }, "until": { "seconds": 30 },
+					"expect": { "/frames": { "min": 120 }, "/frame/p50Ms": { "max": 16.7 } } },
+				{ "command": "play.stop" },
+				{ "command": "editor.perf", "parameters": { "frames": 60 } }
+			]
+		}
+	]
+}

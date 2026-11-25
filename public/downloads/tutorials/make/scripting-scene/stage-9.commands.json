@@ -1,0 +1,77 @@
+[
+	{
+		"command": "log.read",
+		"parameters": {
+			"newest": true,
+			"limit": 1
+		},
+		"bind": {
+			"warmFrom": "/messages/0/sequence"
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"build": false
+		}
+	},
+	{
+		"command": "log.read",
+		"parameters": {
+			"after": {
+				"$ref": "warmFrom"
+			},
+			"logger": "Script",
+			"limit": 1
+		},
+		"expect": {
+			"/messages/0/message": {
+				"equals": "Coins placed: 5"
+			}
+		},
+		"until": {
+			"seconds": 60
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 30
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 30
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coins"
+		},
+		"bind": {
+			"coins": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.get",
+		"parameters": {
+			"entity": {
+				"$ref": "coins"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

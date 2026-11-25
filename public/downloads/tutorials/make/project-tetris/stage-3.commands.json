@@ -1,0 +1,312 @@
+[
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/PieceI.stmat",
+			"properties": {
+				"BaseColor": [
+					0.0,
+					0.85,
+					0.95,
+					1.0
+				],
+				"Roughness": 0.35
+			}
+		}
+	},
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/PieceO.stmat",
+			"properties": {
+				"BaseColor": [
+					0.95,
+					0.8,
+					0.05,
+					1.0
+				],
+				"Roughness": 0.35
+			}
+		}
+	},
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/PieceT.stmat",
+			"properties": {
+				"BaseColor": [
+					0.6,
+					0.15,
+					0.85,
+					1.0
+				],
+				"Roughness": 0.35
+			}
+		}
+	},
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/PieceS.stmat",
+			"properties": {
+				"BaseColor": [
+					0.15,
+					0.8,
+					0.2,
+					1.0
+				],
+				"Roughness": 0.35
+			}
+		}
+	},
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/PieceZ.stmat",
+			"properties": {
+				"BaseColor": [
+					0.9,
+					0.12,
+					0.12,
+					1.0
+				],
+				"Roughness": 0.35
+			}
+		}
+	},
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/PieceJ.stmat",
+			"properties": {
+				"BaseColor": [
+					0.12,
+					0.3,
+					0.95,
+					1.0
+				],
+				"Roughness": 0.35
+			}
+		}
+	},
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/PieceL.stmat",
+			"properties": {
+				"BaseColor": [
+					0.95,
+					0.5,
+					0.05,
+					1.0
+				],
+				"Roughness": 0.35
+			}
+		}
+	},
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/Ghost.stmat",
+			"properties": {
+				"BaseColor": [
+					0.8,
+					0.85,
+					1.0,
+					0.25
+				],
+				"AlphaMode": "Blend",
+				"Roughness": 0.6
+			}
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Board"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"class": "TetrisBoard",
+			"field": "MaterialI",
+			"value": "Materials/PieceI.stmat",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Board"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"class": "TetrisBoard",
+			"field": "MaterialO",
+			"value": "Materials/PieceO.stmat",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Board"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"class": "TetrisBoard",
+			"field": "MaterialT",
+			"value": "Materials/PieceT.stmat",
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Board"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"class": "TetrisBoard",
+			"field": "MaterialS",
+			"value": "Materials/PieceS.stmat",
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Board"
+		},
+		"bind": {
+			"entityName.5": "/entities/0"
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"class": "TetrisBoard",
+			"field": "MaterialZ",
+			"value": "Materials/PieceZ.stmat",
+			"entity": {
+				"$ref": "entityName.5"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Board"
+		},
+		"bind": {
+			"entityName.6": "/entities/0"
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"class": "TetrisBoard",
+			"field": "MaterialJ",
+			"value": "Materials/PieceJ.stmat",
+			"entity": {
+				"$ref": "entityName.6"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Board"
+		},
+		"bind": {
+			"entityName.7": "/entities/0"
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"class": "TetrisBoard",
+			"field": "MaterialL",
+			"value": "Materials/PieceL.stmat",
+			"entity": {
+				"$ref": "entityName.7"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Board"
+		},
+		"bind": {
+			"entityName.8": "/entities/0"
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"class": "TetrisBoard",
+			"field": "GhostMaterial",
+			"value": "Materials/Ghost.stmat",
+			"entity": {
+				"$ref": "entityName.8"
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 2
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 2
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

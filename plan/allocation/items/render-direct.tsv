@@ -1,0 +1,375 @@
+id	type	heading	label
+render-direct:35	feature	1.1 Material model (`Material` asset, `.stmat`)	Metallic-roughness PBR material
+render-direct:36	feature	1.1 Material model (`Material` asset, `.stmat`)	Alpha modes
+render-direct:37	feature	1.1 Material model (`Material` asset, `.stmat`)	Emission in nits
+render-direct:38	feature	1.1 Material model (`Material` asset, `.stmat`)	Material is immutable once loaded
+render-direct:39	feature	1.1 Material model (`Material` asset, `.stmat`)	Nine texture maps
+render-direct:40	feature	1.1 Material model (`Material` asset, `.stmat`)	GPU material record
+render-direct:41	feature	1.1 Material model (`Material` asset, `.stmat`)	Neutral fallbacks
+render-direct:42	feature	1.1 Material model (`Material` asset, `.stmat`)	Exact flat normal
+render-direct:43	feature	1.1 Material model (`Material` asset, `.stmat`)	Texture table indirection
+render-direct:44	feature	1.1 Material model (`Material` asset, `.stmat`)	Normal maps as XY
+render-direct:45	feature	1.1 Material model (`Material` asset, `.stmat`)	IOR to F0
+render-direct:46	feature	1.1 Material model (`Material` asset, `.stmat`)	Clear coat
+render-direct:47	feature	1.1 Material model (`Material` asset, `.stmat`)	Glass (transmission)
+render-direct:48	feature	1.1 Material model (`Material` asset, `.stmat`)	Scene-color copy
+render-direct:49	feature	1.1 Material model (`Material` asset, `.stmat`)	glTF material extensions
+render-direct:50	feature	1.1 Material model (`Material` asset, `.stmat`)	Material editing commands
+render-direct:56	feature	1.2 Shading (BRDF and its corrections)	Cook-Torrance GGX BRDF
+render-direct:57	feature	1.2 Shading (BRDF and its corrections)	Minimum roughness
+render-direct:58	feature	1.2 Shading (BRDF and its corrections)	Split-sum BRDF table
+render-direct:59	feature	1.2 Shading (BRDF and its corrections)	Multiple-scattering energy compensation
+render-direct:60	feature	1.2 Shading (BRDF and its corrections)	Specular anti-aliasing
+render-direct:61	feature	1.2 Shading (BRDF and its corrections)	Highlights of sized sources
+render-direct:62	feature	1.2 Shading (BRDF and its corrections)	Horizon fade
+render-direct:63	feature	1.2 Shading (BRDF and its corrections)	Probe-capture mode
+render-direct:64	feature	1.2 Shading (BRDF and its corrections)	Forward shader variants
+render-direct:65	feature	1.2 Shading (BRDF and its corrections)	Opaque forward with EQUAL depth test
+render-direct:66	feature	1.2 Shading (BRDF and its corrections)	Derivative rule
+render-direct:67	feature	1.2 Shading (BRDF and its corrections)	`SanitizeHDR`
+render-direct:68	feature	1.2 Shading (BRDF and its corrections)	Mirrored instances
+render-direct:74	feature	1.3 Light types and their data	Directional light
+render-direct:75	feature	1.3 Light types and their data	One sun per frame
+render-direct:76	feature	1.3 Light types and their data	Point light
+render-direct:77	feature	1.3 Light types and their data	Spot light
+render-direct:78	feature	1.3 Light types and their data	Windowed inverse-square falloff
+render-direct:79	feature	1.3 Light types and their data	Smooth spot cone
+render-direct:80	feature	1.3 Light types and their data	Light records (render scene)
+render-direct:81	feature	1.3 Light types and their data	Spot bounding sphere
+render-direct:82	feature	1.3 Light types and their data	Drawn transforms
+render-direct:83	feature	1.3 Light types and their data	Light uniform for shading
+render-direct:84	feature	1.3 Light types and their data	Preview lighting
+render-direct:90	feature	1.4 Many lights: culling and clustered shading	CPU light path
+render-direct:91	feature	1.4 Many lights: culling and clustered shading	GPU light path
+render-direct:92	feature	1.4 Many lights: culling and clustered shading	Clustered assignment
+render-direct:93	feature	1.4 Many lights: culling and clustered shading	Relevance-preserving overflow
+render-direct:94	feature	1.4 Many lights: culling and clustered shading	Forward cluster loop
+render-direct:95	feature	1.4 Many lights: culling and clustered shading	Light statistics
+render-direct:101	feature	1.5 Light units, HDR and pre-exposure	Photometric units on one scale
+render-direct:102	feature	1.5 Light units, HDR and pre-exposure	Exposure model
+render-direct:103	feature	1.5 Light units, HDR and pre-exposure	Pre-exposure
+render-direct:104	feature	1.5 Light units, HDR and pre-exposure	Settled pre-exposure
+render-direct:105	feature	1.5 Light units, HDR and pre-exposure	Reference values table
+render-direct:106	feature	1.5 Light units, HDR and pre-exposure	Balanced default template
+render-direct:112	feature	1.6 Sun shadows	Cascade map
+render-direct:113	feature	1.6 Sun shadows	Stable cascade layout
+render-direct:114	feature	1.6 Sun shadows	Fifth (near) cascade
+render-direct:115	feature	1.6 Sun shadows	Depth fit on the GPU
+render-direct:116	feature	1.6 Sun shadows	Pancaking
+render-direct:117	feature	1.6 Sun shadows	Sub-texel casters dropped
+render-direct:118	feature	1.6 Sun shadows	Deterministic caster search
+render-direct:119	feature	1.6 Sun shadows	Containment-based selection
+render-direct:120	feature	1.6 Sun shadows	Cascade blend
+render-direct:121	feature	1.6 Sun shadows	Cascade cache
+render-direct:122	feature	1.6 Sun shadows	Biases
+render-direct:123	feature	1.6 Sun shadows	Physical PCSS filter
+render-direct:124	feature	1.6 Sun shadows	Shadow depth ranges
+render-direct:125	feature	1.6 Sun shadows	Screen-space shadow mask
+render-direct:126	feature	1.6 Sun shadows	Stair-step blur
+render-direct:127	feature	1.6 Sun shadows	Contact shadows
+render-direct:128	feature	1.6 Sun shadows	Transparent receivers
+render-direct:129	feature	1.6 Sun shadows	Alpha-masked casters
+render-direct:130	feature	1.6 Sun shadows	Cascade statistics
+render-direct:136	feature	1.7 Shadows of point and spot lights	Shadow atlas
+render-direct:137	feature	1.7 Shadows of point and spot lights	Quadtree tile allocator
+render-direct:138	feature	1.7 Shadows of point and spot lights	Tile fitting by relevance
+render-direct:139	feature	1.7 Shadows of point and spot lights	Spot = 1 view, point = 6 cube faces
+render-direct:140	feature	1.7 Shadows of point and spot lights	Guard band
+render-direct:141	feature	1.7 Shadows of point and spot lights	View cache keyed in world space
+render-direct:142	feature	1.7 Shadows of point and spot lights	Redraw budget and fade
+render-direct:143	feature	1.7 Shadows of point and spot lights	Sampling
+render-direct:144	feature	1.7 Shadows of point and spot lights	Shadow data per slot
+render-direct:145	feature	1.7 Shadows of point and spot lights	Local shadow vertex shaders
+render-direct:151	feature	1.8 Sky	Sky light component
+render-direct:152	feature	1.8 Sky	Environment map source
+render-direct:153	feature	1.8 Sky	Procedural sky
+render-direct:154	feature	1.8 Sky	Physical atmosphere
+render-direct:155	feature	1.8 Sky	Sun color through the air
+render-direct:156	feature	1.8 Sky	Storage scale
+render-direct:157	feature	1.8 Sky	Atmosphere environment refresh
+render-direct:158	feature	1.8 Sky	Atmosphere background
+render-direct:159	feature	1.8 Sky	Sun and sky presets
+render-direct:160	feature	1.8 Sky	Extract Sun / Remove Sun
+render-direct:161	feature	1.8 Sky	Sun to sky ratio
+render-direct:167	feature	1.9 Fog and aerial perspective	Height fog component
+render-direct:168	feature	1.9 Fog and aerial perspective	Analytic fog integral
+render-direct:169	feature	1.9 Fog and aerial perspective	Fog lighting
+render-direct:170	feature	1.9 Fog and aerial perspective	Aerial perspective
+render-direct:171	feature	1.9 Fog and aerial perspective	Fog limits
+render-direct:177	feature	1.10 Debug views and measurements of light	Shadows debug view
+render-direct:178	feature	1.10 Debug views and measurements of light	Lighting debug views
+render-direct:179	feature	1.10 Debug views and measurements of light	Lighting statistics
+render-direct:180	feature	1.10 Debug views and measurements of light	Editor and agent access
+render-direct:181	feature	1.10 Debug views and measurements of light	Look-dev harness
+render-direct:189	feature	1.11 Quality rows that belong to this area	`ShadowResolution`
+render-direct:190	feature	1.11 Quality rows that belong to this area	`ShadowCascades`
+render-direct:191	feature	1.11 Quality rows that belong to this area	`LocalShadowAtlasSize`
+render-direct:192	feature	1.11 Quality rows that belong to this area	`LocalShadowMaxTile`
+render-direct:193	feature	1.11 Quality rows that belong to this area	`MaxShadowedLocalLights`
+render-direct:194	feature	1.11 Quality rows that belong to this area	`ShadowFilterQuality` (disk taps)
+render-direct:195	feature	1.11 Quality rows that belong to this area	`ContactShadows` (steps; Custom 0 or 4-32)
+render-direct:196	feature	1.11 Quality rows that belong to this area	`EnvironmentResolution` (prefiltered sky)
+render-direct:198	feature	1.11 Quality rows that belong to this area	Renderer specification switches (not quality rows): `MaxLights` 4096, `LightClusterGrid`…
+render-direct:204	feature	1.12 GPU stages and bindings of the area	Stages in frame order (`SceneRenderer::RenderFrame` `R/SceneRenderer.cpp:3285-3560`): `GPU.Setup`…
+render-direct:210	feature	1.12 GPU stages and bindings of the area	Scene bindings used here (`SH/Include/Scene.slang`, `Shadows.slang`, etc.): b0 frame constants; t1…
+render-direct:217	feature	1.13 Area lights	Not on main. Nothing in `Strata/src` or `Strata/shaders` implements rectangle, disk or tube lights…
+render-direct:228	feature	1.14 Tests that define the area's behaviour	CPU: `Renderer.LightUnits` (`T/LightUnitsTests.cpp`), `Renderer.ShadowCascades`…
+render-direct:278	concept		Light as a quantity: radiance, irradiance, and the photometric units
+render-direct:287	concept		Linear color, HDR targets and floating-point range
+render-direct:293	concept		Exposure, EV100 and pre-exposure
+render-direct:300	concept		The surface description: the metallic-roughness model
+render-direct:307	concept		Textures as material inputs: color vs data, normal maps, tangent space
+render-direct:313	concept		The rendering equation for a single light, and the BRDF
+render-direct:319	concept		Fresnel, F0 and the index of refraction
+render-direct:324	concept		Image-based lighting and the split sum (as far as this area needs it)
+render-direct:329	concept		Energy conservation and multiple scattering
+render-direct:335	concept		Specular aliasing and how to filter a highlight
+render-direct:341	concept		Light sources: directional, point, spot; attenuation and range
+render-direct:347	concept		Sized sources and highlights
+render-direct:353	concept		Many lights: forward, deferred, tiled and clustered shading
+render-direct:361	concept		Shadow mapping
+render-direct:369	concept		Cascaded shadow maps and their stability
+render-direct:377	concept		Soft shadows: PCF, PCSS, contact hardening, noise
+render-direct:384	concept		Screen-space shadow passes and contact shadows
+render-direct:390	concept		Shadows of local lights: atlases, cube faces, caching
+render-direct:396	concept		The sky as a light source
+render-direct:402	concept		Physical atmosphere: participating media basics
+render-direct:410	concept		Fog: exponential height fog and aerial perspective
+render-direct:416	concept		Layered materials and transmission
+render-direct:422	concept		Measuring lighting instead of eyeballing it
+render-direct:433	code		1: `R/RendererComponents.h:17-78`
+render-direct:434	code		2: `R/Material.h:23-63`
+render-direct:435	code		3: `R/MaterialData.cpp:40-59`
+render-direct:436	code		4: `R/MaterialData.cpp:61-95`
+render-direct:437	code		5: `SH/Include/MaterialTextures.slang:47-65`
+render-direct:438	code		6: `SH/Include/PBR.slang:33-57`
+render-direct:439	code		7: `SH/Include/PBR.slang:126-148`
+render-direct:440	code		8: `SH/Include/PBR.slang:59-71` with `SH/Scene/Forward.frag.slang:211-218`
+render-direct:441	code		9: `SH/IBL/BRDFLut.comp.slang:20-49`
+render-direct:442	code		10: `SH/Include/PBR.slang:73-91`
+render-direct:443	code		11: `SH/Include/PBR.slang:12-31, 119-124` and `R/SceneRenderData.h:114-128`
+render-direct:444	code		12: `SH/Include/PBR.slang:194-207`
+render-direct:445	code		13: `R/RenderLights.cpp:44-85`
+render-direct:446	code		14: `R/SceneRenderer.cpp:2557-2601`
+render-direct:447	code		15: `R/SceneRenderer.cpp:2612-2697`
+render-direct:448	code		16: `SH/Include/Clusters.slang:49-78`
+render-direct:449	code		17: `SH/Scene/LightClusters.comp.slang:42-101` (and 103-189 as an advanced box)
+render-direct:450	code		18: `SH/Scene/Forward.frag.slang:198-279`
+render-direct:451	code		19: `SH/Scene/Forward.frag.slang:374-427`
+render-direct:452	code		20: `R/ShadowCascades.cpp:14-21, 56-71`
+render-direct:453	code		21: `R/ShadowCascades.cpp:73-102`
+render-direct:454	code		22: `R/ShadowCascades.cpp:104-141`
+render-direct:455	code		23: `SH/Include/Shadows.slang:45-92`
+render-direct:456	code		24: `SH/Include/Shadows.slang:94-111`
+render-direct:457	code		25: `SH/Include/Shadows.slang:143-260` (central, long)
+render-direct:458	code		26: `SH/Scene/ShadowRanges.comp.slang:27-70`
+render-direct:459	code		27: `SH/Scene/ShadowMesh.vert.slang:46-51`
+render-direct:460	code		28: `SH/Effects/ScreenShadows.frag.slang:53-92`
+render-direct:461	code		29: `SH/Include/LocalShadows.slang:43-97`
+render-direct:462	code		30: `R/ShadowAtlasAllocator.h:21-56`
+render-direct:463	code		31: `R/Atmosphere.cpp:18-33, 61-101`
+render-direct:464	code		32: `SH/Include/AtmospherePass.slang:73-89` and `SH/IBL/AtmosphereSkyView.comp.slang:16-51`
+render-direct:465	code		33: `SH/Scene/Skybox.frag.slang:12-50`
+render-direct:466	code		34: `SH/Include/Fog.slang:16-96`
+render-direct:467	code		35: `SH/Include/AerialPerspective.slang:17-26`
+render-direct:468	code		36: `R/SceneRenderer.cpp:1531-1598`
+render-direct:469	code		37: `SH/Scene/Forward.frag.slang:354-371`
+render-direct:480	figure	Diagrams	Light units map
+render-direct:482	figure	Diagrams	HDR range and pre-exposure
+render-direct:484	figure	Diagrams	Microfacet BRDF anatomy
+render-direct:486	figure	Diagrams	Energy compensation
+render-direct:488	figure	Diagrams	Data flow of a material
+render-direct:490	figure	Diagrams	Light record flow
+render-direct:493	figure	Diagrams	Froxel grid
+render-direct:495	figure	Diagrams	Frame timeline of the area's passes
+render-direct:498	figure	Diagrams	Shadow mapping basics
+render-direct:499	figure	Diagrams	Stable cascades
+render-direct:501	figure	Diagrams	Cascade selection by containment
+render-direct:503	figure	Diagrams	PCSS geometry
+render-direct:505	figure	Diagrams	Depth range pyramid
+render-direct:507	figure	Diagrams	Screen-space mask pipeline
+render-direct:509	figure	Diagrams	Local shadow atlas
+render-direct:511	figure	Diagrams	Atmosphere LUTs
+render-direct:513	figure	Diagrams	Atmosphere environment refresh
+render-direct:515	figure	Diagrams	Height fog integral
+render-direct:516	figure	Diagrams	Glass
+render-direct:517	figure	Diagrams	Shading order within one pixel
+render-direct:526	figure	Screenshots (each with scene and how to isolate the feature)	Metallic-roughness grid: a row of spheres roughness 0-1 for metal and dielectric (look-dev…
+render-direct:528	figure	Screenshots (each with scene and how to isolate the feature)	White furnace before/after energy compensation: same shot, Tonemapper None (text note: 0.6.0 build…
+render-direct:530	figure	Screenshots (each with scene and how to isolate the feature)	IOR: water (1.33) vs glass (1.5) vs diamond (2.42) puddles; the Showcase's puddles (IOR 1.33)…
+render-direct:531	figure	Screenshots (each with scene and how to isolate the feature)	Normal map on/off on a brick wall; and the 0.3-degree flat-normal bug on a mirror plane (explain…
+render-direct:533	figure	Screenshots (each with scene and how to isolate the feature)	Specular anti-aliasing on/off: a bumpy metal sphere at 4K, `SceneRendererSpecification::SpecularAnt…
+render-direct:535	figure	Screenshots (each with scene and how to isolate the feature)	Sun Angular Diameter 0 vs 0.53 vs 10 on a mirror sphere and on shadows…
+render-direct:536	figure	Screenshots (each with scene and how to isolate the feature)	Point light Source Radius 0 vs 0.05 vs 0.3 on wet ground (Showcase fire, Source Radius 0.25, and…
+render-direct:537	figure	Screenshots (each with scene and how to isolate the feature)	Spot light cone inner/outer angles on a wall; point light range window.
+render-direct:538	figure	Screenshots (each with scene and how to isolate the feature)	Many lights: a grid of 1,000 small point lights (scene built by commands), with `Lighting` debug…
+render-direct:539	figure	Screenshots (each with scene and how to isolate the feature)	Light units: the same scene at 65,536 lux / exposure -16 and 1 lux / exposure 0, identical (mirror…
+render-direct:540	figure	Screenshots (each with scene and how to isolate the feature)	Luminance debug view of a sunlit street and an interior (Third-Person `tp.scene`, look-dev…
+render-direct:541	figure	Screenshots (each with scene and how to isolate the feature)	Albedo debug view marking out-of-range albedos (Basic 3D with a black and a white cube).
+render-direct:542	figure	Screenshots (each with scene and how to isolate the feature)	Shadows debug view at Medium vs High (`viewport.capture {debugView: "shadows", quality:…
+render-direct:544	figure	Screenshots (each with scene and how to isolate the feature)	Cascade blend 0 vs 0.1 across a split (a long fence; `DirectionalLight.CascadeBlend`).
+render-direct:545	figure	Screenshots (each with scene and how to isolate the feature)	Penumbra growing with distance: look-dev `lookdev.thin` (poles 3, 5, 10 cm) at Angular Diameter…
+render-direct:546	figure	Screenshots (each with scene and how to isolate the feature)	Shadow filter taps 8 vs 32 on a wide penumbra (Custom quality `ShadowFilterQuality`), without TAA.
+render-direct:547	figure	Screenshots (each with scene and how to isolate the feature)	Shadow acne with `ShadowBias` and `ShadowNormalBias` 0 vs defaults at a grazing sun (`ow.lowsun`…
+render-direct:548	figure	Screenshots (each with scene and how to isolate the feature)	Stair steps on a grazed receiver with and without the stair blur (needs an engine change; else the…
+render-direct:550	figure	Screenshots (each with scene and how to isolate the feature)	Contact shadows: look-dev `lookdev.contact` (5 cm plate) with Custom `ContactShadows` 16 vs 0.
+render-direct:551	figure	Screenshots (each with scene and how to isolate the feature)	Fifth cascade: Showcase shot 5 (door post 0.3 m away) at four vs five cascades (`ShadowCascades`…
+render-direct:553	figure	Screenshots (each with scene and how to isolate the feature)	Point light shadows: Third-Person lanterns under trees (`tp.lantern`), `CastShadows` on/off;…
+render-direct:555	figure	Screenshots (each with scene and how to isolate the feature)	Sky sources side by side: environment map, procedural, atmosphere (`SkyLight.Source`), same scene.
+render-direct:556	figure	Screenshots (each with scene and how to isolate the feature)	Atmosphere times of day: sun elevation 60, 20, 6, 0, -6 degrees (`lighting.applySkyPreset {preset:…
+render-direct:558	figure	Screenshots (each with scene and how to isolate the feature)	Presets Clear / Hazy / Overcast / GoldenHour on Basic 3D.
+render-direct:559	figure	Screenshots (each with scene and how to isolate the feature)	Aerial perspective on/off and scale 1 vs 6 (Open World `ow.scene`, mountains;…
+render-direct:560	figure	Screenshots (each with scene and how to isolate the feature)	Height fog: density, falloff, `SunScattering` 0 vs 1 looking toward the sun, `ColorFromSky`…
+render-direct:562	figure	Screenshots (each with scene and how to isolate the feature)	Clear coat: Physics Playground balls (coat), coat roughness 0 vs 0.5, coat normal map.
+render-direct:563	figure	Screenshots (each with scene and how to isolate the feature)	Glass: Physics Playground ball pit walls; IOR 1.0 vs 1.5, Thickness 0 vs 0.1, attenuation color.
+render-direct:564	figure	Screenshots (each with scene and how to isolate the feature)	Extract Sun: an HDR map with its sun, before and after Extract Sun + Remove Sun (shadows appear).
+render-direct:565	figure	Screenshots (each with scene and how to isolate the feature)	Preview lighting: an unlit scene in the editor vs the game view.
+render-direct:571	rule		Every intensity has a unit, and nothing rescales it
+render-direct:573	rule		A spot light's candela is along its axis
+render-direct:575	rule		The sun's intensity is above the atmosphere under the Atmosphere source
+render-direct:577	rule		Every HDR writer multiplies by the pre-exposure, and every reader divides it out
+render-direct:580	rule		Value views are written without pre-exposure
+render-direct:582	rule		Clamp HDR with `SanitizeHDR`
+render-direct:583	rule		Read normal maps as XY and reconstruct Z
+render-direct:584	rule		The flat normal must be exactly flat
+render-direct:586	rule		F0 0.04 is written out at IOR 1.5
+render-direct:588	rule		Take derivatives before any `discard`, only of the primitive's own interpolants and textures, in…
+render-direct:591	rule		Check shading changes with the white furnace and the debug views, not by eye
+render-direct:593	rule		Sized sources widen only D and keep it normalized
+render-direct:595	rule		Light records are kept from signals: a direct write to a light field must signal
+render-direct:597	rule		Every reader of `LightRecord` sizes by `sizeof`; `LightData` stays 64 bytes, `MaterialData` 144
+render-direct:599	rule		Select a cascade with `SelectShadowCascade`, never by depth alone
+render-direct:601	rule		Cascade layouts come only from `ShadowCascades::GetLayout`, the view's alone; nothing is read back
+render-direct:604	rule		Snap in double, in absolute light space
+render-direct:605	rule		The sun's filter uses fixed noise, never `TemporalParams.z`
+render-direct:608	rule		Change both shadow paths together
+render-direct:610	rule		A new input of how casters are drawn changes a version the shadow caches compare
+render-direct:612	rule		Contact shadows come from every opaque pixel on screen
+render-direct:614	rule		Keep the lamp mesh out of its own light's shadow
+render-direct:616	rule		Only one directional light shines
+render-direct:618	rule		Atmosphere table readers multiply by `EnvironmentParams.x`
+render-direct:620	rule		Height fog needs a falloff above 0
+render-direct:621	rule		Fog is not a volume
+render-direct:622	rule		Glass is not in the prepass
+render-direct:624	rule		A real sun needs automatic exposure with MaxEV 16
+render-direct:625	rule		Fragment shaders shading lights in non-uniform flow use explicit LOD comparisons
+render-direct:627	rule		Documentation drift to watch
+render-direct:639	hands-on	For game developers (editor, samples, scripts)	Light Basic 3D with each preset and read `groundIlluminance` and the sun-to-sky ratio from the…
+render-direct:640	hands-on	For game developers (editor, samples, scripts)	Build a night scene: a 0.2 lux moon, a 64 cd lamp (800 lm), a 1 cd candle; set exposure manually…
+render-direct:641	hands-on	For game developers (editor, samples, scripts)	Make a material set: rough copper, polished gold, wet asphalt (IOR 1.33 puddle over rough dark…
+render-direct:642	hands-on	For game developers (editor, samples, scripts)	Shadow tuning: on the Third-Person course find acne at a low sun, fix it with biases, then see…
+render-direct:643	hands-on	For game developers (editor, samples, scripts)	Penumbra study: three poles at 0.5, 2 and 8 m from a wall; Angular Diameter 0.53 vs 2; measure the…
+render-direct:644	hands-on	For game developers (editor, samples, scripts)	Lantern town: four shadowed point lights, Source Radius 0.04, moving one with a script…
+render-direct:645	hands-on	For game developers (editor, samples, scripts)	Day cycle script: rotate the sun entity over time under the Atmosphere source; observe environment…
+render-direct:646	hands-on	For game developers (editor, samples, scripts)	Valley fog: Height Fog with base at the valley floor, falloff for 50 m thickness, Sun Scattering…
+render-direct:647	hands-on	For game developers (editor, samples, scripts)	Glass display case with a coloured liquid (Thickness, attenuation) and a varnished wooden base…
+render-direct:648	hands-on	For game developers (editor, samples, scripts)	Extract Sun from an HDR map and verify shadows appear and the sky no longer double-lights
+render-direct:654	hands-on	For engine developers (change or extend the engine)	Write a CPU reference of `EvaluateLightWeighted` and compare with a 1-pixel GPU render (pattern of…
+render-direct:655	hands-on	For engine developers (change or extend the engine)	Re-derive the BRDF table: run `BRDFLut.comp`'s integral in C++ for a few (NoV, roughness) and…
+render-direct:656	hands-on	For engine developers (change or extend the engine)	Disable energy compensation locally and measure the furnace loss per roughness; plot against 1/E
+render-direct:657	hands-on	For engine developers (change or extend the engine)	Add a `Spot` light "lumens mode" helper that converts to candela for a given cone (an editor…
+render-direct:658	hands-on	For engine developers (change or extend the engine)	Change the cluster grid (e.g. 32x18x32) and measure `GPU.Cull`/`GPU.Opaque` with `editor.perf`;…
+render-direct:659	hands-on	For engine developers (change or extend the engine)	Write a unit test for `ShadowCascades::GetLayout`: a turned camera keeps spheres; spheres hold…
+render-direct:660	hands-on	For engine developers (change or extend the engine)	Implement cascade selection by depth only (on a branch), show the artefact the containment test…
+render-direct:661	hands-on	For engine developers (change or extend the engine)	Visualize the depth-range pyramid level 0 as a debug overlay
+render-direct:662	hands-on	For engine developers (change or extend the engine)	Move `LocalShadowSampleRotation` to the fixed blue-noise tile (wave 8 plan 4.7 step 6) and show a…
+render-direct:663	hands-on	For engine developers (change or extend the engine)	Add a fog parameter (e.g. a second exponential layer) end to end: component field, `SetHeightFog`,…
+render-direct:664	hands-on	For engine developers (change or extend the engine)	Evaluate the atmosphere's transmittance on the CPU at sunset and compare with the light color…
+render-direct:665	hands-on	For engine developers (change or extend the engine)	Sketch area lights: read Heitz 2016 LTC and outline where a rect light would enter `LightRecord`,…
+render-direct:671	term		Albedo / base color
+render-direct:672	term		Metallic
+render-direct:673	term		Perceptual roughness
+render-direct:674	term		BRDF
+render-direct:675	term		Microfacet
+render-direct:676	term		GGX / Trowbridge-Reitz
+render-direct:677	term		Smith visibility (height-correlated)
+render-direct:678	term		Fresnel / Schlick approximation
+render-direct:679	term		F0
+render-direct:680	term		IOR
+render-direct:681	term		Lambert
+render-direct:682	term		Split sum
+render-direct:683	term		BRDF table (LUT)
+render-direct:684	term		Directional albedo (E)
+render-direct:685	term		Energy compensation
+render-direct:686	term		White furnace test
+render-direct:687	term		Specular aliasing
+render-direct:688	term		Specular anti-aliasing (geometric)
+render-direct:689	term		Horizon fade
+render-direct:690	term		Clear coat
+render-direct:691	term		Transmission
+render-direct:692	term		Beer-Lambert law
+render-direct:693	term		Attenuation color / distance
+render-direct:694	term		Scene-color copy
+render-direct:695	term		Lux (lx)
+render-direct:696	term		Candela (cd)
+render-direct:697	term		Nit (cd/m^2)
+render-direct:698	term		Lumen (lm)
+render-direct:699	term		EV100
+render-direct:700	term		Middle gray
+render-direct:701	term		Exposure key
+render-direct:702	term		Pre-exposure
+render-direct:703	term		Half float / RGBA16F / subnormal
+render-direct:704	term		Punctual light
+render-direct:705	term		Range (light)
+render-direct:706	term		Inner/outer cone angle
+render-direct:707	term		Source radius / angular diameter
+render-direct:708	term		Lobe widening
+render-direct:709	term		Area light / LTC
+render-direct:710	term		Light record
+render-direct:711	term		Relevance
+render-direct:712	term		Clustered shading / froxel
+render-direct:713	term		Exponential depth slices
+render-direct:714	term		Light culling
+render-direct:715	term		Shadow map
+render-direct:716	term		Reversed-Z
+render-direct:717	term		Comparison sampler / PCF
+render-direct:718	term		Shadow acne / peter-panning
+render-direct:719	term		Depth bias, slope bias, normal offset, receiver plane bias
+render-direct:720	term		Pancaking
+render-direct:721	term		Cascaded shadow maps (CSM)
+render-direct:722	term		Split / slice
+render-direct:723	term		Logarithmic vs uniform splits, distribution
+render-direct:724	term		Stable cascades
+render-direct:725	term		Texel snapping
+render-direct:726	term		Cascade blend band
+render-direct:727	term		Containment (cascade selection)
+render-direct:728	term		Texel density / pixels per texel
+render-direct:729	term		PCSS
+render-direct:730	term		Umbra / penumbra
+render-direct:731	term		Contact hardening
+render-direct:732	term		Depth range pyramid
+render-direct:733	term		Tent filter
+render-direct:734	term		Vogel disk
+render-direct:735	term		Blue noise
+render-direct:736	term		Screen-space shadow mask
+render-direct:737	term		Edge-aware (bilateral) blur
+render-direct:738	term		Contact shadows
+render-direct:739	term		Shadow atlas / tile / guard band
+render-direct:740	term		Quadtree allocator
+render-direct:741	term		Cube shadow (six faces)
+render-direct:742	term		Environment map (equirectangular HDR)
+render-direct:743	term		Procedural sky
+render-direct:744	term		Physical atmosphere
+render-direct:745	term		Rayleigh / Mie scattering
+render-direct:746	term		Ozone absorption
+render-direct:747	term		Extinction / optical depth / transmittance
+render-direct:748	term		Phase function / Henyey-Greenstein
+render-direct:749	term		Single / multiple scattering
+render-direct:750	term		LUT (transmittance, multiple scattering, sky view)
+render-direct:751	term		Aerial perspective
+render-direct:752	term		Storage scale
+render-direct:753	term		Height fog
+render-direct:754	term		In-scattering
+render-direct:755	term		Sun-to-sky ratio
+render-direct:756	term		Preview lighting
+render-direct:757	term		Debug view (lighting, AO, indirect, luminance, albedo, shadows)
+render-direct:758	term		GPU stage
+render-direct:811	open		Not read
+render-direct:820	open		Exposure metering details
+render-direct:822	open		Why forward (clustered) rather than deferred
+render-direct:824	open		Release of the horizon fade
+render-direct:826	open		Whether contact shadows ever were on in a shipped preset
+render-direct:829	open		Area lights
+render-direct:835	open		Which samples show which features
+render-direct:838	open		Exact screenshot reproducibility
+render-direct:841	open		Docs drift

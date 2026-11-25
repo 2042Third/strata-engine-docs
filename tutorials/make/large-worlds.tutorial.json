@@ -1,0 +1,1245 @@
+{
+	"page": "make/large-worlds",
+	"startsFrom": {
+		"template": "basic3d"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"files": [
+				{
+					"from": "book:tutorials/make/large-worlds/Teleport.cpp",
+					"to": "Scripts/Teleport.cpp"
+				}
+			],
+			"commands": [
+				{
+					"command": "asset.createFolder",
+					"parameters": {
+						"path": "Models"
+					}
+				},
+				{
+					"command": "asset.createFolder",
+					"parameters": {
+						"path": "Prefabs"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere"
+							},
+							"SphereCollider": {},
+							"RigidBody": {}
+						}
+					},
+					"bind": {
+						"ball": "/id"
+					}
+				},
+				{
+					"command": "prefab.create",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "ball"
+							}
+						],
+						"path": "Prefabs/Ball.stprefab"
+					}
+				},
+				{
+					"command": "asset.import",
+					"parameters": {
+						"file": "@RELEASE@/Samples/OpenWorld/Assets/Models/Nature/tree_pineDefaultA.glb",
+						"directory": "Models"
+					},
+					"bind": {
+						"pineModel": "/asset"
+					}
+				},
+				{
+					"command": "prefab.instantiate",
+					"parameters": {
+						"prefab": {
+							"$ref": "pineModel"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-4,
+									0,
+									0
+								]
+							}
+						}
+					},
+					"bind": {
+						"pine": "/id"
+					}
+				},
+				{
+					"command": "entity.rename",
+					"parameters": {
+						"entity": {
+							"$ref": "pine"
+						},
+						"name": "Pine"
+					}
+				},
+				{
+					"command": "prefab.create",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "pine"
+							}
+						],
+						"path": "Prefabs/Pine.stprefab"
+					}
+				},
+				{
+					"command": "asset.import",
+					"parameters": {
+						"file": "@RELEASE@/Samples/OpenWorld/Assets/Models/Nature/rock_largeA.glb",
+						"directory": "Models"
+					},
+					"bind": {
+						"rockModel": "/asset"
+					}
+				},
+				{
+					"command": "prefab.instantiate",
+					"parameters": {
+						"prefab": {
+							"$ref": "rockModel"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-4,
+									0,
+									3
+								]
+							}
+						}
+					},
+					"bind": {
+						"rock": "/id"
+					}
+				},
+				{
+					"command": "entity.rename",
+					"parameters": {
+						"entity": {
+							"$ref": "rock"
+						},
+						"name": "Rock"
+					}
+				},
+				{
+					"command": "prefab.create",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "rock"
+							}
+						],
+						"path": "Prefabs/Rock.stprefab"
+					}
+				},
+				{
+					"command": "asset.import",
+					"parameters": {
+						"file": "@RELEASE@/Samples/OpenWorld/Assets/Models/Nature/stump_round.glb",
+						"directory": "Models"
+					},
+					"bind": {
+						"stumpModel": "/asset"
+					}
+				},
+				{
+					"command": "prefab.instantiate",
+					"parameters": {
+						"prefab": {
+							"$ref": "stumpModel"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-4,
+									0,
+									-3
+								]
+							}
+						}
+					},
+					"bind": {
+						"stump": "/id"
+					}
+				},
+				{
+					"command": "entity.rename",
+					"parameters": {
+						"entity": {
+							"$ref": "stump"
+						},
+						"name": "Stump"
+					}
+				},
+				{
+					"command": "prefab.create",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "stump"
+							}
+						],
+						"path": "Prefabs/Stump.stprefab"
+					}
+				},
+				{
+					"command": "inputActions.setMap",
+					"parameters": {
+						"map": "Gameplay"
+					}
+				},
+				{
+					"command": "inputActions.setAction",
+					"parameters": {
+						"action": "Gameplay/Teleport",
+						"kind": "Button"
+					},
+					"checks": [
+						{
+							"pointer": "/action/bindings",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "script.build",
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/diagnostics",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "scene.save",
+					"parameters": {}
+				},
+				{
+					"command": "world.create",
+					"parameters": {
+						"path": "Worlds/Meadow"
+					}
+				},
+				{
+					"command": "world.info",
+					"parameters": {
+						"world": "Worlds/Meadow.stworld"
+					},
+					"checks": [
+						{
+							"pointer": "/layers",
+							"length": 4
+						},
+						{
+							"pointer": "/layers/0/name",
+							"equals": "Terrain"
+						},
+						{
+							"pointer": "/layers/1/name",
+							"equals": "Buildings"
+						},
+						{
+							"pointer": "/layers/2/name",
+							"equals": "Props"
+						},
+						{
+							"pointer": "/layers/3/name",
+							"equals": "Gameplay"
+						},
+						{
+							"pointer": "/layers/0/cellSize",
+							"approx": 64,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/layers/0/streamingDistance",
+							"approx": 256,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/layers/0/loadBeforeStart",
+							"equals": true
+						},
+						{
+							"pointer": "/layers/1/cellSize",
+							"approx": 64,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/layers/1/streamingDistance",
+							"approx": 256,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/layers/1/loadBeforeStart",
+							"equals": false
+						},
+						{
+							"pointer": "/layers/2/cellSize",
+							"approx": 64,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/layers/2/streamingDistance",
+							"approx": 256,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/layers/2/loadBeforeStart",
+							"equals": false
+						},
+						{
+							"pointer": "/layers/3/cellSize",
+							"approx": 64,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/layers/3/streamingDistance",
+							"approx": 256,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/layers/3/loadBeforeStart",
+							"equals": false
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Main Camera"
+					},
+					"bind": {
+						"cam": "/entities/0"
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Ground"
+					},
+					"bind": {
+						"ground": "/entities/0"
+					}
+				},
+				{
+					"command": "entity.delete",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "cam"
+							},
+							{
+								"$ref": "ground"
+							}
+						]
+					}
+				},
+				{
+					"command": "scene.info",
+					"parameters": {},
+					"checks": [
+						{
+							"pointer": "/entityCount",
+							"equals": 4
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"commands": [
+				{
+					"command": "scene.open",
+					"parameters": {
+						"scene": "Worlds/Meadow.stscene"
+					}
+				},
+				{
+					"command": "world.edit",
+					"parameters": {
+						"editLayer": "Terrain"
+					},
+					"checks": [
+						{
+							"pointer": "/editLayer",
+							"equals": "Terrain"
+						}
+					]
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Tile",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									32,
+									-0.5,
+									32
+								],
+								"Scale": [
+									64,
+									1,
+									64
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Tile",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-32,
+									-0.5,
+									32
+								],
+								"Scale": [
+									64,
+									1,
+									64
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Tile",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									32,
+									-0.5,
+									-32
+								],
+								"Scale": [
+									64,
+									1,
+									64
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Tile",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-32,
+									-0.5,
+									-32
+								],
+								"Scale": [
+									64,
+									1,
+									64
+								]
+							}
+						}
+					},
+					"bind": {
+						"lastTile": "/id"
+					}
+				},
+				{
+					"command": "world.status",
+					"parameters": {
+						"cells": true
+					},
+					"checks": [
+						{
+							"pointer": "/cells/dirty",
+							"equals": 4
+						},
+						{
+							"pointer": "/cells/loaded",
+							"equals": 0
+						}
+					]
+				},
+				{
+					"command": "entity.get",
+					"parameters": {
+						"entity": {
+							"$ref": "lastTile"
+						},
+						"world": true
+					},
+					"checks": [
+						{
+							"pointer": "/world/position/0",
+							"approx": -32,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/bounds/max/1",
+							"approx": 0,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "world.edit",
+					"parameters": {
+						"editLayer": "Props"
+					}
+				},
+				{
+					"command": "prefab.instantiate",
+					"parameters": {
+						"prefab": "Prefabs/Pine.stprefab",
+						"instances": [
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											10,
+											0,
+											-20
+										]
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"command": "prefab.instantiate",
+					"parameters": {
+						"prefab": "Prefabs/Rock.stprefab",
+						"instances": [
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											60,
+											0,
+											-20
+										]
+									}
+								}
+							}
+						]
+					},
+					"bind": {
+						"rock": "/instances/0/id"
+					}
+				},
+				{
+					"command": "prefab.instantiate",
+					"parameters": {
+						"prefab": "Prefabs/Stump.stprefab",
+						"instances": [
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-20,
+											0,
+											10
+										]
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "rock"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								70,
+								0,
+								-20
+							]
+						}
+					}
+				},
+				{
+					"command": "world.status",
+					"parameters": {
+						"cells": true
+					},
+					"checks": [
+						{
+							"pointer": "/cells/dirty",
+							"equals": 7
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Rock"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"commands": [
+				{
+					"command": "scene.open",
+					"parameters": {
+						"scene": "Worlds/Meadow.stscene"
+					}
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"cellBounds": true
+					}
+				},
+				{
+					"command": "world.status",
+					"parameters": {}
+				},
+				{
+					"command": "scene.save",
+					"parameters": {}
+				},
+				{
+					"command": "world.status",
+					"parameters": {
+						"cells": true
+					},
+					"checks": [
+						{
+							"pointer": "/cells/dirty",
+							"equals": 0
+						},
+						{
+							"pointer": "/cells/loaded",
+							"equals": 7
+						},
+						{
+							"pointer": "/list",
+							"length": 7
+						}
+					]
+				},
+				{
+					"command": "world.loadCells",
+					"parameters": {
+						"cells": [
+							{
+								"layer": "Terrain",
+								"x": 0,
+								"z": 0
+							}
+						],
+						"wait": true
+					},
+					"checks": [
+						{
+							"pointer": "/cells/0/state",
+							"equals": "Loaded"
+						}
+					]
+				},
+				{
+					"command": "scene.open",
+					"parameters": {
+						"scene": "Worlds/Meadow.stscene"
+					}
+				},
+				{
+					"command": "world.loadCells",
+					"parameters": {
+						"cells": [
+							{
+								"layer": "Terrain",
+								"x": 0,
+								"z": 0
+							}
+						],
+						"wait": true
+					},
+					"checks": [
+						{
+							"pointer": "/cells/0/state",
+							"equals": "Loaded"
+						},
+						{
+							"pointer": "/cells/0/entities",
+							"equals": 1
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"commands": [
+				{
+					"command": "scene.open",
+					"parameters": {
+						"scene": "Worlds/Meadow.stscene"
+					}
+				},
+				{
+					"command": "world.edit",
+					"parameters": {
+						"editLayer": "Persistent"
+					}
+				},
+				{
+					"command": "prefab.instantiate",
+					"parameters": {
+						"prefab": "Prefabs/Ball.stprefab",
+						"instances": [
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											0,
+											1,
+											0
+										]
+									}
+								}
+							}
+						]
+					},
+					"bind": {
+						"ball": "/instances/0/id"
+					}
+				},
+				{
+					"command": "component.add",
+					"parameters": {
+						"entity": {
+							"$ref": "ball"
+						},
+						"component": "StreamingSource"
+					}
+				},
+				{
+					"command": "component.get",
+					"parameters": {
+						"entity": {
+							"$ref": "ball"
+						},
+						"component": "StreamingSource"
+					},
+					"checks": [
+						{
+							"pointer": "/values/Radius",
+							"approx": 0,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/Layers",
+							"equals": ""
+						},
+						{
+							"pointer": "/values/Priority",
+							"equals": 0
+						}
+					]
+				},
+				{
+					"command": "scene.save",
+					"parameters": {}
+				},
+				{
+					"command": "play.start",
+					"parameters": {
+						"paused": true,
+						"build": false
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 60
+					},
+					"expect": {
+						"/stepsRun": {
+							"equals": 60
+						}
+					}
+				},
+				{
+					"command": "world.status",
+					"parameters": {},
+					"checks": [
+						{
+							"pointer": "/playing/loaded",
+							"equals": 7
+						}
+					]
+				},
+				{
+					"command": "play.stop"
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 5,
+			"commands": [
+				{
+					"command": "scene.open",
+					"parameters": {
+						"scene": "Worlds/Meadow.stscene"
+					}
+				},
+				{
+					"command": "world.cook",
+					"parameters": {
+						"world": "Worlds/Meadow.stworld"
+					},
+					"checks": [
+						{
+							"pointer": "/warnings",
+							"length": 0
+						},
+						{
+							"pointer": "/cells",
+							"equals": 7
+						},
+						{
+							"pointer": "/maxBodiesInRadius",
+							"equals": 5
+						},
+						{
+							"pointer": "/recommendedMaxBodies",
+							"equals": 7
+						}
+					]
+				},
+				{
+					"command": "world.info",
+					"parameters": {
+						"world": "Worlds/Meadow.stworld"
+					}
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 6,
+			"commands": [
+				{
+					"command": "scene.open",
+					"parameters": {
+						"scene": "Worlds/Meadow.stscene"
+					}
+				},
+				{
+					"command": "world.edit",
+					"parameters": {
+						"editLayer": "Terrain"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Tile",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									608,
+									-0.5,
+									608
+								],
+								"Scale": [
+									64,
+									1,
+									64
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "world.edit",
+					"parameters": {
+						"editLayer": "Props"
+					}
+				},
+				{
+					"command": "prefab.instantiate",
+					"parameters": {
+						"prefab": "Prefabs/Rock.stprefab",
+						"instances": [
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											608,
+											0,
+											600
+										]
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"command": "world.edit",
+					"parameters": {
+						"editLayer": "Persistent"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "FarMarker",
+						"components": {
+							"Transform": {
+								"Translation": [
+									608,
+									0,
+									608
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "world.status",
+					"parameters": {
+						"cells": true
+					}
+				},
+				{
+					"command": "script.build",
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					}
+				},
+				{
+					"command": "script.add",
+					"entityName": "Ball",
+					"parameters": {
+						"class": "Teleport"
+					}
+				},
+				{
+					"command": "script.get",
+					"entityName": "Ball",
+					"parameters": {},
+					"checks": [
+						{
+							"pointer": "/scripts/0/class",
+							"equals": "Teleport"
+						},
+						{
+							"pointer": "/scripts/0/fields/ReachRadius",
+							"equals": 48
+						}
+					]
+				},
+				{
+					"command": "component.get",
+					"entityName": "Ball",
+					"parameters": {
+						"component": "Script"
+					},
+					"checks": [
+						{
+							"pointer": "/values/Scripts/0/Class",
+							"equals": "Teleport"
+						}
+					]
+				},
+				{
+					"command": "scene.save",
+					"parameters": {}
+				},
+				{
+					"command": "play.start",
+					"parameters": {
+						"paused": true,
+						"build": false
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 10
+					},
+					"expect": {
+						"/stepsRun": {
+							"equals": 10
+						}
+					}
+				},
+				{
+					"command": "input.action",
+					"parameters": {
+						"action": "Gameplay/Teleport"
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 300
+					},
+					"expect": {
+						"/stepsRun": {
+							"equals": 300
+						}
+					}
+				},
+				{
+					"command": "component.get",
+					"entityName": "Ball",
+					"parameters": {
+						"component": "Transform"
+					},
+					"checks": [
+						{
+							"pointer": "/values/Translation/0",
+							"approx": 608,
+							"tolerance": 1
+						},
+						{
+							"pointer": "/values/Translation/1",
+							"approx": 0.5,
+							"tolerance": 0.1
+						},
+						{
+							"pointer": "/values/Translation/2",
+							"approx": 608,
+							"tolerance": 1
+						}
+					]
+				},
+				{
+					"command": "component.get",
+					"entityName": "Ball",
+					"parameters": {
+						"component": "RigidBody"
+					}
+				},
+				{
+					"command": "play.stop"
+				},
+				{
+					"command": "script.build",
+					"files": [
+						{
+							"from": "book:tutorials/make/large-worlds/TeleportNoPrefetch.cpp",
+							"to": "Scripts/Teleport.cpp"
+						}
+					],
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					}
+				},
+				{
+					"command": "play.start",
+					"parameters": {
+						"paused": true,
+						"build": false
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 10
+					},
+					"expect": {
+						"/stepsRun": {
+							"equals": 10
+						}
+					}
+				},
+				{
+					"command": "input.action",
+					"parameters": {
+						"action": "Gameplay/Teleport"
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 300
+					},
+					"expect": {
+						"/stepsRun": {
+							"equals": 300
+						}
+					}
+				},
+				{
+					"command": "component.get",
+					"entityName": "Ball",
+					"parameters": {
+						"component": "Transform"
+					},
+					"checks": [
+						{
+							"pointer": "/values/Translation/0",
+							"approx": 608,
+							"tolerance": 1
+						},
+						{
+							"pointer": "/values/Translation/1",
+							"approx": 0.5,
+							"tolerance": 0.1
+						},
+						{
+							"pointer": "/values/Translation/2",
+							"approx": 608,
+							"tolerance": 1
+						}
+					]
+				},
+				{
+					"command": "play.stop"
+				},
+				{
+					"command": "script.build",
+					"files": [
+						{
+							"from": "book:tutorials/make/large-worlds/Teleport.cpp",
+							"to": "Scripts/Teleport.cpp"
+						}
+					],
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					}
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 7,
+			"commands": [
+				{
+					"command": "scene.open",
+					"parameters": {
+						"scene": "Worlds/Meadow.stscene"
+					}
+				},
+				{
+					"command": "project.setStartScene",
+					"parameters": {
+						"scene": "Worlds/Meadow.stscene"
+					},
+					"checks": [
+						{
+							"pointer": "/loadingSceneCleared",
+							"equals": false
+						}
+					]
+				},
+				{
+					"command": "scene.save",
+					"parameters": {}
+				}
+			],
+			"endState": true
+		}
+	]
+}

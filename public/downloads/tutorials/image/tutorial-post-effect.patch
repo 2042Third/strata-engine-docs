@@ -1,0 +1,704 @@
+diff --git a/Strata/CMakeLists.txt b/Strata/CMakeLists.txt
+index ce88fbb..3c65cb0 100644
+--- a/Strata/CMakeLists.txt
++++ b/Strata/CMakeLists.txt
+@@ -138,6 +138,7 @@ strata_add_shaders(Strata_Renderer
+ 		PostProcess/MotionBlurTiles.comp
+ 		PostProcess/MotionBlurNeighbors.comp
+ 		PostProcess/MotionBlur.comp
++		PostProcess/Letterbox.comp
+ 		PostProcess/DepthOfFieldPrepare.comp
+ 		PostProcess/DepthOfFieldTiles.comp
+ 		PostProcess/DepthOfFieldDilate.comp
+diff --git a/Strata/shaders/PostProcess/Letterbox.comp.slang b/Strata/shaders/PostProcess/Letterbox.comp.slang
+new file mode 100644
+index 0000000..c4dab9c
+--- /dev/null
++++ b/Strata/shaders/PostProcess/Letterbox.comp.slang
+@@ -0,0 +1,28 @@
++#include "Include/Common.slang"
++
++// The letterbox: black bars over the first and the last BarRows rows of the post source, written into the next source. Every
++// other texel is copied as it is, alpha included (the depth of field's and the motion blur's mark of what they blurred).
++
++Texture2D<float4> u_Source : register(t0);
++[vk::image_format("rgba16f")] RWTexture2D<float4> o_Output : register(u0);
++
++struct LetterboxParameters
++{
++	uint BarRows; // Rows of each bar
++	uint Padding0;
++	uint Padding1;
++	uint Padding2;
++};
++[[vk::push_constant]] ConstantBuffer<LetterboxParameters> u_Parameters;
++
++[numthreads(8, 8, 1)]
++void main(uint3 globalID : SV_DispatchThreadID)
++{
++	uint2 size;
++	u_Source.GetDimensions(size.x, size.y);
++	if (any(globalID.xy >= size))
++		return;
++	float4 color = u_Source.Load(int3(globalID.xy, 0));
++	bool inBar = globalID.y < u_Parameters.BarRows || globalID.y >= size.y - u_Parameters.BarRows;
++	o_Output[globalID.xy] = float4(inBar ? float3(0.0) : SanitizeHDR(color.rgb), color.a);
++}
+diff --git a/Strata/src/Strata/Renderer/PostProcessData.h b/Strata/src/Strata/Renderer/PostProcessData.h
+index f568895..249a1e7 100644
+--- a/Strata/src/Strata/Renderer/PostProcessData.h
++++ b/Strata/src/Strata/Renderer/PostProcessData.h
+@@ -116,6 +116,17 @@ namespace Strata
+ 		static_assert(offsetof(TonemapConstants, Operator) == 16 && offsetof(TonemapConstants, DitherLevels) == 32);
+ 		static_assert(offsetof(TonemapConstants, VignetteTangents) == 40 && offsetof(TonemapConstants, FilmicToeSlope) == 48);
+ 
++		// PostProcess/Letterbox.comp (push constants).
++		struct LetterboxParameters
++		{
++			uint32_t BarRows; // Rows of each black bar, at the top and at the bottom of the image
++			uint32_t Padding0;
++			uint32_t Padding1;
++			uint32_t Padding2;
++		};
++		static_assert(sizeof(LetterboxParameters) == 16);
++		static_assert(offsetof(LetterboxParameters, BarRows) == 0);
++
+ 		// PostProcess/MorphologicalEdges.frag and MorphologicalBlend.frag (push constants): the edges' thresholds (a luma
+ 		// difference of the display-encoded image; a depth jump beyond the neighboring steps, relative to the depth) and the blend's
+ 		// dither.
+diff --git a/Strata/src/Strata/Renderer/PostProcessMath.cpp b/Strata/src/Strata/Renderer/PostProcessMath.cpp
+index 0109c5e..3c1095a 100644
+--- a/Strata/src/Strata/Renderer/PostProcessMath.cpp
++++ b/Strata/src/Strata/Renderer/PostProcessMath.cpp
+@@ -282,4 +282,14 @@ namespace Strata::PostProcessMath
+ 		return glm::clamp(FilmicConstants::c_Outset * glm::mix(whole, perChannel, channel), glm::vec3(0.0f), glm::vec3(1.0f));
+ 	}
+ 
++	uint32_t GetLetterboxBarRows(uint32_t width, uint32_t height, float aspect)
++	{
++		if (width == 0 || height < 3 || !std::isfinite(aspect) || aspect <= 0.0f)
++			return 0;
++		const float spare = static_cast<float>(height) - static_cast<float>(width) / aspect;
++		if (!(spare >= 2.0f))
++			return 0;
++		return std::min(static_cast<uint32_t>(spare * 0.5f), (height - 1) / 2);
++	}
++
+ }
+diff --git a/Strata/src/Strata/Renderer/PostProcessMath.h b/Strata/src/Strata/Renderer/PostProcessMath.h
+index a9807f2..ce35cf7 100644
+--- a/Strata/src/Strata/Renderer/PostProcessMath.h
++++ b/Strata/src/Strata/Renderer/PostProcessMath.h
+@@ -92,4 +92,8 @@ namespace Strata::PostProcessMath
+ 	};
+ 	MotionBlurProfile GetMotionBlurProfile(float lengthPixels, uint32_t sampleCount);
+ 
++	// The rows of each black bar that crop a `width` by `height` image to `aspect` (width over height): 0 when the image is not
++	// taller than that (or `aspect` is not a positive number), and always at least one row of picture.
++	uint32_t GetLetterboxBarRows(uint32_t width, uint32_t height, float aspect);
++
+ }
+diff --git a/Strata/src/Strata/Renderer/RendererComponents.cpp b/Strata/src/Strata/Renderer/RendererComponents.cpp
+index 1939ae0..8ca55e7 100644
+--- a/Strata/src/Strata/Renderer/RendererComponents.cpp
++++ b/Strata/src/Strata/Renderer/RendererComponents.cpp
+@@ -147,6 +147,11 @@ namespace Strata
+ 			return post.MotionBlur ? std::string() : "Motion Blur is off";
+ 		}
+ 
++		std::string WithLetterbox(const PostProcessComponent& post)
++		{
++			return post.Letterbox ? std::string() : "Letterbox is off";
++		}
++
+ 		std::string WithColorLookup(const PostProcessComponent& post)
+ 		{
+ 			return post.ColorLookup.IsValid() ? std::string() : "No Color Lookup is set";
+@@ -612,12 +617,18 @@ namespace Strata
+ 			.Section("Lens")
+ 			.Property("LensFlare", &PostProcessComponent::LensFlare,
+ 				WithTooltip(Slider(0.0f, 1.0f), "A lens's flares around very bright light, with restraint: faint tinted ghosts mirrored through the "
+-					"image's center, a halo, and six rays around the sun's disk while it is in view and not covered. 0 none"));
++					"image's center, a halo, and six rays around the sun's disk while it is in view and not covered. 0 none"))
++			.Property("Letterbox", &PostProcessComponent::Letterbox,
++				WithTooltip({}, "Black bars at the top and bottom crop the image to the aspect ratio below, as a cinema screen does; a view "
++					"that is already that wide shows none"))
++			.Property("LetterboxAspect", &PostProcessComponent::LetterboxAspect,
++				WithTooltip(Range(1.0f, 4.0f, 0.01f), "The aspect ratio (width over height) of the picture between the bars: 2.39 is wide cinema"));
+ 		// Exposure is the compensation SceneRenderer applies with automatic exposure too: always active.
+ 		SetInactiveReasons<PostProcessComponent>({ "AutoExposureMinEV", "AutoExposureMaxEV", "AutoExposureSpeed", "AutoExposureMetering",
+ 			"AutoExposureLowPercentile", "AutoExposureHighPercentile", "AutoExposureLightSpeed", "AutoExposureKey" }, &WithAutoExposure);
+ 		SetInactiveReasons<PostProcessComponent>({ "BloomIntensity", "BloomThreshold", "BloomRadius" }, &WithBloom);
+ 		SetInactiveReasons<PostProcessComponent>({ "MotionBlurShutterAngle", "MotionBlurMaxLength" }, &WithMotionBlur);
++		SetInactiveReasons<PostProcessComponent>({ "LetterboxAspect" }, &WithLetterbox);
+ 		SetInactiveReasons<PostProcessComponent>({ "ColorLookupIntensity" }, &WithColorLookup);
+ 		SetInactiveReasons<PostProcessComponent>({ "Toe" }, &WithFilmicToe);
+ 		SetInactiveReasons<PostProcessComponent>({ "Shoulder" }, &WithFilmicShoulder);
+diff --git a/Strata/src/Strata/Renderer/RendererComponents.h b/Strata/src/Strata/Renderer/RendererComponents.h
+index 7b9e983..46e4caa 100644
+--- a/Strata/src/Strata/Renderer/RendererComponents.h
++++ b/Strata/src/Strata/Renderer/RendererComponents.h
+@@ -331,6 +331,10 @@ namespace Strata
+ 		// A lens's flares around very bright light (0: none): ghosts mirrored through the image's center, a halo and the
+ 		// directional light's starburst when its disk is in view. The bloom chain feeds them (it runs for them with Bloom off).
+ 		float LensFlare = 0.0f;
++		// Letterbox (off by default): black bars at the top and bottom crop the image to LetterboxAspect, a width over a height; a
++		// view that is already that wide or wider shows no bars.
++		bool Letterbox = false;
++		float LetterboxAspect = 2.39f;
+ 		float Saturation = 1.0f;
+ 		float Contrast = 1.0f; // Around middle gray; 1 = unchanged
+ 		// The Filmic curve's look, each in [0, 1]: how deep the shadows go (higher crushes the darkest tones) and how softly the
+diff --git a/Strata/src/Strata/Renderer/SceneRenderer.cpp b/Strata/src/Strata/Renderer/SceneRenderer.cpp
+index a1dcbfb..f17d48d 100644
+--- a/Strata/src/Strata/Renderer/SceneRenderer.cpp
++++ b/Strata/src/Strata/Renderer/SceneRenderer.cpp
+@@ -10,6 +10,7 @@
+ #include "Strata/Renderer/LODSelection.h"
+ #include "Strata/Renderer/Material.h"
+ #include "Strata/Renderer/Mesh.h"
++#include "Strata/Renderer/PostProcessMath.h"
+ #include "Strata/Renderer/RenderScene.h"
+ #include "Strata/Renderer/RenderSceneGPU.h"
+ #include "Strata/Renderer/Renderer.h"
+@@ -3606,6 +3607,18 @@ namespace Strata
+ 			commandList->endMarker();
+ 		}
+ 		gpuTimer.Next(gpuStages.Post);
++		// The letterbox: bars over the post source, which then is the letterbox's output. A frame whose image is as wide as the
++		// aspect has no bars to draw.
++		const uint32_t letterboxRows = postProcess.Letterbox ? PostProcessMath::GetLetterboxBarRows(m_ViewportSize.x, m_ViewportSize.y, postProcess.LetterboxAspect) : 0u;
++		if (letterboxRows > 0)
++		{
++			commandList->beginMarker("Letterbox");
++			if (RenderLetterbox(commandList, postSource, letterboxRows))
++				postSource = PostSource::Letterbox;
++			else
++				degraded = true;
++			commandList->endMarker();
++		}
+ 		// The exposure key's reference: the luminance of a gray card (albedo 0.18) facing the directional light, as Forward.frag
+ 		// lights it (the atmosphere's transmittance included); none without a light.
+ 		std::optional<float> keyReferenceLog2;
+diff --git a/Strata/src/Strata/Renderer/SceneRenderer.h b/Strata/src/Strata/Renderer/SceneRenderer.h
+index bd8cd61..cbd641b 100644
+--- a/Strata/src/Strata/Renderer/SceneRenderer.h
++++ b/Strata/src/Strata/Renderer/SceneRenderer.h
+@@ -1605,17 +1605,18 @@ namespace Strata
+ 		bool CreatePostTargets(uint32_t width, uint32_t height, std::string& outFailure);
+ 		void ReleasePostTargets(std::vector<nvrhi::ResourceHandle>& released);
+ 		// What post-processing reads after the TAA resolve: the HDR target, the TAA's newest history texture, or the output of the
+-		// depth of field or of the motion blur. Each pass that reads it has a binding set per source.
++		// depth of field, of the motion blur or of the letterbox. Each pass that reads it has a binding set per source.
+ 		enum class PostSource : uint8_t
+ 		{
+ 			HDR,
+ 			History,
+ 			DepthOfField,
+-			MotionBlur
++			MotionBlur,
++			Letterbox
+ 		};
+ 		// The set of `source` among a pass's sets per source (the history's: the newest texture's).
+ 		nvrhi::IBindingSet* SelectPostSet(PostSource source, nvrhi::IBindingSet* hdr, const std::array<nvrhi::BindingSetHandle, 2>& history,
+-			nvrhi::IBindingSet* depthOfField, nvrhi::IBindingSet* motionBlur) const;
++			nvrhi::IBindingSet* depthOfField, nvrhi::IBindingSet* motionBlur, nvrhi::IBindingSet* letterbox = nullptr) const;
+ 		// The exposure and the bloom of the post source; returns whether bloom ran. `keyReferenceLog2`: log2 of the luminance of a
+ 		// gray card facing the frame's directional light (unset without one).
+ 		// `sunUV`: where the directional light's disk is, when it is in front of the camera (the lens flare's starburst). Sets
+@@ -1644,6 +1645,14 @@ namespace Strata
+ 		bool EnsureMotionBlurResources();
+ 		// The motion blur's targets and sets (made again by the next frame that blurs).
+ 		void ReleaseMotionBlurTargets(std::vector<nvrhi::ResourceHandle>& released);
++		// The letterbox of the post source (HDR, History, DepthOfField or MotionBlur) into m_LetterboxTexture: `barRows` black rows at
++		// the top and at the bottom. False (reported) when its resources cannot be made: the frame shows the image without bars.
++		bool RenderLetterbox(nvrhi::ICommandList* commandList, PostSource source, uint32_t barRows);
++		bool EnsureLetterboxResources();
++		// The target and the sets of its output.
++		bool CreateLetterboxTarget();
++		// The letterbox's target and sets (made again by the next frame that draws bars).
++		void ReleaseLetterboxTargets(std::vector<nvrhi::ResourceHandle>& released);
+ 		// The players' quality rows applied to the scene's settings: the anti-aliasing method they chose and their motion blur.
+ 		static void ApplyQualityOverrides(PostProcessComponent& settings, const RendererQualitySettings& quality);
+ 		// Tone mapping of the post source into `output`, or into the LDR target and FXAA from it into `output` (FXAA unless the frame
+@@ -2391,6 +2400,17 @@ namespace Strata
+ 		nvrhi::BindingSetHandle m_DepthOfFieldExposureSet;
+ 		nvrhi::BindingSetHandle m_DepthOfFieldBloomSet;
+ 		nvrhi::BindingSetHandle m_DepthOfFieldTonemapSet;
++		// Letterbox (SceneRendererPost.cpp): its layout and pipeline, its target (made by the first frame that draws bars, released
++		// with the render targets), its sets per source (HDR, History 0, History 1, the depth of field's output, the motion blur's)
++		// and the post sets of its output (exposure, bloom's prefilter, tone mapping).
++		nvrhi::BindingLayoutHandle m_LetterboxLayout;
++		nvrhi::ComputePipelineHandle m_LetterboxPipeline;
++		nvrhi::TextureHandle m_LetterboxTexture;
++		std::array<nvrhi::BindingSetHandle, 5> m_LetterboxSets;
++		nvrhi::BindingSetHandle m_LetterboxExposureSet;
++		nvrhi::BindingSetHandle m_LetterboxBloomSet;
++		nvrhi::BindingSetHandle m_LetterboxTonemapSet;
++		bool m_LetterboxBlurMask = false; // The letterbox's source marked what it blurred in alpha, which the output keeps
+ 		nvrhi::FramebufferHandle m_LDRFramebuffer;
+ 		bool m_ResetExposure = true;
+ 		// The pre-exposure (SceneRendererStats::PreExposure): the value frames are drawn with; whether it settled; a reset asked
+diff --git a/Strata/src/Strata/Renderer/SceneRendererPost.cpp b/Strata/src/Strata/Renderer/SceneRendererPost.cpp
+index 260d0ba..b1b5c45 100644
+--- a/Strata/src/Strata/Renderer/SceneRendererPost.cpp
++++ b/Strata/src/Strata/Renderer/SceneRendererPost.cpp
+@@ -224,6 +224,14 @@ namespace Strata
+ 		m_MotionBlurTilesPipeline = CreateComputePipeline("PostProcess/MotionBlurTiles.comp", m_MotionBlurLayout);
+ 		m_MotionBlurNeighborsPipeline = CreateComputePipeline("PostProcess/MotionBlurNeighbors.comp", m_MotionBlurLayout);
+ 		m_MotionBlurPipeline = CreateComputePipeline("PostProcess/MotionBlur.comp", m_MotionBlurLayout);
++		// Letterbox: the source, the target and the bar rows.
++		nvrhi::BindingLayoutDesc letterboxLayout;
++		letterboxLayout.visibility = nvrhi::ShaderType::Compute;
++		letterboxLayout.bindings = { nvrhi::BindingLayoutItem::Texture_SRV(0), nvrhi::BindingLayoutItem::Texture_UAV(0),
++			nvrhi::BindingLayoutItem::PushConstants(0, sizeof(RenderData::LetterboxParameters)) };
++		m_LetterboxLayout = m_Device->createBindingLayout(letterboxLayout);
++		ST_CORE_VERIFY(m_LetterboxLayout, "SceneRenderer: failed to create the letterbox's layout");
++		m_LetterboxPipeline = CreateComputePipeline("PostProcess/Letterbox.comp", m_LetterboxLayout);
+ 		// Depth of field: one layout for its five passes, as the motion blur's; the composite's bilinear reads use the linear
+ 		// clamping sampler at Include/Scene.slang's slot 8.
+ 		nvrhi::BindingLayoutDesc depthOfFieldLayout;
+@@ -430,6 +438,7 @@ namespace Strata
+ 		// the targets too).
+ 		ReleaseMotionBlurTargets(released);
+ 		ReleaseDepthOfFieldTargets(released);
++		ReleaseLetterboxTargets(released);
+ 		// The lens flare's, and the tone mapping's second set, which may bind its target.
+ 		release(m_LensFlareTexture);
+ 		release(m_LensFlareSet);
+@@ -439,7 +448,7 @@ namespace Strata
+ 	}
+ 
+ 	nvrhi::IBindingSet* SceneRenderer::SelectPostSet(PostSource source, nvrhi::IBindingSet* hdr, const std::array<nvrhi::BindingSetHandle, 2>& history,
+-		nvrhi::IBindingSet* depthOfField, nvrhi::IBindingSet* motionBlur) const
++		nvrhi::IBindingSet* depthOfField, nvrhi::IBindingSet* motionBlur, nvrhi::IBindingSet* letterbox) const
+ 	{
+ 		switch (source)
+ 		{
+@@ -451,6 +460,8 @@ namespace Strata
+ 				return depthOfField;
+ 			case PostSource::MotionBlur:
+ 				return motionBlur;
++			case PostSource::Letterbox:
++				return letterbox;
+ 		}
+ 		return hdr;
+ 	}
+@@ -505,6 +516,8 @@ namespace Strata
+ 		release(m_MotionBlurExposureSet);
+ 		release(m_MotionBlurBloomSet);
+ 		release(m_MotionBlurTonemapSet);
++		// The letterbox's set of the motion blur's output binds it: made again with the next one.
++		release(m_LetterboxSets[4]);
+ 	}
+ 
+ 	void SceneRenderer::ReleaseDepthOfFieldTargets(std::vector<nvrhi::ResourceHandle>& released)
+@@ -533,6 +546,7 @@ namespace Strata
+ 		release(m_DepthOfFieldTonemapSet);
+ 		// The motion blur's gather of the depth of field's output binds it: made again with the next one.
+ 		release(m_MotionBlurGatherSets[3]);
++		release(m_LetterboxSets[3]);
+ 	}
+ 
+ 	bool SceneRenderer::EnsureMotionBlurResources()
+@@ -655,6 +669,52 @@ namespace Strata
+ 		return true;
+ 	}
+ 
++	bool SceneRenderer::CreateLetterboxTarget()
++	{
++		const uint32_t width = m_ViewportSize.x;
++		const uint32_t height = m_ViewportSize.y;
++		nvrhi::TextureDesc desc;
++		desc.width = std::max(width, 1u);
++		desc.height = std::max(height, 1u);
++		desc.format = c_HDRFormat;
++		desc.isUAV = true;
++		desc.debugName = m_Specification.DebugName + ".Letterbox";
++		desc.initialState = nvrhi::ResourceStates::ShaderResource;
++		desc.keepInitialState = true;
++		nvrhi::TextureHandle letterboxed = m_Device->createTexture(desc);
++		if (!letterboxed)
++		{
++			m_Errors.Report(fmt::format("failed to create the letterbox's target for a {}x{} viewport; drawing without the letterbox", width, height));
++			return false;
++		}
++		// The output as the post source, as the HDR target's sets (CreatePostTargets).
++		nvrhi::BindingSetDesc exposure;
++		exposure.bindings = { nvrhi::BindingSetItem::Texture_SRV(0, letterboxed), nvrhi::BindingSetItem::StructuredBuffer_UAV(0, m_HistogramBuffer),
++			nvrhi::BindingSetItem::StructuredBuffer_UAV(1, m_ExposureBuffer), nvrhi::BindingSetItem::PushConstants(0, sizeof(RenderData::ExposureParameters)) };
++		nvrhi::BindingSetDesc bloom;
++		bloom.bindings = { nvrhi::BindingSetItem::Texture_SRV(0, letterboxed), nvrhi::BindingSetItem::Sampler(0, m_LinearClampSampler),
++			nvrhi::BindingSetItem::Texture_UAV(0, m_BloomTexture, nvrhi::Format::UNKNOWN, nvrhi::TextureSubresourceSet(0, 1, 0, 1)),
++			nvrhi::BindingSetItem::StructuredBuffer_SRV(1, m_ExposureBuffer), nvrhi::BindingSetItem::PushConstants(0, sizeof(RenderData::BloomParameters)) };
++		nvrhi::BindingSetDesc tonemap;
++		tonemap.bindings = { nvrhi::BindingSetItem::Texture_SRV(0, letterboxed), nvrhi::BindingSetItem::Sampler(0, m_PointClampSampler),
++			nvrhi::BindingSetItem::Texture_SRV(1, m_BloomTexture, nvrhi::Format::UNKNOWN, nvrhi::TextureSubresourceSet(0, 1, 0, 1)),
++			nvrhi::BindingSetItem::Sampler(1, m_LinearClampSampler), nvrhi::BindingSetItem::StructuredBuffer_SRV(2, m_ExposureBuffer),
++			nvrhi::BindingSetItem::ConstantBuffer(0, m_TonemapConstantBuffer) };
++		nvrhi::BindingSetHandle exposureSet = m_Device->createBindingSet(exposure, m_ExposureBindingLayout);
++		nvrhi::BindingSetHandle bloomSet = m_Device->createBindingSet(bloom, m_BloomBindingLayout);
++		nvrhi::BindingSetHandle tonemapSet = m_Device->createBindingSet(tonemap, m_TonemapBindingLayout);
++		if (!exposureSet || !bloomSet || !tonemapSet)
++		{
++			m_Errors.Report(fmt::format("failed to create the letterbox's bindings for a {}x{} viewport; drawing without the letterbox", width, height));
++			return false;
++		}
++		m_LetterboxTexture = std::move(letterboxed);
++		m_LetterboxExposureSet = std::move(exposureSet);
++		m_LetterboxBloomSet = std::move(bloomSet);
++		m_LetterboxTonemapSet = std::move(tonemapSet);
++		return true;
++	}
++
+ 	bool SceneRenderer::RenderMotionBlur(nvrhi::ICommandList* commandList, const PostProcessComponent& postProcess, PostSource source)
+ 	{
+ 		if (!EnsureMotionBlurResources())
+@@ -694,6 +754,52 @@ namespace Strata
+ 		return true;
+ 	}
+ 
++	void SceneRenderer::ReleaseLetterboxTargets(std::vector<nvrhi::ResourceHandle>& released)
++	{
++		auto release = [&released](auto& handle)
++		{
++			if (handle)
++				released.emplace_back(handle.Get());
++			handle = nullptr;
++		};
++		release(m_LetterboxTexture);
++		for (nvrhi::BindingSetHandle& set : m_LetterboxSets)
++			release(set);
++		release(m_LetterboxExposureSet);
++		release(m_LetterboxBloomSet);
++		release(m_LetterboxTonemapSet);
++	}
++
++	bool SceneRenderer::EnsureLetterboxResources()
++	{
++		if (!m_LetterboxPipeline)
++		{
++			m_Errors.Report("the letterbox's pipeline could not be made; drawing without the letterbox");
++			return false;
++		}
++		if (!m_LetterboxTexture && !CreateLetterboxTarget())
++			return false;
++		// The pass's set per source, once the source exists: the HDR target, the TAA's two history textures, the depth of field's
++		// and the motion blur's outputs.
++		nvrhi::ITexture* const sources[] = { m_HDRTexture.Get(), m_HistoryTextures[0].Get(), m_HistoryTextures[1].Get(), m_DepthOfFieldTexture.Get(),
++			m_MotionBlurTexture.Get() };
++		for (size_t index = 0; index < m_LetterboxSets.size(); index++)
++		{
++			if (!sources[index] || m_LetterboxSets[index])
++				continue;
++			nvrhi::BindingSetDesc desc;
++			desc.bindings = { nvrhi::BindingSetItem::Texture_SRV(0, sources[index]), nvrhi::BindingSetItem::Texture_UAV(0, m_LetterboxTexture),
++				nvrhi::BindingSetItem::PushConstants(0, sizeof(RenderData::LetterboxParameters)) };
++			m_LetterboxSets[index] = m_Device->createBindingSet(desc, m_LetterboxLayout);
++			if (!m_LetterboxSets[index])
++			{
++				m_Errors.Report("failed to create the letterbox's bindings of its source; drawing without the letterbox");
++				return false;
++			}
++		}
++		return true;
++	}
++
+ 	bool SceneRenderer::EnsureDepthOfFieldResources()
+ 	{
+ 		const uint32_t width = m_ViewportSize.x;
+@@ -859,6 +965,47 @@ namespace Strata
+ 		return true;
+ 	}
+ 
++	bool SceneRenderer::RenderLetterbox(nvrhi::ICommandList* commandList, PostSource source, uint32_t barRows)
++	{
++		ST_CORE_ASSERT(source != PostSource::Letterbox, "SceneRenderer: the letterbox does not read its own output");
++		if (!EnsureLetterboxResources())
++			return false;
++		size_t sourceIndex = 0;
++		switch (source)
++		{
++			case PostSource::HDR:
++				sourceIndex = 0;
++				break;
++			case PostSource::History:
++				sourceIndex = 1 + m_HistoryIndex;
++				break;
++			case PostSource::DepthOfField:
++				sourceIndex = 3;
++				break;
++			case PostSource::MotionBlur:
++				sourceIndex = 4;
++				break;
++			case PostSource::Letterbox:
++				break;
++		}
++		if (!m_LetterboxSets[sourceIndex])
++		{
++			m_Errors.Report("the letterbox's source has no bindings; drawing without the letterbox");
++			return false;
++		}
++		RenderData::LetterboxParameters parameters = {};
++		parameters.BarRows = barRows;
++		nvrhi::ComputeState state;
++		state.pipeline = m_LetterboxPipeline;
++		state.bindings = { m_LetterboxSets[sourceIndex] };
++		commandList->setComputeState(state);
++		commandList->setPushConstants(&parameters, sizeof(parameters));
++		commandList->dispatch(DispatchGroups(m_ViewportSize.x), DispatchGroups(m_ViewportSize.y), 1);
++		// The depth of field's and the motion blur's alpha marks what they blurred; the shader keeps it.
++		m_LetterboxBlurMask = source == PostSource::DepthOfField || source == PostSource::MotionBlur;
++		return true;
++	}
++
+ 	bool SceneRenderer::EnsureMorphologicalResources(nvrhi::ICommandList* commandList)
+ 	{
+ 		if (m_MorphologicalEdges)
+@@ -1050,7 +1197,8 @@ namespace Strata
+ 		std::optional<float> keyReferenceLog2, std::optional<glm::vec2> sunUV, bool& degraded)
+ 	{
+ 		commandList->beginMarker("Exposure");
+-		nvrhi::IBindingSet* exposureSet = SelectPostSet(source, m_ExposureBindingSet, m_TemporalExposureSets, m_DepthOfFieldExposureSet, m_MotionBlurExposureSet);
++		nvrhi::IBindingSet* exposureSet = SelectPostSet(source, m_ExposureBindingSet, m_TemporalExposureSets, m_DepthOfFieldExposureSet, m_MotionBlurExposureSet,
++			m_LetterboxExposureSet);
+ 		UpdateExposure(commandList, postProcess, options, exposureSet, keyReferenceLog2);
+ 		commandList->endMarker();
+ 		const bool bloom = postProcess.Bloom && postProcess.BloomIntensity > 0.0f;
+@@ -1061,7 +1209,7 @@ namespace Strata
+ 			return false;
+ 		commandList->beginMarker("Bloom");
+ 		const uint32_t levels = RenderBloomDownsamples(commandList, postProcess,
+-			SelectPostSet(source, m_BloomDownsampleSets[0], m_TemporalBloomSets, m_DepthOfFieldBloomSet, m_MotionBlurBloomSet), bloom);
++			SelectPostSet(source, m_BloomDownsampleSets[0], m_TemporalBloomSets, m_DepthOfFieldBloomSet, m_MotionBlurBloomSet, m_LetterboxBloomSet), bloom);
+ 		commandList->endMarker();
+ 		// The lens flare reads level 1 as its downsample left it (when the frame wrote it: a radius of one level of a small view
+ 		// does not), before the upsamples add the deeper levels' glow, whose tent filters leave diamond-shaped contours the
+@@ -1242,7 +1390,8 @@ namespace Strata
+ 		tonemap.FilmicShoulderPower = filmic.ShoulderPower;
+ 		const PostProcessMath::ColorGrading grading = GetColorGrading(postProcess);
+ 		// The depth of field's and the motion blur's outputs mark what they blurred in alpha.
+-		const bool blurMask = source == PostSource::DepthOfField || source == PostSource::MotionBlur;
++		const bool blurMask = source == PostSource::DepthOfField || source == PostSource::MotionBlur
++			|| (source == PostSource::Letterbox && m_LetterboxBlurMask);
+ 		tonemap.ColorFlags = (grading.Active ? RenderData::c_TonemapColorGrading : 0u) | (blurMask ? RenderData::c_TonemapBlurMask : 0u);
+ 		for (int row = 0; row < 3; row++)
+ 			tonemap.ColorRows[row] = glm::vec4(grading.Matrix[0][row], grading.Matrix[1][row], grading.Matrix[2][row], 0.0f);
+@@ -1298,7 +1447,7 @@ namespace Strata
+ 		m_TonemapConstantsWritten = true;
+ 		DrawFullscreen(commandList, GetFullscreenPipeline(m_TonemapPipelines, m_TonemapPixelShader, { m_TonemapBindingLayout, m_TonemapInputLayout },
+ 			tonemapTarget->getFramebufferInfo()), tonemapTarget, SelectPostSet(source, m_TonemapBindingSet, m_TemporalTonemapSets, m_DepthOfFieldTonemapSet,
+-			m_MotionBlurTonemapSet), nullptr, 0, inputSet);
++			m_MotionBlurTonemapSet, m_LetterboxTonemapSet), nullptr, 0, inputSet);
+ 		commandList->endMarker();
+ 		if (morphological)
+ 		{
+diff --git a/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene b/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
+index dcd24b5..ab7d9d4 100644
+--- a/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
++++ b/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
+@@ -287,6 +287,8 @@
+ 						"ColorLookup": "F7A0000000000011",
+ 						"ColorLookupIntensity": 0.5,
+ 						"LensFlare": 0.5,
++						"Letterbox": true,
++						"LetterboxAspect": 2.0,
+ 						"ColorOffset": [
+ 							0.0,
+ 							0.0,
+diff --git a/StrataTests/src/Editor/EditorCommandTests.cpp b/StrataTests/src/Editor/EditorCommandTests.cpp
+index b1c21f5..47a8156 100644
+--- a/StrataTests/src/Editor/EditorCommandTests.cpp
++++ b/StrataTests/src/Editor/EditorCommandTests.cpp
+@@ -938,7 +938,8 @@ TEST_SUITE("Editor.Commands")
+ 		const nlohmann::json post = harness.Run("component.get", { { "entity", c }, { "component", "PostProcess" } });
+ 		CHECK(post["inactive"] == WithTemporalRows({ { "BloomIntensity", "Bloom is off" }, { "BloomThreshold", "Bloom is off" }, { "BloomRadius", "Bloom is off" },
+ 			{ "MotionBlurShutterAngle", "Motion Blur is off" }, { "MotionBlurMaxLength", "Motion Blur is off" },
+-			{ "ColorLookupIntensity", "No Color Lookup is set" }, { "GlobalIlluminationIntensity", "Global Illumination is off" } }, c_OnlyTAA));
++			{ "ColorLookupIntensity", "No Color Lookup is set" }, { "GlobalIlluminationIntensity", "Global Illumination is off" },
++			{ "LetterboxAspect", "Letterbox is off" } }, c_OnlyTAA));
+ 		CHECK(harness.Run("entity.get", { { "entity", c } })["inactive"] == nlohmann::json { { "PostProcess", post["inactive"] } });
+ 		harness.Run("component.remove", { { "entity", c }, { "component", "PostProcess" } });
+ 		CHECK_FALSE(harness.Run("entity.get", { { "entity", c } }).contains("inactive"));
+@@ -957,7 +958,8 @@ TEST_SUITE("Editor.Commands")
+ 		CHECK(harness.Run("component.get", { { "entity", c }, { "component", "PostProcess" } })["inactive"]
+ 			== WithTemporalRows({ { "AntiAliasingMethod", "Anti Aliasing is off" }, { "MotionBlurShutterAngle", "Motion Blur is off" },
+ 				{ "MotionBlurMaxLength", "Motion Blur is off" }, { "ColorLookupIntensity", "No Color Lookup is set" },
+-				{ "GlobalIlluminationIntensity", "Global Illumination is off" } }, "Anti Aliasing is off"));
++				{ "GlobalIlluminationIntensity", "Global Illumination is off" },
++				{ "LetterboxAspect", "Letterbox is off" } }, "Anti Aliasing is off"));
+ 		harness.Run("component.remove", { { "entity", c }, { "component", "PostProcess" } });
+ 
+ 		// The TAA's preset and tunables: Custom with tunables in one step, undone in one; out-of-range values refused without
+@@ -983,7 +985,7 @@ TEST_SUITE("Editor.Commands")
+ 			{ "TAADisocclusionThreshold", "TAA Disocclusion Rejection is off" }, { "ScreenSpaceReflectionsIntensity", "Screen Space Reflections is off" },
+ 			{ "ScreenSpaceReflectionsMaxRoughness", "Screen Space Reflections is off" }, { "MotionBlurShutterAngle", "Motion Blur is off" },
+ 			{ "MotionBlurMaxLength", "Motion Blur is off" }, { "ColorLookupIntensity", "No Color Lookup is set" },
+-			{ "GlobalIlluminationIntensity", "Global Illumination is off" } });
++			{ "GlobalIlluminationIntensity", "Global Illumination is off" }, { "LetterboxAspect", "Letterbox is off" } });
+ 		for (const auto& [property, value] : { std::pair<const char*, nlohmann::json> { "TAAHistoryFrames", 40 }, { "TAAHistoryFrames", 1 },
+ 				 { "TAAMotionResponse", 0.5 }, { "TAAClipWidth", 0.25 }, { "TAADisocclusionThreshold", 0.6 }, { "TAASharpening", 1.5 }, { "TAAHistoryClamp", "Box" },
+ 				 { "TAAPreset", "Blurry" }, { "ScreenSpaceReflectionsIntensity", 1.5 }, { "ScreenSpaceReflectionsMaxRoughness", -0.1 } })
+diff --git a/StrataTests/src/Renderer/GPUSceneLetterboxTests.cpp b/StrataTests/src/Renderer/GPUSceneLetterboxTests.cpp
+new file mode 100644
+index 0000000..c55a8d8
+--- /dev/null
++++ b/StrataTests/src/Renderer/GPUSceneLetterboxTests.cpp
+@@ -0,0 +1,94 @@
++#include "Renderer/SceneRendererTestUtils.h"
++#include "Strata/Renderer/PostProcessMath.h"
++#include "Strata/Renderer/RendererComponents.h"
++
++using namespace Strata;
++using namespace Strata::Tests;
++
++// The letterbox (PostProcess/Letterbox.comp): black bars that crop the image to a wider aspect, off by default.
++namespace
++{
++
++	constexpr uint32_t c_Width = 1024;
++	constexpr uint32_t c_Height = 576;
++	constexpr int c_Code = 128;
++
++	// A wall of one display code (unlit, the neutral post-processing shows it unchanged) filling the view.
++	struct GrayWall
++	{
++		Scene SceneData;
++		PostProcessComponent* PostProcess = nullptr;
++
++		explicit GrayWall(SceneTestAssets& assets)
++		{
++			PostProcess = &AddNeutralPostProcess(SceneData);
++			AddMesh(SceneData, BuiltinAssets::QuadMesh, assets.AddMaterial(Emitting(PostProcessMath::SRGBToLinear(static_cast<float>(c_Code) / 255.0f))),
++				glm::vec3(0.0f), "Wall")
++				.GetComponent<TransformComponent>().Scale = glm::vec3(40.0f, 40.0f, 1.0f);
++		}
++	};
++
++	ReadbackImage RenderWall(SceneRenderer& renderer, GrayWall& wall)
++	{
++		const SceneCamera camera = LookAt(glm::vec3(0.0f, 0.0f, 2.0f), glm::vec3(0.0f), static_cast<float>(c_Width) / static_cast<float>(c_Height));
++		REQUIRE(renderer.Render(wall.SceneData, camera));
++		ReadbackImage image;
++		REQUIRE(Renderer::ReadTexture(renderer.GetOutputTexture(), image));
++		return image;
++	}
++
++}
++
++TEST_SUITE("GPU.SceneRenderer.Letterbox")
++{
++	TEST_CASE("The letterbox blacks the bars and leaves the picture between them as it was")
++	{
++		GPUContext gpu;
++		REQUIRE(gpu.IsValid());
++		SceneTestAssets assets;
++		GrayWall wall(assets);
++		SceneRenderer renderer(ExactSpecification());
++		renderer.SetViewportSize(c_Width, c_Height);
++		const ReadbackImage plain = RenderWall(renderer, wall);
++		CHECK(Red(plain, c_Width / 2, c_Height / 2) == c_Code);
++
++		// 1024 / 2 = 512 rows of picture, so 32 rows of bar above and below.
++		wall.PostProcess->Letterbox = true;
++		wall.PostProcess->LetterboxAspect = 2.0f;
++		const ReadbackImage barred = RenderWall(renderer, wall);
++		for (uint32_t x = 0; x < c_Width; x++)
++		{
++			for (uint32_t y = 0; y < c_Height; y++)
++			{
++				const bool inBar = y < 32 || y >= c_Height - 32;
++				if (inBar)
++					CHECK(GetPixelRGBA8(barred, x, y) == glm::u8vec4(0, 0, 0, 255));
++				else
++					CHECK(GetPixelRGBA8(barred, x, y) == GetPixelRGBA8(plain, x, y));
++			}
++		}
++		CHECK(gpu.GetNewErrorCount() == 0);
++	}
++
++	TEST_CASE("A view as wide as the aspect, or at the neutral value, renders bit for bit as without the effect")
++	{
++		GPUContext gpu;
++		REQUIRE(gpu.IsValid());
++		SceneTestAssets assets;
++		GrayWall wall(assets);
++		SceneRenderer renderer(ExactSpecification());
++		renderer.SetViewportSize(c_Width, c_Height);
++		const ReadbackImage plain = RenderWall(renderer, wall);
++
++		// The neutral value is off: AddNeutralPostProcess leaves the letterbox off, and the bars wait for it.
++		CHECK_FALSE(wall.PostProcess->Letterbox);
++		wall.PostProcess->LetterboxAspect = 2.0f;
++		CHECK(MaxDifference(RenderWall(renderer, wall), plain) == 0);
++
++		// On, with an aspect the view already has (a narrower one): no bars, no pass.
++		wall.PostProcess->Letterbox = true;
++		wall.PostProcess->LetterboxAspect = 1.0f;
++		CHECK(MaxDifference(RenderWall(renderer, wall), plain) == 0);
++		CHECK(gpu.GetNewErrorCount() == 0);
++	}
++}
+diff --git a/StrataTests/src/Renderer/PostProcessMathTests.cpp b/StrataTests/src/Renderer/PostProcessMathTests.cpp
+index 5ebfcd6..2ca30b9 100644
+--- a/StrataTests/src/Renderer/PostProcessMathTests.cpp
++++ b/StrataTests/src/Renderer/PostProcessMathTests.cpp
+@@ -593,4 +593,17 @@ TEST_SUITE("Renderer.PostProcessMath")
+ 			spread16 = std::max(spread16, value);
+ 		CHECK(spread16 < spread8);
+ 	}
++
++	TEST_CASE("The letterbox's bars crop the image to the aspect and leave rows of picture")
++	{
++		CHECK(PostProcessMath::GetLetterboxBarRows(1024, 576, 2.0f) == 32);
++		CHECK(PostProcessMath::GetLetterboxBarRows(1920, 1080, 2.39f) == 138);
++		// A view as wide as the aspect, or wider, or a bad aspect: no bars.
++		CHECK(PostProcessMath::GetLetterboxBarRows(1920, 1080, 16.0f / 9.0f) == 0);
++		CHECK(PostProcessMath::GetLetterboxBarRows(1920, 1080, 1.0f) == 0);
++		CHECK(PostProcessMath::GetLetterboxBarRows(1920, 1080, 0.0f) == 0);
++		CHECK(PostProcessMath::GetLetterboxBarRows(1920, 1080, std::numeric_limits<float>::quiet_NaN()) == 0);
++		// An absurd aspect keeps two rows of picture.
++		CHECK(PostProcessMath::GetLetterboxBarRows(1920, 1080, 1000.0f) == 539);
++	}
+ }
+diff --git a/StrataTests/src/Renderer/RendererComponentsTests.cpp b/StrataTests/src/Renderer/RendererComponentsTests.cpp
+index 70cc0e3..36adcfa 100644
+--- a/StrataTests/src/Renderer/RendererComponentsTests.cpp
++++ b/StrataTests/src/Renderer/RendererComponentsTests.cpp
+@@ -191,7 +191,7 @@ TEST_SUITE("Renderer.Components")
+ 			{ "Toe", "Tone and color" }, { "WhiteBalanceTemperature", "Tone and color" }, { "ColorPower", "Tone and color" },
+ 			{ "AutoExposureMetering", "Exposure" }, { "AutoExposureKey", "Exposure" }, { "BloomRadius", "Bloom" }, { "MotionBlur", "Motion" },
+ 			{ "MotionBlurMaxLength", "Motion" }, { "FilmGrain", "Lens" }, { "ChromaticAberration", "Lens" }, { "ColorLookup", "Tone and color" },
+-			{ "ColorLookupIntensity", "Tone and color" }, { "LensFlare", "Lens" } };
++			{ "ColorLookupIntensity", "Tone and color" }, { "LensFlare", "Lens" }, { "Letterbox", "Lens" }, { "LetterboxAspect", "Lens" } };
+ 		for (const auto& [property, section] : c_Groups)
+ 		{
+ 			CAPTURE(property);
+diff --git a/StrataTests/src/Renderer/SceneRendererTestUtils.h b/StrataTests/src/Renderer/SceneRendererTestUtils.h
+index 541f3d6..4988cd0 100644
+--- a/StrataTests/src/Renderer/SceneRendererTestUtils.h
++++ b/StrataTests/src/Renderer/SceneRendererTestUtils.h
+@@ -259,6 +259,7 @@ namespace Strata::Tests
+ 		postProcess.AutoExposureLightSpeed = postProcess.AutoExposureSpeed;
+ 		postProcess.AutoExposureKey = 0.0f;
+ 		postProcess.Vignette = 0.0f;
++		postProcess.Letterbox = false;
+ 		postProcess.Bloom = false;
+ 		postProcess.AmbientOcclusion = false;
+ 		postProcess.AmbientOcclusionMultiBounce = false;
+diff --git a/StrataTests/src/Scene/ReflectionTests.cpp b/StrataTests/src/Scene/ReflectionTests.cpp
+index aa73fa9..de06993 100644
+--- a/StrataTests/src/Scene/ReflectionTests.cpp
++++ b/StrataTests/src/Scene/ReflectionTests.cpp
+@@ -603,6 +603,11 @@ TEST_SUITE("Scene.InactiveProperties")
+ 		// The motion blur's shutter and length only with motion blur.
+ 		CHECK(reason("PostProcess", "MotionBlurShutterAngle") == "Motion Blur is off");
+ 		CHECK(reason("PostProcess", "MotionBlurMaxLength") == "Motion Blur is off");
++		// The letterbox's aspect only with the letterbox.
++		CHECK(reason("PostProcess", "LetterboxAspect") == "Letterbox is off");
++		post.Letterbox = true;
++		CHECK(reason("PostProcess", "LetterboxAspect").empty());
++		post.Letterbox = false;
+ 		post.MotionBlur = true;
+ 		CHECK(reason("PostProcess", "MotionBlurShutterAngle").empty());
+ 		post.MotionBlur = false;

@@ -1,0 +1,44 @@
+---
+// The print view of a part: every page of the part in reading order on one long page, for printing to PDF. Each
+// chapter's ids get the chapter's name in front ("core--time--the-accumulator", src/lib/print.mjs), so that no two
+// chapters share an id, and links between the part's own pages become links within this page. Answers, derivations
+// and the other closed boxes are open and pictures load at once; the view is not indexed (printFrontmatter).
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getEntry } from 'astro:content';
+import sidebar from '../../sidebar.json';
+import { pageUrl, previewOmitted } from '../../lib/settings.mjs';
+import { anchorOf, prefixChapter, printFrontmatter } from '../../lib/print.mjs';
+import { routeIdOf } from '../../lib/sidebar.mjs';
+
+export async function getStaticPaths() {
+	return sidebar.parts.filter((part) => part.pages.length > 0).map((part) => ({ params: { part: part.slug }, props: { part } }));
+}
+
+const { part } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// The part's pages by the ids Starlight serves them under (a part's index page "core/index" is "core").
+const omitted = previewOmitted();
+const routes = part.pages.filter((id) => !omitted.has(id)).map(routeIdOf);
+const partPages = new Set<string>(routes);
+const chapters = [];
+for (const id of routes) {
+	const entry = await getEntry('docs', id);
+	if (!entry?.rendered?.html) throw new Error(`print view of ${part.slug}: ${id} has no rendered HTML`);
+	chapters.push({ id, title: entry.data.title, html: prefixChapter(entry.rendered.html, id, partPages, base) });
+}
+const headings = chapters.map((chapter) => ({ depth: 2, slug: anchorOf(chapter.id), text: chapter.title }));
+---
+
+<StarlightPage frontmatter={printFrontmatter(part.label)} headings={headings}>
+	<p>
+		This page holds every page of the part in reading order, for printing to PDF from the browser. Each chapter
+		starts on a new sheet; answers and the other closed boxes are open, and every tab panel prints. The pages themselves: <a href={pageUrl(base, routes[0])}>start of the part</a>.
+	</p>
+	{chapters.map((chapter) => (
+		<article class="book-print-chapter">
+			<h2 id={anchorOf(chapter.id)}>{chapter.title}</h2>
+			<Fragment set:html={chapter.html} />
+		</article>
+	))}
+</StarlightPage>

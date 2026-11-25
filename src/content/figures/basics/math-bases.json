@@ -1,0 +1,12 @@
+{
+	"figures": [
+		{
+			"id": "bent-normal",
+			"shows": "Two panels of one slope drawn before and after a matrix that doubles x: a line along (1, 1) with a short arrow at a right angle to it along (1, -1), then the stretched line along (2, 1) with two arrows from the same point, a red one along (2, -1) that leans against the line and a green one along (0.5, -1) at a right angle to it",
+			"caption": "A stretch along x tilts the line and the normal sent through the same matrix leans against it; the inverse transpose keeps the normal at a right angle.",
+			"alt": "Two small graphs of a slanted line. In the first, an arrow stands at a right angle to the line. In the second, the line is stretched and flatter, one arrow leans against it at a slant and a second arrow stands at a right angle to it.",
+			"kind": "diagram",
+			"numbers": "Left panel: line from (-1, -1) to (1, 1), normal arrow (1, -1) from the origin, right angle marked. Right panel: line from (-2, -1) to (2, 1), model-matrix normal (2, -1) in red with dot product 3 with the line direction (2, 1), normal-matrix normal (0.5, -1) in green with dot product 0, right angle marked."
+		}
+	]
+}

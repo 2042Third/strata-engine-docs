@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 500">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: grid 60 per unit, x -1..6 at 174..594, y 6..-1 at 40..460; plane y = 2 at 280; H 500 -->
+<rect class="blue-area" x="174" y="40" width="420" height="240"/>
+<rect class="purple-area" x="174" y="280" width="420" height="180"/>
+<line class="line-faint" x1="174" y1="460" x2="174" y2="40" stroke-width="1"/>
+<line class="line-faint" x1="174" y1="460" x2="594" y2="460" stroke-width="1"/>
+<text class="muted small" x="174" y="482" text-anchor="middle">−1</text>
+<text class="muted small" x="164" y="465" text-anchor="end">−1</text>
+<line class="line-faint" x1="234" y1="460" x2="234" y2="40" stroke-width="1"/>
+<line class="line-faint" x1="174" y1="400" x2="594" y2="400" stroke-width="1"/>
+<text class="muted small" x="234" y="482" text-anchor="middle">0</text>
+<text class="muted small" x="164" y="405" text-anchor="end">0</text>
+<line class="line-faint" x1="294" y1="460" x2="294" y2="40" stroke-width="1"/>
+<line class="line-faint" x1="174" y1="340" x2="594" y2="340" stroke-width="1"/>
+<text class="muted small" x="294" y="482" text-anchor="middle">1</text>
+<text class="muted small" x="164" y="345" text-anchor="end">1</text>
+<line class="line-faint" x1="354" y1="460" x2="354" y2="40" stroke-width="1"/>
+<line class="line-faint" x1="174" y1="280" x2="594" y2="280" stroke-width="1"/>
+<text class="muted small" x="354" y="482" text-anchor="middle">2</text>
+<text class="muted small" x="164" y="285" text-anchor="end">2</text>
+<line class="line-faint" x1="414" y1="460" x2="414" y2="40" stroke-width="1"/>
+<line class="line-faint" x1="174" y1="220" x2="594" y2="220" stroke-width="1"/>
+<text class="muted small" x="414" y="482" text-anchor="middle">3</text>
+<text class="muted small" x="164" y="225" text-anchor="end">3</text>
+<line class="line-faint" x1="474" y1="460" x2="474" y2="40" stroke-width="1"/>
+<line class="line-faint" x1="174" y1="160" x2="594" y2="160" stroke-width="1"/>
+<text class="muted small" x="474" y="482" text-anchor="middle">4</text>
+<text class="muted small" x="164" y="165" text-anchor="end">4</text>
+<line class="line-faint" x1="534" y1="460" x2="534" y2="40" stroke-width="1"/>
+<line class="line-faint" x1="174" y1="100" x2="594" y2="100" stroke-width="1"/>
+<text class="muted small" x="534" y="482" text-anchor="middle">5</text>
+<text class="muted small" x="164" y="105" text-anchor="end">5</text>
+<line class="line-faint" x1="594" y1="460" x2="594" y2="40" stroke-width="1"/>
+<line class="line-faint" x1="174" y1="40" x2="594" y2="40" stroke-width="1"/>
+<text class="muted small" x="594" y="482" text-anchor="middle">6</text>
+<text class="muted small" x="164" y="45" text-anchor="end">6</text>
+<line class="line-ink" x1="174" y1="280" x2="594" y2="280" stroke-width="2.5"/>
+<text class="ink" x="604" y="285">plane, s = 0</text>
+<line class="line-blue" x1="294" y1="280" x2="294" y2="232" stroke-width="2.5"/>
+<polygon class="blue" points="294,220 298.5,232 289.5,232"/>
+<text class="blue" x="304" y="255">n = (0, 1)</text>
+<line class="line-blue" x1="414" y1="100" x2="414" y2="280" stroke-width="2" stroke-dasharray="4 3"/>
+<circle class="ink" cx="414" cy="100" r="5"/>
+<text class="ink" x="426" y="105">A (3, 5)</text>
+<text class="blue bold" x="424" y="195">s = +3</text>
+<line class="line-purple" x1="234" y1="400" x2="234" y2="280" stroke-width="2" stroke-dasharray="4 3"/>
+<circle class="ink" cx="234" cy="400" r="5"/>
+<text class="ink" x="246" y="420">B (0, 0)</text>
+<text class="purple bold" x="224" y="345" text-anchor="end">s = −2</text>
+<text class="blue" x="582" y="75" text-anchor="end">s &gt; 0</text>
+<text class="purple" x="582" y="435" text-anchor="end">s &lt; 0</text>
+</svg>

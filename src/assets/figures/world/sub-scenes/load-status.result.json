@@ -1,0 +1,35 @@
+{
+	"lastOpen": {
+		"error": null,
+		"scene": "755D4CAD3809AF61",
+		"seconds": 0.0164247,
+		"startScene": false,
+		"state": "Ready"
+	},
+	"open": null,
+	"play": null,
+	"subScenes": [
+		{
+			"createdEntities": 7,
+			"error": null,
+			"progress": 1.0,
+			"scene": "43FD467DF4593C28",
+			"skippedEntities": 0,
+			"slices": 1,
+			"state": "Loaded",
+			"subScene": 1,
+			"totalEntities": 7
+		}
+	],
+	"world": {
+		"editor": null,
+		"game": {
+			"cellsFailed": 0,
+			"cellsLoaded": 0,
+			"cellsLoading": 0,
+			"cellsPinned": 0,
+			"cellsUnloading": 0,
+			"cellsWanted": 0
+		}
+	}
+}

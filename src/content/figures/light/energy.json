@@ -1,0 +1,24 @@
+{
+	"figures": [
+		{
+			"id": "furnace-pair",
+			"kind": "scene",
+			"shows": "The look-dev furnace's two rows of spheres, the lower row metal, without the compensation and then with it",
+			"caption": "The look-dev furnace in a uniform gray sky: gray non-metals above, metals below, roughness rising from left to right. Without the compensation the rough metals fall dark toward the right. With it every metal keeps the brightness of the smooth one, close to the gray of the sky, so the lower row almost vanishes: a metal that keeps its light should. The non-metals do not change.",
+			"alt": "Two pictures of two rows of five spheres in a light gray sky. The upper row is an even, darker gray in both. In the first picture the spheres of the lower row grow darker from left to right, and the last one is plainly dark. In the second all five spheres of the lower row have the same light gray, so close to the sky that the row almost disappears.",
+			"project": { "lookdev": true },
+			"scene": "Scenes/Furnace.stscene",
+			"camera": { "position": [0, 1.1, 11.86], "target": [0, 1.1, 0], "fov": 16 },
+			"size": [1920, 800],
+			"quality": "high",
+			"publish": "lossless",
+			"crops": [
+				{ "name": "metals", "rect": [0.04, 0.5, 0.96, 0.86], "scale": 1 }
+			],
+			"variants": {
+				"off": { "renderer": { "SpecularEnergyCompensation": false } },
+				"on": { "renderer": { "SpecularEnergyCompensation": true }, "expect": "complete" }
+			}
+		}
+	]
+}

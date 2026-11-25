@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 346">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- cross: squares 64 px from (24, 72); cube half-size 1 = 110 px at (560, 196), view azimuth 62 elevation 24; inside walls -X, -Y, -Z; d = (-0.2, 0.3, -0.9) and its hit (-0.222, 0.333, -1) -->
+<!-- cross: squares 64 px from (24, 72); cube half-size 1 = 100 px at (560, 176), view azimuth 75 elevation 36 (screen x = x cos 15 - z sin 15); inside walls -X, -Y, -Z; faint cross through the -Z face centre (0, 0, -1) with its ends at -1 and 1; d = (-0.2, 0.3, -0.9) and its hit (-0.222, 0.333, -1) -->
+<rect x="88" y="72" width="64" height="64" class="plate line-ink"/>
+<text x="120" y="106" class="ink bold" text-anchor="middle">+Y</text>
+<text x="120" y="124" class="ink small" text-anchor="middle">face 2</text>
+<rect x="24" y="136" width="64" height="64" class="plate line-ink"/>
+<text x="56" y="170" class="ink bold" text-anchor="middle">−X</text>
+<text x="56" y="188" class="ink small" text-anchor="middle">face 1</text>
+<rect x="88" y="136" width="64" height="64" class="plate line-ink"/>
+<text x="120" y="170" class="ink bold" text-anchor="middle">+Z</text>
+<text x="120" y="188" class="ink small" text-anchor="middle">face 4</text>
+<rect x="152" y="136" width="64" height="64" class="plate line-ink"/>
+<text x="184" y="170" class="ink bold" text-anchor="middle">+X</text>
+<text x="184" y="188" class="ink small" text-anchor="middle">face 0</text>
+<rect x="216" y="136" width="64" height="64" class="orange-area line-ink"/>
+<text x="248" y="170" class="ink bold" text-anchor="middle">−Z</text>
+<text x="248" y="188" class="ink small" text-anchor="middle">face 5</text>
+<rect x="88" y="200" width="64" height="64" class="plate line-ink"/>
+<text x="120" y="234" class="ink bold" text-anchor="middle">−Y</text>
+<text x="120" y="252" class="ink small" text-anchor="middle">face 3</text>
+<polygon points="489.3,184.9 682.5,215.3 630.7,328.9 437.5,298.5" class="plate line-ink"/>
+<polygon points="489.3,184.9 489.3,23.1 437.5,136.7 437.5,298.5" class="plate line-ink"/>
+<polygon points="489.3,184.9 682.5,215.3 682.5,53.5 489.3,23.1" class="orange-area line-ink"/>
+<line x1="489.3" y1="104" x2="682.5" y2="134.4" class="line-muted" stroke-width="1"/>
+<line x1="585.9" y1="200.1" x2="585.9" y2="38.3" class="line-muted" stroke-width="1"/>
+<circle cx="585.9" cy="119.2" r="2.5" class="ink"/>
+<line x1="630.7" y1="167.1" x2="437.5" y2="136.7" class="line-muted" stroke-dasharray="4 3"/>
+<line x1="630.7" y1="167.1" x2="630.7" y2="328.9" class="line-muted" stroke-dasharray="4 3"/>
+<line x1="630.7" y1="167.1" x2="682.5" y2="53.5" class="line-muted" stroke-dasharray="4 3"/>
+<circle cx="560" cy="176" r="3.5" class="ink"/>
+<line x1="564" y1="97.6" x2="564.4" y2="88.9" class="line-blue" stroke-dasharray="4 3" stroke-width="2"/>
+<circle cx="564.4" cy="88.9" r="4.5" class="blue"/>
+<line x1="560" y1="176" x2="563.4" y2="109.6" class="line-blue" stroke-width="2.5"/>
+<polygon points="564,97.6 567.9,109.8 558.9,109.3" class="blue"/>
+<text x="495.3" y="96" class="ink small">−1</text>
+<text x="674.5" y="126.4" class="ink small" text-anchor="end">1</text>
+<text x="591.9" y="57.3" class="ink small">1</text>
+<text x="591.9" y="192.1" class="ink small">−1</text>
+<text x="655.4" y="179.7" class="ink bold" text-anchor="middle">−Z</text>
+<text x="460.8" y="171.5" class="ink bold" text-anchor="middle">−X</text>
+<text x="577" y="304.1" class="ink bold" text-anchor="middle">−Y</text>
+<text x="564.4" y="76.4" class="blue halo" text-anchor="middle">(−0.222, 0.333)</text>
+<line x1="560" y1="182" x2="560" y2="220" class="line-muted" stroke-width="1"/>
+<text x="552" y="236" class="blue" text-anchor="middle">d = (−0.2, 0.3, −0.9)</text>
+</svg>

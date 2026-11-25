@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 316">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Two grids, one cell 48 units, x and y from -2 to 3; origins at (156, 204) and (564, 204), y grows upward. Left: unit square, x arrow (1, 0), y arrow (0, 1). Right: columns (0, 2) and (-1, 0), image of the square (0,0)-(0,2)-(-1,2)-(-1,0). Matrix between them. -->
+<text class="ink bold" x="180" y="40" text-anchor="middle">Before: the axis arrows</text>
+<text class="ink bold" x="588" y="40" text-anchor="middle">After: the columns of the matrix</text>
+<g class="line-faint" stroke-width="1" fill="none">
+<path d="M60 60V300M108 60V300M156 60V300M204 60V300M252 60V300M300 60V300M60 300H300M60 252H300M60 204H300M60 156H300M60 108H300M60 60H300"/>
+</g>
+<path class="line-muted" fill="none" d="M60 204H300M156 300V60"/>
+<text class="muted" x="308" y="209">x</text>
+<text class="muted" x="164" y="74">y</text>
+<g class="line-faint" stroke-width="1" fill="none">
+<path d="M468 60V300M516 60V300M564 60V300M612 60V300M660 60V300M708 60V300M468 300H708M468 252H708M468 204H708M468 156H708M468 108H708M468 60H708"/>
+</g>
+<path class="line-muted" fill="none" d="M468 204H708M564 300V60"/>
+<text class="muted" x="716" y="209">x</text>
+<text class="muted" x="572" y="74">y</text>
+<rect class="plate line-muted" x="156" y="156" width="48" height="48"/>
+<line class="line-red" x1="156" y1="204" x2="192" y2="204" stroke-width="2.5"/>
+<polygon class="red" points="204,204 192,208.5 192,199.5"/>
+<line class="line-green" x1="156" y1="204" x2="156" y2="168" stroke-width="2.5"/>
+<polygon class="green" points="156,156 160.5,168 151.5,168"/>
+<circle class="ink" cx="204" cy="156" r="4"/>
+<text class="red halo" x="204" y="226" text-anchor="middle">x arrow (1, 0)</text>
+<text class="green halo" x="148" y="161" text-anchor="end">y arrow (0, 1)</text>
+<text class="ink halo" x="212" y="148">(1, 1)</text>
+<rect class="blue-area line-blue" x="516" y="108" width="48" height="96" stroke-width="2"/>
+<line class="line-red" x1="564" y1="204" x2="564" y2="120" stroke-width="2.5"/>
+<polygon class="red" points="564,108 568.5,120 559.5,120"/>
+<line class="line-green" x1="564" y1="204" x2="528" y2="204" stroke-width="2.5"/>
+<polygon class="green" points="516,204 528,199.5 528,208.5"/>
+<circle class="ink" cx="516" cy="108" r="4"/>
+<text class="red halo" x="574" y="113">x arrow (0, 2)</text>
+<text class="green halo" x="516" y="226" text-anchor="middle">y arrow (−1, 0)</text>
+<text class="ink halo" x="508" y="100" text-anchor="end">(−1, 2)</text>
+<path class="line-ink" fill="none" d="M354 138H348V200H354M418 138H424V200H418"/>
+<text class="red bold" x="368" y="162" text-anchor="middle">0</text>
+<text class="green bold" x="404" y="162" text-anchor="middle">−1</text>
+<text class="red bold" x="368" y="190" text-anchor="middle">2</text>
+<text class="green bold" x="404" y="190" text-anchor="middle">0</text>
+<line class="line-ink" x1="332" y1="224" x2="434" y2="224" stroke-width="1.5"/>
+<polygon class="ink" points="444,224 434,227.5 434,220.5"/>
+</svg>

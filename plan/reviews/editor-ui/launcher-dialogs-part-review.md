@@ -1,0 +1,3 @@
+# Part review: `editor-ui/launcher-dialogs`
+
+No corrections. Checked at the pin: the Launcher placement, the dialogs' files and owners, `c_RefreshSeconds` 2.0, the refresh and poll code, `ReleaseDeferred` on hide, the sidebar buttons and the sample menu, the card context menu, the balanced rows, the agent card's four states and their order, the footer, the name checks and `c_MaxNameSuffix` 999, `StrataLauncher`/`ProjectLocation=` and `StrataProjects`, About's rows and Copy Details header, the Export dialog's default folder, options, Hide and Cancel, the recovery dialog, the Delete dialog, New Script's commands, and the test suites and cases. The option label `Leave out unused assets` stays a code span: in bold the lint reads it as a phrasal verb.

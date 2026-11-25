@@ -1,0 +1,50 @@
+{
+	"page": "editor-ui/tutorial-panel",
+	"runs": [
+		{
+			"build": {
+				"kind": "patch-build",
+				"configuration": "Release",
+				"buildDirectory": "build/docs-patch"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": null,
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"tutorials/editor-ui/tutorial-panel.patch": "2151e123250688f079e4d11a873737acd38da878ba97e168327c77b1b053c564",
+				"tutorials/editor-ui/tutorial-panel.tutorial.json": "f6c250fad8309f5a0348db276c4fc8ac2802573382b0ed808848c8f938f02682",
+				"tutorials/editor-ui/tutorial-panel/exercise-2.patch": "909713deabe2777c4eee232786a056aa82a7f1dd164d71f5d1ae6c3fa7099dfa"
+			},
+			"stages": [],
+			"tests": [
+				{
+					"suite": "Architecture.Layering",
+					"testCases": 18,
+					"passed": true
+				},
+				{
+					"suite": "Editor.UI.SelectionSummary",
+					"testCases": 4,
+					"passed": true
+				},
+				{
+					"suite": "Editor.UI",
+					"testCases": 72,
+					"passed": true
+				},
+				{
+					"suite": "Editor.UI.Source",
+					"testCases": 11,
+					"passed": true
+				}
+			],
+			"ctest": {
+				"test": "StrataTests.FeatureTest",
+				"passed": true
+			},
+			"readerCopies": false,
+			"passed": true
+		}
+	]
+}

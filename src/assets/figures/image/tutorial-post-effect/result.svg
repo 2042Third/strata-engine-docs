@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 256">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: one frame of 1920 by 1080 pixels drawn 288 by 162 (scale 0.15 per pixel).
+     Left frame x 40..328, right frame x 376..664, both y 48..210.
+     Bars on the right: 138 rows = 20.7 units: top 48..68.7, bottom 189.3..210; the picture between them is left unlabeled (the page gives it as 803.3 rows).
+     Disc centered in each frame, r 48 (inside the picture rows 68.7..189.3).
+     Row dimension line at x 676 with ticks at 48, 68.7, 189.3, 210; labels at x 686. H = 256. -->
+<text class="ink bold" x="184" y="32" text-anchor="middle">Letterbox off</text>
+<text class="ink bold" x="520" y="32" text-anchor="middle">Letterbox on</text>
+<rect class="swatch line-ink" x="40" y="48" width="288" height="162" fill="#3f78c0"/>
+<circle class="swatch" cx="184" cy="129" r="48" fill="#f2c14e"/>
+<rect class="swatch line-ink" x="376" y="48" width="288" height="162" fill="#3f78c0"/>
+<circle class="swatch" cx="520" cy="129" r="48" fill="#f2c14e"/>
+<rect class="swatch line-ink" x="376" y="48" width="288" height="20.7" fill="#000000"/>
+<rect class="swatch line-ink" x="376" y="189.3" width="288" height="20.7" fill="#000000"/>
+<line class="line-muted" x1="676" y1="48" x2="676" y2="210"/>
+<line class="line-muted" x1="671" y1="48" x2="681" y2="48"/>
+<line class="line-muted" x1="671" y1="68.7" x2="681" y2="68.7"/>
+<line class="line-muted" x1="671" y1="189.3" x2="681" y2="189.3"/>
+<line class="line-muted" x1="671" y1="210" x2="681" y2="210"/>
+<text class="ink small" x="686" y="63.4">138 rows</text>
+<text class="ink small" x="686" y="204.7">138 rows</text>
+<text class="muted" x="184" y="234" text-anchor="middle">1920 × 1080 pixels</text>
+<text class="muted" x="520" y="234" text-anchor="middle">1920 × 1080 pixels</text>
+</svg>

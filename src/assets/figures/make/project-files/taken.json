@@ -1,0 +1,66 @@
+{
+	"files": {
+		"project-settings.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				797,
+				499
+			],
+			"figure": "project-settings",
+			"variant": null,
+			"crop": null,
+			"original": "69801817906519962f8310a77ea7f8cbadeef6df24f59d41dd9ea9ca906d5a21",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "5c3f11614bb876c35fcc53feca7960a346404680354a7813991491c10d234043"
+		},
+		"recovery-dialog.avif": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				960,
+				540
+			],
+			"figure": "recovery-dialog",
+			"variant": null,
+			"crop": null,
+			"original": "0c7bb42d804bde560f1aeeb0c3f73c20040795ef519192526f9c7550b586ed9e",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 90,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "dab68b151e26c79d5efcbbbf466b794fa7347e6371490d9d9163187768f9cbb8"
+		}
+	}
+}

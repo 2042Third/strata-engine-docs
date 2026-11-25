@@ -1,0 +1,226 @@
+# The names of products, companies, file formats and people that a page may write without the word-list rule
+# (plan/style.md §2.3, item 4), and that heading-case accepts with their capitals. One name per line, as it is
+# written; a name of several words counts only as a whole. A name the persona does not know is still taught: the list
+# only exempts it from word-list. The part editor admits new names.
+Strata
+Strata Engine
+Strata Engine Book
+Hazel
+Windows
+Windows 10
+Windows 11
+Linux
+Ubuntu
+macOS
+Apple
+Apple silicon
+Microsoft
+NVIDIA
+AMD
+Intel
+GitHub
+Git
+Vulkan
+Direct3D
+OpenGL
+Metal
+SPIR-V
+Slang
+HLSL
+GLSL
+NVRHI
+GLFW
+EnTT
+glm
+box3d
+Box2D
+miniaudio
+Dear ImGui
+ImGui
+Tracy
+doctest
+CMake
+Ninja
+Visual Studio
+Visual Studio Code
+Xcode
+Clang
+GCC
+MSVC
+LLVM
+PowerShell
+Bash
+Python
+JavaScript
+TypeScript
+Java
+C#
+C++
+C++20
+Unity
+Unreal
+Unreal Engine
+Godot
+Blender
+glTF
+JSON
+YAML
+TOML
+Markdown
+PNG
+JPEG
+AVIF
+WebP
+KTX
+ZIP
+WAV
+MP3
+Ogg Vorbis
+FLAC
+Astro
+Starlight
+Pagefind
+KaTeX
+Mermaid
+Chromium
+Chrome
+Firefox
+Safari
+File Explorer
+Finder
+Mixamo
+Poly Haven
+Kenney
+Sketchfab
+Tetris
+Bevy
+GDScript
+MoltenVK
+LunarG
+Homebrew
+CTest
+cppreference
+Robert Nystrom
+Glenn Fiedler
+Jason Gregory
+Diomidis Spinellis
+SSE
+IntelliSense
+IEEE
+Kahn
+Gaussian
+American Standard Code for Information Interchange
+Retina
+Wayland
+Qt
+Rayon
+Arvo
+Möller
+Trumbore
+RTTR
+Quaternius
+ambientCG
+Basic 3D
+Coin Run
+Xbox
+RenderDoc
+Nsight
+Radeon
+Roboto
+OpenType
+FreeType
+HarfBuzz
+TextMesh
+msdfgen
+MSDF
+Indic
+Nystrom
+Claude
+DirectX
+SQLite
+Dan Luu
+OpenAL
+Wwise
+FMOD
+Nanite
+Haar
+Aaltonen
+Frostbite
+von Kries
+Bruneton
+Neyret
+Hillaire
+Preetham
+Hosek
+Wilkie
+Toksvig
+Tokuyoshi
+Kaplanyan
+Snell
+Wenzel
+Wronski
+Phong
+Blinn
+Blinn-Phong
+Disney
+Burley
+Beckmann
+Torrance
+Cook-Torrance
+Walter
+Filament
+Valient
+Lauritzen
+Ericson
+Catto
+Erin Catto
+PhysX
+Havok
+MIT
+Massachusetts
+zlib
+Gribb
+Hartmann
+Rousiers
+PixelMannen
+tomkranis
+AsoboStudio
+scurest
+Mecanim
+Esoterica
+Morpheme
+Lua
+WebAssembly
+POSIX
+UnrealScript
+Lagarde
+Cornell
+Kajiya
+Crysis
+Nuklear
+microui
+egui
+Bazel
+GeForce
+RTX
+StrataTests
+Mac
+Dijkstra
+Manhattan
+Reynolds
+Isla
+Orkin
+StarCraft
+QuakeWorld
+Overwatch
+Lucide
+JetBrains
+Khronos
+Tomas
+Laule
+McCurdy
+Zaal
+Jarod
+UDP
+Chebyshev
+Akenine-Moller

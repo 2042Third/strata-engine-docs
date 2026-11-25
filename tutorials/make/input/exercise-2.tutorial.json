@@ -1,0 +1,17 @@
+{
+	"page": "make/input",
+	"startsFrom": { "tutorial": "make/input" },
+	"stages": [
+		{
+			"step": 1,
+			"files": [ { "from": "book:tutorials/make/input/exercise-2/BallControl.cpp", "to": "Scripts/BallControl.cpp" } ],
+			"commands": [
+				{ "command": "inputActions.setAction", "parameters": { "action": "Gameplay/Pause", "kind": "Button", "bindings": [ "Key/P", "Gamepad/Start" ] },
+					"expect": { "/created": { "equals": true } },
+					"checks": [ { "pointer": "/action/kind", "equals": "Button" }, { "pointer": "/action/bindings", "length": 2 } ] },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] }
+			]
+		}
+	]
+}

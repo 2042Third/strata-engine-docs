@@ -1,0 +1,11 @@
+{
+	"figures": [
+		{
+			"id": "frame-timeline",
+			"shows": "One frame of 16.7 ms on a time line: the queue and the input, a wait of 6.0 ms for the display, the layers, the modules and the user interface, then 1.2 ms of presenting, with the work blocks bracketed",
+			"caption": "Only the blue blocks count as the frame's work; the striped waits do not.",
+			"alt": "A time line of one frame. Short blue blocks stand at the start, then a long striped wait, three more blue blocks, and a short striped block for presenting. Brackets above the blue blocks mark the work.",
+			"kind": "diagram"
+		}
+	]
+}

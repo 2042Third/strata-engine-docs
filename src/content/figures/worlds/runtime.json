@@ -1,0 +1,14 @@
+{
+	"figures": [
+		{
+			"id": "open-world-exported",
+			"shows": "The exported Open World game ten seconds after its start, its tour flying the camera over the forest",
+			"caption": "Ten seconds after its start, the exported game plays its start scene. Its tour flies the camera over a forest beside a dark hill, under the game's own clock at the top left. No editor surrounds it.",
+			"alt": "A game window showing green and blue trees on a slope of grass beside a dark hill under a pale sky. A clock and the word Tour stand at the top left, a line of controls at the bottom, and no panels surround it.",
+			"kind": "runtime",
+			"project": { "sample": "OpenWorld" },
+			"runtime": { "resolution": [1280, 720], "seconds": 10, "quality": "high" },
+			"expect": "complete"
+		}
+	]
+}

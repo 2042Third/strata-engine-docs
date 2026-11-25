@@ -1,0 +1,116 @@
+{
+	"page": "make/samples",
+	"startsFrom": {
+		"sample": "OpenWorld"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "script.build",
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/diagnostics",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Sun"
+					},
+					"bind": {
+						"sun": "/entities/0"
+					}
+				},
+				{
+					"command": "script.setField",
+					"parameters": {
+						"entity": {
+							"$ref": "sun"
+						},
+						"class": "DayNight",
+						"field": "DayLengthSeconds",
+						"value": 60
+					}
+				},
+				{
+					"command": "script.setField",
+					"parameters": {
+						"entity": {
+							"$ref": "sun"
+						},
+						"class": "DayNight",
+						"field": "TimeOfDay",
+						"value": 17
+					}
+				},
+				{
+					"command": "script.get",
+					"parameters": {
+						"entity": {
+							"$ref": "sun"
+						},
+						"class": "DayNight"
+					},
+					"expect": {
+						"/scripts/0/fields/DayLengthSeconds": {
+							"equals": 60
+						},
+						"/scripts/0/fields/TimeOfDay": {
+							"equals": 17
+						}
+					}
+				},
+				{
+					"command": "play.start",
+					"expect": {
+						"/state": {
+							"equals": "Play"
+						}
+					}
+				},
+				{
+					"command": "script.get",
+					"parameters": {
+						"entity": {
+							"$ref": "sun"
+						},
+						"class": "DayNight"
+					},
+					"expect": {
+						"/scripts/0/fields/CampfiresLit": {
+							"equals": true
+						}
+					},
+					"until": {
+						"seconds": 60
+					}
+				},
+				{
+					"command": "log.read",
+					"parameters": {
+						"newest": true,
+						"limit": 50
+					},
+					"checks": [
+						{
+							"pointer": "/messages",
+							"contains": "OpenWorld: campfires lit at 17:00"
+						}
+					]
+				},
+				{
+					"command": "play.stop"
+				}
+			]
+		}
+	]
+}

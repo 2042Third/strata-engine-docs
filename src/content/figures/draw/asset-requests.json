@@ -1,0 +1,146 @@
+{
+	"figures": [
+		{
+			"id": "streaming-view-opening",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The Scene view of the OpenWorld sample in the streaming debug view over a camp once the world has opened: nothing tinted, the legend at zero",
+			"caption": "The streaming view (the highlighted layers chip, upper right) once the world has opened: nothing is tinted, and the legend at the lower left counts nothing loading and nothing failed.",
+			"alt": "Two red tents among green trees. The toolbar's layers chip is highlighted; a legend at the lower left reads Loading 0 and Failed 0.",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"setup": [
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "streaming",
+						"sceneGizmos": false,
+						"selectionOutline": false
+					}
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-112,
+								40,
+								-12
+							],
+							"target": [
+								-144,
+								22,
+								-48
+							],
+							"fov": 40
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "request-priorities",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "One corner of the OpenWorld sample in the streaming view, soon after the camera arrived and seconds later, in two editor runs; both legends read zero",
+			"caption": "One view in two editor runs, soon after the camera arrived and seconds later. Both legends, lower left, count nothing loading: this corner had loaded before the first picture.",
+			"alt": "Two alike captures of a forest and a dark rocky slope, with no tint; each legend at the lower left reads Loading 0 and Failed 0.",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"setup": [
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "streaming",
+						"sceneGizmos": false,
+						"selectionOutline": false
+					}
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-60,
+								90,
+								60
+							],
+							"target": [
+								-150,
+								20,
+								-50
+							],
+							"fov": 45
+						}
+					}
+				]
+			},
+			"variants": {
+				"early": {
+					"editorWindow": {
+						"layout": "layouts/scene-view.ini",
+						"panel": "Viewport",
+						"steps": [
+							{
+								"command": "camera.set",
+								"parameters": {
+									"position": [
+										-60,
+										90,
+										60
+									],
+									"target": [
+										-150,
+										20,
+										-50
+									],
+									"fov": 45
+								}
+							}
+						]
+					}
+				},
+				"later": {
+					"editorWindow": {
+						"layout": "layouts/scene-view.ini",
+						"panel": "Viewport",
+						"steps": [
+							{
+								"command": "camera.set",
+								"parameters": {
+									"position": [
+										-60,
+										90,
+										60
+									],
+									"target": [
+										-150,
+										20,
+										-50
+									],
+									"fov": 45
+								}
+							},
+							{
+								"command": "editor.wait",
+								"parameters": {
+									"frames": 600
+								}
+							}
+						]
+					}
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,692 @@
+diff --git a/Strata/src/Strata/Physics/PhysicsComponents.h b/Strata/src/Strata/Physics/PhysicsComponents.h
+index b7255fc..9b0a587 100644
+--- a/Strata/src/Strata/Physics/PhysicsComponents.h
++++ b/Strata/src/Strata/Physics/PhysicsComponents.h
+@@ -84,4 +84,19 @@ namespace Strata
+ 		bool Enabled = true;           // A disabled controller neither moves nor collides; its entity moves freely
+ 	};
+ 
++	// How a wind zone blows: one way through its whole radius, or outward from its center.
++	enum class WindZoneMode : uint8_t
++	{
++		Directional = 0,
++		Spherical
++	};
++
++	// A region of wind that pushes rigid bodies. WindZoneSystem gathers the active zones every fixed step.
++	struct WindZoneComponent
++	{
++		float Strength = 10.0f; // Force of the wind on a body, in newtons
++		float Radius = 5.0f;    // How far the zone reaches from its center, in meters
++		WindZoneMode Mode = WindZoneMode::Directional;
++	};
++
+ }
+diff --git a/Strata/src/Strata/Physics/PhysicsComponents.cpp b/Strata/src/Strata/Physics/PhysicsComponents.cpp
+index ffcfa80..5894576 100644
+--- a/Strata/src/Strata/Physics/PhysicsComponents.cpp
++++ b/Strata/src/Strata/Physics/PhysicsComponents.cpp
+@@ -182,6 +182,15 @@ namespace Strata
+ 				WithTooltip(Range(0.0f, c_Unbounded, 1.0f), "Largest force with which it pushes dynamic bodies, in newtons"))
+ 			.Property("Enabled", &CharacterControllerComponent::Enabled, WithTooltip({}, "A disabled controller neither moves nor collides"))
+ 			.Gizmo(ComponentGizmoGroup::Collider, CharacterControllerGizmo);
++
++		ComponentRegistry::Register<WindZoneComponent>("WindZone")
++			.DisplayName("Wind Zone")
++			.Category("Physics")
++			.Description("A region of wind that pushes rigid bodies: directional zones blow one way through their radius, "
++				"spherical zones blow outward from their center")
++			.Property("Strength", &WindZoneComponent::Strength, WithTooltip(Range(0.0f, 1000.0f, 0.1f), "Force of the wind on a body, in newtons; 0 is calm"))
++			.Property("Radius", &WindZoneComponent::Radius, WithTooltip(Range(0.01f, c_Unbounded, 0.05f), "How far the zone reaches from its center, in meters"))
++			.EnumProperty("Mode", &WindZoneComponent::Mode, { { "Directional", 0 }, { "Spherical", 1 } });
+ 	}
+ 
+ }
+diff --git a/Strata/src/Strata/Physics/WindZoneSystem.h b/Strata/src/Strata/Physics/WindZoneSystem.h
+new file mode 100644
+index 0000000..7169506
+--- /dev/null
++++ b/Strata/src/Strata/Physics/WindZoneSystem.h
+@@ -0,0 +1,42 @@
++#pragma once
++
++#include "Strata/Physics/PhysicsComponents.h"
++#include "Strata/Scene/SceneSystem.h"
++
++#include <glm/glm.hpp>
++
++#include <vector>
++
++namespace Strata
++{
++
++	class Scene;
++
++	// One wind zone as WindZoneSystem read it in the last fixed step.
++	struct WindZoneSample
++	{
++		entt::entity Handle = entt::null;
++		glm::vec3 Position = { 0.0f, 0.0f, 0.0f }; // The zone's center in world space
++		float Strength = 0.0f;                     // Newtons
++		float Radius = 0.0f;                       // Meters
++		WindZoneMode Mode = WindZoneMode::Directional;
++	};
++
++	// Gathers the scene's active wind zones once per fixed step, with the world position of each. It writes no transform and
++	// no component: the forces on bodies come in a later change. Main thread only.
++	class WindZoneSystem : public SceneSystem
++	{
++	public:
++		explicit WindZoneSystem(Scene& scene);
++
++		void OnFixedUpdate(float timestep) override;
++
++		// The zones of the last fixed step; empty before the first one.
++		const std::vector<WindZoneSample>& GetZones() const { return m_Zones; }
++
++	private:
++		Scene& m_Scene;
++		std::vector<WindZoneSample> m_Zones;
++	};
++
++}
+diff --git a/Strata/src/Strata/Physics/WindZoneSystem.cpp b/Strata/src/Strata/Physics/WindZoneSystem.cpp
+new file mode 100644
+index 0000000..73a1ee3
+--- /dev/null
++++ b/Strata/src/Strata/Physics/WindZoneSystem.cpp
+@@ -0,0 +1,32 @@
++#include "stpch.h"
++#include "Strata/Physics/WindZoneSystem.h"
++
++#include "Strata/Scene/Entity.h"
++#include "Strata/Scene/Scene.h"
++
++namespace Strata
++{
++
++	WindZoneSystem::WindZoneSystem(Scene& scene)
++		: m_Scene(scene)
++	{
++	}
++
++	void WindZoneSystem::OnFixedUpdate(float)
++	{
++		ST_PROFILE_FUNCTION();
++
++		// Gathered anew every step, so that a zone that was destroyed, deactivated or moved needs no bookkeeping.
++		m_Zones.clear();
++		for (const auto [handle, zone] : m_Scene.GetRegistry().view<WindZoneComponent>().each())
++		{
++			const Entity entity(handle, &m_Scene);
++			if (!m_Scene.IsActiveInHierarchy(entity))
++				continue;
++
++			// Reading the world transform changes nothing, so the transform contract asks for no signal.
++			m_Zones.push_back({ handle, glm::vec3(m_Scene.GetWorldTransform(entity)[3]), zone.Strength, zone.Radius, zone.Mode });
++		}
++	}
++
++}
+diff --git a/Strata/src/Strata/Physics/PhysicsRegistration.cpp b/Strata/src/Strata/Physics/PhysicsRegistration.cpp
+index 8964017..1bf2deb 100644
+--- a/Strata/src/Strata/Physics/PhysicsRegistration.cpp
++++ b/Strata/src/Strata/Physics/PhysicsRegistration.cpp
+@@ -4,6 +4,7 @@
+ #include "Strata/Core/SettingsRegistry.h"
+ #include "Strata/Physics/PhysicsSimulationSettings.h"
+ #include "Strata/Physics/PhysicsSystem.h"
++#include "Strata/Physics/WindZoneSystem.h"
+ #include "Strata/Scene/SceneSystem.h"
+ 
+ namespace Strata
+@@ -24,6 +25,14 @@ namespace Strata
+ 		descriptor.PrepareLoadedScene = &PhysicsSystem::PrepareLoadedScene;
+ 		const bool registered = SceneSystemRegistry::Register(std::move(descriptor));
+ 		ST_CORE_VERIFY(registered, "The physics module could not register its scene system");
++
++		// Wind reads what the scripts moved this frame and runs before the step that physics takes (both are soft constraints,
++		// so that the engine runs without either system). It also runs in the editor's simulate mode.
++		SceneSystemDescriptor windDescriptor = MakeSceneSystemDescriptor<WindZoneSystem>("WindZone", true, [](Scene& scene) { return CreateScope<WindZoneSystem>(scene); });
++		windDescriptor.AfterIfPresent = { "Scripting" };
++		windDescriptor.BeforeIfPresent = { "Physics" };
++		const bool windRegistered = SceneSystemRegistry::Register(std::move(windDescriptor));
++		ST_CORE_VERIFY(windRegistered, "The physics module could not register the wind zone scene system");
+ 	}
+ 
+ }
+diff --git a/Strata/src/Strata/Physics/PhysicsRegistration.h b/Strata/src/Strata/Physics/PhysicsRegistration.h
+index 59bc891..97302c8 100644
+--- a/Strata/src/Strata/Physics/PhysicsRegistration.h
++++ b/Strata/src/Strata/Physics/PhysicsRegistration.h
+@@ -3,11 +3,11 @@
+ namespace Strata
+ {
+ 
+-	// Registers the physics module with the engine's registries: its components and the "Physics" scene system. Called by
++	// Registers the physics module with the engine's registries: its components and its scene systems, "Physics" and "WindZone". Called by
+ 	// Engine::RegisterBuiltinModules only.
+ 	void RegisterPhysicsModule();
+ 
+-	// Registers the physics components (RigidBody, the colliders and CharacterController, with their gizmos:
++	// Registers the physics components (RigidBody, the colliders, CharacterController and WindZone, with their gizmos:
+ 	// PhysicsComponents.cpp); part of RegisterPhysicsModule.
+ 	void RegisterPhysicsComponents();
+ 
+diff --git a/StrataTests/src/Physics/WindZoneTests.cpp b/StrataTests/src/Physics/WindZoneTests.cpp
+new file mode 100644
+index 0000000..20c7526
+--- /dev/null
++++ b/StrataTests/src/Physics/WindZoneTests.cpp
+@@ -0,0 +1,58 @@
++#include <doctest/doctest.h>
++
++#include "Physics/PhysicsTestUtils.h"
++#include "Strata/Physics/WindZoneSystem.h"
++
++using namespace Strata;
++using namespace Strata::Tests;
++
++TEST_SUITE("Physics.WindZone")
++{
++	TEST_CASE("The system takes part in fixed steps only")
++	{
++		for (const SceneSystemDescriptor& descriptor : SceneSystemRegistry::GetAll())
++		{
++			if (descriptor.Name == "WindZone")
++				CHECK((!descriptor.CallsUpdate && descriptor.CallsFixedUpdate && !descriptor.CallsLateUpdate));
++		}
++	}
++
++	TEST_CASE("Each fixed step gathers the active zones with their world positions and writes no transform")
++	{
++		Scene scene;
++		Entity parent = scene.CreateEntity("Parent");
++		parent.GetTransform().Translation = { 10.0f, 0.0f, 0.0f };
++		parent.MarkModified<TransformComponent>();
++		Entity gust = scene.CreateChildEntity(parent, "Gust");
++		gust.GetTransform().Translation = { 0.0f, 2.0f, 0.0f };
++		gust.MarkModified<TransformComponent>();
++		WindZoneComponent& wind = gust.AddComponent<WindZoneComponent>();
++		wind.Strength = 40.0f;
++		wind.Radius = 3.0f;
++		wind.Mode = WindZoneMode::Spherical;
++		Entity calm = scene.CreateEntity("Calm");
++		calm.AddComponent<WindZoneComponent>();
++		calm.SetActive(false);
++
++		scene.OnRuntimeStart();
++		const WindZoneSystem* system = scene.GetSystem<WindZoneSystem>();
++		REQUIRE(system != nullptr);
++		CHECK(system->GetZones().empty());
++
++		StepScene(scene, 1);
++		REQUIRE(system->GetZones().size() == 1);
++		const WindZoneSample& sample = system->GetZones()[0];
++		CHECK(sample.Handle == gust.GetHandle());
++		CHECK(glm::distance(sample.Position, glm::vec3(10.0f, 2.0f, 0.0f)) == doctest::Approx(0.0f));
++		CHECK(sample.Strength == doctest::Approx(40.0f));
++		CHECK(sample.Radius == doctest::Approx(3.0f));
++		CHECK(sample.Mode == WindZoneMode::Spherical);
++
++		StepScene(scene, 3);
++		CHECK(gust.GetTransform().Translation == glm::vec3(0.0f, 2.0f, 0.0f));
++		gust.RemoveComponent<WindZoneComponent>();
++		StepScene(scene, 1);
++		CHECK(system->GetZones().empty());
++		scene.OnRuntimeStop();
++	}
++}
+diff --git a/StrataTests/src/Scene/ReflectionTests.cpp b/StrataTests/src/Scene/ReflectionTests.cpp
+index b59d7a4..dbe1536 100644
+--- a/StrataTests/src/Scene/ReflectionTests.cpp
++++ b/StrataTests/src/Scene/ReflectionTests.cpp
+@@ -45,7 +45,7 @@ TEST_SUITE("Reflection")
+ 			"ID", "Name", "Transform", "Relationship", "Tag", "Inactive", "PrefabInstance", "Camera", "MeshRenderer",
+ 			"DirectionalLight", "PointLight", "SpotLight", "RectLight", "LightSurface", "SkyLight", "HeightFog", "ReflectionProbe", "PostProcess", "Text",
+ #if ST_WITH_PHYSICS
+-			"RigidBody", "BoxCollider", "SphereCollider", "CapsuleCollider", "MeshCollider", "CharacterController",
++			"RigidBody", "BoxCollider", "SphereCollider", "CapsuleCollider", "MeshCollider", "CharacterController", "WindZone",
+ #endif
+ #if ST_WITH_AUDIO
+ 			"AudioSource", "AudioListener",
+@@ -522,6 +522,43 @@ TEST_SUITE("Reflection")
+ 		CHECK(ComponentAccess::AddComponent(entity, prefabInstance, &error));
+ 		CHECK(ComponentAccess::RemoveComponent(entity, prefabInstance, &error));
+ 	}
++
++#if ST_WITH_PHYSICS
++	TEST_CASE("Wind zones register under their stable name with ranges and tooltips, and refuse invalid values")
++	{
++		const ComponentInfo* info = ComponentRegistry::Find<WindZoneComponent>();
++		REQUIRE(info);
++		CHECK(info->Name == "WindZone");
++		CHECK(info->DisplayName == "Wind Zone");
++		CHECK(info->Category == "Physics");
++		CHECK_FALSE(info->Description.empty());
++
++		const PropertyInfo* strength = info->FindProperty("Strength");
++		const PropertyInfo* radius = info->FindProperty("Radius");
++		const PropertyInfo* mode = info->FindProperty("Mode");
++		REQUIRE(strength);
++		REQUIRE(radius);
++		REQUIRE(mode);
++		CHECK(strength->Tooltip.find("newtons") != std::string::npos);
++		CHECK(radius->Tooltip.find("meters") != std::string::npos);
++
++		WindZoneComponent zone;
++		CHECK(strength->SetValue(&zone, 5000.0f)); // Clamped to the range
++		CHECK(zone.Strength == doctest::Approx(1000.0f));
++		CHECK(strength->SetValue(&zone, -1.0f));
++		CHECK(zone.Strength == 0.0f);
++		CHECK(radius->SetValue(&zone, -3.0f)); // No negative or zero radius
++		CHECK(zone.Radius == doctest::Approx(0.01f));
++		CHECK_FALSE(radius->SetValue(&zone, std::numeric_limits<float>::quiet_NaN()));
++		CHECK(zone.Radius == doctest::Approx(0.01f));
++
++		REQUIRE(mode->EnumValues.size() == 2);
++		CHECK(mode->SetValue(&zone, int32_t(1)));
++		CHECK(zone.Mode == WindZoneMode::Spherical);
++		CHECK_FALSE(mode->SetValue(&zone, int32_t(2)));
++		CHECK(zone.Mode == WindZoneMode::Spherical);
++	}
++#endif
+ }
+ 
+ TEST_SUITE("Scene.InactiveProperties")
+diff --git a/StrataTests/src/Scene/SerializationTests.cpp b/StrataTests/src/Scene/SerializationTests.cpp
+index 8c3c266..069965d 100644
+--- a/StrataTests/src/Scene/SerializationTests.cpp
++++ b/StrataTests/src/Scene/SerializationTests.cpp
+@@ -888,6 +888,58 @@ TEST_SUITE("Scene.Serialization")
+ 		CHECK(loaded.Intensity == 1.0f);
+ 	}
+ 
++#if ST_WITH_PHYSICS
++	TEST_CASE("Wind zones keep every value through a save and a load, load their defaults for keys they lack, clamp out-of-range values and warn about the rest")
++	{
++		const auto load = [](const nlohmann::json& zone, std::vector<std::string>& warnings)
++		{
++			const nlohmann::json document = {
++				{ "Strata", { { "Format", "Scene" }, { "Version", 1 } } },
++				{ "Scene", { { "Name", "Windy" }, { "Entities", { { { "ID", "00000000000000AD" }, { "Components", {
++					{ "Name", { { "Name", "Gust" } } }, { "WindZone", zone } } } } } } } }
++			};
++			Scene scene;
++			std::string error;
++			REQUIRE_MESSAGE(SceneSerializer::Deserialize(scene, document, &error, &warnings), error);
++			return scene.GetEntityByUUID(UUID(0xAD)).GetComponent<WindZoneComponent>();
++		};
++		std::vector<std::string> warnings;
++		WindZoneComponent loaded = load(nlohmann::json::object(), warnings);
++		CHECK(warnings.empty());
++		CHECK(loaded.Strength == doctest::Approx(10.0f));
++		CHECK(loaded.Radius == doctest::Approx(5.0f));
++		CHECK(loaded.Mode == WindZoneMode::Directional);
++		// Out of range: clamped, as every ranged property is.
++		loaded = load({ { "Strength", 5000 }, { "Radius", -2 } }, warnings);
++		CHECK(warnings.empty());
++		CHECK(loaded.Strength == doctest::Approx(1000.0f));
++		CHECK(loaded.Radius == doctest::Approx(0.01f));
++		// Another type or an unknown name: a warning, and the default.
++		loaded = load({ { "Strength", "strong" }, { "Direction", { 0, 0, 1 } } }, warnings);
++		CHECK(CountWarnings(warnings, "Strength") == 1);
++		CHECK(CountWarnings(warnings, "Direction") == 1);
++		CHECK(loaded.Strength == doctest::Approx(10.0f));
++
++		// A zone with every value changed comes back whole, and saves the same text again.
++		Scene scene;
++		WindZoneComponent& wind = scene.CreateEntity("Gust").AddComponent<WindZoneComponent>();
++		wind.Strength = 25.0f;
++		wind.Radius = 8.5f;
++		wind.Mode = WindZoneMode::Spherical;
++		const nlohmann::json saved = SceneSerializer::Serialize(scene);
++		Scene reloaded;
++		std::string error;
++		warnings.clear();
++		REQUIRE_MESSAGE(SceneSerializer::Deserialize(reloaded, saved, &error, &warnings), error);
++		CHECK(warnings.empty());
++		const WindZoneComponent& again = reloaded.FindEntityByName("Gust").GetComponent<WindZoneComponent>();
++		CHECK(again.Strength == 25.0f);
++		CHECK(again.Radius == 8.5f);
++		CHECK(again.Mode == WindZoneMode::Spherical);
++		CHECK(SceneSerializer::Serialize(reloaded) == saved);
++	}
++#endif
++
+ 	TEST_CASE("Hand-written entity data without ids is accepted")
+ 	{
+ 		nlohmann::json snapshot = { { "Entities", {
+diff --git a/StrataTests/src/Scene/SceneSystemTests.cpp b/StrataTests/src/Scene/SceneSystemTests.cpp
+index 9a3aae8..941f9a1 100644
+--- a/StrataTests/src/Scene/SceneSystemTests.cpp
++++ b/StrataTests/src/Scene/SceneSystemTests.cpp
+@@ -9,6 +9,7 @@
+ 
+ #if ST_WITH_PHYSICS
+ 	#include "Strata/Physics/PhysicsSystem.h"
++	#include "Strata/Physics/WindZoneSystem.h"
+ #endif
+ #if ST_WITH_AUDIO
+ 	#include "Strata/Audio/AudioSystem.h"
+@@ -148,16 +149,17 @@ namespace
+ TEST_SUITE("Scene.Systems")
+ {
+ #if ST_TESTS_HAVE_EVERY_MODULE
+-	TEST_CASE("The built-in systems update in the order UI, Scripting, Animation, World, Physics, Audio")
++	TEST_CASE("The built-in systems update in the order UI, Scripting, WindZone, Animation, World, Physics, Audio")
+ 	{
+ 		// The UI's input runs before the scripts (which read its events), animation after the scripts (which drive
+ 		// animators) and before physics (root motion moves bodies before the step); so does World (scripts move sources and
+-		// request cells; cells it unloads leave the step).
+-		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "Animation", "World", "Physics", "Audio" });
++		// request cells; cells it unloads leave the step), and the wind zones, which read what the scripts moved before the
++		// step that pushes bodies with them.
++		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "WindZone", "Animation", "World", "Physics", "Audio" });
+ 
+ 		const std::vector<SceneSystemDescriptor>& descriptors = SceneSystemRegistry::GetAll();
+-		REQUIRE(descriptors.size() == 6);
+-		// Each names another module's system: soft constraints, so that the engine runs without that module.
++		REQUIRE(descriptors.size() == 7);
++		// Each names another module's system, or physics' own, with soft constraints, so that the engine runs without it.
+ 		for (const SceneSystemDescriptor& descriptor : descriptors)
+ 		{
+ 			CAPTURE(descriptor.Name);
+@@ -169,24 +171,28 @@ TEST_SUITE("Scene.Systems")
+ 		CHECK(descriptors[2].AfterIfPresent == std::vector<std::string> { "Scripting" });
+ 		CHECK(descriptors[2].BeforeIfPresent == std::vector<std::string> { "Physics" });
+ 		CHECK(descriptors[3].AfterIfPresent == std::vector<std::string> { "Scripting" });
+-		CHECK(descriptors[3].BeforeIfPresent == std::vector<std::string> { "Physics", "Audio" });
++		CHECK(descriptors[3].BeforeIfPresent == std::vector<std::string> { "Physics" });
+ 		CHECK(descriptors[4].AfterIfPresent == std::vector<std::string> { "Scripting" });
+-		CHECK(descriptors[5].AfterIfPresent == std::vector<std::string> { "Scripting", "Animation", "Physics" });
++		CHECK(descriptors[4].BeforeIfPresent == std::vector<std::string> { "Physics", "Audio" });
++		CHECK(descriptors[5].AfterIfPresent == std::vector<std::string> { "Scripting" });
++		CHECK(descriptors[6].AfterIfPresent == std::vector<std::string> { "Scripting", "Animation", "Physics" });
+ 		CHECK(SceneSystemRegistry::GetAbsentSoftConstraints().empty());
+ 		CHECK(descriptors[0].Type == entt::type_id<GameUISystem>().hash());
+ 		CHECK(descriptors[1].Type == entt::type_id<ScriptSystem>().hash());
+-		CHECK(descriptors[2].Type == entt::type_id<AnimationSystem>().hash());
+-		CHECK(descriptors[3].Type == entt::type_id<WorldStreamingSystem>().hash());
+-		CHECK(descriptors[4].Type == entt::type_id<PhysicsSystem>().hash());
+-		CHECK(descriptors[5].Type == entt::type_id<AudioSystem>().hash());
++		CHECK(descriptors[2].Type == entt::type_id<WindZoneSystem>().hash());
++		CHECK(descriptors[3].Type == entt::type_id<AnimationSystem>().hash());
++		CHECK(descriptors[4].Type == entt::type_id<WorldStreamingSystem>().hash());
++		CHECK(descriptors[5].Type == entt::type_id<PhysicsSystem>().hash());
++		CHECK(descriptors[6].Type == entt::type_id<AudioSystem>().hash());
+ 		CHECK(descriptors[0].ProfileStage == "Scene.UI");
+-		CHECK(descriptors[2].ProfileStage == "Scene.Animation");
++		CHECK(descriptors[3].ProfileStage == "Scene.Animation");
+ 		CHECK_FALSE(descriptors[0].RunsInSimulateMode);
+-		CHECK_FALSE(descriptors[2].RunsInSimulateMode);
+-		CHECK(descriptors[3].ProfileStage == "World.Streaming");
+-		CHECK(descriptors[3].RunsInSimulateMode);
+-		CHECK(descriptors[3].PrepareLoadedScene);
++		CHECK(descriptors[2].RunsInSimulateMode);
++		CHECK_FALSE(descriptors[3].RunsInSimulateMode);
++		CHECK(descriptors[4].ProfileStage == "World.Streaming");
++		CHECK(descriptors[4].RunsInSimulateMode);
+ 		CHECK(descriptors[4].PrepareLoadedScene);
++		CHECK(descriptors[5].PrepareLoadedScene);
+ 	}
+ #endif
+ 
+@@ -201,7 +207,7 @@ TEST_SUITE("Scene.Systems")
+ 		REQUIRE(systems.Register(MakeRecording("TestD")));
+ 
+ 		// TestB goes before TestA, TestC between TestA and Audio; unconstrained choices follow registration order.
+-		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "Animation", "World", "Physics", "TestB", "TestA", "TestC", "Audio", "TestD" });
++		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "WindZone", "Animation", "World", "Physics", "TestB", "TestA", "TestC", "Audio", "TestD" });
+ 
+ 		{
+ 			Scene scene;
+@@ -214,9 +220,9 @@ TEST_SUITE("Scene.Systems")
+ 		// A system registered again with the same name replaces the old one and counts as registered last: TestA stays,
+ 		// held between TestB and TestC; TestB, without its constraint now, follows every other system.
+ 		REQUIRE(SceneSystemRegistry::Register(MakeRecording("TestA")));
+-		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "Animation", "World", "Physics", "TestB", "TestA", "TestC", "Audio", "TestD" });
++		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "WindZone", "Animation", "World", "Physics", "TestB", "TestA", "TestC", "Audio", "TestD" });
+ 		REQUIRE(SceneSystemRegistry::Register(MakeRecording("TestB")));
+-		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "Animation", "World", "Physics", "TestA", "TestC", "Audio", "TestD", "TestB" });
++		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "WindZone", "Animation", "World", "Physics", "TestA", "TestC", "Audio", "TestD", "TestB" });
+ 	}
+ #endif
+ 
+@@ -229,9 +235,9 @@ TEST_SUITE("Scene.Systems")
+ 		// a system registered after it has to run before one of them.
+ 		REQUIRE(systems.Register(MakeRecording("CameraFollow")));
+ 		REQUIRE(systems.Register(MakeRecording("Wind", {}, { "Physics" })));
+-		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "Animation", "World", "Wind", "Physics", "Audio", "CameraFollow" });
++		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "WindZone", "Animation", "World", "Wind", "Physics", "Audio", "CameraFollow" });
+ 		REQUIRE(systems.Register(MakeRecording("EarlyInput", {}, { "Scripting" })));
+-		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "EarlyInput", "Scripting", "Animation", "World", "Wind", "Physics", "Audio", "CameraFollow" });
++		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "EarlyInput", "Scripting", "WindZone", "Animation", "World", "Wind", "Physics", "Audio", "CameraFollow" });
+ 
+ 		{
+ 			Scene scene;
+@@ -296,16 +302,16 @@ TEST_SUITE("Scene.Systems")
+ 		ScopedSystems systems;
+ 		// Neither TestLate nor TestEarly is registered yet: TestSoft runs where registration order puts it.
+ 		REQUIRE(systems.Register(MakeSoftRecording("TestSoft", { "TestLate" }, { "TestEarly" })));
+-		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "Animation", "World", "Physics", "Audio", "TestSoft" });
++		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "WindZone", "Animation", "World", "Physics", "Audio", "TestSoft" });
+ 		const std::vector<std::string> absent = SceneSystemRegistry::GetAbsentSoftConstraints();
+ 		CHECK(absent == std::vector<std::string> { "TestSoft after TestLate", "TestSoft before TestEarly" });
+ 
+ 		// Systems registered later pick up the constraints that name them: TestSoft moves after TestLate...
+ 		REQUIRE(systems.Register(MakeRecording("TestLate")));
+-		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "Animation", "World", "Physics", "Audio", "TestLate", "TestSoft" });
++		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "WindZone", "Animation", "World", "Physics", "Audio", "TestLate", "TestSoft" });
+ 		// ...and before TestEarly, wherever that was registered.
+ 		REQUIRE(systems.Register(MakeRecording("TestEarly", {}, { "Physics" })));
+-		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "Animation", "World", "TestLate", "TestSoft", "TestEarly", "Physics", "Audio" });
++		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "WindZone", "Animation", "World", "TestLate", "TestSoft", "TestEarly", "Physics", "Audio" });
+ 		CHECK(SceneSystemRegistry::GetAbsentSoftConstraints().empty());
+ 
+ 		// Soft constraints that close a cycle are refused like hard ones, and the registry stays unchanged.
+@@ -320,7 +326,7 @@ TEST_SUITE("Scene.Systems")
+ 		// Soft references never keep a system from going: TestSoft goes on without the systems it names.
+ 		CHECK(SceneSystemRegistry::Unregister("TestLate"));
+ 		std::erase(systems.Names, "TestLate");
+-		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "Animation", "World", "TestSoft", "TestEarly", "Physics", "Audio" });
++		CHECK(GetSystemNames() == std::vector<std::string> { "UI", "Scripting", "WindZone", "Animation", "World", "TestSoft", "TestEarly", "Physics", "Audio" });
+ 		CHECK(SceneSystemRegistry::GetAbsentSoftConstraints() == std::vector<std::string> { "TestSoft after TestLate" });
+ 	}
+ #endif
+@@ -367,18 +373,21 @@ TEST_SUITE("Scene.Systems")
+ 		CHECK(typeless.CallsPausedUpdate);
+ 
+ #if ST_TESTS_HAVE_EVERY_MODULE
+-		// The built-ins take part in nine calls of an idle frame: Scripting in all three phases, Animation, World and UI in
+-		// OnUpdate, Physics in OnUpdate and OnFixedUpdate, Audio in OnLateUpdate; a paused frame calls Animation alone.
++		// The built-ins take part in ten calls of an idle frame: Scripting in all three phases, Animation, World and UI in
++		// OnUpdate, Physics in OnUpdate and OnFixedUpdate, WindZone in OnFixedUpdate, Audio in OnLateUpdate; a paused frame
++		// calls Animation alone.
+ 		const std::vector<SceneSystemDescriptor>& builtins = SceneSystemRegistry::GetAll();
+-		REQUIRE(builtins.size() == 6);
++		REQUIRE(builtins.size() == 7);
+ 		CHECK(builtins[0].Name == "UI");
+-		CHECK(builtins[3].Name == "World");
++		CHECK(builtins[2].Name == "WindZone");
++		CHECK(builtins[4].Name == "World");
+ 		CHECK((builtins[0].CallsUpdate && !builtins[0].CallsFixedUpdate && !builtins[0].CallsLateUpdate && !builtins[0].CallsPausedUpdate));
+ 		CHECK((builtins[1].CallsUpdate && builtins[1].CallsFixedUpdate && builtins[1].CallsLateUpdate && !builtins[1].CallsPausedUpdate));
+-		CHECK((builtins[2].CallsUpdate && !builtins[2].CallsFixedUpdate && !builtins[2].CallsLateUpdate && builtins[2].CallsPausedUpdate));
+-		CHECK((builtins[3].CallsUpdate && !builtins[3].CallsFixedUpdate && !builtins[3].CallsLateUpdate && !builtins[3].CallsPausedUpdate));
+-		CHECK((builtins[4].CallsUpdate && builtins[4].CallsFixedUpdate && !builtins[4].CallsLateUpdate && !builtins[4].CallsPausedUpdate));
+-		CHECK((!builtins[5].CallsUpdate && !builtins[5].CallsFixedUpdate && builtins[5].CallsLateUpdate && !builtins[5].CallsPausedUpdate));
++		CHECK((!builtins[2].CallsUpdate && builtins[2].CallsFixedUpdate && !builtins[2].CallsLateUpdate && !builtins[2].CallsPausedUpdate));
++		CHECK((builtins[3].CallsUpdate && !builtins[3].CallsFixedUpdate && !builtins[3].CallsLateUpdate && builtins[3].CallsPausedUpdate));
++		CHECK((builtins[4].CallsUpdate && !builtins[4].CallsFixedUpdate && !builtins[4].CallsLateUpdate && !builtins[4].CallsPausedUpdate));
++		CHECK((builtins[5].CallsUpdate && builtins[5].CallsFixedUpdate && !builtins[5].CallsLateUpdate && !builtins[5].CallsPausedUpdate));
++		CHECK((!builtins[6].CallsUpdate && !builtins[6].CallsFixedUpdate && builtins[6].CallsLateUpdate && !builtins[6].CallsPausedUpdate));
+ #endif
+ 
+ 		// The scene calls what the descriptors ask for, in frames and in steps of a paused scene.
+diff --git a/StrataTests/src/Engine/BuiltinModulesTests.cpp b/StrataTests/src/Engine/BuiltinModulesTests.cpp
+index 6ddaf61..3d3551c 100644
+--- a/StrataTests/src/Engine/BuiltinModulesTests.cpp
++++ b/StrataTests/src/Engine/BuiltinModulesTests.cpp
+@@ -199,9 +199,10 @@ TEST_SUITE("Engine.Modules")
+ 		INFO("Output: ", result.Output);
+ 		REQUIRE(result.Started);
+ 		CHECK_FALSE(result.TimedOut);
+-		// The loaders and systems of the modules the build has: 13 and six in a full build.
++		// The loaders and systems of the modules the build has: 13 and seven in a full build.
+ 		const int loaders = 9 + (ST_WITH_AUDIO ? 1 : 0) + (ST_WITH_ANIMATION ? 3 : 0);
+ 		std::string systems = " UI Scripting";
++		systems += ST_WITH_PHYSICS ? " WindZone" : "";
+ 		systems += ST_WITH_ANIMATION ? " Animation" : "";
+ 		systems += " World";
+ 		systems += ST_WITH_PHYSICS ? " Physics" : "";
+@@ -282,7 +283,7 @@ TEST_SUITE("Engine.Modules")
+ 		CHECK(result.Output.find("the Renderer module cannot be excluded (every engine has it); it is registered") != std::string::npos);
+ 		CHECK(result.Output.find("'Teleportation' is no engine module of this build and cannot be excluded") != std::string::npos);
+ 		CHECK(result.Output.find("modules: Input Scene Renderer Physics Animation Scripting World GameUI\n") != std::string::npos);
+-		CHECK(result.Output.find("systems: UI Scripting Animation World Physics\n") != std::string::npos);
++		CHECK(result.Output.find("systems: UI Scripting WindZone Animation World Physics\n") != std::string::npos);
+ 	}
+ #endif
+ 
+@@ -297,7 +298,7 @@ TEST_SUITE("Engine.Modules")
+ 		CHECK_FALSE(result.TimedOut);
+ 		CHECK(result.ExitCode == 0);
+ 		CHECK(result.Output.find("modules: Input Scene Renderer Physics Audio Animation World GameUI\n") != std::string::npos);
+-		CHECK(result.Output.find("systems: Animation World Physics Audio UI\n") != std::string::npos);
++		CHECK(result.Output.find("systems: WindZone Animation World Physics Audio UI\n") != std::string::npos);
+ 	}
+ #endif
+ 
+@@ -312,7 +313,7 @@ TEST_SUITE("Engine.Modules")
+ 		CHECK_FALSE(result.TimedOut);
+ 		CHECK(result.ExitCode == 0);
+ 		CHECK(result.Output.find("modules: Input Scene Renderer Physics Audio Animation Scripting World\n") != std::string::npos);
+-		CHECK(result.Output.find("systems: Scripting Animation World Physics Audio\n") != std::string::npos);
++		CHECK(result.Output.find("systems: Scripting WindZone Animation World Physics Audio\n") != std::string::npos);
+ 		const size_t unknown = result.Output.find("unknown components: ");
+ 		REQUIRE(unknown != std::string::npos);
+ 		const std::string names = result.Output.substr(unknown, result.Output.find('\n', unknown) - unknown);
+diff --git a/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene b/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
+index bb357f5..5d4e791 100644
+--- a/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
++++ b/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
+@@ -5689,6 +5689,37 @@
+ 					}
+ 				},
+ 				"ID": "F7E000000000006A"
++			},
++			{
++				"Components": {
++					"Name": {
++						"Name": "Gust"
++					},
++					"Transform": {
++						"Rotation": [
++							0,
++							0,
++							0,
++							1
++						],
++						"Scale": [
++							1,
++							1,
++							1
++						],
++						"Translation": [
++							8,
++							1,
++							-7
++						]
++					},
++					"WindZone": {
++						"Mode": "Spherical",
++						"Radius": 8.5,
++						"Strength": 25
++					}
++				},
++				"ID": "F7E00000000000A0"
+ 			}
+ 		],
+ 		"Name": "Feature",
+diff --git a/StrataTests/Architecture/ComponentSchema.json b/StrataTests/Architecture/ComponentSchema.json
+index b1f57c9..86863a5 100644
+--- a/StrataTests/Architecture/ComponentSchema.json
++++ b/StrataTests/Architecture/ComponentSchema.json
+@@ -2603,6 +2603,63 @@
+ 				}
+ 			]
+ 		},
++		{
++			"Category": "Physics",
++			"Description": "A region of wind that pushes rigid bodies: directional zones blow one way through their radius, spherical zones blow outward from their center",
++			"DisplayName": "Wind Zone",
++			"Extra": false,
++			"Flags": 0,
++			"Name": "WindZone",
++			"Properties": [
++				{
++					"AssetFilter": 0,
++					"DisplayName": "Strength",
++					"EnumValues": [],
++					"Flags": 0,
++					"Max": 1000.0,
++					"Min": 0.0,
++					"Name": "Strength",
++					"Speed": 0.10000000149011612,
++					"Tooltip": "Force of the wind on a body, in newtons; 0 is calm",
++					"Type": "Float"
++				},
++				{
++					"AssetFilter": 0,
++					"DisplayName": "Radius",
++					"EnumValues": [],
++					"Flags": 0,
++					"Max": 1000000.0,
++					"Min": 0.009999999776482582,
++					"Name": "Radius",
++					"Speed": 0.05000000074505806,
++					"Tooltip": "How far the zone reaches from its center, in meters",
++					"Type": "Float"
++				},
++				{
++					"AssetFilter": 0,
++					"DisplayName": "Mode",
++					"EnumValues": [
++						{
++							"DisplayName": "",
++							"Name": "Directional",
++							"Value": 0
++						},
++						{
++							"DisplayName": "",
++							"Name": "Spherical",
++							"Value": 1
++						}
++					],
++					"Flags": 0,
++					"Max": 0.0,
++					"Min": 0.0,
++					"Name": "Mode",
++					"Speed": 0.0,
++					"Tooltip": "",
++					"Type": "Enum"
++				}
++			]
++		},
+ 		{
+ 			"Category": "Audio",
+ 			"Description": "",
+diff --git a/Docs/Architecture.md b/Docs/Architecture.md
+index 4d6ac27..ddb51e9 100644
+--- a/Docs/Architecture.md
++++ b/Docs/Architecture.md
+@@ -266,7 +266,7 @@ Name, Transform, Relationship, Tag, Inactive, PrefabInstance and Camera (registe
+ the types of two components other modules register because sibling layers read them (`MeshRendererComponent`, registered
+ by the renderer: physics' mesh colliders and animation read it; `SkinComponent`, registered by animation: the renderer,
+ which may not include Animation, makes skinned proxies from it); `Renderer/RendererComponents.h` the lights, SkyLight,
+-PostProcess and Text; `Physics/PhysicsComponents.h` RigidBody, the colliders and CharacterController;
++PostProcess and Text; `Physics/PhysicsComponents.h` RigidBody, the colliders, CharacterController and WindZone;
+ `Audio/AudioComponents.h` AudioSource and AudioListener; `Animation/AnimationComponents.h` Animator and AttachToJoint;
+ `Scripting/ScriptingComponents.h` Script. The composition root's module order keeps `ComponentRegistry::GetAll` in one
+ order (Scene's, the renderer's, physics', audio's, animation's, then Script), so the Inspector, Add Component and

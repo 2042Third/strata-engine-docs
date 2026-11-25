@@ -1,0 +1,119 @@
+{
+	"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+	"stages": [
+		{
+			"name": "GPU.UI",
+			"file": "Strata/src/Strata/GameUI/GameUIRenderer.cpp",
+			"line": 62,
+			"call": "RegisterStage"
+		},
+		{
+			"name": "GPU.ImGui",
+			"file": "Strata/src/Strata/ImGui/ImGuiLayer.cpp",
+			"line": 142,
+			"call": "RegisterStage"
+		},
+		{
+			"name": "GPU.Uploads",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 50,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.Setup",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 51,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.Aerial",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 52,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.Cull",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 53,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.Shadows",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 54,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.Prepass",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 55,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.ScreenShadows",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 56,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.AO",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 57,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.RadianceCascades",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 58,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.Reflections",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 59,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.Opaque",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 60,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.Transparent",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 61,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.TAA",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 62,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.MotionBlur",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 63,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.DepthOfField",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 64,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.Post",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 65,
+			"call": "RegisterGPUStage"
+		},
+		{
+			"name": "GPU.Overlays",
+			"file": "Strata/src/Strata/Renderer/GPUProfiler.cpp",
+			"line": 66,
+			"call": "RegisterGPUStage"
+		}
+	]
+}

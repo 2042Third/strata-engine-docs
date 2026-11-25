@@ -1,0 +1,157 @@
+{
+	"figures": [
+		{
+			"id": "cube-fall",
+			"shows": "Six pictures of the Basic 3D scene taken ten frames apart at 60 frames per second, from frame 0 to frame 50: a cube falls onto a tilted ramp and slides down it",
+			"caption": "Six still pictures, ten frames apart; nothing between them was ever on the screen.",
+			"alt": "Six pictures in a row: an orange cube falls onto a pale ramp and slides down it.",
+			"kind": "scene",
+			"project": {"template": "basic3d"},
+			"camera": {"position": [1.5, 2.8, 8.5], "target": [0, 2.1, 0], "fov": 34},
+			"size": [1920, 1080],
+			"quality": "high",
+			"setup": [
+				{"command": "material.create", "parameters": {"path": "Materials/Ramp.stmat", "properties": {"BaseColor": [0.6, 0.6, 0.62, 1.0], "Roughness": 0.7}}},
+				{"command": "material.create", "parameters": {"path": "Materials/Cube.stmat", "properties": {"BaseColor": [0.8, 0.32, 0.08, 1.0], "Roughness": 0.5}}},
+				{"command": "entity.create", "parameters": {"name": "Ramp", "components": {"MeshRenderer": {"Mesh": "Builtin/Cube", "Material": "Materials/Ramp.stmat"}, "BoxCollider": {"HalfExtents": [0.5, 0.5, 0.5]}, "Transform": {"Translation": [0, 1, 0], "Rotation": [0, 0, -30], "Scale": [4, 0.2, 2]}}}},
+				{"command": "entity.create", "parameters": {"name": "Cube", "components": {"MeshRenderer": {"Mesh": "Builtin/Cube", "Material": "Materials/Cube.stmat"}, "BoxCollider": {"HalfExtents": [0.5, 0.5, 0.5]}, "Transform": {"Translation": [-0.83, 3.67, 0], "Rotation": [0, 0, -30]}}}},
+				{"command": "component.add", "entityName": "Cube", "parameters": {"component": "RigidBody"}},
+				{"command": "component.set", "entityName": "Cube", "parameters": {"component": "RigidBody", "values": {"Friction": 0.02}}}
+			],
+			"play": {"steps": 50},
+			"waitsFor": "tier 3: a strip of six captures of this play after 0, 10, 20, 30, 40 and 50 fixed steps, laid side by side in one row, each labelled with its frame number and its time (0.00 s, 0.17 s, 0.33 s, 0.50 s, 0.67 s, 0.83 s); a capture returns one picture of one frame, and no debug view lays several frames in a row",
+			"standIn": "cube-frame-0"
+		},
+		{
+			"id": "cube-frame-0",
+			"shows": "The Basic 3D scene with a pale ramp tilted down to the right and an orange cube, before play, the cube high above the upper end of the ramp",
+			"caption": "Frame 0, at 0.00 s, before play.",
+			"numbers": "The frame number is the count of fixed steps the play ran before the capture (play.steps; none before play), and the time is that count divided by 60, the fixed steps a second of the template.",
+			"alt": "An orange cube high above a pale ramp.",
+			"kind": "scene",
+			"project": {"template": "basic3d"},
+			"camera": {"position": [1.5, 2.8, 8.5], "target": [-0.13, 2.58, 0], "fov": 26.5},
+			"size": [1024, 768],
+			"quality": "high",
+			"expect": "complete",
+			"setup": [
+				{"command": "material.create", "parameters": {"path": "Materials/Ramp0.stmat", "properties": {"BaseColor": [0.6, 0.6, 0.62, 1.0], "Roughness": 0.7}}},
+				{"command": "material.create", "parameters": {"path": "Materials/Cube0.stmat", "properties": {"BaseColor": [0.8, 0.32, 0.08, 1.0], "Roughness": 0.5}}},
+				{"command": "entity.create", "parameters": {"name": "Ramp", "components": {"MeshRenderer": {"Mesh": "Builtin/Cube", "Material": "Materials/Ramp0.stmat"}, "BoxCollider": {"HalfExtents": [0.5, 0.5, 0.5]}, "Transform": {"Translation": [0, 1, 0], "Rotation": [0, 0, -30], "Scale": [4, 0.2, 2]}}}},
+				{"command": "entity.create", "parameters": {"name": "Cube", "components": {"MeshRenderer": {"Mesh": "Builtin/Cube", "Material": "Materials/Cube0.stmat"}, "BoxCollider": {"HalfExtents": [0.5, 0.5, 0.5]}, "Transform": {"Translation": [-0.83, 3.67, 0], "Rotation": [0, 0, -30]}}}},
+				{"command": "component.add", "entityName": "Cube", "parameters": {"component": "RigidBody"}},
+				{"command": "component.set", "entityName": "Cube", "parameters": {"component": "RigidBody", "values": {"Friction": 0.02}}}
+			]
+		},
+		{
+			"id": "cube-frame-10",
+			"shows": "The Basic 3D scene with a pale ramp tilted down to the right and an orange cube, after ten fixed steps, the cube a little lower and its shadow on the ramp",
+			"caption": "Frame 10, at 0.17 s. The dark patch is the cube's shadow.",
+			"numbers": "The frame number is the count of fixed steps the play ran before the capture (play.steps; none before play), and the time is that count divided by 60, the fixed steps a second of the template.",
+			"alt": "The cube lower, its shadow on the ramp.",
+			"kind": "scene",
+			"project": {"template": "basic3d"},
+			"camera": {"position": [1.5, 2.8, 8.5], "target": [-0.13, 2.58, 0], "fov": 26.5},
+			"size": [1024, 768],
+			"quality": "high",
+			"expect": "complete",
+			"setup": [
+				{"command": "material.create", "parameters": {"path": "Materials/Ramp10.stmat", "properties": {"BaseColor": [0.6, 0.6, 0.62, 1.0], "Roughness": 0.7}}},
+				{"command": "material.create", "parameters": {"path": "Materials/Cube10.stmat", "properties": {"BaseColor": [0.8, 0.32, 0.08, 1.0], "Roughness": 0.5}}},
+				{"command": "entity.create", "parameters": {"name": "Ramp", "components": {"MeshRenderer": {"Mesh": "Builtin/Cube", "Material": "Materials/Ramp10.stmat"}, "BoxCollider": {"HalfExtents": [0.5, 0.5, 0.5]}, "Transform": {"Translation": [0, 1, 0], "Rotation": [0, 0, -30], "Scale": [4, 0.2, 2]}}}},
+				{"command": "entity.create", "parameters": {"name": "Cube", "components": {"MeshRenderer": {"Mesh": "Builtin/Cube", "Material": "Materials/Cube10.stmat"}, "BoxCollider": {"HalfExtents": [0.5, 0.5, 0.5]}, "Transform": {"Translation": [-0.83, 3.67, 0], "Rotation": [0, 0, -30]}}}},
+				{"command": "component.add", "entityName": "Cube", "parameters": {"component": "RigidBody"}},
+				{"command": "component.set", "entityName": "Cube", "parameters": {"component": "RigidBody", "values": {"Friction": 0.02}}}
+			],
+			"play": {"steps": 10}
+		},
+		{
+			"id": "cube-frame-20",
+			"shows": "The Basic 3D scene with a pale ramp tilted down to the right and an orange cube, after twenty fixed steps, the cube close above the ramp",
+			"caption": "Frame 20, at 0.33 s.",
+			"numbers": "The frame number is the count of fixed steps the play ran before the capture (play.steps; none before play), and the time is that count divided by 60, the fixed steps a second of the template.",
+			"alt": "The cube close above the ramp.",
+			"kind": "scene",
+			"project": {"template": "basic3d"},
+			"camera": {"position": [1.5, 2.8, 8.5], "target": [-0.13, 2.58, 0], "fov": 26.5},
+			"size": [1024, 768],
+			"quality": "high",
+			"expect": "complete",
+			"setup": [
+				{"command": "material.create", "parameters": {"path": "Materials/Ramp20.stmat", "properties": {"BaseColor": [0.6, 0.6, 0.62, 1.0], "Roughness": 0.7}}},
+				{"command": "material.create", "parameters": {"path": "Materials/Cube20.stmat", "properties": {"BaseColor": [0.8, 0.32, 0.08, 1.0], "Roughness": 0.5}}},
+				{"command": "entity.create", "parameters": {"name": "Ramp", "components": {"MeshRenderer": {"Mesh": "Builtin/Cube", "Material": "Materials/Ramp20.stmat"}, "BoxCollider": {"HalfExtents": [0.5, 0.5, 0.5]}, "Transform": {"Translation": [0, 1, 0], "Rotation": [0, 0, -30], "Scale": [4, 0.2, 2]}}}},
+				{"command": "entity.create", "parameters": {"name": "Cube", "components": {"MeshRenderer": {"Mesh": "Builtin/Cube", "Material": "Materials/Cube20.stmat"}, "BoxCollider": {"HalfExtents": [0.5, 0.5, 0.5]}, "Transform": {"Translation": [-0.83, 3.67, 0], "Rotation": [0, 0, -30]}}}},
+				{"command": "component.add", "entityName": "Cube", "parameters": {"component": "RigidBody"}},
+				{"command": "component.set", "entityName": "Cube", "parameters": {"component": "RigidBody", "values": {"Friction": 0.02}}}
+			],
+			"play": {"steps": 20}
+		},
+		{
+			"id": "cube-frame-30",
+			"shows": "The Basic 3D scene with a pale ramp tilted down to the right and an orange cube, after thirty fixed steps, the cube just landed on the ramp",
+			"caption": "Frame 30, at 0.50 s: the cube lands.",
+			"numbers": "The frame number is the count of fixed steps the play ran before the capture (play.steps; none before play), and the time is that count divided by 60, the fixed steps a second of the template.",
+			"alt": "The cube landing flat on the ramp.",
+			"kind": "scene",
+			"project": {"template": "basic3d"},
+			"camera": {"position": [1.5, 2.8, 8.5], "target": [-0.13, 2.58, 0], "fov": 26.5},
+			"size": [1024, 768],
+			"quality": "high",
+			"expect": "complete",
+			"setup": [
+				{"command": "material.create", "parameters": {"path": "Materials/Ramp30.stmat", "properties": {"BaseColor": [0.6, 0.6, 0.62, 1.0], "Roughness": 0.7}}},
+				{"command": "material.create", "parameters": {"path": "Materials/Cube30.stmat", "properties": {"BaseColor": [0.8, 0.32, 0.08, 1.0], "Roughness": 0.5}}},
+				{"command": "entity.create", "parameters": {"name": "Ramp", "components": {"MeshRenderer": {"Mesh": "Builtin/Cube", "Material": "Materials/Ramp30.stmat"}, "BoxCollider": {"HalfExtents": [0.5, 0.5, 0.5]}, "Transform": {"Translation": [0, 1, 0], "Rotation": [0, 0, -30], "Scale": [4, 0.2, 2]}}}},
+				{"command": "entity.create", "parameters": {"name": "Cube", "components": {"MeshRenderer": {"Mesh": "Builtin/Cube", "Material": "Materials/Cube30.stmat"}, "BoxCollider": {"HalfExtents": [0.5, 0.5, 0.5]}, "Transform": {"Translation": [-0.83, 3.67, 0], "Rotation": [0, 0, -30]}}}},
+				{"command": "component.add", "entityName": "Cube", "parameters": {"component": "RigidBody"}},
+				{"command": "component.set", "entityName": "Cube", "parameters": {"component": "RigidBody", "values": {"Friction": 0.02}}}
+			],
+			"play": {"steps": 30}
+		},
+		{
+			"id": "cube-frame-40",
+			"shows": "The Basic 3D scene with a pale ramp tilted down to the right and an orange cube, after forty fixed steps, the cube sliding down the ramp",
+			"caption": "Frame 40, at 0.67 s: it slides.",
+			"numbers": "The frame number is the count of fixed steps the play ran before the capture (play.steps; none before play), and the time is that count divided by 60, the fixed steps a second of the template.",
+			"alt": "The cube sliding down the ramp.",
+			"kind": "scene",
+			"project": {"template": "basic3d"},
+			"camera": {"position": [1.5, 2.8, 8.5], "target": [-0.13, 2.58, 0], "fov": 26.5},
+			"size": [1024, 768],
+			"quality": "high",
+			"expect": "complete",
+			"setup": [
+				{"command": "material.create", "parameters": {"path": "Materials/Ramp40.stmat", "properties": {"BaseColor": [0.6, 0.6, 0.62, 1.0], "Roughness": 0.7}}},
+				{"command": "material.create", "parameters": {"path": "Materials/Cube40.stmat", "properties": {"BaseColor": [0.8, 0.32, 0.08, 1.0], "Roughness": 0.5}}},
+				{"command": "entity.create", "parameters": {"name": "Ramp", "components": {"MeshRenderer": {"Mesh": "Builtin/Cube", "Material": "Materials/Ramp40.stmat"}, "BoxCollider": {"HalfExtents": [0.5, 0.5, 0.5]}, "Transform": {"Translation": [0, 1, 0], "Rotation": [0, 0, -30], "Scale": [4, 0.2, 2]}}}},
+				{"command": "entity.create", "parameters": {"name": "Cube", "components": {"MeshRenderer": {"Mesh": "Builtin/Cube", "Material": "Materials/Cube40.stmat"}, "BoxCollider": {"HalfExtents": [0.5, 0.5, 0.5]}, "Transform": {"Translation": [-0.83, 3.67, 0], "Rotation": [0, 0, -30]}}}},
+				{"command": "component.add", "entityName": "Cube", "parameters": {"component": "RigidBody"}},
+				{"command": "component.set", "entityName": "Cube", "parameters": {"component": "RigidBody", "values": {"Friction": 0.02}}}
+			],
+			"play": {"steps": 40}
+		},
+		{
+			"id": "cube-frame-50",
+			"shows": "The Basic 3D scene with a pale ramp tilted down to the right and an orange cube, after fifty fixed steps, the cube further down the ramp",
+			"caption": "Frame 50, at 0.83 s.",
+			"numbers": "The frame number is the count of fixed steps the play ran before the capture (play.steps; none before play), and the time is that count divided by 60, the fixed steps a second of the template.",
+			"alt": "The cube further down the ramp.",
+			"kind": "scene",
+			"project": {"template": "basic3d"},
+			"camera": {"position": [1.5, 2.8, 8.5], "target": [-0.13, 2.58, 0], "fov": 26.5},
+			"size": [1024, 768],
+			"quality": "high",
+			"expect": "complete",
+			"setup": [
+				{"command": "material.create", "parameters": {"path": "Materials/Ramp50.stmat", "properties": {"BaseColor": [0.6, 0.6, 0.62, 1.0], "Roughness": 0.7}}},
+				{"command": "material.create", "parameters": {"path": "Materials/Cube50.stmat", "properties": {"BaseColor": [0.8, 0.32, 0.08, 1.0], "Roughness": 0.5}}},
+				{"command": "entity.create", "parameters": {"name": "Ramp", "components": {"MeshRenderer": {"Mesh": "Builtin/Cube", "Material": "Materials/Ramp50.stmat"}, "BoxCollider": {"HalfExtents": [0.5, 0.5, 0.5]}, "Transform": {"Translation": [0, 1, 0], "Rotation": [0, 0, -30], "Scale": [4, 0.2, 2]}}}},
+				{"command": "entity.create", "parameters": {"name": "Cube", "components": {"MeshRenderer": {"Mesh": "Builtin/Cube", "Material": "Materials/Cube50.stmat"}, "BoxCollider": {"HalfExtents": [0.5, 0.5, 0.5]}, "Transform": {"Translation": [-0.83, 3.67, 0], "Rotation": [0, 0, -30]}}}},
+				{"command": "component.add", "entityName": "Cube", "parameters": {"component": "RigidBody"}},
+				{"command": "component.set", "entityName": "Cube", "parameters": {"component": "RigidBody", "values": {"Friction": 0.02}}}
+			],
+			"play": {"steps": 50}
+		}
+	]
+}

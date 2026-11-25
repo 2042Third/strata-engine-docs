@@ -1,0 +1,288 @@
+{
+	"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+	"file": "Strata/src/Strata/Renderer/RendererQuality.cpp",
+	"rows": [
+		{
+			"row": "ShadowResolution",
+			"type": "ShadowMapResolution",
+			"values": [
+				"ShadowMapResolution::Size1024",
+				"ShadowMapResolution::Size2048",
+				"ShadowMapResolution::AutoFine",
+				"ShadowMapResolution::Size8192"
+			],
+			"line": 39,
+			"comment": "High and Ultra buy back with texels, and a fifth cascade near the camera, the detail the stable cascades' spheres give up against squares fitted to the receivers."
+		},
+		{
+			"row": "ShadowCascades",
+			"type": "uint32_t",
+			"values": [
+				3,
+				4,
+				5,
+				5
+			],
+			"line": 40,
+			"comment": ""
+		},
+		{
+			"row": "LocalShadowAtlasSize",
+			"type": "uint32_t",
+			"values": [
+				2048,
+				4096,
+				4096,
+				8192
+			],
+			"line": 41,
+			"comment": ""
+		},
+		{
+			"row": "LocalShadowMaxTile",
+			"type": "uint32_t",
+			"values": [
+				512,
+				1024,
+				1024,
+				2048
+			],
+			"line": 42,
+			"comment": ""
+		},
+		{
+			"row": "MaxShadowedLocalLights",
+			"type": "uint32_t",
+			"values": [
+				4,
+				16,
+				64,
+				256
+			],
+			"line": 45,
+			"comment": "High and Ultra shadow more point and spot lights at the same atlas sizes, and draw more of their views a frame so that they settle as fast."
+		},
+		{
+			"row": "LocalShadowViewsPerFrame",
+			"type": "uint32_t",
+			"values": [
+				12,
+				12,
+				24,
+				48
+			],
+			"line": 46,
+			"comment": ""
+		},
+		{
+			"row": "LODErrorPixels",
+			"type": "float",
+			"values": [
+				2.0,
+				1.0,
+				1.0,
+				0.5
+			],
+			"line": 47,
+			"comment": ""
+		},
+		{
+			"row": "MinProjectedPixels",
+			"type": "float",
+			"values": [
+				1.0,
+				0.5,
+				0.5,
+				0.25
+			],
+			"line": 48,
+			"comment": ""
+		},
+		{
+			"row": "ShadowFilterQuality",
+			"type": "uint32_t",
+			"values": [
+				8,
+				16,
+				24,
+				32
+			],
+			"line": 49,
+			"comment": ""
+		},
+		{
+			"row": "ContactShadows",
+			"type": "uint32_t",
+			"values": [
+				0,
+				0,
+				0,
+				0
+			],
+			"line": 52,
+			"comment": "Off in every preset: binary hits in a thin shell under screen-locked noise shimmer in motion (DG \"Sun shadows\"); Custom turns them on."
+		},
+		{
+			"row": "AmbientOcclusionQuality",
+			"type": "AmbientOcclusionLevel",
+			"values": [
+				"AmbientOcclusionLevel::Low",
+				"AmbientOcclusionLevel::Medium",
+				"AmbientOcclusionLevel::High",
+				"AmbientOcclusionLevel::Ultra"
+			],
+			"line": 53,
+			"comment": ""
+		},
+		{
+			"row": "EnvironmentResolution",
+			"type": "uint32_t",
+			"values": [
+				256,
+				256,
+				512,
+				512
+			],
+			"line": 54,
+			"comment": ""
+		},
+		{
+			"row": "Reflections",
+			"type": "ReflectionsQuality",
+			"values": [
+				"ReflectionsQuality::Off",
+				"ReflectionsQuality::Checkerboard",
+				"ReflectionsQuality::Spatial",
+				"ReflectionsQuality::SpatialHigh"
+			],
+			"line": 55,
+			"comment": ""
+		},
+		{
+			"row": "MotionBlurQuality",
+			"type": "MotionBlurSamples",
+			"values": [
+				"MotionBlurSamples::Off",
+				"MotionBlurSamples::Samples8",
+				"MotionBlurSamples::Samples12",
+				"MotionBlurSamples::Samples16"
+			],
+			"line": 56,
+			"comment": ""
+		},
+		{
+			"row": "GlobalIllumination",
+			"type": "GlobalIlluminationLevel",
+			"values": [
+				"GlobalIlluminationLevel::Off",
+				"GlobalIlluminationLevel::Off",
+				"GlobalIlluminationLevel::High",
+				"GlobalIlluminationLevel::High"
+			],
+			"line": 57,
+			"comment": ""
+		},
+		{
+			"row": "ReflectionProbeResolution",
+			"type": "uint32_t",
+			"values": [
+				128,
+				128,
+				256,
+				256
+			],
+			"line": 58,
+			"comment": ""
+		}
+	],
+	"fields": [
+		{
+			"name": "Preset",
+			"line": 738
+		},
+		{
+			"name": "ShadowResolution",
+			"line": 744
+		},
+		{
+			"name": "ShadowCascades",
+			"line": 748
+		},
+		{
+			"name": "LocalShadowAtlasSize",
+			"line": 751
+		},
+		{
+			"name": "LocalShadowMaxTile",
+			"line": 754
+		},
+		{
+			"name": "MaxShadowedLocalLights",
+			"line": 757
+		},
+		{
+			"name": "LocalShadowViewsPerFrame",
+			"line": 761
+		},
+		{
+			"name": "LODErrorPixels",
+			"line": 765
+		},
+		{
+			"name": "MinProjectedPixels",
+			"line": 768
+		},
+		{
+			"name": "ShadowFilterQuality",
+			"line": 770
+		},
+		{
+			"name": "ContactShadows",
+			"line": 774
+		},
+		{
+			"name": "AmbientOcclusionQuality",
+			"line": 781
+		},
+		{
+			"name": "EnvironmentResolution",
+			"line": 785
+		},
+		{
+			"name": "Reflections",
+			"line": 791
+		},
+		{
+			"name": "MotionBlurQuality",
+			"line": 795
+		},
+		{
+			"name": "ReflectionProbeResolution",
+			"line": 798
+		},
+		{
+			"name": "GlobalIllumination",
+			"line": 802
+		},
+		{
+			"name": "AntiAliasing",
+			"line": 808
+		},
+		{
+			"name": "MotionBlur",
+			"line": 812
+		},
+		{
+			"name": "DepthOfField",
+			"line": 814
+		},
+		{
+			"name": "FilmGrain",
+			"line": 817
+		},
+		{
+			"name": "ChromaticAberration",
+			"line": 819
+		}
+	]
+}

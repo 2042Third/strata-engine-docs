@@ -1,0 +1,139 @@
+[
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Player"
+		},
+		"bind": {
+			"player": "/entities/0"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "player"
+			},
+			"class": "PlayerController"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Player"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"class": "PlayerController",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 10
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 10
+			}
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "W",
+			"steps": 30
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 31
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 31
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Player"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "S",
+			"steps": 180
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 181
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 181
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Player"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

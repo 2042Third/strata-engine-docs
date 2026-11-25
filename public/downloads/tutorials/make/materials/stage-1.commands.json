@@ -1,0 +1,68 @@
+[
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/Gold.stmat"
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Gold.stmat",
+			"properties": {
+				"BaseColor": [
+					1.0,
+					0.77,
+					0.34,
+					1.0
+				],
+				"Metallic": 1.0,
+				"Roughness": 0.3
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "coin-gold"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "MeshRenderer",
+			"values": {
+				"Material": "Materials/Gold.stmat"
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Gold.stmat",
+			"properties": {
+				"Roughness": 1.0,
+				"Metallic": 0.0
+			}
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Gold.stmat",
+			"properties": {
+				"Roughness": 0.3,
+				"Metallic": 1.0
+			}
+		}
+	},
+	{
+		"command": "scene.save"
+	}
+]

@@ -1,0 +1,172 @@
+{
+	"figures": [
+		{
+			"id": "cornell-gi-off-on",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev project's Cornell box, lit only by its glowing panel, without and with global illumination at the High quality, bloom off, each at its automatic exposure",
+			"caption": "The same box without and with global illumination, each at its automatic exposure (the first brightened about nine stops more). Without it, the panel lights nothing: the floor, ceiling, back wall, box and sphere are one dim gray. With it, the ceiling takes light from the floor, the box and sphere stand out, the walls glow red and green, and the sphere's right side takes a faint green. The dark patches with square edges on the floor beside the sphere and at the box's left foot are the voxel grid, showing in the bounce light.",
+			"alt": "Two pictures of a room with a dark red left wall, a dark green right wall, a tall box, a sphere and a white panel in the ceiling. In the first, everything but the panel is dim, and the box and sphere barely show against the gray back wall. In the second, the walls are bright red and green, the ceiling, floor and back wall are light gray, and the box and sphere are lit. Dark patches with square edges mark the floor beside the sphere and at the box's left foot.",
+			"project": {
+				"lookdev": true
+			},
+			"shot": "lookdev.cornell",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"antiAliasing": "off",
+			"play": {
+				"steps": 2
+			},
+			"postProcess": {
+				"Bloom": false
+			},
+			"variants": {
+				"off": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Post Process",
+							"parameters": {
+								"component": "PostProcess",
+								"values": {
+									"GlobalIllumination": false
+								}
+							}
+						}
+					]
+				},
+				"on": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Post Process",
+							"parameters": {
+								"component": "PostProcess",
+								"values": {
+									"GlobalIllumination": true
+								}
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "voxels-view",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev sun room seen close to its window in the voxels debug view, at one manual exposure",
+			"caption": "The room as the voxel copy holds it. The view smooths each surface between neighboring voxels and shades it by the light its voxels store, so the flat walls and floor show no cubes. The grid shows only where light changes: the sun's patch on the floor has stair-stepped edges, one step per voxel. Through the window, the view hits the ground outside below and nothing above, where it draws its background color.",
+			"alt": "A smooth gray room corner with a window in the far wall and a white patch of sunlight on the floor. The walls and floor show no cubes, but the patch's edges are jagged steps. The window shows a flat light gray band below and a flat blue-gray area above.",
+			"project": {
+				"lookdev": true
+			},
+			"scene": "Scenes/SunRoom.stscene",
+			"camera": {
+				"position": [
+					-9.0,
+					1.6,
+					-3.5
+				],
+				"target": [
+					-10.6,
+					0.8,
+					0.6
+				],
+				"fov": 45
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"antiAliasing": "off",
+			"debugView": "voxels",
+			"postProcess": {
+				"AutoExposure": false,
+				"Exposure": -11.5
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "low-high",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev room with global illumination turned on and its ball hidden, at the Low and the High layouts of the quality row, both at one manual exposure",
+			"caption": "The same room at both layouts, at one manual exposure and with its ball hidden. At High, light bounces on between surfaces: the walls and ceiling are far brighter, warm from the floor in the sun, and evenly lit. At Low, one bounce leaves them dark and bluer, with uneven patches of light on the right wall.",
+			"alt": "Two pictures of the same room with a window, a patch of sunlight on the floor and a box. In the first, at Low, the walls are a dark blue gray, the ceiling a dim gray, with faint uneven glows on the right wall. In the second, at High, the walls and ceiling are a much lighter warm gray, smoothly lit.",
+			"project": {
+				"lookdev": true
+			},
+			"shot": "lookdev.room",
+			"size": [
+				1280,
+				720
+			],
+			"antiAliasing": "off",
+			"variants": {
+				"low": {
+					"quality": {
+						"custom": {
+							"GlobalIllumination": "Low"
+						}
+					},
+					"setup": [
+						{
+							"command": "entity.setActive",
+							"entityName": "Room Ball",
+							"parameters": {
+								"active": false
+							}
+						},
+						{
+							"command": "component.set",
+							"entityName": "Post Process",
+							"parameters": {
+								"component": "PostProcess",
+								"values": {
+									"GlobalIllumination": true
+								}
+							}
+						}
+					]
+				},
+				"high": {
+					"quality": {
+						"custom": {
+							"GlobalIllumination": "High"
+						}
+					},
+					"setup": [
+						{
+							"command": "entity.setActive",
+							"entityName": "Room Ball",
+							"parameters": {
+								"active": false
+							}
+						},
+						{
+							"command": "component.set",
+							"entityName": "Post Process",
+							"parameters": {
+								"component": "PostProcess",
+								"values": {
+									"GlobalIllumination": true
+								}
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete",
+			"postProcess": {
+				"AutoExposure": false,
+				"Exposure": -11.3
+			}
+		}
+	]
+}

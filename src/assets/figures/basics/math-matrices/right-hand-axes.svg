@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 416">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Left: a right hand, palm toward the viewer: thumb right (x), first finger up (y), middle finger toward the viewer (z, drawn down and left). Right: axes from (580, 320): x right, y up, z down-left at 35 degrees, dashed -z up-right as forward. -->
+<g transform="translate(0 -40)">
+<path class="plate line-ink" stroke-width="2" d="M196 440L192 372Q184 320 186 262Q188 236 212 234L300 234Q316 236 318 262L320 312Q322 360 304 384L298 440"/>
+<rect class="plate line-ink" stroke-width="2" x="190" y="236" width="26" height="48" rx="13"/>
+<rect class="plate line-ink" stroke-width="2" x="214" y="232" width="30" height="58" rx="15"/>
+<rect class="plate line-ink" stroke-width="2" x="276" y="96" width="36" height="168" rx="18"/>
+<path class="plate line-ink" stroke-width="2" d="M304 300L400 300Q418 300 418 318Q418 336 400 336L308 340"/>
+<path class="plate line-ink" stroke-width="2" d="M246 238L272 250L226 318Q214 334 200 326Q188 318 196 302L232 242Z"/>
+<ellipse class="plate line-ink" cx="209" cy="318" rx="14" ry="12" stroke-width="2"/>
+<text class="green bold" x="294" y="80" text-anchor="middle">first finger: y</text>
+<text class="red bold" x="428" y="323">thumb: x</text>
+<text class="blue bold" x="176" y="352" text-anchor="end">middle finger: z</text>
+<line class="line-red" x1="580" y1="320" x2="718" y2="320" stroke-width="2.5"/>
+<polygon class="red" points="730,320 718,324.5 718,315.5"/>
+<text class="red bold" x="736" y="325">x</text>
+<line class="line-green" x1="580" y1="320" x2="580" y2="162" stroke-width="2.5"/>
+<polygon class="green" points="580,150 584.5,162 575.5,162"/>
+<text class="green bold" x="580" y="138" text-anchor="middle">y (up)</text>
+<line class="line-blue" x1="580" y1="320" x2="491.5" y2="381.9" stroke-width="2.5"/>
+<polygon class="blue" points="481.7,388.8 489,378.3 494.1,385.6"/>
+<text class="blue bold" x="473.7" y="406.8" text-anchor="end">z (toward you)</text>
+<line class="line-ink" x1="580" y1="320" x2="653.7" y2="268.4" stroke-width="2" stroke-dasharray="4 3"/>
+<polygon class="ink" points="661.9,262.6 655.7,271.2 651.7,265.5"/>
+<text class="ink bold" x="604" y="222">forward (−z)</text>
+<text class="ink small mono" x="604" y="242">camera, GetForward</text>
+<circle class="ink" cx="580" cy="320" r="4"/>
+<text class="ink large" x="640" y="400">x × y = z</text>
+</g>
+</svg>

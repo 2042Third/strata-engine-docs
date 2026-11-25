@@ -1,0 +1,327 @@
+{
+	"figures": [
+		{
+			"id": "probe-on-off",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev yard's polished metal panel seen from 9 m with the yard's reflection probe off, then on",
+			"caption": "Without the probe, the polished panel reflects only the sky and a plain brown ground. With it, the same panel reflects the scene behind the camera: the brick back wall and the yard's ground with a shadow on it. Both pictures use one fixed exposure, so nothing outside the panel changes.",
+			"alt": "Two pictures of a polished metal panel standing on the ground. With the probe off it shows a blue sky over an even brown ground. With the probe on it shows a band of sky, a long brick wall and a grey ground with a dark shadow.",
+			"project": {
+				"lookdev": true
+			},
+			"camera": {
+				"position": [
+					0,
+					1.6,
+					-5
+				],
+				"target": [
+					0,
+					1.6,
+					-14
+				],
+				"fov": 40
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"variants": {
+				"probe-off": {
+					"setup": [
+						{
+							"command": "entity.setActive",
+							"entityName": "Probe Yard",
+							"parameters": {
+								"active": false
+							}
+						}
+					]
+				},
+				"probe-on": {
+					"setup": [
+						{
+							"command": "entity.setActive",
+							"entityName": "Probe Yard",
+							"parameters": {
+								"active": true
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete",
+			"scene": "Scenes/Specular.stscene",
+			"antiAliasing": "off",
+			"postProcess": {
+				"AutoExposure": false,
+				"Exposure": -14.8
+			}
+		},
+		{
+			"id": "box-projection",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev yard's wet ground, screen-space reflections off so the probe alone draws its reflection, with box projection off, then on",
+			"caption": "Screen-space reflections are off, so the probe alone draws what the band of wet ground across the middle of the picture reflects. Without box projection the reflections of the two tanks and the long white blocks behind them sit well to the left of the objects, and the yellow wall on the left has no reflection. With it the reflections move nearly under the objects they show; the white blocks' reflections stay a little to the left, because the box treats everything it reflects as lying on its walls. The small cubes in front have no reflection in either picture. The right block is polished metal inside the probe's box, so its own reflection moves too: its right end turns from brown-grey to light grey, and the metal balls in front change a little.",
+			"alt": "Two pictures of a yard with two metal tanks, long white blocks, small cubes, a row of balls and a yellow wall, above a band of wet ground with dry ground in shadow below it. With box projection off the reflections of the tanks and the white blocks in the wet band lie well to the left of them and the yellow wall has none. With it on the yellow wall and the tanks are reflected below themselves, and the white blocks' reflections lie only a little to the left. The right end of the right block turns from brown-grey to light grey. The small cubes in front have no reflection in either picture.",
+			"project": {
+				"lookdev": true
+			},
+			"camera": {
+				"position": [
+					-13,
+					0.4,
+					24
+				],
+				"target": [
+					-9,
+					1.0,
+					-6
+				],
+				"fov": 55
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"variants": {
+				"box-off": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Post Process",
+							"parameters": {
+								"component": "PostProcess",
+								"values": {
+									"ScreenSpaceReflections": false
+								}
+							}
+						},
+						{
+							"command": "lighting.applySkyPreset",
+							"parameters": {
+								"preset": "GoldenHour",
+								"sunElevation": 9,
+								"sunAzimuth": 45
+							}
+						},
+						{
+							"command": "entity.setActive",
+							"entityName": "Probe Patch",
+							"parameters": {
+								"active": true
+							}
+						},
+						{
+							"command": "component.set",
+							"entityName": "Probe Patch",
+							"parameters": {
+								"component": "ReflectionProbe",
+								"values": {
+									"BoxProjection": false
+								}
+							}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						}
+					]
+				},
+				"box-on": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Post Process",
+							"parameters": {
+								"component": "PostProcess",
+								"values": {
+									"ScreenSpaceReflections": false
+								}
+							}
+						},
+						{
+							"command": "lighting.applySkyPreset",
+							"parameters": {
+								"preset": "GoldenHour",
+								"sunElevation": 9,
+								"sunAzimuth": 45
+							}
+						},
+						{
+							"command": "entity.setActive",
+							"entityName": "Probe Patch",
+							"parameters": {
+								"active": true
+							}
+						},
+						{
+							"command": "component.set",
+							"entityName": "Probe Patch",
+							"parameters": {
+								"component": "ReflectionProbe",
+								"values": {
+									"BoxProjection": true
+								}
+							}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						}
+					]
+				}
+			},
+			"expect": "complete",
+			"scene": "Scenes/Specular.stscene"
+		},
+		{
+			"id": "resolution",
+			"kind": "scene",
+			"shows": "A close view of the left side of a mirror ball inside the yard probe's box, screen-space reflections off, with the reflection probe resolution at 128 texels, then at 256",
+			"caption": "A close view of the left side of a mirror ball in the yard; the probe alone draws its reflection. At 128 texels the reflected yellow wall, the white and red posts and the two crates have soft edges. At 256 texels the same edges are sharp, and the red post is a thin clear line.",
+			"alt": "Two close views of the left side of a mirror ball, with plain grey ground beyond its edge. The ball reflects blue sky, a wide yellow wall, a bent white post, a thin red post and two small crates on blue-grey ground. In the first picture these edges are soft; in the second they are sharp.",
+			"numbers": "The recipe's values: the variants set the Renderer.Quality field ReflectionProbeResolution to 128 and 256 (a custom quality, the other fields at High), the two values of the quality row the page names.",
+			"project": {
+				"lookdev": true
+			},
+			"camera": {
+				"position": [
+					-7,
+					1.1,
+					3.6
+				],
+				"target": [
+					-7.384,
+					0.549,
+					1.012
+				],
+				"fov": 5.5
+			},
+			"size": [
+				1024,
+				1024
+			],
+			"variants": {
+				"texels-128": {
+					"quality": {
+						"custom": {
+							"ReflectionProbeResolution": "128"
+						}
+					},
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Post Process",
+							"parameters": {
+								"component": "PostProcess",
+								"values": {
+									"ScreenSpaceReflections": false
+								}
+							}
+						},
+						{
+							"command": "entity.setActive",
+							"entityName": "Probe Yard",
+							"parameters": {
+								"active": true
+							}
+						}
+					]
+				},
+				"texels-256": {
+					"quality": {
+						"custom": {
+							"ReflectionProbeResolution": "256"
+						}
+					},
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Post Process",
+							"parameters": {
+								"component": "PostProcess",
+								"values": {
+									"ScreenSpaceReflections": false
+								}
+							}
+						},
+						{
+							"command": "entity.setActive",
+							"entityName": "Probe Yard",
+							"parameters": {
+								"active": true
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete",
+			"scene": "Scenes/Specular.stscene",
+			"publish": "lossless"
+		},
+		{
+			"id": "bake-sun-disk",
+			"kind": "scene",
+			"shows": "A crop of wet ground lit by a probe baked with the sun's disk in its picture (0.7.0), then baked without it",
+			"caption": "With the disk in the picture, the ground shows a bright blurred patch where the sun was baked. Without the disk the patch is gone and the ground keeps only the sky's light.",
+			"alt": "Two crops of the same wet ground. In the first a bright blurred patch lies on the ground. In the second the ground is even.",
+			"project": {
+				"lookdev": true
+			},
+			"camera": {
+				"position": [
+					-13,
+					0.4,
+					24
+				],
+				"target": [
+					-9,
+					1.0,
+					-6
+				],
+				"fov": 55
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"crops": [
+				{
+					"name": "patch",
+					"rect": [
+						0.15,
+						0.6,
+						0.3,
+						0.74
+					],
+					"scale": 3
+				}
+			],
+			"variants": {
+				"with-disk": {
+					"setup": []
+				},
+				"without-disk": {
+					"setup": []
+				}
+			},
+			"waitsFor": "tier 3: the 0.7.0 baseline set for the picture with the disk; no debug view shows a baked picture's sun disk",
+			"scene": "Scenes/Specular.stscene",
+			"publish": "lossless",
+			"standIn": "sun-in-bake"
+		},
+		{
+			"id": "sun-in-bake",
+			"kind": "diagram",
+			"shows": "A side view of a bake before the probe-capture mode: from its center the probe sees the sun's disk and the sun's highlight on a polished tank, whose side is a face of the probe's box, and a ray reflected off wet ground leaves the box at that highlight, so the box-projected lookup finds it",
+			"caption": "In the old bake the probe's picture held the sun's disk and the sun's highlight on the polished tank, seen from the probe's center. A ray from the camera reflected off the wet ground leaves the probe's box at the highlight, where a face of the box lies on the side of the tank. Box projection reads the picture in the direction from the probe's center to that point, the direction in which the bake saw the highlight. The lookup returns the highlight there, and the ground shows a bright blurred patch. The probe-capture mode keeps both out of the picture, so the same lookup finds only the tank's diffuse light.",
+			"alt": "A side view. A dashed box around a dot marked probe's center has its right face on the side of a tall polished tank. Dashed lines run from the probe's center to the sun's disk and to the sun's highlight on the tank, which a solid line from the sun reaches. A camera on the left sends a ray down to the wet ground, and the reflected ray rises to the same highlight. Where the ray meets the ground lies a bright blurred patch."
+		}
+	]
+}

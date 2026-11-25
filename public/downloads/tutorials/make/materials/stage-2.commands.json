@@ -1,0 +1,95 @@
+[
+	{
+		"command": "asset.import",
+		"parameters": {
+			"files": [
+				"<release folder>/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_Color.jpg",
+				"<release folder>/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_MetallicRoughness.jpg",
+				"<release folder>/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_NormalGL.jpg"
+			],
+			"directory": "Textures/Metal"
+		}
+	},
+	{
+		"command": "asset.info",
+		"parameters": {
+			"asset": "Textures/Metal/Metal032_Color.jpg"
+		},
+		"expect": {
+			"/importing": {
+				"equals": false
+			}
+		},
+		"until": {
+			"seconds": 120
+		}
+	},
+	{
+		"command": "asset.info",
+		"parameters": {
+			"asset": "Textures/Metal/Metal032_MetallicRoughness.jpg"
+		},
+		"expect": {
+			"/importing": {
+				"equals": false
+			}
+		},
+		"until": {
+			"seconds": 120
+		}
+	},
+	{
+		"command": "asset.info",
+		"parameters": {
+			"asset": "Textures/Metal/Metal032_NormalGL.jpg"
+		},
+		"expect": {
+			"/importing": {
+				"equals": false
+			}
+		},
+		"until": {
+			"seconds": 120
+		}
+	},
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/Ball.stmat",
+			"properties": {
+				"BaseColorMap": "Textures/Metal/Metal032_Color.jpg",
+				"MetallicRoughnessMap": "Textures/Metal/Metal032_MetallicRoughness.jpg",
+				"Metallic": 1.0,
+				"Roughness": 1.0,
+				"UVTiling": [
+					2.0,
+					2.0
+				]
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ball"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "MeshRenderer",
+			"values": {
+				"Material": "Materials/Ball.stmat"
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "scene.save"
+	}
+]

@@ -1,0 +1,3 @@
+# Part review of `engineering/test-program`
+
+No correction: the 8 own CTests and 13 shards of `CoreShards.json`, the shard CMake and its configure dependency, the 48 helper modes ("more than 40") and the named ones, the private `STRATA_RUNTIME_DIR`, `STRATA_RECENT_PROJECTS` and `STRATA_SCRIPT_BUILDS_DIR`, `DOCTEST_CONFIG_NO_POSIX_SIGNALS` and `TestCrashReporter.cpp` (Windows left to doctest, CI sets `STRATA_TEST_TRACE`), the four `Testing.Shards` cases and the `?*` filter, the labels, `StrataExport.Clean`, `RESOURCE_LOCK toolchain`, `SelectSweepOffsets` (512 draws, reach 8, seed) and its pack calls, `StrataTests.Fuzz` in Release and Dist, the helper locations and the Roadmap's 94 to 163 s hold at the pin (319075e3).

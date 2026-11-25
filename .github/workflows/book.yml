@@ -1,0 +1,578 @@
+# The book's CI (plan/site.md, "CI"; plan/critique/rulings-5.md, R16; rulings-6.md, R25 and R27): every check of
+# plan/site.md's "Checks" in the job that has what it reads, the site built at three bases and passed through gate
+# (a), the release served by nginx the two ways of deploy/README.md and passed through gates (a), (b) and (c), and on a
+# book-v* tag the GitHub release. The last job, report, commits the run's result to the branch ci-results, which
+# tools/cistatus.py <commit> reads with git. Every step that checks something runs through tools/cistatus.py step,
+# which writes the reason of a failure as an ::error annotation: report collects those, and they can be read without
+# a token, where a job's log cannot.
+name: Book
+
+# Every pushed branch and tag (R27; a book-v* tag is a release), pull requests and by hand. The record branch
+# ci-results is pushed with the workflow's own token, which starts no workflow.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One commit per page means hundreds of runs: a newer push cancels the older run of its branch, but never a tag's.
+concurrency:
+  group: book-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+
+# The base and the origin are site.json's (rulings 6, R24): no DOCS_BASE or DOCS_SITE here, no variable, no secret.
+env:
+  ASTRO_TELEMETRY_DISABLED: "1"
+  DO_NOT_TRACK: "1"
+  # On a book-v* tag the checks take --release, so that drafts, placeholders and missing stamps are errors
+  # (pipelines.md §13), and the default build is a release build.
+  RELEASE_TAG: ${{ startsWith(github.ref, 'refs/tags/book-v') }}
+
+jobs:
+  # Checks 1, 8 (spelling, Markdown, the workflows) and 13 without the pictures (a sparse checkout without
+  # src/assets/figures/): front matter and outline rules, the outline itself, the notices of what the site ships, the
+  # budgets' own rule, the search queries' file, and the unit tests of the build and of the tools.
+  lint:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/src/assets/figures/
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: The toolchain's cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            .tools
+            !.tools/ms-playwright
+            !.tools/npm-cache
+            !.tools/tmp
+          key: tools-${{ hashFiles('tools/toolchain.json') }}
+          restore-keys: tools-
+      - name: npm's cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .tools/npm-cache
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+      - name: Playwright's browsers
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .tools/ms-playwright
+          key: playwright-1.65.0-${{ runner.os }}
+      - name: Toolchain (Node.js, typos, lychee, actionlint; tools/toolchain.json)
+        run: python -I tools/bootstrap.py
+      - name: Packages and Chromium (the unit tests of the browser checks run in it)
+        run: |
+          . .tools/env.sh
+          npm ci --no-audit
+          npx playwright install-deps chromium
+          npx playwright install --only-shell chromium
+      - name: Front matter, outline rules, sidebar, page shape (check 1)
+        run: |
+          . .tools/env.sh
+          release=()
+          if [ "$RELEASE_TAG" = true ]; then release=(--release); fi
+          python -I tools/cistatus.py step --title "Front matter and page shape (check 1)" -- python -I tools/pages.py check "${release[@]}"
+      - name: The outline (check 1)
+        run: |
+          . .tools/env.sh
+          python -I tools/cistatus.py step --title "The outline (check 1)" -- python -I plan/check_outline.py
+      - name: The notices of what the site ships (check 1)
+        run: |
+          . .tools/env.sh
+          python -I tools/cistatus.py step --title "Notices, section A (check 1)" -- python -I tools/notices.py check --sections A
+      - name: Spelling, Markdown, the workflows (check 8)
+        run: |
+          . .tools/env.sh
+          pin=$(awk '$1 == "commit" { print $2 }' engine.pin)
+          python -I tools/cistatus.py step --title "Spelling (check 8)" -- typos
+          python -I tools/cistatus.py step --title "The spelling block of _typos.toml (check 8)" -- python -I tools/names.py spelling --check --dumps "reference/_dumps/$pin"
+          python -I tools/cistatus.py step --title "Markdown lint (check 8)" -- npx markdownlint-cli2
+          python -I tools/cistatus.py step --title "The workflows (actionlint)" -- actionlint
+      - name: The budgets' rule and the search queries' file (checks 11, 12)
+        run: |
+          . .tools/env.sh
+          python -I tools/cistatus.py step --title "Budgets against their pass marks (check 12)" -- python -I tools/budgets.py --check-file
+          python -I tools/cistatus.py step --title "The search queries (check 11)" -- node scripts/search-quality.mjs --check
+      # deploy/deploy-files.sh's test copies with the real rsync, which CI never skips (tools/tests/test_deploy.py).
+      - name: Unit tests of the build and of the tools (check 13)
+        run: |
+          command -v rsync >/dev/null || { sudo apt-get update -q && sudo apt-get install -y -q rsync; }
+          . .tools/env.sh
+          python -I tools/cistatus.py step --title "Unit tests of the build (npm test)" -- npm test
+          python -I tools/cistatus.py step --title "Unit tests of the tools" -- python -I -m unittest discover -s tools/tests -t .
+
+  # Checks 3 to 8 that read the engine at the pin (pipelines.md §13): its public repository from engine.pin's
+  # repository line (rulings 6, R25), in the folder engine.
+  excerpts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: The toolchain's cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            .tools
+            !.tools/ms-playwright
+            !.tools/npm-cache
+            !.tools/tmp
+          key: tools-${{ hashFiles('tools/toolchain.json') }}
+          restore-keys: tools-
+      - name: Toolchain (typos for the names lint; tools/toolchain.json)
+        run: python -I tools/bootstrap.py
+      - name: The pin
+        id: pin
+        run: |
+          . .tools/env.sh
+          echo "commit=$(awk '$1 == "commit" { print $2 }' engine.pin)" >> "$GITHUB_OUTPUT"
+      - name: The engine's cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: engine/.git
+          key: engine-${{ steps.pin.outputs.commit }}
+          restore-keys: engine-
+      # plan/site.md's checkout of the engine: the sparse patterns of the files the tools read in the working tree,
+      # and a partial clone. Three additions that the tools need, measured against the pin clone: the history and the
+      # release tags (reference.py check dates each host function with git log -S; names.py compares "since" with the
+      # tags), every blob of the pin fetched in batches by git backfill (names.py check greps the whole tree, which
+      # otherwise fetches its blobs one request at a time), and glm and entt at their gitlink commits (the sketches
+      # compile against glm; tools/reference-limits.json reads entt), with each library a page quotes with vendor:.
+      - name: The engine at the pin
+        run: |
+          . .tools/env.sh
+          pin=$(awk '$1 == "commit" { print $2 }' engine.pin)
+          repository=$(awk '$1 == "repository" { print $2 }' engine.pin)
+          if [ ! -d engine/.git ]; then
+            git init -q engine
+            git -C engine remote add origin "$repository"
+          fi
+          git -C engine sparse-checkout set --no-cone '/Strata*/' '/Tools/' '/CMake/' '/Docs/' '/.claude/' '/*.md' \
+            '/.editorconfig' '/Samples/*/Scripts/' '/Samples/*/*.md'
+          git -C engine fetch -q --filter=blob:none origin "$pin"
+          git -C engine fetch -q --filter=blob:none origin 'refs/tags/v*:refs/tags/v*'
+          git -C engine checkout -q --detach "$pin"
+          git -C engine backfill --no-sparse
+          {
+            printf '%s\n' glm entt
+            if [ -f src/generated/vendor.json ]; then jq -r '.libraries | keys[]' src/generated/vendor.json; fi
+          } | sort -u | while read -r library; do
+            git -C engine submodule update --init --depth 1 "Strata/vendor/$library"
+          done
+          test "$(git -C engine rev-parse HEAD)" = "$pin"
+      - name: The language lint, with the engine's own documents (check 8)
+        run: |
+          . .tools/env.sh
+          python -I tools/cistatus.py step --title "The language lint (check 8)" -- python -I tools/lint.py --engine engine
+      - name: The notices of what the book quotes and shows (check 1)
+        run: |
+          . .tools/env.sh
+          python -I tools/cistatus.py step --title "Notices, sections B and C (check 1)" -- python -I tools/notices.py check --sections BC --engine engine
+      - name: Quotes match the engine (check 3)
+        run: |
+          . .tools/env.sh
+          release=()
+          if [ "$RELEASE_TAG" = true ]; then release=(--release); fi
+          python -I tools/cistatus.py step --title "Quotes (check 3)" -- python -I tools/excerpts.py check --engine engine "${release[@]}"
+      - name: Sketches compile and print what the pages show (check 4)
+        env:
+          CXX: g++
+        run: |
+          . .tools/env.sh
+          python -I tools/cistatus.py step --title "Sketches (check 4)" -- python -I tools/sketches.py check --engine engine
+      - name: Figures, tutorials, the generated reference, names, the pin (checks 5 to 8)
+        run: |
+          . .tools/env.sh
+          dumps="reference/_dumps/$(awk '$1 == "commit" { print $2 }' engine.pin)"
+          release=()
+          if [ "$RELEASE_TAG" = true ]; then release=(--release); fi
+          python -I tools/cistatus.py step --title "Figures (check 5)" -- python -I tools/figures.py check --engine engine --dumps "$dumps" "${release[@]}"
+          python -I tools/cistatus.py step --title "Tutorials (check 6)" -- python -I tools/tutorials.py check --engine engine --dumps "$dumps" "${release[@]}"
+          python -I tools/cistatus.py step --title "The generated reference against its stamps (check 7)" -- python -I tools/reference.py render --check
+          python -I tools/cistatus.py step --title "The generated reference against the engine (check 7)" -- python -I tools/reference.py check --engine engine
+          python -I tools/cistatus.py step --title "The names lint (check 8)" -- python -I tools/names.py check --dumps "$dumps" --engine engine "${release[@]}"
+          python -I tools/cistatus.py step --title "Nothing to do at the pin (pin.py report)" -- python -I tools/pin.py report --engine engine
+
+  # Checks 2, 4, 10 (gate (a)) and 12: the site at the root of a host, under /x/y and under /strata-engine-docs (the
+  # default last, the one measured, and on a book-v* tag a release build for site.json's address), each staged and
+  # crawled with lychee; then the releases of the three builds.
+  build:
+    needs: lint
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: The toolchain's cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            .tools
+            !.tools/ms-playwright
+            !.tools/npm-cache
+            !.tools/tmp
+          key: tools-${{ hashFiles('tools/toolchain.json') }}
+          restore-keys: tools-
+      - name: npm's cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .tools/npm-cache
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+      # Astro's rendered pages, one folder per base (astro.config.mjs); a stale cache restored by its prefix is
+      # harmless, because Astro compares the inputs digest of src/plugins/index.mjs.
+      - name: Astro's cache
+        id: astro-cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .cache/astro*
+          key: astro-${{ hashFiles('package-lock.json', 'astro.config.mjs', 'ec.config.mjs', 'src/plugins/**', 'src/lib/**') }}
+          restore-keys: astro-
+      - name: The derived pictures' cache
+        id: images-cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .cache/images
+          key: images-${{ hashFiles('src/assets/figures/**', 'src/lib/images.mjs') }}
+          restore-keys: images-
+      - name: Playwright's browsers
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .tools/ms-playwright
+          key: playwright-1.65.0-${{ runner.os }}
+      - name: Toolchain, packages and Chromium (the drawings' check measures in it)
+        run: |
+          python -I tools/bootstrap.py
+          . .tools/env.sh
+          npm ci --no-audit
+          npx playwright install-deps chromium
+          npx playwright install --only-shell chromium
+      - name: The release's tag
+        id: tag
+        run: |
+          . .tools/env.sh
+          if [[ "$GITHUB_REF" == refs/tags/book-v* ]]; then
+            echo "tag=$GITHUB_REF_NAME" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=main-${GITHUB_SHA:0:8}" >> "$GITHUB_OUTPUT"
+          fi
+      # The base path is one setting: the site must work at the root of a host and under a deeper prefix, and a build
+      # for another base names the default prefix nowhere (gate (a) 3 and budget row 17).
+      - name: Build at the root of a host, and gate (a)
+        run: |
+          . .tools/env.sh
+          python -I tools/cistatus.py step --title "Build at /" -- env DOCS_BASE=/ npx astro build --outDir dist-root
+          python -I tools/cistatus.py step --title "Gate (a) at /" -- python -I tools/crawl.py --dist dist-root --stage stage-root --base=/ \
+            --forbid-prefix /strata-engine-docs --lychee lychee
+      # Until src/redirects.json has an entry of its own, this build adds the test entry (plan/site.md, "Moved pages").
+      - name: Build under /x/y, and gate (a)
+        run: |
+          . .tools/env.sh
+          python -I tools/cistatus.py step --title "Build at /x/y" -- env DOCS_BASE=/x/y DOCS_EXTRA_REDIRECTS=tools/tests/release-redirects.json npx astro build --outDir dist-deep
+          python -I tools/cistatus.py step --title "Gate (a) at /x/y" -- python -I tools/crawl.py --dist dist-deep --stage stage-deep --base=/x/y \
+            --forbid-prefix /strata-engine-docs --lychee lychee
+      - name: Build under /strata-engine-docs (math, diagrams, links, figures fail it; checks 2 and 4), and gate (a)
+        run: |
+          . .tools/env.sh
+          if [ "$RELEASE_TAG" = true ]; then export DOCS_RELEASE=1; fi
+          python -I tools/cistatus.py step --title "Build at /strata-engine-docs" -- python -I tools/measure.py --label build --json measure.jsonl -- npx astro build
+          python -I tools/cistatus.py step --title "Gate (a) at /strata-engine-docs" -- python -I tools/measure.py --label crawl --json measure.jsonl -- \
+            python -I tools/crawl.py --report crawl.json --lychee lychee
+      - name: Diagrams and drawings, the notices of the built site, the budgets (checks 4, 1 and 12)
+        env:
+          CACHED: ${{ steps.astro-cache.outputs.cache-hit == 'true' && steps.images-cache.outputs.cache-hit == 'true' }}
+        run: |
+          . .tools/env.sh
+          python -I tools/cistatus.py step --title "Committed diagrams (check 4)" -- npm run diagrams -- --check
+          python -I tools/cistatus.py step --title "Drawings (check 4)" -- npm run drawings -- check
+          python -I tools/cistatus.py step --title "Notices of the built site (check 1)" -- python -I tools/notices.py check --sections A --dist dist
+          cached=()
+          if [ "$CACHED" = true ]; then cached=(--cached); fi
+          # Times are judged against the reference machine's budgets, twice as long on the hosted runner, until its
+          # own times are known (README, "Budgets and the scale test").
+          python -I tools/cistatus.py step --title "Budgets (check 12)" -- python -I tools/budgets.py --measure measure.jsonl --crawl crawl.json --slower 2 "${cached[@]}"
+      # The releases (plan/site.md, "What a release holds"): a .gz beside every text file, then the two tarballs and
+      # SHA256SUMS, for the default base and for the two other bases (whose deploy files are rewritten for them).
+      - name: The releases
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          . .tools/env.sh
+          for dist in dist dist-root dist-deep; do
+            python -I tools/cistatus.py step --title "Precompress $dist" -- node scripts/precompress.mjs --dist "$dist"
+          done
+          python -I tools/cistatus.py step --title "Release at /strata-engine-docs" -- python -I tools/release.py assemble --tag "$TAG" --dist dist --out release
+          python -I tools/cistatus.py step --title "Release at /" -- python -I tools/release.py assemble --tag "$TAG" --dist dist-root --base=/ --out release-root
+          python -I tools/cistatus.py step --title "Release at /x/y" -- python -I tools/release.py assemble --tag "$TAG" --dist dist-deep --base=/x/y --out release-deep
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: strata-engine-docs-release
+          path: release/
+          retention-days: 30
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: strata-engine-docs-other-bases
+          path: |
+            release-root/
+            release-deep/
+          retention-days: 7
+
+  # Checks 9 to 11 and gates (a) to (c) through the real servers, all of them nginx (plan/site.md, "(b) Runtime", "The
+  # ten requirements and their tests"): the release's files served the ways of tools/servertest.py with Ubuntu's
+  # nginx; the image of deploy/Dockerfile (nginx 1.30.6) built from the release, alone, with a hostile server block,
+  # and behind a proxy whose server block sends two headers of its own (nginx 1.30.6 and nginx:1.20.1); nginx's
+  # official 1.20.1 image with the copied files at the three bases. Each through tools/servertest.py url --runtime:
+  # gate (a) (tools/crawl.py --url), gate (b) (scripts/runtime.mjs) and gate (c), without and with a host-headers file.
+  # Against the container also the search tests, axe on every page in both themes, the keyboard tests and Lighthouse
+  # (budget rows 12 to 15), and on the runner the two-pass copy of deploy/deploy-files.sh with rsync (requirement 9).
+  serve-test:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      TAG: ${{ needs.build.outputs.tag }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: The toolchain's cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            .tools
+            !.tools/ms-playwright
+            !.tools/npm-cache
+            !.tools/tmp
+          key: tools-${{ hashFiles('tools/toolchain.json') }}
+          restore-keys: tools-
+      - name: npm's cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .tools/npm-cache
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+      - name: Playwright's browsers
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .tools/ms-playwright
+          key: playwright-1.65.0-${{ runner.os }}
+      - name: Toolchain, packages and Chromium (its system libraries on every run)
+        run: |
+          python -I tools/bootstrap.py
+          . .tools/env.sh
+          npm ci --no-audit
+          npx playwright install-deps chromium
+          npx playwright install --only-shell chromium
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: strata-engine-docs-release
+          path: release
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: strata-engine-docs-other-bases
+      - name: The served build, for the browser checks' list of pages
+        run: |
+          . .tools/env.sh
+          mkdir site
+          tar -xzf "release/$TAG/strata-engine-docs-$TAG.tar.gz" -C site
+          test -f site/strata-engine-docs/index.html
+      - name: The deploy files alone
+        run: |
+          . .tools/env.sh
+          python -I tools/cistatus.py step --title "The deploy files" -- python -I tools/servertest.py static
+      - name: Ubuntu's nginx with the release's files, the ways of tools/servertest.py
+        run: |
+          . .tools/env.sh
+          sudo apt-get update -q
+          sudo apt-get install -y -q nginx rsync
+          sudo systemctl stop nginx || true
+          for release in "release/$TAG" "release-root/$TAG" "release-deep/$TAG"; do
+            python -I tools/cistatus.py step --title "servertest nginx: $release" -- python -I tools/servertest.py nginx --program "$(command -v nginx)" --release "$release"
+          done
+      - name: The image of deploy/Dockerfile, built from the release
+        run: |
+          . .tools/env.sh
+          mkdir image
+          tar -xzf "release/$TAG/strata-engine-docs-$TAG.tar.gz" -C image
+          tar -xzf "release/$TAG/strata-engine-docs-deploy-$TAG.tar.gz" -C image
+          docker build -f image/deploy/Dockerfile -t strata-engine-docs:ci image
+          # The image holds nothing that only builds or tests the book (plan/critique/rulings-6.md, R22 and R26).
+          if docker run --rm --entrypoint /bin/sh strata-engine-docs:ci -c 'find / -xdev -type d -name node_modules | grep -q .'; then
+            echo "::error title=The container image::the image of deploy/Dockerfile holds a node_modules folder"
+            exit 1
+          fi
+      # The container on 127.0.0.1:8080, where deploy/README.md runs it; it keeps running for the browser checks and
+      # the proxy. A check that fails prints the container's log.
+      - name: The container, gates (a) to (c)
+        run: |
+          . .tools/env.sh
+          docker run -d --name book --read-only --tmpfs /tmp --tmpfs /var/cache/nginx -p 127.0.0.1:8080:8080 strata-engine-docs:ci
+          python -I tools/cistatus.py step --title "The container" -- python -I tools/servertest.py url --wait 30 --runtime \
+            --url http://127.0.0.1:8080/strata-engine-docs/ --release "release/$TAG" --container --no-header Strict-Transport-Security \
+            || { docker logs book; exit 1; }
+      - name: Search, axe on every page, the keyboard, Lighthouse (checks 9 and 11; budget rows 12 to 15)
+        run: |
+          . .tools/env.sh
+          url=http://127.0.0.1:8080/strata-engine-docs/
+          release=()
+          if [ "$RELEASE_TAG" = true ]; then release=(--release); fi
+          python -I tools/cistatus.py step --title "Search transfer (row 12)" -- node scripts/search-payload.mjs --url "$url" --json search.json
+          python -I tools/cistatus.py step --title "Search quality (row 13)" -- node scripts/search-quality.mjs --url "$url" "${release[@]}"
+          python -I tools/cistatus.py step --title "axe on every page (row 15)" -- node scripts/a11y.mjs --all --url "$url" --dist site/strata-engine-docs
+          python -I tools/cistatus.py step --title "The keyboard (check 9)" -- node scripts/keyboard.mjs --url "$url" --dist site/strata-engine-docs
+          python -I tools/cistatus.py step --title "Lighthouse (check 9, row 14)" -- node scripts/lighthouse.mjs --url "$url" --dist site/strata-engine-docs --json lighthouse.json
+      # Requirement 1: the container's server with a host's regular-expression location for static files beside the
+      # book's include; the book's "^~" keeps it from the book's files, so the crawl meets no 418.
+      - name: The container with a hostile server block
+        run: |
+          . .tools/env.sh
+          python -I tools/servertest.py layout --kind hostile --release "release/$TAG" --out ci-hostile
+          docker run -d --name hostile --read-only --tmpfs /tmp --tmpfs /var/cache/nginx \
+            -v "$PWD/ci-hostile/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro" \
+            -p 127.0.0.1:8081:8080 strata-engine-docs:ci
+          python -I tools/cistatus.py step --title "The hostile server block" -- python -I tools/servertest.py url --wait 30 --runtime \
+            --url http://127.0.0.1:8081/strata-engine-docs/ --release "release/$TAG" --container --no-header Strict-Transport-Security \
+            || { docker logs hostile; exit 1; }
+          docker rm -f hostile
+      # Requirement 10: a second nginx container on the host's network, whose server block serves a site of its own and
+      # sends X-Frame-Options and X-Content-Type-Options of its own, forwards the prefix to the container with
+      # deploy/nginx-proxy.conf, so that a header arriving twice fails. Its nginx is 1.30.6, and 1.20.1 as the owner's
+      # host runs it.
+      - name: The proxy in front of the container, without and with a host-headers file
+        run: |
+          . .tools/env.sh
+          for image in nginxinc/nginx-unprivileged:1.30.6-alpine nginx:1.20.1; do
+            for headers in without with; do
+              rm -rf ci-proxy
+              if [ "$headers" = with ]; then
+                python -I tools/servertest.py layout --kind proxy --release "release/$TAG" --out ci-proxy --listen 127.0.0.1:8090 --host-headers
+                check="--host-header=Strict-Transport-Security: max-age=300"
+              else
+                python -I tools/servertest.py layout --kind proxy --release "release/$TAG" --out ci-proxy --listen 127.0.0.1:8090
+                check="--no-header=Strict-Transport-Security"
+              fi
+              docker run -d --name proxy --network host \
+                -v "$PWD/ci-proxy/etc/nginx/conf.d:/etc/nginx/conf.d:ro" \
+                -v "$PWD/ci-proxy/etc/nginx/snippets:/etc/nginx/snippets:ro" \
+                -v "$PWD/ci-proxy/srv:/srv:ro" "$image"
+              python -I tools/cistatus.py step --title "The proxy: $image, $headers a host-headers file" -- python -I tools/servertest.py url --wait 30 --runtime \
+                --url http://127.0.0.1:8090/strata-engine-docs/ --release "release/$TAG" "$check" || { docker logs proxy; docker logs book; exit 1; }
+              docker rm -f proxy
+            done
+          done
+          docker rm -f book
+      # Requirement 8: nginx's official 1.20.1 image, whose mime.types knows no avif, with the release's files copied in
+      # the way deploy/README.md says, inside a server block that also serves another site at the root, at each base;
+      # the build at /x/y holds the moved page of the redirect test entry, whose 301 gate (b) checks.
+      - name: The copied files in nginx's official 1.20.1 image, without and with a host-headers file
+        run: |
+          . .tools/env.sh
+          for pair in "release/$TAG /strata-engine-docs" "release-root/$TAG /" "release-deep/$TAG /x/y"; do
+            release="${pair% *}"
+            base="${pair#* }"
+            url="http://127.0.0.1:8082${base%/}/"
+            for headers in without with; do
+              rm -rf ci-copied
+              if [ "$headers" = with ]; then
+                python -I tools/servertest.py layout --kind copied --release "$release" --out ci-copied --host-headers
+                check="--host-header=Strict-Transport-Security: max-age=300"
+              else
+                python -I tools/servertest.py layout --kind copied --release "$release" --out ci-copied
+                check="--no-header=Strict-Transport-Security"
+              fi
+              docker run -d --name copied -p 127.0.0.1:8082:80 \
+                -v "$PWD/ci-copied/etc/nginx/conf.d:/etc/nginx/conf.d:ro" \
+                -v "$PWD/ci-copied/etc/nginx/snippets:/etc/nginx/snippets:ro" \
+                -v "$PWD/ci-copied/srv:/srv:ro" nginx:1.20.1
+              python -I tools/cistatus.py step --title "The copied files at $base, $headers a host-headers file" -- python -I tools/servertest.py url --wait 30 --runtime \
+                --url "$url" --release "$release" "$check" || { docker logs copied; exit 1; }
+              docker rm -f copied
+            done
+          done
+      # Requirement 9: deploy/deploy-files.sh's two passes with the real rsync; the test fails here, never skips.
+      - name: The two-pass copy
+        run: |
+          . .tools/env.sh
+          command -v rsync >/dev/null || { sudo apt-get update -q && sudo apt-get install -y -q rsync; }
+          python -I tools/cistatus.py step --title "The two-pass copy (requirement 9)" -- python -I -m unittest discover -s tools/tests -t . -p test_deploy.py \
+            -k test_pass_1_keeps_the_stale_file_and_pass_2_removes_it_but_not_the_archive -v
+
+  # A book-v* tag's GitHub release: the site tarball, the deploy tarball and SHA256SUMS, once everything passed.
+  release:
+    needs: [build, excerpts, serve-test]
+    if: startsWith(github.ref, 'refs/tags/book-v')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    env:
+      TAG: ${{ needs.build.outputs.tag }}
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: strata-engine-docs-release
+          path: release
+      - name: The GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$TAG" --verify-tag --repo "$GITHUB_REPOSITORY" --title "The Strata Engine Book $TAG" \
+            "release/$TAG/strata-engine-docs-$TAG.tar.gz" "release/$TAG/strata-engine-docs-deploy-$TAG.tar.gz" "release/$TAG/SHA256SUMS"
+
+  # The run's result, through git (rulings 6, R25): every job's conclusion, failed steps and ::error annotations in
+  # runs/<commit>-<attempt>.json on the branch ci-results, whatever the other jobs did; not for pull requests.
+  report:
+    needs: [lint, excerpts, build, serve-test, release]
+    if: always() && github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      actions: read
+      checks: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: tools
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Record the run on ci-results
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p ci-report/annotations ci-report/runs
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/attempts/$GITHUB_RUN_ATTEMPT/jobs?per_page=100" > ci-report/jobs.json
+          jq -r '.jobs[] | select(.name != "report") | .id' ci-report/jobs.json | while read -r id; do
+            gh api "repos/$GITHUB_REPOSITORY/check-runs/$id/annotations?per_page=100" > "ci-report/annotations/$id.json"
+          done
+          record="ci-report/runs/$GITHUB_SHA-$GITHUB_RUN_ATTEMPT.json"
+          python -I tools/cistatus.py record --jobs ci-report/jobs.json --annotations ci-report/annotations --commit "$GITHUB_SHA" \
+            --attempt "$GITHUB_RUN_ATTEMPT" --run-url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+            --event "$GITHUB_EVENT_NAME" --ref "$GITHUB_REF" --out "$record"
+          python -I tools/cistatus.py publish --file "$record" --name "github-actions[bot]" \
+            --email "41898282+github-actions[bot]@users.noreply.github.com"

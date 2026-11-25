@@ -1,0 +1,108 @@
+diff --git a/Strata/shaders/Debug/Checker.frag.slang b/Strata/shaders/Debug/Checker.frag.slang
+new file mode 100644
+--- /dev/null
++++ b/Strata/shaders/Debug/Checker.frag.slang
+@@ -0,0 +1,35 @@
++#include "Include/Common.slang"
++
++// Diagnostic shader used by GPU tests: a checkerboard of 8 x 8 cells over the whole target. Red marks the cells whose
++// column and row add up to an even number; green marks the upper half of the target, which shows the direction of V.
++
++static float2 v_UV;
++static float4 o_Color;
++
++void st_Main()
++{
++	uint2 cell = uint2(v_UV * 8.0);
++	float red = ((cell.x + cell.y) & 1u) == 0u ? 1.0 : 0.0;
++	float green = v_UV.y < 0.5 ? 1.0 : 0.0;
++	o_Color = float4(red, green, 0.0, 1.0);
++}
++
++// --- Entry point ---
++struct ST_Input
++{
++	[[vk::location(0)]] float2 v_UV : TEXCOORD0;
++};
++struct ST_Output
++{
++	[[vk::location(0)]] float4 o_Color : SV_Target0;
++};
++ST_Output main(ST_Input input, float4 fragCoord : SV_Position, bool frontFacing : SV_IsFrontFace)
++{
++	st_FragCoord = fragCoord;
++	st_FrontFacing = frontFacing;
++	v_UV = input.v_UV;
++	st_Main();
++	ST_Output output;
++	output.o_Color = o_Color;
++	return output;
++}
+diff --git a/Strata/CMakeLists.txt b/Strata/CMakeLists.txt
+--- a/Strata/CMakeLists.txt
++++ b/Strata/CMakeLists.txt
+@@ -84,6 +84,7 @@
+ 		ImGui.frag
+ 		Debug/ColorTriangle.vert
+ 		Debug/ColorTriangle.frag
++		Debug/Checker.frag
+ 		Scene/Mesh.vert
+ 		Scene/DepthPrepass.frag
+ 		Scene/Forward.frag
+diff --git a/StrataTests/src/Renderer/GPURendererTests.cpp b/StrataTests/src/Renderer/GPURendererTests.cpp
+--- a/StrataTests/src/Renderer/GPURendererTests.cpp
++++ b/StrataTests/src/Renderer/GPURendererTests.cpp
+@@ -171,6 +171,53 @@
+ 		CHECK(gpu.GetNewErrorCount() == 0);
+ 	}
+ 
++	TEST_CASE("Checker shader draws its cells over the whole target, with V running down")
++	{
++		Tests::GPUContext gpu;
++		REQUIRE(gpu.IsValid());
++		nvrhi::IDevice* device = gpu.GetNvrhiDevice();
++
++		constexpr uint32_t size = 64;
++		nvrhi::TextureHandle target = CreateRenderTarget(device, size, size, nvrhi::Format::RGBA8_UNORM);
++		nvrhi::FramebufferHandle framebuffer = device->createFramebuffer(nvrhi::FramebufferDesc().addColorAttachment(target));
++
++		nvrhi::GraphicsPipelineDesc pipelineDesc;
++		pipelineDesc.VS = Renderer::GetShaderLibrary().Get("PostProcess/Fullscreen.vert");
++		pipelineDesc.PS = Renderer::GetShaderLibrary().Get("Debug/Checker.frag");
++		REQUIRE(pipelineDesc.VS != nullptr);
++		REQUIRE(pipelineDesc.PS != nullptr);
++		pipelineDesc.primType = nvrhi::PrimitiveType::TriangleList;
++		pipelineDesc.renderState.rasterState.setCullNone();
++		pipelineDesc.renderState.depthStencilState.setDepthTestEnable(false).setDepthWriteEnable(false);
++		nvrhi::GraphicsPipelineHandle pipeline = device->createGraphicsPipeline(pipelineDesc, framebuffer->getFramebufferInfo());
++		REQUIRE(pipeline);
++
++		// The clear is blue, a color the shader never writes: a pixel the fullscreen triangle misses stays blue.
++		nvrhi::CommandListHandle commandList = device->createCommandList();
++		commandList->open();
++		commandList->clearTextureFloat(target, nvrhi::AllSubresources, nvrhi::Color(0.0f, 0.0f, 1.0f, 1.0f));
++		nvrhi::GraphicsState state;
++		state.pipeline = pipeline;
++		state.framebuffer = framebuffer;
++		state.viewport.addViewportAndScissorRect(nvrhi::Viewport(static_cast<float>(size), static_cast<float>(size)));
++		commandList->setGraphicsState(state);
++		commandList->draw(nvrhi::DrawArguments().setVertexCount(3));
++		commandList->close();
++		device->executeCommandList(commandList);
++
++		ReadbackImage image;
++		REQUIRE(Renderer::ReadTexture(target, image));
++		REQUIRE(image.Width == size);
++
++		// 8 x 8 cells of 8 pixels. Row 0 is the top of the image, so V grows downwards and green marks rows 0 to 3.
++		CHECK(Tests::GetPixelRGBA8(image, 4, 4) == glm::u8vec4(255, 255, 0, 255));
++		CHECK(Tests::GetPixelRGBA8(image, 12, 4) == glm::u8vec4(0, 255, 0, 255));
++		CHECK(Tests::GetPixelRGBA8(image, 4, 52) == glm::u8vec4(255, 0, 0, 255));
++		CHECK(Tests::GetPixelRGBA8(image, 12, 52) == glm::u8vec4(0, 0, 0, 255));
++		CHECK(Tests::GetPixelRGBA8(image, 60, 60) == glm::u8vec4(255, 0, 0, 255));
++		CHECK(gpu.GetNewErrorCount() == 0);
++	}
++
+ 	TEST_CASE("ImGui renders into an offscreen target")
+ 	{
+ 		Tests::GPUContext gpu;

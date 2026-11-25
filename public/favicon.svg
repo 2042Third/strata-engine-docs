@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+	<title>The Strata Engine Book</title>
+	<rect width="32" height="32" rx="6" fill="#17181c"/>
+	<path d="M6 22h20M6 16h20M6 10h20" stroke="#8ab4f8" stroke-width="3" stroke-linecap="round"/>
+	<path d="M10 22v-6M22 16v-6" stroke="#f4b860" stroke-width="3" stroke-linecap="round"/>
+</svg>

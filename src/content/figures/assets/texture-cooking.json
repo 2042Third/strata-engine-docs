@@ -1,0 +1,11 @@
+{
+	"figures": [
+		{
+			"id": "sttx-layout",
+			"shows": "The bytes of a cooked texture file from left to right: the 40-byte header, the mip table with the largest level first, the name, padding, then the levels smallest first, with the mip tail bracketed as the first read",
+			"caption": "The small levels come first, so one read right after the header gets the whole mip tail.",
+			"alt": "A row of boxes from left to right. A header, a table of levels, a name and padding come first. Then the pixel levels follow from the smallest to the largest, each starting at a multiple of 16 bytes. A bracket over the header and the smallest levels marks the first read.",
+			"kind": "diagram"
+		}
+	]
+}

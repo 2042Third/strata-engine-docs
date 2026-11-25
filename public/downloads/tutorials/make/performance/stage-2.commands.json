@@ -1,0 +1,13 @@
+[
+	{
+		"command": "editor.perf",
+		"expect": {
+			"/frames": {
+				"min": 1
+			}
+		},
+		"until": {
+			"seconds": 10
+		}
+	}
+]

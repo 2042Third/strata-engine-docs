@@ -1,0 +1,214 @@
+{
+	"files": {
+		"furnace-sweep-dielectrics.webp": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1536,
+				260
+			],
+			"figure": "furnace-sweep",
+			"variant": null,
+			"crop": "dielectrics",
+			"original": "ba2e37993598d4f83e54044fd2f198ff2f0f4ff06294e75985fb76b11aeabe90",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "b0a85c40dacbacd37a0bbb52039443076eaf5e631a9d90eae92be8c0fc26d344"
+		},
+		"furnace-sweep-metals.webp": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1536,
+				259
+			],
+			"figure": "furnace-sweep",
+			"variant": null,
+			"crop": "metals",
+			"original": "59bf5ebd9d4becc076df7c86cad5a09fcaa853550111ca68c495b39e45a8869a",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "d343fb43e9c8b7076f24ff23642395f4ddf5c3a94c18fcf020d0f47058cfa573"
+		},
+		"furnace-sweep.webp": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1920,
+				1080
+			],
+			"figure": "furnace-sweep",
+			"variant": null,
+			"crop": null,
+			"original": "a77240e8ab36093641c61be2d356bdfde0895ccc646b01d241d45aad05f4c070",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "2fd9b5fa214b25d521387b2dea365d172b49bf093667cfe996bca6aae3d8b952"
+		},
+		"normal-map-compare-map-off-right.webp": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				576,
+				504
+			],
+			"figure": "normal-map-compare",
+			"variant": "map-off",
+			"crop": "right",
+			"original": "f4bc23a658abc40f23140acd64c0b324cb16a06eb975e4bfa66e6c3eb4142529",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "e3abc2a5292493f80ebe6ceb0489981e2384a8df8fd2f0f41e1388c63cb12b48"
+		},
+		"normal-map-compare-map-off.webp": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1280,
+				720
+			],
+			"figure": "normal-map-compare",
+			"variant": "map-off",
+			"crop": null,
+			"original": "f6cf4d88030c081c0e214fb551a606c1b3dec8c2ee8f4c3a3fec91cbf90c01e8",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "cf903facc1aa50e0ec7d985beab3b01c01fa07d0551e0663506ea08bcaa192cd"
+		},
+		"normal-map-compare-map-on-right.webp": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				576,
+				504
+			],
+			"figure": "normal-map-compare",
+			"variant": "map-on",
+			"crop": "right",
+			"original": "d1d13201d39d34a16b1aea3bf3f2e4e4dfb23c05077dc335c78af558c8e56f74",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "6e7ee3e8784f3a4321558707b5b9e9006976fa47e17665264a72517542cec67d"
+		},
+		"normal-map-compare-map-on.webp": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1280,
+				720
+			],
+			"figure": "normal-map-compare",
+			"variant": "map-on",
+			"crop": null,
+			"original": "53d9dd4832ea0222fcb40522e8f1a335d9d4b93420b4a9be80678b17bd8a1c3c",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "f523672f3f4ff4829e83c99c8932cd2c607b1c2c41462f3acf3603e7cd5d89bf"
+		}
+	}
+}

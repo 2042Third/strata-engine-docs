@@ -1,0 +1,5 @@
+# Part review: `reference/performance`
+
+- wrong: "At the pin, the newest renderer rows are provisional: the lights shaped as rectangles ... and the scenes of 64 and 256 shadowed point lights" read as the only provisional entries; `StrataTests/Perf/Budgets.json` holds 89 provisional entries of 264 (global illumination, post effects, physics, scene interpolation, frame pacer and others); now "about a third of the entries are provisional, in many suites. Among them are the newest renderer rows", in a paragraph of its own.
+- wrong: "Its entry holds only a unit (and perhaps a target)": a provisional entry also holds `"Provisional": true` (the file's `_comment`); now "a unit and the flag `Provisional` (and perhaps a target)".
+- wrong: the `Perf.Editor` row named "thumbnails at 100,000 entities": the suite has no thumbnail metric (those are `PerfGPU.Editor`'s) and measures saves and recovery up to a million entities (`SaveMaxFrame1M`, `RecoveryWriteMaxFrame100k`); now "saves and recovery files in scenes of up to a million entities".

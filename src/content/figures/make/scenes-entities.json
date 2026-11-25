@@ -1,0 +1,2071 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "Coin Run's level seen from its camera: the grey ground inside four pale walls, the ball near the front and the small coin near the back",
+			"caption": "The finished level from the raised camera: four walls close the ground, the ball waits near the front and the small coin near the back.",
+			"alt": "A grey floor seen from above and behind, enclosed by four pale walls. A white ball is in the near half, and a small pale disc far behind it has a thin dark shadow to its left.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Walls"
+					},
+					"bind": {
+						"walls": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									10
+								],
+								"Scale": [
+									20,
+									1,
+									0.5
+								]
+							}
+						}
+					},
+					"bind": {
+						"w0": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall (1)",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									-10
+								],
+								"Scale": [
+									20,
+									1,
+									0.5
+								]
+							}
+						}
+					},
+					"bind": {
+						"w1": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall (2)",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									10,
+									0.5,
+									0
+								],
+								"Scale": [
+									0.5,
+									1,
+									20
+								]
+							}
+						}
+					},
+					"bind": {
+						"w2": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall (3)",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-10,
+									0.5,
+									0
+								],
+								"Scale": [
+									0.5,
+									1,
+									20
+								]
+							}
+						}
+					},
+					"bind": {
+						"w3": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								16,
+								13
+							],
+							"Rotation": [
+								-0.4617,
+								0,
+								0,
+								0.887
+							]
+						}
+					},
+					"entityName": "Main Camera"
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere"
+							},
+							"SphereCollider": {
+								"Radius": 0.5
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									6
+								]
+							}
+						}
+					},
+					"bind": {
+						"ball": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Tag": {
+								"Tag": "Coin"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.8,
+									-4
+								],
+								"Rotation": [
+									0.7071,
+									0,
+									0,
+									0.7071
+								],
+								"Scale": [
+									0.8,
+									0.1,
+									0.8
+								]
+							}
+						}
+					},
+					"bind": {
+						"coin": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0.75,
+								10
+							],
+							"Scale": [
+								20,
+								1.5,
+								0.5
+							]
+						}
+					},
+					"entityName": "Wall"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0.75,
+								-10
+							],
+							"Scale": [
+								20,
+								1.5,
+								0.5
+							]
+						}
+					},
+					"entityName": "Wall (1)"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								10,
+								0.75,
+								0
+							],
+							"Scale": [
+								0.5,
+								1.5,
+								20
+							]
+						}
+					},
+					"entityName": "Wall (2)"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								-10,
+								0.75,
+								0
+							],
+							"Scale": [
+								0.5,
+								1.5,
+								20
+							]
+						}
+					},
+					"entityName": "Wall (3)"
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "ground-inspector",
+			"shows": "The Inspector with the Ground selected: its name and ID in the header, then the Transform, Mesh Renderer and Box Collider sections",
+			"caption": "The Ground's Inspector: the name and the ID in the header, then one section each for the transform, the mesh renderer and the box collider.",
+			"alt": "The Inspector headed by the name Ground and its ID. A Transform section shows Translation 0, 0, 0 and Scale 20, 1, 20. A Mesh Renderer section shows the Plane mesh, the Ground material and Cast Shadows ticked. A Box Collider section shows Half Extents and Offset.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-scenes-entities-inspector.ini",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Ground"
+						},
+						"bind": {
+							"ground": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "ground"
+								}
+							]
+						}
+					}
+				],
+				"windowSize": [
+					1280,
+					660
+				],
+				"panel": "Inspector"
+			}
+		},
+		{
+			"id": "create-menu",
+			"shows": "The whole editor with the Hierarchy's plus menu open, showing the shapes, the Mesh only entry and the lights",
+			"caption": "The plus menu: shapes that come with a collider, a list of shapes without one, then cameras, lights and more.",
+			"alt": "The Hierarchy panel with its plus menu open, listing Empty, Cube, Sphere, Plane, Cylinder, Capsule, Cone and more, a Mesh only list, Camera, lights and a list of interface items.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-scenes-entities.ini",
+				"steps": [],
+				"windowSize": [
+					960,
+					540
+				]
+			},
+			"waitsFor": "tier 3: the Hierarchy's plus menu open; no editor command opens a menu or popup",
+			"standIn": "create-menu-drawing"
+		},
+		{
+			"id": "create-menu-drawing",
+			"kind": "diagram",
+			"shows": "A sketch of the Hierarchy's plus menu at the pin: Empty, the seven shapes with the collider each entry adds, the Mesh only list of the same shapes without a collider, Camera, the lights, Post Process, 3D Text, Audio Source and the closed list of interface elements",
+			"caption": "A sketch of the plus menu, with the collider each shape entry adds written beside it. Under Mesh only the same shapes come with a Mesh Renderer and no collider.",
+			"alt": "A menu below a plus button lists Empty, seven shapes beginning with Cube, Mesh only, Camera, five lights, Post Process, 3D Text, Audio Source and a list of interface elements. Beside each shape stands its collider: a box, a sphere, a capsule or a convex mesh. Mesh only opens a list of the same seven shapes, without a collider.",
+			"numbers": "Entries and their order: GetPresets, GetMeshPresets and GetMeshOnlyPresets, and DrawCreateMenu, which puts Mesh only after the last shape (StrataEditor/src/Panels/SceneHierarchyPanel.cpp at 319075e3). Colliders: Cube Box Collider (Half Extents 0.5), Sphere Sphere Collider (Radius 0.5), Plane a thin Box Collider, Capsule Capsule Collider, Cylinder, Cone and Torus a Mesh Collider with Convex on. The real menu shows an icon before each entry and no collider names."
+		},
+		{
+			"id": "level-walls",
+			"shows": "The Basic 3D ground with the four walls placed, seen from the raised camera",
+			"caption": "The walls close the ground on four sides, and the raised camera sees the whole level.",
+			"alt": "A grey floor seen from above and behind, enclosed by four low pale walls whose shadows fall along the right and near sides.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Walls"
+					},
+					"bind": {
+						"walls": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									10
+								],
+								"Scale": [
+									20,
+									1,
+									0.5
+								]
+							}
+						}
+					},
+					"bind": {
+						"w0": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall (1)",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									-10
+								],
+								"Scale": [
+									20,
+									1,
+									0.5
+								]
+							}
+						}
+					},
+					"bind": {
+						"w1": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall (2)",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									10,
+									0.5,
+									0
+								],
+								"Scale": [
+									0.5,
+									1,
+									20
+								]
+							}
+						}
+					},
+					"bind": {
+						"w2": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall (3)",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-10,
+									0.5,
+									0
+								],
+								"Scale": [
+									0.5,
+									1,
+									20
+								]
+							}
+						}
+					},
+					"bind": {
+						"w3": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								16,
+								13
+							],
+							"Rotation": [
+								-0.4617,
+								0,
+								0,
+								0.887
+							]
+						}
+					},
+					"entityName": "Main Camera"
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "level-ball-coin",
+			"shows": "The walled ground seen from above, inside a front corner: the ball close by, the coin hanging upright in the air near the back wall, apart from its shadow",
+			"caption": "Seen from above the front of the level: the ball rests close by, and the coin hangs upright near the back wall, its centre 0.8 m up, so its thin shadow lies apart from it.",
+			"numbers": "The setup places the Coin at Translation 0, 0.8, -4 with Scale 0.8, 0.1, 0.8 (the page's step): its centre is 0.8 m up and its radius 0.4 m, so its lowest point is 0.4 m above the ground.",
+			"alt": "A grey floor is bounded at the back and left by pale walls. A large white ball sits in the foreground, and far behind it a flat round coin stands upright in the air, with its thin dark shadow on the floor to its left.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					4.0,
+					5.0,
+					9.0
+				],
+				"target": [
+					0.0,
+					1.05,
+					3.3
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Walls"
+					},
+					"bind": {
+						"walls": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									10
+								],
+								"Scale": [
+									20,
+									1,
+									0.5
+								]
+							}
+						}
+					},
+					"bind": {
+						"w0": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall (1)",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									-10
+								],
+								"Scale": [
+									20,
+									1,
+									0.5
+								]
+							}
+						}
+					},
+					"bind": {
+						"w1": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall (2)",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									10,
+									0.5,
+									0
+								],
+								"Scale": [
+									0.5,
+									1,
+									20
+								]
+							}
+						}
+					},
+					"bind": {
+						"w2": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall (3)",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-10,
+									0.5,
+									0
+								],
+								"Scale": [
+									0.5,
+									1,
+									20
+								]
+							}
+						}
+					},
+					"bind": {
+						"w3": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								16,
+								13
+							],
+							"Rotation": [
+								-0.4617,
+								0,
+								0,
+								0.887
+							]
+						}
+					},
+					"entityName": "Main Camera"
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere"
+							},
+							"SphereCollider": {
+								"Radius": 0.5
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									6
+								]
+							}
+						}
+					},
+					"bind": {
+						"ball": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Tag": {
+								"Tag": "Coin"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.8,
+									-4
+								],
+								"Rotation": [
+									0.7071,
+									0,
+									0,
+									0.7071
+								],
+								"Scale": [
+									0.8,
+									0.1,
+									0.8
+								]
+							}
+						}
+					},
+					"bind": {
+						"coin": "/id"
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "walls-mixed",
+			"shows": "The Inspector with the four walls selected: Translation and Scale show two dashes on X and Z and their shared Y, 0.75 and 1.5",
+			"caption": "Four walls selected: the fields that differ between them show two dashes, and the fields they share show their value.",
+			"alt": "The Inspector headed 4 entities. In its Transform section, Translation and Scale show two dashes on X and Z, and Y shows 0.75 and 1.5; Rotation shows 0 on every axis.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-scenes-entities-inspector.ini",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Walls"
+						},
+						"bind": {
+							"walls": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										10
+									],
+									"Scale": [
+										20,
+										1,
+										0.5
+									]
+								}
+							}
+						},
+						"bind": {
+							"w0": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall (1)",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										-10
+									],
+									"Scale": [
+										20,
+										1,
+										0.5
+									]
+								}
+							}
+						},
+						"bind": {
+							"w1": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall (2)",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										10,
+										0.5,
+										0
+									],
+									"Scale": [
+										0.5,
+										1,
+										20
+									]
+								}
+							}
+						},
+						"bind": {
+							"w2": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall (3)",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-10,
+										0.5,
+										0
+									],
+									"Scale": [
+										0.5,
+										1,
+										20
+									]
+								}
+							}
+						},
+						"bind": {
+							"w3": "/id"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									0,
+									16,
+									13
+								],
+								"Rotation": [
+									-0.4617,
+									0,
+									0,
+									0.887
+								]
+							}
+						},
+						"entityName": "Main Camera"
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									0,
+									0.75,
+									10
+								],
+								"Scale": [
+									20,
+									1.5,
+									0.5
+								]
+							}
+						},
+						"entityName": "Wall"
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									0,
+									0.75,
+									-10
+								],
+								"Scale": [
+									20,
+									1.5,
+									0.5
+								]
+							}
+						},
+						"entityName": "Wall (1)"
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									10,
+									0.75,
+									0
+								],
+								"Scale": [
+									0.5,
+									1.5,
+									20
+								]
+							}
+						},
+						"entityName": "Wall (2)"
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									-10,
+									0.75,
+									0
+								],
+								"Scale": [
+									0.5,
+									1.5,
+									20
+								]
+							}
+						},
+						"entityName": "Wall (3)"
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "w0"
+								},
+								{
+									"$ref": "w1"
+								},
+								{
+									"$ref": "w2"
+								},
+								{
+									"$ref": "w3"
+								}
+							]
+						}
+					}
+				],
+				"panel": "Inspector",
+				"windowSize": [
+					1280,
+					660
+				]
+			}
+		},
+		{
+			"id": "nothing-selected",
+			"shows": "The Inspector with nothing selected, showing the scene's settings in closed sections",
+			"caption": "With nothing selected, the Inspector shows the scene itself: its name, its entity count and closed sections of settings.",
+			"alt": "The Inspector headed Main, with the line Scene, 12 entities, select an entity to edit it. Below are closed sections for Physics, Streaming and Sky, and three lines that link to the Project Settings.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-scenes-entities-short.ini",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Walls"
+						},
+						"bind": {
+							"walls": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										10
+									],
+									"Scale": [
+										20,
+										1,
+										0.5
+									]
+								}
+							}
+						},
+						"bind": {
+							"w0": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall (1)",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										-10
+									],
+									"Scale": [
+										20,
+										1,
+										0.5
+									]
+								}
+							}
+						},
+						"bind": {
+							"w1": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall (2)",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										10,
+										0.5,
+										0
+									],
+									"Scale": [
+										0.5,
+										1,
+										20
+									]
+								}
+							}
+						},
+						"bind": {
+							"w2": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall (3)",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-10,
+										0.5,
+										0
+									],
+									"Scale": [
+										0.5,
+										1,
+										20
+									]
+								}
+							}
+						},
+						"bind": {
+							"w3": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Ball",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Sphere"
+								},
+								"SphereCollider": {
+									"Radius": 0.5
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										6
+									]
+								}
+							}
+						},
+						"bind": {
+							"ball": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder"
+								},
+								"Tag": {
+									"Tag": "Coin"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.8,
+										-4
+									],
+									"Rotation": [
+										0.7071,
+										0,
+										0,
+										0.7071
+									],
+									"Scale": [
+										0.8,
+										0.1,
+										0.8
+									]
+								}
+							}
+						},
+						"bind": {
+							"coin": "/id"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					}
+				],
+				"panel": "Inspector",
+				"windowSize": [
+					960,
+					440
+				]
+			}
+		},
+		{
+			"id": "walls-off",
+			"shows": "The editor with the Walls entity switched off and selected: its row dimmed, its check box in the Inspector clear, and the level seen through the game camera without walls",
+			"caption": "The Walls entity switched off: its row is dimmed in the Hierarchy, its check box in the Inspector is clear, and the Scene view shows no walls.",
+			"alt": "The editor with the Walls row selected and dimmed in the Hierarchy, and an empty check box beside the name Walls in the Inspector. The Scene view looks down through the game camera on the grey ground, the ball and the coin, with no walls around them.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-scenes-entities.ini",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Walls"
+						},
+						"bind": {
+							"walls": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										10
+									],
+									"Scale": [
+										20,
+										1,
+										0.5
+									]
+								}
+							}
+						},
+						"bind": {
+							"w0": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall (1)",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										-10
+									],
+									"Scale": [
+										20,
+										1,
+										0.5
+									]
+								}
+							}
+						},
+						"bind": {
+							"w1": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall (2)",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										10,
+										0.5,
+										0
+									],
+									"Scale": [
+										0.5,
+										1,
+										20
+									]
+								}
+							}
+						},
+						"bind": {
+							"w2": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall (3)",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-10,
+										0.5,
+										0
+									],
+									"Scale": [
+										0.5,
+										1,
+										20
+									]
+								}
+							}
+						},
+						"bind": {
+							"w3": "/id"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									0,
+									16,
+									13
+								],
+								"Rotation": [
+									-0.4617,
+									0,
+									0,
+									0.887
+								]
+							}
+						},
+						"entityName": "Main Camera"
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Ball",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Sphere"
+								},
+								"SphereCollider": {
+									"Radius": 0.5
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										6
+									]
+								}
+							}
+						},
+						"bind": {
+							"ball": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder"
+								},
+								"Tag": {
+									"Tag": "Coin"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.8,
+										-4
+									],
+									"Rotation": [
+										0.7071,
+										0,
+										0,
+										0.7071
+									],
+									"Scale": [
+										0.8,
+										0.1,
+										0.8
+									]
+								}
+							}
+						},
+						"bind": {
+							"coin": "/id"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									0,
+									0.75,
+									10
+								],
+								"Scale": [
+									20,
+									1.5,
+									0.5
+								]
+							}
+						},
+						"entityName": "Wall"
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									0,
+									0.75,
+									-10
+								],
+								"Scale": [
+									20,
+									1.5,
+									0.5
+								]
+							}
+						},
+						"entityName": "Wall (1)"
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									10,
+									0.75,
+									0
+								],
+								"Scale": [
+									0.5,
+									1.5,
+									20
+								]
+							}
+						},
+						"entityName": "Wall (2)"
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									-10,
+									0.75,
+									0
+								],
+								"Scale": [
+									0.5,
+									1.5,
+									20
+								]
+							}
+						},
+						"entityName": "Wall (3)"
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"pilotGameCamera": true
+						}
+					},
+					{
+						"command": "entity.setActive",
+						"parameters": {
+							"active": false
+						},
+						"entityName": "Walls"
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "walls"
+								}
+							]
+						}
+					}
+				],
+				"windowSize": [
+					960,
+					540
+				]
+			}
+		},
+		{
+			"id": "scenes-two",
+			"shows": "The editor after the first step, with the empty scene Test open: an empty Hierarchy, an empty Scene view and the Inspector counting 0 entities",
+			"caption": "After the first step, the new scene Test is open: nothing in the Hierarchy and nothing in the Scene view.",
+			"alt": "The editor with the scene Test open. The Hierarchy reads The scene is empty and offers buttons to add a cube, a light or a camera. The Scene view shows only the grid under a dark sky, and the Inspector counts 0 entities.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-scenes-entities-wide.ini",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Walls"
+						},
+						"bind": {
+							"walls": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										10
+									],
+									"Scale": [
+										20,
+										1,
+										0.5
+									]
+								}
+							}
+						},
+						"bind": {
+							"w0": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall (1)",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										-10
+									],
+									"Scale": [
+										20,
+										1,
+										0.5
+									]
+								}
+							}
+						},
+						"bind": {
+							"w1": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall (2)",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										10,
+										0.5,
+										0
+									],
+									"Scale": [
+										0.5,
+										1,
+										20
+									]
+								}
+							}
+						},
+						"bind": {
+							"w2": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Wall (3)",
+							"parent": {
+								"$ref": "walls"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-10,
+										0.5,
+										0
+									],
+									"Scale": [
+										0.5,
+										1,
+										20
+									]
+								}
+							}
+						},
+						"bind": {
+							"w3": "/id"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									0,
+									16,
+									13
+								],
+								"Rotation": [
+									-0.4617,
+									0,
+									0,
+									0.887
+								]
+							}
+						},
+						"entityName": "Main Camera"
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Ball",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Sphere"
+								},
+								"SphereCollider": {
+									"Radius": 0.5
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										6
+									]
+								}
+							}
+						},
+						"bind": {
+							"ball": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder"
+								},
+								"Tag": {
+									"Tag": "Coin"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.8,
+										-4
+									],
+									"Rotation": [
+										0.7071,
+										0,
+										0,
+										0.7071
+									],
+									"Scale": [
+										0.8,
+										0.1,
+										0.8
+									]
+								}
+							}
+						},
+						"bind": {
+							"coin": "/id"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									0,
+									0.75,
+									10
+								],
+								"Scale": [
+									20,
+									1.5,
+									0.5
+								]
+							}
+						},
+						"entityName": "Wall"
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									0,
+									0.75,
+									-10
+								],
+								"Scale": [
+									20,
+									1.5,
+									0.5
+								]
+							}
+						},
+						"entityName": "Wall (1)"
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									10,
+									0.75,
+									0
+								],
+								"Scale": [
+									0.5,
+									1.5,
+									20
+								]
+							}
+						},
+						"entityName": "Wall (2)"
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									-10,
+									0.75,
+									0
+								],
+								"Scale": [
+									0.5,
+									1.5,
+									20
+								]
+							}
+						},
+						"entityName": "Wall (3)"
+					},
+					{
+						"command": "scene.save"
+					},
+					{
+						"command": "scene.new"
+					},
+					{
+						"command": "scene.saveAs",
+						"parameters": {
+							"path": "Scenes/Test.stscene"
+						}
+					}
+				],
+				"windowSize": [
+					960,
+					540
+				]
+			}
+		}
+	]
+}

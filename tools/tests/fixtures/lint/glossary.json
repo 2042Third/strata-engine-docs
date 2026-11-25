@@ -1,0 +1,21 @@
+{
+	"terms": [
+		{"id": "fixed-step", "term": "fixed step", "definition": "A slice of time that always has the same length.", "home": "core/time", "avoid": ["fixed timestep"]},
+		{"id": "delta-time", "term": "delta time", "definition": "The time between two frames.", "home": "core/time"},
+		{"id": "accumulator", "term": "accumulator", "definition": "The time no step has simulated yet.", "home": "core/time"},
+		{"id": "entity", "term": "entity", "definition": "A thing in a scene.", "home": "world/ecs", "aliases": ["game object"]},
+		{"id": "component", "term": "component", "definition": "A piece of data of an entity.", "home": "world/ecs"},
+		{"id": "render-pass", "term": "render pass", "definition": "One step of drawing a frame on the GPU.", "home": "gpu/frame"},
+		{"id": "vector", "term": "vector", "definition": "An arrow with a length and a direction.", "home": "basics/math-vectors"},
+		{"id": "folder", "term": "folder", "definition": "A place that holds files and other folders.", "home": "basics/computer", "known": true},
+		{"id": "camera", "term": "camera", "definition": "The point the scene is seen from.", "home": "draw/culling"},
+		{"id": "view-cone", "term": "view cone", "definition": "The part of the world the camera sees.", "home": "draw/culling"},
+		{"id": "bounding-box", "term": "bounding box", "definition": "The smallest box around a mesh.", "home": "draw/culling"},
+		{"id": "occluder", "term": "occluder", "definition": "A mesh that hides others.", "home": "draw/culling"},
+		{"id": "culling", "term": "culling", "definition": "Leaving out what the camera cannot see.", "home": "draw/culling"},
+		{"id": "vulkan-driver", "term": "Vulkan driver", "definition": "The program that runs Vulkan on a GPU.", "home": "start/install"},
+		{"id": "clip-animation", "term": "Clip (animation)", "definition": "A recorded motion of a skeleton.", "home": "basics/tools"},
+		{"id": "spline-curve", "term": "Spline (curve)", "definition": "A smooth curve through points.", "home": "basics/tools"},
+		{"id": "spline-path", "term": "Spline (path)", "definition": "A path an entity follows.", "home": "core/map"}
+	]
+}

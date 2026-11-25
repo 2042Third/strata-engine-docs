@@ -1,0 +1,185 @@
+{
+	"page": "physics/why",
+	"startsFrom": {
+		"sample": "PhysicsPlayground"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "component.get",
+					"parameters": {
+						"component": "RigidBody"
+					},
+					"entityName": "Crate",
+					"checks": [
+						{
+							"pointer": "/values/Type",
+							"equals": "Dynamic"
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [-7.95, 8.506, -12]
+						}
+					},
+					"entityName": "Crate",
+					"checks": [
+						{
+							"pointer": "/values/Translation/1",
+							"approx": 8.506,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "play.start",
+					"parameters": {
+						"paused": true,
+						"build": true
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 90
+					},
+					"expect": {
+						"/stepsRun": {
+							"equals": 90
+						}
+					}
+				},
+				{
+					"command": "component.get",
+					"parameters": {
+						"component": "Transform"
+					},
+					"entityName": "Crate",
+					"checks": [
+						{
+							"pointer": "/values/Translation/1",
+							"approx": 5.506,
+							"tolerance": 0.15
+						}
+					]
+				},
+				{
+					"command": "play.stop"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "RigidBody",
+						"values": {
+							"Type": "Static"
+						}
+					},
+					"entityName": "Crate",
+					"checks": [
+						{
+							"pointer": "/values/Type",
+							"equals": "Static"
+						}
+					]
+				},
+				{
+					"command": "play.start",
+					"parameters": {
+						"paused": true,
+						"build": false
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 90
+					},
+					"expect": {
+						"/stepsRun": {
+							"equals": 90
+						}
+					}
+				},
+				{
+					"command": "component.get",
+					"parameters": {
+						"component": "Transform"
+					},
+					"entityName": "Crate",
+					"checks": [
+						{
+							"pointer": "/values/Translation/1",
+							"approx": 8.506,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "play.stop"
+				},
+				{
+					"command": "component.remove",
+					"parameters": {
+						"component": "BoxCollider"
+					},
+					"entityName": "Crate"
+				},
+				{
+					"command": "play.start",
+					"parameters": {
+						"paused": true,
+						"build": false
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 30
+					},
+					"expect": {
+						"/stepsRun": {
+							"equals": 30
+						}
+					}
+				},
+				{
+					"command": "log.read",
+					"parameters": {
+						"newest": true,
+						"limit": 200,
+						"minLevel": "Warn"
+					},
+					"checks": [
+						{
+							"pointer": "/messages",
+							"contains": "'Crate' has a Rigid Body but no collider; it is not simulated"
+						}
+					]
+				},
+				{
+					"command": "component.get",
+					"parameters": {
+						"component": "Transform"
+					},
+					"entityName": "Crate",
+					"checks": [
+						{
+							"pointer": "/values/Translation/1",
+							"approx": 8.506,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "play.stop"
+				}
+			]
+		}
+	]
+}

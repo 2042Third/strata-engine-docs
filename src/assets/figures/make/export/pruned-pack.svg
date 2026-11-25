@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 328">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: columns A x 16-196, B x 268-504, C (the pack) x 576-752; row 1 y 24-104 (centre 64), row 2 y 160-276 (arrows at 218); footer baseline 308; H 328 -->
+<rect class="plate" x="16" y="24" width="180" height="80" rx="6"/>
+<text class="ink mono" x="106" y="60" text-anchor="middle">Main.stscene</text>
+<text class="ink small" x="106" y="84" text-anchor="middle">the start scene</text>
+<line class="line-ink" x1="196" y1="64" x2="256" y2="64"/>
+<polygon class="ink" points="256,60.5 266,64 256,67.5"/>
+<text class="muted small" x="231" y="54" text-anchor="middle">uses</text>
+<rect class="plate" x="268" y="24" width="236" height="80" rx="6"/>
+<text class="ink bold" x="386" y="60" text-anchor="middle">What the scenes use</text>
+<text class="ink small" x="386" y="84" text-anchor="middle">meshes, materials, textures</text>
+<line class="line-ink" x1="504" y1="64" x2="564" y2="64"/>
+<polygon class="ink" points="564,60.5 574,64 564,67.5"/>
+<rect class="plate" x="576" y="24" width="176" height="252" rx="6"/>
+<text class="ink bold" x="664" y="146" text-anchor="middle">Pruned pack</text>
+<text class="ink small mono" x="664" y="170" text-anchor="middle">CoinRun.stpak</text>
+<rect class="plate" x="16" y="178" width="180" height="80" rx="6"/>
+<text class="ink bold" x="106" y="212" text-anchor="middle">Scripts</text>
+<text class="ink small mono" x="106" y="236" text-anchor="middle">CoinPlacer, Coin</text>
+<line class="line-orange" x1="196" y1="218" x2="256" y2="218" stroke-dasharray="4 3"/>
+<polygon class="orange" points="256,214.5 266,218 256,221.5"/>
+<text class="orange small" x="231" y="208" text-anchor="middle">by path</text>
+<rect class="orange-area" x="268" y="160" width="236" height="116" rx="6"/>
+<text class="ink bold" x="386" y="186" text-anchor="middle">Always include list</text>
+<text class="ink small mono" x="284" y="212">Prefabs/Coin.stprefab</text>
+<text class="ink small mono" x="284" y="236">Materials/GoldGlow.stmat</text>
+<text class="ink small mono" x="284" y="260">Sounds</text>
+<text class="ink small" x="342" y="260">(for a later script)</text>
+<line class="line-ink" x1="504" y1="218" x2="564" y2="218"/>
+<polygon class="ink" points="564,214.5 574,218 564,221.5"/>
+<text class="muted small" x="16" y="308">No scene references the bottom row, so a pruned export packs it only when the list names it.</text>
+</svg>

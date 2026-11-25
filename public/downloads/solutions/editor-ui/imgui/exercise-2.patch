@@ -1,0 +1,54 @@
+diff --git a/StrataEditor/src/EditorApplication.cpp b/StrataEditor/src/EditorApplication.cpp
+index 6bc6e8bd..4c96b34a 100644
+--- a/StrataEditor/src/EditorApplication.cpp
++++ b/StrataEditor/src/EditorApplication.cpp
+@@ -26,6 +26,7 @@
+ #include "UI/EditorFonts.h"
+ #include "UI/Theme.h"
+ 
++#include <imgui.h>
+ #include <nlohmann/json.hpp>
+ 
+ #include <cmath>
+@@ -239,6 +240,33 @@ namespace Strata
+ 		Application& m_Application;
+ 	};
+ 
++	// A scratch layer for learning Dear ImGui: one window with a counter.
++	class ScratchLayer : public Layer
++	{
++	public:
++		ScratchLayer()
++			: Layer("Scratch")
++		{
++		}
++
++		void OnImGuiRender() override
++		{
++			ImGui::Begin("Scratch");
++			for (size_t index = 0; index < m_Rows.size(); index++)
++			{
++				ImGui::PushID(static_cast<int>(index));
++				ImGui::Text("%s", m_Rows[index].c_str());
++				ImGui::SameLine();
++				if (ImGui::Button("Delete"))
++					m_Rows.erase(m_Rows.begin() + static_cast<std::ptrdiff_t>(index));
++				ImGui::PopID();
++			}
++			ImGui::End();
++		}
++	private:
++		std::vector<std::string> m_Rows = { "Cube", "Sphere", "Cone", "Cylinder", "Plane", "Torus", "Quad", "Capsule", "Ring", "Disc" };
++	};
++
+ 	class EditorApplication : public Application
+ 	{
+ 	public:
+@@ -265,6 +293,7 @@ namespace Strata
+ 			}
+ 			// The layer owns its host; the application outlives its layers.
+ 			PushLayer(new EditorLayer(options, CreateScope<ApplicationEditorHost>(*this)));
++			PushLayer(new ScratchLayer());
+ 		}
+ 	private:
+ 		// --window-size promises a window of exactly that many pixels, so that its pictures have that size: a window the system

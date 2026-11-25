@@ -1,0 +1,314 @@
+id	type	heading	label
+animation:24	feature	1.1 The module and its place	Animation module (a layer)
+animation:25	feature	1.1 The module and its place	Optional module
+animation:26	feature	1.1 The module and its place	Module registration
+animation:27	feature	1.1 The module and its place	Only Engine and AssetPipeline include it
+animation:33	feature	1.2 Data types and math	`JointPose`
+animation:34	feature	1.2 Data types and math	`JointIndex`, `c_NoJoint`
+animation:35	feature	1.2 Data types and math	`AnimationMath::Normalize`
+animation:36	feature	1.2 Data types and math	`AnimationMath::Slerp`
+animation:37	feature	1.2 Data types and math	`ToMatrix`, `MultiplyAffine`
+animation:43	feature	1.3 Assets	`Skeleton` asset
+animation:44	feature	1.3 Assets	Skeleton cooked format "STSK" v1
+animation:45	feature	1.3 Assets	`ComputeModelTransforms` (forward kinematics)
+animation:46	feature	1.3 Assets	`AnimationClip` asset
+animation:47	feature	1.3 Assets	Clip cooked format "STAC" v1
+animation:48	feature	1.3 Assets	Shared key times
+animation:49	feature	1.3 Assets	Keyframe reduction (`ReduceKeys`)
+animation:50	feature	1.3 Assets	Clip binding by name
+animation:51	feature	1.3 Assets	Sampling
+animation:52	feature	1.3 Assets	No clip compression
+animation:53	feature	1.3 Assets	`AnimationController` asset (`.stanimator`)
+animation:54	feature	1.3 Assets	Controller validation
+animation:55	feature	1.3 Assets	Transitions grouped by source
+animation:56	feature	1.3 Assets	Asset loaders
+animation:57	feature	1.3 Assets	Asset types
+animation:63	feature	1.4 Import (glTF)	One skeleton per model
+animation:64	feature	1.4 Import (glTF)	One clip per animation
+animation:65	feature	1.4 Import (glTF)	Skinned meshes and skin bindings
+animation:66	feature	1.4 Import (glTF)	Entities of the imported model
+animation:67	feature	1.4 Import (glTF)	Import scale baked
+animation:68	feature	1.4 Import (glTF)	Importer version
+animation:74	feature	1.5 Components	`AnimatorComponent`
+animation:75	feature	1.5 Components	`Clip` inactive reason
+animation:76	feature	1.5 Components	`AnimatorCullingMode`
+animation:77	feature	1.5 Components	`SkinComponent {Animator}`
+animation:78	feature	1.5 Components	`AttachToJointComponent {Animator, Joint}`
+animation:84	feature	1.6 Playback: `AnimatorInstance` (no scene)	Simple mode
+animation:85	feature	1.6 Playback: `AnimatorInstance` (no scene)	State machine
+animation:86	feature	1.6 Playback: `AnimatorInstance` (no scene)	Conditions
+animation:87	feature	1.6 Playback: `AnimatorInstance` (no scene)	Triggers consumed
+animation:88	feature	1.6 Playback: `AnimatorInstance` (no scene)	Exit times
+animation:89	feature	1.6 Playback: `AnimatorInstance` (no scene)	`CanTransitionToSelf`
+animation:90	feature	1.6 Playback: `AnimatorInstance` (no scene)	Cross-fades
+animation:91	feature	1.6 Playback: `AnimatorInstance` (no scene)	Pose blending
+animation:92	feature	1.6 Playback: `AnimatorInstance` (no scene)	Commands
+animation:93	feature	1.6 Playback: `AnimatorInstance` (no scene)	Waiting for the controller
+animation:94	feature	1.6 Playback: `AnimatorInstance` (no scene)	Reload keeps parameter values
+animation:95	feature	1.6 Playback: `AnimatorInstance` (no scene)	Controller changed under it
+animation:96	feature	1.6 Playback: `AnimatorInstance` (no scene)	Loop accounting
+animation:97	feature	1.6 Playback: `AnimatorInstance` (no scene)	Events
+animation:98	feature	1.6 Playback: `AnimatorInstance` (no scene)	Rest pose with nothing playing
+animation:99	feature	1.6 Playback: `AnimatorInstance` (no scene)	State without clip
+animation:100	feature	1.6 Playback: `AnimatorInstance` (no scene)	Settings
+animation:101	feature	1.6 Playback: `AnimatorInstance` (no scene)	Play revision
+animation:107	feature	1.7 Root motion	`RootMotionSetup`
+animation:108	feature	1.7 Root motion	Extraction
+animation:109	feature	1.7 Root motion	Holding the root
+animation:110	feature	1.7 Root motion	`AnimationSystem::ApplyRootMotion`
+animation:111	feature	1.7 Root motion	Root motion through a character controller
+animation:117	feature	1.8 The scene system: `AnimationSystem`	Records
+animation:118	feature	1.8 The scene system: `AnimationSystem`	Record order
+animation:119	feature	1.8 The scene system: `AnimationSystem`	Activity
+animation:120	feature	1.8 The scene system: `AnimationSystem`	Asset sets
+animation:121	feature	1.8 The scene system: `AnimationSystem`	Clip played directly
+animation:122	feature	1.8 The scene system: `AnimationSystem`	Parallel evaluation
+animation:123	feature	1.8 The scene system: `AnimationSystem`	Determinism
+animation:124	feature	1.8 The scene system: `AnimationSystem`	Publishing
+animation:125	feature	1.8 The scene system: `AnimationSystem`	Idle cost
+animation:126	feature	1.8 The scene system: `AnimationSystem`	Attachments
+animation:127	feature	1.8 The scene system: `AnimationSystem`	Event dispatch
+animation:128	feature	1.8 The scene system: `AnimationSystem`	Stats
+animation:129	feature	1.8 The scene system: `AnimationSystem`	WhenVisible culling
+animation:130	feature	1.8 The scene system: `AnimationSystem`	Reach
+animation:131	feature	1.8 The scene system: `AnimationSystem`	Rigid-part animators pose always
+animation:132	feature	1.8 The scene system: `AnimationSystem`	Stale-pose report and paused posing
+animation:133	feature	1.8 The scene system: `AnimationSystem`	Sub-scenes and InstantiateMany
+animation:134	feature	1.8 The scene system: `AnimationSystem`	Interpolated characters
+animation:140	feature	1.9 Scene services (the only way in from other modules)	`SkeletonPose`
+animation:141	feature	1.9 Scene services (the only way in from other modules)	`ISkinningPoses`
+animation:142	feature	1.9 Scene services (the only way in from other modules)	`IAnimatorControl`
+animation:143	feature	1.9 Scene services (the only way in from other modules)	`IAnimationEventSource`
+animation:144	feature	1.9 Scene services (the only way in from other modules)	Registration
+animation:150	feature	1.10 Skinning in the renderer (the boundary; details belong to the Rendering area)	Skin proxies and pose inputs
+animation:151	feature	1.10 Skinning in the renderer (the boundary; details belong to the Rendering area)	Palette
+animation:152	feature	1.10 Skinning in the renderer (the boundary; details belong to the Rendering area)	Change-driven palette updates
+animation:153	feature	1.10 Skinning in the renderer (the boundary; details belong to the Rendering area)	Provider change
+animation:154	feature	1.10 Skinning in the renderer (the boundary; details belong to the Rendering area)	Linear blend skinning shaders
+animation:155	feature	1.10 Skinning in the renderer (the boundary; details belong to the Rendering area)	Skinned motion vectors
+animation:156	feature	1.10 Skinning in the renderer (the boundary; details belong to the Rendering area)	Visibility report
+animation:157	feature	1.10 Skinning in the renderer (the boundary; details belong to the Rendering area)	Unskinned scenes pay nothing
+animation:158	feature	1.10 Skinning in the renderer (the boundary; details belong to the Rendering area)	Bind pose for physics
+animation:164	feature	1.11 Edit-mode poses: `AnimationPreview`	Preview provider
+animation:165	feature	1.11 Edit-mode poses: `AnimationPreview`	Same evaluation as play
+animation:166	feature	1.11 Edit-mode poses: `AnimationPreview`	Rest poses in edit mode
+animation:167	feature	1.11 Edit-mode poses: `AnimationPreview`	`ClipStart` edit pose
+animation:168	feature	1.11 Edit-mode poses: `AnimationPreview`	Render transforms
+animation:169	feature	1.11 Edit-mode poses: `AnimationPreview`	Signal-driven, idle costs nothing
+animation:170	feature	1.11 Edit-mode poses: `AnimationPreview`	Posed bounds in editor tools
+animation:176	feature	1.12 Scripting	12 host functions
+animation:177	feature	1.12 Scripting	SDK `Animator`
+animation:178	feature	1.12 Scripting	`Script::OnAnimationEvent(name)`
+animation:179	feature	1.12 Scripting	Misuse reporting
+animation:185	feature	1.13 Editor	`animation.createController`
+animation:186	feature	1.13 Editor	`animation.setController`
+animation:187	feature	1.13 Editor	`animation.info`
+animation:188	feature	1.13 Editor	`animation.preview`
+animation:189	feature	1.13 Editor	`viewport.setSettings {editPose}`
+animation:190	feature	1.13 Editor	Preview chip
+animation:191	feature	1.13 Editor	Asset tab views
+animation:192	feature	1.13 Editor	Inspector live state
+animation:193	feature	1.13 Editor	Thumbnails
+animation:197	feature	1.14 Tests and perf	Unit suites: `StrataTests/src/Animation/AnimationAssetTests.cpp` (11 cases), `AnimatorTests.cpp`…
+animation:200	feature	1.14 Tests and perf	GPU: `Renderer/GPUAnimationTests.cpp` (7: CPU-skinned reference in forward, entity-ID and shadow…
+animation:202	feature	1.14 Tests and perf	Perf (budgets `StrataTests/Perf/Budgets.json` 170-172): `Perf.Animation.Evaluate1000` 0.368 ms…
+animation:204	feature	1.14 Tests and perf	Feature test: `StrataTests/FeatureTest/Scripts/AnimationFeatures.cpp` (Arm rig: controller states…
+animation:207	feature	1.14 Tests and perf	Test helpers: `StrataTests/src/Animation/AnimationTestUtils.h` (arm skeleton, wave/turn/hold…
+animation:212	feature	1.15 The sample	`Samples/ThirdPerson` (0.5.0, "Sky Islands"): `Assets/Models/Robot/RobotExpressive.glb` (CC0,…
+animation:219	feature	1.15 The sample	Other users: `Samples/OpenWorld` (animated foxes with a controller, skill `strata-make-a-game`…
+animation:223	feature	1.16 Not in Strata yet (so the book must not imply it)	Blend trees / 1D-2D blend spaces, layers and masks, additive clips, sync markers (Roadmap…
+animation:245	concept		What animation must do in a game
+animation:251	concept		Transforms and hierarchies
+animation:254	concept		Quaternions for rotation
+animation:258	concept		Interpolation
+animation:261	concept		Skeletons
+animation:267	concept		Clips and channels
+animation:271	concept		Sampling cost and storage
+animation:274	concept		Skinning
+animation:280	concept		Posed bounds and culling of skinned meshes
+animation:283	concept		State machines for animation
+animation:289	concept		Blending and cross-fades
+animation:293	concept		Time, loops and normalized time
+animation:296	concept		Animation events (notifies)
+animation:300	concept		Root motion
+animation:305	concept		Attachments (sockets)
+animation:307	concept		Where animation runs in the frame
+animation:310	concept		Parallel, deterministic evaluation
+animation:314	concept		Asset sharing and lifetime
+animation:316	concept		Animation LOD/culling
+animation:320	concept		Decoupling through services
+animation:322	concept		Edit-mode posing
+animation:325	concept		Authoring pipeline
+animation:334	code		1: `Strata/src/Strata/Animation/AnimationTypes.h` 15-22
+animation:335	code		2: `AnimationTypes.h` 43-58
+animation:336	code		3: `AnimationTypes.h` 61-85
+animation:337	code		4: `Strata/src/Strata/Animation/Skeleton.cpp` 178-187
+animation:338	code		5: `Skeleton.cpp` 61-75
+animation:339	code		6: `Skeleton.cpp` 121-161
+animation:340	code		7: `Strata/src/Strata/Animation/AnimationClip.cpp` 459-536
+animation:341	code		8: `AnimationClip.cpp` 438-457
+animation:342	code		9: `AnimationClip.cpp` 206-222
+animation:343	code		10: `AnimationClip.cpp` 231-315
+animation:344	code		11: `Strata/src/Strata/Animation/AnimationController.cpp` 223-245
+animation:345	code		12: `Strata/src/Strata/Animation/AnimatorInstance.cpp` 247-288
+animation:346	code		13: `AnimatorInstance.cpp` 587-609
+animation:347	code		14: `AnimatorInstance.cpp` 455-585 (central, long)
+animation:348	code		15: `AnimatorInstance.cpp` 725-763
+animation:349	code		16: `AnimatorInstance.cpp` 766-848 (central)
+animation:350	code		17: `AnimatorInstance.cpp` 17-24, 82-97
+animation:351	code		18: `AnimatorInstance.cpp` 652-723
+animation:352	code		19: `Strata/src/Strata/Animation/AnimationSystem.cpp` 572-716 (central)
+animation:353	code		20: `AnimationSystem.cpp` 739-755
+animation:354	code		21: `AnimationSystem.cpp` 788-827
+animation:355	code		22: `AnimationSystem.cpp` 829-888
+animation:356	code		23: `AnimationSystem.cpp` 890-917 and 1093-1113
+animation:357	code		24: `Strata/src/Strata/Scene/SceneServices.h` 270-376
+animation:358	code		25: `Strata/src/Strata/Renderer/RenderScene.cpp` 1322-1339
+animation:359	code		26: `Strata/shaders/Include/Scene.slang` 168-235
+animation:360	code		27: `Strata/shaders/Scene/Mesh.vert.slang` 35-60
+animation:361	code		28: `Strata/src/Strata/Asset/GltfImporter.cpp` 1012-1123
+animation:362	code		29: `StrataTests/src/Animation/AnimationSystemTests.cpp` 1036-1096
+animation:363	code		30: `Samples/ThirdPerson/Scripts/Footsteps.cpp` 1-44 and `ThirdPersonPlayer.cpp` 129-133
+animation:365	code		The JSON form of a controller is best shown from `Samples/ThirdPerson/Assets/Animations/Robot.stani…
+animation:374	figure	Diagrams	Animation data flow, end to end
+animation:379	figure	Diagrams	Skeleton memory layout
+animation:381	figure	Diagrams	Spaces of skinning
+animation:383	figure	Diagrams	Clip storage
+animation:386	figure	Diagrams	Interpolation curves
+animation:387	figure	Diagrams	Controller state machine
+animation:389	figure	Diagrams	Cross-fade weights timeline
+animation:391	figure	Diagrams	Playhead across loops
+animation:393	figure	Diagrams	Exit time on a looping state
+animation:394	figure	Diagrams	Root motion extraction
+animation:396	figure	Diagrams	AnimationSystem frame
+animation:399	figure	Diagrams	Frame order of systems
+animation:401	figure	Diagrams	WhenVisible feedback loop
+animation:403	figure	Diagrams	Providers of ISkinningPoses
+animation:405	figure	Diagrams	Layer diagram
+animation:410	figure	Screenshots (all with the Third-Person sample unless noted)	The robot in edit mode with `viewport.setSettings {editPose: "rest"}` and with `"clipStart"` side…
+animation:412	figure	Screenshots (all with the Third-Person sample unless noted)	The same robot as it would look without a poses provider (bind pose lying along an axis):…
+animation:415	figure	Screenshots (all with the Third-Person sample unless noted)	`animation.preview {entity: <robot>, state: "Run", time: 0.3}` with the viewport's preview chip…
+animation:416	figure	Screenshots (all with the Third-Person sample unless noted)	The Inspector of the playing robot: Animator component, live State showing `Walk -> Run` during a…
+animation:418	figure	Screenshots (all with the Third-Person sample unless noted)	The Asset tab with `Robot.stanimator` open: parameters, states and transitions tables (condition…
+animation:420	figure	Screenshots (all with the Third-Person sample unless noted)	The Asset tab with the robot's Skeleton (joint tree, root motion joint) and a clip (channels list).
+animation:421	figure	Screenshots (all with the Third-Person sample unless noted)	The menu robot holding the flag (`Scenes/MainMenu.stscene`, `AttachToJoint`), playing.
+animation:422	figure	Screenshots (all with the Third-Person sample unless noted)	A posed limb outside its bind bounds still drawn and shadowed (reproduce the setup of…
+animation:424	figure	Screenshots (all with the Third-Person sample unless noted)	Feature test arm (`StrataTests/FeatureTest`, "Arm Rig") in the entity-ID view showing the preview…
+animation:426	figure	Screenshots (all with the Third-Person sample unless noted)	A cross-fade mid-way (two clips blended) captured at fixed steps with `play.step` for…
+animation:427	figure	Screenshots (all with the Third-Person sample unless noted)	Open World foxes at a distance with `CullingMode WhenVisible` (optional: to illustrate many…
+animation:437	rule		Poses are not entities
+animation:440	rule		Only scene services cross the module boundary
+animation:443	rule		Jobs write only their own record; scene changes happen on the main thread in record order
+animation:445	rule		Root motion moves entities only in `AnimationSystem::ApplyRootMotion`, signaled through the…
+animation:448	rule		The root's subtree is held back when root motion applies
+animation:450	rule		WhenVisible keeps time, events, transitions and root motion
+animation:452	rule		Publish a reach with poses that may be skipped
+animation:454	rule		Animators that only move rigid parts pose every update
+animation:456	rule		Every skin influence must name a joint of the skin, even with zero weight
+animation:458	rule		Prepass and forward pass must agree to the bit for skinned meshes
+animation:460	rule		Unskinned scenes pay nothing
+animation:461	rule		Pose versions belong to their provider
+animation:463	rule		Skins are posed against the animator's drawn transform
+animation:465	rule		Loaders reject truncated and garbage bytes
+animation:467	rule		Joint names are unique and clips bind by name
+animation:469	rule		Skeleton joints are parents-first
+animation:471	rule		Script commands never block on loading
+animation:474	rule		Events are dispatched after all poses, outside the jobs, with listener snapshots
+animation:476	rule		Hold `AssetHandle`s, request every update, never block
+animation:478	rule		Previews change no scene data
+animation:479	rule		The animation system is Play-only
+animation:481	rule		Bump the importer's version when its output changes
+animation:483	rule		New host functions are appended, never inserted
+animation:485	rule		Pitfall for game makers: triggers stay set until consumed
+animation:487	rule		Pitfall: cross-fading walk to run without phase matching slides the feet
+animation:498	hands-on	Engine developers	E1: Write a doctest that builds a 3-joint skeleton by hand (`Skeleton::Create`), computes model…
+animation:499	hands-on	Engine developers	E2: Sample a clip with each interpolation at chosen times and compare with hand calculation (start…
+animation:500	hands-on	Engine developers	E3: Corrupt a cooked clip byte by byte and confirm `Deserialize` never crashes (extend the sweep…
+animation:501	hands-on	Engine developers	E4: Add a `SampleCount` stat to `AnimationSystemStats` counting channels sampled per update;…
+animation:502	hands-on	Engine developers	E5: Implement an "exit time on non-looping states with conditions" test matrix in…
+animation:503	hands-on	Engine developers	E6: Prototype sync markers or a phase-matched cross-fade (start the target at the source's…
+animation:504	hands-on	Engine developers	E7: Replace the quaternion weighted sum in `Evaluate` by iterated slerp and compare results for 3+…
+animation:505	hands-on	Engine developers	E8: Add a `Additive` flag to states (design only, or a spike): what reference pose, where in…
+animation:506	hands-on	Engine developers	E9: Break determinism on purpose (push events from a job into a shared vector) and watch the…
+animation:507	hands-on	Engine developers	E10: Write a CPU skinning reference for one vertex and compare with the palette from…
+animation:508	hands-on	Engine developers	E11: Add a new `IAnimatorControl` query (e.g. `GetStateDuration`) end to end: service, system,…
+animation:514	hands-on	Game developers	G1: Import a rigged glTF, instantiate it, see it stand in its rest pose; switch the camera chip to…
+animation:515	hands-on	Game developers	G2: Make a two-state controller (Idle, Walk on `Speed > 0.1`) with `animation.createController`,…
+animation:516	hands-on	Game developers	G3: Add Footstep events to Walk and play a sound in `OnAnimationEvent` (copy the sample's…
+animation:517	hands-on	Game developers	G4: Add a Jump any-state transition on a trigger, with exit-time transitions back; observe in the…
+animation:518	hands-on	Game developers	G5: Attach a sword to a hand with `AttachToJoint`; then do it with `GetJointTransform` in a script…
+animation:519	hands-on	Game developers	G6: Turn on `ApplyRootMotion` on a walking clip with and without a `CharacterController`; walk…
+animation:520	hands-on	Game developers	G7: Spawn 500 characters, measure with `CullingMode` AlwaysAnimate vs WhenVisible (profiler stage…
+animation:521	hands-on	Game developers	G8: Modify the Third-Person robot: add a Crouch state on a bool, edit it in the Asset tab tables,…
+animation:527	term		Joint (bone)
+animation:528	term		Skeleton (rig)
+animation:529	term		Topological order (parents first)
+animation:530	term		Rest pose
+animation:531	term		Bind pose
+animation:532	term		Inverse bind matrix
+animation:533	term		Local / model space (of a pose)
+animation:534	term		Forward kinematics (FK)
+animation:535	term		TRS
+animation:536	term		Quaternion
+animation:537	term		Slerp / nlerp
+animation:538	term		Hemisphere (quaternion)
+animation:539	term		Clip (animation)
+animation:540	term		Channel / path
+animation:541	term		Key / keyframe
+animation:542	term		Step, linear, cubic spline
+animation:543	term		Tangent (in/out)
+animation:544	term		Keyframe reduction
+animation:545	term		Clip compression
+animation:546	term		Binding (clip to skeleton)
+animation:547	term		Retargeting
+animation:548	term		Skinning
+animation:549	term		Linear blend skinning (LBS)
+animation:550	term		Dual quaternion skinning
+animation:551	term		Influence / weight
+animation:552	term		Palette (skinning palette)
+animation:553	term		Skin (glTF) / skin binding
+animation:554	term		Posed bounds
+animation:555	term		Reach
+animation:556	term		Animator
+animation:557	term		Animation controller (state machine)
+animation:558	term		State
+animation:559	term		Transition
+animation:560	term		Any State
+animation:561	term		Condition
+animation:562	term		Parameter (float, bool, trigger)
+animation:563	term		Trigger
+animation:564	term		Exit time
+animation:565	term		Normalized time
+animation:566	term		Playhead
+animation:567	term		Cross-fade
+animation:568	term		Blend weight
+animation:569	term		Sync markers / phase matching
+animation:570	term		Inertialization
+animation:571	term		Animation event (notify)
+animation:572	term		Root motion
+animation:573	term		Root motion joint
+animation:574	term		Yaw
+animation:575	term		In-place animation
+animation:576	term		Attachment (socket)
+animation:577	term		Culling mode
+animation:578	term		Stale pose
+animation:579	term		Asset set
+animation:580	term		Record (animator record)
+animation:581	term		Edit pose
+animation:582	term		Pose preview
+animation:583	term		Render transform
+animation:584	term		Scene service
+animation:585	term		Provider (of poses)
+animation:586	term		Sub-asset
+animation:587	term		`.stanimator`
+animation:588	term		STSK / STAC
+animation:589	term		Morph target (blend shape)
+animation:631	open		Not read line by line: `AnimationController.cpp` 248-553 (JSON read/write; only outlined),…
+animation:636	open		Doc drift found: AR 2627 says "GltfImporter (version 9)"; `GltfImporter.h` 39 returns 11. Which…
+animation:638	open		Observation for the planner: `AnimationSystem.cpp` 42, 53, 64, 983 reach assets through…
+animation:641	open		Whether the editor shows bounds overlays or a skeleton/bone gizmo in the viewport: none found by…
+animation:643	open		Screenshot 2 (bind pose without provider) cannot be produced through normal editor use (the editor…
+animation:645	open		Exact release of each WhenVisible refinement (reach versioning, rigid-part posing, stale poses)…
+animation:647	open		How skinned proxies go through the GPU-driven path (`Cull.comp`, indirect draws) is the Rendering…
+animation:649	open		The Open World sample's fox setup and the Showcase Fox were not opened.
+animation:650	open		Wave 8 status of `animation-graph` (tranche 2): no code in the tree at 822a7a46; whether it has…

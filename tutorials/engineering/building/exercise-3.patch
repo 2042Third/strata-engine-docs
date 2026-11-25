@@ -1,0 +1,16 @@
+diff --git a/CMakePresets.json b/CMakePresets.json
+--- a/CMakePresets.json
++++ b/CMakePresets.json
+@@ -37,6 +37,12 @@
+ 			"generator": "Ninja Multi-Config",
+ 			"condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Linux" }
+ 		},
++		{
++			"name": "linux-cached",
++			"displayName": "Linux (Ninja Multi-Config, compiler cache)",
++			"inherits": "linux",
++			"cacheVariables": { "STRATA_COMPILER_CACHE": "ON" }
++		},
+ 		{
+ 			"name": "macos",
+ 			"displayName": "macOS (Ninja Multi-Config)",

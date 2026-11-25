@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 624">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- the drawing: roles as classes (plan/card/drawing.md) -->
+<!-- Plan: panels in the plane through the camera: x = 40 + 168 z up to z 2.5, 5 m left out, x = 520 + 168 (z - 7.5) from 7.5 to 8; y = c - 100 lateral (c 124, 344). Post front z 1.0, 0.1 deep, lateral -0.1 to 0.1; wall z 8. Ray lateral = 0.1 - 0.15 (z - 1.2): start z 0.45, step ends z 0.9 (sees the wall, 8.0 m) and 1.2 (0.2 behind the post, sees it at 1.0 m), wall hit at lateral -0.92. Inset side view x = 64 + 56 z, y = 606 - 60 (h + 0.5): camera (0,0), floor -0.5, wall z 6 to height 1, pixel rows 0.3 m at the wall; ray (2,-0.5) to (6.2,1.2): near end z 5.0 (height 0.71, its sight line at 0.86 on the wall) in the top row, far end beyond the plane in the sky row, crossing at height 1.12. -->
+<polygon class="plate" points="224.8,114 460,99 460,149 224.8,134"/>
+<polygon class="plate" points="520,49 604,44 604,204 520,199"/>
+<line class="line-faint" stroke-width="1" x1="40" y1="124" x2="460" y2="99"/>
+<line class="line-faint" stroke-width="1" x1="520" y1="49" x2="604" y2="44"/>
+<line class="line-faint" stroke-width="1" x1="40" y1="124" x2="460" y2="149"/>
+<line class="line-faint" stroke-width="1" x1="520" y1="199" x2="604" y2="204"/>
+<rect class="plate" x="604" y="28" width="10" height="192"/>
+<line class="line-muted" stroke-width="2" x1="604" y1="28" x2="604" y2="220"/>
+<rect class="muted" x="208" y="114" width="16.8" height="20"/>
+<polygon class="ink" points="40,124 28,117 28,131"/>
+<line class="line-muted" stroke-width="1.5" stroke-dasharray="4 3" x1="40" y1="124" x2="460" y2="83.7"/>
+<line class="line-muted" stroke-width="1.5" stroke-dasharray="4 3" x1="40" y1="124" x2="208" y2="115.7"/>
+<line class="line-blue" stroke-width="2.5" x1="115.6" y1="102.8" x2="241.6" y2="114"/>
+<line class="line-blue" stroke-width="1.5" stroke-dasharray="4 3" x1="241.6" y1="114" x2="460" y2="133.5"/>
+<line class="line-blue" stroke-width="1.5" stroke-dasharray="4 3" x1="520" y1="208.5" x2="604" y2="216"/>
+<text class="muted small" text-anchor="middle" x="490" y="42">5 m</text>
+<text class="muted small" text-anchor="middle" x="490" y="60">left out</text>
+<circle class="blue" cx="115.6" cy="102.8" r="4.5"/>
+<circle class="blue" cx="191.2" cy="109.5" r="4.5"/>
+<circle class="blue" cx="241.6" cy="114" r="4.5"/>
+<circle class="red" cx="208" cy="115.7" r="6"/>
+<text class="ink small" x="24" y="150">camera</text>
+<text class="ink small bold" x="24" y="30">0.7.0: any point behind a surface is a hit</text>
+<text class="muted small" text-anchor="middle" x="212" y="162">post, 0.2 m wide, at 1.0 m</text>
+<text class="red small" text-anchor="middle" x="198" y="74">ghost: hit on the post</text>
+<text class="ink small" x="622" y="129">wall</text>
+<text class="ink small" x="622" y="147">8.0 m</text>
+<text class="muted small" text-anchor="end" x="450" y="185">hidden behind the post</text>
+<polygon class="plate" points="224.8,334 460,319 460,369 224.8,354"/>
+<polygon class="plate" points="520,269 604,264 604,424 520,419"/>
+<line class="line-faint" stroke-width="1" x1="40" y1="344" x2="460" y2="319"/>
+<line class="line-faint" stroke-width="1" x1="520" y1="269" x2="604" y2="264"/>
+<line class="line-faint" stroke-width="1" x1="40" y1="344" x2="460" y2="369"/>
+<line class="line-faint" stroke-width="1" x1="520" y1="419" x2="604" y2="424"/>
+<rect class="plate" x="604" y="248" width="10" height="192"/>
+<line class="line-muted" stroke-width="2" x1="604" y1="248" x2="604" y2="440"/>
+<rect class="muted" x="208" y="334" width="16.8" height="20"/>
+<polygon class="ink" points="40,344 28,337 28,351"/>
+<line class="line-muted" stroke-width="1.5" stroke-dasharray="4 3" x1="40" y1="344" x2="460" y2="303.7"/>
+<line class="line-muted" stroke-width="1.5" stroke-dasharray="4 3" x1="40" y1="344" x2="208" y2="335.7"/>
+<line class="line-blue" stroke-width="2.5" x1="115.6" y1="322.8" x2="460" y2="353.5"/>
+<line class="line-blue" stroke-width="2.5" x1="520" y1="428.5" x2="585.1" y2="434.8"/>
+<polygon class="blue" points="597,436 584.6,439.3 585.5,430.4"/>
+<text class="muted small" text-anchor="middle" x="490" y="262">5 m</text>
+<text class="muted small" text-anchor="middle" x="490" y="280">left out</text>
+<circle class="blue" cx="115.6" cy="322.8" r="4.5"/>
+<circle class="blue" cx="191.2" cy="329.5" r="4.5"/>
+<circle class="line-red ground" stroke-width="2" cx="241.6" cy="334" r="5"/>
+<circle class="green" cx="604" cy="436" r="6"/>
+<text class="ink small" x="24" y="370">camera</text>
+<text class="ink small bold" x="24" y="250">validated crossing: the ends must lie on one surface</text>
+<text class="ink small" text-anchor="end" x="455" y="293.7">one end sees the wall: 8.0 m</text>
+<text class="ink small" x="24" y="390">the other end sees the post: 1.0 m</text>
+<text class="red small" x="263.6" y="386">candidate rejected:</text>
+<text class="red small" x="263.6" y="404">8.0 − 1.0 > 0.05 m + the interval</text>
+<text class="green small" text-anchor="end" x="590" y="456">hit on the wall</text>
+<text class="ink small" x="622" y="349">wall</text>
+<text class="ink small bold" x="24" y="470">at a wall’s top edge: the crossing of the wall’s plane</text>
+<line class="line-muted" stroke-width="2" x1="24" y1="606" x2="410" y2="606"/>
+<rect class="plate" x="400" y="516" width="10" height="90"/>
+<line class="line-muted" stroke-width="2" x1="400" y1="516" x2="400" y2="606"/>
+<line class="line-faint" stroke-width="1" x1="64" y1="576" x2="422" y2="531.2"/>
+<line class="line-faint" stroke-width="1" x1="64" y1="576" x2="422" y2="512.1"/>
+<line class="line-faint" stroke-width="1" x1="64" y1="576" x2="422" y2="492.9"/>
+<line class="line-faint" stroke-width="1" x1="64" y1="576" x2="422" y2="473.7"/>
+<rect class="muted" x="397" y="516" width="6" height="18"/>
+<polygon class="ink" points="64,576 52,569 52,583"/>
+<text class="ink small" x="48" y="602">camera</text>
+<line class="line-blue" stroke-width="2.5" x1="176" y1="606" x2="411.2" y2="504"/>
+<circle class="blue" cx="176" cy="606" r="4.5"/>
+<circle class="blue" cx="344" cy="533.1" r="4.5"/>
+<circle class="blue" cx="411.2" cy="504" r="4.5"/>
+<circle class="green" cx="400" cy="508.9" r="5.5"/>
+<text class="muted small" x="440" y="494">sky</text>
+<text class="green small" x="440" y="512">sky row: plane crossed, a hit at the edge</text>
+<text class="ink small" x="440" y="530">top row of the wall: near end, in front</text>
+</svg>

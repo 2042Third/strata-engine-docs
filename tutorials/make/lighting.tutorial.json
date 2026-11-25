@@ -1,0 +1,130 @@
+{
+	"page": "make/lighting",
+	"startsFrom": { "tutorial": "make/prefabs" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "component.get", "entityName": "Sun", "parameters": { "component": "DirectionalLight" },
+					"checks": [
+						{ "pointer": "/values/Intensity", "approx": 120000, "tolerance": 1 },
+						{ "pointer": "/values/ShadowSoftness", "approx": 0.53, "tolerance": 0.001 },
+						{ "pointer": "/values/CastShadows", "equals": true }
+					] },
+				{ "command": "component.get", "entityName": "Post Process", "parameters": { "component": "PostProcess" },
+					"checks": [
+						{ "pointer": "/values/AutoExposure", "equals": true },
+						{ "pointer": "/values/Exposure", "approx": 0.25, "tolerance": 0.001 },
+						{ "pointer": "/values/AutoExposureMinEV", "approx": -4, "tolerance": 0.001 },
+						{ "pointer": "/values/AutoExposureMaxEV", "approx": 16, "tolerance": 0.001 }
+					] },
+				{ "command": "component.get", "entityName": "Sky", "parameters": { "component": "SkyLight" },
+					"checks": [ { "pointer": "/values/Source", "equals": "Atmosphere" } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"commands": [
+				{ "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "Intensity": 60000 } } },
+				{ "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "Intensity": 120000 } } },
+				{ "command": "component.set", "entityName": "Post Process", "parameters": { "component": "PostProcess", "values": { "AutoExposure": false, "Exposure": 0 } } },
+				{ "command": "component.set", "entityName": "Post Process", "parameters": { "component": "PostProcess", "values": { "Exposure": -15 } } },
+				{ "command": "component.set", "entityName": "Post Process", "parameters": { "component": "PostProcess", "values": { "AutoExposure": true, "Exposure": 0.25 } } },
+				{ "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "Intensity": 120 } } },
+				{ "command": "component.set", "entityName": "Post Process", "parameters": { "component": "PostProcess", "values": { "AutoExposureMinEV": 8 } },
+					"checks": [ { "pointer": "/values/AutoExposureMinEV", "approx": 8, "tolerance": 0.01 } ] },
+				{ "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "Intensity": 120000 } } },
+				{ "command": "component.set", "entityName": "Post Process", "parameters": { "component": "PostProcess", "values": { "AutoExposureMinEV": -4, "AutoExposureMaxEV": 8 } } },
+				{ "command": "component.set", "entityName": "Post Process", "parameters": { "component": "PostProcess", "values": { "AutoExposureMaxEV": 16 } },
+					"checks": [
+						{ "pointer": "/values/AutoExposureMaxEV", "approx": 16, "tolerance": 0.01 },
+						{ "pointer": "/values/AutoExposureMinEV", "approx": -4, "tolerance": 0.01 },
+						{ "pointer": "/values/AutoExposure", "equals": true },
+						{ "pointer": "/values/Exposure", "approx": 0.25, "tolerance": 0.001 }
+					] }
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"commands": [
+				{ "command": "component.set", "entityName": "Sky", "parameters": { "component": "SkyLight", "values": { "Source": "Procedural" } },
+					"checks": [ { "pointer": "/values/Source", "equals": "Procedural" } ] },
+				{ "command": "asset.import", "parameters": { "file": "@RELEASE@/Samples/ThirdPerson/Assets/Environment/kloofendal_48d_partly_cloudy_puresky_1k.hdr", "directory": "Environment" } },
+				{ "command": "component.set", "entityName": "Sky", "parameters": { "component": "SkyLight", "values": { "Source": "EnvironmentMap", "EnvironmentMap": "Environment/kloofendal_48d_partly_cloudy_puresky_1k.hdr" } },
+					"checks": [ { "pointer": "/values/Source", "equals": "EnvironmentMap" } ] },
+				{ "command": "lighting.extractSun" },
+				{ "command": "asset.setImportSettings", "parameters": { "asset": "Environment/kloofendal_48d_partly_cloudy_puresky_1k.hdr", "settings": { "RemoveSun": true } } },
+				{ "command": "lighting.applySkyPreset", "parameters": { "preset": "Clear" },
+					"expect": { "/sunIntensity": { "equals": 120000 } } },
+				{ "command": "lighting.applySkyPreset", "parameters": { "preset": "Hazy" },
+					"expect": { "/preset": { "equals": "Hazy" } } },
+				{ "command": "lighting.applySkyPreset", "parameters": { "preset": "Overcast" } },
+				{ "command": "lighting.applySkyPreset", "parameters": { "preset": "GoldenHour" } },
+				{ "command": "lighting.applySkyPreset", "parameters": { "preset": "Clear" },
+					"expect": { "/sunIntensity": { "equals": 120000 } } }
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"commands": [
+				{ "command": "lighting.applySkyPreset", "parameters": { "preset": "Clear", "sunElevation": 25, "sunAzimuth": 20 },
+					"checks": [ { "pointer": "/sunDirection/1", "approx": 0.4226, "tolerance": 0.002 } ] },
+				{ "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "ShadowDistance": 30, "ShadowSoftness": 2 } } },
+				{ "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "ShadowSoftness": 0.53, "CascadeBlend": 0.1 } },
+					"checks": [
+						{ "pointer": "/values/ShadowDistance", "approx": 30, "tolerance": 0.01 },
+						{ "pointer": "/values/ShadowSoftness", "approx": 0.53, "tolerance": 0.001 },
+						{ "pointer": "/values/CascadeBlend", "approx": 0.1, "tolerance": 0.001 }
+					] }
+			],
+			"endState": true
+		},
+		{
+			"step": 5,
+			"commands": [
+				{ "command": "scene.save" },
+				{ "command": "scene.new", "parameters": { "name": "Dark" } },
+				{ "command": "entity.create", "parameters": { "name": "Cube", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" } } } },
+				{ "command": "entity.create", "parameters": { "name": "Camera", "components": { "Transform": { "Translation": [0, 1, 5] }, "Camera": { "Primary": true } } } },
+				{ "command": "viewport.setSettings", "parameters": { "previewLighting": false },
+					"checks": [ { "pointer": "/previewLighting", "equals": false } ] },
+				{ "command": "viewport.setSettings", "parameters": { "previewLighting": true } },
+				{ "command": "entity.create", "parameters": { "name": "Directional Light", "components": { "DirectionalLight": {} } } },
+				{ "command": "scene.open", "parameters": { "scene": "Scenes/Main.stscene", "force": true },
+					"checks": [ { "pointer": "/discardedChanges", "equals": true } ] },
+				{ "command": "component.get", "entityName": "Sun", "parameters": { "component": "DirectionalLight" },
+					"checks": [ { "pointer": "/values/ShadowDistance", "approx": 30, "tolerance": 0.01 } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 6,
+			"commands": [
+				{ "command": "viewport.setSettings", "parameters": { "debugView": "luminance" },
+					"checks": [ { "pointer": "/debugView", "equals": "luminance" } ] },
+				{ "command": "material.set", "parameters": { "material": "Materials/Gold.stmat", "properties": { "EmissiveColor": [1, 0.75, 0.3], "EmissiveIntensity": 200 } } },
+				{ "command": "material.set", "parameters": { "material": "Materials/Gold.stmat", "properties": { "EmissiveIntensity": 1000 } } },
+				{ "command": "material.set", "parameters": { "material": "Materials/Gold.stmat", "properties": { "EmissiveIntensity": 200 } } },
+				{ "command": "viewport.setSettings", "parameters": { "debugView": "none" } }
+			],
+			"endState": true
+		},
+		{
+			"step": 7,
+			"commands": [
+				{ "command": "lighting.applySkyPreset", "parameters": { "preset": "Clear", "sunElevation": 35, "sunAzimuth": 20 },
+					"expect": { "/preset": { "equals": "Clear" } },
+					"checks": [ { "pointer": "/sunDirection/1", "approx": 0.5736, "tolerance": 0.002 } ] },
+				{ "command": "scene.save" },
+				{ "command": "play.start", "parameters": { "paused": true } },
+				{ "command": "play.step", "parameters": { "steps": 60 },
+					"checks": [ { "pointer": "/stepsRun", "equals": 60 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		}
+	]
+}

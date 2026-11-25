@@ -1,0 +1,65 @@
+{
+	"page": "world/tutorial-component",
+	"runs": [
+		{
+			"build": {
+				"kind": "patch-build",
+				"configuration": "Release",
+				"buildDirectory": "build/docs-patch"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": null,
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"tutorials/world/tutorial-component.patch": "66d3ef7a2cc098e5f42e5e8cb49eff70678f815799659f262e93f04bec980543",
+				"tutorials/world/tutorial-component.tutorial.json": "14cf38f4ba769e6ae5ae55ea0899db56681080862d77ca85ea857c31e324798e",
+				"tutorials/world/tutorial-component/exercise-2.patch": "2d705adc7c1952dd149d2aedf3f41dd36947875ce95731b0136f6f777a2cb783"
+			},
+			"stages": [],
+			"tests": [
+				{
+					"suite": "Architecture.Layering",
+					"testCases": 18,
+					"passed": true
+				},
+				{
+					"suite": "Physics.WindZone",
+					"testCases": 3,
+					"passed": true
+				},
+				{
+					"suite": "Reflection",
+					"testCases": 8,
+					"passed": true
+				},
+				{
+					"suite": "Scene.Serialization",
+					"testCases": 19,
+					"passed": true
+				},
+				{
+					"suite": "Scene.Systems",
+					"testCases": 8,
+					"passed": true
+				},
+				{
+					"suite": "Engine.Modules",
+					"testCases": 11,
+					"passed": true
+				},
+				{
+					"suite": "Reflection.ComponentSchema",
+					"testCases": 1,
+					"passed": true
+				}
+			],
+			"ctest": {
+				"test": "StrataTests.FeatureTest",
+				"passed": true
+			},
+			"readerCopies": false,
+			"passed": true
+		}
+	]
+}

@@ -1,0 +1,33 @@
+{
+	"page": "make/timers-events",
+	"startsFrom": {
+		"tutorial": "make/timers-events"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"files": [ { "from": "book:tutorials/make/timers-events/Player.exercise1.cpp", "to": "Scripts/Player.cpp" } ],
+			"commands": [
+				{ "command": "entity.find", "parameters": { "name": "HUD" }, "bind": { "hud": "/entities/0" } },
+				{ "command": "ui.create", "parameters": { "type": "image", "name": "DashBar", "parent": { "$ref": "hud" }, "anchor": "bottomStretch", "position": [0, -20], "size": [-80, 24] } },
+				{ "command": "entity.find", "parameters": { "name": "DashBar" }, "bind": { "bar": "/entities/0" } },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "bar" }, "component": "UIImage", "values": { "Type": "Filled", "FillAmount": 1, "Color": [0.95, 0.75, 0.2, 1] } } },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "bar" }, "component": "UIImage" },
+					"checks": [ { "pointer": "/values/FillAmount", "approx": 1, "tolerance": 0.001 } ] },
+				{ "command": "input.key", "parameters": { "key": "LeftShift", "steps": 1 } },
+				{ "command": "play.step", "parameters": { "steps": 46 }, "expect": { "/stepsRun": { "equals": 46 } } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "bar" }, "component": "UIImage" },
+					"checks": [ { "pointer": "/values/FillAmount", "approx": 0.5, "tolerance": 0.06 } ] },
+				{ "command": "play.step", "parameters": { "steps": 60 }, "expect": { "/stepsRun": { "equals": 60 } } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "bar" }, "component": "UIImage" },
+					"checks": [ { "pointer": "/values/FillAmount", "approx": 1, "tolerance": 0.001 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		}
+	]
+}

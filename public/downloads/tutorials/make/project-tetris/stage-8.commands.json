@@ -1,0 +1,16 @@
+[
+	{
+		"command": "asset.import",
+		"parameters": {
+			"file": "<release folder>/Samples/Tetris/Assets/Icon.png"
+		}
+	},
+	{
+		"command": "project.setGameInfo",
+		"parameters": {
+			"title": "Tetris",
+			"version": "1.0.0",
+			"icon": "Icon.png"
+		}
+	}
+]

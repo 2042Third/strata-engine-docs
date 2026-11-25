@@ -1,0 +1,844 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "The sample's Sky Islands course in play mode: the robot from behind on the first island, gold coins facing the camera up the path to the higher islands, and the sample's heads-up display with the coin count and the time at the top left",
+			"caption": "Sky Islands as the sample plays it; your smaller version has four islands, eight coins, and its clock at the top right.",
+			"alt": "A yellow robot seen from behind on a grass island in the sky, among trees, fences, flowers and a sign. Round gold coins float over the steps and the higher islands up to a flag at the top. A panel at the top left reads Coins 0/12 and Time 0:01.0, and the controls, with Wave, Dance and Checkpoint among them, are listed along the bottom.",
+			"kind": "scene",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"camera": "scene",
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"play": {
+				"steps": 60
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "s1-assets",
+			"shows": "The Content Browser of the sample at the top of its assets: folders by kind, among them Models and Sounds, and the game's icon",
+			"caption": "The sample keeps its assets in folders by kind; stage one fills Models and Sounds in your project the same way.",
+			"alt": "The Content Browser at the top of the asset folder, with ten folders, among them Animations, Models, Prefabs, Scenes and Sounds, and a picture of the game named Icon.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/content-browser.ini",
+				"panel": "ContentBrowser",
+				"steps": [
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "ContentBrowser",
+							"scripts": false
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "s2-course",
+			"shows": "The Scene view from the side of the ten blocks under Course: four islands with gaps, the last one higher, and the Hierarchy with Course selected",
+			"caption": "Ten blocks under Course make four islands with gaps between them; nothing else is in the scene yet.",
+			"alt": "The Scene view from the side and above, with four islands of blocks topped with grass in a line, gaps between them and the last island higher. The Hierarchy lists Main Camera, Sun, Sky, Post Process and the selected Course.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/project-platformer.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "scene.new",
+						"parameters": {
+							"name": "Course",
+							"template": "basic3d",
+							"force": true
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Ground"
+						},
+						"bind": {
+							"ground": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "ground"
+								}
+							]
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Course"
+						},
+						"bind": {
+							"course": "/id"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Course/BlockTall.stprefab",
+							"instances": [
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												-4,
+												0
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												4,
+												-4,
+												0
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												-4,
+												-4
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												4,
+												-4,
+												-4
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												-4,
+												-12
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												4,
+												-4,
+												-12
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												-4,
+												-28
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												4,
+												-4,
+												-28
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												2,
+												-40
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												4,
+												2,
+												-40
+											]
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"target": [
+								2,
+								-1,
+								-20
+							],
+							"yaw": 65,
+							"pitch": -22,
+							"distance": 50,
+							"fov": 40
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"gizmo": "None",
+							"sceneGizmos": false
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "course"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "s3-player",
+			"shows": "The Inspector of the sample's Player after a build: Transform, Tag Player, the Character Controller and the player script with its speeds at their defaults",
+			"caption": "The sample's player: a character controller, the tag Player and the player script, whose speeds keep their defaults.",
+			"alt": "The Inspector of Player with a Tag component reading Player and a Character Controller with Height 1.8 and Radius 0.4. Its Script component holds the player script with Walk Speed 3, Run Speed 6.5 and Jump Speed 5.5.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						},
+						"expect": {
+							"/success": {
+								"equals": true
+							}
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Player"
+						},
+						"bind": {
+							"player": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "player"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "s4-camera",
+			"shows": "The Game view in play, paused, from behind the robot, with the sample's notice about its window request along the bottom",
+			"caption": "The camera looks at the player from behind and above, and its view turns with the mouse.",
+			"alt": "The Game view looking down from behind the yellow robot on its island, with coins up the path to the higher islands and the coin count and the time at the top left. A hint at the top names Shift+F1 and Ctrl+P, and a notice along the bottom says that the game asked for a window with vsync on and that play mode keeps the editor's window.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"play": {
+				"steps": 120
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"windowSize": [
+					1280,
+					720
+				],
+				"steps": [
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					}
+				],
+				"panel": "Game"
+			}
+		},
+		{
+			"id": "s5-robot",
+			"shows": "The Asset tab of the sample's Robot controller: five parameters, six states and the start of its fourteen transitions",
+			"caption": "The sample's controller in the Asset tab: five parameters, six states and fourteen transitions, where yours has three, four and seven.",
+			"alt": "The Asset tab of Robot, an animation controller, with a table of parameters: Speed, Grounded, Jump, Wave and Dance. Below are a table of states, Idle, Walk, Run, Jump, Wave and Dance with their clips, and the start of the Transitions table.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "AssetInspector",
+				"steps": [
+					{
+						"command": "selection.set",
+						"parameters": {
+							"asset": "Animations/Robot.stanimator"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "s6-course",
+			"shows": "The Scene view near the first jump pad with coins over the islands, the Hierarchy with the two jump pads in blue as prefab instances and Game selected, and the Inspector of Game with the course's script",
+			"caption": "Coins hang over the islands and a jump pad waits below; the pads are prefab instances, blue in the Hierarchy, and the Game entity holds the script that keeps the course's state.",
+			"alt": "The Scene view with gold coins over grass islands, a spring pad on the near island and trees. Hierarchy rows include Coins, Jump Pad 1 and Jump Pad 2 in blue, Markers, Player, Goal and the selected Game. Its Inspector shows a Script component with the course's script and its first fields: Main Menu Scene, Coin Sound, Complete Sound, Coins Text, Time Text and Complete Panel.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"editorWindow": {
+				"layout": "layouts/project-platformer.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						},
+						"expect": {
+							"/success": {
+								"equals": true
+							}
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Coin 9"
+						},
+						"bind": {
+							"coin9": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Coin 10"
+						},
+						"bind": {
+							"coin10": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Jump Pad 1"
+						},
+						"bind": {
+							"pad": "/entities/0"
+						}
+					},
+					{
+						"command": "camera.focus",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "coin9"
+								},
+								{
+									"$ref": "coin10"
+								},
+								{
+									"$ref": "pad"
+								}
+							]
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Game"
+						},
+						"bind": {
+							"game": "/entities/0"
+						}
+					},
+					{
+						"command": "script.remove",
+						"parameters": {
+							"entity": {
+								"$ref": "game"
+							},
+							"class": "SettingsMenu"
+						}
+					},
+					{
+						"command": "script.remove",
+						"parameters": {
+							"entity": {
+								"$ref": "game"
+							},
+							"class": "PauseMenu"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "game"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "s7-platform",
+			"shows": "The Scene view from the side with the selected platform in the gap between islands B and C, and its Inspector with the Rigid Body of type Kinematic",
+			"caption": "The platform, a flat box with a kinematic body, stands in the gap between islands B and C.",
+			"alt": "The Scene view from the side, with a white slab selected between two grass-topped islands. The Inspector of Platform shows its scale of 4, 0.5 and 4, a Mesh Renderer with the cube, and a Rigid Body whose Type is Kinematic.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/project-platformer.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "scene.new",
+						"parameters": {
+							"name": "Course",
+							"template": "basic3d",
+							"force": true
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Ground"
+						},
+						"bind": {
+							"ground": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "ground"
+								}
+							]
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Course"
+						},
+						"bind": {
+							"course": "/id"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Course/BlockTall.stprefab",
+							"instances": [
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												-4,
+												0
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												4,
+												-4,
+												0
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												-4,
+												-4
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												4,
+												-4,
+												-4
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												-4,
+												-12
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												4,
+												-4,
+												-12
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												-4,
+												-28
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												4,
+												-4,
+												-28
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												2,
+												-40
+											]
+										}
+									}
+								},
+								{
+									"parent": {
+										"$ref": "course"
+									},
+									"components": {
+										"Transform": {
+											"Translation": [
+												4,
+												2,
+												-40
+											]
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Platform",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"RigidBody": {
+									"Type": "Kinematic"
+								},
+								"Transform": {
+									"Translation": [
+										2,
+										-0.25,
+										-18
+									],
+									"Scale": [
+										4,
+										0.5,
+										4
+									]
+								}
+							}
+						},
+						"bind": {
+							"platform": "/id"
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"target": [
+								2,
+								-1,
+								-18
+							],
+							"yaw": 65,
+							"pitch": -22,
+							"distance": 26,
+							"fov": 40
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"sceneGizmos": false
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "platform"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "s8-menus",
+			"shows": "The Scene view of the sample's MainMenu scene in 2D canvas mode: the title, its subtitle, the column of four buttons and the line about the controls",
+			"caption": "The sample's main menu is a scene of its own, and its canvas holds a title and a column of buttons, two more than yours.",
+			"alt": "The Scene view in 2D mode with the title Sky Islands and the line A third-person adventure made with Strata over the robot in a garden. A column of four buttons, Play, Settings, Credits and Quit, stands at the left, and the line at the bottom reads Mouse, arrow keys and Enter, or a gamepad.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/MainMenu.stscene",
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"windowSize": [
+					1280,
+					720
+				],
+				"steps": [
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"canvasMode": true
+						}
+					}
+				],
+				"panel": "Scene"
+			}
+		},
+		{
+			"id": "s9-export",
+			"shows": "The sample's Export Game dialog after a script build, with the Loading scene chosen and the box that omits unused assets not ticked",
+			"caption": "The export step's dialog in the sample; in your game the folder reads `Platformer Build`. Tick the box that omits unused assets.",
+			"alt": "The Export Game dialog over the main menu scene, with a folder field, a 1280 by 720 window and the Loading scene chosen. The boxes that copy the runtime and the script symbols are ticked, the other two are not. The status bar shows built scripts.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/project-platformer.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					},
+					{
+						"command": "editor.showDialog",
+						"parameters": {
+							"dialog": "export"
+						}
+					}
+				]
+			}
+		}
+	]
+}

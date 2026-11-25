@@ -1,0 +1,8 @@
+{
+	"_comment": [
+		"Budgets of the pretend engine's perf tests (tools/tests/test_reference.py).",
+		"Measured on the reference machine."
+	],
+	"Perf.Scene.Update": { "Measured": 1.5, "Budget": 2.2, "Unit": "ms" },
+	"Perf.Pacer.Error": { "Unit": "ratio", "Provisional": true, "Target": 0.02 }
+}

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 338">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: the inspector's Post Process at its group Lens, drawn as rows, not a screenshot.
+     Panel x 96..544, y 16..322. Labels at x 112; value fields x 330..528, 26 high.
+     Rows 36 high from y 58: Vignette, Film Grain, Chromatic Aberration, Lens Flare (the pin's, registration order),
+     then Letterbox (a checkbox, off) and Letterbox Aspect (2.39, dimmed: its reason is the switch).
+     Heading Lens at 40, the next group's heading Motion at 298. Brackets at x 556, labels at x 566. All shifted 40 left. H = 338. -->
+<g transform="translate(-40 0)">
+<rect class="ground line-muted" x="96" y="16" width="448" height="306" rx="4"/>
+<text class="muted small bold" x="112" y="40">Lens</text>
+<line class="line-faint" x1="112" y1="48" x2="528" y2="48"/>
+<text class="ink" x="112" y="81">Vignette</text>
+<rect class="ground line-muted" x="330" y="63" width="198" height="26" rx="3"/>
+<text class="ink" x="112" y="117">Film Grain</text>
+<rect class="ground line-muted" x="330" y="99" width="198" height="26" rx="3"/>
+<text class="ink" x="112" y="153">Chromatic Aberration</text>
+<rect class="ground line-muted" x="330" y="135" width="198" height="26" rx="3"/>
+<text class="ink" x="112" y="189">Lens Flare</text>
+<rect class="ground line-muted" x="330" y="171" width="198" height="26" rx="3"/>
+<line class="line-orange" x1="104" y1="202" x2="536" y2="202" stroke-dasharray="4 3"/>
+<text class="ink" x="112" y="225">Letterbox</text>
+<rect class="ground line-ink" x="330" y="211" width="18" height="18" rx="2"/>
+<text class="muted" x="112" y="261">Letterbox Aspect</text>
+<rect class="ground line-faint" x="330" y="243" width="198" height="26" rx="3"/>
+<text class="muted" x="429" y="261" text-anchor="middle">2.39</text>
+<text class="muted small bold" x="112" y="298">Motion</text>
+<line class="line-faint" x1="112" y1="306" x2="528" y2="306"/>
+<line class="line-muted" x1="556" y1="62" x2="556" y2="198"/>
+<line class="line-muted" x1="550" y1="62" x2="556" y2="62"/>
+<line class="line-muted" x1="550" y1="198" x2="556" y2="198"/>
+<text class="muted" x="566" y="135">rows before your change</text>
+<line class="line-orange" x1="556" y1="206" x2="556" y2="270" stroke-width="2"/>
+<line class="line-orange" x1="550" y1="206" x2="556" y2="206" stroke-width="2"/>
+<line class="line-orange" x1="550" y1="270" x2="556" y2="270" stroke-width="2"/>
+<text class="orange bold" x="566" y="224">your change adds</text>
+<text class="ink small" x="566" y="246">the aspect is dimmed</text>
+<text class="ink small" x="566" y="264">while Letterbox is off</text>
+</g>
+</svg>

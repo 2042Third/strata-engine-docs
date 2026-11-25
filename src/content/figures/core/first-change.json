@@ -1,0 +1,46 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"kind": "diagram",
+			"shows": "The two files the change touches, the header with the new function and the test file with the new test case, both flowing into the test program, whose run of one suite reports three test cases passed",
+			"caption": "The whole change is two files: a function in a header and a test case that calls it, run by the test program.",
+			"alt": "Two boxes on the left, one for a header file with a new function and one for a test file with a new test case. Arrows lead from both into a box for the test program, and from it to a result box that reads three test cases passed, none failed.",
+			"numbers": "Left: StringUtils.h with + ToUpper (9 lines added); StringUtilsTests.cpp with + 1 test case, 4 checks (8 lines added). Middle: StrataTests, run with --test-suite=Core.StringUtils. Right: test cases 3 passed, 0 failed; assertions 21 passed, 0 failed."
+		},
+		{
+			"id": "editor-version",
+			"kind": "text",
+			"shows": "What the editor built from source prints when it is asked for its version",
+			"caption": "The editor you built answers with its name and version, then exits.",
+			"alt": "One line of text that names the editor and its version number.",
+			"text": { "program": "StrataEditor", "arguments": ["--version"] }
+		},
+		{
+			"id": "core-shards",
+			"kind": "text",
+			"shows": "The output of a run of the tests labelled core in the Debug configuration: one line per group of suites, each passed, and the summary",
+			"caption": "Each group of suites is one test of the test runner; all of them pass, and the summary counts them.",
+			"alt": "A list of test lines, each with the name of a group of tests and the word Passed, followed by a line saying that all tests passed.",
+			"text": {
+				"program": "ctest",
+				"arguments": ["--test-dir", "../..", "-C", "Debug", "-L", "core"],
+				"redact": ["Test project .*", "[0-9]+\\.[0-9]+ sec", "\\(real\\) = .*"]
+			},
+			"blocked": "The pin's build holds no test program: its bin/Release has the editor, the runtime and the command-line client only, and there is no Debug build, so no take can run the groups labelled core (2026-11-24, pin 319075e3). A picture would need a build of the test program at the pin.",
+			"standIn": "core-groups"
+		},
+		{
+			"id": "core-groups",
+			"kind": "text",
+			"shows": "The list of the groups of tests labelled core in the Debug configuration, one numbered line per group, without running them, and the line that counts them",
+			"caption": "The thirteen groups with the label core, as the test runner lists them without running them. A run prints the same names, each with the word Passed. A mark at the start of a line stands for a warning cut out: the build that made this list holds no test program.",
+			"alt": "A numbered list of thirteen test names that start with the same prefix and end in the name of a group, followed by a line with the total number of tests.",
+			"text": {
+				"program": "ctest",
+				"arguments": ["--test-dir", "../..", "-C", "Debug", "-L", "core", "-N"],
+				"redact": ["Test project [^\\n]*\\n", "…?Could not find executable [^\\n]*\\nLooked in the following places:\\n(?:[^\\n]*StrataTests\\.exe[^\\n]*\\n)+"]
+			}
+		}
+	]
+}

@@ -1,0 +1,33 @@
+{
+	"page": "automation/json-rpc",
+	"runs": [
+		{
+			"build": {
+				"kind": "patch-build",
+				"configuration": "Release",
+				"buildDirectory": "build/docs-patch"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": null,
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"tutorials/automation/json-rpc/exercise-2.patch": "6ff339db2eaead6bf5085a91e583d95d02a684cae3d88ce81b773d5cc533d689"
+			},
+			"stages": [],
+			"tests": [
+				{
+					"suite": "Architecture.Layering",
+					"testCases": 18,
+					"passed": true
+				}
+			],
+			"ctest": {
+				"test": "StrataTests.FeatureTest",
+				"passed": true
+			},
+			"readerCopies": false,
+			"passed": true
+		}
+	]
+}

@@ -1,0 +1,77 @@
+{
+	"figures": [
+		{
+			"id": "activity-panel",
+			"shows": "The Activity panel after a command script created an entity, renamed it, scaled it and replaced the scene by force, each row with its summary, between the rows of the take that pictured it",
+			"caption": "Each row shows its source as an icon, the command, a summary and the time in milliseconds. A command script ran every row here, so each shows a scroll. The rows reading done or running belong to the take, and so does a ninth, which opened the scene and is scrolled out above. The top one checked that the scene had loaded; the last three waited a second, showed this panel and took this picture. That last one was still running, so it has no time yet.",
+			"alt": "The Activity panel, its counter reading 9 of 9, with eight rows in view. The middle rows read Create 'Crate', Rename 'Crate' to 'Box', Set Scale of 'Box', and discarded changes in yellow for the new scene. Above them one row reads done; below them two rows read done and the last reads running, with an empty time.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-with-an-agent-activity.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"panel": "Activity",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Crate",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										-6
+									]
+								}
+							}
+						},
+						"bind": {
+							"crate": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "crate"
+							},
+							"name": "Box"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "crate"
+							},
+							"component": "Transform",
+							"values": {
+								"Scale": [
+									2,
+									1,
+									1
+								]
+							}
+						}
+					},
+					{
+						"command": "scene.new",
+						"parameters": {
+							"force": true,
+							"template": "basic3d"
+						}
+					}
+				]
+			}
+		}
+	]
+}

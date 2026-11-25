@@ -1,0 +1,162 @@
+{
+	"page": "make/reflections",
+	"startsFrom": {
+		"tutorial": "make/reflections"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "script.create",
+					"parameters": {
+						"class": "DayNight"
+					}
+				},
+				{
+					"command": "script.build",
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					}
+				}
+			]
+		},
+		{
+			"step": 2,
+			"files": [
+				{
+					"from": "book:tutorials/make/reflections/exercise-1/DayNight.cpp",
+					"to": "Scripts/DayNight.cpp"
+				}
+			],
+			"commands": [
+				{
+					"command": "script.build",
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/diagnostics",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "script.add",
+					"entityName": "Sun",
+					"parameters": {
+						"class": "DayNight",
+						"fields": {
+							"TimeOfDay": 21.0
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Sun",
+					"parameters": {
+						"component": "DirectionalLight",
+						"values": {
+							"Intensity": 120000
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Fire",
+						"components": {
+							"PointLight": {
+								"Intensity": 0
+							},
+							"Tag": {
+								"Tag": "Campfire"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.3,
+									4
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "play.start",
+					"parameters": {
+						"paused": true,
+						"build": false
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 60
+					},
+					"expect": {
+						"/stepsRun": {
+							"equals": 60
+						}
+					}
+				},
+				{
+					"command": "component.get",
+					"entityName": "Fire",
+					"parameters": {
+						"component": "PointLight"
+					},
+					"checks": [
+						{
+							"pointer": "/values/Intensity",
+							"approx": 100,
+							"tolerance": 0.01
+						}
+					]
+				},
+				{
+					"command": "component.get",
+					"entityName": "Sun",
+					"parameters": {
+						"component": "DirectionalLight"
+					},
+					"checks": [
+						{
+							"pointer": "/values/Intensity",
+							"approx": 0.2,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "component.get",
+					"entityName": "Sun",
+					"parameters": {
+						"component": "Transform"
+					},
+					"checks": [
+						{
+							"pointer": "/values/Rotation/0",
+							"approx": -0.367,
+							"tolerance": 0.01
+						},
+						{
+							"pointer": "/values/Rotation/1",
+							"approx": 0.2774,
+							"tolerance": 0.01
+						}
+					]
+				},
+				{
+					"command": "play.stop"
+				}
+			],
+			"endState": true
+		}
+	]
+}

@@ -1,0 +1,27 @@
+{
+	"figures": [
+		{
+			"id": "content-browser-models",
+			"shows": "The Content Browser in the folder Models/coin-gold after the import, left to right: the Textures folder, the selected model coin-gold.glb, expanded, then its mesh, material and texture to its right in the grid",
+			"caption": "The model's folder after the import. Left to right: the Textures folder, the model coin-gold (selected, with the collapse arrow), then its sub-assets to its right in the grid. They are the mesh, named coin-gold like the model, then the material and the texture, both named after the image file in Textures.",
+			"alt": "The Content Browser in Assets, Models, coin-gold. A Textures folder comes first, then the selected model coin-gold with a gold coin thumbnail and a small arrow. Three tinted tiles follow in the same row: the mesh coin-gold with the same coin thumbnail, the material on a sphere, the texture as a grid of colored squares. Both are named after the image file, and the tile cuts the texture's name short.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": { "template": "basic3d" },
+			"editorWindow": {
+				"layout": "layouts/make-assets.ini",
+				"panel": "ContentBrowser",
+				"steps": [
+					{ "command": "asset.createFolder", "parameters": { "path": "Models" } },
+					{ "command": "asset.import", "parameters": { "file": "G:/GameEngineAI/.worktrees/docs-pin/Samples/ThirdPerson/Assets/Models/Platformer/coin-gold.glb", "directory": "Models" } },
+					{ "command": "editor.wait", "parameters": { "frames": 300 } },
+					{ "command": "asset.info", "parameters": { "asset": "Models/coin-gold/coin-gold.glb", "bounds": false }, "bind": { "sub": "/subAssets/0/asset" } },
+					{ "command": "selection.set", "parameters": { "asset": { "$ref": "sub" } } },
+					{ "command": "editor.wait", "parameters": { "frames": 10 } },
+					{ "command": "selection.set", "parameters": { "asset": "Models/coin-gold/coin-gold.glb" } },
+					{ "command": "editor.wait", "parameters": { "frames": 300 } }
+				]
+			}
+		}
+	]
+}

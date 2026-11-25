@@ -1,0 +1,31 @@
+{
+	"figures": [
+		{
+			"id": "settings-page",
+			"shows": "The Collision Layers page of Project Settings with the Playground's Ball and Ghost layers named and their pair kept apart",
+			"caption": "The page lists named layers above a matrix of check boxes; the box where Ball and Ghost meet is cleared, so those two pass through each other.",
+			"alt": "The Collision Layers page of Project Settings: name fields for Ball and Ghost above a matrix of check boxes, all checked except the box where Ball and Ghost meet.",
+			"kind": "editor",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"waitsFor": "tier 3: the Collision Layers page of Project Settings; no command selects a Project Settings page (editor.showPanel takes no page, and the panel opens on Game)",
+			"standIn": "settings-page-drawing",
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"panel": "ProjectSettings",
+				"steps": [
+					{ "command": "editor.showPanel", "parameters": { "panel": "ProjectSettings" } }
+				]
+			}
+		},
+		{
+			"id": "settings-page-drawing",
+			"kind": "diagram",
+			"shows": "A drawing of the Project Settings window on its Collision Layers page with the Playground's table, as the pin draws it: the pages by category with Collision Layers selected under Physics; the heading, the section's description and the page's own description, cut; the summary 2 named · 1 pair passes through; the name fields of layers 1 and 2, Ball and Ghost, each with its remove button; the button Name a Layer; the matrix under Which layers collide, with rows and columns for layers 0, 1 and 2 and one box per pair, every box checked except the one where Ball and Ghost meet",
+			"caption": "A drawing of the Collision Layers page with the Playground's table. Only named layers have name fields, and the box where Ball and Ghost meet is cleared, so those two pass through each other.",
+			"alt": "A window with Collision Layers selected under Physics: name fields Ball and Ghost, then a triangle of check boxes for layers 0, 1 and 2, all checked except where Ball and Ghost meet.",
+			"numbers": "Page list as world/projects-settings' timing-page-drawing (SettingsBrowser::BuildEntries, StrataEditor/src/UI/SettingsPages.cpp), Collision Layers selected. Heading and the section's description (Strata/src/Strata/Scene/ProjectCollisionLayers.cpp:59-63) from SettingsBrowser::DrawPage (SettingsPages.cpp:569-571). The page, StrataEditor/src/UI/CollisionLayersPage.cpp: its caption (114-116), the summary of Describe (63-81: 2 named, the pair 1 and 2 apart), DrawNames (131-190: a row per named layer, label Layer <index>, a name field and an X button; then the toolbar button Name a Layer), DrawMatrix (192-281: the caption Which layers collide; the shown layers 0, 1 and 2, as Describe lists layer 0, named layers and layers that do not collide with all; a header of indices; row labels <index> · <name>, layer 0 as Layer 0; boxes for the columns up to the row, cleared at row 2, column 1). The table from Samples/PhysicsPlayground/PhysicsPlayground.stproj. Texts cut with ellipses."
+		}
+	]
+}

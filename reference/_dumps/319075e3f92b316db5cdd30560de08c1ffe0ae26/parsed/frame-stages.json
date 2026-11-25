@@ -1,0 +1,396 @@
+{
+	"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+	"stages": [
+		"Assets.Finalize",
+		"Assets.Update",
+		"Editor.Commands",
+		"Editor.UI",
+		"GPU.AO",
+		"GPU.Aerial",
+		"GPU.Cull",
+		"GPU.DepthOfField",
+		"GPU.ImGui",
+		"GPU.MotionBlur",
+		"GPU.Opaque",
+		"GPU.Overlays",
+		"GPU.Post",
+		"GPU.Prepass",
+		"GPU.RadianceCascades",
+		"GPU.Reflections",
+		"GPU.ScreenShadows",
+		"GPU.Setup",
+		"GPU.Shadows",
+		"GPU.TAA",
+		"GPU.Transparent",
+		"GPU.UI",
+		"GPU.Uploads",
+		"Input",
+		"Present",
+		"Render.Extract",
+		"Render.Submit",
+		"Render.UI",
+		"Scene.Animation",
+		"Scene.Audio",
+		"Scene.Load",
+		"Scene.Physics",
+		"Scene.Scripts",
+		"Scene.Transforms",
+		"Scene.UI",
+		"World.Streaming"
+	],
+	"cpu": [
+		{
+			"name": "Input",
+			"declared": [
+				{
+					"by": "c_BuiltinFrameStages",
+					"file": "Strata/src/Strata/Core/FrameProfiler.h",
+					"line": 68
+				}
+			],
+			"timed": [
+				{
+					"file": "Strata/src/Strata/Core/Application.cpp",
+					"line": 300
+				}
+			],
+			"inWorkTime": true
+		},
+		{
+			"name": "Assets.Update",
+			"declared": [
+				{
+					"by": "c_BuiltinFrameStages",
+					"file": "Strata/src/Strata/Core/FrameProfiler.h",
+					"line": 69
+				}
+			],
+			"timed": [
+				{
+					"file": "Strata/src/Strata/Asset/AssetManager.cpp",
+					"line": 966
+				},
+				{
+					"file": "Strata/src/Strata/Asset/EditorAssetManager.cpp",
+					"line": 2839
+				}
+			],
+			"inWorkTime": true
+		},
+		{
+			"name": "Assets.Finalize",
+			"declared": [
+				{
+					"by": "c_BuiltinFrameStages",
+					"file": "Strata/src/Strata/Core/FrameProfiler.h",
+					"line": 70
+				}
+			],
+			"timed": [
+				{
+					"file": "Strata/src/Strata/Asset/AssetManager.cpp",
+					"line": 1011
+				},
+				{
+					"file": "Strata/src/Strata/Asset/AssetManager.cpp",
+					"line": 1042
+				}
+			],
+			"inWorkTime": true
+		},
+		{
+			"name": "Scene.Load",
+			"declared": [
+				{
+					"by": "c_BuiltinFrameStages",
+					"file": "Strata/src/Strata/Core/FrameProfiler.h",
+					"line": 71
+				}
+			],
+			"timed": [
+				{
+					"file": "Strata/src/Strata/Runtime/GameRuntime.cpp",
+					"line": 230
+				},
+				{
+					"file": "Strata/src/Strata/Scene/SceneSubScenes.cpp",
+					"line": 328
+				},
+				{
+					"file": "StrataEditor/src/Editor/EditorContext.cpp",
+					"line": 903
+				},
+				{
+					"file": "StrataEditor/src/Editor/EditorContext.cpp",
+					"line": 1470
+				},
+				{
+					"file": "StrataEditor/src/Editor/EditorContext.cpp",
+					"line": 1499
+				}
+			],
+			"inWorkTime": true
+		},
+		{
+			"name": "Scene.Scripts",
+			"declared": [
+				{
+					"by": "c_BuiltinFrameStages",
+					"file": "Strata/src/Strata/Core/FrameProfiler.h",
+					"line": 72
+				},
+				{
+					"by": "ProfileStage",
+					"file": "Strata/src/Strata/Scripting/ScriptingRegistration.cpp",
+					"line": 21
+				}
+			],
+			"timed": [],
+			"inWorkTime": true
+		},
+		{
+			"name": "Scene.Physics",
+			"declared": [
+				{
+					"by": "c_BuiltinFrameStages",
+					"file": "Strata/src/Strata/Core/FrameProfiler.h",
+					"line": 73
+				},
+				{
+					"by": "ProfileStage",
+					"file": "Strata/src/Strata/Physics/PhysicsRegistration.cpp",
+					"line": 22
+				}
+			],
+			"timed": [],
+			"inWorkTime": true
+		},
+		{
+			"name": "Scene.Audio",
+			"declared": [
+				{
+					"by": "c_BuiltinFrameStages",
+					"file": "Strata/src/Strata/Core/FrameProfiler.h",
+					"line": 74
+				},
+				{
+					"by": "ProfileStage",
+					"file": "Strata/src/Strata/Audio/AudioRegistration.cpp",
+					"line": 46
+				}
+			],
+			"timed": [],
+			"inWorkTime": true
+		},
+		{
+			"name": "Scene.Transforms",
+			"declared": [
+				{
+					"by": "c_BuiltinFrameStages",
+					"file": "Strata/src/Strata/Core/FrameProfiler.h",
+					"line": 75
+				}
+			],
+			"timed": [
+				{
+					"file": "Strata/src/Strata/Scene/Scene.cpp",
+					"line": 1604
+				},
+				{
+					"file": "Strata/src/Strata/Scene/Scene.cpp",
+					"line": 2029
+				},
+				{
+					"file": "Strata/src/Strata/Scene/SceneInterpolation.cpp",
+					"line": 418
+				}
+			],
+			"inWorkTime": true
+		},
+		{
+			"name": "Render.Extract",
+			"declared": [
+				{
+					"by": "c_BuiltinFrameStages",
+					"file": "Strata/src/Strata/Core/FrameProfiler.h",
+					"line": 76
+				}
+			],
+			"timed": [
+				{
+					"file": "Strata/src/Strata/Renderer/SceneRenderer.cpp",
+					"line": 2677
+				},
+				{
+					"file": "Strata/src/Strata/Renderer/SceneRenderer.cpp",
+					"line": 3061
+				},
+				{
+					"file": "Strata/src/Strata/Renderer/SceneRendererExtraction.cpp",
+					"line": 252
+				},
+				{
+					"file": "Strata/src/Strata/Renderer/SceneRendererExtraction.cpp",
+					"line": 347
+				},
+				{
+					"file": "Strata/src/Strata/Renderer/SceneRendererExtraction.cpp",
+					"line": 421
+				},
+				{
+					"file": "Strata/src/Strata/Renderer/SceneRendererExtraction.cpp",
+					"line": 704
+				},
+				{
+					"file": "Strata/src/Strata/Renderer/SceneRendererExtraction.cpp",
+					"line": 932
+				},
+				{
+					"file": "Strata/src/Strata/Renderer/SceneRendererExtraction.cpp",
+					"line": 1136
+				},
+				{
+					"file": "Strata/src/Strata/Renderer/SceneRendererLocalShadows.cpp",
+					"line": 1085
+				},
+				{
+					"file": "Strata/src/Strata/Renderer/SceneRendererLocalShadows.cpp",
+					"line": 1310
+				}
+			],
+			"inWorkTime": true
+		},
+		{
+			"name": "Render.Submit",
+			"declared": [
+				{
+					"by": "c_BuiltinFrameStages",
+					"file": "Strata/src/Strata/Core/FrameProfiler.h",
+					"line": 77
+				}
+			],
+			"timed": [
+				{
+					"file": "Strata/src/Strata/Renderer/SceneRenderer.cpp",
+					"line": 2918
+				}
+			],
+			"inWorkTime": true
+		},
+		{
+			"name": "Editor.UI",
+			"declared": [
+				{
+					"by": "c_BuiltinFrameStages",
+					"file": "Strata/src/Strata/Core/FrameProfiler.h",
+					"line": 78
+				}
+			],
+			"timed": [
+				{
+					"file": "Strata/src/Strata/ImGui/ImGuiModule.cpp",
+					"line": 56
+				}
+			],
+			"inWorkTime": true
+		},
+		{
+			"name": "Present",
+			"declared": [
+				{
+					"by": "c_BuiltinFrameStages",
+					"file": "Strata/src/Strata/Core/FrameProfiler.h",
+					"line": 79
+				}
+			],
+			"timed": [
+				{
+					"file": "Strata/src/Strata/Renderer/GraphicsModule.cpp",
+					"line": 87
+				},
+				{
+					"file": "Strata/src/Strata/Renderer/Renderer.cpp",
+					"line": 319
+				}
+			],
+			"inWorkTime": false
+		},
+		{
+			"name": "Editor.Commands",
+			"declared": [],
+			"timed": [
+				{
+					"file": "StrataEditor/src/Editor/EditorCommandRunner.cpp",
+					"line": 280
+				},
+				{
+					"file": "StrataEditor/src/Editor/EditorCommands.cpp",
+					"line": 115
+				}
+			],
+			"inWorkTime": true
+		},
+		{
+			"name": "Render.UI",
+			"declared": [
+				{
+					"by": "RegisterStage",
+					"file": "Strata/src/Strata/GameUI/GameUIRenderer.cpp",
+					"line": 72
+				}
+			],
+			"timed": [
+				{
+					"file": "Strata/src/Strata/GameUI/GameUIRenderer.cpp",
+					"line": 208
+				},
+				{
+					"file": "Strata/src/Strata/GameUI/GameUIRenderer.cpp",
+					"line": 767
+				}
+			],
+			"inWorkTime": true
+		},
+		{
+			"name": "Scene.Animation",
+			"declared": [
+				{
+					"by": "ProfileStage",
+					"file": "Strata/src/Strata/Animation/AnimationRegistration.cpp",
+					"line": 39
+				}
+			],
+			"timed": [],
+			"inWorkTime": true
+		},
+		{
+			"name": "Scene.UI",
+			"declared": [
+				{
+					"by": "ProfileStage",
+					"file": "Strata/src/Strata/GameUI/GameUIRegistration.cpp",
+					"line": 23
+				}
+			],
+			"timed": [],
+			"inWorkTime": true
+		},
+		{
+			"name": "World.Streaming",
+			"declared": [
+				{
+					"by": "ProfileStage",
+					"file": "Strata/src/Strata/World/WorldRegistration.cpp",
+					"line": 63
+				}
+			],
+			"timed": [
+				{
+					"file": "StrataEditor/src/Editor/EditorContext.cpp",
+					"line": 2779
+				}
+			],
+			"inWorkTime": true
+		}
+	]
+}

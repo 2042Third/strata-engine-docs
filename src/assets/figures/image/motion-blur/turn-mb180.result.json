@@ -1,0 +1,34 @@
+{
+	"camera": "scene",
+	"images": [
+		{
+			"fixedSteps": 30,
+			"height": 1080,
+			"path": "G:/GameEngineAI/.worktrees/docs-work/photo/last-image-motion-blur/live/image.motion-blur.turn-mb180/take-1/frame-1.png",
+			"temporalFrames": 1938,
+			"width": 1920
+		},
+		{
+			"fixedSteps": 31,
+			"height": 1080,
+			"path": "G:/GameEngineAI/.worktrees/docs-work/photo/last-image-motion-blur/live/image.motion-blur.turn-mb180/take-1/frame-2.png",
+			"temporalFrames": 1939,
+			"width": 1920
+		},
+		{
+			"fixedSteps": 32,
+			"height": 1080,
+			"path": "G:/GameEngineAI/.worktrees/docs-work/photo/last-image-motion-blur/live/image.motion-blur.turn-mb180/take-1/frame-3.png",
+			"temporalFrames": 1940,
+			"width": 1920
+		},
+		{
+			"fixedSteps": 33,
+			"height": 1080,
+			"path": "G:/GameEngineAI/.worktrees/docs-work/photo/last-image-motion-blur/live/image.motion-blur.turn-mb180/take-1/frame-4.png",
+			"temporalFrames": 1941,
+			"width": 1920
+		}
+	],
+	"live": true
+}

@@ -1,0 +1,49 @@
+{
+	"figures": [
+		{
+			"id": "robot-skeleton",
+			"kind": "editor",
+			"shows": "The Asset tab with the robot's skeleton of the third-person sample: the Joints section counts 45 joints and lists the first of them set in by depth, the root motion joint Bone in orange",
+			"caption": "The Joints section of the robot's skeleton. Each row is one joint, set in one step further than its parent, so every parent stands above its children.",
+			"alt": "The editor's Asset tab for the robot's skeleton. A line gives the joint count and the root motion joint, Bone. Below it, a scrolling list with one bone icon and name per joint, each level set in further. The icon of Bone is orange.",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "AssetInspector",
+				"steps": [
+					{
+						"command": "asset.list",
+						"parameters": {
+							"type": "Skeleton",
+							"path": "Models/Robot/",
+							"includeBuiltin": false
+						},
+						"bind": {
+							"skeleton": "/assets/0/asset"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"asset": {
+								"$ref": "skeleton"
+							}
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 60
+						}
+					}
+				]
+			}
+		}
+	]
+}

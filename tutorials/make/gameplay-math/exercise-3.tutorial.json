@@ -1,0 +1,111 @@
+{
+	"page": "make/gameplay-math",
+	"startsFrom": {
+		"template": "basic3d",
+		"name": "GameplayMath"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"files": [
+				{ "from": "book:tutorials/make/gameplay-math/Shooter.cpp", "to": "Scripts/Shooter.cpp" },
+				{ "from": "book:tutorials/make/gameplay-math/GoalCounter.cpp", "to": "Scripts/GoalCounter.cpp" }
+			],
+			"commands": [
+				{
+					"command": "project.setCollisionLayers",
+					"parameters": {
+						"layerNames": { "1": "Shot", "2": "Ghost" },
+						"layerCollisions": [ { "layers": [ "Shot", "Ghost" ], "collide": false } ]
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Shot",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Sphere" },
+							"SphereCollider": { "Radius": 0.5 },
+							"RigidBody": { "Type": "Dynamic", "Layer": "Shot" },
+							"Transform": { "Translation": [ 0, 3, 0 ] }
+						}
+					},
+					"bind": { "shot": "/id" }
+				},
+				{
+					"command": "prefab.create",
+					"parameters": { "entities": [ { "$ref": "shot" } ], "path": "Prefabs/Shot.stprefab" }
+				},
+				{
+					"command": "entity.delete",
+					"parameters": { "entities": [ { "$ref": "shot" } ] }
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Goal",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Cube" },
+							"BoxCollider": { "HalfExtents": [ 0.5, 0.5, 0.5 ] },
+							"RigidBody": { "Type": "Static", "IsTrigger": true },
+							"Transform": { "Translation": [ 0, 1, -7 ], "Scale": [ 4, 2, 1 ] }
+						}
+					},
+					"bind": { "goal": "/id" }
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "GlassWall",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Cube" },
+							"BoxCollider": { "HalfExtents": [ 0.5, 0.5, 0.5 ] },
+							"RigidBody": { "Type": "Static", "Layer": "Ghost" },
+							"Transform": { "Translation": [ 0, 1, -3 ], "Scale": [ 4, 2, 0.1 ] }
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": { "name": "Shooter" },
+					"bind": { "shooter": "/id" }
+				},
+				{
+					"command": "script.build",
+					"expect": { "/success": { "equals": true } }
+				},
+				{
+					"command": "script.add",
+					"parameters": {
+						"entity": { "$ref": "shooter" },
+						"class": "Shooter",
+						"fields": { "Prefab": "Prefabs/Shot.stprefab" }
+					}
+				},
+				{
+					"command": "script.add",
+					"parameters": { "entity": { "$ref": "goal" }, "class": "GoalCounter" }
+				},
+				{
+					"command": "entity.find",
+					"parameters": { "name": "GlassWall" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ]
+				},
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "prefab.instantiate",
+					"parameters": { "prefab": "Prefabs/Shot.stprefab", "components": { "Transform": { "Translation": [ 0, 4, -7 ] } } } },
+				{ "command": "play.step", "parameters": { "steps": 60 }, "expect": { "/stepsRun": { "equals": 60 } } },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 20 },
+					"checks": [ { "pointer": "/messages", "contains": "Goal: 1" } ] },
+				{ "command": "entity.find", "parameters": { "name": "Shot" },
+					"checks": [ { "pointer": "/entities", "length": 0 } ] },
+				{ "command": "prefab.instantiate",
+					"parameters": { "prefab": "Prefabs/Shot.stprefab", "components": { "Transform": { "Translation": [ 0, 4, -3 ] } } } },
+				{ "command": "play.step", "parameters": { "steps": 90 }, "expect": { "/stepsRun": { "equals": 90 } } },
+				{ "command": "component.get", "entityName": "Shot", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/1", "approx": 0.5, "tolerance": 0.1 } ] },
+				{ "command": "play.stop" }
+			]
+		}
+	]
+}

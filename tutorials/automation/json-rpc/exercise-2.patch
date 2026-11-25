@@ -1,0 +1,25 @@
+diff --git a/StrataTests/src/Network/JsonRpcTests.cpp b/StrataTests/src/Network/JsonRpcTests.cpp
+index 7d4e95a..052f6e9 100644
+--- a/StrataTests/src/Network/JsonRpcTests.cpp
++++ b/StrataTests/src/Network/JsonRpcTests.cpp
+@@ -58,6 +58,20 @@ TEST_SUITE("Network.JsonRpc")
+ 		CHECK_FALSE(reader.NextLine().has_value());
+ 	}
+ 
++	TEST_CASE("Line reader skips a blank line that follows a split CR/LF pair")
++	{
++		JsonLineReader reader;
++		reader.Append(std::string_view("{\"a\":1}\r"));
++		CHECK_FALSE(reader.NextLine().has_value());
++		reader.Append(std::string_view("\n\r\n"));
++		CHECK(reader.NextLine().value() == "{\"a\":1}");
++		CHECK_FALSE(reader.NextLine().has_value());
++		reader.Append(std::string_view("{\"b\":2}\n"));
++		CHECK(reader.NextLine().value() == "{\"b\":2}");
++		CHECK_FALSE(reader.NextLine().has_value());
++		CHECK_FALSE(reader.HasError());
++	}
++
+ 	TEST_CASE("Line reader enforces the maximum message size")
+ 	{
+ 		SUBCASE("A message at the limit is accepted, including with CRLF")

@@ -1,0 +1,77 @@
+[
+	{
+		"command": "prefab.instantiate",
+		"parameters": {
+			"prefab": "Prefabs/Coin.stprefab",
+			"components": {
+				"Transform": {
+					"Translation": [
+						0,
+						1,
+						4
+					]
+				}
+			}
+		},
+		"bind": {
+			"coin": "/id"
+		}
+	},
+	{
+		"command": "component.add",
+		"parameters": {
+			"entity": {
+				"$ref": "coin"
+			},
+			"component": "SphereCollider"
+		}
+	},
+	{
+		"command": "component.add",
+		"parameters": {
+			"entity": {
+				"$ref": "coin"
+			},
+			"component": "RigidBody"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "coin"
+			},
+			"component": "RigidBody",
+			"values": {
+				"Type": "Kinematic",
+				"IsTrigger": true
+			}
+		}
+	},
+	{
+		"command": "prefab.apply",
+		"parameters": {
+			"entity": {
+				"$ref": "coin"
+			}
+		}
+	},
+	{
+		"command": "entity.delete",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "coin"
+				}
+			]
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	}
+]

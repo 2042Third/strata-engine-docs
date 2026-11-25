@@ -1,0 +1,2204 @@
+{
+	"terms": [
+		{
+			"id": "normalization",
+			"term": "normalization",
+			"definition": "Dividing a vector by its length, which keeps its direction and makes its length 1.",
+			"home": "basics/math-vectors",
+			"aliases": [
+				"normalized",
+				"normalizing"
+			],
+			"avoid": []
+		},
+		{
+			"id": "hitch",
+			"term": "hitch",
+			"definition": "One frame that takes far longer than the frames around it, so that the motion visibly jumps.",
+			"home": "start/what-an-engine-is",
+			"aliases": [
+				"hitches"
+			],
+			"avoid": []
+		},
+		{
+			"id": "frame-pacing",
+			"term": "frame pacing",
+			"definition": "Deciding when each frame may start, so that frames come at a steady rate.",
+			"home": "core/frame-loop",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "vsync",
+			"term": "vsync",
+			"definition": "Handing a finished image to the display only when the display starts its next refresh.",
+			"home": "core/frame-loop",
+			"aliases": [
+				"vertical synchronization",
+				"V-sync"
+			],
+			"avoid": []
+		},
+		{
+			"id": "fifo-present-mode",
+			"term": "FIFO present mode",
+			"definition": "The present mode in which finished images wait in a line, first in, first out, and the display takes one at each refresh; the mode that gives vsync.",
+			"home": "core/frame-loop",
+			"aliases": [
+				"FIFO present modes"
+			],
+			"avoid": []
+		},
+		{
+			"id": "frame-rate-cap",
+			"term": "frame-rate cap",
+			"definition": "A highest frame rate that a loop does not exceed.",
+			"home": "core/frame-loop",
+			"aliases": [
+				"frame rate cap",
+				"cap"
+			],
+			"avoid": []
+		},
+		{
+			"id": "trail",
+			"term": "trail",
+			"definition": "The list of files and lines that leads from something the reader can see, such as an option, a message or a label, to the code where it acts, each line with a few words on what happens there.",
+			"home": "core/reading-code",
+			"aliases": [
+				"trails",
+				"code trail"
+			],
+			"avoid": []
+		},
+		{
+			"id": "registry-world",
+			"term": "Registry (world)",
+			"definition": "EnTT's container of entity numbers and component storages, of which every scene has one.",
+			"home": "world/ecs",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "context-world",
+			"term": "Context (world)",
+			"definition": "A place inside a registry that keeps one object per type for the whole registry, where a module keeps its per-scene state.",
+			"home": "world/ecs",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "subtree",
+			"term": "subtree",
+			"definition": "A node of a tree, or an entity of a scene, with everything below it: its children, their children and so on.",
+			"home": "basics/trees-graphs",
+			"aliases": [
+				"subtrees"
+			],
+			"avoid": []
+		},
+		{
+			"id": "reflectance",
+			"term": "reflectance",
+			"definition": "How much of the light that reaches a surface the surface sends back, and in which directions.",
+			"home": "light/reflectance",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "hardware-thread",
+			"term": "hardware thread",
+			"definition": "One of the lists of instructions a core keeps in progress at the same time; many x64 cores have two.",
+			"home": "basics/computer",
+			"aliases": [
+				"hardware threads"
+			],
+			"avoid": []
+		},
+		{
+			"id": "register",
+			"term": "register",
+			"definition": "One of the few dozen places inside a core where the numbers wait that an instruction works on right now.",
+			"home": "basics/computer",
+			"aliases": [
+				"registers"
+			],
+			"avoid": []
+		},
+		{
+			"id": "off-by-one-mistake",
+			"term": "off-by-one mistake",
+			"definition": "A loop that runs one turn too many or too few, usually because < and <= were mixed up.",
+			"home": "basics/programming-2",
+			"aliases": [
+				"off by one"
+			],
+			"avoid": []
+		},
+		{
+			"id": "staging-area",
+			"term": "staging area",
+			"definition": "A list of changes marked for the next commit.",
+			"home": "basics/git",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "merge-basics",
+			"term": "Merge (basics)",
+			"definition": "To bring the commits of another branch into the current one.",
+			"home": "basics/git",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "merge-conflict",
+			"term": "merge conflict",
+			"definition": "A clash where both branches changed the same line, which git leaves for the person to settle.",
+			"home": "basics/git",
+			"aliases": [
+				"merge conflicts"
+			],
+			"avoid": []
+		},
+		{
+			"id": "tag-git",
+			"term": "Tag (git)",
+			"definition": "A fixed name for one commit.",
+			"home": "basics/git",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "patch-basics",
+			"term": "Patch (basics)",
+			"definition": "A diff saved in a file.",
+			"home": "basics/git",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "worktree",
+			"term": "worktree",
+			"definition": "A second working folder of the same repository, with its own branch checked out.",
+			"home": "basics/git",
+			"aliases": [
+				"worktrees"
+			],
+			"avoid": []
+		},
+		{
+			"id": "morton-order",
+			"term": "Morton order",
+			"definition": "The order of numbers made by mixing the bits of two or three coordinates into one.",
+			"home": "basics/numbers",
+			"aliases": [
+				"Z-order"
+			],
+			"avoid": []
+		},
+		{
+			"id": "significand",
+			"term": "significand",
+			"definition": "The digits of a floating-point number after its leading one.",
+			"home": "basics/numbers",
+			"aliases": [
+				"mantissa"
+			],
+			"avoid": []
+		},
+		{
+			"id": "subnormal-number",
+			"term": "subnormal number",
+			"definition": "A float below the smallest one of the usual form, whose leading 1 is dropped.",
+			"home": "basics/numbers",
+			"aliases": [
+				"subnormal",
+				"subnormals",
+				"subnormal numbers",
+				"denormal"
+			],
+			"avoid": []
+		},
+		{
+			"id": "swap-remove",
+			"term": "swap-remove",
+			"definition": "Removing an array item in constant time by copying the last item into its place and shrinking the array by one.",
+			"home": "basics/data-structures",
+			"aliases": [
+				"swap and pop"
+			],
+			"avoid": []
+		},
+		{
+			"id": "free-list",
+			"term": "free list",
+			"definition": "A list of the unused slot indices of an array, from which the next new item takes its slot.",
+			"home": "basics/data-structures",
+			"aliases": [
+				"free lists"
+			],
+			"avoid": []
+		},
+		{
+			"id": "prefix-sum",
+			"term": "prefix sum",
+			"definition": "A running total of a list of counts, giving the place where each group starts in one shared array.",
+			"home": "basics/data-structures",
+			"aliases": [
+				"prefix sums"
+			],
+			"avoid": []
+		},
+		{
+			"id": "load-factor",
+			"term": "load factor",
+			"definition": "The number of items of a hash map divided by its number of buckets.",
+			"home": "basics/data-structures",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "binary-search-tree",
+			"term": "binary search tree",
+			"definition": "A tree in which each node has at most two children, the keys of its left subtree are smaller than its own and those of its right subtree larger.",
+			"home": "basics/trees-graphs",
+			"aliases": [
+				"binary search trees"
+			],
+			"avoid": []
+		},
+		{
+			"id": "ordered-map",
+			"term": "ordered map",
+			"definition": "A map built on a balanced search tree that finds a key in O(log n), lists its keys in order and never moves its nodes.",
+			"home": "basics/trees-graphs",
+			"aliases": [
+				"ordered maps"
+			],
+			"avoid": []
+		},
+		{
+			"id": "priority-queue",
+			"term": "priority queue",
+			"definition": "A queue that gives out the waiting item with the best priority, whatever its arrival time.",
+			"home": "basics/trees-graphs",
+			"aliases": [
+				"priority queues"
+			],
+			"avoid": []
+		},
+		{
+			"id": "binary-heap",
+			"term": "binary heap",
+			"definition": "A tree stored in an array in which every node is no larger than its children, so the smallest item sits at index 0.",
+			"home": "basics/trees-graphs",
+			"aliases": [
+				"binary heaps"
+			],
+			"avoid": []
+		},
+		{
+			"id": "spatial-tree",
+			"term": "spatial tree",
+			"definition": "A tree that cuts space into parts so that a search skips every part that cannot hold the answer.",
+			"home": "basics/trees-graphs",
+			"aliases": [
+				"spatial trees"
+			],
+			"avoid": []
+		},
+		{
+			"id": "cycle",
+			"term": "cycle",
+			"definition": "A path of arrows in a directed graph that leads back to its start.",
+			"home": "basics/trees-graphs",
+			"aliases": [
+				"cycles"
+			],
+			"avoid": []
+		},
+		{
+			"id": "topological-order-basics",
+			"term": "Topological order (basics)",
+			"definition": "A list of the nodes of a dependency graph in which every node comes after the nodes it needs.",
+			"home": "basics/trees-graphs",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "union-find",
+			"term": "union-find",
+			"definition": "An array in which each item holds the number of a parent, so that two items are in one group when their roots are equal.",
+			"home": "basics/trees-graphs",
+			"aliases": [
+				"disjoint sets"
+			],
+			"avoid": []
+		},
+		{
+			"id": "stable-sort",
+			"term": "stable sort",
+			"definition": "A sort that keeps the order of items with equal keys.",
+			"home": "basics/trees-graphs",
+			"aliases": [
+				"stable sorts"
+			],
+			"avoid": []
+		},
+		{
+			"id": "slicing",
+			"term": "slicing",
+			"definition": "What happens when a derived object is copied into a base value: the copy keeps only the base part and loses the derived part and its virtual behavior.",
+			"home": "basics/cpp-classes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "virtual-table",
+			"term": "virtual table",
+			"definition": "A table, made once per class, that lists the address of each virtual function of that class; a hidden pointer in each object leads to it.",
+			"home": "basics/cpp-classes",
+			"aliases": [
+				"vtable",
+				"virtual tables"
+			],
+			"avoid": []
+		},
+		{
+			"id": "type-argument",
+			"term": "type argument",
+			"definition": "An argument of a template that is a type, as the float of Row<float, 3>.",
+			"home": "basics/cpp-generic",
+			"aliases": [
+				"type arguments"
+			],
+			"avoid": []
+		},
+		{
+			"id": "node-handle",
+			"term": "node handle",
+			"definition": "The object extract returns, which owns one node of a map and lets you change its key before insert.",
+			"home": "basics/cpp-generic",
+			"aliases": [
+				"node handles"
+			],
+			"avoid": []
+		},
+		{
+			"id": "function-pointer",
+			"term": "function pointer",
+			"definition": "The address of a plain function, the C form of a callback.",
+			"home": "basics/cpp-generic",
+			"aliases": [
+				"function pointers"
+			],
+			"avoid": []
+		},
+		{
+			"id": "user-pointer",
+			"term": "user pointer",
+			"definition": "A void* that a C library stores and passes back to the callback.",
+			"home": "basics/cpp-generic",
+			"aliases": [
+				"user data"
+			],
+			"avoid": []
+		},
+		{
+			"id": "configuration-struct",
+			"term": "configuration struct",
+			"definition": "A plain struct a C library takes its settings in, completed by the caller and passed by pointer.",
+			"home": "basics/cpp-generic",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "pointer-to-a-member",
+			"term": "pointer to a member",
+			"definition": "A value of a type such as float Coin::* that names a field of a class, not of one object.",
+			"home": "basics/cpp-generic",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "variant-basics",
+			"term": "Variant (basics)",
+			"definition": "A type that holds exactly one of several listed types at a time and knows which, as std::variant.",
+			"home": "basics/cpp-modern",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "forwarding-reference",
+			"term": "forwarding reference",
+			"definition": "A parameter written Args&&... in a template, which binds to both temporaries and named objects and remembers which, so that std::forward passes it on as it came.",
+			"home": "basics/cpp-modern",
+			"aliases": [
+				"forwarding references"
+			],
+			"avoid": []
+		},
+		{
+			"id": "structured-binding",
+			"term": "structured binding",
+			"definition": "A declaration such as const auto [end, error] = ... that splits a pair or struct into named variables.",
+			"home": "basics/cpp-modern",
+			"aliases": [
+				"structured bindings"
+			],
+			"avoid": []
+		},
+		{
+			"id": "incomplete-type",
+			"term": "incomplete type",
+			"definition": "A class that is declared (class Scene;) but not yet defined.",
+			"home": "basics/cpp-modern",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "type-trait",
+			"term": "type trait",
+			"definition": "A template in <type_traits> that answers a question about a type at compile time, as std::is_same_v.",
+			"home": "basics/cpp-modern",
+			"aliases": [
+				"type traits"
+			],
+			"avoid": []
+		},
+		{
+			"id": "symbol",
+			"term": "symbol",
+			"definition": "A name that an object file defines or needs, such as a function.",
+			"home": "basics/build",
+			"aliases": [
+				"symbols"
+			],
+			"avoid": []
+		},
+		{
+			"id": "definition",
+			"term": "definition",
+			"definition": "The one place that makes a declared thing exist, such as a function's body.",
+			"home": "basics/build",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "static-initialization",
+			"term": "static initialization",
+			"definition": "The building of a program's global variables before main begins, in an order C++ leaves open between source files.",
+			"home": "basics/build",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "target-cmake",
+			"term": "Target (CMake)",
+			"definition": "A named thing to build, such as a library or a program, that carries its own include folders, definitions and links.",
+			"home": "engineering/cmake",
+			"aliases": [
+				"CMake target"
+			],
+			"avoid": []
+		},
+		{
+			"id": "cache-cmake",
+			"term": "Cache (CMake)",
+			"definition": "The file CMakeCache.txt, where CMake keeps its settings between runs of the configure step.",
+			"home": "basics/build",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "optimization",
+			"term": "optimization",
+			"definition": "The compiler rewriting code into machine code that does the same job in less time.",
+			"home": "basics/build",
+			"aliases": [
+				"optimize",
+				"optimizes",
+				"optimized",
+				"optimizing"
+			],
+			"avoid": []
+		},
+		{
+			"id": "magic-number",
+			"term": "magic number",
+			"definition": "A fixed value at the start of a file that says which format the file claims to be.",
+			"home": "basics/bytes",
+			"aliases": [
+				"magic numbers"
+			],
+			"avoid": []
+		},
+		{
+			"id": "header",
+			"term": "header",
+			"definition": "The block of fixed size at the start of a file that describes the rest of the file.",
+			"home": "basics/bytes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "alignment",
+			"term": "alignment",
+			"definition": "The rule that a value starts at an address that is a multiple of a number, usually its type's size.",
+			"home": "basics/bytes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "padding",
+			"term": "padding",
+			"definition": "Unused bytes the compiler inserts between members or after the last one of a struct.",
+			"home": "basics/bytes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "standard-layout-type",
+			"term": "standard-layout type",
+			"definition": "A struct that keeps its members in declaration order, so that offsetof is allowed.",
+			"home": "basics/bytes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "format-header",
+			"term": "format header",
+			"definition": "A small part of a document that names its kind and its version, so a reader checks them before it trusts the rest.",
+			"home": "basics/data-formats",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "parser",
+			"term": "parser",
+			"definition": "The part of a reader that checks that tokens follow the rules of a format and builds the values from them.",
+			"home": "basics/data-formats",
+			"aliases": [
+				"parsers"
+			],
+			"avoid": []
+		},
+		{
+			"id": "regular-expression",
+			"term": "regular expression",
+			"definition": "A short text that describes a set of texts, so that a program can ask whether a text matches it.",
+			"home": "basics/data-formats",
+			"aliases": [
+				"regular expressions",
+				"regex"
+			],
+			"avoid": []
+		},
+		{
+			"id": "glob",
+			"term": "glob",
+			"definition": "The simple pattern that file names use, such as *.cpp, where * stands for any run of characters.",
+			"home": "basics/data-formats",
+			"aliases": [
+				"globs"
+			],
+			"avoid": []
+		},
+		{
+			"id": "stable-hash",
+			"term": "stable hash",
+			"definition": "A hash whose rule is written down and never changes, so every program on every machine gives the same number for the same bytes.",
+			"home": "basics/data-formats",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "affine-transform",
+			"term": "affine transform",
+			"definition": "A 3×3 change followed by a move, whose 4×4 matrix has the bottom row 0, 0, 0, 1.",
+			"home": "basics/math-matrices",
+			"aliases": [
+				"affine transformation",
+				"affine transforms"
+			],
+			"avoid": []
+		},
+		{
+			"id": "transpose",
+			"term": "transpose",
+			"definition": "The matrix with rows and columns swapped, so the number in row i and column j moves to row j and column i.",
+			"home": "basics/math-bases",
+			"aliases": [
+				"transposed matrix"
+			],
+			"avoid": []
+		},
+		{
+			"id": "orthonormal-basis",
+			"term": "orthonormal basis",
+			"definition": "Three vectors of length 1 at right angles to each other; the columns of a rotation form one.",
+			"home": "basics/math-bases",
+			"aliases": [
+				"orthonormal frame"
+			],
+			"avoid": []
+		},
+		{
+			"id": "bitangent",
+			"term": "bitangent",
+			"definition": "A second direction along a surface, at a right angle to its tangent.",
+			"home": "basics/math-bases",
+			"aliases": [
+				"bitangents"
+			],
+			"avoid": []
+		},
+		{
+			"id": "tangent-space",
+			"term": "tangent space",
+			"definition": "The space whose axes are a surface's tangent, bitangent and normal.",
+			"home": "basics/math-bases",
+			"aliases": [
+				"tangent frame"
+			],
+			"avoid": []
+		},
+		{
+			"id": "determinant",
+			"term": "determinant",
+			"definition": "The factor by which a matrix multiplies areas in 2D or volumes in 3D; negative for a mirror, zero for a flat matrix.",
+			"home": "basics/math-bases",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "view-space",
+			"term": "view space",
+			"definition": "The coordinate system whose origin is the camera, with +X to its right, +Y up and -Z straight ahead.",
+			"home": "basics/math-projection",
+			"aliases": [
+				"camera space",
+				"eye space"
+			],
+			"avoid": []
+		},
+		{
+			"id": "image-plane",
+			"term": "image plane",
+			"definition": "The flat surface at distance 1 in front of the camera, at a right angle to its view direction, on which every point is drawn.",
+			"home": "basics/math-projection",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "conjugate",
+			"term": "conjugate",
+			"definition": "The quaternion with the signs of x, y and z flipped; for a unit quaternion it is the inverse.",
+			"home": "basics/math-rotations",
+			"aliases": [
+				"quaternion conjugate"
+			],
+			"avoid": []
+		},
+		{
+			"id": "double-cover",
+			"term": "double cover",
+			"definition": "The fact that each rotation has exactly two unit quaternions, q and -q.",
+			"home": "basics/math-rotations",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "angular-velocity",
+			"term": "angular velocity",
+			"definition": "A vector whose direction is the axis a body turns around and whose length is the rate in radians per second.",
+			"home": "basics/math-rotations",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "identity-rotation",
+			"term": "Identity (rotation)",
+			"definition": "The rotation that changes nothing, the quaternion (1, 0, 0, 0).",
+			"home": "basics/math-rotations",
+			"aliases": [
+				"identity quaternion"
+			],
+			"avoid": []
+		},
+		{
+			"id": "signed-distance",
+			"term": "signed distance",
+			"definition": "The distance of a point from a plane, positive on the side the plane's normal points to, negative on the other side and 0 on the plane.",
+			"home": "basics/math-geometry",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "quadratic-equation",
+			"term": "quadratic equation",
+			"definition": "An equation of the form a t squared plus b t plus c equal to 0, solved by the quadratic formula.",
+			"home": "basics/math-geometry",
+			"aliases": [
+				"quadratic",
+				"quadratic equations"
+			],
+			"avoid": []
+		},
+		{
+			"id": "bounding-volume",
+			"term": "bounding volume",
+			"definition": "A simple shape, a sphere or a box, that holds a complex one and stands in for it in a cheap first test.",
+			"home": "basics/math-geometry",
+			"aliases": [
+				"bounding volumes"
+			],
+			"avoid": []
+		},
+		{
+			"id": "slab",
+			"term": "slab",
+			"definition": "The space between two parallel planes; a box is where three slabs meet.",
+			"home": "basics/math-geometry",
+			"aliases": [
+				"slabs"
+			],
+			"avoid": []
+		},
+		{
+			"id": "convex",
+			"term": "convex",
+			"definition": "Said of a shape when a straight line between any two of its points stays inside it.",
+			"home": "basics/math-geometry",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "separating-axis",
+			"term": "separating axis",
+			"definition": "A direction onto which the shadows of two convex shapes do not overlap, which proves that they do not touch.",
+			"home": "basics/math-geometry",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "bilinear-interpolation",
+			"term": "bilinear interpolation",
+			"definition": "A blend of the four corner values of a square, made by lerps along x on two edges and then along y between the results.",
+			"home": "basics/math-interpolation",
+			"aliases": [
+				"bilinear blend"
+			],
+			"avoid": []
+		},
+		{
+			"id": "exponential-decay",
+			"term": "exponential decay",
+			"definition": "A quantity that loses the same fraction in each equal step of time or distance.",
+			"home": "basics/math-interpolation",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "time-constant",
+			"term": "time constant",
+			"definition": "The time tau = 1 / k after which an exponential decay has fallen to 1 / e, 36.8 %, of its start.",
+			"home": "basics/math-interpolation",
+			"aliases": [
+				"tau"
+			],
+			"avoid": []
+		},
+		{
+			"id": "half-life",
+			"term": "half-life",
+			"definition": "The time an exponential decay needs to lose half its value, ln 2 / k.",
+			"home": "basics/math-interpolation",
+			"aliases": [
+				"half-lives"
+			],
+			"avoid": []
+		},
+		{
+			"id": "geometric-series",
+			"term": "geometric series",
+			"definition": "A sum in which each term is the one before it times the same number r, with the sum 1 / (1 - r) for 0 < r < 1.",
+			"home": "basics/math-interpolation",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "moir",
+			"term": "moiré",
+			"definition": "False, wide stripes that appear when a fine regular pattern is sampled too coarsely.",
+			"home": "basics/signals",
+			"aliases": [
+				"moire"
+			],
+			"avoid": []
+		},
+		{
+			"id": "exclusive-cases",
+			"term": "Exclusive (cases)",
+			"definition": "Said of two cases that cannot both happen, so their probabilities add.",
+			"home": "basics/math-probability",
+			"aliases": [
+				"mutually exclusive"
+			],
+			"avoid": []
+		},
+		{
+			"id": "uniform-distribution",
+			"term": "Uniform (distribution)",
+			"definition": "Said of a distribution where every value, or every part of a range of the same size, is equally likely.",
+			"home": "basics/math-probability",
+			"aliases": [
+				"uniform distribution"
+			],
+			"avoid": []
+		},
+		{
+			"id": "variance",
+			"term": "variance",
+			"definition": "The average of the squared distances of samples from their mean.",
+			"home": "basics/math-probability",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "standard-deviation",
+			"term": "standard deviation",
+			"definition": "The square root of the variance, in the units of the samples.",
+			"home": "basics/math-probability",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "stratified-sampling",
+			"term": "stratified sampling",
+			"definition": "Cutting a range into equal cells and putting one random point in each.",
+			"home": "basics/math-probability",
+			"aliases": [
+				"stratified offsets",
+				"stratified"
+			],
+			"avoid": []
+		},
+		{
+			"id": "polar-angle",
+			"term": "polar angle",
+			"definition": "The angle between a direction and the up axis: 0 degrees for straight up, 90 for the horizon, 180 for straight down.",
+			"home": "basics/math-sphere",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "azimuth",
+			"term": "azimuth",
+			"definition": "The angle around the up axis, measured from +X toward +Z.",
+			"home": "basics/math-sphere",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "equirectangular-map",
+			"term": "equirectangular map",
+			"definition": "A picture whose columns step evenly in azimuth and whose rows step evenly in polar angle.",
+			"home": "basics/math-sphere",
+			"aliases": [
+				"latitude-longitude map"
+			],
+			"avoid": []
+		},
+		{
+			"id": "projecting-basis-functions",
+			"term": "Projecting (basis functions)",
+			"definition": "Finding the weights of a shape's basis functions by multiplying the shape by each pattern and summing.",
+			"home": "basics/math-sphere",
+			"aliases": [
+				"projection onto basis functions"
+			],
+			"avoid": []
+		},
+		{
+			"id": "ringing",
+			"term": "ringing",
+			"definition": "The rise above the true value on one side of a sharp edge and the fall below it on the other that a cut-off series of basis functions shows, which can make light negative.",
+			"home": "basics/math-sphere",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "fence-basics",
+			"term": "Fence (basics)",
+			"definition": "A call such as std::atomic_thread_fence that orders the reads and writes around it, in the direction of release or acquire, without an operation on a variable.",
+			"home": "basics/threads",
+			"aliases": [
+				"memory fence"
+			],
+			"avoid": []
+		},
+		{
+			"id": "assertion",
+			"term": "assertion",
+			"definition": "A stop-at-once check that ends the program on a programmer error; some engines remove it from the shipped build.",
+			"home": "core/conventions",
+			"aliases": [
+				"assertions"
+			],
+			"avoid": []
+		},
+		{
+			"id": "log-level",
+			"term": "log level",
+			"definition": "The part of a log message that says how serious it is.",
+			"home": "core/conventions",
+			"aliases": [
+				"log levels"
+			],
+			"avoid": []
+		},
+		{
+			"id": "logger",
+			"term": "logger",
+			"definition": "A named source of log messages, which says where a message came from.",
+			"home": "core/conventions",
+			"aliases": [
+				"loggers"
+			],
+			"avoid": []
+		},
+		{
+			"id": "sink",
+			"term": "sink",
+			"definition": "A place where log messages end, such as the console or a file.",
+			"home": "core/conventions",
+			"aliases": [
+				"sinks"
+			],
+			"avoid": []
+		},
+		{
+			"id": "recoverable-failure",
+			"term": "recoverable failure",
+			"definition": "A failure that real data or a real system can cause, which the program survives by returning an error.",
+			"home": "core/conventions",
+			"aliases": [
+				"recoverable failures"
+			],
+			"avoid": []
+		},
+		{
+			"id": "console-run",
+			"term": "Console run",
+			"definition": "A run whose output is the point: it prints help or a usage error, or runs without a window for a tool, a script or a person at a terminal.",
+			"home": "core/first-frame",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "backlog",
+			"term": "backlog",
+			"definition": "The whole steps still due when the cap stops a frame's loop of fixed steps.",
+			"home": "core/time",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "framebuffer",
+			"term": "framebuffer",
+			"definition": "The image that the graphics card draws a window into, whose size GetFramebufferSize gives in pixels.",
+			"home": "core/windows-events",
+			"aliases": [
+				"framebuffers"
+			],
+			"avoid": []
+		},
+		{
+			"id": "priority-jobs",
+			"term": "Priority (jobs)",
+			"definition": "Several queues in one pool, emptied in order, so that urgent work overtakes work that can wait.",
+			"home": "core/jobs",
+			"aliases": [
+				"priorities"
+			],
+			"avoid": []
+		},
+		{
+			"id": "task-graph",
+			"term": "task graph",
+			"definition": "A set of jobs in which each job names the jobs it needs first.",
+			"home": "core/jobs",
+			"aliases": [
+				"task graphs"
+			],
+			"avoid": []
+		},
+		{
+			"id": "work-stealing",
+			"term": "work stealing",
+			"definition": "A scheme in which each thread has a queue of its own and a thread without work takes jobs from another thread's queue.",
+			"home": "core/jobs",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "fiber",
+			"term": "fiber",
+			"definition": "A light stack that a program switches to and from by itself, without the operating system.",
+			"home": "core/jobs",
+			"aliases": [
+				"fibers"
+			],
+			"avoid": []
+		},
+		{
+			"id": "seam",
+			"term": "seam",
+			"definition": "A place where two parts of a program meet and one side can change without the other noticing.",
+			"home": "core/platform",
+			"aliases": [
+				"seams"
+			],
+			"avoid": []
+		},
+		{
+			"id": "self-time",
+			"term": "self time",
+			"definition": "The time spent in a stage without the time of the stages nested in it.",
+			"home": "core/profiling",
+			"aliases": [
+				"self-time"
+			],
+			"avoid": []
+		},
+		{
+			"id": "cpu-bound",
+			"term": "CPU-bound",
+			"definition": "Said of a frame whose CPU work takes at least 90 % of the frame interval, so the GPU waits for the CPU.",
+			"home": "core/profiling",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "gpu-bound",
+			"term": "GPU-bound",
+			"definition": "Said of a frame whose GPU busy time takes at least 90 % of the interval and is longer than the work time, so the CPU waits for the GPU.",
+			"home": "core/profiling",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "capped",
+			"term": "capped",
+			"definition": "Said of frames where neither CPU nor GPU reaches 90 % of the interval, so vsync, a frame-rate cap or idle throttling sets the pace.",
+			"home": "core/profiling",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "sequence-number",
+			"term": "sequence number",
+			"definition": "The number a LogBuffer gives each entry, one higher than the last and never used twice.",
+			"home": "core/debugging",
+			"aliases": [
+				"sequence numbers"
+			],
+			"avoid": []
+		},
+		{
+			"id": "assert-handler",
+			"term": "assert handler",
+			"definition": "The function that gets a failed assert's condition, file, line and message and answers Break, Abort or Continue.",
+			"home": "core/debugging",
+			"aliases": [
+				"assertion handler"
+			],
+			"avoid": []
+		},
+		{
+			"id": "archetype",
+			"term": "archetype",
+			"definition": "The set of component types that an entity has.",
+			"home": "world/what-a-world-is",
+			"aliases": [
+				"archetypes"
+			],
+			"avoid": []
+		},
+		{
+			"id": "judder",
+			"term": "judder",
+			"definition": "A steady motion that looks jerky because it is drawn in unequal jumps.",
+			"home": "world/interpolation",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "extrapolation",
+			"term": "extrapolation",
+			"definition": "Drawing an entity where its last speed says it should be by now, ahead of the newest simulated pose.",
+			"home": "world/interpolation",
+			"aliases": [
+				"extrapolate",
+				"extrapolates",
+				"extrapolated",
+				"extrapolating"
+			],
+			"avoid": []
+		},
+		{
+			"id": "interpolated-set",
+			"term": "interpolated set",
+			"definition": "The scene's list of entities that the latest stepping frame moved, with a drawn matrix for each.",
+			"home": "world/interpolation",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "compose",
+			"term": "Compose",
+			"definition": "The role of an interpolated entry that moved only because an ancestor moved: it is drawn as its parent's drawn matrix times its own local transform.",
+			"home": "world/interpolation",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "exact",
+			"term": "Exact",
+			"definition": "The role of an interpolated entry drawn where it is, with no blend.",
+			"home": "world/interpolation",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "blend",
+			"term": "Blend",
+			"definition": "The role of an interpolated entry whose own transform changed in the steps: it is drawn between its world pose before them and after them.",
+			"home": "world/interpolation",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "interpolation",
+			"term": "interpolation",
+			"definition": "Drawing what the fixed steps moved between its pose before and its pose after the latest steps, so that motion looks smooth at any frame rate.",
+			"home": "world/interpolation",
+			"aliases": [
+				"interpolate",
+				"interpolates",
+				"interpolated",
+				"interpolating"
+			],
+			"avoid": []
+		},
+		{
+			"id": "rasterization",
+			"term": "rasterization",
+			"definition": "The stage that finds which pixels a triangle covers, taking each pixel's center as one sample.",
+			"home": "gpu/how-a-gpu-frame-works",
+			"aliases": [
+				"rasterizer",
+				"rasterize",
+				"rasterized",
+				"rasterizes",
+				"rasterizing"
+			],
+			"avoid": []
+		},
+		{
+			"id": "bandwidth",
+			"term": "bandwidth",
+			"definition": "How many bytes per second a memory can move.",
+			"home": "gpu/how-a-gpu-frame-works",
+			"aliases": [
+				"memory bandwidth"
+			],
+			"avoid": []
+		},
+		{
+			"id": "thread-gpu",
+			"term": "Thread (gpu)",
+			"definition": "A single copy of a shader program that the GPU runs on one item of data.",
+			"home": "gpu/compute",
+			"aliases": [
+				"invocation"
+			],
+			"avoid": []
+		},
+		{
+			"id": "dispatch",
+			"term": "dispatch",
+			"definition": "One command that starts a compute shader as many thread groups.",
+			"home": "gpu/compute",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "thread-group",
+			"term": "thread group",
+			"definition": "A fixed number of threads that run together on one part of the GPU and can share fast memory.",
+			"home": "gpu/compute",
+			"aliases": [
+				"workgroup"
+			],
+			"avoid": []
+		},
+		{
+			"id": "shared-memory",
+			"term": "shared memory",
+			"definition": "A small, fast block of memory that all threads of one thread group read and write, and that no other group can see.",
+			"home": "gpu/compute",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "group-barrier",
+			"term": "group barrier",
+			"definition": "A point where every thread of a group waits until all of them reach it, which also makes their shared-memory writes visible.",
+			"home": "gpu/compute",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "batch-gpu",
+			"term": "Batch (gpu)",
+			"definition": "The upload steps recorded between BeginBatch and SubmitBatch, sent to the GPU in one submission and closed with a fence.",
+			"home": "gpu/upload-queue",
+			"aliases": [
+				"upload batch"
+			],
+			"avoid": []
+		},
+		{
+			"id": "texture-coordinates",
+			"term": "texture coordinates",
+			"definition": "Coordinates that count across an image from 0 to 1 along each side, whatever its size in pixels.",
+			"home": "gpu/coordinates",
+			"aliases": [
+				"UV",
+				"UV coordinates"
+			],
+			"avoid": []
+		},
+		{
+			"id": "state-machine",
+			"term": "state machine",
+			"definition": "A script that is always in exactly one of a fixed list of named situations, called its states, and that moves from one to another only along rules you write down.",
+			"home": "make/patterns",
+			"aliases": [
+				"state machines"
+			],
+			"avoid": []
+		},
+		{
+			"id": "object-pool",
+			"term": "object pool",
+			"definition": "A set of objects built once, up front, and reused instead of created when needed and destroyed after.",
+			"home": "make/patterns",
+			"aliases": [
+				"object pools"
+			],
+			"avoid": []
+		},
+		{
+			"id": "update-method",
+			"term": "update method",
+			"definition": "A function of a game object that the engine calls once for each frame, in which the object moves itself a little.",
+			"home": "make/patterns",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "integrated-development-environment",
+			"term": "integrated development environment",
+			"definition": "A code editor with a build button and name completion.",
+			"home": "make/script-builds",
+			"aliases": [
+				"IDE",
+				"IDEs"
+			],
+			"avoid": []
+		},
+		{
+			"id": "untrusted-input",
+			"term": "untrusted input",
+			"definition": "Bytes that come from outside the running program, which may be cut, damaged by an accident or written to cause harm, so the program checks them before it uses them.",
+			"home": "assets/robustness",
+			"aliases": [
+				"untrusted file"
+			],
+			"avoid": []
+		},
+		{
+			"id": "write-ahead-ordering",
+			"term": "write-ahead ordering",
+			"definition": "Writing the data first and the note that names the data last, so that a note never points at data that is not there yet.",
+			"home": "assets/robustness",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "endpoints",
+			"term": "Endpoints",
+			"definition": "the parts of a BC7 block encoding.",
+			"home": "assets/texture-cooking",
+			"aliases": [
+				"p-bits",
+				"modes (BC7)",
+				"endpoint"
+			],
+			"avoid": []
+		},
+		{
+			"id": "rebinding",
+			"term": "Rebinding",
+			"definition": "players choosing controls.",
+			"home": "make/menus",
+			"aliases": [
+				"rebind",
+				"rebinds"
+			],
+			"avoid": []
+		},
+		{
+			"id": "source-record",
+			"term": "source record",
+			"definition": "The Audio system's data for one entity: its voice, the component values last applied and the flags of what the game asked for.",
+			"home": "audio/scene-system",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "pull-model",
+			"term": "pull model",
+			"definition": "The way an audio device asks the mixer for each period of sound on its own thread, instead of the game pushing queued buffers.",
+			"home": "audio/sound-in-a-computer",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "immediate-representation",
+			"term": "immediate representation",
+			"definition": "A list of drawables built again each frame by walking the scene.",
+			"home": "draw/entities-to-draws",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "retained-representation",
+			"term": "retained representation",
+			"definition": "One record per drawable that persists across frames and is updated from change signals.",
+			"home": "draw/entities-to-draws",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "gpu-scene",
+			"term": "GPU scene",
+			"definition": "The retained records kept in GPU memory, from which the GPU builds the draws.",
+			"home": "draw/entities-to-draws",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "tpdf",
+			"term": "TPDF",
+			"definition": "triangular probability density noise.",
+			"home": "image/encoding",
+			"aliases": [
+				"triangular dither"
+			],
+			"avoid": []
+		},
+		{
+			"id": "epoch",
+			"term": "epoch",
+			"definition": "A counter the renderer raises when earlier exposure readbacks stop describing the frames to come; only readbacks of the current epoch are read.",
+			"home": "image/pre-exposure",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "post-pass",
+			"term": "post pass",
+			"definition": "A full-screen pass over a finished picture, here an anti-aliasing pass.",
+			"home": "image/spatial-aa",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "ping-pong",
+			"term": "ping-pong",
+			"definition": "Two textures that swap roles each frame, the resolve reading one and writing the other.",
+			"home": "image/taa",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "cpu-twin",
+			"term": "CPU twin",
+			"definition": "The same arithmetic as a shader function, written in C++ so that a test can run it without a GPU.",
+			"home": "image/tone-mapping",
+			"aliases": [
+				"CPU reference"
+			],
+			"avoid": []
+		},
+		{
+			"id": "dielectric",
+			"term": "dielectric",
+			"definition": "A material that does not conduct electricity, which scatters most light inside it as diffuse color and mirrors a small share.",
+			"home": "light/materials",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "specular-power",
+			"term": "specular power",
+			"definition": "The exponent of Phong's model that sharpens a highlight as it grows.",
+			"home": "light/materials",
+			"aliases": [
+				"shininess"
+			],
+			"avoid": []
+		},
+		{
+			"id": "light-space",
+			"term": "light space",
+			"definition": "The coordinate system of the light's camera, whose view-projection matrix gives a point's place in the shadow map.",
+			"home": "light/shadow-basics",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "normal-offset",
+			"term": "normal offset",
+			"definition": "A move of the point that reads the shadow map along the surface's normal, away from the surface.",
+			"home": "light/shadow-basics",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "sky-preset",
+			"term": "sky preset",
+			"definition": "A stored bundle of sky light and sun values in real units, applied by lighting.applySkyPreset.",
+			"home": "light/sky",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "double-sun",
+			"term": "double sun",
+			"definition": "The sun lighting a scene twice, once from a directional light and once from the environment map.",
+			"home": "light/sky",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "ordered-float",
+			"term": "ordered float",
+			"definition": "A float whose bits are changed so that comparing them as unsigned integers orders the floats.",
+			"home": "light/many-lights",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "sweep-and-prune",
+			"term": "sweep and prune",
+			"definition": "A broad phase that sorts bounding boxes along one axis and compares only boxes whose intervals overlap.",
+			"home": "physics/collision-detection",
+			"aliases": [
+				"sweep-and-prune"
+			],
+			"avoid": []
+		},
+		{
+			"id": "uniform-grid-physics",
+			"term": "Uniform grid (physics)",
+			"definition": "A broad phase that writes each body into the cells of an equal-sized grid and pairs bodies that share a cell.",
+			"home": "physics/collision-detection",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "dynamic-tree",
+			"term": "dynamic tree",
+			"definition": "A binary tree of bounding boxes in which each inner box encloses its children, updated as bodies move.",
+			"home": "physics/collision-detection",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "fat-box",
+			"term": "fat box",
+			"definition": "A bounding box larger than the body's real box by a margin, so that the tree changes only when the real box leaves it.",
+			"home": "physics/collision-detection",
+			"aliases": [
+				"fattened box"
+			],
+			"avoid": []
+		},
+		{
+			"id": "separating-axis-test",
+			"term": "separating axis test",
+			"definition": "The narrow-phase test that declares two convex shapes apart when some axis shows a gap between their projections.",
+			"home": "physics/collision-detection",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "support-point",
+			"term": "support point",
+			"definition": "The point of a convex shape that lies farthest along a given direction.",
+			"home": "physics/collision-detection",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "simplex",
+			"term": "simplex",
+			"definition": "The smallest set of points (a point, a segment, a triangle or a pyramid) that GJK keeps as its current guess.",
+			"home": "physics/collision-detection",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "dead-zone",
+			"term": "Dead zone",
+			"definition": "a small range around rest read as zero; axial per axis, radial on the stick's length.",
+			"home": "input/gamepads",
+			"aliases": [
+				"axial dead zone",
+				"radial dead zone"
+			],
+			"avoid": []
+		},
+		{
+			"id": "play-revision",
+			"term": "play revision",
+			"definition": "A counter in an animator instance that changes whenever what plays changes: a state, a transition or a clip.",
+			"home": "animation/culling",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "ragdoll",
+			"term": "ragdoll",
+			"definition": "A character turned into physics bodies joined by constraints, so it falls limp.",
+			"home": "animation/limits",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "simple-mode",
+			"term": "simple mode",
+			"definition": "The animator without a controller: it plays the clip set on the component and runs no state machine.",
+			"home": "animation/state-machines",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "playtest",
+			"term": "playtest",
+			"definition": "A session in which a person who has not seen the game plays it while the maker watches and stays silent.",
+			"home": "make/designing-a-game",
+			"aliases": [
+				"play testing"
+			],
+			"avoid": []
+		},
+		{
+			"id": "core-loop",
+			"term": "core loop",
+			"definition": "The short cycle of action, result and reward that a player repeats for the whole game.",
+			"home": "make/designing-a-game",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "scope-make",
+			"term": "Scope (make)",
+			"definition": "The amount of game a maker commits to make: its features, its content and its polish.",
+			"home": "make/designing-a-game",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "cut-list",
+			"term": "cut list",
+			"definition": "A list that sorts every feature of a game into must, should and could.",
+			"home": "make/designing-a-game",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "prototype-make",
+			"term": "Prototype (make)",
+			"definition": "A rough, quick version of a game made to answer one question.",
+			"home": "make/designing-a-game",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "grey-box",
+			"term": "grey box",
+			"definition": "A game built in the engine from plain shapes, with no art.",
+			"home": "make/designing-a-game",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "vertical-slice",
+			"term": "vertical slice",
+			"definition": "One small part of a game made to the quality of the finished game.",
+			"home": "make/designing-a-game",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "one-paragraph-design",
+			"term": "one-paragraph design",
+			"definition": "A few sentences, written before the work, that fix what the player does, the loop, win and loss, the controls and the cuts.",
+			"home": "make/designing-a-game",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "rotation-box",
+			"term": "rotation box",
+			"definition": "The square a piece's four cells sit in, inside which a quarter turn works.",
+			"home": "make/project-tetris",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "kick",
+			"term": "kick",
+			"definition": "A small shift that a game tries when a turned piece does not fit.",
+			"home": "make/project-tetris",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "mesh-collider",
+			"term": "mesh collider",
+			"definition": "A collider that follows the triangles of a mesh, allowed only on static bodies.",
+			"home": "make/project-platformer",
+			"aliases": [
+				"triangle-mesh collider"
+			],
+			"avoid": []
+		},
+		{
+			"id": "asset-field",
+			"term": "asset field",
+			"definition": "A script field that holds a reference to an asset, which a pruned export follows.",
+			"home": "make/project-platformer",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "editor-camera",
+			"term": "editor camera",
+			"definition": "The camera the person moves to look at the scene while they edit it, which no game contains.",
+			"home": "editor/camera-viewport",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "orbit-camera",
+			"term": "orbit camera",
+			"definition": "A camera that always looks at one point and turns around it at a fixed distance.",
+			"home": "editor/camera-viewport",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "orbit",
+			"term": "orbit",
+			"definition": "To turn the camera around its target at the same distance, so the object stays in the middle of the view.",
+			"home": "editor/camera-viewport",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "capture-editor",
+			"term": "Capture (editor)",
+			"definition": "A picture of the edited scene that a command renders and returns; it is not a screenshot of the viewport.",
+			"home": "editor/camera-viewport",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "project-migration",
+			"term": "project migration",
+			"definition": "The one-time upgrade that reads the scenes of a project of version 1 or 2 and writes the project's collision layer table, so that the project becomes version 3.",
+			"home": "editor/projects",
+			"aliases": [
+				"migration"
+			],
+			"avoid": []
+		},
+		{
+			"id": "recent-projects",
+			"term": "recent projects",
+			"definition": "The list of projects the launcher shows, at most 12, most recent first, kept in a file of the user's data folder.",
+			"home": "editor/projects",
+			"aliases": [
+				"recent list"
+			],
+			"avoid": []
+		},
+		{
+			"id": "preferences",
+			"term": "preferences",
+			"definition": "The person's own editor settings that hold for every project, kept in Preferences.json in the user's data folder.",
+			"home": "editor/projects",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "stamp",
+			"term": "stamp",
+			"definition": "The note a script build tree keeps (StrataScriptBuild.json) of the toolchain and settings it was configured with and, after a successful configure, the sorted list of the script folder's files.",
+			"home": "editor/script-builds",
+			"aliases": [
+				"build stamp"
+			],
+			"avoid": []
+		},
+		{
+			"id": "diagnostic",
+			"term": "diagnostic",
+			"definition": "One error or warning found in a build log, split into file, line, column, severity, code and message.",
+			"home": "editor/script-builds",
+			"aliases": [
+				"diagnostics",
+				"build diagnostic"
+			],
+			"avoid": []
+		},
+		{
+			"id": "key-editor",
+			"term": "Key (editor)",
+			"definition": "One number per thumbnail, a hash of the version, the image size and the handle and content stamp of an asset and everything it depends on; the thumbnail is current while its stored key equals the computed one.",
+			"home": "editor/thumbnails",
+			"aliases": [
+				"thumbnail key"
+			],
+			"avoid": []
+		},
+		{
+			"id": "obscurance",
+			"term": "obscurance",
+			"definition": "The older darkening of a point that grows with the nearness of blocking surfaces and ignores angles.",
+			"home": "indirect/ao",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "fallback-stack",
+			"term": "fallback stack",
+			"definition": "A list of light sources ordered from the most exact to the least, each layer taking a weight and passing the remaining share down.",
+			"home": "indirect/seam",
+			"aliases": [
+				"fallback hierarchy"
+			],
+			"avoid": []
+		},
+		{
+			"id": "bisection",
+			"term": "bisection",
+			"definition": "Halving the interval between the last ray point in front of a surface and the first point behind it, keeping the half that holds the crossing.",
+			"home": "indirect/ssr",
+			"aliases": [
+				"bisect",
+				"bisects",
+				"bisections",
+				"halving"
+			],
+			"avoid": []
+		},
+		{
+			"id": "lightmap",
+			"term": "lightmap",
+			"definition": "A texture that holds the light of a scene's surfaces, computed before the game runs.",
+			"home": "appendix/not-in-strata",
+			"aliases": [
+				"lightmaps"
+			],
+			"avoid": []
+		},
+		{
+			"id": "spec",
+			"term": "spec",
+			"definition": "A written design that names the goal, the starting point, the decisions, the steps, the tests and the acceptance numbers of a change before the change begins.",
+			"home": "capstone/plan",
+			"aliases": [
+				"specs"
+			],
+			"avoid": []
+		},
+		{
+			"id": "live-line",
+			"term": "live line",
+			"definition": "A line of text in an Inspector section that describes the state of the renderer or project in words, not a property.",
+			"home": "editor-ui/inspectors",
+			"aliases": [
+				"live lines"
+			],
+			"avoid": []
+		},
+		{
+			"id": "draft-editor-ui",
+			"term": "Draft (editor-ui)",
+			"definition": "The panel's copy of an asset's import settings, which collects edits until Apply or Revert.",
+			"home": "editor-ui/inspectors",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "source-scan",
+			"term": "source scan",
+			"definition": "A test that reads source files as text and fails on a pattern that a rule forbids.",
+			"home": "editor-ui/ui-testing",
+			"aliases": [
+				"source scans"
+			],
+			"avoid": []
+		},
+		{
+			"id": "workflow",
+			"term": "workflow",
+			"definition": "A file in .github/workflows/ that names the events that start it and holds jobs of steps.",
+			"home": "engineering/ci",
+			"aliases": [
+				"workflows",
+				"GitHub Actions workflow"
+			],
+			"avoid": []
+		},
+		{
+			"id": "usage-requirements",
+			"term": "usage requirements",
+			"definition": "What a CMake target hands to the targets that link it: include folders, definitions and links; the keywords PUBLIC, PRIVATE and INTERFACE say who receives them.",
+			"home": "engineering/cmake",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "pre-commit-review-checklist",
+			"term": "pre-commit review checklist",
+			"definition": "The six questions (correctness, tests, style, portability, documentation, commit hygiene) asked of the complete staged diff before every commit.",
+			"home": "engineering/contributing",
+			"aliases": [
+				"review checklist"
+			],
+			"avoid": []
+		},
+		{
+			"id": "line-coverage",
+			"term": "line coverage",
+			"definition": "A count of which lines of code ran during the tests, as a percentage.",
+			"home": "engineering/feature-test",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "coverage-by-construction",
+			"term": "coverage by construction",
+			"definition": "Checking that a project uses every entry of the engine's registries, by walking the registries.",
+			"home": "engineering/feature-test",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "flaky-test",
+			"term": "flaky test",
+			"definition": "A test that sometimes passes and sometimes fails on the same code.",
+			"home": "engineering/testing",
+			"aliases": [
+				"flaky",
+				"flaky tests"
+			],
+			"avoid": []
+		},
+		{
+			"id": "ci-name-branch",
+			"term": "`ci/<name>` branch",
+			"definition": "Any branch whose name starts with ci/, which triggers the same checks as the main branch.",
+			"home": "engineering/ci",
+			"aliases": [
+				"`ci/<name>`"
+			],
+			"avoid": []
+		},
+		{
+			"id": "behaviour-tree",
+			"term": "behaviour tree",
+			"definition": "A tree of condition and action nodes that an update evaluates from the root downward, one pass per tick.",
+			"home": "appendix/game-ai",
+			"aliases": [
+				"behaviour trees"
+			],
+			"avoid": []
+		},
+		{
+			"id": "steering-behaviour",
+			"term": "steering behaviour",
+			"definition": "A rule that turns an agent's situation into a desired velocity.",
+			"home": "appendix/game-ai",
+			"aliases": [
+				"steering behaviours"
+			],
+			"avoid": []
+		},
+		{
+			"id": "navigation-mesh",
+			"term": "navigation mesh",
+			"definition": "Convex polygons that cover the walkable floor, searched as a graph.",
+			"home": "appendix/game-ai",
+			"aliases": [
+				"navmesh",
+				"nav mesh",
+				"navigation meshes"
+			],
+			"avoid": []
+		},
+		{
+			"id": "utility-ai",
+			"term": "utility AI",
+			"definition": "A decision model that scores every action and runs the best.",
+			"home": "appendix/game-ai",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "goal-oriented-action-planning",
+			"term": "goal-oriented action planning",
+			"definition": "A decision model that searches a chain of actions from the current facts to a goal.",
+			"home": "appendix/game-ai",
+			"aliases": [
+				"GOAP"
+			],
+			"avoid": []
+		},
+		{
+			"id": "line-of-sight",
+			"term": "line of sight",
+			"definition": "A ray from an agent to a target that reaches the target before anything else.",
+			"home": "appendix/game-ai",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "local-avoidance",
+			"term": "local avoidance",
+			"definition": "Rules that let agents on their own routes step around each other without a new search.",
+			"home": "appendix/game-ai",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "agent-appendix",
+			"term": "Agent (appendix)",
+			"definition": "A character that no person controls and that decides and acts by code.",
+			"home": "appendix/game-ai",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "latency-networking",
+			"term": "Latency (networking)",
+			"definition": "The time a message needs to travel from one machine to another; its round trip is the round-trip time.",
+			"home": "appendix/networking",
+			"aliases": [
+				"round-trip time"
+			],
+			"avoid": []
+		},
+		{
+			"id": "packet-loss",
+			"term": "packet loss",
+			"definition": "The share of messages that never arrive.",
+			"home": "appendix/networking",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "jitter-networking",
+			"term": "Jitter (networking)",
+			"definition": "The change of the latency from one message to the next.",
+			"home": "appendix/networking",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "head-of-line-blocking",
+			"term": "head-of-line blocking",
+			"definition": "Later messages of a stream waiting for an earlier one that was lost.",
+			"home": "appendix/networking",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "tick-networking",
+			"term": "Tick (networking)",
+			"definition": "One fixed step of the simulation counted as a number; the tick rate is the number of ticks a second.",
+			"home": "appendix/networking",
+			"aliases": [
+				"tick rate"
+			],
+			"avoid": []
+		},
+		{
+			"id": "authority",
+			"term": "authority",
+			"definition": "The one simulation that decides what is true for a piece of state.",
+			"home": "appendix/networking",
+			"aliases": [
+				"authoritative server"
+			],
+			"avoid": []
+		},
+		{
+			"id": "datagram",
+			"term": "datagram",
+			"definition": "A separate message that carries its own boundaries and may be lost, copied or reordered.",
+			"home": "appendix/networking",
+			"aliases": [
+				"datagrams"
+			],
+			"avoid": []
+		},
+		{
+			"id": "deterministic-lockstep",
+			"term": "deterministic lockstep",
+			"definition": "A way to play over a network in which machines send only inputs and run the same deterministic steps.",
+			"home": "appendix/networking",
+			"aliases": [
+				"lockstep"
+			],
+			"avoid": []
+		},
+		{
+			"id": "rollback-networking",
+			"term": "Rollback (networking)",
+			"definition": "Guessing the remote input, running on, and restoring and replaying when the real input differs.",
+			"home": "appendix/networking",
+			"aliases": [
+				"rollback network code"
+			],
+			"avoid": []
+		},
+		{
+			"id": "snapshot-networking",
+			"term": "Snapshot (networking)",
+			"definition": "The state of the game at one tick, sent by a server.",
+			"home": "appendix/networking",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "entity-interpolation",
+			"term": "entity interpolation",
+			"definition": "Drawing a remote object between the two snapshots that surround a time in the past.",
+			"home": "appendix/networking",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "client-side-prediction",
+			"term": "client-side prediction",
+			"definition": "Applying the local player's inputs at once, with the server's movement code.",
+			"home": "appendix/networking",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "server-reconciliation",
+			"term": "server reconciliation",
+			"definition": "Taking the server's state as the truth and replaying the inputs it has not applied.",
+			"home": "appendix/networking",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "lag-compensation",
+			"term": "lag compensation",
+			"definition": "The server moving targets back to the time the shooter saw before it tests a hit.",
+			"home": "appendix/networking",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "delta-compression",
+			"term": "delta compression",
+			"definition": "Sending only what changed since a state the receiver already has.",
+			"home": "appendix/networking",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "interest-management",
+			"term": "interest management",
+			"definition": "Sending each player only the objects that matter to that player.",
+			"home": "appendix/networking",
+			"aliases": [
+				"relevancy"
+			],
+			"avoid": []
+		},
+		{
+			"id": "nat-traversal",
+			"term": "NAT traversal",
+			"definition": "Ways to open a direct connection between machines that sit behind network address translation (NAT).",
+			"home": "appendix/networking",
+			"aliases": [
+				"NAT"
+			],
+			"avoid": []
+		},
+		{
+			"id": "relay-server",
+			"term": "relay server",
+			"definition": "A server that passes messages between two machines that cannot reach each other directly.",
+			"home": "appendix/networking",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "decal",
+			"term": "decal",
+			"definition": "A texture projected onto the surfaces inside a box.",
+			"home": "appendix/not-in-strata",
+			"aliases": [
+				"decals"
+			],
+			"avoid": []
+		},
+		{
+			"id": "sub-scene",
+			"term": "Sub-scene",
+			"definition": "A scene merged into a running scene by an additive load, tracked so that the running scene can remove exactly its entities later.",
+			"home": "world/sub-scenes",
+			"aliases": [
+				"sub-scenes"
+			],
+			"avoid": []
+		},
+		{
+			"id": "additive-load",
+			"term": "additive load",
+			"definition": "Loading a scene into a scene that is already running, next to what it holds, instead of replacing it.",
+			"home": "world/sub-scenes",
+			"aliases": [
+				"additive loads"
+			],
+			"avoid": []
+		}
+	]
+}

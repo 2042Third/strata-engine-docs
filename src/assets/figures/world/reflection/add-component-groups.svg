@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 512">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: a plate (16..752, 16..496) is the menu's list cut into three columns of 216 at x 28, 276 and 524.
+     A group is a heading row of 28 (bold label, separator line after it) and a row of 22 per component; groups 12 apart.
+     Groups in name order down the columns, components in registration order (component.list at 319075e3).
+     Lighting is highlighted (orange-area), with a callout from column 2 at y 432. H = 496 + 16 = 512.
+     Core's Name and Transform are muted, in a dashed ground box (x +4, 232 by 44) with a note at x +108: every entity has them, so the menu omits them. -->
+<rect class="plate" x="16" y="16" width="736" height="480" rx="8"/>
+<text class="ink bold" x="28" y="47">Animation</text>
+<line class="line-muted" x1="115" y1="42" x2="244" y2="42" stroke-width="1"/>
+<text class="ink" x="40" y="72">Skin</text>
+<text class="ink" x="40" y="94">Animator</text>
+<text class="ink" x="40" y="116">Attach To Joint</text>
+<text class="ink bold" x="28" y="153">Audio</text>
+<line class="line-muted" x1="80" y1="148" x2="244" y2="148" stroke-width="1"/>
+<text class="ink" x="40" y="178">Audio Source</text>
+<text class="ink" x="40" y="200">Audio Listener</text>
+<text class="ink bold" x="28" y="237">Core</text>
+<line class="line-muted" x1="71" y1="232" x2="244" y2="232" stroke-width="1"/>
+<rect class="ground line-muted" x="32" y="246" width="232" height="44" rx="3" stroke-width="1" stroke-dasharray="4 3"/>
+<text class="muted" x="40" y="262">Name</text>
+<text class="muted" x="40" y="284">Transform</text>
+<text class="ink" x="40" y="306">Tag</text>
+<text class="muted small" x="136" y="262">on every entity,</text>
+<text class="muted small" x="136" y="284">so never listed</text>
+<rect class="orange-area" x="22" y="320" width="228" height="166" rx="4"/>
+<text class="orange bold" x="28" y="343">Lighting</text>
+<line class="line-orange" x1="106" y1="338" x2="244" y2="338" stroke-width="1"/>
+<text class="ink" x="40" y="368">Directional Light</text>
+<text class="ink" x="40" y="390">Point Light</text>
+<text class="ink" x="40" y="412">Spot Light</text>
+<text class="ink" x="40" y="434">Rect Light</text>
+<text class="ink" x="40" y="456">Light Surface</text>
+<text class="ink" x="40" y="478">Sky Light</text>
+<text class="ink bold" x="276" y="47">Physics</text>
+<line class="line-muted" x1="346" y1="42" x2="492" y2="42" stroke-width="1"/>
+<text class="ink" x="288" y="72">Rigid Body</text>
+<text class="ink" x="288" y="94">Box Collider</text>
+<text class="ink" x="288" y="116">Sphere Collider</text>
+<text class="ink" x="288" y="138">Capsule Collider</text>
+<text class="ink" x="288" y="160">Mesh Collider</text>
+<text class="ink" x="288" y="182">Character Controller</text>
+<text class="ink bold" x="276" y="219">Rendering</text>
+<line class="line-muted" x1="363" y1="214" x2="492" y2="214" stroke-width="1"/>
+<text class="ink" x="288" y="244">Camera</text>
+<text class="ink" x="288" y="266">Mesh Renderer</text>
+<text class="ink" x="288" y="288">Height Fog</text>
+<text class="ink" x="288" y="310">Reflection Probe</text>
+<text class="ink" x="288" y="332">Post Process</text>
+<text class="ink bold" x="276" y="369">Scripting</text>
+<line class="line-muted" x1="363" y1="364" x2="492" y2="364" stroke-width="1"/>
+<text class="ink" x="288" y="394">Script</text>
+<text class="ink bold" x="524" y="47">UI</text>
+<line class="line-muted" x1="550" y1="42" x2="740" y2="42" stroke-width="1"/>
+<text class="ink" x="536" y="72">Text</text>
+<text class="ink" x="536" y="94">UI Canvas</text>
+<text class="ink" x="536" y="116">UI Rect</text>
+<text class="ink" x="536" y="138">UI Image</text>
+<text class="ink" x="536" y="160">UI Text</text>
+<text class="ink" x="536" y="182">UI Selectable</text>
+<text class="ink" x="536" y="204">UI Button</text>
+<text class="ink" x="536" y="226">UI Toggle</text>
+<text class="ink" x="536" y="248">UI Slider</text>
+<text class="ink" x="536" y="270">UI Layout</text>
+<text class="ink" x="536" y="292">UI Input Field</text>
+<text class="ink" x="536" y="314">UI Mask</text>
+<text class="ink bold" x="524" y="351">World</text>
+<line class="line-muted" x1="576" y1="346" x2="740" y2="346" stroke-width="1"/>
+<text class="ink" x="536" y="376">World</text>
+<text class="ink" x="536" y="398">Streaming Source</text>
+<line class="line-orange" x1="286" y1="432" x2="262" y2="432"/>
+<polygon class="orange" points="252,432 262,428.5 262,435.5"/>
+<text class="orange" x="294" y="437">Each one registered with</text>
+<text class="orange mono" x="294" y="459">.Category("Lighting")</text>
+</svg>

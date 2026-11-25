@@ -1,0 +1,9 @@
+# Part review: capstone/land
+
+- contradiction: the force function's table expected a scaled zone pushed at 9 m because the radius follows the largest scale axis; `capstone/build`'s function never scales Radius; the row now expects 0 N at 6 m because the radius never follows the scale.
+- wrong: the "Outside" row expected 0 N in both modes; a Directional zone has no radius and pushes everywhere; the row is Spherical and says a Directional zone still pushes. The centre row now expects 0 N, as `GetWindForce` returns, and the degenerate row names the Directional zone, the one that checks its axis.
+- step: feature test step 1 predicted a failure naming the `WindZone`; after `capstone/build`'s patch the feature test passes (its stamp), since `Gust` already has every property off its default and its script calls both wind functions; the step now predicts the pass, and step 3 keeps `Gust` as the active Spherical zone instead of adding one.
+- wrong: the documents step said the Developer Guide does not write the host function order; at the pin it has a line "Host function order" naming each appended group (`Docs/DeveloperGuide.md:1964`); the step now adds the wind group to it, as `capstone/plan`'s spec asks.
+- contradiction: the documents step said release notes are written only at release; at the pin each landing appends to the wave's draft `Docs/Plans/Wave8/ReleaseNotes.md`, from which `Docs/Releases/<version>.md` is written, and `capstone/plan`'s spec asks for one line there; the step adds the line (four edits in four files).
+- contradiction: the commit table listed the specification as a commit of this page; `capstone/plan` already committed it by itself; the row says so.
+- wrong: `Tools/CIStatus.py status` exits 0 when every run completed, a failed one too; the "You should see" now says so.

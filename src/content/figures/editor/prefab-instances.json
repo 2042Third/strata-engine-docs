@@ -1,0 +1,53 @@
+{
+	"figures": [
+		{
+			"id": "hierarchy-marks",
+			"shows": "The Hierarchy with two crate instances: Crate, unchanged, with a blue package mark at the right end of its row, and Crate (1), whose lid was raised, with a yellow one",
+			"caption": "The package mark at the right end of an instance root's row, left of its eye, tells its state: blue while the instance matches its prefab, yellow once it is modified. An outdated instance has the yellow mark too; only its tooltip says that it missed a change.",
+			"alt": "The Hierarchy panel lists the scene's entities and, at the end, the instance rows Crate and Crate (1), both with a blue cube icon and a blue name. At the right end of each row, left of its eye, stands a package icon: blue on the Crate row, yellow on the Crate (1) row.",
+			"kind": "editor",
+			"project": { "template": "basic3d" },
+			"editorWindow": {
+				"layout": "layouts/prefab-instances.ini",
+				"windowSize": [960, 440],
+				"panel": "Hierarchy",
+				"steps": [
+					{ "command": "entity.create", "parameters": { "name": "Crate", "components": { "Transform": { "Translation": [0, 0.5, 0] }, "MeshRenderer": { "Mesh": "Builtin/Cube" } } }, "bind": { "crate": "/id" } },
+					{ "command": "entity.create", "parameters": { "name": "Lid", "parent": { "$ref": "crate" }, "components": { "Transform": { "Translation": [0, 1, 0], "Scale": [1, 1, 1] }, "MeshRenderer": { "Mesh": "Builtin/Cube" } } } },
+					{ "command": "prefab.create", "parameters": { "entities": [{ "$ref": "crate" }], "path": "Prefabs/Crate.stprefab" } },
+					{ "command": "prefab.instantiate", "parameters": { "prefab": "Prefabs/Crate.stprefab", "instances": [{ "components": { "Transform": { "Translation": [3, 0.5, 0] } } }] } },
+					{ "command": "entity.find", "parameters": { "name": "Lid", "box": { "min": [2.9, 1.4, -0.1], "max": [3.1, 1.6, 0.1] } }, "bind": { "lid1": "/entities/0" } },
+					{ "command": "component.set", "parameters": { "entity": { "$ref": "lid1" }, "component": "Transform", "values": { "Translation": [0, 1.5, 0] } } },
+					{ "command": "selection.set", "parameters": { "entities": [] } },
+					{ "command": "editor.showPanel", "parameters": { "panel": "Hierarchy" } },
+					{ "command": "editor.wait", "parameters": { "frames": 30 } }
+				]
+			}
+		},
+		{
+			"id": "prefab-bar",
+			"shows": "The Inspector of the raised lid of Crate (1): the prefab bar with the chip Overrides (1), and the overridden Translation row with a bold label and an orange bar, which its Transform header has too",
+			"caption": "The Inspector of the raised Lid of Crate (1): the prefab bar names Crate and counts one override. The overridden Translation row has a bold label and an orange bar at its left; the Transform header has the orange bar too.",
+			"alt": "The Inspector of the entity Lid. Below its name a bar names the prefab Crate and holds the buttons Select, Open and Overrides (1). The Transform header and the Translation row below it each have an orange bar at the left; the Translation label is bold, and its Y field reads 1.5.",
+			"numbers": "Crate (1) is the name the editor gives the second instance of Crate, as the Hierarchy shows it; one override is the count on the chip Overrides (1).",
+			"kind": "editor",
+			"project": { "template": "basic3d" },
+			"editorWindow": {
+				"layout": "layouts/prefab-instances.ini",
+				"windowSize": [960, 440],
+				"panel": "Inspector",
+				"steps": [
+					{ "command": "entity.create", "parameters": { "name": "Crate", "components": { "Transform": { "Translation": [0, 0.5, 0] }, "MeshRenderer": { "Mesh": "Builtin/Cube" } } }, "bind": { "crate": "/id" } },
+					{ "command": "entity.create", "parameters": { "name": "Lid", "parent": { "$ref": "crate" }, "components": { "Transform": { "Translation": [0, 1, 0], "Scale": [1, 1, 1] }, "MeshRenderer": { "Mesh": "Builtin/Cube" } } } },
+					{ "command": "prefab.create", "parameters": { "entities": [{ "$ref": "crate" }], "path": "Prefabs/Crate.stprefab" } },
+					{ "command": "prefab.instantiate", "parameters": { "prefab": "Prefabs/Crate.stprefab", "instances": [{ "components": { "Transform": { "Translation": [3, 0.5, 0] } } }] } },
+					{ "command": "entity.find", "parameters": { "name": "Lid", "box": { "min": [2.9, 1.4, -0.1], "max": [3.1, 1.6, 0.1] } }, "bind": { "lid1": "/entities/0" } },
+					{ "command": "component.set", "parameters": { "entity": { "$ref": "lid1" }, "component": "Transform", "values": { "Translation": [0, 1.5, 0] } } },
+					{ "command": "selection.set", "parameters": { "entities": [{ "$ref": "lid1" }] } },
+					{ "command": "editor.showPanel", "parameters": { "panel": "Inspector" } },
+					{ "command": "editor.wait", "parameters": { "frames": 30 } }
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,16 @@
+[
+	{
+		"command": "script.create",
+		"parameters": {
+			"class": "Coin"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	}
+]

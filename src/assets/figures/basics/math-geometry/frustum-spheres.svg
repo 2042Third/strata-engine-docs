@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 456">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: unit 60, camera at 384,410, sides at 30 degrees, near y = 1, far y = 6; radius 0.5 = 30; H 456 -->
+<line class="line-muted" x1="384" y1="410" x2="349.36" y2="350" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line class="line-muted" x1="384" y1="410" x2="418.64" y2="350" stroke-width="1.5" stroke-dasharray="4 3"/>
+<polygon class="plate line-ink" points="349.36,350 176.15,50 591.85,50 418.64,350" stroke-width="2"/>
+<circle class="ink" cx="384" cy="410" r="4.5"/>
+<text class="ink" x="384" y="436" text-anchor="middle">camera</text>
+<text class="ink" x="384" y="40" text-anchor="middle">far plane</text>
+<text class="ink" x="430.64" y="368">near plane</text>
+<text class="ink" x="304.5" y="305.02" text-anchor="end">left plane</text>
+<text class="ink" x="446.18" y="335.02">right plane</text>
+<circle class="green-area line-green" cx="384" cy="200" r="30" stroke-width="2"/>
+<line class="line-ink" x1="384" y1="200" x2="414" y2="200" stroke-width="2"/>
+<circle class="green" cx="384" cy="200" r="3"/>
+<text class="ink small" x="422" y="205">r = 0.5</text>
+<text class="green bold" x="384" y="252" text-anchor="middle">kept</text>
+<circle class="green-area line-green" cx="238.61" cy="182.17" r="30" stroke-width="2"/>
+<line class="line-ink" x1="238.61" y1="182.17" x2="249" y2="176.17" stroke-width="2"/>
+<circle class="green" cx="238.61" cy="182.17" r="3"/>
+<text class="green bold" x="198.61" y="178.17" text-anchor="end">kept</text>
+<text class="ink small" x="198.61" y="198.17" text-anchor="end">s = −0.2, not below −r</text>
+<circle class="red-area line-red" cx="540.96" cy="258.13" r="30" stroke-width="2"/>
+<line class="line-red" x1="540.96" y1="258.13" x2="489" y2="228.13" stroke-width="2" stroke-dasharray="4 3"/>
+<circle class="red" cx="540.96" cy="258.13" r="3"/>
+<text class="red bold" x="580.96" y="254.13">dropped</text>
+<text class="ink small" x="580.96" y="274.13">s = −1, below −r</text>
+</svg>

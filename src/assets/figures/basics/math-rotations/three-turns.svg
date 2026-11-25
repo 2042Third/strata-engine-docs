@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 300">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: three panels 256 wide, centres x 128, 384, 640, origin y 150; orthographic view, azimuth 35 degrees (seen from the left, so the rolled wings face the reader), elevation 28 degrees, 76 units per model unit; X right, Y up, Z toward the viewer; the plane at rest (dashed, drawn over the turned plane and labelled once) points its nose along -Z; each panel turns it 45 degrees; the arc is traced at radius 1.3 by the nose (yaw, pitch) or the left wing tip (roll). -->
+<g>
+<line x1="128" y1="148" x2="221.2" y2="117.4" class="line-muted"/>
+<polygon points="230.7,114.2 222.3,120.7 220.1,114" class="muted"/>
+<text x="242.1" y="115.5" class="muted" text-anchor="middle">X</text>
+<line x1="128" y1="148" x2="128" y2="47.3" class="line-muted"/>
+<polygon points="128,37.3 131.5,47.3 124.5,47.3" class="muted"/>
+<text x="128" y="30.3" class="muted" text-anchor="middle">Y</text>
+<line x1="128" y1="148" x2="191.6" y2="190.7" class="line-muted"/>
+<polygon points="199.9,196.2 189.7,193.6 193.6,187.7" class="muted"/>
+<text x="209.9" y="207.9" class="muted" text-anchor="middle">Z</text>
+<path d="M104 146 L150.2 113.6 L165.1 114.8 L141.5 149.1 L138.8 185.1 L123.8 183.9 Z" class="blue-area line-blue" stroke-width="2"/>
+<path d="M169.2 151.4 L191.9 138.1 L200.9 138.8 L190.9 153.2 L189.8 168.3 L180.8 167.6 Z" class="blue-area line-blue" stroke-width="2"/>
+<path d="M53.2 141.8 L71.1 139.3 L190.8 149.2 L187.9 156.9 L68.2 147 Z" class="blue-area line-blue" stroke-width="2"/>
+<path d="M165.4 151.1 L190.9 125 L198.4 125.6 L190.9 153.2 Z" class="blue-area line-blue" stroke-width="2"/>
+<path d="M114.1 138.6 L195.5 131 L204.2 136.9 L135.8 153.3 L79.7 177.8 L71 172 Z" fill="none" class="line-muted" stroke-dasharray="4 3"/>
+<path d="M152 164.1 L188.1 162.2 L193.4 165.7 L164.6 172.6 L141.1 182.9 L135.9 179.4 Z" fill="none" class="line-muted" stroke-dasharray="4 3"/>
+<path d="M84.4 118.8 L100.8 123 L170.6 169.7 L156.9 174.2 L87.2 127.5 Z" fill="none" class="line-muted" stroke-dasharray="4 3"/>
+<path d="M149.8 162.6 L164.6 144.4 L169 147.3 L164.6 172.6 Z" fill="none" class="line-muted" stroke-dasharray="4 3"/>
+<path d="M71.3 110 L70.3 110.4 L69.2 110.7 L68.2 111.1 L67.2 111.4 L66.2 111.8 L65.2 112.2 L64.2 112.6 L63.2 113 L62.2 113.4 L61.3 113.8 L60.3 114.2 L59.4 114.6 L58.4 115.1 L57.5 115.5 L56.6 115.9 L55.7 116.4 L54.9 116.8 L54 117.3 L53.2 117.7 L52.3 118.2 L51.5 118.7 L50.7 119.1 L49.9 119.6 L49.1 120.1 L48.3 120.6 L47.6 121.1 L46.8 121.6 L46.1 122.1 L45.4 122.6 L44.7 123.1 L44 123.6 L43.3 124.1 L42.7 124.6 L42 125.2 L41.4 125.7 L40.8 126.2 L40.2 126.8 L39.6 127.3 L39 127.8 L38.5 128.4 L37.9 128.9 L37.4 129.5 L37.1 129.9" fill="none" class="line-blue" stroke-width="2.5"/>
+<polygon points="30.7,139.9 33.3,127.4 40.9,132.2" class="blue"/>
+<!-- Yaw arc midpoint 44.7,123.1 -->
+<text x="18" y="198" class="muted small">before the turn</text>
+<text x="128" y="262" class="blue bold" text-anchor="middle">Yaw, around Y</text>
+<text x="128" y="284" class="muted small" text-anchor="middle">nose turns left by 45°</text>
+</g>
+<g>
+<line x1="384" y1="148" x2="477.2" y2="117.4" class="line-muted"/>
+<polygon points="486.7,114.2 478.3,120.7 476.1,114" class="muted"/>
+<text x="498.1" y="115.5" class="muted" text-anchor="middle">X</text>
+<line x1="384" y1="148" x2="384" y2="47.3" class="line-muted"/>
+<polygon points="384,37.3 387.5,47.3 380.5,47.3" class="muted"/>
+<text x="384" y="30.3" class="muted" text-anchor="middle">Y</text>
+<line x1="384" y1="148" x2="447.6" y2="190.7" class="line-muted"/>
+<polygon points="455.9,196.2 445.7,193.6 449.6,187.7" class="muted"/>
+<text x="465.9" y="207.9" class="muted" text-anchor="middle">Z</text>
+<path d="M374.1 126.2 L450 135.7 L456.1 149.3 L389.5 160.3 L331.6 190.3 L325.4 176.6 Z" class="green-area line-green" stroke-width="2"/>
+<path d="M401 185.5 L434.2 192.5 L437.9 200.7 L409.9 205.2 L385.6 217.9 L381.9 209.7 Z" class="green-area line-green" stroke-width="2"/>
+<path d="M353.2 79.9 L366.8 92.6 L416.1 201.6 L402.4 206.1 L353.1 97.1 Z" class="green-area line-green" stroke-width="2"/>
+<path d="M399.4 182.1 L422.8 194 L425.9 200.8 L409.9 205.2 Z" class="green-area line-green" stroke-width="2"/>
+<path d="M370.1 138.6 L451.5 131 L460.2 136.9 L391.8 153.3 L335.7 177.8 L327 172 Z" fill="none" class="line-muted" stroke-dasharray="4 3"/>
+<path d="M408 164.1 L444.1 162.2 L449.4 165.7 L420.6 172.6 L397.1 182.9 L391.9 179.4 Z" fill="none" class="line-muted" stroke-dasharray="4 3"/>
+<path d="M340.4 118.8 L356.8 123 L426.6 169.7 L412.9 174.2 L343.2 127.5 Z" fill="none" class="line-muted" stroke-dasharray="4 3"/>
+<path d="M405.8 162.6 L420.6 144.4 L425 147.3 L420.6 172.6 Z" fill="none" class="line-muted" stroke-dasharray="4 3"/>
+<path d="M327.3 110 L327.3 108.9 L327.4 107.7 L327.4 106.6 L327.4 105.5 L327.5 104.4 L327.5 103.3 L327.6 102.2 L327.6 101.1 L327.7 100 L327.8 98.9 L327.9 97.9 L328 96.8 L328.1 95.8 L328.3 94.7 L328.4 93.7 L328.6 92.7 L328.7 91.7 L328.9 90.7 L329.1 89.7 L329.3 88.7 L329.5 87.8 L329.7 86.8 L329.9 85.8 L330.1 84.9 L330.3 84 L330.6 83.1 L330.8 82.2 L331.1 81.3 L331.4 80.4 L331.6 79.5 L331.9 78.7 L332.2 77.8 L332.5 77 L332.9 76.2 L333.2 75.3 L333.5 74.5 L333.8 73.8 L334.2 73 L334.6 72.2 L334.9 71.5 L335.3 70.7 L335.7 70 L336.1 69.3 L336.4 68.7" fill="none" class="line-green" stroke-width="2.5"/>
+<polygon points="343.9,59.4 339.9,71.6 332.9,65.9" class="green"/>
+<!-- Pitch arc midpoint 331.6,79.5 -->
+<text x="384" y="262" class="green bold" text-anchor="middle">Pitch, around X</text>
+<text x="384" y="284" class="muted small" text-anchor="middle">nose tips up by 45°</text>
+</g>
+<g>
+<line x1="640" y1="148" x2="733.2" y2="117.4" class="line-muted"/>
+<polygon points="742.7,114.2 734.3,120.7 732.1,114" class="muted"/>
+<text x="754.1" y="115.5" class="muted" text-anchor="middle">X</text>
+<line x1="640" y1="148" x2="640" y2="47.3" class="line-muted"/>
+<polygon points="640,37.3 643.5,47.3 636.5,47.3" class="muted"/>
+<text x="640" y="30.3" class="muted" text-anchor="middle">Y</text>
+<line x1="640" y1="148" x2="703.6" y2="190.7" class="line-muted"/>
+<polygon points="711.9,196.2 701.7,193.6 705.6,187.7" class="muted"/>
+<text x="721.9" y="207.9" class="muted" text-anchor="middle">Z</text>
+<path d="M626.1 138.6 L689.3 89.6 L698 95.4 L647.8 153.3 L609.9 219.3 L601.2 213.4 Z" class="purple-area line-purple" stroke-width="2"/>
+<path d="M664 164.1 L692.5 144.8 L697.7 148.3 L676.6 172.6 L660.7 200.3 L655.5 196.8 Z" class="purple-area line-purple" stroke-width="2"/>
+<path d="M596.4 118.8 L610.8 118.4 L680.6 165.2 L670.9 178.8 L601.2 132 Z" class="purple-area line-purple" stroke-width="2"/>
+<path d="M661.8 162.6 L658.1 158.7 L662.5 161.6 L676.6 172.6 Z" class="purple-area line-purple" stroke-width="2"/>
+<path d="M626.1 138.6 L707.5 131 L716.2 136.9 L647.8 153.3 L591.7 177.8 L583 172 Z" fill="none" class="line-muted" stroke-dasharray="4 3"/>
+<path d="M664 164.1 L700.1 162.2 L705.4 165.7 L676.6 172.6 L653.1 182.9 L647.9 179.4 Z" fill="none" class="line-muted" stroke-dasharray="4 3"/>
+<path d="M596.4 118.8 L612.8 123 L682.6 169.7 L668.9 174.2 L599.2 127.5 Z" fill="none" class="line-muted" stroke-dasharray="4 3"/>
+<path d="M661.8 162.6 L676.6 144.4 L681 147.3 L676.6 172.6 Z" fill="none" class="line-muted" stroke-dasharray="4 3"/>
+<path d="M559.1 174.6 L559.1 175.7 L559.1 176.9 L559.1 178 L559.2 179.1 L559.2 180.3 L559.3 181.4 L559.4 182.5 L559.5 183.6 L559.6 184.7 L559.8 185.8 L559.9 186.8 L560.1 187.9 L560.2 189 L560.4 190.1 L560.6 191.1 L560.8 192.2 L561.1 193.2 L561.3 194.2 L561.6 195.3 L561.8 196.3 L562.1 197.3 L562.4 198.3 L562.7 199.3 L563 200.3 L563.4 201.2 L563.7 202.2 L564.1 203.2 L564.4 204.1 L564.8 205 L565.2 206 L565.6 206.9 L566.1 207.8 L566.5 208.7 L567 209.6 L567.4 210.4 L567.9 211.3 L568.4 212.2 L568.9 213 L569.4 213.8 L569.9 214.7 L570.4 215.5 L571 216.3 L571.6 217.1 L572.1 217.8 L572.7 218.6 L573.3 219.3 L573.9 220.1 L574.1 220.3" fill="none" class="line-purple" stroke-width="2.5"/>
+<polygon points="582.8,228.5 571,223.5 577.1,217" class="purple"/>
+<!-- Roll arc midpoint 565.2,206 -->
+<text x="640" y="262" class="purple bold" text-anchor="middle">Roll, around Z</text>
+<text x="640" y="284" class="muted small" text-anchor="middle">left wing goes down by 45°</text>
+</g>
+</svg>

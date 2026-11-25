@@ -1,0 +1,24 @@
+[
+	{
+		"command": "project.setStartScene",
+		"parameters": {
+			"scene": "Scenes/Main.stscene"
+		}
+	},
+	{
+		"command": "asset.import",
+		"parameters": {
+			"file": "<release folder>/Samples/ThirdPerson/Assets/Icon.png"
+		}
+	},
+	{
+		"command": "project.setGameInfo",
+		"parameters": {
+			"title": "Coin Run",
+			"version": "1.0.0",
+			"company": "Your Name",
+			"copyright": "(c) 2026 Your Name",
+			"icon": "Icon.png"
+		}
+	}
+]

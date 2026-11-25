@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 620">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- the drawing: roles as classes (plan/card/drawing.md) -->
+<!-- plan: the page as one plate, x 16 to 752, y 16 to 604. Page text ink; notes that are not on the page purple.
+     Difference images 288 by 162 (16:9) at x 72 and 408, y 112. Crop pair 288 by 72 at y 342, halves of 144, shadow edge at 60 then 76.
+     One change in all three: the shadow edge moved right, so a band is darker after: a grey band (diff), a blue band (signed).
+     Tables: GPU stages y 448 to 500, metrics y 534 to 586. Signed red and blue, grey floor: swatches (data). -->
+<rect class="plate line-muted" x="16" y="16" width="736" height="588" rx="4"/>
+<text class="ink large bold" x="40" y="50">Look-dev compare: before -&gt; after</text>
+<text class="ink small" x="40" y="80">&lt;picture&gt;: &lt;n&gt; pixels differ, by at most &lt;largest&gt;</text>
+<text class="purple small" x="456" y="80">one section per picture that differs</text>
+<text class="ink small" x="40" y="100">(absolute x 8 | signed x 32: red brighter after, blue darker)</text>
+
+<rect class="swatch line-ink" fill="#000000" x="72" y="112" width="288" height="162"/>
+<rect class="swatch" fill="#808080" x="212" y="113" width="8" height="160"/>
+<rect class="swatch line-ink" fill="#000000" x="408" y="112" width="288" height="162"/>
+<rect class="swatch" fill="#3030ff" x="548" y="113" width="8" height="160"/>
+<text class="purple small" x="72" y="296"><tspan class="mono">diff/</tspan>: the absolute difference</text>
+<text class="purple small" x="408" y="296"><tspan class="mono">signed/</tspan>: one blue band: darker after</text>
+
+<text class="ink small bold" x="40" y="330">Crops, before | after</text>
+<rect class="swatch" fill="#a8a8a8" x="72" y="342" width="288" height="72"/>
+<rect class="swatch" fill="#3c3c3c" x="72" y="342" width="60" height="72"/>
+<rect class="swatch" fill="#3c3c3c" x="216" y="342" width="76" height="72"/>
+<rect class="line-ink" fill="none" x="72" y="342" width="288" height="72"/>
+<line class="line-ink" x1="216" y1="342" x2="216" y2="414"/>
+<text class="purple small" x="384" y="370">from <tspan class="mono">crops/</tspan>, only of pictures that differ:</text>
+<text class="purple small" x="384" y="390">before left, after right: the shadow edge moved right</text>
+
+<text class="ink small bold" x="40" y="448">GPU stages (median ms)</text>
+<text class="purple small" x="232" y="448">gpuBusy only; per-stage ratios in <tspan class="mono">compare.json</tspan></text>
+<text class="ink small" x="40" y="472">picture</text>
+<text class="ink small" x="408" y="472">gpuBusy after / before</text>
+<line class="line-muted" x1="40" y1="480" x2="728" y2="480"/>
+<text class="ink small mono" x="40" y="500">&lt;picture&gt;</text>
+<text class="ink small mono" x="408" y="500">&lt;ratio&gt;</text>
+
+<text class="ink small bold" x="40" y="534">Metrics, before | after</text>
+<text class="purple small" x="232" y="534">only when both sides measured them</text>
+<text class="ink small" x="40" y="558">picture</text>
+<text class="ink small" x="176" y="558">name</text>
+<text class="ink small" x="296" y="558">value</text>
+<text class="ink small" x="408" y="558">before</text>
+<text class="ink small" x="504" y="558">after</text>
+<text class="ink small" x="600" y="558">after - before</text>
+<line class="line-muted" x1="40" y1="566" x2="728" y2="566"/>
+<text class="ink small mono" x="40" y="586">&lt;picture&gt;</text>
+<text class="ink small mono" x="176" y="586">&lt;name&gt;</text>
+<text class="ink small mono" x="296" y="586">&lt;value&gt;</text>
+<text class="ink small mono" x="408" y="586">&lt;b&gt;</text>
+<text class="ink small mono" x="504" y="586">&lt;a&gt;</text>
+<text class="ink small mono" x="600" y="586">&lt;a − b&gt;</text>
+</svg>

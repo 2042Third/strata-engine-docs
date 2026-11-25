@@ -1,0 +1,229 @@
+{
+	"build": {
+		"current": null,
+		"last": {
+			"build": 1,
+			"buildDirectory": "G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/.strata/Scripts/Build",
+			"cancelled": false,
+			"configured": true,
+			"diagnostics": [],
+			"error": "",
+			"errorCount": 0,
+			"loadError": "",
+			"loaded": true,
+			"log": "> C:/msys64/mingw64/bin/cmake.exe -S G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/Scripts -B G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/.strata/Scripts/Build -G \"Visual Studio 18 2026\" -A x64 -DCMAKE_CONFIGURATION_TYPES=Release -DSTRATA_ENGINE_DIR=G:/GameEngineAI/.worktrees/docs-pin -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/.strata/Scripts/Bin -DCMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE=G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/.strata/Scripts/Bin\n-- The CXX compiler identification is MSVC 19.50.35724.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (1.5s)\n-- Generating done (0.1s)\n-- Build files have been written to: G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/.strata/Scripts/Build\n> C:/msys64/mingw64/bin/cmake.exe --build G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/.strata/Scripts/Build --parallel --config Release -- /nodeReuse:false\nMSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework\n\n  Checking File Globs\n  1>Checking Build System\n  Building Custom Rule G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/Scripts/CMakeLists.txt\n  TetrisBoard.cpp\n  TetrisGame.cpp\n  ScriptModuleEntry.cpp\n  Generating Code...\n     Creating library G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/.strata/Scripts/Build/Release/TetrisScripts.lib and object G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/.strata/Scripts/Build/Release/TetrisScripts.exp\n  TetrisScripts.vcxproj -> G:\\GameEngineAI\\.worktrees\\docs-work\\photo\\scripting-loading\\projects\\01\\.strata\\Scripts\\Bin\\TetrisScripts.dll\n  Building Custom Rule G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/Scripts/CMakeLists.txt\n",
+			"module": "G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/.strata/Scripts/Bin/TetrisScripts.dll",
+			"moduleChanged": true,
+			"reloaded": false,
+			"seconds": 5.3551842,
+			"success": true,
+			"toolchain": {
+				"cmake": "C:/msys64/mingw64/bin/cmake.exe",
+				"configuration": "Release",
+				"cxxCompiler": "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe",
+				"engineDirectory": "G:/GameEngineAI/.worktrees/docs-pin",
+				"generator": "Visual Studio 18 2026",
+				"generatorInstance": "",
+				"makeProgram": "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe",
+				"platform": "x64",
+				"toolset": ""
+			},
+			"warningCount": 0
+		},
+		"phase": "Idle",
+		"running": false,
+		"seconds": 0.0
+	},
+	"classes": [
+		{
+			"callbacks": [
+				"OnCreate",
+				"OnUpdate",
+				"OnReload"
+			],
+			"fields": [
+				{
+					"default": 60,
+					"name": "Seed",
+					"type": "Int"
+				},
+				{
+					"default": 1,
+					"name": "StartLevel",
+					"type": "Int"
+				},
+				{
+					"default": 10,
+					"name": "LinesPerLevel",
+					"type": "Int"
+				},
+				{
+					"default": 0.8,
+					"name": "StartInterval",
+					"type": "Float"
+				},
+				{
+					"default": 0.85,
+					"name": "IntervalFactor",
+					"type": "Float"
+				},
+				{
+					"default": 0.05,
+					"name": "MinInterval",
+					"type": "Float"
+				},
+				{
+					"default": 0.04,
+					"name": "SoftDropInterval",
+					"type": "Float"
+				},
+				{
+					"default": 0.17,
+					"name": "RepeatDelay",
+					"type": "Float"
+				},
+				{
+					"default": 0.05,
+					"name": "RepeatInterval",
+					"type": "Float"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "CellMesh",
+					"type": "Asset"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "MaterialI",
+					"type": "Asset"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "MaterialO",
+					"type": "Asset"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "MaterialT",
+					"type": "Asset"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "MaterialS",
+					"type": "Asset"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "MaterialZ",
+					"type": "Asset"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "MaterialJ",
+					"type": "Asset"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "MaterialL",
+					"type": "Asset"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "GhostMaterial",
+					"type": "Asset"
+				},
+				{
+					"default": 0.92,
+					"name": "CellScale",
+					"type": "Float"
+				},
+				{
+					"default": [
+						12,
+						15,
+						0
+					],
+					"name": "PreviewOffset",
+					"type": "Vec3"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "ScoreText",
+					"type": "Entity"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "LevelText",
+					"type": "Entity"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "LinesText",
+					"type": "Entity"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "MessageText",
+					"type": "Entity"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "MessagePanel",
+					"type": "Entity"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "MoveSound",
+					"type": "Asset"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "LockSound",
+					"type": "Asset"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "ClearSound",
+					"type": "Asset"
+				},
+				{
+					"default": "0000000000000000",
+					"name": "GameOverSound",
+					"type": "Asset"
+				}
+			],
+			"name": "TetrisBoard"
+		}
+	],
+	"externalEditor": {
+		"command": "",
+		"source": "none"
+	},
+	"fault": null,
+	"hotReload": true,
+	"lastFault": null,
+	"loadCount": 1,
+	"loaded": true,
+	"module": "G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/.strata/Scripts/Bin/TetrisScripts.dll",
+	"moduleName": "TetrisScripts",
+	"playBuildsFirst": null,
+	"project": true,
+	"projectModule": "G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/.strata/Scripts/Bin/TetrisScripts.dll",
+	"projectModuleBuilt": true,
+	"scenesUseScripts": true,
+	"sourceDirectory": "G:/GameEngineAI/.worktrees/docs-work/photo/scripting-loading/projects/01/Scripts",
+	"toolchain": {
+		"cmake": "C:/msys64/mingw64/bin/cmake.exe",
+		"configuration": "Release",
+		"cxxCompiler": "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe",
+		"description": "",
+		"engineDirectory": "G:/GameEngineAI/.worktrees/docs-pin",
+		"found": true,
+		"generator": "Visual Studio 18 2026",
+		"generatorInstance": "",
+		"makeProgram": "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe",
+		"platform": "x64",
+		"searchesThisMachine": false,
+		"toolset": ""
+	}
+}

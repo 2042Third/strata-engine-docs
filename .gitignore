@@ -1,0 +1,10 @@
+.tools/
+node_modules/
+dist/
+stage/
+release/
+originals/
+.astro/
+.cache/
+__pycache__/
+*.pyc

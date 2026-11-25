@@ -1,0 +1,19 @@
+{
+	"figures": [
+		{
+			"id": "script-status-loader",
+			"kind": "text",
+			"shows": "The answer of script.status for the Tetris sample once its module is built: whether a module is loaded, its name, the load count, the hot reload flag, its classes with fields and callbacks, and the fault",
+			"caption": "The command answers in JSON: the Tetris module is loaded once with hot reload on, and the fault is null. Its one class lists three callbacks and twenty-nine fields with types and defaults. Inside the class the keys are in order of the alphabet, so the class's name comes last. The eighteen Asset and Entity fields default to the zero handle, meaning none.",
+			"alt": "A block of JSON text: loaded true, the module's name, a load count of one and hot reload true. One class has three callbacks, many fields with names, types and defaults, and its name. The fault is null.",
+			"project": { "sample": "Tetris" },
+			"setup": [
+				{ "command": "script.build" }
+			],
+			"text": {
+				"command": { "command": "script.status" },
+				"keep": ["/loaded", "/moduleName", "/loadCount", "/hotReload", "/classes", "/fault"]
+			}
+		}
+	]
+}

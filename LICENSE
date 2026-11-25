@@ -1,0 +1,20 @@
+Copyright © 2026 2042Third. All rights reserved.
+
+The Strata Engine Book is closed source. Its text, pictures, diagrams, sketches, tutorial files, labs, downloads, and
+the code and tools of its site are the copyright holder's work, and no open license covers them.
+
+Except where otherwise noted, there are two exceptions:
+
+1. Using the code in this book. You may use the code and the project files this book gives you (the listings written
+   for the book, the tutorial files, the command scripts, the lab files, the worked solutions and the checkpoint
+   projects) in your own programs and games, and ship them, also commercially, without asking and without naming the
+   book. You may not publish them as a collection of examples, a course or a book of your own. Everything else (the
+   text, the pictures, the diagrams and this site) is for you to read, and to print for your own use.
+
+   A quote of the Strata engine's source code belongs to the engine, and the engine's own terms apply to it: this
+   permission grants nothing over it.
+
+2. Third-party material. The fonts, scripts and other files of other authors that the site ships, the libraries the
+   book quotes, and the assets of other authors the book shows and gives out keep their own licenses and notices.
+   They are listed, with their license texts, in third-party-notices.txt, served beside this file at the book's
+   address.

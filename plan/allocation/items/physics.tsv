@@ -1,0 +1,294 @@
+id	type	heading	label
+physics:28	feature	1.1 Components (authoring data)	`RigidBodyComponent` ("RigidBody")
+physics:29	feature	1.1 Components (authoring data)	`BoxColliderComponent`
+physics:30	feature	1.1 Components (authoring data)	`SphereColliderComponent`
+physics:31	feature	1.1 Components (authoring data)	`CapsuleColliderComponent`
+physics:32	feature	1.1 Components (authoring data)	`MeshColliderComponent`
+physics:33	feature	1.1 Components (authoring data)	`CharacterControllerComponent`
+physics:34	feature	1.1 Components (authoring data)	Collider gizmos
+physics:35	feature	1.1 Components (authoring data)	Body composition rule
+physics:41	feature	1.2 Body types, shapes, materials, mass	Static, dynamic, kinematic bodies mapped to box3d types
+physics:42	feature	1.2 Body types, shapes, materials, mass	Kinematic bodies follow their entity with a velocity that reaches the target in one step…
+physics:43	feature	1.2 Body types, shapes, materials, mass	Dynamic bodies moved from outside are teleported, keeping velocity; static bodies moved wake what…
+physics:44	feature	1.2 Body types, shapes, materials, mass	Shape building per collider: boxes are shared hulls per size+placement (`BoxHullKey`,…
+physics:45	feature	1.2 Body types, shapes, materials, mass	World scale baked into shapes (boxes and meshes exactly incl. mirroring; sphere radius by largest…
+physics:46	feature	1.2 Body types, shapes, materials, mass	Material: friction and restitution per body (clamped), one material for every shape of the body
+physics:47	feature	1.2 Body types, shapes, materials, mass	Mass: shapes at density 1 give the distribution, then scaled to the component's mass (`ApplyMass`)
+physics:48	feature	1.2 Body types, shapes, materials, mass	Rotation locks on world axes (`motionLocks`)
+physics:49	feature	1.2 Body types, shapes, materials, mass	Continuous collision: every dynamic body swept against static ones (box3d); `ContinuousCollision`…
+physics:50	feature	1.2 Body types, shapes, materials, mass	Triggers: shapes are box3d sensors; sensors see convex shapes and characters only, never triangle…
+physics:51	feature	1.2 Body types, shapes, materials, mass	Coordinate limit 1e5 m (box3d single precision, `B3_HUGE`): bodies beyond wait like degenerate…
+physics:52	feature	1.2 Body types, shapes, materials, mass	Degenerate transforms, zero-scaled parents: bodies leave the simulation (Suspended) until valid
+physics:53	feature	1.2 Body types, shapes, materials, mass	Pending bodies: records that cannot build yet keep a `BuildFailure` (NoCollider, InvalidColliders,…
+physics:54	feature	1.2 Body types, shapes, materials, mass	Warnings once per entity and kind (`PhysicsWarning`)
+physics:60	feature	1.3 Mesh colliders and cooking	`PhysicsMeshProvider` interface (non-blocking mesh data source, version, changed meshes)
+physics:61	feature	1.3 Mesh colliders and cooking	`AssetMeshProvider`: default provider from the active asset manager via `MeshGeometryRegistry`…
+physics:62	feature	1.3 Mesh colliders and cooking	`PhysicsMeshShapes`: cooks hulls (64 vertices, fallback 44 because box3d hulls hold at most 128…
+physics:63	feature	1.3 Mesh colliders and cooking	Mesh wait at start: steps held (nothing moves) until mesh floors exist, at most `MeshWaitTimeout`…
+physics:64	feature	1.3 Mesh colliders and cooking	Mesh hot reload: bodies rebuilt when the provider reports new data
+physics:70	feature	1.4 The world and its lifecycle	`PhysicsSystem` "Physics" scene system (Play and Simulate), soft order after Scripting, profile…
+physics:71	feature	1.4 The world and its lifecycle	Lazy world: created at start only if the scene has physics components, else on the first one added
+physics:72	feature	1.4 The world and its lifecycle	128-world limit of box3d; a scene with no free world plays without physics, one error
+physics:73	feature	1.4 The world and its lifecycle	`PhysicsRuntime`: process-wide reference count, box3d assert and log hooks (asserts through…
+physics:74	feature	1.4 The world and its lifecycle	`PhysicsTaskSystem`: box3d's step tasks on Strata's JobSystem; the waiting thread runs an…
+physics:75	feature	1.4 The world and its lifecycle	Change tracking through EnTT signals (components, reparenting, activity, destruction) into…
+physics:76	feature	1.4 The world and its lifecycle	Leaving the simulation: inactive or pending-destroy entities; disable in box3d; static bodies…
+physics:77	feature	1.4 The world and its lifecycle	Capacities and growth: automatic room (next pow2 of 2x bodies, at least 1,024; 2 contacts a body,…
+physics:78	feature	1.4 The world and its lifecycle	`EstimateReservedBytes`: memory fitted to box3d's own count (2,120 B a body, 250 a contact, 32 KiB…
+physics:79	feature	1.4 The world and its lifecycle	`IPhysicsCapacity` service and `Reserve` (the world streamer reserves for cells about to load)
+physics:80	feature	1.4 The world and its lifecycle	Parallel body creation for rounds of >= 256 bodies, deterministic IDs (main thread starts and…
+physics:81	feature	1.4 The world and its lifecycle	Static shapes made before the first step skip pair search (`invokeContactCreation`)
+physics:82	feature	1.4 The world and its lifecycle	Sliced building for loaded scenes (`PhysicsBuildMode::Sliced`, `BuildSlice`, `PrepareLoadedScene`,…
+physics:83	feature	1.4 The world and its lifecycle	Process-default settings for tests and tools
+physics:89	feature	1.5 The step	`PhysicsSystem::OnFixedUpdate`: apply changes, sync gravity, layers and Physics.Simulation,…
+physics:90	feature	1.5 The step	`PhysicsWorld::Simulate`: changes, reserved growth, parked disables, mesh hold, sync entities to…
+physics:91	feature	1.5 The step	Synchronization before the step: only awake bodies, polled records and descendants of bodies moved…
+physics:92	feature	1.5 The step	Write-back after the step: bitmap of moved bodies in body order, parallel chunks, parents before…
+physics:93	feature	1.5 The step	Forces act during the next fixed step only (queued, re-applied before each box3d step); impulses…
+physics:94	feature	1.5 The step	Teleport: body and entity at once, wakes neighbours, breaks interpolation
+physics:95	feature	1.5 The step	Gravity from `SceneSettings::Gravity` (-9.81 Y), changing it wakes every body
+physics:101	feature	1.6 Contacts and events	`CollisionEvent` (Begin/End, IsTrigger, A/B entity and UUID, point, normal A->B); every Begin has…
+physics:102	feature	1.6 Contacts and events	`ICollisionEventSource`: listeners (AllEntities or WatchedEntities scope), watches counted per…
+physics:103	feature	1.6 Contacts and events	Pair folding: box3d's per-shape contacts and sensor visits counted into per-entity `TouchingPair`s…
+physics:104	feature	1.6 Contacts and events	Contact interest: only wanted pairs tracked; nobody listening costs nothing; pair seeded from…
+physics:105	feature	1.6 Contacts and events	Contact point = midway between surfaces over the first manifold; trigger point = centre of AABB…
+physics:106	feature	1.6 Contacts and events	Dispatch on the main thread after the step, snapshot of listeners, listeners may destroy entities
+physics:107	feature	1.6 Contacts and events	Scripts' `OnCollisionEnter/Exit`, `OnTriggerEnter/Exit` via a WatchedEntities listener of…
+physics:108	feature	1.6 Contacts and events	O(1) pair add/remove (`IndexInA/B`, `EntityPairs`), `BodyRecord::PairCount`
+physics:114	feature	1.7 Queries	`Raycast` (closest), `RaycastAll` (closest per entity, sorted), `OverlapSphere`, `OverlapBox`…
+physics:115	feature	1.7 Queries	Query sees bodies as of the last step or change; changes applied before queries
+physics:116	feature	1.7 Queries	No shape casts / sweeps in the public API (box3d's `b3World_CastMover` is used only by characters)
+physics:122	feature	1.8 Collision layers	32 layers, symmetric matrix, names (`PhysicsLayerSettings`), "both masks must allow" rule
+physics:123	feature	1.8 Collision layers	Project section `Scene.CollisionLayers` (`ProjectCollisionLayers`), working copy per scene…
+physics:124	feature	1.8 Collision layers	box3d filter mapping: category bit = layer, mask = row
+physics:125	feature	1.8 Collision layers	Runtime changes (`SetLayerCollisionMasks`, scripts' `Physics::SetLayersCollide`) refilter shapes,…
+physics:126	feature	1.8 Collision layers	Editor: Collision Layers page, `project.setCollisionLayers`, migration from 0.5.0 scenes
+physics:132	feature	1.9 Character controllers	`CharacterControllerSet`: capsule moved by box3d mover queries (`b3World_CollideMover`,…
+physics:133	feature	1.9 Character controllers	Two-pass move (across, then vertical), step-up, ground snapping, slope limit, ground state
+physics:134	feature	1.9 Character controllers	Moving platforms (carried velocity) and leaving them with their motion
+physics:135	feature	1.9 Character controllers	Presence body: kinematic capsule at 90% radius so bodies land on, triggers see and rays hit the…
+physics:136	feature	1.9 Character controllers	Pushing: inelastic impulse with effective mass at contact, capped by `PushStrength * dt`, never…
+physics:137	feature	1.9 Character controllers	Parallel deterministic moves, serial writes in controller order
+physics:138	feature	1.9 Character controllers	`ICharacterControl` service (Move, Jump, Teleport, AddCharacterMotion for root motion,…
+physics:139	feature	1.9 Character controllers	Character contacts join entity pairs; triggers reach the presence body
+physics:145	feature	1.10 Settings, tuning, determinism	`PhysicsSettings` (capacities, `CollisionSteps`, `MeshWaitTimeout`, `GrowthLimit`, tuning, layer…
+physics:146	feature	1.10 Settings, tuning, determinism	`Physics.Simulation` project section: `ContactRecycleDistance` (0.05 m), `SleepThreshold` (0.08…
+physics:147	feature	1.10 Settings, tuning, determinism	Contact recycling (box3d), off for kinematic and presence bodies
+physics:148	feature	1.10 Settings, tuning, determinism	Effective contact stiffness ceiling (1/8 of substep rate: 30 Hz at 60 steps/s)
+physics:149	feature	1.10 Settings, tuning, determinism	Determinism: same results with any number of threads (ordered records, fixed chunking, integer…
+physics:150	feature	1.10 Settings, tuning, determinism	Settle scenes, `physics-settle` helper, `Tools/PhysicsSweep.py` (distances, knobs, workers, pits,…
+physics:156	feature	1.11 The fixed step and interpolation (Scene module, shared with scripts and animation)	Accumulator loop with `GetMaxFixedSteps`, backlog drop, time dilation (drop steps when steps cost…
+physics:157	feature	1.11 The fixed step and interpolation (Scene module, shared with scripts and animation)	`SceneSettings`: `Gravity`, `FixedTimestep` 1/60, `MaxFixedStepsPerFrame` 8, `PhysicsCapacity`
+physics:158	feature	1.11 The fixed step and interpolation (Scene module, shared with scripts and animation)	Project `Scene.Timing`: `FixedRate` (Scene/30/60/120/240), max steps `ceil(rate*2/15)`;…
+physics:159	feature	1.11 The fixed step and interpolation (Scene module, shared with scripts and animation)	Interpolation of drawn transforms (Blend/Compose/Exact roles, step alpha, breaks)
+physics:160	feature	1.11 The fixed step and interpolation (Scene module, shared with scripts and animation)	Readers: `Scene::GetFixedTimestep`, `GetMaxFixedSteps`, `GetFixedStepCount`, `GetStepAlpha`,…
+physics:161	feature	1.11 The fixed step and interpolation (Scene module, shared with scripts and animation)	Script SDK: `OnFixedUpdate`, `Time::GetFixedDeltaTime`, `GetDrawnPosition/Rotation`,…
+physics:167	feature	1.12 Diagnostics	`PhysicsStats` (walked counts plus instruments kept as it steps)
+physics:168	feature	1.12 Diagnostics	`PhysicsLibraryProfile` (box3d stages), `PhysicsLibraryCounters` (islands, contacts, recycled),…
+physics:169	feature	1.12 Diagnostics	`IPhysicsDiagnostics` / `PhysicsStepInfo` (constant time)
+physics:170	feature	1.12 Diagnostics	Settling instruments (max speed, settling count, resting jitter)
+physics:171	feature	1.12 Diagnostics	Contact storage growth counting
+physics:172	feature	1.12 Diagnostics	Editor: `physics.stats`, `physics.setDetailedStats`, Streaming panel Physics row, `editor.status`…
+physics:173	feature	1.12 Diagnostics	Perf tests `Perf.Physics.*` (Boxes10k/30kTracked/70k, Characters1000Step, Create10kBodies,…
+physics:177	feature	1.13 Script API (game developers' surface)	Host functions in `StrataScriptCore/Include/StrataScript/ScriptABI.h`: bodies 400-419…
+physics:187	feature	1.14 The Physics Playground sample	`Samples/PhysicsPlayground/`: about 600 bodies in six stations (crate tower and pyramid, 64…
+physics:217	concept		What a physics engine is for in a game
+physics:222	concept		Units, coordinates and float precision
+physics:225	concept		Rigid body state and integration
+physics:229	concept		Body types
+physics:233	concept		Colliders and shapes
+physics:237	concept		Composing bodies from an entity hierarchy
+physics:241	concept		The simulation loop: fixed timestep
+physics:245	concept		Collision detection: broad phase and narrow phase
+physics:248	concept		Constraint solving: contacts as constraints
+physics:252	concept		Continuous collision (tunnelling)
+physics:255	concept		Sleeping and islands
+physics:257	concept		Contact recycling / warm starting / caching
+physics:259	concept		Collision filtering
+physics:261	concept		Triggers (sensors)
+physics:263	concept		Contact events
+physics:265	concept		Spatial queries
+physics:267	concept		Synchronizing physics and the scene graph
+physics:271	concept		Character controllers
+physics:275	concept		Interpolation of rendering
+physics:279	concept		Determinism
+physics:283	concept		Scale and memory: capacities and growth
+physics:285	concept		Bodies in a streaming world
+physics:287	concept		Tuning by measurement
+physics:296	code		1: `Strata/src/Strata/Physics/PhysicsComponents.h` 20-42
+physics:297	code		2: `PhysicsComponents.h` 70-85
+physics:298	code		3: `Strata/src/Strata/Physics/PhysicsWorld.cpp` 212-226 (`FindBodyOwner`)
+physics:299	code		4: `Strata/src/Strata/Scene/Scene.cpp` 2239-2329
+physics:300	code		5: `PhysicsSystem.cpp` 158-177
+physics:301	code		6: `PhysicsWorld.cpp` 4973-5078 (`Simulate`)
+physics:302	code		7: `PhysicsWorld.cpp` 3300-3421 (`SyncBody`)
+physics:303	code		8: `PhysicsWorld.cpp` 4144-4182 (`WritePose`)
+physics:304	code		9: `PhysicsWorld.cpp` 3628-3640 (`MarkMoved`) plus 4214-4231
+physics:305	code		10: `PhysicsWorld.cpp` 1993-2045 (`MakeBodySetup`)
+physics:306	code		11: `PhysicsWorld.cpp` 2102-2114 (`ApplyMass`)
+physics:307	code		12: `PhysicsWorld.cpp` 1857-1918 (`AddColliderParts`, box/sphere/capsule part)
+physics:308	code		13: `Strata/src/Strata/Physics/PhysicsFilters.h` 1-60
+physics:309	code		14: `Strata/src/Strata/Scene/PhysicsLayerSettings.h` 43-67
+physics:310	code		15: `PhysicsWorld.cpp` 3598-3625 (`CountBegin`/`CountEnd`) and 422-443 (`TouchingPair`)
+physics:311	code		16: `PhysicsWorld.cpp` 3643-3712 (`ProcessStepEvents`)
+physics:312	code		17: `PhysicsSystem.cpp` 636-660 (`DispatchCollisionEvents`)
+physics:313	code		18: `PhysicsWorld.cpp` 4499-4519 (`RayCallback`) and 5399-5417 (`Raycast`)
+physics:314	code		19: `PhysicsWorld.cpp` 4535-4576 (`CollectOverlaps`)
+physics:315	code		20: `CharacterControllers.cpp` 384-422 (`ShapePlanes`, `SlideMove`)
+physics:316	code		21: `CharacterControllers.cpp` 557-664 (`MoveController`)
+physics:317	code		22: `CharacterControllers.cpp` 680-718 (`PushBodies` push part)
+physics:318	code		23: `CharacterControllers.cpp` 928-999 (`CharacterControllerSet::Step`)
+physics:319	code		24: `PhysicsTaskSystem.cpp` 14-48
+physics:320	code		25: `PhysicsWorld.cpp` 1530-1584 (`ParkStaticBody`, `DisableParkedBodies`)
+physics:321	code		26: `PhysicsWorld.cpp` 4775-4787 (`ResolveCapacities`) and 2300-2318 (`GrowRoom`)
+physics:322	code		27: `Strata/src/Strata/Scene/SceneInterpolation.cpp` 104-116 (`BlendPose`)
+physics:323	code		28: `StrataTests/src/Physics/PhysicsSimulationTests.cpp` 821-839
+physics:324	code		29: `Samples/PhysicsPlayground/Scripts/GoalBasket.cpp` 1-26 and `LaunchPad.cpp` 1-22
+physics:325	code		30: `Samples/PhysicsPlayground/Scripts/Playground.cpp` 225-255 (`UpdateGrab`)
+physics:333	figure	Diagrams	Layered overview
+physics:336	figure	Diagrams	Entity hierarchy to bodies
+physics:338	figure	Diagrams	Frame timeline
+physics:340	figure	Diagrams	Inside a fixed step
+physics:343	figure	Diagrams	Two copies of the truth
+physics:345	figure	Diagrams	Contact pair folding
+physics:347	figure	Diagrams	Layer filtering bits
+physics:349	figure	Diagrams	Character move
+physics:351	figure	Diagrams	Presence body
+physics:353	figure	Diagrams	Push impulse
+physics:354	figure	Diagrams	Interpolation
+physics:356	figure	Diagrams	Capacity growth
+physics:358	figure	Diagrams	Parking timeline
+physics:359	figure	Diagrams	Body record memory layout
+physics:361	figure	Diagrams	Parallel write-back
+physics:363	figure	Diagrams	Contact recycling
+physics:367	figure	Screenshots (physics has no rendering feature; screenshots show behaviour and tools)	Physics Playground overview (`Samples/PhysicsPlayground/Screenshots/Overview.png` exists) and the…
+physics:369	figure	Screenshots (physics has no rendering feature; screenshots show behaviour and tools)	The editor with collider gizmos: `viewport.setSettings {allColliders: true}` on the Playground…
+physics:371	figure	Screenshots (physics has no rendering feature; screenshots show behaviour and tools)	Inspector of a RigidBody and of a Character Controller component (Rigid Body fields; tooltips).
+physics:372	figure	Screenshots (physics has no rendering feature; screenshots show behaviour and tools)	Project Settings > Collision Layers page (named layers, the compact matrix) with the Playground's…
+physics:374	figure	Screenshots (physics has no rendering feature; screenshots show behaviour and tools)	Project Settings > Physics > Simulation page (five fields) and Physics > Timing (FixedRate,…
+physics:375	figure	Screenshots (physics has no rendering feature; screenshots show behaviour and tools)	The Streaming panel's Physics row with "Count contacts" on ("Step ... ms (box3d ...) - awake ... -…
+physics:376	figure	Screenshots (physics has no rendering feature; screenshots show behaviour and tools)	A `physics.stats` JSON answer (terminal screenshot or code block).
+physics:377	figure	Screenshots (physics has no rendering feature; screenshots show behaviour and tools)	Before/after sequences (frame grabs via `viewport.capture {atFixedStep}` while paused,…
+physics:379	figure	Screenshots (physics has no rendering feature; screenshots show behaviour and tools)	Interpolation on/off: a fast-moving body with a following camera at high frame rate (Third-Person…
+physics:382	figure	Screenshots (physics has no rendering feature; screenshots show behaviour and tools)	Character controller on stairs and slopes (Third-Person sample or a purpose-built scene): walking…
+physics:389	rule		Signal transform writes
+physics:392	rule		Use `Teleport` for instant moves
+physics:394	rule		Apply forces in `OnFixedUpdate`, every step they should act
+physics:396	rule		Read the step via `Scene::GetFixedTimestep`/`GetMaxFixedSteps`, never `SceneSettings`
+physics:398	rule		Tools count fixed steps, not frames
+physics:400	rule		Main thread only
+physics:402	rule		Events are delivered after the step, not from inside it
+physics:404	rule		Entity destruction from scripts goes through `ScriptSystem::DestroyEntity`/deferred destroy
+physics:406	rule		Do not spawn bodies overlapping
+physics:408	rule		Triangle meshes only on static bodies; triggers do not see them
+physics:410	rule		A floor of many tiles bumps at the seams; make it one collider
+physics:412	rule		`ContactHertz` above the ceiling does nothing
+physics:414	rule		Kinematic and character presence bodies never recycle contacts
+physics:416	rule		Stay within 20 km (box3d refuses 1e5 m)
+physics:417	rule		Never let a body sit without collision below the growth limit
+physics:419	rule		Collision layers are the project's, not the scene's
+physics:421	rule		Physics settings are applied on the main thread
+physics:423	rule		Follow moving bodies with the drawn transform in `OnLateUpdate`
+physics:425	rule		Move what others ride in `OnFixedUpdate` or as a kinematic body
+physics:427	rule		Compare chaotic results over many layouts
+physics:429	rule		Character controller rotation and scale do not change its capsule
+physics:431	rule		An entity with both RigidBody and CharacterController is the rigid body
+physics:432	rule		Damping differs from Jolt's formula
+physics:433	rule		Restitution needs speed above 1 m/s to bounce
+physics:434	rule		Never dereference box3d IDs without validity checks; shapes resolve through generation-checked slots
+physics:445	hands-on	For game developers	Make a crate fall onto a floor in the editor (RigidBody Dynamic + BoxCollider, floor with a…
+physics:446	hands-on	For game developers	Build a stack of 10 crates and topple it with a script impulse (`AddImpulseAtPosition`)
+physics:447	hands-on	For game developers	Change friction and restitution of four balls (wood, metal, rubber, ice) and compare
+physics:448	hands-on	For game developers	A trigger zone that counts balls (copy GoalBasket) and a launch pad (copy LaunchPad)
+physics:449	hands-on	For game developers	A gun that shoots via `Physics::Raycast` and pushes what it hits
+physics:450	hands-on	For game developers	A grab tool (as `UpdateGrab`)
+physics:451	hands-on	For game developers	A Ghost layer that passes through balls but not walls; toggle at runtime with…
+physics:452	hands-on	For game developers	A player with a CharacterController: walk, jump, stairs, a slope too steep, a moving platform made…
+physics:453	hands-on	For game developers	A follow camera that judders, then fixed with `GetDrawnPosition` in `OnLateUpdate`; toggle Timing…
+physics:454	hands-on	For game developers	Impact sounds louder for harder hits (as `Impact.cpp`)
+physics:455	hands-on	For game developers	Tune Physics > Simulation's Sleep Threshold and observe a ball pit with `physics.stats`
+physics:456	hands-on	For game developers	Write a `.json` command script that pauses, steps to a fixed step and checks an outcome with…
+physics:462	hands-on	For engine developers	Write a doctest that drops a sphere and checks it rests at height r (use `PhysicsTestUtils.h`)
+physics:463	hands-on	For engine developers	Add `GetLinearVelocity` checks to a test that bodies sleep; read `PhysicsStats::SleepingBodyCount`
+physics:464	hands-on	For engine developers	Trace one fixed step in Tracy (`ST_PROFILE_SCOPE("PhysicsWorld::Simulate - box3d")`) and attribute…
+physics:465	hands-on	For engine developers	Implement an `OverlapCapsule` query (world, system, service, host function appended at the end,…
+physics:466	hands-on	For engine developers	Implement a shape cast (`b3World_CastShape`) query `SphereCast` with sorted hits and the same…
+physics:467	hands-on	For engine developers	Add a new collider type (cylinder via hull) with gizmo, inspector, scale rule and tests
+physics:468	hands-on	For engine developers	Expose a hinge or distance joint (box3d joints) as a component: lifetime with bodies, rebuild,…
+physics:469	hands-on	For engine developers	Reproduce the determinism test: run a pile with 0 and 3 workers and diff poses
+physics:470	hands-on	For engine developers	Run `Tools/PhysicsSweep.py knobs` on a local build for one knob and read the report
+physics:471	hands-on	For engine developers	Make a regression test fail without a fix (e.g. remove `enableContactRecycling = false` for…
+physics:477	term		Rigid body
+physics:478	term		Static body
+physics:479	term		Dynamic body
+physics:480	term		Kinematic body
+physics:481	term		Collider / shape
+physics:482	term		Convex hull
+physics:483	term		Triangle mesh collider
+physics:484	term		Compound / baked compound
+physics:485	term		Trigger / sensor
+physics:486	term		Presence body
+physics:487	term		Character controller
+physics:488	term		Mover (box3d)
+physics:489	term		Collide and slide
+physics:490	term		Step height / step up
+physics:491	term		Ground snapping
+physics:492	term		Ground state
+physics:493	term		Fixed timestep
+physics:494	term		Accumulator
+physics:495	term		Spiral of death
+physics:496	term		Time dilation
+physics:497	term		Sub-step
+physics:498	term		Collision step
+physics:499	term		Broad phase
+physics:500	term		Narrow phase
+physics:501	term		AABB
+physics:502	term		Manifold / contact point
+physics:503	term		Contact constraint
+physics:504	term		Soft contact / contact hertz / damping ratio
+physics:505	term		Push speed (contactSpeed)
+physics:506	term		Restitution
+physics:507	term		Friction
+physics:508	term		Damping
+physics:509	term		Gravity scale
+physics:510	term		Inertia tensor
+physics:511	term		Impulse
+physics:512	term		Continuous collision (CCD) / bullet / tunnelling
+physics:513	term		Island
+physics:514	term		Sleep threshold
+physics:515	term		Contact recycling
+physics:516	term		Ghost collision
+physics:517	term		Collision layer / layer matrix
+physics:518	term		Category bits / mask bits
+physics:519	term		Query category
+physics:520	term		Raycast / RaycastAll / overlap / shape cast (sweep)
+physics:521	term		Collision event (Begin/End)
+physics:522	term		Touching pair
+physics:523	term		Contact interest / watch
+physics:524	term		Write-back
+physics:525	term		Synchronization (sync)
+physics:526	term		Signal (on_update)
+physics:527	term		Degenerate transform
+physics:528	term		Suspended body
+physics:529	term		Parked body
+physics:530	term		Capacity / room / growth limit / demand
+physics:531	term		Body record / slot
+physics:532	term		Cooking
+physics:533	term		Mesh provider
+physics:534	term		Interpolation (state interpolation)
+physics:535	term		Step alpha
+physics:536	term		Blend / Compose / Exact
+physics:537	term		Drawn transform
+physics:538	term		Determinism
+physics:539	term		Golden hash
+physics:540	term		Settle scene / sweep
+physics:541	term		Job system / worker
+physics:582	open		Exact release for several internals: parallel body creation, sliced preparation…
+physics:585	open		I did not read line by line `PhysicsWorld.cpp` 2120-2290 (merging and rebuild bookkeeping),…
+physics:589	open		`Scene/SceneInterpolation.cpp` was read only to its first 130 lines; the capture pass in…
+physics:591	open		Test bodies were read only for the determinism and golden-hash cases; other cases are known by name.
+physics:592	open		`StrataTests/src/Perf/PhysicsPerfTests.cpp`, `SceneGenerators.cpp`, the budgets' values and…
+physics:594	open		The Playground's scene (`Assets/Scenes/Main.stscene`), prefabs and materials were not opened; the…
+physics:596	open		box3d's own internals (solver, soft step, sleep test, CCD) were not read; statements about them…
+physics:599	open		The editor UI pages (`CollisionLayersPage.cpp`, the generic settings page for Physics.Simulation…
+physics:601	open		There is no Manual page for physics (`Docs/Manual/` has none); the game-facing physics…

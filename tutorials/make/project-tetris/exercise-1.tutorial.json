@@ -1,0 +1,34 @@
+{
+	"page": "make/project-tetris",
+	"startsFrom": { "tutorial": "make/project-tetris" },
+	"stages": [
+		{
+			"step": 1,
+			"files": [ { "from": "book:tutorials/make/project-tetris/exercise-1/TetrisBoard.cpp", "to": "Scripts/TetrisBoard.cpp" } ],
+			"commands": [
+				{ "command": "entity.find", "parameters": { "name": "StatsPanel" }, "bind": { "statsPanelId": "/entities/0" } },
+				{ "command": "ui.create", "parameters": { "type": "text", "parent": { "$ref": "statsPanelId" }, "name": "BestText", "text": "Best: 0" } },
+				{ "command": "component.set", "entityName": "BestText", "parameters": { "component": "UIText", "values": { "FontSize": 30, "Alignment": "Left", "Color": [0.85, 0.9, 1, 1] } } },
+				{ "command": "component.set", "entityName": "BestText", "parameters": { "component": "UIRect", "values": { "FitContent": "Both" } } },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "entity.find", "parameters": { "name": "BestText" }, "bind": { "bestTextId": "/entities/0" } },
+				{ "command": "script.setField", "entityName": "Board", "parameters": { "class": "TetrisBoard", "field": "BestText", "value": { "$ref": "bestTextId" } } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 1 }, "expect": { "/stepsRun": { "equals": 1 } } },
+				{ "command": "component.get", "entityName": "BestText", "parameters": { "component": "UIText" }, "checks": [ { "pointer": "/values/Text", "equals": "Best: 0" } ] },
+				{ "command": "input.sequence", "parameters": { "steps": 3, "events": [ { "step": 0, "key": "Space", "action": "tap" } ] }, "expect": { "/stepsRun": { "equals": 3 } } },
+				{ "command": "script.setField", "entityName": "Board", "parameters": { "class": "TetrisBoard", "field": "MinInterval", "value": 0.01 } },
+				{ "command": "script.setField", "entityName": "Board", "parameters": { "class": "TetrisBoard", "field": "StartInterval", "value": 0.01 } },
+				{ "command": "play.pause", "parameters": { "paused": false } },
+				{ "command": "component.get", "entityName": "MessageText", "parameters": { "component": "UIText" }, "expect": { "/values/Text": { "equals": "GAME OVER\nPress R or Enter to play again" } }, "until": { "steps": 3000, "seconds": 60 } },
+				{ "command": "component.get", "entityName": "ScoreText", "parameters": { "component": "UIText" }, "checks": [ { "pointer": "/values/Text", "equals": "Score: 36" } ] },
+				{ "command": "component.get", "entityName": "BestText", "parameters": { "component": "UIText" }, "checks": [ { "pointer": "/values/Text", "equals": "Best: 36" } ] },
+				{ "command": "play.stop" },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 1 }, "expect": { "/stepsRun": { "equals": 1 } } },
+				{ "command": "component.get", "entityName": "BestText", "parameters": { "component": "UIText" }, "checks": [ { "pointer": "/values/Text", "equals": "Best: 36" } ] },
+				{ "command": "play.stop" }
+			]
+		}
+	]
+}

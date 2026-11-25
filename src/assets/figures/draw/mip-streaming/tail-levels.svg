@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 256">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- The 12 levels of a 2048 texture, not to scale: squares bottom-aligned at y 196, from x 110 to 700, gap 8, 24 between the groups.
+     Streamed: levels 0 to 5 (sides 96 80 66 54 44 36, centers 158 254 335 403 460 508). Tail: levels 6 to 11 (sides 30 24 20 16 12 8,
+     centers 565 600 630 656 678 696). Rows below: level at y 218, texels on a side at y 240; notes at y 276 (not to scale at left); all moved up 40; H 256. -->
+<g transform="translate(0 -40)">
+<path class="line-blue" d="M110 92V84H526V92" fill="none" stroke-width="2"/>
+<text class="blue" x="318" y="72" text-anchor="middle">levels the streamer raises and drops</text>
+<path class="line-green" d="M550 92V84H700V92" fill="none" stroke-width="2"/>
+<text class="green" x="625" y="72" text-anchor="middle">mip tail, always resident</text>
+<g class="plate line-ink">
+<rect x="110" y="100" width="96" height="96"/>
+<rect x="214" y="116" width="80" height="80"/>
+<rect x="302" y="130" width="66" height="66"/>
+<rect x="376" y="142" width="54" height="54"/>
+<rect x="438" y="152" width="44" height="44"/>
+<rect x="490" y="160" width="36" height="36"/>
+</g>
+<g class="green-area line-green">
+<rect x="588" y="172" width="24" height="24"/>
+<rect x="620" y="176" width="20" height="20"/>
+<rect x="648" y="180" width="16" height="16"/>
+<rect x="672" y="184" width="12" height="12"/>
+<rect x="692" y="188" width="8" height="8"/>
+</g>
+<rect class="green-area line-orange" x="550" y="166" width="30" height="30" stroke-width="2.5"/>
+<text class="muted small" x="16" y="218">level</text>
+<text class="muted small" x="16" y="240">texels</text>
+<g class="ink small" text-anchor="middle">
+<text x="158" y="218">0</text>
+<text x="254" y="218">1</text>
+<text x="335" y="218">2</text>
+<text x="403" y="218">3</text>
+<text x="460" y="218">4</text>
+<text x="508" y="218">5</text>
+<text x="600" y="218">7</text>
+<text x="630" y="218">8</text>
+<text x="656" y="218">9</text>
+<text x="678" y="218">10</text>
+<text x="700" y="218">11</text>
+<text x="158" y="240">2048</text>
+<text x="254" y="240">1024</text>
+<text x="335" y="240">512</text>
+<text x="403" y="240">256</text>
+<text x="460" y="240">128</text>
+<text x="508" y="240">64</text>
+<text x="600" y="240">16</text>
+<text x="630" y="240">8</text>
+<text x="656" y="240">4</text>
+<text x="678" y="240">2</text>
+<text x="700" y="240">1</text>
+</g>
+<g class="orange small bold" text-anchor="middle">
+<text x="565" y="218">6</text>
+<text x="565" y="240">32</text>
+</g>
+<text class="muted small" x="16" y="276">squares not to scale</text>
+<text class="orange" x="752" y="276" text-anchor="end">after a first load the surface draws from level 6, 32 by 32 texels</text>
+</g>
+</svg>

@@ -1,0 +1,21 @@
+{
+	"figures": [
+		{
+			"id": "usage-compare",
+			"kind": "scene",
+			"shows": "The Showcase's oil tank of bare weathered steel under the low sun, its normal map WeatheredSteel_nor_gl.png imported with Usage NormalMap, then with Usage Color; same camera and fixed exposure",
+			"caption": "The oil tank's normal map imported two ways under the same light and exposure: first as a normal map, then as color. As a normal map the steel shows a broad highlight left of centre and bright orange rust. As color the highlight is gone, the rust turns dull brown and the right half goes almost black.",
+			"alt": "Two pictures of the same steel tank with rust. In the first the steel left of centre shines and the rust is bright orange. In the second the tank is dark, the rust dull brown and the right half almost black.",
+			"project": { "sample": "Showcase" },
+			"camera": { "position": [10.2, 1.7, 17.2], "target": [2.7, 2.9, 18.0], "fov": 40 },
+			"size": [1280, 720],
+			"quality": "high",
+			"postProcess": { "AutoExposure": false, "Exposure": -13.8 },
+			"variants": {
+				"normal-map": { "setup": [ { "command": "asset.setImportSettings", "parameters": { "asset": "Generated/Props/WeatheredSteel_nor_gl.png", "settings": { "Usage": "NormalMap" } } } ] },
+				"color": { "setup": [ { "command": "asset.setImportSettings", "parameters": { "asset": "Generated/Props/WeatheredSteel_nor_gl.png", "settings": { "Usage": "Color" } } } ] }
+			},
+			"expect": "complete"
+		}
+	]
+}

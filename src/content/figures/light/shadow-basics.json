@@ -1,0 +1,28 @@
+{
+	"figures": [
+		{
+			"id": "acne-low-sun",
+			"kind": "scene",
+			"shows": "The look-dev yard under a sun at 10 degrees of elevation, once with both shadow biases at 0 and once with the defaults, with an enlarged crop of the fence's shadow stripes at lower left: the lit strips between them stay clean in both, and only the band of the rails' shadow shifts left with the biases at zero",
+			"caption": "The same yard twice under a low sun, with both bias settings off and at their defaults. Acne would show as dark stripes on lit ground, such as the light strips between the fence's shadow bars at lower left. Those stay clean in both, because the slope bias and the receiver plane stay on. The enlarged corner shows the one change: with the biases off, the diagonal band of the rails' shadow sits a little further left.",
+			"alt": "A yard under a low sun, pictured twice: a white hut, two smooth white domes, red barrels and long blue blocks behind a wooden fence. Both pictures look the same. The fence casts long dark stripes across the ground at lower left, the blue blocks shade the ground at lower right, and the lit ground between the stripes is smooth.",
+			"project": { "lookdev": true },
+			"scene": "Scenes/Yard.stscene",
+			"camera": "scene",
+			"size": [1920, 1080],
+			"quality": "high",
+			"publish": "lossless",
+			"setup": [
+				{ "command": "component.set", "entityName": "Sun", "parameters": { "component": "Transform", "values": { "Rotation": [-10, -74.36, 0] } } }
+			],
+			"crops": [
+				{ "name": "fence-shadow", "rect": [0, 0.75, 0.16, 1.0], "scale": 2 }
+			],
+			"variants": {
+				"zero": { "setup": [ { "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "ShadowBias": 0, "ShadowNormalBias": 0 } } } ] },
+				"defaults": { "setup": [ { "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "ShadowBias": 1.0, "ShadowNormalBias": 1.5 } } } ] }
+			},
+			"expect": "complete"
+		}
+	]
+}

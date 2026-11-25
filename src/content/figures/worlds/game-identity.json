@@ -1,0 +1,41 @@
+{
+	"figures": [
+		{
+			"id": "game-page",
+			"kind": "editor",
+			"shows": "The Game page of the Project Settings panel after project.setGameInfo: start scene Outpost, loading scene Loading, title Moon Crab, version 1.2.0, company and copyright Tidepool Games, and the icon with its preview",
+			"caption": "The Game page holds what a player sees of the game: its title, version, company, copyright and icon. The project's name stays out of this page, since it keys the save folder.",
+			"alt": "The Project Settings window on its Game page. The start scene is Outpost and the loading scene Loading. The title reads Moon Crab and the version 1.2.0; company and copyright are filled, and a small preview shows the icon.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"panel": "ProjectSettings",
+				"steps": [
+					{
+						"command": "project.setGameInfo",
+						"parameters": {
+							"title": "Moon Crab",
+							"version": "1.2.0",
+							"company": "Tidepool Games",
+							"copyright": "(c) 2026 Tidepool Games",
+							"icon": "Icon.png"
+						},
+						"expect": {
+							"/game/title": {
+								"equals": "Moon Crab"
+							}
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "ProjectSettings"
+						}
+					}
+				]
+			}
+		}
+	]
+}

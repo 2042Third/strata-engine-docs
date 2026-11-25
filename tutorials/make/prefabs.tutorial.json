@@ -1,0 +1,663 @@
+{
+	"page": "make/prefabs",
+	"startsFrom": {
+		"tutorial": "make/materials"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Coin"
+					},
+					"bind": {
+						"coin": "/entities/0"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "prefab.create",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "coin"
+							}
+						],
+						"path": "Prefabs/Coin.stprefab"
+					},
+					"checks": [
+						{
+							"pointer": "/path",
+							"equals": "Prefabs/Coin.stprefab"
+						},
+						{
+							"pointer": "/linked",
+							"equals": true
+						}
+					]
+				},
+				{
+					"command": "prefab.status",
+					"parameters": {
+						"entity": {
+							"$ref": "coin"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/linked",
+							"equals": true
+						},
+						{
+							"pointer": "/path",
+							"equals": "Prefabs/Coin.stprefab"
+						},
+						{
+							"pointer": "/overrides",
+							"length": 0
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"commands": [
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Prefabs/Coin.stprefab",
+						"ray": {
+							"origin": [
+								-2,
+								10,
+								0
+							],
+							"direction": [
+								0,
+								-1,
+								0
+							]
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/placedOn",
+							"equals": "surface"
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Coin (1)"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Prefabs/Coin.stprefab",
+						"ray": {
+							"origin": [
+								2.3,
+								10,
+								0.2
+							],
+							"direction": [
+								0,
+								-1,
+								0
+							]
+						},
+						"snap": 1
+					},
+					"checks": [
+						{
+							"pointer": "/placedOn",
+							"equals": "surface"
+						},
+						{
+							"pointer": "/snapped",
+							"equals": true
+						},
+						{
+							"pointer": "/translation/0",
+							"approx": 2,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/translation/2",
+							"approx": 0,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "prefab.instantiate",
+					"parameters": {
+						"prefab": "Prefabs/Coin.stprefab",
+						"instances": [
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											3,
+											1,
+											0
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-3,
+											1,
+											0
+										]
+									}
+								}
+							}
+						]
+					},
+					"checks": [
+						{
+							"pointer": "/instances",
+							"length": 2
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"tag": "Coin"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 5
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Coin (4)"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"commands": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Silver.stmat",
+						"properties": {
+							"BaseColor": [
+								0.8,
+								0.8,
+								0.82,
+								1
+							],
+							"Metallic": 1,
+							"Roughness": 0.25
+						}
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Coin (1)"
+					},
+					"bind": {
+						"first": "/entities/0"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "entity.get",
+					"parameters": {
+						"entity": {
+							"$ref": "first"
+						}
+					},
+					"bind": {
+						"mesh": "/children/0"
+					},
+					"checks": [
+						{
+							"pointer": "/children",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "mesh"
+						},
+						"component": "MeshRenderer",
+						"values": {
+							"Material": "Materials/Silver.stmat"
+						}
+					}
+				},
+				{
+					"command": "prefab.status",
+					"parameters": {
+						"entity": {
+							"$ref": "mesh"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/overrides",
+							"length": 1
+						},
+						{
+							"pointer": "/overrides/0/component",
+							"equals": "MeshRenderer"
+						},
+						{
+							"pointer": "/overrides/0/property",
+							"equals": "Material"
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "first"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								-2,
+								0,
+								0.3
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.rename",
+					"parameters": {
+						"entity": {
+							"$ref": "first"
+						},
+						"name": "Silver Coin"
+					}
+				},
+				{
+					"command": "prefab.status",
+					"parameters": {
+						"entity": {
+							"$ref": "first"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/overrides",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "entity.rename",
+					"parameters": {
+						"entity": {
+							"$ref": "first"
+						},
+						"name": "Coin (1)"
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Coin (1)"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "prefab.status",
+					"parameters": {
+						"entity": {
+							"$ref": "first"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/overrides",
+							"length": 1
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"commands": [
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Coin (2)"
+					},
+					"bind": {
+						"second": "/entities/0"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "entity.get",
+					"parameters": {
+						"entity": {
+							"$ref": "second"
+						}
+					},
+					"bind": {
+						"mesh": "/children/0"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "mesh"
+						},
+						"component": "Transform",
+						"values": {
+							"Scale": [
+								1.5,
+								1.5,
+								1.5
+							]
+						}
+					}
+				},
+				{
+					"command": "prefab.status",
+					"parameters": {
+						"entity": {
+							"$ref": "second"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/overrides",
+							"length": 1
+						},
+						{
+							"pointer": "/overrides/0/component",
+							"equals": "Transform"
+						},
+						{
+							"pointer": "/overrides/0/property",
+							"equals": "Scale"
+						}
+					]
+				},
+				{
+					"command": "prefab.apply",
+					"parameters": {
+						"entity": {
+							"$ref": "second"
+						}
+					}
+				},
+				{
+					"command": "prefab.status",
+					"parameters": {
+						"entity": {
+							"$ref": "second"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/overrides",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Coin (1)"
+					},
+					"bind": {
+						"first": "/entities/0"
+					}
+				},
+				{
+					"command": "prefab.status",
+					"parameters": {
+						"entity": {
+							"$ref": "first"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/overrides",
+							"length": 1
+						},
+						{
+							"pointer": "/overrides/0/property",
+							"equals": "Material"
+						}
+					]
+				},
+				{
+					"command": "entity.get",
+					"parameters": {
+						"entity": {
+							"$ref": "first"
+						}
+					},
+					"bind": {
+						"firstMesh": "/children/0"
+					}
+				},
+				{
+					"command": "component.get",
+					"parameters": {
+						"entity": {
+							"$ref": "firstMesh"
+						},
+						"component": "Transform"
+					},
+					"checks": [
+						{
+							"pointer": "/values/Scale/0",
+							"approx": 1.5,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/Scale/2",
+							"approx": 1.5,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Coin"
+					},
+					"bind": {
+						"original": "/entities/0"
+					}
+				},
+				{
+					"command": "entity.get",
+					"parameters": {
+						"entity": {
+							"$ref": "original"
+						}
+					},
+					"bind": {
+						"originalMesh": "/children/0"
+					}
+				},
+				{
+					"command": "component.get",
+					"parameters": {
+						"entity": {
+							"$ref": "originalMesh"
+						},
+						"component": "Transform"
+					},
+					"checks": [
+						{
+							"pointer": "/values/Scale/1",
+							"approx": 1.5,
+							"tolerance": 0.001
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 5,
+			"commands": [
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Coin (1)"
+					},
+					"bind": {
+						"first": "/entities/0"
+					}
+				},
+				{
+					"command": "entity.get",
+					"parameters": {
+						"entity": {
+							"$ref": "first"
+						}
+					},
+					"bind": {
+						"mesh": "/children/0"
+					}
+				},
+				{
+					"command": "prefab.revert",
+					"parameters": {
+						"entity": {
+							"$ref": "mesh"
+						},
+						"component": "MeshRenderer",
+						"property": "Material"
+					}
+				},
+				{
+					"command": "prefab.status",
+					"parameters": {
+						"entity": {
+							"$ref": "mesh"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/overrides",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Coin (4)"
+					},
+					"bind": {
+						"last": "/entities/0"
+					}
+				},
+				{
+					"command": "prefab.unpack",
+					"parameters": {
+						"entity": {
+							"$ref": "last"
+						}
+					}
+				},
+				{
+					"command": "prefab.status",
+					"parameters": {
+						"entity": {
+							"$ref": "last"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/linked",
+							"equals": false
+						}
+					]
+				},
+				{
+					"command": "edit.undo"
+				},
+				{
+					"command": "prefab.status",
+					"parameters": {
+						"entity": {
+							"$ref": "last"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/linked",
+							"equals": true
+						}
+					]
+				},
+				{
+					"command": "scene.save"
+				}
+			],
+			"endState": true
+		}
+	]
+}

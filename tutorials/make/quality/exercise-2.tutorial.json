@@ -1,0 +1,23 @@
+{
+	"page": "make/quality",
+	"startsFrom": { "sample": "PhysicsPlayground" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "component.set", "entityName": "Post Process", "parameters": { "component": "PostProcess", "values": { "AntiAliasing": false } } },
+				{ "command": "component.get", "entityName": "Post Process", "parameters": { "component": "PostProcess" },
+					"checks": [ { "pointer": "/values/AntiAliasing", "equals": false } ] },
+				{ "command": "component.set", "entityName": "Post Process", "parameters": { "component": "PostProcess", "values": { "AntiAliasing": true, "AntiAliasingMethod": "FXAA" } } },
+				{ "command": "component.get", "entityName": "Post Process", "parameters": { "component": "PostProcess" },
+					"checks": [ { "pointer": "/values/AntiAliasing", "equals": true }, { "pointer": "/values/AntiAliasingMethod", "equals": "FXAA" } ] },
+				{ "command": "component.set", "entityName": "Post Process", "parameters": { "component": "PostProcess", "values": { "AntiAliasing": true, "AntiAliasingMethod": "Morphological" } } },
+				{ "command": "component.get", "entityName": "Post Process", "parameters": { "component": "PostProcess" },
+					"checks": [ { "pointer": "/values/AntiAliasing", "equals": true }, { "pointer": "/values/AntiAliasingMethod", "equals": "Morphological" } ] },
+				{ "command": "component.set", "entityName": "Post Process", "parameters": { "component": "PostProcess", "values": { "AntiAliasing": true, "AntiAliasingMethod": "TAA" } } },
+				{ "command": "component.get", "entityName": "Post Process", "parameters": { "component": "PostProcess" },
+					"checks": [ { "pointer": "/values/AntiAliasing", "equals": true }, { "pointer": "/values/AntiAliasingMethod", "equals": "TAA" } ] }
+			]
+		}
+	]
+}

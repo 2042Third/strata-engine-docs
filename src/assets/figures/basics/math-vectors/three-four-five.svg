@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 480">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Grid: one cell is 40 units; the corner (0, 0) is at 324, 320, and y grows upward. -->
+<g class="blue-area line-blue">
+<rect x="324" y="320" width="120" height="120" stroke-width="2"/>
+<path d="M364 320V440M404 320V440M324 360H444M324 400H444" fill="none" stroke-width="1"/>
+</g>
+<g class="green-area line-green">
+<rect x="444" y="160" width="160" height="160" stroke-width="2"/>
+<path d="M484 160V320M524 160V320M564 160V320M444 200H604M444 240H604M444 280H604" fill="none" stroke-width="1"/>
+</g>
+<g class="purple-area line-purple">
+<polygon points="324,320 444,160 284,40 164,200" stroke-width="2"/>
+<path d="M292 296L412 136M260 272L380 112M228 248L348 88M196 224L316 64M348 288L188 168M372 256L212 136M396 224L236 104M420 192L260 72" fill="none" stroke-width="1"/>
+</g>
+<polygon class="orange-area line-ink" points="324,320 444,320 444,160" stroke-width="2.5"/>
+<path class="line-ink" d="M432 320V308H444" fill="none"/>
+<rect class="blue-area" x="346" y="368" width="76" height="24"/>
+<text x="384" y="386" text-anchor="middle">3 × 3 = 9</text>
+<rect class="green-area" x="482" y="208" width="84" height="24"/>
+<text x="524" y="226" text-anchor="middle">4 × 4 = 16</text>
+<rect class="purple-area" x="260" y="168" width="88" height="24"/>
+<text x="304" y="186" text-anchor="middle">5 × 5 = 25</text>
+<text class="bold" x="394" y="312" text-anchor="middle">3</text>
+<text class="bold" x="432" y="226" text-anchor="middle">4</text>
+<text class="bold" x="392" y="258" text-anchor="middle">5</text>
+<text class="small muted" x="316" y="340" text-anchor="end">(0, 0)</text>
+<text class="small muted" x="452" y="340">(3, 0)</text>
+<text class="small muted" x="452" y="152">(3, 4)</text>
+</svg>

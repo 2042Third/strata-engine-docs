@@ -1,0 +1,97 @@
+/* Printing (one page, or the print view of a whole part): everything hidden behind an interaction is shown, the
+   light drawings are used, and links to other sites print their address. */
+
+@media print {
+	book-tabs[data-enhanced] .book-tabs__panel[hidden] {
+		display: block !important;
+	}
+	book-tabs[data-enhanced] .book-tabs__label {
+		display: block;
+	}
+	.book-tabs__list,
+	.book-compare__range,
+	.book-track__choose,
+	.book-pagination,
+	.book-top-strip__print,
+	.book-term__button,
+	.book-term__popover {
+		display: none !important;
+	}
+	/* A closed answer or derivation prints open: the book's script opens them before printing, and browsers that can
+	   show the content of closed details do so without it. */
+	details.book-answer::details-content,
+	details.book-derivation::details-content {
+		content-visibility: visible;
+		display: block;
+	}
+	/* Paper has no dark theme: the numbers of steps print black on white. */
+	.sl-steps > li::before {
+		color: #000;
+		background: #fff;
+		box-shadow: inset 0 0 0 1px #000;
+	}
+	.sl-steps > li::after {
+		background-color: #000;
+	}
+	/* Code blocks print in Expressive Code's light theme whatever the reader's theme: Starlight prints its own colors as
+	   the light theme's, and code in the dark theme's light colors would stand on a light background. Each token
+	   carries both themes' colors (--0 dark, --1 light), and the plain text, whose token spans src/lib/ec-compact.mjs
+	   leaves out, takes the light theme's code foreground (Night Owl Light's #403f53), the color those spans printed;
+	   the line numbers take the printed text colors. */
+	:root .expressive-code {
+		--ec-codeFg: #403f53;
+		--ec-lineNumbers-fg: var(--sl-color-gray-3);
+	}
+	:root .expressive-code .ec-line :where(span[style^='--']:not([class])) {
+		color: var(--1, inherit);
+		background-color: var(--1bg, transparent);
+		font-style: var(--1fs, inherit);
+		font-weight: var(--1fw, inherit);
+		text-decoration: var(--1td, inherit);
+	}
+	book-compare[data-enhanced] .book-compare__pair {
+		grid-template-columns: 1fr 1fr;
+		gap: 0.5rem;
+	}
+	book-compare[data-enhanced] .book-compare__item {
+		grid-area: auto;
+	}
+	book-compare[data-enhanced] .book-compare__item:last-child {
+		clip-path: none;
+	}
+	book-compare[data-enhanced] .book-compare__item:last-child::before {
+		display: none;
+	}
+	.book-diagram__svg--dark {
+		display: none !important;
+	}
+	.book-diagram__svg--light {
+		display: block !important;
+	}
+	/* A drawing paints with Starlight's color properties, which Starlight's own print style sheet sets to the light
+	   theme's values on :root, so it prints in light ink whatever the reader's theme (scripts/drawings.mjs check
+	   measures it). On paper it may shrink to the column, which nothing scrolls. */
+	.book-figure__drawing {
+		overflow: visible;
+	}
+	.book-figure__drawing svg {
+		min-width: 0;
+	}
+	.sl-markdown-content a[href^='http']:not(.book-term)::after {
+		content: ' (' attr(href) ')';
+		font-size: 0.8em;
+		overflow-wrap: anywhere;
+	}
+	.book-print-chapter {
+		break-before: page;
+	}
+	.book-figure,
+	.book-diagram,
+	.book-excerpt,
+	.book-files,
+	.book-checkpoint,
+	.book-derivation,
+	.book-aside {
+		break-inside: avoid;
+	}
+}

@@ -1,0 +1,108 @@
+{
+	"page": "make/materials",
+	"startsFrom": {
+		"tutorial": "make/materials"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"endState": true,
+			"commands": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Copper.stmat",
+						"properties": {
+							"BaseColor": [
+								0.95,
+								0.64,
+								0.54,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.4
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/warnings",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Asphalt.stmat",
+						"properties": {
+							"BaseColor": [
+								0.05,
+								0.05,
+								0.05,
+								1.0
+							],
+							"Metallic": 0.0,
+							"Roughness": 0.9
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/warnings",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "CopperCube",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/Copper.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-1.5,
+									1.5,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "AsphaltCube",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/Asphalt.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									1.5,
+									1.5,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "albedo"
+					}
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "none"
+					}
+				}
+			]
+		}
+	]
+}

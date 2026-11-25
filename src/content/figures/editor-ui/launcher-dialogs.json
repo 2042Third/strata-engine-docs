@@ -1,0 +1,85 @@
+{
+	"figures": [
+		{
+			"id": "launcher-recent",
+			"kind": "editor",
+			"shows": "The launcher after a project was closed: the left column with its buttons, the closed project as a recent card with its picture, the template and sample cards, and the footer",
+			"caption": "The launcher after a project was closed: the project comes back as a recent card with its picture, and the footer names the version, the graphics card and the start time.",
+			"alt": "The launcher window of the editor. A left column holds the buttons New Project, Open Project and Open Sample, and a link at its foot. The main area shows one recent project card with a small picture, its folder and the time it was last opened, then cards to start a new project. A footer line along the bottom gives the version, commit, graphics card and start time, with an About Strata link at the right.",
+			"project": {
+				"sample": "Tetris"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-performance-result.ini",
+				"windowSize": [
+					960,
+					640
+				],
+				"steps": [
+					{
+						"command": "project.info",
+						"bind": {
+							"copy": "/path"
+						}
+					},
+					{
+						"command": "project.openSample",
+						"parameters": {
+							"sample": "Tetris",
+							"directory": "G:/GameEngineAI/.worktrees/docs-work/photo/editor-ui-launcher-dialogs/StrataProjects/Tetris",
+							"force": true
+						}
+					},
+					{
+						"command": "editor.removeRecentProject",
+						"parameters": {
+							"path": {
+								"$ref": "copy"
+							}
+						}
+					},
+					{
+						"command": "scene.loadStatus",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 60
+						}
+					},
+					{
+						"command": "project.close"
+					}
+				]
+			}
+		},
+		{
+			"id": "about-strata",
+			"kind": "editor",
+			"shows": "The About Strata dialog over the editor: the table of build and machine details, the Copy Details button and the top of the box of third-party notices",
+			"caption": "About lists the build and the machine in one table, and Copy Details puts the same rows on the clipboard.",
+			"alt": "A dialog titled About Strata over the dimmed editor. A mark and the name stand at the top. A table below lists version, commit, platform, graphics card, driver, graphics interface, startup time and interface scale. A Copy Details button follows, then a scrolling box of third-party notices that opens with a table of libraries.",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/dialogs.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "editor.showDialog",
+						"parameters": {
+							"dialog": "about"
+						}
+					}
+				]
+			}
+		}
+	]
+}

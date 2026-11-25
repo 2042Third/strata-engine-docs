@@ -1,0 +1,769 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					4.5,
+					5,
+					10
+				],
+				"target": [
+					-0.8,
+					1,
+					0
+				],
+				"fov": 32
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"shows": "The Basic 3D scene a moment into play, seen from above: a cube just above the high end of a tilted ramp with its shadow on the ramp, and a second cube floating to the left of it, ground behind and below it, that the script turns",
+			"caption": "The result, a moment into play: the cube on the right is about to land on the ramp and slide down it. The blue patch under it is its shadow, lit only by the blue sky. The cube on the left floats and turns in place.",
+			"alt": "Seen from above, a pale grey cube close above the high end of a tilted pale slab, its shadow a blue patch on the slab. A second pale cube floats to the left with brown-grey ground behind and below it. Dark shadows fall to the left and toward the viewer.",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Cube",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-0.5,
+									3,
+									0
+								]
+							}
+						}
+					},
+					"bind": {
+						"cube": "/id"
+					}
+				},
+				{
+					"command": "component.add",
+					"parameters": {
+						"entity": {
+							"$ref": "cube"
+						},
+						"component": "RigidBody"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ramp",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.8,
+									0
+								],
+								"Rotation": [
+									0,
+									0,
+									-35
+								],
+								"Scale": [
+									3,
+									0.2,
+									2
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "script.build"
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Top",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-3,
+									2,
+									0
+								]
+							}
+						}
+					},
+					"bind": {
+						"top": "/id"
+					}
+				},
+				{
+					"command": "script.add",
+					"parameters": {
+						"entity": {
+							"$ref": "top"
+						},
+						"class": "Spinner"
+					}
+				}
+			],
+			"play": {
+				"steps": 20
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "launcher",
+			"shows": "The launcher window with no project open: the buttons New Project, Open Project... and Open Sample... in the left column, the empty Recent projects well, and under Start something new the two template cards and the first two sample cards; the card for an agent lies further down, out of the window",
+			"caption": "The launcher at the first start: the left column starts work, Recent projects is empty, and the cards under Start something new offer the templates and, below them, the samples. The card that connects an agent lies further down the list.",
+			"alt": "The launcher window of the editor. A left column holds three buttons, the top one orange, and a link at the bottom. The main area shows a note that there are no recent projects yet, then two template cards and two sample cards with pictures.",
+			"kind": "editor",
+			"editorWindow": {
+				"launcher": true,
+				"layout": "layouts/make-performance-result.ini",
+				"windowSize": [
+					960,
+					640
+				],
+				"steps": []
+			}
+		},
+		{
+			"id": "tetris-playing",
+			"shows": "The whole editor playing the Tetris copy: the Game view in front with the well, the score and a falling piece, the green play button at the top, and Playing in the status bar",
+			"caption": "The Tetris copy plays in the Game view. The play button at the top is green, and the status bar at the bottom reads Playing.",
+			"alt": "The editor window with the Tetris well, a falling piece and the score in the large middle view. A green triangle button is at the top, and the word Playing at the bottom left.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "Tetris"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game-960.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						},
+						"expect": {
+							"/success": {
+								"equals": true
+							}
+						}
+					},
+					{
+						"command": "play.start",
+						"parameters": {
+							"build": false
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Game"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "new-project",
+			"shows": "The New Project dialog over the editor with the Basic 3D card chosen, the name still My Project, the location that the take gave the editor, and the last line that names the folder that Create makes",
+			"caption": "The dialog with Basic 3D chosen, before you type a name. The last line names the folder that Create makes. Your editor first offers a folder in your home folder; this picture shows the folder it was taken in.",
+			"alt": "A dialog titled New Project with two template cards, Basic 3D chosen. Below are a name field that reads My Project, a location field with a browse button, a line that names the folder it creates, and the buttons Cancel and Create.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game-960.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "editor.showDialog",
+						"parameters": {
+							"dialog": "newProject",
+							"template": "basic3d"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "project-created",
+			"shows": "The whole editor with the new project FirstGame open: the five entities in the hierarchy and the Basic 3D scene in the scene view",
+			"caption": "The new project: five entities in the list on the left, and the ground under the sky in the middle.",
+			"alt": "The editor window with a list of five entities on the left, a grey-brown ground under a blue sky in the large middle view, and an inspector on the right.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game-960.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": []
+			}
+		},
+		{
+			"id": "cube-inspector",
+			"shows": "The whole editor with the new cube selected on the ground and its components in the inspector",
+			"caption": "The new cube rests on the ground, and the panel on the right lists its components.",
+			"alt": "The editor window with a grey cube on the ground in the middle view, chosen in the list on the left. The inspector on the right shows transform, mesh renderer and box collider.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game-960.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Cube",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-0.5,
+										0.5,
+										0
+									]
+								}
+							}
+						},
+						"bind": {
+							"cube": "/id"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "cube"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "cube-placed",
+			"shows": "The whole editor with the cube three units above the ground, selected, its shadow on the ground, and the move gizmo with its green arrow pointing up",
+			"caption": "The cube hangs high above its shadow on the ground, and the green arrow of the move gizmo points up.",
+			"alt": "The editor window with a grey cube high above the ground, its dark shadow below it, and three colored arrows on the cube, the green one pointing up.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game-960.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Cube",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-0.5,
+										3,
+										0
+									]
+								}
+							}
+						},
+						"bind": {
+							"cube": "/id"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "cube"
+								}
+							]
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"sceneGizmos": false,
+							"gizmo": "Translate"
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								2.5,
+								3.5,
+								5.5
+							],
+							"target": [
+								-0.5,
+								1.8,
+								0
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "rigid-body",
+			"shows": "The Inspector of the selected cube with its Rigid Body component below Transform and Mesh Renderer, the type set to Dynamic",
+			"caption": "The component for a rigid body sits among the cube's components; its type reads dynamic.",
+			"alt": "The inspector of the selected cube with a component for a rigid body that shows its type, mass, friction and restitution.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game-tall.ini",
+				"panel": "Inspector",
+				"windowSize": [
+					1280,
+					800
+				],
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Cube",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-0.5,
+										3,
+										0
+									]
+								}
+							}
+						},
+						"bind": {
+							"cube": "/id"
+						}
+					},
+					{
+						"command": "component.add",
+						"parameters": {
+							"entity": {
+								"$ref": "cube"
+							},
+							"component": "RigidBody"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "cube"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "cube-falls",
+			"shows": "The whole editor in play, paused half a second after the start, with the cube landed on the high end of the tilted ramp, seen in the Scene view",
+			"caption": "The game, paused half a second after Play: the cube has landed on the high end of the ramp, which slopes down to the right.",
+			"alt": "The editor window with a pale cube tipped on the high end of a pale tilted slab above the ground, and yellow notes that say the game is paused.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game-960.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Cube",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-0.5,
+										3,
+										0
+									]
+								}
+							}
+						},
+						"bind": {
+							"cube": "/id"
+						}
+					},
+					{
+						"command": "component.add",
+						"parameters": {
+							"entity": {
+								"$ref": "cube"
+							},
+							"component": "RigidBody"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Ramp",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.8,
+										0
+									],
+									"Rotation": [
+										0,
+										0,
+										-35
+									],
+									"Scale": [
+										3,
+										0.2,
+										2
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "cube"
+							},
+							"component": "RigidBody",
+							"values": {
+								"Friction": 0.05,
+								"Restitution": 0.7
+							}
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"sceneGizmos": false,
+							"gizmo": "Translate"
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								2.5,
+								3.5,
+								5.5
+							],
+							"target": [
+								-0.5,
+								1.8,
+								0
+							]
+						}
+					},
+					{
+						"command": "play.start",
+						"parameters": {
+							"build": false,
+							"paused": true
+						}
+					},
+					{
+						"command": "play.step",
+						"parameters": {
+							"steps": 32
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "script-attached",
+			"shows": "The Inspector of the Top cube with its Script component: the class that turns it and the field Degrees Per Second at its default, 90",
+			"caption": "The script component shows the class and one field, with the default value that the code gives.",
+			"alt": "The inspector of the cube named Top with a script component for the class that turns it, and a field for degrees per second set to 90.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game-tall.ini",
+				"panel": "Inspector",
+				"windowSize": [
+					1280,
+					800
+				],
+				"steps": [
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						},
+						"expect": {
+							"/success": {
+								"equals": true
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Top",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-3,
+										2,
+										0
+									]
+								}
+							}
+						},
+						"bind": {
+							"top": "/id"
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "top"
+							},
+							"class": "Spinner"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "top"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "spinner-console",
+			"shows": "The Console panel after Play: the line marked Script, which the script wrote, in the middle of lines marked App that record the commands that made the picture, the Play command's line below it",
+			"caption": "Read the line marked Script, in the middle: the script wrote it once, when the game started. The lines marked App around it, the Play command's line below it too, record the commands that made this picture.",
+			"alt": "The Console panel with lines of text; one says that the script starts with 360 degrees per second.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game-tall.ini",
+				"panel": "Console",
+				"windowSize": [
+					1280,
+					800
+				],
+				"steps": [
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						},
+						"expect": {
+							"/success": {
+								"equals": true
+							}
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 30
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Top",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-3,
+										2,
+										0
+									]
+								}
+							}
+						},
+						"bind": {
+							"top": "/id"
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "top"
+							},
+							"class": "Spinner"
+						}
+					},
+					{
+						"command": "play.start",
+						"parameters": {
+							"build": false
+						}
+					}
+				]
+			},
+			"files": [
+				{
+					"from": "book:tutorials/start/first-game/Spinner.cpp",
+					"to": "Scripts/Spinner.cpp"
+				}
+			]
+		}
+	]
+}

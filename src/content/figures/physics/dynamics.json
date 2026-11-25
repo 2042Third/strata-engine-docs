@@ -1,0 +1,70 @@
+{
+	"figures": [
+		{
+			"id": "pit-pouring",
+			"shows": "The Physics Playground ball pit 6.4 s after Play, 0.4 s after the demo pours 100 balls above the 500 that lie in rows on its floor",
+			"caption": "6.4 s into Play, the pour of 100 red balls falls as one loose sheet above the 500 balls that lie in rows on the pit's floor, which it has not yet reached. Its shadows darken the floor balls directly below the sheet's near edge.",
+			"numbers": "play.steps 385 at the default fixed step of 1/60 s = 6.4 s. Samples/PhysicsPlayground: Playground's DemoStart 2 s, Pour at DemoStart + 4 s, PourCount 100 spawned one sheet at PitCenter + 3 m; the scene holds 125 each of Ball, BallWood, BallMetal and BallPlastic (500) on the pit's floor.",
+			"alt": "A glass-walled pit seen from above at an angle. A flat sheet of red balls hangs above rows of red, blue, wooden and metal balls on the pit floor, some of them darkened by the sheet.",
+			"kind": "scene",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"camera": {
+				"position": [
+					17.5,
+					11,
+					4
+				],
+				"target": [
+					10,
+					0.4,
+					-10.5
+				],
+				"fov": 40
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"play": {
+				"steps": 385
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "pit-resting",
+			"shows": "The same pit 25 s after Play, 19 s after the pour, with every ball settled; the poured balls are the red ones lying on top of the floor rows",
+			"caption": "25 s into Play, the poured balls have settled on top of the floor rows, most over the middle and back of the pit. They are the same red as one floor ball in four: the pour is the red balls that lie higher than the rows below them. A pile that stays this quiet for half a second goes to sleep. The lone ball on the tiles at the lower left is not from the pour: it rolls in from another station after 15 s.",
+			"numbers": "play.steps 1500 at the default fixed step of 1/60 s = 25 s, 19 s after the pour at 6 s (DemoStart 2 s + 4 s). Half a second: box3d's island sleep time, as the page states (0.5 s below SleepThreshold). 15 s: probe takes at 594 and 900 steps (9.9 s and 15 s) show the pit unchanged between them and no ball outside it; the stray ball appears only after 15 s, after the demo feeds the goal and launches balls at 10 s (DemoStart + 8 s, far from the pit). One floor ball in four: the scene holds 125 instances each of Ball (red, the prefab Pour spawns), BallMetal, BallPlastic and BallWood; the picture's front rows repeat red, wood, dark metal, blue.",
+			"alt": "The same glass-walled pit. Red balls lie on top of the rows of red, wood, dark metal and blue balls, mostly over the middle and back, and one red ball lies on the tiles at the lower left.",
+			"kind": "scene",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"camera": {
+				"position": [
+					17.5,
+					11,
+					4
+				],
+				"target": [
+					10,
+					0.4,
+					-10.5
+				],
+				"fov": 40
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"play": {
+				"steps": 1500
+			},
+			"expect": "complete"
+		}
+	]
+}

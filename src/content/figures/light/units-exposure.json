@@ -1,0 +1,31 @@
+{
+	"figures": [
+		{
+			"id": "equal-pair",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The Basic 3D scene with a sun of 65536 lux at manual exposure -16, then with a sun of 1 lux at manual exposure 0, the sky light off in both (so the sky is black); the two pictures are identical in every pixel",
+			"caption": "Two suns of very different strength, and two exposures far apart, give the same picture.",
+			"alt": "Two pictures of a dark stone ground with a gray cube under a black sky, lit by one sun from the right so the cube casts a hard shadow to its left. The two pictures are the same, pixel for pixel.",
+			"project": { "template": "basic3d" },
+			"camera": "scene",
+			"size": [1280, 720],
+			"quality": "high",
+			"setup": [
+				{ "command": "entity.create", "parameters": { "name": "Cube", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "Transform": { "Translation": [0, 0.5, 0] } } } },
+				{ "command": "component.set", "entityName": "Sky", "parameters": { "component": "SkyLight", "values": { "Intensity": 0 } } }
+			],
+			"variants": {
+				"sun-65536": {
+					"setup": [ { "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "Intensity": 65536 } } } ],
+					"postProcess": { "AutoExposure": false, "Exposure": -16 }
+				},
+				"sun-1": {
+					"setup": [ { "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "Intensity": 1 } } } ],
+					"postProcess": { "AutoExposure": false, "Exposure": 0 }
+				}
+			},
+			"expect": "complete"
+		}
+	]
+}

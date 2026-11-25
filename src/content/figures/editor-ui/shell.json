@@ -1,0 +1,86 @@
+{
+	"figures": [
+		{
+			"id": "editor-default-layout",
+			"shows": "The whole editor in its default layout on a copy of the ThirdPerson sample, at 960 by 540 pixels",
+			"caption": "The default layout: Hierarchy on the left, Inspector and Asset on the right, the Scene and Game views in the middle, Console, Problems and Content Browser below them, and the status bar at the bottom.",
+			"alt": "The editor window with a menu bar and a row of buttons on top and a status bar at the bottom. A list of objects stands on the left, a 3D view of sky and grid in the middle, a property panel on the right. Below the view the Content Browser tab is open, showing its search box and filter buttons.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/editor-shell-default.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "scene.loadStatus",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 60
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "unsaved-changes-dialog",
+			"shows": "The question about unsaved changes with its three buttons, drawn after an entity was added and a new project was asked for",
+			"caption": "Here a new project was asked for after Crate was added to the open scene. The question names the scene and offers to save, to discard or to cancel; creating the new project waits until one is chosen.",
+			"alt": "A dialog in the middle of the darkened editor titled Unsaved Changes. It asks whether to save changes to the open scene, named in quotes, and has three buttons: Save in orange, one that discards the changes, and Cancel. The new entity Crate stands last in the list on the left.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/editor-shell-default.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "scene.loadStatus",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Crate"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					},
+					{
+						"command": "editor.showDialog",
+						"parameters": {
+							"dialog": "newProject"
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 30
+						}
+					}
+				]
+			}
+		}
+	]
+}

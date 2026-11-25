@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 318">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Shifted up by 64. Oblique view: one unit is 80 along x and y; z drawn at 40 degrees below the horizontal with factor 0.7, +z down and right, so -z (back) goes up and left; world origin at (420, 330). Floor grid x -1..2, z -3.5..1. Parent (the ring) at (0, 1, 0) turned a quarter turn about y: its x along world -z, the dashed stub its x before the turn (along world +x, where its z now points); the arc is the projected circle of radius 0.5 in the plane y = 1. Child at local (3, 0, 0) = world (0, 1, -3). -->
+<g transform="translate(0 -64)">
+<g class="line-faint" stroke-width="1" fill="none">
+<path d="M382.9 366L189.9 204M462.9 366L269.9 204M542.9 366L349.9 204M622.9 366L429.9 204M382.9 366L622.9 366M340 330L580 330M297.1 294L537.1 294M254.2 258L494.2 258M211.3 222L451.3 222M189.9 204L429.9 204"/>
+</g>
+<line class="line-muted" x1="420" y1="330" x2="610" y2="330" stroke-width="1.5"/>
+<polygon class="muted" points="620,330 610,333.5 610,326.5"/>
+<text class="muted" x="628" y="335">world x</text>
+<line class="line-muted" x1="420" y1="330" x2="279.7" y2="212.2" stroke-width="1.5"/>
+<polygon class="muted" points="272,205.8 281.9,209.6 277.4,214.9"/>
+<text class="muted halo" x="266" y="229.8" text-anchor="end">world −z (back)</text>
+<line class="line-muted" x1="420" y1="330" x2="420" y2="188" stroke-width="1.5"/>
+<polygon class="muted" points="420,178 423.5,188 416.5,188"/>
+<text class="muted" x="428" y="188">world y (up)</text>
+<circle class="ink" cx="420" cy="330" r="4"/>
+<text class="ink halo" x="430" y="352">world origin</text>
+<line class="line-blue" x1="420" y1="330" x2="291.3" y2="222" stroke-width="2.5"/>
+<text class="blue bold halo" x="351.7" y="298" text-anchor="end">3 back</text>
+<line class="line-blue" x1="291.3" y1="222" x2="291.3" y2="150" stroke-width="2" stroke-dasharray="4 3"/>
+<circle class="blue" cx="291.3" cy="222" r="4"/>
+<text class="blue bold halo" x="299.3" y="187">1 up</text>
+<line class="line-purple" x1="414.6" y1="245.5" x2="240.4" y2="99.3" stroke-width="2.5"/>
+<polygon class="purple" points="231.2,91.6 243.3,95.9 237.5,102.8"/>
+<text class="purple bold" x="221.2" y="89.6" text-anchor="end">parent's x</text>
+<line class="line-muted" x1="426" y1="250" x2="500" y2="250" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text class="muted" x="508" y="255">x before the turn</text>
+<path class="line-muted" fill="none" d="M460.0 250.0 L458.7 249.0 L457.4 248.0 L455.9 247.0 L454.3 246.0 L452.6 245.1 L450.8 244.1 L448.9 243.2 L446.9 242.3 L444.8 241.4 L442.7 240.5 L440.4 239.7 L438.2 238.9 L435.8 238.1 L433.4 237.4 L431.0 236.7 L428.6 236.0 L426.1 235.4 L423.6 234.9 L421.0 234.3 L418.5 233.9 L416.0 233.4 L413.5 233.1 L411.0 232.8 L408.6 232.5"/>
+<polygon class="muted" points="398.6,232 408.8,229 408.4,236"/>
+<text class="muted small halo" x="448" y="226">quarter turn about y</text>
+<circle class="purple" cx="420" cy="250" r="6"/>
+<text class="purple halo" x="432" y="274">ring (parent) at world (0, 1, 0)</text>
+<path class="line-purple" fill="none" stroke-width="2" d="M420 226L291.3 118M420 240.4L420 218M291.3 132.4L291.3 110"/>
+<text class="purple bold halo" x="361.7" y="162">3 along the parent's x</text>
+<circle class="orange-area line-orange" cx="291.3" cy="142" r="7" stroke-width="2.5"/>
+<text class="orange bold halo" x="275.3" y="146" text-anchor="end">coin (child)</text>
+<text class="purple halo" x="275.3" y="166" text-anchor="end">local (3, 0, 0)</text>
+<text class="blue halo" x="275.3" y="186" text-anchor="end">world (0, 1, −3)</text>
+</g>
+</svg>

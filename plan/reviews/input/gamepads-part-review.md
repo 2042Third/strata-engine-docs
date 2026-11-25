@@ -1,0 +1,3 @@
+# Part review of `input/gamepads`
+
+No corrections: 4 pads, 15 buttons, 6 axes (GamepadCodes.h), the sign flips and trigger remap of `PollGamepads`, the clamp and rest values of `ProcessGamepad`, the SDK's axial and radial dead zones and `c_DefaultDeadZone` 0.15, `c_Press` 0.5 and `c_Release` 0.35 in InputActions.h with release at 0.35 or below, GLFW 3.4 and its 929 mapping lines, the 0.7.0 release note on background pads, the button static_assert in GLFWWindow.cpp and the test names hold at the pin; the other pages' "below 0.35" for the release was settled by this page's "at 0.35 or below" (corrected in `input/actions` and `input/rebinding`).

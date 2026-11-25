@@ -1,0 +1,143 @@
+diff --git a/Docs/Plans/Wave8/specs/wind-zone.md b/Docs/Plans/Wave8/specs/wind-zone.md
+new file mode 100644
+index 0000000..f2a69ae
+--- /dev/null
++++ b/Docs/Plans/Wave8/specs/wind-zone.md
+@@ -0,0 +1,137 @@
++# Stream `wind-zone`: a wind that pushes bodies (wave 8)
++
++The wind zone began as five small patches: its component and system, a gizmo, a scene service with `Wind::GetStrength` and a
++callback, and the commands `wind.list` and `wind.set`. None of them moves a body yet. This spec finishes the feature: what the
++zone does to a rigid body, how people, scripts, agents and tests meet it, and in which order the rest is built and landed.
++
++Paths: `P/` is `Strata/src/Strata/Physics/`, `S/` is `Strata/src/Strata/Scene/`, `R/` is `Strata/src/Strata/Reflection/`,
++`SC/` is `StrataScriptCore/Include/StrataScript/`, `ED/` is `StrataEditor/src/`, `T/` is `StrataTests/src/`.
++
++## 1. Goal, in priority order
++
++1. **A zone a game maker makes in a minute.** Add Component, "Wind Zone" (category Physics); the Inspector shows Strength,
++   Radius and Mode; Radius is greyed out with a reason in Directional mode; the Scene view draws a sphere of the radius for a
++   Spherical zone and an arrow along the entity's -Z for a Directional one.
++2. **Bodies move as the physics says.** A Directional zone has no radius and pushes every dynamic body with Strength newtons
++   along the zone entity's local -Z (Strata's forward, as a directional light shines), so turning the entity turns the wind. A
++   Spherical zone pushes the dynamic bodies inside its Radius with Strength newtons, away from its centre. Play and Simulate
++   behave alike.
++3. **Scripts read the wind.** `Wind::GetStrength` (existing) and a new `Wind::GetForceAt(point)` that returns the vector.
++4. **Agents read the wind without playing.** The command `wind.sample` answers for a point of the edited scene.
++5. **Cheap.** A scene without zones pays one empty loop. A sleeping body is woken only by a zone that pushes it; a zone of
++   Strength 0 pushes nothing and wakes nothing.
++6. **Repeatable.** The same scene, the same steps, the same poses, bit for bit.
++
++Not the goal: drag that depends on a body's shape, gusts that change with time, turbulence, and wind that moves cloth, particles
++or sound. Each of them can add a property or a service later without changing a name here.
++
++## 2. Where we start
++
++- The chain: `WindZoneComponent` and `WindZoneSystem` (`P/PhysicsComponents.h`, `P/WindZoneSystem.*`), the sphere gizmo, the
++  service `IWindZones` (`S/SceneServices.h`), the host function behind `Wind::GetStrength`, `wind.list` and `wind.set`.
++- The chain's zone treats both modes alike: a body is in the zone when it is within Radius of the centre. Directional mode
++  and Spherical mode will differ from this spec on. The chain's tests of Radius in Directional mode change in step 1.
++- `IBodyControl::AddForce` queues a force for the next fixed step and wakes the body (`PhysicsWorld.cpp`, `AddPendingForce`).
++  `IPhysicsQueries::OverlapSphere` takes a layer mask. The services of a scene exist only while it runs.
++- The Renderer may not include Physics. A gizmo reaches it as a `ComponentGizmoShape`, whose kinds are Box, Sphere, Capsule and
++  MeshBounds: there is no arrow.
++
++## 3. Decisions that hold for every step
++
++1. **One function gives the wind at a point.** It takes the gathered zones and a position and returns a force in newtons. The
++   system, `Wind::GetForceAt` and `wind.sample` all call it. The command runs while editing, when no service exists, so it
++   calls the Physics module's function and gathers the zones from the edited scene itself. Cost: the editor names the Physics
++   module; it is built only with every module, so this is allowed.
++2. **Which bodies a zone visits.** A Spherical zone asks `OverlapSphere` for the bodies inside its sphere; a Directional zone
++   visits every dynamic body. Cost: a Directional zone pays for every dynamic body of the scene, awake or not.
++3. **A force wakes its body.** A zone keeps what it pushes awake. Cost: a body resting in a zone of 5 N that cannot move it
++   never sleeps, and a sleeping body costs nothing. A zone of Strength 0 is skipped before any query.
++4. **Radius is never scaled.** The radius is the number typed, whatever the entity's world scale; the collider gizmos differ.
++   Cost: scaling a zone never widens it. The gizmo, the force, the overlap query and `wind.sample` use this one rule.
++5. **A zone pushes every collision layer.** The query passes `c_AllPhysicsLayers`. Cost: a game cannot exclude a layer; a
++   mask property can be appended later without renaming anything.
++6. **Order is fixed.** Zones come in the order of the registry, and a zone's bodies in the order of the query or the registry,
++   which is the same in every run of a scene. Cost: no later change may visit them in an order that depends on threads.
++7. **The arrow is a new shape kind.** `ComponentGizmoShape::Kind::Arrow` joins the four in Reflection; the Renderer draws it with
++   the debug lines. Cost: one more kind every consumer of the shapes handles.
++8. **Radius gets an inactive reason** in Directional mode: the value changes nothing there.
++9. **The zone writes no transform.** It only queues forces; physics moves the bodies and writes their poses.
++
++## 4. Steps
++
++1. **The force function.** `P/WindForce.*`: the wind at a point from the gathered zones, with decisions 1, 4 and 5 and tests of
++   the examples of section 7. The chain's Radius tests of Directional mode change here.
++2. **The system pushes.** `WindZoneSystem::OnFixedUpdate` adds one force per body through `IBodyControl::AddForce`, in the
++   order of decision 6, in a profile stage of its own.
++3. **The gizmos.** The Arrow kind in `R/ComponentGizmo.h`, its drawing in the Renderer's gizmo code, the zone's gizmo function
++   for both modes, and the inactive reason of decision 8.
++4. **The script API.** `Wind::GetForceAt` appended at the end of the host table and of `ST_SCRIPT_HOST_FUNCTIONS`, wrapped in
++   `HostCall`, with the SDK's check for it.
++5. **The command.** `wind.sample` in the `wind` group (kind Query), the schema and the description for agents.
++6. **Tests, feature test and perf.** Section 6 and section 8.
++7. **Docs.** Section 9.
++
++## 5. Settings and defaults
++
++- Strength: 10 N, range 0 to 1000 N. Radius: 5 m, at least 0.01 m. Mode: Directional.
++- No project settings section: nothing about wind is a project-wide choice. Names of the component and its properties never
++  change, because they are the file format and the agents' API.
++
++## 6. Tests: suites and must-fail checks
++
++| Test | Must fail when |
++| --- | --- |
++| Force function: examples of section 7 | the direction, the scale rule or the Strength 0 case is wrong |
++| System: a box pushed along -Z, then along the turned entity's axis | the zone ignores the entity's rotation |
++| System: two runs of the same scene give equal poses | the order of decision 6 is dropped |
++| System: a sleeping box under a Strength 0 zone stays asleep | a zone of 0 wakes bodies |
++| Gizmo: the Arrow shape of a turned entity; the sphere of a scaled one | the scale rule differs from the force's |
++| Script: `Wind::GetForceAt` in a feature script | the host function is missing or untested |
++| Command: `wind.sample` answers as the force function, while editing | the command and the system disagree |
++| Component schema snapshot | a property is renamed or reordered |
++| Layering | a file outside Physics names `WindZoneComponent` |
++
++## 7. Acceptance numbers
++
++- A 2 kg box under a Directional zone of 10 N: acceleration 5 m/s^2, so 0.083 m/s more speed after each 1/60 s step, before
++  damping and friction.
++- A Spherical zone at the origin, Radius 5 m, Strength 20 N, and a body at (3, 0, 4): inside, pushed by (12, 0, 16) N.
++- The same zone, scale (2, 1, 1): its reach stays 5 m.
++- A Directional zone turned 90 degrees about Y: the push is (-10, 0, 0) N for Strength 10.
++
++## 8. Perf: metrics and targets
++
++- A scene of 1,000 awake boxes and one Directional zone: the step time of the zone is at most 0.1 ms. The metric is new and
++  `Provisional` until it is measured on the reference machine; its budget is then at most 1.5 times the measurement.
++
++## 9. Docs, skills and release notes
++
++- The Developer Guide: the component and its system in "Physics"; `Wind::GetStrength` and `Wind::GetForceAt` in "Gameplay API"
++  and in the host function order.
++- `Docs/Manual/Scripting.md`: a paragraph for game makers. The skill `strata-scripting`: the two functions in its overview.
++- The release notes of the running wave: one line.
++
++## 10. Risks and open questions
++
++- A Directional zone pushes every dynamic body: a large scene may want a mask. Recommended: ship without, measure.
++- Strength is a force, not an acceleration: heavy bodies hardly move. Recommended: say so in the tooltip.
++
++## 11. Deliver in this order
++
++Steps 1 and 2 first (the feature moves bodies), then 3 (it can be seen), then 4 and 5 (scripts and agents), then tests, perf and
++docs. Each step is one commit with its tests; CI is green on `ci/wave8-wind-zone` before the stream lands.
++
++## 12. The first hour
++
++1. Read this spec, AGENTS.md, the Developer Guide sections for Physics, Scripting and Editor, and the code of section 2.
++2. Run the baseline: the suites of the wind zone, the feature test and the Layering test, in Debug.
++3. Check every file, function and line this spec names at the code, and write what differs under Review corrections.
++
++## Review corrections
++
++- `AddPendingForce` sits in an unnamed namespace of `PhysicsWorld.cpp`: the system cannot call it, and goes through
++  `IBodyControl::AddForce`, as step 2 says.
++- The comment at the top of `S/SceneServices.h` names six services of `PhysicsSystem`; the system offers seven, with
++  `IPhysicsDiagnostics`.
++- The editor is configured only with every module, and CI's build without Physics leaves the editor out: the commands may name
++  the Physics module, and that build does not prove it.

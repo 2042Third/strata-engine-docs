@@ -1,0 +1,5 @@
+# Part review: `worlds/physics-scripts`
+
+- contradiction: "an export runs it for a stale world"; `GameExport::BeginCooking` starts a `WorldCook` for every world of the project (a current one reads no cell), as `worlds/export` says; corrected to "for every world of the project".
+
+Checked at the pin and found right: the components' ranges and defaults, the first active `WorldComponent` in hierarchy order (`FindWorldEntity`), the system's order and profile stage, `GatherSources`, the request at priority 100 with a radius of at least 0.001 m, the cook's sources (`ReadPersistent`: every enabled source, at least one, the largest radius per layer, the distance scale), `ComputeMaxBodiesInRadius`, `GetRecommendedMaxBodies`, `ReserveBodies`, `PrepareLoadedScene`, `IWorldStreaming`, the SDK's `World` and `WorldCellRequest`, the five host functions, `IsLayerEnabled`'s answer for unknown names, `IsLoadedAround`, the feature world's Ground and Props layers, the 0.7.0 known issue, the suites, the toy's and the exercises' numbers and every callout.

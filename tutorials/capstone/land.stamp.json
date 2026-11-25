@@ -1,0 +1,61 @@
+{
+	"page": "capstone/land",
+	"runs": [
+		{
+			"build": {
+				"kind": "patch-build",
+				"configuration": "Release",
+				"buildDirectory": "build/docs-patch"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": null,
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"tutorials/capstone/build.patch": "889d3cbef73bbde0ebfbec4256432ccd132d05c69465f4b390ffd020626fdda5",
+				"tutorials/capstone/build.tutorial.json": "a6b3dfa932c4a609f51014fec1128d4bf66b1c87cd71bc41c281b15478fcc0e8",
+				"tutorials/capstone/land.patch": "66e27272f1acac75befe630ca6b00947df3e83ba3178ddbb37d1a5571d82726a",
+				"tutorials/capstone/land.tutorial.json": "4afd75fb14e14f9b83bdf2565f6aac03439d47262413a9be2dac58fa7a34234a",
+				"tutorials/capstone/plan.patch": "032c2ffd6a3c22d69702ba6ca1efd56345e0542de735dc3751a1d3ade5d4018b",
+				"tutorials/capstone/plan.tutorial.json": "7d2223a350b3d1d2c59d347bfe9407825de1ac717d02cf14b9ee2f0485afd0f0",
+				"tutorials/editor/tutorial-command.patch": "d2f66bc025a37ac5f3b814beffecfd4cb75e1d995c71450cdd33c8724eb61084",
+				"tutorials/editor/tutorial-command.tutorial.json": "0e5277fc282355690a4fe8676f3b09a9354de5309faccfc2eac2811c7fcca17b",
+				"tutorials/gpu/debug-drawing.tutorial.json": "d39279290ff6b1e9433b0d4c2346a71e881ef64bbb7da6e71abd928ef356a984",
+				"tutorials/gpu/debug-drawing/exercise-3.patch": "f9de22d9596d38a4e8878197576ee375c2339f68ccebcc8064b285a8b176c263",
+				"tutorials/scripting/tutorial-host-function.patch": "746560c43e2492129ebbd3fed398873ffac2d220509ed72874c5bd70cfe8f47b",
+				"tutorials/scripting/tutorial-host-function.tutorial.json": "fea8571fcff451408ed022a7c2b1a82126923c852f1592b588a505b944139621",
+				"tutorials/world/tutorial-component.patch": "66d3ef7a2cc098e5f42e5e8cb49eff70678f815799659f262e93f04bec980543",
+				"tutorials/world/tutorial-component.tutorial.json": "14cf38f4ba769e6ae5ae55ea0899db56681080862d77ca85ea857c31e324798e"
+			},
+			"stages": [],
+			"tests": [
+				{
+					"suite": "Architecture.Layering",
+					"testCases": 18,
+					"passed": true
+				},
+				{
+					"suite": "Testing.Shards",
+					"testCases": 4,
+					"passed": true
+				},
+				{
+					"suite": "Reflection.ComponentSchema",
+					"testCases": 1,
+					"passed": true
+				},
+				{
+					"suite": "CLI.McpToolsets",
+					"testCases": 3,
+					"passed": true
+				}
+			],
+			"ctest": {
+				"test": "StrataTests.FeatureTest",
+				"passed": true
+			},
+			"readerCopies": false,
+			"passed": true
+		}
+	]
+}

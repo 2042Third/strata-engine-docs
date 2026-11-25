@@ -1,0 +1,125 @@
+{
+	"figures": [
+		{
+			"id": "smoke-viewport",
+			"kind": "tool",
+			"shows": "SmokeViewport.png, the capture the editor's smoke test saves of its scene: a floor, a crate and a lamp under a sun",
+			"caption": "The smoke test's capture shows a lit crate on a large floor, so a black or empty image fails the check.",
+			"alt": "A wide image of a grey floor with a crate turned a little to one side, lit by a sun and a lamp, seen from above and in front.",
+			"takenBy": "owner",
+			"waitsFor": "tier 3: the smoke test's viewport capture; no debug view shows an image that only the smoke test's own script takes",
+			"standIn": "smoke-scene"
+		},
+		{
+			"id": "smoke-scene",
+			"kind": "scene",
+			"shows": "The scene the smoke script builds, made by the same five entity steps in an empty project and captured at 960 by 540 with the editor's overlays on, from a camera of the picture tool's own: a crate with its two near sides lit by the level sun and its top as gray as the floor, on a gray floor under the grid and the axis lines, with an edge of the Camera entity's frustum at the top right",
+			"caption": "The smoke script's scene: a crate on a gray floor, with the grid and the red and blue axis lines over it. The sun shines level, so it lights the crate's two near sides, the right one a little brighter, and leaves the top as gray as the floor. The thin white line at the top right is an edge of the Camera entity's frustum. The image is neither black nor a single colour, which is all the capture check asks.",
+			"alt": "A wide image of a gray square floor seen from above and in front, with a cube at its center. The cube shows two light gray sides, the right one brighter, and a top as gray as the floor. Grid lines cross the floor and continue over the dark background beyond it, a red and a blue line cross at the cube, and a thin white line runs down from the top right.",
+			"project": {
+				"template": "empty"
+			},
+			"camera": {
+				"position": [
+					-2.2,
+					3.2,
+					5.6
+				],
+				"target": [
+					0,
+					0.4,
+					0
+				],
+				"fov": 32
+			},
+			"size": [
+				960,
+				540
+			],
+			"overlays": true,
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Floor",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "0000000000000003"
+							},
+							"Transform": {
+								"Scale": [
+									10,
+									1,
+									10
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sun",
+						"components": {
+							"DirectionalLight": {
+								"Intensity": 3
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lamp",
+						"components": {
+							"PointLight": {
+								"Intensity": 5,
+								"Range": 8
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Crate",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									0
+								],
+								"Rotation": [
+									0,
+									30,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Camera",
+						"components": {
+							"Camera": {},
+							"Transform": {
+								"Translation": [
+									0,
+									2,
+									6
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		}
+	]
+}

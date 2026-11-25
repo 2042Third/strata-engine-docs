@@ -1,0 +1,1052 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"file": "Strata/src/Strata/Renderer/SceneRenderer.h",
+	"specification": {
+		"name": "SceneRendererSpecification",
+		"line": 128,
+		"fields": [
+			{
+				"name": "DebugName",
+				"type": "std::string",
+				"default": "\"SceneRenderer\"",
+				"line": 129,
+				"comment": ""
+			},
+			{
+				"name": "Quality",
+				"type": "RendererQualitySettings",
+				"default": null,
+				"line": 134,
+				"comment": "The costly knobs (Renderer/RendererQuality.h): the sun's shadow resolution and cascades, the point and spot lights' shadow atlas, its largest tile and how many lights cast shadows, the levels of detail's error and the smallest size drawn. Medium, Strata 0.6.0's costs, by default; SceneRenderer::SetQuality changes them while the renderer lives (the programs follow the project's Graphics Quality through it)."
+			},
+			{
+				"name": "LODThreshold",
+				"type": "float",
+				"default": "0.5f",
+				"line": 138,
+				"comment": "Levels without errors (meshes cooked before they had them, levels made by other means): screen fraction (projected bounding sphere diameter / viewport height) below which each further level is used: LOD n is chosen while the fraction is below LODThreshold / 2^(n-1)."
+			},
+			{
+				"name": "FadeLevelsOfDetail",
+				"type": "bool",
+				"default": "true",
+				"line": 142,
+				"comment": "A mesh renderer whose level of detail changes draws both levels for RenderData::c_LODFadeFrames frames, the new one on more pixels each frame (complementary dither masks, LODSelection::UpdateLODFade), instead of popping. Camera cuts switch at once. Renderers of single images (the editor's captures, thumbnails) turn it off."
+			},
+			{
+				"name": "MaxLights",
+				"type": "uint32_t",
+				"default": "4096",
+				"line": 145,
+				"comment": "Point and spot lights rendered per frame (after frustum culling). When more are visible, the most relevant ones are kept: lights whose range contains the camera, then by the projected size of their range."
+			},
+			{
+				"name": "LightClusterGrid",
+				"type": "glm::uvec3",
+				"default": "{ 16, 9, 24 }",
+				"line": 149,
+				"comment": "Clustered light assignment: the view is split into LightClusterGrid.x by .y screen tiles and .z depth slices (exponentially spaced). Each cluster lists up to MaxLightsPerCluster lights, the most relevant ones when more reach it. A 1x1x1 grid shades every pixel with every visible light."
+			},
+			{
+				"name": "MaxLightsPerCluster",
+				"type": "uint32_t",
+				"default": "256",
+				"line": 150,
+				"comment": ""
+			},
+			{
+				"name": "GPUDriven",
+				"type": "GPUDrivenMode",
+				"default": "GPUDrivenMode::Auto",
+				"line": 156,
+				"comment": "The GPU-driven path (Auto, where the device has drawIndirectFirstInstance): compute shaders cull the proxies of the render scene's GPU copy against the view and the shadow cascades, choose their levels of detail and build the draws (Scene/Cull.comp, CullBuild.comp); the CPU draws a fixed number of indirect draws per pass and bucket, and only transparent surfaces itself (sorted back to front). Off: the CPU path (culling, batching and draw lists on the CPU), the reference the GPU path's pixels are compared with."
+			},
+			{
+				"name": "IndirectMode",
+				"type": "IndirectDrawMode",
+				"default": "IndirectDrawMode::Auto",
+				"line": 163,
+				"comment": "How batches are drawn. CPU path: Auto draws each bucket of batches (one pipeline state and vertex arena) with one indirect call where the device has multiDrawIndirect and drawIndirectFirstInstance, else with a direct draw per batch; PerDraw always draws per batch. GPU path: Auto draws each bucket with one drawIndexedIndirectCount where the device has drawIndirectCount, NoCount with one drawIndexedIndirect over the bucket's draw slots (those the GPU did not fill have no instances), PerDraw with one drawIndexedIndirect per slot (also without multiDrawIndirect). Tests force each to compare them."
+			},
+			{
+				"name": "MaxDrawsPerIndirectCall",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 168,
+				"comment": "The most draws one indirect call issues; 0 (or more) means the device's limit (GraphicsDeviceInfo:: MaxDrawIndirectCount), which always bounds it. A bucket with more draws is drawn by several calls, and a GPU-driven frame whose buckets could hold more draws than the limit draws without a GPU-written count (NoCount, split alike). Tests set it low to check the splits."
+			},
+			{
+				"name": "MaxShadowMapSize",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 172,
+				"comment": "The most texels each way of the sun's shadow cascades, whatever the quality resolves to (a power of two from 256; 0: no limit beyond RendererQuality::c_MaxShadowMapSize and the device's texture limit, which always bound it). Tests set it low to check the limit."
+			},
+			{
+				"name": "EntityIDs",
+				"type": "bool",
+				"default": "true",
+				"line": 176,
+				"comment": "The depth prepass writes the entity-ID buffer (a 32-bit render target of the viewport's size): picking (GetEntityAt, ReadEntityIDAsync), the selection outline and entity tints read it. Renderers that do none of these (games) turn it off; outlines and tints asked of them are then left out, with an error."
+			},
+			{
+				"name": "ExtendedStorageFormats",
+				"type": "bool",
+				"default": "true",
+				"line": 180,
+				"comment": "Storage images of the extended formats where the device has them (GraphicsDeviceInfo::SupportsExtendedStorageFormats): the half-precision ambient occlusion and the B10G11R11 scene-color copy transmissive surfaces read. False uses their fallbacks (R32F, RGBA16F) on every device: tests compare them."
+			},
+			{
+				"name": "HighPriorityScreenFraction",
+				"type": "float",
+				"default": "0.05f",
+				"line": 185,
+				"comment": "Asset requests follow visibility: mesh renderers in the view request their mesh and materials at High priority when their projected size (bounding sphere diameter / viewport height) exceeds this fraction, at Normal priority otherwise; nothing else is requested for drawing."
+			},
+			{
+				"name": "PrefetchDistance",
+				"type": "float",
+				"default": "100.0f",
+				"line": 189,
+				"comment": "Mesh renderers outside the view within this distance of the camera request their mesh and materials at Low priority (prefetch), so turning the camera finds them loaded. 0 turns prefetching off. Shadow casters outside the view and this distance are drawn into the shadow cascades only while their assets are resident."
+			},
+			{
+				"name": "BatchAcrossMaterials",
+				"type": "bool",
+				"default": "true",
+				"line": 194,
+				"comment": "Instances of a mesh share draw calls whatever their materials (shaders read the material of each instance): batches are split only by pipeline state, mesh, submesh and level of detail. Off, the CPU path's batches are also split by material, as renderers without per-instance materials draw; for comparisons and debugging (the GPU-driven path always draws across materials)."
+			},
+			{
+				"name": "TextureStreaming",
+				"type": "bool",
+				"default": "true",
+				"line": 199,
+				"comment": "Textures stream at the mip levels the screen needs (TextureStreamer): the renderer reports what it drew after each frame (VisibleMaterialUse), and a texture whose mip tail is resident is drawn with what it has. Off, every texture it draws is made resident at full resolution and counts as pending until it is (SceneRendererStats::PendingAssets): exact-pixel tests and the baseline streaming is measured against."
+			},
+			{
+				"name": "FadeTextureLevels",
+				"type": "bool",
+				"default": "true",
+				"line": 203,
+				"comment": "Texture levels the streamer raises fade in over TextureTable::c_FadeInSeconds instead of popping in. Renderers of single images that wait for the levels they need (the editor's captures, thumbnails) turn it off: they show the finest resident levels at once."
+			},
+			{
+				"name": "SpecularAntiAliasing",
+				"type": "bool",
+				"default": "true",
+				"line": 207,
+				"comment": "Geometric specular anti-aliasing (MaterialParams.z): the forward pass widens each surface's specular lobe by how much its shading normal changes across the pixel, so highlights narrower than a pixel spread over it with their energy instead of sparkling (Include/PBR.slang, WidenRoughness). Off only to compare with and without it (tests)."
+			},
+			{
+				"name": "NewInstanceBytesPerFrame",
+				"type": "uint64_t",
+				"default": "16ull << 20",
+				"line": 211,
+				"comment": "The render scene's GPU copy (RenderSceneGPU, shared by the scene's renderers) uploads new proxies' records and instances within this many bytes per frame, at least one proxy per frame; the others wait, undrawn (SceneRendererStats::DeferredInstanceBytes). Changes of proxies already on the GPU always upload at once."
+			},
+			{
+				"name": "VisibilityFeedback",
+				"type": "bool",
+				"default": "true",
+				"line": 219,
+				"comment": "GPU-driven frames take their asset requests (and the screen sizes texture streaming follows) from the GPU's visibility feedback of a frame two or three frames earlier instead of walking the view's proxies on the CPU: what each mesh and material is used for, in the view (above HighPriorityScreenFraction or not), within PrefetchDistance or casting shadows. The CPU's marks still run on a renderer's first frames, after camera cuts (TextureStreamingPolicy::IsCameraCut), and after a frame whose draws overflowed the slots the feedback foresaw; meshes of unknown bounds, transparent surfaces and skinned proxies are always the CPU's. Off: the CPU's marks every frame."
+			},
+			{
+				"name": "OcclusionCulling",
+				"type": "bool",
+				"default": "true",
+				"line": 228,
+				"comment": "GPU-driven frames leave out of the view what lies behind what the view draws, in two phases: the first draws what was visible in the previous frame into the depth prepass, a depth pyramid of that (Scene/HZBBuild.comp) tests every other proxy in the frustum, and the second phase draws those found visible (in the same frame: nothing appears a frame late). Camera cuts and a renderer's first frame start without history (the first phase draws nothing). The shadow cascades are culled alike, each against a pyramid of its own first phase's shadow map (a quarter of the cascades' size each way): casters hidden from the light behind other casters are left out. That costs GPU time of its own, so it runs while it pays: while the latest frame that culled the cascades found at least a sixteenth of their casters hidden, otherwise once every 16 frames to look again (SceneRendererStats::ShadowOcclusionCulled)."
+			},
+			{
+				"name": "MinimumSamplerPyramids",
+				"type": "bool",
+				"default": "true",
+				"line": 232,
+				"comment": "The depth pyramids occlusion culling tests against are built with a minimum-filtering sampler where the device has one (GraphicsDeviceInfo::SupportsSamplerMinMax): one sample per 2x2 texels. False builds them with four loads per 2x2 on every device, as devices without one do: tests compare them."
+			},
+			{
+				"name": "CacheShadowCascades",
+				"type": "bool",
+				"default": "true",
+				"line": 239,
+				"comment": "GPU-driven frames redraw a shadow cascade only when something that reaches it changed since the frame that drew it: the camera (any part of SceneCamera or the viewport), the light or the cascade's square, a caster whose bounds before or after its change reach the cascade (a caster's first change, the frames before which it was not followed, redraws every cascade), or what the casters are drawn with (the scene's GPU copy's mesh and material tables, the geometry pool's tables and, while materials are alpha-masked, the texture table's entries). Other cascades keep their shadow map layer (SceneRendererStats::CachedCascadeMask): a still camera over a still or local change costs no shadow draws."
+			},
+			{
+				"name": "TemporalAntiAliasing",
+				"type": "bool",
+				"default": "true",
+				"line": 248,
+				"comment": "Scenes whose PostProcessComponent chooses AntiAliasingMode::TAA are drawn with temporal anti-aliasing: each frame offsets its samples by a sub-pixel jitter (8 phases of a Halton (2, 3) sequence, from the history's latest reset on, in the frame's copy of the camera only: culling, levels of detail, the shadow cascades and the overlays keep the camera's own matrices) and blends with the renderer's history of earlier frames. The history is the renderer's own and starts again (SceneRendererStats::HistoryResets) on its first frame, after a camera cut, with a render scene that is neither the previous one nor a clone of it, after a resize, after a device frame (Renderer::GetFrameNumber) in which it did not render, and after ResetHistory. Off: such scenes are drawn with FXAA (renderers of single images that do not render a view several times, such as thumbnails)."
+			},
+			{
+				"name": "DitherOutput",
+				"type": "bool",
+				"default": "true",
+				"line": 254,
+				"comment": "The 8-bit (or 10-bit) output is dithered: triangular noise of one code per channel in the encoded domain (Include/Dither.slang), the same every frame, so gradients show no bands, black and white stay exact and every value keeps its mean. The last pass that writes the display image dithers it (the tone mapping, or FXAA after it); the overlays and the copy into a target are exact display colors. Tests that compare exact pixels turn it off (Tests::ExactSpecification)."
+			},
+			{
+				"name": "CacheLocalShadows",
+				"type": "bool",
+				"default": "true",
+				"line": 261,
+				"comment": "A shadow view (a light's tile) is drawn again only when what it shows changed: the light (its position, direction, range, cone, tile or filter), a shadow caster whose bounds before or after its change reach the light's range and view, or what the casters are drawn with (the scene's GPU copy's mesh and material tables and new proxies, the geometry pool's content and, while materials are alpha-masked, the texture table's entries). Off: every view of every shadowed light is drawn every frame (perf tests measure that), and nothing fades (SpreadLightingUpdates)."
+			},
+			{
+				"name": "SpreadLightingUpdates",
+				"type": "bool",
+				"default": "true",
+				"line": 270,
+				"comment": "Lighting work is spread over frames, for renderers that draw views continuously: at most LocalShadowViewsPerFrame shadow views are drawn per frame, the nearest lights' first; a light whose views were not all drawn yet casts no shadow, then fades its shadow in over c_LocalShadowFadeFrames frames, and the lights ranked just above the ones left out (Quality.MaxShadowedLocalLights) fade by their margin over them, so shadows do not pop. Off (renderers of single images: captures, thumbnails): each frame draws every view that is not up to date, and nothing fades (SceneRendererStats::LocalShadowViewsPending is 0 after every frame). Reflection probes likewise: at most SceneRenderer::c_ReflectionProbeConversionsPerFrame captures are converted per frame, else every one in view at once (SceneRendererStats::ReflectionProbesPending then counts only captures still loading)."
+			},
+			{
+				"name": "LocalShadowViewsPerFrame",
+				"type": "uint32_t",
+				"default": "12",
+				"line": 271,
+				"comment": ""
+			},
+			{
+				"name": "MaxReflectionProbes",
+				"type": "uint32_t",
+				"default": "RenderData::c_MaxReflectionProbes",
+				"line": 276,
+				"comment": "Reflection probes (ReflectionProbeComponent): the renderer keeps the strongest this many in view (at most RenderData::c_MaxReflectionProbes; by priority, then the smaller box), each capture converted into a slot of its cube array (made with the first probe in view, released with the render targets or once the scene has none: about 1 MiB a slot). 0: no probes."
+			},
+			{
+				"name": "GlobalIllumination",
+				"type": "GlobalIlluminationSettings",
+				"default": null,
+				"line": 280,
+				"comment": "Global illumination's tuning (Docs/DeveloperGuide.md, \"Global illumination\"): the triangles its voxel clipmap voxelizes per frame, and on a frame that rebuilds or jumps a window; 0 for no limit (renderers of single images: their first frame is complete)."
+			}
+		]
+	},
+	"stats": {
+		"name": "SceneRendererStats",
+		"line": 510,
+		"fields": [
+			{
+				"name": "c_LODStatCount",
+				"type": "static constexpr size_t",
+				"default": "8",
+				"line": 511,
+				"comment": ""
+			},
+			{
+				"name": "Rendered",
+				"type": "bool",
+				"default": "false",
+				"line": 513,
+				"comment": "False when the last Render call drew nothing (see Render)"
+			},
+			{
+				"name": "GPUDriven",
+				"type": "bool",
+				"default": "false",
+				"line": 518,
+				"comment": "The GPU culled and drew the opaque and alpha-masked instances and the shadows (SceneRendererSpecification::GPUDriven): their counts arrive frames later in SceneRendererGPUStats, and Instances, Triangles, DrawCalls, OpaqueDrawCalls, InstancesPerLOD, SkinnedInstances, ShadowCasters and ShadowDrawCalls count only what the CPU drew (transparent surfaces). DrawCommands counts every draw call the CPU recorded."
+			},
+			{
+				"name": "GPUCulled",
+				"type": "bool",
+				"default": "false",
+				"line": 522,
+				"comment": "The GPU-driven frame culled the render scene's proxies on the GPU. A render scene without proxies has nothing to cull: its frames record none of the culling's passes, no occlusion culling and no visibility feedback (only the counters the lights' culling writes, and with them the statistics, keep coming)."
+			},
+			{
+				"name": "FeedbackRequests",
+				"type": "bool",
+				"default": "false",
+				"line": 525,
+				"comment": "The frame's requests came from the GPU's visibility feedback (SceneRendererSpecification::VisibilityFeedback); its VisibleProxies and CulledInstances then count only the proxies the CPU still looked at."
+			},
+			{
+				"name": "ShadowOcclusionCulled",
+				"type": "bool",
+				"default": "false",
+				"line": 527,
+				"comment": "The frame's cascades were occlusion culled (SceneRendererSpecification::OcclusionCulling, while it pays)."
+			},
+			{
+				"name": "DrawCalls",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 528,
+				"comment": "Draw calls of the forward passes (opaque and transparent)"
+			},
+			{
+				"name": "OpaqueDrawCalls",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 529,
+				"comment": "Of those, opaque batches: also the draw calls of the depth prepass"
+			},
+			{
+				"name": "ShadowDrawCalls",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 530,
+				"comment": "Draw calls into the shadow cascades"
+			},
+			{
+				"name": "DrawCommands",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 531,
+				"comment": "Draw commands the CPU recorded for the scene's meshes in every pass (shadows, prepass, forward)"
+			},
+			{
+				"name": "Instances",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 532,
+				"comment": "Drawn submesh instances"
+			},
+			{
+				"name": "CulledInstances",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 533,
+				"comment": "Mesh renderers outside the view frustum"
+			},
+			{
+				"name": "SizeCulledProxies",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 535,
+				"comment": "CPU path: mesh renderers in the view smaller than RendererQualitySettings::MinProjectedPixels (not drawn)."
+			},
+			{
+				"name": "OccludedProxies",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 538,
+				"comment": "GPU-driven frames: mesh renderers in the frustum hidden behind what the view draws (OcclusionCulling; with AddGPUCounts)."
+			},
+			{
+				"name": "OccludedCasters",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 541,
+				"comment": "GPU-driven frames: casters hidden in a cascade behind what it draws, summed over cascades (OcclusionCulling; with AddGPUCounts)."
+			},
+			{
+				"name": "Triangles",
+				"type": "uint64_t",
+				"default": "0",
+				"line": 542,
+				"comment": ""
+			},
+			{
+				"name": "InstancesPerLOD",
+				"type": "std::array<uint32_t, c_LODStatCount>",
+				"default": "{}",
+				"line": 544,
+				"comment": "Drawn submesh instances per selected level of detail; the last entry also counts all higher levels."
+			},
+			{
+				"name": "Lights",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 545,
+				"comment": "Rendered lights: the directional light plus the point and spot lights (the GPU-driven path's"
+			},
+			{
+				"name": "CulledLights",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 547,
+				"comment": "point and spot lights are counted on the GPU: SceneRendererGPUStats::Lights, AddGPUCounts)"
+			},
+			{
+				"name": "DroppedLights",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 548,
+				"comment": "Visible point and spot lights beyond SceneRendererSpecification::MaxLights"
+			},
+			{
+				"name": "Materials",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 549,
+				"comment": "Distinct materials drawn"
+			},
+			{
+				"name": "ReusedMaterials",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 553,
+				"comment": "Of the materials drawn and casting shadows, those whose flags and texture maps the frame took over from an earlier frame's (the same materials and textures used the same ways: still frames), with their assets looked up in one call to the asset manager (AssetResolveCache::Replay) instead of one by one."
+			},
+			{
+				"name": "PendingAssets",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 554,
+				"comment": "Distinct meshes, materials and textures still loading (drawn with fallbacks or skipped)"
+			},
+			{
+				"name": "VisibleProxies",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 557,
+				"comment": "The render scene (RenderScene) and what the frame cost."
+			},
+			{
+				"name": "ProxyUpdates",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 558,
+				"comment": "Render proxies updated since this renderer's previous frame (changed components, transforms, mesh layouts)"
+			},
+			{
+				"name": "InstanceBytesUploaded",
+				"type": "uint64_t",
+				"default": "0",
+				"line": 559,
+				"comment": "Instance data and draw lists uploaded this frame (nothing when nothing changed)"
+			},
+			{
+				"name": "InstanceUploadRanges",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 560,
+				"comment": "Separate ranges of instance data uploaded"
+			},
+			{
+				"name": "ProxyBytesUploaded",
+				"type": "uint64_t",
+				"default": "0",
+				"line": 561,
+				"comment": "Culling records of the render scene's GPU copy uploaded this frame (RenderData::GPUProxy)"
+			},
+			{
+				"name": "DeferredInstanceBytes",
+				"type": "uint64_t",
+				"default": "0",
+				"line": 563,
+				"comment": "New proxies whose records and instances wait for a later frame's upload (NewInstanceBytesPerFrame): not drawn yet."
+			},
+			{
+				"name": "DeferredProxies",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 564,
+				"comment": ""
+			},
+			{
+				"name": "MaterialBytesUploaded",
+				"type": "uint64_t",
+				"default": "0",
+				"line": 567,
+				"comment": "Material data the render scene's GPU copy uploaded in this frame's update (materials built again: loaded, edited, dropped, or a texture of theirs was)."
+			},
+			{
+				"name": "ExtractMs",
+				"type": "float",
+				"default": "0.0f",
+				"line": 568,
+				"comment": "CPU time of culling, asset resolution and gathering draws (view and shadows)"
+			},
+			{
+				"name": "SortMs",
+				"type": "float",
+				"default": "0.0f",
+				"line": 569,
+				"comment": "CPU time of sorting the draws into batches and draw lists"
+			},
+			{
+				"name": "RequestsByVisibility",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 570,
+				"comment": "Distinct meshes, materials and textures requested for drawing"
+			},
+			{
+				"name": "PrefetchRequests",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 571,
+				"comment": "Distinct meshes and materials requested at Low priority within the prefetch distance"
+			},
+			{
+				"name": "GetAssetCalls",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 572,
+				"comment": "Asset manager lookups: at most one per distinct asset"
+			},
+			{
+				"name": "MeshesWithoutBounds",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 575,
+				"comment": "Meshes requested as if in view because their bounds are not known yet (RenderScene::GetMeshesWithoutBounds: never loaded, none recorded), counted in RequestsByVisibility too."
+			},
+			{
+				"name": "EnvironmentLighting",
+				"type": "bool",
+				"default": "false",
+				"line": 576,
+				"comment": "A sky light's environment (map or procedural sky) lights the scene"
+			},
+			{
+				"name": "EnvironmentUpdates",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 581,
+				"comment": "Environment cubes computed this frame (with their irradiance and prefiltered maps): 1 when the environment map or the procedural sky's parameters (colors, sun size and intensity, the sun's direction and color) changed, also when a new EnvironmentResolution filtered only the prefiltered map again. An environment map's environment that another renderer computed is taken over, not computed (0)."
+			},
+			{
+				"name": "Atmosphere",
+				"type": "bool",
+				"default": "false",
+				"line": 589,
+				"comment": "The atmosphere (SkyLightSource::Atmosphere): whether the frame's sky is it; its tables computed this frame (1 when its settings or the sun's color changed: transmittance and multiple scattering) and its sky-view tables (when the sun moved, the camera changed height band or the settings changed); the steps of an environment refresh recorded this frame (SceneRenderer::c_AtmosphereRefreshSteps make one: the cube's six faces, its levels, the irradiance and each prefiltered level; at most 1 a frame with SceneRendererSpecification::SpreadLightingUpdates), and whether one is still under way. The directional light's color is multiplied by SunTransmittance, the share of its light that reaches the ground through the atmosphere (1 without one)."
+			},
+			{
+				"name": "AerialPerspective",
+				"type": "bool",
+				"default": "false",
+				"line": 591,
+				"comment": "The frame drew aerial perspective (SkyLightComponent::AerialPerspective under the atmosphere, a perspective camera)."
+			},
+			{
+				"name": "AtmosphereTableUpdates",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 592,
+				"comment": ""
+			},
+			{
+				"name": "AtmosphereSkyViewUpdates",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 593,
+				"comment": ""
+			},
+			{
+				"name": "EnvironmentRefreshSteps",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 594,
+				"comment": ""
+			},
+			{
+				"name": "EnvironmentRefreshPending",
+				"type": "bool",
+				"default": "false",
+				"line": 595,
+				"comment": ""
+			},
+			{
+				"name": "SunTransmittance",
+				"type": "glm::vec3",
+				"default": "glm::vec3(1.0f)",
+				"line": 596,
+				"comment": ""
+			},
+			{
+				"name": "PreviewLighting",
+				"type": "bool",
+				"default": "false",
+				"line": 597,
+				"comment": "SceneRenderOptions::PreviewEnvironment lit the scene (it has no light of its own)"
+			},
+			{
+				"name": "HeightFog",
+				"type": "bool",
+				"default": "false",
+				"line": 598,
+				"comment": "The scene's height fog (SceneRenderer::FindHeightFog) was drawn"
+			},
+			{
+				"name": "ShadowCasters",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 599,
+				"comment": "Instances drawn into shadow cascades (summed over cascades)"
+			},
+			{
+				"name": "CachedCascadeMask",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 602,
+				"comment": "GPU-driven frames: the cascades (a bit each) that kept their shadow map layer from the previous frame (SceneRendererSpecification::CacheShadowCascades); the GPU's counts still count their casters."
+			},
+			{
+				"name": "SubTexelCasters",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 604,
+				"comment": "Casters left out of cascades in which they would span less than a texel (summed over cascades): they would only flicker."
+			},
+			{
+				"name": "SkinnedInstances",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 605,
+				"comment": "Drawn instances of posed skinned meshes (view; also counted in Instances)"
+			},
+			{
+				"name": "StalePoses",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 608,
+				"comment": "Animators whose meshes the frame drew (in view or by their shadows) with a pose older than their time: WhenVisible ones that skipped their poses while unseen; the next frame shows them posed (a capture renders again for it)."
+			},
+			{
+				"name": "PaletteBytesUploaded",
+				"type": "uint64_t",
+				"default": "0",
+				"line": 609,
+				"comment": "Joint matrices uploaded this frame (only palettes that changed)"
+			},
+			{
+				"name": "DebugLines",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 610,
+				"comment": "Lines drawn from SceneRenderOptions::DebugShapes"
+			},
+			{
+				"name": "OutlinedEntities",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 611,
+				"comment": "Selected entities of the rendered scene"
+			},
+			{
+				"name": "TintedEntities",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 612,
+				"comment": "Entities of SceneRenderOptions::EntityTints in the rendered scene"
+			},
+			{
+				"name": "Texts",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 613,
+				"comment": "Text components drawn"
+			},
+			{
+				"name": "ScreenSpaceTexts",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 614,
+				"comment": "Of those, screen-space ones (the HUD)"
+			},
+			{
+				"name": "HiddenScreenSpaceTexts",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 615,
+				"comment": "Screen-space text left out (SceneRenderOptions::DrawScreenSpaceText is off)"
+			},
+			{
+				"name": "TextGlyphs",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 616,
+				"comment": ""
+			},
+			{
+				"name": "PendingTextGlyphs",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 617,
+				"comment": "Glyphs waiting for rasterization (budgeted per frame), drawn on a later frame"
+			},
+			{
+				"name": "RasterizedTextGlyphs",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 618,
+				"comment": "Glyphs added to font atlases this frame (see TextRenderer::c_FrameRasterBudget)"
+			},
+			{
+				"name": "Overlays",
+				"type": "SceneOverlayStats",
+				"default": null,
+				"line": 619,
+				"comment": "The overlay passes (the game UI); their PendingAssets count in PendingAssets too"
+			},
+			{
+				"name": "MotionHistory",
+				"type": "bool",
+				"default": "false",
+				"line": 623,
+				"comment": "Motion (SceneRenderOptions::MotionVectors): whether the frame had the renderer's previous frame to compare with, and what it copied into the motion history at its end: instances and joint matrices, all of them (MotionFullCopy) without a history or when the scene's GPU copy wrote more since the previous frame than its write log remembers."
+			},
+			{
+				"name": "MotionFullCopy",
+				"type": "bool",
+				"default": "false",
+				"line": 624,
+				"comment": ""
+			},
+			{
+				"name": "MotionCopiedInstances",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 625,
+				"comment": ""
+			},
+			{
+				"name": "MotionCopiedJoints",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 626,
+				"comment": ""
+			},
+			{
+				"name": "TemporalAntiAliasing",
+				"type": "bool",
+				"default": "false",
+				"line": 631,
+				"comment": "Temporal anti-aliasing (SceneRendererSpecification::TemporalAntiAliasing): whether the frame was drawn with it, the frames its history holds (1 on a frame that reset it, 0 without it), the history's resets since the renderer was made, and the frame's jitter in pixels (+x right, +y down; SceneRenderer::GetTemporalJitter of phase (TemporalFrames - 1) modulo c_TemporalJitterPhases, 0 without it)."
+			},
+			{
+				"name": "TemporalFrames",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 632,
+				"comment": ""
+			},
+			{
+				"name": "HistoryResets",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 633,
+				"comment": ""
+			},
+			{
+				"name": "Jitter",
+				"type": "glm::vec2",
+				"default": "glm::vec2(0.0f)",
+				"line": 634,
+				"comment": ""
+			},
+			{
+				"name": "AmbientOcclusionSamples",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 637,
+				"comment": "Ambient occlusion's samples per pixel (slices x steps per side x 2, RendererQualitySettings::AmbientOcclusionQuality); 0 in frames without it."
+			},
+			{
+				"name": "LocalShadowLights",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 641,
+				"comment": "Local light shadows (RendererQualitySettings::LocalShadowAtlasSize): the point and spot lights with atlas tiles, the shadow views (tiles) drawn this frame, and those of these lights still waiting to be drawn (their lights cast no shadow until all of theirs are drawn, or keep the shadows drawn before they changed)."
+			},
+			{
+				"name": "LocalShadowViewsDrawn",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 642,
+				"comment": ""
+			},
+			{
+				"name": "LocalShadowViewsPending",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 643,
+				"comment": ""
+			},
+			{
+				"name": "LocalShadowTileSizes",
+				"type": "std::array<uint16_t, RenderData::c_MaxShadowedLocalLights>",
+				"default": "{}",
+				"line": 646,
+				"comment": "The tile size of each of those lights, by rank (the first LocalShadowLights entries; 128 to RendererQualitySettings::LocalShadowMaxTile texels)."
+			},
+			{
+				"name": "Quality",
+				"type": "RendererQualitySettings",
+				"default": null,
+				"line": 650,
+				"comment": "The quality the frame drew with (SceneRenderer::GetQuality), and the sun's cascades' texels each way (SceneRenderer::GetShadowMapSize: the resolution resolved for the viewport's rows, after the limits and an allocation's fallback)."
+			},
+			{
+				"name": "ShadowMapSize",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 651,
+				"comment": ""
+			},
+			{
+				"name": "ReflectionProbes",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 656,
+				"comment": "Reflection probes (SceneRendererSpecification::MaxReflectionProbes): those the frame shaded with, the captures it converted into the renderer's cube array, and the probes kept in view still waiting for their capture to load or be converted (the sky lights their surfaces meanwhile), or, after a new resolution, for its cubes to take over (every probe in view: those the old cubes still shade too)."
+			},
+			{
+				"name": "ReflectionProbeConversions",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 657,
+				"comment": ""
+			},
+			{
+				"name": "ReflectionProbesPending",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 658,
+				"comment": ""
+			},
+			{
+				"name": "ScreenSpaceReflections",
+				"type": "bool",
+				"default": "false",
+				"line": 664,
+				"comment": "Whether the frame traced screen-space reflections (PostProcessComponent::ScreenSpaceReflections, scaled by RendererQualitySettings::Reflections): Checkerboard only with temporal anti-aliasing, from the second frame of its history on (they read the previous frame's resolved image); Spatial and SpatialHigh with or without it, from the second frame on (they read the previous frame's color copy). ScreenSpaceReflectionsPending: a Spatial frame that asked for them had no previous copy to read (the first frame, a camera cut, a reset); it made one for the next."
+			},
+			{
+				"name": "ScreenSpaceReflectionsPending",
+				"type": "bool",
+				"default": "false",
+				"line": 665,
+				"comment": ""
+			},
+			{
+				"name": "GlobalIllumination",
+				"type": "bool",
+				"default": "false",
+				"line": 674,
+				"comment": "Global illumination (world-space radiance cascades over a voxel clipmap; Docs/DeveloperGuide.md, \"Global illumination\"): the frame ran it (a GI view showed); its voxel levels 0-2 were incomplete (a rebuild or a jump under way: what reads them falls back); settled (nothing left to voxelize, not pending, and with every bounce GISettleFrames frames since the light last changed; true without GI); the triangles it voxelized, the regions left for later frames, the proxies left out until resident with their mesh or while they move, and the submeshes its regions left out (VoxelFrame::UnvoxelizedSubmeshes: past a mesh's 256th, or past a frame's limits; logged the first time while the renderer's GI lives). GISettleFrames: the frames the scene's bounces take to settle (GlobalIllumination::GetSettleFrames of its brightest albedo; 0 with one bounce)."
+			},
+			{
+				"name": "GlobalIlluminationPending",
+				"type": "bool",
+				"default": "false",
+				"line": 675,
+				"comment": ""
+			},
+			{
+				"name": "GlobalIlluminationSettled",
+				"type": "bool",
+				"default": "true",
+				"line": 676,
+				"comment": ""
+			},
+			{
+				"name": "GIVoxelizedTriangles",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 677,
+				"comment": ""
+			},
+			{
+				"name": "GIQueuedRegions",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 678,
+				"comment": ""
+			},
+			{
+				"name": "GIWaitingProxies",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 679,
+				"comment": ""
+			},
+			{
+				"name": "GIMovingProxies",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 680,
+				"comment": ""
+			},
+			{
+				"name": "GIUnvoxelizedSubmeshes",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 681,
+				"comment": ""
+			},
+			{
+				"name": "GISettleFrames",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 682,
+				"comment": ""
+			},
+			{
+				"name": "SceneColorCopies",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 685,
+				"comment": "Copies of the scene's color the frame made for transmissive surfaces and spatial reflections (CopySceneColor: 1 when it made one, else 0)."
+			},
+			{
+				"name": "LocalShadowCasters",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 688,
+				"comment": "Instances drawn into shadow views (summed over views) and their draw calls (the GPU-driven path's are counted on the GPU: SceneRendererGPUStats::LocalShadowInstances, LocalShadowDraws, AddGPUCounts)."
+			},
+			{
+				"name": "LocalShadowDrawCalls",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 689,
+				"comment": ""
+			},
+			{
+				"name": "PreExposure",
+				"type": "float",
+				"default": "1.0f",
+				"line": 698,
+				"comment": "The pre-exposure: the power of two every writer of the frame's HDR target multiplied its luminance by (shading, the sky, fog and the clear color; the temporal history holds the same scale), so real luminance such as a 100,000 lux sun stays within half floats (the exposure divides it out again). Forced (SceneRenderOptions::PreExposure); with manual exposure the power of two nearest 2^Exposure; with automatic exposure the one nearest a quarter of the renderer's own metered multiplier (two stops of headroom: the sun's disk), read back frames later without a stall, changed only when off by more than a stop; 1 after ResetExposureAdaptation until a readback arrived. Settled when forced, with manual exposure, or once a readback of the renderer's metering of a frame drawn with the current value arrived and kept it: until then the brightest and darkest values of the frame may have overflowed or lost precision (captures wait for it)."
+			},
+			{
+				"name": "PreExposureSettled",
+				"type": "bool",
+				"default": "false",
+				"line": 699,
+				"comment": ""
+			},
+			{
+				"name": "Cascades",
+				"type": "std::array<ShadowCascadeStats, RenderData::c_MaxCascades>",
+				"default": "{}",
+				"line": 702,
+				"comment": "The sun's cascades the frame laid out (SceneRenderer::FindShadowCasters): the first CascadeCount entries, 0 without a shadowed sun (the shadows debug view reports them)."
+			},
+			{
+				"name": "CascadeCount",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 703,
+				"comment": ""
+			},
+			{
+				"name": "ScreenShadows",
+				"type": "bool",
+				"default": "false",
+				"line": 705,
+				"comment": "The frame drew the sun's screen-space shadow mask (SceneRenderer::GetScreenShadowTexture): every frame with a shadowed sun."
+			},
+			{
+				"name": "ExposureLog2Luminance",
+				"type": "std::optional<float>",
+				"default": null,
+				"line": 709,
+				"comment": "Automatic exposure, from the newest readback of the renderer's metering (frames late, as the pre-exposure's): the adapted log2 average luminance, the exposure key's stops and the log2 luminance of the sun's gray card the key compares with (unset without a directional light). Unset with manual exposure and until a readback arrived."
+			},
+			{
+				"name": "ExposureKeyStops",
+				"type": "float",
+				"default": "0.0f",
+				"line": 710,
+				"comment": ""
+			},
+			{
+				"name": "ExposureKeyReferenceLog2",
+				"type": "std::optional<float>",
+				"default": null,
+				"line": 711,
+				"comment": ""
+			},
+			{
+				"name": "MotionBlurred",
+				"type": "bool",
+				"default": "false",
+				"line": 714,
+				"comment": "Motion blur (PostProcessComponent::MotionBlur): whether the frame's passes ran (not without a motion history or on a camera cut), their samples per pixel and their tile size in pixels."
+			},
+			{
+				"name": "MotionBlurSamples",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 715,
+				"comment": ""
+			},
+			{
+				"name": "MotionBlurTileSize",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 716,
+				"comment": ""
+			},
+			{
+				"name": "DepthOfField",
+				"type": "bool",
+				"default": "false",
+				"line": 719,
+				"comment": "Depth of field (SceneRenderOptions::Lens): whether the frame's passes ran, with the lens they used and the circle of confusion (diameter, pixels) of a point infinitely far through it."
+			},
+			{
+				"name": "DepthOfFieldLens",
+				"type": "CameraLens",
+				"default": null,
+				"line": 720,
+				"comment": ""
+			},
+			{
+				"name": "DepthOfFieldInfinityCoC",
+				"type": "float",
+				"default": "0.0f",
+				"line": 721,
+				"comment": ""
+			},
+			{
+				"name": "BloomLevels",
+				"type": "uint32_t",
+				"default": "0",
+				"line": 723,
+				"comment": "The bloom levels the frame used (PostProcessComponent::BloomRadius; 0 without bloom)."
+			},
+			{
+				"name": "Dithered",
+				"type": "bool",
+				"default": "false",
+				"line": 726,
+				"comment": "The frame's last pass that wrote the display image dithered it (SceneRendererSpecification::DitherOutput, and an 8-bit or 10-bit UNORM target)."
+			},
+			{
+				"name": "MorphologicalAntiAliasing",
+				"type": "bool",
+				"default": "false",
+				"line": 728,
+				"comment": "The frame was anti-aliased morphologically (AntiAliasingMode::Morphological)."
+			},
+			{
+				"name": "ColorLookup",
+				"type": "bool",
+				"default": "false",
+				"line": 730,
+				"comment": "The Post Process's color lookup was applied (PostProcessComponent::ColorLookup at an intensity above 0, loaded)."
+			},
+			{
+				"name": "LensFlare",
+				"type": "bool",
+				"default": "false",
+				"line": 733,
+				"comment": "The lens flare pass ran (PostProcessComponent::LensFlare above 0), and whether the directional light's disk was in front of the camera for its starburst."
+			},
+			{
+				"name": "LensFlareSun",
+				"type": "bool",
+				"default": "false",
+				"line": 734,
+				"comment": ""
+			},
+			{
+				"name": "LightingViewPending",
+				"type": "bool",
+				"default": "false",
+				"line": 737,
+				"comment": "A lighting view is on (SceneRenderOptions::LightingView) and no statistics of a frame drawn with it since it was chosen arrived yet (SceneRenderer::GetLightingViewStats)."
+			}
+		]
+	}
+}

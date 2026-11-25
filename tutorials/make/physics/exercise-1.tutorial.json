@@ -1,0 +1,26 @@
+{
+	"page": "make/physics",
+	"startsFrom": { "tutorial": "make/physics" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "entity.create", "parameters": { "name": "Wood", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere" }, "SphereCollider": { "Radius": 0.5 }, "Transform": { "Translation": [-6, 3, -4] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Metal", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere" }, "SphereCollider": { "Radius": 0.5 }, "Transform": { "Translation": [-3, 3, -4] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Rubber", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere" }, "SphereCollider": { "Radius": 0.5 }, "Transform": { "Translation": [0, 3, -4] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Ice", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere" }, "SphereCollider": { "Radius": 0.5 }, "Transform": { "Translation": [3, 3, -4] } } } },
+				{ "command": "component.add", "entityName": "Wood", "parameters": { "component": "RigidBody" } },
+				{ "command": "component.add", "entityName": "Metal", "parameters": { "component": "RigidBody" } },
+				{ "command": "component.add", "entityName": "Rubber", "parameters": { "component": "RigidBody" } },
+				{ "command": "component.add", "entityName": "Ice", "parameters": { "component": "RigidBody" } },
+				{ "command": "component.set", "entityName": "Wood", "parameters": { "component": "RigidBody", "values": { "Mass": 0.5, "Friction": 0.5, "Restitution": 0.1 } } },
+				{ "command": "component.set", "entityName": "Metal", "parameters": { "component": "RigidBody", "values": { "Mass": 4, "Friction": 0.3, "Restitution": 0.05 } } },
+				{ "command": "component.set", "entityName": "Rubber", "parameters": { "component": "RigidBody", "values": { "Mass": 0.2, "Friction": 1, "Restitution": 0.8 } } },
+				{ "command": "component.set", "entityName": "Ice", "parameters": { "component": "RigidBody", "values": { "Mass": 1, "Friction": 0.02, "Restitution": 0.1 } } },
+				{ "command": "component.get", "entityName": "Rubber", "parameters": { "component": "RigidBody" },
+					"checks": [ { "pointer": "/values/Restitution", "approx": 0.8, "tolerance": 0.001 } ] }
+			],
+			"endState": true
+		}
+	]
+}

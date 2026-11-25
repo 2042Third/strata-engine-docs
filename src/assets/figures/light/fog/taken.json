@@ -1,0 +1,190 @@
+{
+	"files": {
+		"color-from-sky-sky-off.webp": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1280,
+				720
+			],
+			"figure": "color-from-sky",
+			"variant": "sky-off",
+			"crop": null,
+			"original": "9f412df635e6ca281a93de1cdbbd7b7afb2d1d4839dbcc48396f11b34e89900e",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "dca82c473bb60435b4a85ceced9ec21e21b69ace1037bc3bd93a7c344dc1897e"
+		},
+		"color-from-sky-sky-on.webp": {
+			"kind": "scene",
+			"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "c853214492987c3525d0a7ed5a2ae06c4d03d322456bf4512e18b36a80d3a294"
+			},
+			"reportedCommit": "822a7a46dbcd",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1280,
+				720
+			],
+			"figure": "color-from-sky",
+			"variant": "sky-on",
+			"crop": null,
+			"original": "4fa0ee32a018ce5f95c87b5ed77438fcf261d02bc83ebfd47ed17ed840d4bb0a",
+			"recorded": {},
+			"checkedAt": [
+				"319075e3f92b316db5cdd30560de08c1ffe0ae26",
+				"822a7a46dbcdd86e8e2eafde7e41d003e27260c8"
+			],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "f4350bc4e3e8acaf7f9d1210aad104193296d3f3a2fdec51ccb8909b69f24ee1"
+		},
+		"density-sweep-thick.webp": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1280,
+				720
+			],
+			"figure": "density-sweep",
+			"variant": "thick",
+			"crop": null,
+			"original": "83420f718f36b055d89057e42b5ad1b48bf9ad94415fcacc90f338bc3e24ecb0",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "c9cc48a1477fe4275439e4e6294992a64f24fa2de7ca17f21d361c85980ac9be"
+		},
+		"density-sweep-thin.webp": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1280,
+				720
+			],
+			"figure": "density-sweep",
+			"variant": "thin",
+			"crop": null,
+			"original": "5f2e601576a0ee7264abeea84fa74bea994ae61960d58b7df5a9369e86768195",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "5c8305a5c2e5b651b7df66abc66a1ef09de785149a063f8ddbb7c4826d0e1e25"
+		},
+		"sun-scattering-scatter-0.webp": {
+			"kind": "scene",
+			"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "c853214492987c3525d0a7ed5a2ae06c4d03d322456bf4512e18b36a80d3a294"
+			},
+			"reportedCommit": "822a7a46dbcd",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1280,
+				720
+			],
+			"figure": "sun-scattering",
+			"variant": "scatter-0",
+			"crop": null,
+			"original": "4cd892c8ae839d38975d8dccdc417e7d84e6e9c41f18987215fa8c65c6f7b879",
+			"recorded": {},
+			"checkedAt": [
+				"319075e3f92b316db5cdd30560de08c1ffe0ae26",
+				"822a7a46dbcdd86e8e2eafde7e41d003e27260c8"
+			],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "7dcd66e2535ee44fd2d84a5f9037ef041cb23296b20899f65dcd13c4fde290ce"
+		},
+		"sun-scattering-scatter-1.webp": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1280,
+				720
+			],
+			"figure": "sun-scattering",
+			"variant": "scatter-1",
+			"crop": null,
+			"original": "63b71bd013cee80d2812a1742c308bc9afaf3cebc98e2612656e98a8bf277002",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "5239f8ba3065368639e1fd3397061dbff60544218009269d6bcf3187c238dbee"
+		}
+	}
+}

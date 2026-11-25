@@ -1,0 +1,206 @@
+[
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/Main.stscene"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "canvas",
+			"name": "HUD"
+		},
+		"bind": {
+			"hud": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "inputField",
+			"name": "NameInput",
+			"parent": {
+				"$ref": "hud"
+			},
+			"text": "Your name",
+			"anchor": "topLeft",
+			"position": [
+				24,
+				24
+			],
+			"size": [
+				400,
+				60
+			]
+		},
+		"bind": {
+			"field": "/entity"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "field"
+			},
+			"component": "UIInputField",
+			"values": {
+				"CharacterLimit": 12
+			}
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "text",
+			"name": "NameLabel",
+			"parent": {
+				"$ref": "hud"
+			},
+			"text": "",
+			"anchor": "topLeft",
+			"position": [
+				24,
+				100
+			],
+			"size": [
+				400,
+				50
+			]
+		},
+		"bind": {
+			"label": "/entity"
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"entity": {
+				"$ref": "field"
+			}
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "hud"
+			},
+			"class": "NameField",
+			"fields": {
+				"NameLabel": {
+					"$ref": "label"
+				}
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "field"
+			},
+			"component": "UIInputField",
+			"values": {
+				"EventTarget": {
+					"$ref": "hud"
+				}
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "hud"
+			},
+			"component": "UICanvas",
+			"values": {
+				"ReceivesInput": true
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 2
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 2
+			}
+		}
+	},
+	{
+		"command": "input.click",
+		"parameters": {
+			"entity": {
+				"$ref": "field"
+			},
+			"wait": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 3
+		}
+	},
+	{
+		"command": "input.type",
+		"parameters": {
+			"text": "Ana",
+			"wait": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 2
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "Enter",
+			"wait": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 3
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "label"
+			},
+			"component": "UIText"
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "scene.save"
+	}
+]

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 488">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plot: origin (96, 420), 140 units a second across, 22 units a metre up; t 0 to 4 s, x 0 to 16 m. Triangle (2, 4), (3, 4), (3, 9). -->
+<path class="line-faint" d="M96 398H236M236 398V420M96 332H376M376 332V420M96 222H516M516 222V420M96 68H656M656 68V420" fill="none" stroke-width="1" stroke-dasharray="4 3"/>
+<path class="line-ink" d="M96 420H676M96 420V58" fill="none"/>
+<polygon class="ink" points="686,420 676,416.5 676,423.5"/>
+<polygon class="ink" points="96,48 92.5,58 99.5,58"/>
+<g class="small muted" text-anchor="middle">
+<text x="96" y="442">0</text>
+<text x="236" y="442">1</text>
+<text x="376" y="442">2</text>
+<text x="516" y="442">3</text>
+<text x="656" y="442">4</text>
+</g>
+<g class="small muted" text-anchor="end">
+<text x="86" y="425">0</text>
+<text x="86" y="403">1</text>
+<text x="86" y="337">4</text>
+<text x="86" y="227">9</text>
+<text x="86" y="73">16</text>
+</g>
+<text class="muted" x="376" y="466" text-anchor="middle">time t (s)</text>
+<text class="muted" x="108" y="44">position x (m)</text>
+<path class="line-blue" d="M96 420 L103 419.9 L110 419.8 L117 419.5 L124 419.1 L131 418.6 L138 418 L145 417.3 L152 416.5 L159 415.5 L166 414.5 L173 413.3 L180 412.1 L187 410.7 L194 409.2 L201 407.6 L208 405.9 L215 404.1 L222 402.2 L229 400.1 L236 398 L243 395.7 L250 393.4 L257 390.9 L264 388.3 L271 385.6 L278 382.8 L285 379.9 L292 376.9 L299 373.7 L306 370.5 L313 367.1 L320 363.7 L327 360.1 L334 356.4 L341 352.6 L348 348.7 L355 344.7 L362 340.6 L369 336.3 L376 332 L383 327.5 L390 323 L397 318.3 L404 313.5 L411 308.6 L418 303.6 L425 298.5 L432 293.3 L439 287.9 L446 282.5 L453 276.9 L460 271.3 L467 265.5 L474 259.6 L481 253.6 L488 247.5 L495 241.3 L502 235 L509 228.5 L516 222 L523 215.3 L530 208.6 L537 201.7 L544 194.7 L551 187.6 L558 180.4 L565 173.1 L572 165.7 L579 158.1 L586 150.5 L593 142.7 L600 134.9 L607 126.9 L614 118.8 L621 110.6 L628 102.3 L635 93.9 L642 85.4 L649 76.7 L656 68" fill="none" stroke-width="2.5"/>
+<path class="line-orange" d="M506 332V322H516" fill="none" stroke-width="1.5"/>
+<path class="line-orange" d="M376 332H516V222M376 332L516 222" fill="none" stroke-width="2"/>
+<circle class="blue" cx="96" cy="420" r="4.5"/>
+<circle class="blue" cx="236" cy="398" r="4.5"/>
+<circle class="blue" cx="376" cy="332" r="4.5"/>
+<circle class="blue" cx="516" cy="222" r="4.5"/>
+<circle class="blue" cx="656" cy="68" r="4.5"/>
+<text class="orange" x="446" y="354" text-anchor="middle">run 1 s</text>
+<text class="orange" x="526" y="282">rise 5 m</text>
+<text class="orange bold halo" x="434" y="269" text-anchor="end">slope 5 m/s</text>
+<text class="blue" x="668" y="73">x = t²</text>
+</svg>

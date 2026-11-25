@@ -1,0 +1,36 @@
+{
+	"figures": [
+		{
+			"id": "input-actions-page",
+			"kind": "editor",
+			"shows": "The Input Actions page of the Project Settings window in the Third-Person project: the two maps, the reserved UI map first, and the selected Gameplay map's actions with their kinds, dead zones and binding chips",
+			"caption": "The Input Actions page lists the maps, the reserved one first, and the selected map's actions with their kinds, bindings and, where the kind takes one, dead zones.",
+			"alt": "The Project Settings window on its Input Actions page. A list of maps holds the reserved UI map and the selected Gameplay map. Below it, each of the Gameplay map's eight actions shows its kind, a chip for each binding and, for the two that take one, its dead zone.",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"waitsFor": "tier 3: the Input Actions page of Project Settings; no command selects a Project Settings page (editor.showPanel takes no page, and the panel opens on Game)",
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"panel": "ProjectSettings",
+				"steps": [
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "ProjectSettings"
+						}
+					}
+				]
+			},
+			"standIn": "input-actions-gameplay"
+		},
+		{
+			"id": "input-actions-gameplay",
+			"kind": "diagram",
+			"shows": "The Input Actions page of the Project Settings window for the Third-Person project, drawn from its code: the summary, the two maps with Gameplay selected, and the Gameplay map's actions with their kinds, dead zones and binding chips",
+			"caption": "A drawing of the Third-Person sample's Input Actions page: both maps, the reserved one first, and the selected map's actions with their kinds, bindings and, where the kind takes one, dead zones.",
+			"alt": "A summary reads 2 maps, 14 actions, and a list below holds the map UI, for game UI navigation, and the selected map Gameplay. Under the heading Actions of Gameplay, Move shows the kind Vector2, a dead zone slider at 0.15 and three binding chips, and Jump shows the kind Button, no dead zone and two chips. Dashed lines sum up Look and the five other Buttons. Notes say that a cross after each chip removes it, that the plus button adds a binding and that capture is off for a Vector2.",
+			"numbers": "The summary, the map list, the selected map's table, and per action the rows Action, Kind, Dead zone (absent for a Button) and Bindings, with a remove button after each chip, then the plus and the capture button, disabled for a Vector2: StrataEditor/src/UI/InputActionsPage.cpp (Draw, DrawMaps, DrawActions, DrawBindings). Maps, actions, kinds, dead zones and bindings: Samples/ThirdPerson/ThirdPerson.stproj (Input.Actions). Look and the five other Buttons are summed up in a line each; the chips' device icons and the page's opening text are left out."
+		}
+	]
+}

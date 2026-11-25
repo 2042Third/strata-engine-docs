@@ -1,0 +1,360 @@
+id	type	heading	label
+render-indirect:53	feature	1.1 Image-based lighting from the sky (the "environment")	Sky light component
+render-indirect:54	feature	1.1 Image-based lighting from the sky (the "environment")	Procedural sky cube
+render-indirect:55	feature	1.1 Image-based lighting from the sky (the "environment")	Equirect to cube
+render-indirect:56	feature	1.1 Image-based lighting from the sky (the "environment")	Environment filter chain
+render-indirect:57	feature	1.1 Image-based lighting from the sky (the "environment")	Filtered importance sampling
+render-indirect:58	feature	1.1 Image-based lighting from the sky (the "environment")	Prefilter sample budget
+render-indirect:59	feature	1.1 Image-based lighting from the sky (the "environment")	BRDF lookup table (split sum)
+render-indirect:60	feature	1.1 Image-based lighting from the sky (the "environment")	Shared environments
+render-indirect:61	feature	1.1 Image-based lighting from the sky (the "environment")	Constant ambient
+render-indirect:62	feature	1.1 Image-based lighting from the sky (the "environment")	Preview lighting
+render-indirect:63	feature	1.1 Image-based lighting from the sky (the "environment")	Extract Sun / Remove Sun
+render-indirect:64	feature	1.1 Image-based lighting from the sky (the "environment")	Sky presets
+render-indirect:65	feature	1.1 Image-based lighting from the sky (the "environment")	Atmosphere sky cube
+render-indirect:71	feature	1.2 The shading model the indirect light rests on (PBR.slang)	GGX + height-correlated Smith + Schlick
+render-indirect:72	feature	1.2 The shading model the indirect light rests on (PBR.slang)	Multiple-scattering energy compensation
+render-indirect:73	feature	1.2 The shading model the indirect light rests on (PBR.slang)	Specular anti-aliasing
+render-indirect:74	feature	1.2 The shading model the indirect light rests on (PBR.slang)	F0 from IOR
+render-indirect:75	feature	1.2 The shading model the indirect light rests on (PBR.slang)	Sized highlights
+render-indirect:76	feature	1.2 The shading model the indirect light rests on (PBR.slang)	Horizon fade
+render-indirect:82	feature	1.3 The indirect light's seam (forward pass)	`IndirectInputs`
+render-indirect:83	feature	1.3 The indirect light's seam (forward pass)	The four forms
+render-indirect:84	feature	1.3 The indirect light's seam (forward pass)	Diffuse gather
+render-indirect:85	feature	1.3 The indirect light's seam (forward pass)	Specular gather
+render-indirect:86	feature	1.3 The indirect light's seam (forward pass)	Field gather (GI join)
+render-indirect:87	feature	1.3 The indirect light's seam (forward pass)	Compose
+render-indirect:88	feature	1.3 The indirect light's seam (forward pass)	Clear coat's image light
+render-indirect:89	feature	1.3 The indirect light's seam (forward pass)	Probe capture mode
+render-indirect:95	feature	1.4 Ambient occlusion	GTAO
+render-indirect:96	feature	1.4 Ambient occlusion	Quality samples
+render-indirect:97	feature	1.4 Ambient occlusion	Fixed 4x4 pattern (no history)
+render-indirect:98	feature	1.4 Ambient occlusion	History-free denoiser
+render-indirect:99	feature	1.4 Ambient occlusion	Radius clamp
+render-indirect:100	feature	1.4 Ambient occlusion	Thin-occluder relaxation
+render-indirect:101	feature	1.4 Ambient occlusion	Multi-bounce fit
+render-indirect:102	feature	1.4 Ambient occlusion	Half-float targets
+render-indirect:103	feature	1.4 Ambient occlusion	Component fields
+render-indirect:104	feature	1.4 Ambient occlusion	Where AO applies
+render-indirect:110	feature	1.5 Specular occlusion	Lagarde's specular occlusion
+render-indirect:111	feature	1.5 Specular occlusion	SSR keeps its light
+render-indirect:112	feature	1.5 Specular occlusion	Planned: open share in specular occlusion
+render-indirect:118	feature	1.6 Reflection probes	`ReflectionProbeComponent`
+render-indirect:119	feature	1.6 Reflection probes	Per-frame gather and ranking
+render-indirect:120	feature	1.6 Reflection probes	Shader: two-probe blend
+render-indirect:121	feature	1.6 Reflection probes	Box projection
+render-indirect:122	feature	1.6 Reflection probes	SH irradiance
+render-indirect:123	feature	1.6 Reflection probes	Probe cache (cube array)
+render-indirect:124	feature	1.6 Reflection probes	Capture residency hold
+render-indirect:125	feature	1.6 Reflection probes	GPU conversion
+render-indirect:126	feature	1.6 Reflection probes	Resolution change takeover
+render-indirect:127	feature	1.6 Reflection probes	Bindings
+render-indirect:128	feature	1.6 Reflection probes	Stats
+render-indirect:129	feature	1.6 Reflection probes	Probe bake
+render-indirect:130	feature	1.6 Reflection probes	Bounces by re-baking
+render-indirect:131	feature	1.6 Reflection probes	Times of day pattern
+render-indirect:137	feature	1.7 Screen-space reflections	Component fields
+render-indirect:138	feature	1.7 Screen-space reflections	Quality row `Reflections`
+render-indirect:139	feature	1.7 Screen-space reflections	Surface target
+render-indirect:140	feature	1.7 Screen-space reflections	Shared ray setup
+render-indirect:141	feature	1.7 Screen-space reflections	Hit confidence
+render-indirect:142	feature	1.7 Screen-space reflections	Checkerboard trace
+render-indirect:143	feature	1.7 Screen-space reflections	Spatial trace
+render-indirect:144	feature	1.7 Screen-space reflections	Previous-frame color copy
+render-indirect:145	feature	1.7 Screen-space reflections	Spatial resolve
+render-indirect:146	feature	1.7 Screen-space reflections	Forward mix
+render-indirect:147	feature	1.7 Screen-space reflections	Pending first frame
+render-indirect:148	feature	1.7 Screen-space reflections	Memory
+render-indirect:149	feature	1.7 Screen-space reflections	Transparent surfaces get none
+render-indirect:153	feature	1.8 Global illumination (experimental, world-space radiance cascades)	What `main` has: stages 1-4 of the spec (voxels; light behind debug views; join to shading;…
+render-indirect:162	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Scene ask
+render-indirect:163	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Quality row
+render-indirect:164	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Layout
+render-indirect:165	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Voxel clipmap (CPU)
+render-indirect:166	feature	1.8 Global illumination (experimental, world-space radiance cascades)	What enters the voxels
+render-indirect:167	feature	1.8 Global illumination (experimental, world-space radiance cascades)	GPU voxelization
+render-indirect:168	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Closed-mesh test
+render-indirect:169	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Light injection
+render-indirect:170	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Level downsample
+render-indirect:171	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Probe validity, move, relocation
+render-indirect:172	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Probe weights
+render-indirect:173	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Cascade march + merge
+render-indirect:174	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Field reduce
+render-indirect:175	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Multi-bounce by re-injection
+render-indirect:176	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Field sampling in the forward pass
+render-indirect:177	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Level sampling
+render-indirect:178	feature	1.8 Global illumination (experimental, world-space radiance cascades)	The join
+render-indirect:179	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Field constants b3
+render-indirect:180	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Debug views
+render-indirect:181	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Stats and readbacks
+render-indirect:182	feature	1.8 Global illumination (experimental, world-space radiance cascades)	Capture waits
+render-indirect:183	feature	1.8 Global illumination (experimental, world-space radiance cascades)	GPU stage
+render-indirect:189	feature	1.9 Lighting debug views, statistics and the white furnace	Lighting views
+render-indirect:190	feature	1.9 Lighting debug views, statistics and the white furnace	Value views without pre-exposure
+render-indirect:191	feature	1.9 Lighting debug views, statistics and the white furnace	Statistics
+render-indirect:192	feature	1.9 Lighting debug views, statistics and the white furnace	History and exposure under views
+render-indirect:193	feature	1.9 Lighting debug views, statistics and the white furnace	Editor/agent access
+render-indirect:194	feature	1.9 Lighting debug views, statistics and the white furnace	White furnace (tests)
+render-indirect:195	feature	1.9 Lighting debug views, statistics and the white furnace	White furnace (look-dev)
+render-indirect:196	feature	1.9 Lighting debug views, statistics and the white furnace	Look-dev shots for this area
+render-indirect:197	feature	1.9 Lighting debug views, statistics and the white furnace	Flicker meter
+render-indirect:201	feature	1.10 Frame placement (pass order of this area)	`SceneRenderer::RenderFrame` (`R/SceneRenderer.cpp:2901`): `PrepareGlobalIllumination` 3205 and…
+render-indirect:230	concept		What "indirect light" is
+render-indirect:237	concept		Radiance, irradiance, solid angle, cosine weighting; luminance in nits
+render-indirect:241	concept		Microfacet BRDF recap (GGX, Smith, Fresnel, F0, roughness vs alpha)
+render-indirect:245	concept		Environment maps and cube maps
+render-indirect:249	concept		Image-based lighting: diffuse irradiance
+render-indirect:254	concept		Image-based lighting: specular and the split-sum approximation (Karis 2013)
+render-indirect:259	concept		Energy conservation and the white furnace test
+render-indirect:265	concept		Specular aliasing and geometric specular AA (Kaplanyan/Tokuyoshi)
+render-indirect:269	concept		Ambient occlusion
+render-indirect:274	concept		Noise, patterns and denoising without history
+render-indirect:280	concept		Multi-bounce AO
+render-indirect:283	concept		Specular occlusion
+render-indirect:286	concept		Local reflections: reflection probes
+render-indirect:293	concept		Screen-space ray marching
+render-indirect:300	concept		Fallback hierarchy
+render-indirect:303	concept		Global illumination: the problem and families
+render-indirect:309	concept		Voxelization and clipmaps
+render-indirect:313	concept		Radiance cascades
+render-indirect:318	concept		Probe fields and their visibility
+render-indirect:322	concept		Multi-bounce by re-injection and convergence
+render-indirect:326	concept		Measuring light: debug views, EV100, sun-to-sky ratio, albedo ranges
+render-indirect:329	concept		"Bit for bit when off"
+render-indirect:338	code		1: `SH/IBL/BRDFLut.comp.slang:20-49`
+render-indirect:339	code		2: `SH/IBL/Prefilter.comp.slang:22-59`
+render-indirect:340	code		3: `SH/IBL/Irradiance.comp.slang:22-43`
+render-indirect:341	code		4: `SH/IBL/ProbeIrradiance.comp.slang:42-87` + `SH/Include/SphericalHarmonics.slang:1-19`
+render-indirect:342	code		5: `SH/Include/PBR.slang:59-71`
+render-indirect:343	code		6: `StrataTests/src/Renderer/GPUSceneLightingTests.cpp:860-914`
+render-indirect:344	code		7: `SH/Include/PBR.slang:73-102`
+render-indirect:345	code		8: `SH/Include/IndirectLight.slang:1-131` (whole)
+render-indirect:346	code		9: `SH/Scene/Forward.frag.slang:118-171`
+render-indirect:347	code		10: `SH/Scene/Forward.frag.slang:280-338`
+render-indirect:348	code		11: `SH/Effects/GTAO.comp.slang:41-141`
+render-indirect:349	code		12: `SH/Effects/AODenoise.comp.slang:1-90` (header + `ResolveAlong`)
+render-indirect:350	code		13: `SH/Include/AmbientOcclusionFit.slang:1-17` and `Tools/FitAOMultiBounce.py:1-45` (docstring)
+render-indirect:351	code		14: `R/SceneRendererAmbientOcclusion.cpp:116-143`
+render-indirect:352	code		15: `SH/Include/ReflectionProbes.slang:54-125`
+render-indirect:353	code		16: `R/SceneRendererReflectionProbes.cpp:58-66` and `193-260`
+render-indirect:354	code		17: `R/SceneRendererReflectionProbes.cpp:451-506`
+render-indirect:355	code		18: `StrataEditor/src/Editor/ProbeBake.h:19-47`
+render-indirect:356	code		19: `SH/Include/ScreenReflections.slang:39-102`
+render-indirect:357	code		20: `SH/Effects/ScreenSpaceReflections.comp.slang:51-115`
+render-indirect:358	code		21: `SH/Effects/ScreenSpaceReflectionsSpatial.comp.slang:151-274`
+render-indirect:359	code		22: `SH/Effects/ReflectionResolve.comp.slang:75-120`
+render-indirect:360	code		23: `R/SceneRenderer.cpp:3453-3490`
+render-indirect:361	code		24: `R/GlobalIlluminationLayout.cpp:147-192`
+render-indirect:362	code		25: `SH/Include/Voxelize.slang:160-196`
+render-indirect:363	code		26: `SH/Include/GIMarch.slang:21-76`
+render-indirect:364	code		27: `SH/GI/CascadeMarch.comp.slang:25-100`
+render-indirect:365	code		28: `SH/Include/GIField.slang:41-51` and `181-236`
+render-indirect:366	code		29: `R/GlobalIlluminationLayout.cpp:405-412`
+render-indirect:367	code		30: `SH/Include/IndirectLight.slang:109-118` + `SH/Scene/Forward.frag.slang:301-321`
+render-indirect:375	figure	Diagrams	The indirect-light fallback stack
+render-indirect:378	figure	Diagrams	Split sum
+render-indirect:380	figure	Diagrams	Environment filter chain
+render-indirect:382	figure	Diagrams	Cube face conventions and equirect mapping
+render-indirect:383	figure	Diagrams	Filtered importance sampling
+render-indirect:384	figure	Diagrams	Energy loss of single-scattering GGX
+render-indirect:385	figure	Diagrams	GTAO slice
+render-indirect:387	figure	Diagrams	The 4x4 ordered-dither pattern and the 5x5 tent kernel
+render-indirect:388	figure	Diagrams	Thin-occluder relaxation
+render-indirect:389	figure	Diagrams	Multi-bounce fit
+render-indirect:390	figure	Diagrams	Box projection
+render-indirect:392	figure	Diagrams	Probe blending
+render-indirect:393	figure	Diagrams	Probe cache / slots
+render-indirect:395	figure	Diagrams	Probe bake timeline
+render-indirect:397	figure	Diagrams	Screen-space ray
+render-indirect:399	figure	Diagrams	Thickness and false hits
+render-indirect:401	figure	Diagrams	Checkerboard vs Spatial pipelines
+render-indirect:403	figure	Diagrams	Back faces in mirrors (the crescent)
+render-indirect:404	figure	Diagrams	SSR edge fade rule
+render-indirect:405	figure	Diagrams	GI overview
+render-indirect:407	figure	Diagrams	Voxel clipmap levels and toroidal scrolling
+render-indirect:409	figure	Diagrams	Voxel classes
+render-indirect:411	figure	Diagrams	Radiance cascades
+render-indirect:413	figure	Diagrams	Field gather
+render-indirect:415	figure	Diagrams	Re-injection over frames
+render-indirect:417	figure	Diagrams	Lighting view statistics pipeline
+render-indirect:424	figure	Screenshots (each with how it is isolated)	Sky only lighting a white sphere and rough/smooth metal spheres: Basic3D template, sky light…
+render-indirect:426	figure	Screenshots (each with how it is isolated)	Prefiltered levels: a mirror ball at roughness 0, 0.2 ... 1 under an HDR map (`lookdev.furnace`…
+render-indirect:427	figure	Screenshots (each with how it is isolated)	White furnace before/after energy compensation: `lookdev.furnace` (Tonemapper None); "before"…
+render-indirect:429	figure	Screenshots (each with how it is isolated)	Specular AA: a normal-mapped sphere at 4K with `SceneRendererSpecification::SpecularAntiAliasing`…
+render-indirect:431	figure	Screenshots (each with how it is isolated)	Horizon fade: a strong normal map at grazing view, before (needs code toggle) / after.
+render-indirect:432	figure	Screenshots (each with how it is isolated)	IOR: water 1.33 vs default 1.5 vs 2.42 dielectric spheres (material IOR field).
+render-indirect:433	figure	Screenshots (each with how it is isolated)	AO on/off: ThirdPerson or Physics Playground, Post Process `AmbientOcclusion` toggle; plus debug…
+render-indirect:434	figure	Screenshots (each with how it is isolated)	AO quality Low/Medium/High/Ultra: Graphics Quality rows (project setting…
+render-indirect:435	figure	Screenshots (each with how it is isolated)	AO radius: 0.25, 1, 3 m (`AmbientOcclusionRadius`), near and far object to show the clamp.
+render-indirect:436	figure	Screenshots (each with how it is isolated)	Thin occluders: look-dev poles/fence/plate with AO view.
+render-indirect:437	figure	Screenshots (each with how it is isolated)	Multi-bounce: white plaster corner vs dark soil corner, `AmbientOcclusionMultiBounce` on/off, `ao`…
+render-indirect:438	figure	Screenshots (each with how it is isolated)	Same AO image with TAA, FXAA, none (LookDev `--aa`).
+render-indirect:439	figure	Screenshots (each with how it is isolated)	Reflection probe on/off in a room: Showcase hut (`showcase.*` shot 3 has a "without the yard's…
+render-indirect:441	figure	Screenshots (each with how it is isolated)	Box projection on/off (`BoxProjection` field): `lookdev.patch` uses a probe without box projection.
+render-indirect:442	figure	Screenshots (each with how it is isolated)	Probe blend: two overlapping boxes with different captures, `BlendDistance` 0 vs 1 m.
+render-indirect:443	figure	Screenshots (each with how it is isolated)	Probe resolution 128 vs 256: mirror ball (Graphics Quality `ReflectionProbeResolution`).
+render-indirect:444	figure	Screenshots (each with how it is isolated)	Bake with sun disk (0.7.0 behaviour) vs without: `lookdev.patch` crop `patch` (needs old build for…
+render-indirect:445	figure	Screenshots (each with how it is isolated)	Repeated bakes adding bounces: bake 1, 2, 8 times (Showcase script bakes eight).
+render-indirect:446	figure	Screenshots (each with how it is isolated)	SSR off / Checkerboard+TAA / Spatial / SpatialHigh: `lookdev.mirror`, Graphics Quality…
+render-indirect:448	figure	Screenshots (each with how it is isolated)	SSR max roughness: polished/satin/glossy crops of `lookdev.mirror`;…
+render-indirect:449	figure	Screenshots (each with how it is isolated)	SSR edge fade: wet ground, `lookdev.wet.sunward` left/right crops.
+render-indirect:450	figure	Screenshots (each with how it is isolated)	SSR thin posts and wall edge: `lookdev.sheet` crop `post-wall`.
+render-indirect:451	figure	Screenshots (each with how it is isolated)	Crescent of a ball's back: `lookdev.sheet.angle` crop `crescents`.
+render-indirect:452	figure	Screenshots (each with how it is isolated)	Screen-door before the resolve (needs code toggle) vs after: `lookdev.sheet` rough sheet.
+render-indirect:453	figure	Screenshots (each with how it is isolated)	AO not darkening SSR: wet ground beside an object (`lookdev.wet` `edge`).
+render-indirect:454	figure	Screenshots (each with how it is isolated)	Sized sun highlight: Clear vs Overcast preset on a mirror sphere (Angular Diameter 0.53 vs 10).
+render-indirect:455	figure	Screenshots (each with how it is isolated)	GI off/on in the Cornell box: `lookdev.cornell` vs Post Process `GlobalIllumination` true;…
+render-indirect:456	figure	Screenshots (each with how it is isolated)	GI views: `lookdev.cornell.view.gi`; debug views `voxels`, `open`, `probes` in the sun room /…
+render-indirect:457	figure	Screenshots (each with how it is isolated)	GI Low vs High (Graphics Quality `GlobalIllumination` row).
+render-indirect:458	figure	Screenshots (each with how it is isolated)	GI one bounce vs every bounce (needs `BounceGain` 0, engine-side; tests do this).
+render-indirect:459	figure	Screenshots (each with how it is isolated)	GI artefacts (honest "what it cannot do"): dark notches under the Cornell sphere, thin wall…
+render-indirect:461	figure	Screenshots (each with how it is isolated)	Lighting debug views: Lighting, Indirect, Luminance (EV bands with legend), Albedo (marks) on the…
+render-indirect:467	rule		Indirect light must keep its energy
+render-indirect:470	rule		Diffuse gets what specular leaves
+render-indirect:472	rule		The derivative rule
+render-indirect:475	rule		IOR 1.5 stays the literal 0.04
+render-indirect:477	rule		A light's size widens only its highlight's D
+render-indirect:479	rule		AO darkens indirect light only
+render-indirect:480	rule		No history for AO
+render-indirect:482	rule		AO radius clamped on screen
+render-indirect:484	rule		Change the multi-bounce fit only by running `Tools/FitAOMultiBounce.py --write`
+render-indirect:486	rule		SSR light is visible light
+render-indirect:488	rule		Fade only where rays leave the screen
+render-indirect:489	rule		Keep only validated crossings
+render-indirect:491	rule		Hierarchical (Hi-Z) march rejected
+render-indirect:493	rule		Never fill an object's back in a mirror
+render-indirect:494	rule		Checkerboard needs TAA
+render-indirect:495	rule		Premultiplied SSR results
+render-indirect:496	rule		Probes are baked in the editor, never at run time
+render-indirect:498	rule		Bake where the probe stands now
+render-indirect:500	rule		A bake replaces only its own earlier capture
+render-indirect:502	rule		Captures are held whole until converted
+render-indirect:504	rule		Conversions are spread (2 per frame)
+render-indirect:506	rule		Features cost nothing when off
+render-indirect:508	rule		GI traces world data only, never the screen
+render-indirect:510	rule		A frame without GI keeps the old expression bit for bit
+render-indirect:511	rule		GI constants live in their own buffer (b3), not `FrameConstants`
+render-indirect:513	rule		Anchors for voxel coordinates
+render-indirect:515	rule		Movers stay out of the voxels for 30 frames
+render-indirect:517	rule		Walls must be thicker than two voxels
+render-indirect:519	rule		Captures and the project picture wait for GI to settle
+render-indirect:520	rule		No blocking
+render-indirect:531	hands-on	Game developers	G1: Light a scene with each sky source (Procedural, HDR map with Extract Sun, Atmosphere); compare…
+render-indirect:532	hands-on	Game developers	G2: Apply the four sky presets and explain the ratio table (ML 279)
+render-indirect:533	hands-on	Game developers	G3: Tune AO: radius, intensity, multi-bounce on white vs dark materials; compare `ao` view and lit…
+render-indirect:534	hands-on	Game developers	G4: Add a Reflection Probe to a room, fit its box, bake, toggle Box Projection, add a second probe…
+render-indirect:535	hands-on	Game developers	G5: Bake repeatedly after a lighting change and observe bounces settle
+render-indirect:536	hands-on	Game developers	G6: Times of day with baked probes: two probe sets switched by a script with `SetActive` and…
+render-indirect:537	hands-on	Game developers	G7: Make a wet floor: IOR 1.33, low roughness, SSR on, compare Graphics Quality Medium (TAA) vs…
+render-indirect:538	hands-on	Game developers	G8: Build a small closed room with a window (walls >= 20 cm), turn GI on at High, use `gi`,…
+render-indirect:539	hands-on	Game developers	G9: Albedo audit: fix materials the Albedo view marks
+render-indirect:540	hands-on	Game developers	G10: Agent route: do G4 and G8 through `StrataCLI` (`lighting.bakeProbes`, `viewport.capture…
+render-indirect:546	hands-on	Engine developers	E1: Write a CPU white furnace: integrate GGX + Smith over the hemisphere for F0 = 1, plot E(NoV,…
+render-indirect:547	hands-on	Engine developers	E2: Read and run `Renderer.AmbientOcclusion`; run `Tools/FitAOMultiBounce.py` (print only) and…
+render-indirect:548	hands-on	Engine developers	E3: Add a new lighting debug view (e.g. specular occlusion as gray): `SceneLightingView`,…
+render-indirect:549	hands-on	Engine developers	E4: Change GTAO's pattern to a frame-varying one in a scratch branch and observe…
+render-indirect:550	hands-on	Engine developers	E5: Implement a probe-weight visualization (each probe's box weight as color) behind a view
+render-indirect:551	hands-on	Engine developers	E6: Box projection by hand: given a box and a ray, compute the lookup direction on paper, then…
+render-indirect:552	hands-on	Engine developers	E7: Re-create the 0.7.0 SSR acceptance ("any point behind") in the Spatial trace and watch…
+render-indirect:553	hands-on	Engine developers	E8: Write a CPU screen-space ray march over a synthetic depth buffer with bisection; reproduce the…
+render-indirect:554	hands-on	Engine developers	E9: Compute `ComputeLayout` memory by hand for Low and check `Renderer.GlobalIlluminationLayout`…
+render-indirect:555	hands-on	Engine developers	E10: Implement the CPU triangle-box test and voxelize a box; compare with `Tests::ReferenceVoxels`…
+render-indirect:556	hands-on	Engine developers	E11: 1D radiance cascades toy (Python/C++): two cascades, merge rule, compare with brute force
+render-indirect:557	hands-on	Engine developers	E12: Settle frames: derive `GetSettleFrames` for albedo 0.58 and 0.73 (12, 17)
+render-indirect:558	hands-on	Engine developers	E13: Add a field to `IndirectInputs` for a new term and keep the default image bit for bit (run…
+render-indirect:564	term		Indirect light
+render-indirect:565	term		Image-based lighting (IBL)
+render-indirect:566	term		Environment map
+render-indirect:567	term		Equirectangular
+render-indirect:568	term		Cube map; cube array
+render-indirect:569	term		Mip / mip chain
+render-indirect:570	term		Irradiance
+render-indirect:571	term		Radiance
+render-indirect:572	term		Solid angle
+render-indirect:573	term		Nits / lux / EV100
+render-indirect:574	term		Lambert diffuse
+render-indirect:575	term		Albedo
+render-indirect:576	term		F0; IOR
+render-indirect:577	term		Fresnel (Schlick)
+render-indirect:578	term		GGX; alpha; perceptual roughness
+render-indirect:579	term		Smith visibility (height-correlated)
+render-indirect:580	term		Split-sum approximation
+render-indirect:581	term		BRDF lookup table (LUT)
+render-indirect:582	term		Prefiltered environment
+render-indirect:583	term		Importance sampling / filtered importance sampling
+render-indirect:584	term		Hammersley sequence
+render-indirect:585	term		Spherical harmonics (SH, 9 coefficients, bands 0-2)
+render-indirect:586	term		Ambient cube
+render-indirect:587	term		Energy compensation / multiple scattering
+render-indirect:588	term		White furnace test
+render-indirect:589	term		Specular aliasing / specular AA
+render-indirect:590	term		Horizon fade
+render-indirect:591	term		Ambient occlusion (AO)
+render-indirect:592	term		GTAO
+render-indirect:593	term		Slice / horizon angle
+render-indirect:594	term		Bilateral filter
+render-indirect:595	term		Ordered dither (4x4 Bayer order)
+render-indirect:596	term		Tent kernel
+render-indirect:597	term		Multi-bounce AO
+render-indirect:598	term		Radiosity
+render-indirect:599	term		Specular occlusion (Lagarde)
+render-indirect:600	term		Reflection probe
+render-indirect:601	term		Capture / bake
+render-indirect:602	term		Influence box / extents / blend distance
+render-indirect:603	term		Box projection (parallax correction)
+render-indirect:604	term		Probe priority
+render-indirect:605	term		Probe cache / slot
+render-indirect:606	term		Pre-exposure
+render-indirect:607	term		HDR output / ProbeCapture
+render-indirect:608	term		Screen-space reflections (SSR)
+render-indirect:609	term		Depth buffer / reversed-Z
+render-indirect:610	term		Prepass / surface target
+render-indirect:611	term		Octahedral encoding
+render-indirect:612	term		Ray march / step / bisection
+render-indirect:613	term		Thickness tolerance
+render-indirect:614	term		Candidate / validated crossing
+render-indirect:615	term		Hi-Z (hierarchical depth) march
+render-indirect:616	term		Confidence
+render-indirect:617	term		Premultiplied alpha
+render-indirect:618	term		Interleaved gradient noise (IGN)
+render-indirect:619	term		TAA history
+render-indirect:620	term		Motion vectors / velocity
+render-indirect:621	term		Checkerboard / Spatial / SpatialHigh
+render-indirect:622	term		Ratio estimator
+render-indirect:623	term		Global illumination (GI)
+render-indirect:624	term		Voxel / voxelization
+render-indirect:625	term		Clipmap
+render-indirect:626	term		Toroidal addressing
+render-indirect:627	term		Slab / region / brick / anchor
+render-indirect:628	term		Triangle-box overlap (Akenine-Moller)
+render-indirect:629	term		Winding / solid fill
+render-indirect:630	term		Closed mesh
+render-indirect:631	term		Two-sided voxel
+render-indirect:632	term		RGB9E5
+render-indirect:633	term		Light injection
+render-indirect:634	term		Probe / cascade / interval / direction tile
+render-indirect:635	term		Radiance cascades
+render-indirect:636	term		Merge / miss rule
+render-indirect:637	term		Lead-in / overlap
+render-indirect:638	term		Transmittance / occupancy
+render-indirect:639	term		Dead probe / validity / relocation
+render-indirect:640	term		Irradiance field
+render-indirect:641	term		Depth moments / Chebyshev test (DDGI)
+render-indirect:642	term		Guard (voxel guard)
+render-indirect:643	term		Normal bias / view bias
+render-indirect:644	term		Open share
+render-indirect:645	term		Re-injection / multi-bounce / bounce gain
+render-indirect:646	term		Settled / pending
+render-indirect:647	term		Join
+render-indirect:648	term		Look-dev
+render-indirect:649	term		Flicker meter
+render-indirect:650	term		Sun-to-sky ratio
+render-indirect:687	open		Not read in full
+render-indirect:695	open		Specs not read
+render-indirect:698	open		GI batches 2 and 3
+render-indirect:701	open		Exact line ranges of lambdas
+render-indirect:703	open		The cause of the FrameConstants/GTAO non-repeatability
+render-indirect:704	open		GI stage time variance
+render-indirect:705	open		Whether screenshots of "before" states
+render-indirect:707	open		SSR's component comment
+render-indirect:709	open		Atmosphere's role in the environment (one prefilter level per frame, half-degree switching)…

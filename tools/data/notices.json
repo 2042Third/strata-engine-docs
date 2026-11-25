@@ -1,0 +1,155 @@
+{
+	"about": "What the site ships (plan/pipelines.md §15, section A; rulings 6, R22), kept by hand: per component its package and version (checked against package-lock.json), its license id, its copyright lines as its own notice states them, the license file in node_modules and the files of the built site that are its (patterns relative to dist/). copyrightFrom names where the lines stand when that is not the license file: a file under node_modules, which the check reads, or a sentence. omit lists lines of the license file that the notice leaves out; licenseUntil ends the part of the file that applies. Whoever changes package-lock.json updates this file in the same commit (plan/pipelines.md, the table of generated and hand-kept files).",
+	"components": [
+		{
+			"name": "Inter (font)",
+			"package": "@fontsource-variable/inter",
+			"version": "5.3.0",
+			"license": "OFL-1.1",
+			"copyright": ["Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter)"],
+			"licenseFile": "@fontsource-variable/inter/LICENSE",
+			"files": ["_astro/inter-*.woff2"]
+		},
+		{
+			"name": "JetBrains Mono (font)",
+			"package": "@fontsource-variable/jetbrains-mono",
+			"version": "5.3.0",
+			"license": "OFL-1.1",
+			"copyright": ["Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono)"],
+			"licenseFile": "@fontsource-variable/jetbrains-mono/LICENSE",
+			"files": ["_astro/jetbrains-mono-*.woff2"]
+		},
+		{
+			"name": "Source Serif 4 (font)",
+			"package": "@fontsource-variable/source-serif-4",
+			"version": "5.3.1",
+			"license": "OFL-1.1",
+			"copyright": ["© 2014 - 2021 Adobe Systems Incorporated (http://www.adobe.com/), with Reserved Font Name ‘Source’."],
+			"copyrightFrom": "the copyright string (name 0) of the package's font files: the font is Adobe's, and the package's LICENSE names Google Inc. in its place",
+			"omit": ["Google Inc."],
+			"licenseFile": "@fontsource-variable/source-serif-4/LICENSE",
+			"files": ["_astro/source-serif-4-*.woff2"]
+		},
+		{
+			"name": "KaTeX",
+			"package": "katex",
+			"version": "0.16.47",
+			"license": "MIT",
+			"copyright": ["Copyright (c) 2013-2020 Khan Academy and other contributors"],
+			"licenseFile": "katex/LICENSE"
+		},
+		{
+			"name": "KaTeX fonts",
+			"package": "katex",
+			"version": "0.16.47",
+			"license": "OFL-1.1",
+			"copyright": ["Copyright (c) 2009-2010 Design Science, Inc.", "Copyright (c) 2014-2018 Khan Academy"],
+			"copyrightFrom": "the copyright string (name 0) of the font files in katex/dist/fonts/, whose license string (name 13) gives the SIL Open Font License 1.1 with the reserved font name KaTeX_<font> of each file; the package holds no copy of the license, and the text is the one of the other fonts",
+			"licenseFile": "@fontsource-variable/inter/LICENSE",
+			"files": ["_astro/KaTeX_*"]
+		},
+		{
+			"name": "Starlight",
+			"package": "@astrojs/starlight",
+			"version": "0.42.10",
+			"license": "MIT",
+			"copyright": ["Copyright (c) 2023 [Astro contributors](https://github.com/withastro/starlight/graphs/contributors)"],
+			"licenseFile": "@astrojs/starlight/LICENSE",
+			"files": [
+				"_astro/MobileTableOfContents.astro_astro_type_script_index_*_lang.*.js",
+				"_astro/TableOfContents.astro_astro_type_script_index_*_lang.*.js",
+				"_astro/Search.astro_astro_type_script_index_*_lang.*.js",
+				"_astro/starlight-toc.*.js"
+			]
+		},
+		{
+			"name": "Night Owl (the code theme Starlight ships)",
+			"package": "@astrojs/starlight",
+			"version": "0.42.10",
+			"license": "MIT",
+			"copyright": ["Copyright (c) 2018 Sarah Drasner"],
+			"copyrightFrom": "@astrojs/starlight/dist/integrations/expressive-code/themes/night-owl-dark.js",
+			"licenseFile": "@astrojs/starlight/LICENSE"
+		},
+		{
+			"name": "Astro",
+			"package": "astro",
+			"version": "7.4.8",
+			"license": "MIT",
+			"copyright": [
+				"Copyright (c) 2021 Fred K. Schott",
+				"Copyright (c) 2020 [these people](https://github.com/sveltejs/kit/graphs/contributors)",
+				"Copyright (c) 2019-present, Yuxi (Evan) You and Vite contributors"
+			],
+			"licenseFile": "astro/LICENSE",
+			"files": ["_astro/page.*.js"]
+		},
+		{
+			"name": "Vite",
+			"package": "vite",
+			"version": "8.3.7",
+			"license": "MIT",
+			"copyright": ["Copyright (c) 2019-present, VoidZero Inc. and Vite contributors"],
+			"licenseFile": "vite/LICENSE.md",
+			"licenseUntil": "# Licenses of bundled dependencies"
+		},
+		{
+			"name": "Expressive Code",
+			"package": "astro-expressive-code",
+			"version": "0.44.3",
+			"packages": {
+				"expressive-code": "0.44.3",
+				"rehype-expressive-code": "0.44.3",
+				"@expressive-code/core": "0.44.3",
+				"@expressive-code/plugin-frames": "0.44.3",
+				"@expressive-code/plugin-shiki": "0.44.3",
+				"@expressive-code/plugin-text-markers": "0.44.3",
+				"@expressive-code/plugin-line-numbers": "0.44.3",
+				"@expressive-code/plugin-collapsible-sections": "0.44.3"
+			},
+			"license": "MIT",
+			"copyright": ["Copyright (c) 2023 Tibor Schiemann"],
+			"licenseFile": "astro-expressive-code/LICENSE",
+			"files": ["_astro/ec.*.js"]
+		},
+		{
+			"name": "Pagefind",
+			"package": "pagefind",
+			"version": "1.6.0",
+			"license": "MIT",
+			"copyright": ["Copyright (c) Pagefind"],
+			"licenseFile": "pagefind/LICENSE/LICENSE",
+			"files": [
+				"pagefind/pagefind.js",
+				"pagefind/pagefind-worker.js",
+				"pagefind/pagefind-highlight.js",
+				"pagefind/pagefind-modular-ui.js",
+				"pagefind/pagefind-component-ui.js",
+				"pagefind/wasm.*.pagefind"
+			]
+		},
+		{
+			"name": "Pagefind's default UI",
+			"package": "@pagefind/default-ui",
+			"version": "1.6.0",
+			"license": "MIT",
+			"copyright": ["Copyright (c) Pagefind"],
+			"copyrightFrom": "pagefind/LICENSE/LICENSE",
+			"licenseFile": "pagefind/LICENSE/LICENSE",
+			"files": ["pagefind/pagefind-ui.js", "_astro/ui-core.*.js"]
+		}
+	],
+	"own": {
+		"why": "The site's own code, which is the book's (LICENSE): the script of the PageTitle override (src/components/PageTitle.astro), which holds the track and strip code.",
+		"files": ["_astro/PageTitle.astro_astro_type_script_index_*_lang.*.js"]
+	},
+	"shows": [
+		{
+			"name": "Fox (Samples/OpenWorld/Assets/Models/Fox/Fox.glb), from the Khronos glTF Sample Assets",
+			"license": "CC0-1.0 (model by PixelMannen); CC-BY-4.0 (rigging and animation by tomkranis; glTF conversion by @AsoboStudio and @scurest)",
+			"copyright": ["© 2014, tomkranis.", "© 2017, @AsoboStudio and @scurest."],
+			"source": "https://github.com/KhronosGroup/glTF-Sample-Assets/tree/edc7c9e67c639d230715049ee31f9a96a6babbbe/Models/Fox",
+			"note": "The full credit, copied from the license file beside the model at that commit (rulings 6, R22). The sample's own credit line at the pin leaves the two copyright lines out."
+		}
+	]
+}

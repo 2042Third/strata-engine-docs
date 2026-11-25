@@ -1,0 +1,32 @@
+---
+// One level of the sidebar (src/components/Sidebar.astro): the parts as groups that open, each listing its pages. It
+// draws what Starlight's SidebarSublist draws, links, groups and their restore points, with one class on the list
+// instead of a scoped class on every element and a caret drawn by the style sheet instead of an inline icon in every
+// group, and links relative to the page: the 395 links of the book are on every page (plan/site.md, budget rows 9 and
+// 10; rulings-13, R59).
+import SidebarRestorePoint from '@astrojs/starlight/components/SidebarRestorePoint.astro';
+import { relativeUrl } from '../lib/settings.mjs';
+
+interface Props {
+	sublist: any[];
+	nested?: boolean;
+}
+
+const { sublist, nested } = Astro.props;
+// Whether a group holds the page being read (Starlight's own helper is not exported): that group is drawn open.
+const hasCurrent = (group: any): boolean => group.entries.some((entry: any) => (entry.type === 'link' ? entry.isCurrent : hasCurrent(entry)));
+for (const entry of sublist) {
+	// The book's sidebar (src/lib/sidebar.mjs) gives its entries no badge and no attributes: this list draws none.
+	if (entry.badge || (entry.type === 'link' && Object.keys(entry.attrs ?? {}).length > 0)) {
+		throw new Error(`the sidebar entry "${entry.label}" has a badge or attributes, which src/components/SidebarList.astro does not draw`);
+	}
+}
+---
+
+<ul class={nested ? undefined : 'book-sidebar'}>
+	{sublist.map((entry) => <li>{entry.type === 'link' ? (
+		<a href={relativeUrl(Astro.url.pathname, entry.href)} aria-current={entry.isCurrent ? 'page' : undefined} class={nested ? undefined : 'large'}>{entry.label}</a>
+	) : (
+		<details open={hasCurrent(entry) || !entry.collapsed}><summary><span class="large">{entry.label}</span></summary><SidebarRestorePoint /><Astro.self sublist={entry.entries} nested /></details>
+	)}</li>)}
+</ul>

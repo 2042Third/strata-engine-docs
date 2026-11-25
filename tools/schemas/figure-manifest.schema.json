@@ -1,0 +1,297 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "tools/schemas/figure-manifest.schema.json",
+	"title": "Figure manifest of one chapter",
+	"description": "src/content/figures/<part>/<chapter>.json: the recipe of every figure of the chapter (plan/pipelines.md §5.2). tools/figures.py check reads manifests against this schema and then checks what a schema cannot see: the engine at the pin, the dumps, the pages, the published files and their stamps (§5.8).",
+	"type": "object",
+	"required": ["figures"],
+	"additionalProperties": false,
+	"properties": {
+		"figures": {
+			"type": "array",
+			"items": { "$ref": "#/$defs/figure" }
+		}
+	},
+	"$defs": {
+		"id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+		"pointer": { "type": "string", "pattern": "^(/([^~/]|~[01])*)+$", "description": "A JSON pointer (RFC 6901) into a result." },
+		"vector3": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" } },
+		"dimension": { "type": "integer", "minimum": 16, "maximum": 4096 },
+		"preset": { "enum": ["low", "medium", "high", "ultra"] },
+		"expectation": {
+			"type": "object",
+			"minProperties": 1,
+			"maxProperties": 1,
+			"additionalProperties": false,
+			"properties": { "equals": true, "min": { "type": "number" }, "max": { "type": "number" } }
+		},
+		"commandStep": {
+			"description": "An engine command-script step (StrataEditor/src/Editor/EditorCommandRunner.cpp:431-433) plus the book's entityName, which the tool turns into entity.find {name} and the step's entity.",
+			"type": "object",
+			"required": ["command"],
+			"additionalProperties": false,
+			"properties": {
+				"command": { "type": "string", "pattern": "^[a-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)+$" },
+				"parameters": { "type": "object" },
+				"expect": { "type": "object", "propertyNames": { "$ref": "#/$defs/pointer" }, "additionalProperties": { "$ref": "#/$defs/expectation" } },
+				"bind": { "type": "object", "propertyNames": { "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" }, "additionalProperties": { "$ref": "#/$defs/pointer" } },
+				"until": {
+					"type": "object",
+					"minProperties": 1,
+					"additionalProperties": false,
+					"properties": { "steps": { "type": "integer", "minimum": 1 }, "seconds": { "type": "number", "exclusiveMinimum": 0 } }
+				},
+				"entityName": { "type": "string", "minLength": 1 }
+			}
+		},
+		"steps": { "type": "array", "items": { "$ref": "#/$defs/commandStep" } },
+		"project": {
+			"oneOf": [
+				{ "title": "a sample", "type": "object", "required": ["sample"], "additionalProperties": false, "properties": { "sample": { "type": "string", "pattern": "^[A-Za-z0-9_-]+$" } } },
+				{ "title": "a template", "type": "object", "required": ["template"], "additionalProperties": false, "properties": { "template": { "enum": ["empty", "basic3d"] } } },
+				{ "title": "the look-dev project", "type": "object", "required": ["lookdev"], "additionalProperties": false, "properties": { "lookdev": { "const": true } } },
+				{ "title": "a lab", "type": "object", "required": ["lab", "template"], "additionalProperties": false, "properties": { "lab": { "type": "string", "pattern": "^labs/[a-z0-9]+(-[a-z0-9]+)*\\.json$" }, "template": { "enum": ["empty", "basic3d"] } } }
+			]
+		},
+		"camera": {
+			"oneOf": [
+				{ "title": "the scene's camera", "const": "scene" },
+				{
+					"title": "a camera of the recipe",
+					"type": "object",
+					"required": ["position", "target"],
+					"additionalProperties": false,
+					"properties": {
+						"position": { "$ref": "#/$defs/vector3" },
+						"target": { "$ref": "#/$defs/vector3" },
+						"fov": { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 180 }
+					}
+				}
+			]
+		},
+		"quality": {
+			"oneOf": [
+				{ "title": "a preset", "$ref": "#/$defs/preset" },
+				{ "title": "custom fields", "type": "object", "required": ["custom"], "additionalProperties": false, "properties": { "custom": { "type": "object", "minProperties": 1 } } }
+			]
+		},
+		"text": {
+			"oneOf": [
+				{
+					"title": "a command's result",
+					"type": "object",
+					"required": ["command", "keep"],
+					"additionalProperties": false,
+					"properties": {
+						"command": {
+							"type": "object",
+							"required": ["command"],
+							"additionalProperties": false,
+							"properties": { "command": { "type": "string", "pattern": "^[a-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)+$" }, "parameters": { "type": "object" } }
+						},
+						"keep": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/pointer" } },
+						"measured": {
+							"description": "Pointers inside keep whose values are measurements (timings): two runs are compared without them, and the first run's values are published (R57).",
+							"type": "array", "minItems": 1, "items": { "$ref": "#/$defs/pointer" }
+						}
+					}
+				},
+				{
+					"title": "a program's output",
+					"type": "object",
+					"required": ["program", "arguments"],
+					"additionalProperties": false,
+					"properties": {
+						"program": { "enum": ["StrataEditor", "StrataRuntime", "StrataCLI", "ctest"] },
+						"arguments": { "type": "array", "items": { "type": "string" } },
+						"redact": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+						"measured": {
+							"description": "Regular expressions of measurements (timings) in the output after redact: two runs are compared without them, and the first run's values are published (R57).",
+							"type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 }
+						}
+					}
+				}
+			]
+		},
+		"fields": {
+			"description": "The fields a recipe and its variants set (a variant may set any but kind, project, shot, camera, size, crops and publish; tools/figures.py check names the ones it refuses).",
+			"shows": { "type": "string", "minLength": 10 },
+			"caption": { "type": "string", "minLength": 10 },
+			"alt": { "type": "string", "minLength": 10 }
+		},
+		"crop": {
+			"type": "object",
+			"required": ["name", "rect", "scale"],
+			"additionalProperties": false,
+			"properties": {
+				"name": { "$ref": "#/$defs/id" },
+				"rect": { "type": "array", "minItems": 4, "maxItems": 4, "items": { "type": "number" } },
+				"scale": { "type": "integer" }
+			}
+		},
+		"variant": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"shows": { "$ref": "#/$defs/fields/shows" },
+				"caption": { "$ref": "#/$defs/fields/caption" },
+				"alt": { "$ref": "#/$defs/fields/alt" },
+				"kind": true, "project": true, "shot": true, "camera": true, "size": true, "crops": true, "publish": true,
+				"scene": { "type": "string", "pattern": "^[^/\\\\].*\\.stscene$" },
+				"station": { "enum": ["Dawn", "Golden", "Dusk"] },
+				"world": { "type": "object", "required": ["loadAll"], "additionalProperties": false, "properties": { "loadAll": { "const": true } } },
+				"quality": { "$ref": "#/$defs/quality" },
+				"antiAliasing": { "enum": ["taa", "fxaa", "morph", "off"] },
+				"postProcess": { "type": "object", "minProperties": 1 },
+				"materials": { "type": "object", "propertyNames": { "pattern": "^[^/\\\\].*\\.stmat$" }, "additionalProperties": { "type": "object", "minProperties": 1 } },
+				"debugView": { "type": "string", "pattern": "^[a-z]+$" },
+				"renderer": { "type": "object", "minProperties": 1, "description": "Renderer switches of viewport.capture (its renderer parameter at the pin, named as SceneRendererSpecification's fields) for the figure's own captures; a variant's renderer replaces the recipe's; tools/figures.py check reads them against the commands dump" },
+				"overlays": { "type": "boolean" },
+				"waitForAssets": { "type": "boolean" },
+				"play": {
+					"type": "object",
+					"required": ["steps"],
+					"additionalProperties": false,
+					"properties": { "steps": { "type": "integer", "minimum": 1 }, "input": { "type": "array", "items": { "type": "object" } } }
+				},
+				"live": {
+					"type": "object",
+					"required": ["atFixedStep", "frames"],
+					"additionalProperties": false,
+					"properties": { "atFixedStep": { "type": "integer", "minimum": 0 }, "frames": { "type": "integer", "minimum": 1, "maximum": 16 } }
+				},
+				"runtime": {
+					"type": "object",
+					"required": ["resolution", "seconds", "quality"],
+					"additionalProperties": false,
+					"properties": {
+						"resolution": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/dimension" } },
+						"seconds": { "type": "number", "exclusiveMinimum": 0 },
+						"quality": { "$ref": "#/$defs/preset" }
+					}
+				},
+				"editorWindow": {
+					"type": "object",
+					"required": ["layout", "steps"],
+					"additionalProperties": false,
+					"properties": {
+						"layout": { "type": "string", "pattern": "^layouts/[a-z0-9]+(-[a-z0-9]+)*\\.ini$" }, "steps": { "$ref": "#/$defs/steps" },
+						"windowSize": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "integer", "minimum": 360, "maximum": 4096 },
+							"description": "The editor's window in pixels, [width, height], at least 640 x 360 (--window-size); default [1280, 720]" },
+						"panel": { "type": "string", "pattern": "^[A-Za-z]+$", "description": "Picture only this panel (editor.screenshot's panel, a name editor.showPanel takes); default: the whole window" },
+						"launcher": { "const": true, "description": "The editor starts without a project, so the window shows the launcher; the recipe has no project" }
+					}
+				},
+				"text": { "$ref": "#/$defs/text" },
+				"reference": {
+					"type": "object",
+					"required": ["sketch"],
+					"additionalProperties": false,
+					"properties": { "sketch": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*\\.(cpp|cc|cxx)$" }, "arguments": { "type": "array", "items": { "type": "string" } } }
+				},
+				"takenBy": { "enum": ["playwright", "owner"] },
+				"url": { "type": "string", "pattern": "^https?://[^\\s]+$" },
+				"setup": { "$ref": "#/$defs/steps" },
+				"files": {
+					"description": "Files of the book copied into the figure's project copy before the editor opens it, or before the step atStep (1 for the first) of editorWindow.steps (editor) or of the setup steps (scene); a program's text figure stages them in the folder it runs in, before it starts",
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"title": "a file",
+								"type": "object",
+								"additionalProperties": false,
+								"required": ["from", "to"],
+								"properties": {
+									"from": { "type": "string", "pattern": "^book:[^/\\\\].*[^/]$", "description": "book:tutorials/..., as a tutorial's stage names its files" },
+									"to": { "type": "string", "minLength": 1, "description": "A path in the project, such as Scripts/Coin.cpp" },
+									"atStep": { "type": "integer", "minimum": 1 }
+								}
+							},
+							{
+								"title": "the files of a stage",
+								"type": "object",
+								"additionalProperties": false,
+								"required": ["stage"],
+								"properties": {
+									"stage": { "type": "integer", "minimum": 1, "description": "The files that stages 1 to n of the page's tutorial (tutorials/<page>.tutorial.json) copy, in order" },
+									"atStep": { "type": "integer", "minimum": 1 }
+								}
+							}
+						]
+					}
+				},
+				"expect": { "const": "complete" },
+				"expectAlso": { "type": "object", "propertyNames": { "$ref": "#/$defs/pointer" }, "additionalProperties": { "$ref": "#/$defs/expectation" } },
+				"relax": { "type": "object", "propertyNames": { "$ref": "#/$defs/pointer" }, "additionalProperties": { "type": "string" } },
+				"record": { "type": "object", "propertyNames": { "pattern": "^[A-Za-z][A-Za-z0-9]*$" }, "additionalProperties": { "$ref": "#/$defs/pointer" } },
+				"numbers": { "type": "string", "minLength": 10 },
+				"waitsFor": { "type": "string", "pattern": "^tier [123]: .+$" },
+				"blocked": { "type": "string", "minLength": 10, "description": "Why no take can make the figure at the pin, though it waits for no addition of pipelines.md §11: take skips it, and its page places its stand-in (standIn) or says in noStandIn why it shows none" },
+				"automation": {
+					"description": "An editor figure's window serves automation (true: on the free loopback port it picks, its token only in the take's private session folder), or also has an agent: StrataCLI mcp names itself client and sends the figure's steps, connected at the screenshot",
+					"oneOf": [
+						{ "const": true },
+						{ "type": "object", "required": ["client"], "additionalProperties": false, "properties": { "client": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9 ._-]{0,63}$" } } }
+					]
+				},
+				"baseline": { "enum": ["v0.6.0", "v0.7.0", "v0.7.0-medium"] }
+			}
+		},
+		"figure": {
+			"type": "object",
+			"required": ["id", "shows", "caption", "alt", "kind"],
+			"additionalProperties": false,
+			"properties": {
+				"id": { "$ref": "#/$defs/id" },
+				"shows": { "$ref": "#/$defs/fields/shows" },
+				"caption": { "$ref": "#/$defs/fields/caption" },
+				"alt": { "$ref": "#/$defs/fields/alt" },
+				"kind": { "enum": ["scene", "live", "editor", "runtime", "text", "reference", "tool", "diagram"] },
+				"project": { "$ref": "#/$defs/project" },
+				"scene": { "type": "string", "pattern": "^[^/\\\\].*\\.stscene$" },
+				"shot": { "type": "string", "pattern": "^[A-Za-z0-9]+(\\.[A-Za-z0-9-]+)+$" },
+				"station": { "enum": ["Dawn", "Golden", "Dusk"] },
+				"world": { "type": "object", "required": ["loadAll"], "additionalProperties": false, "properties": { "loadAll": { "const": true } } },
+				"camera": { "$ref": "#/$defs/camera" },
+				"size": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/dimension" } },
+				"quality": { "$ref": "#/$defs/quality" },
+				"antiAliasing": { "enum": ["taa", "fxaa", "morph", "off"] },
+				"postProcess": { "type": "object", "minProperties": 1 },
+				"materials": { "type": "object", "propertyNames": { "pattern": "^[^/\\\\].*\\.stmat$" }, "additionalProperties": { "type": "object", "minProperties": 1 } },
+				"debugView": { "type": "string", "pattern": "^[a-z]+$" },
+				"renderer": { "$ref": "#/$defs/variant/properties/renderer" },
+				"overlays": { "type": "boolean" },
+				"waitForAssets": { "type": "boolean" },
+				"play": { "$ref": "#/$defs/variant/properties/play" },
+				"live": { "$ref": "#/$defs/variant/properties/live" },
+				"runtime": { "$ref": "#/$defs/variant/properties/runtime" },
+				"editorWindow": { "$ref": "#/$defs/variant/properties/editorWindow" },
+				"text": { "$ref": "#/$defs/text" },
+				"reference": { "$ref": "#/$defs/variant/properties/reference" },
+				"takenBy": { "enum": ["playwright", "owner"] },
+				"url": { "type": "string", "pattern": "^https?://[^\\s]+$", "description": "The page a tool figure taken by Playwright shows." },
+				"setup": { "$ref": "#/$defs/steps" },
+				"files": { "$ref": "#/$defs/variant/properties/files" },
+				"variants": {
+					"type": "object",
+					"propertyNames": { "$ref": "#/$defs/id" },
+					"additionalProperties": { "$ref": "#/$defs/variant" }
+				},
+				"crops": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/crop" } },
+				"expect": { "const": "complete" },
+				"expectAlso": { "$ref": "#/$defs/variant/properties/expectAlso" },
+				"relax": { "$ref": "#/$defs/variant/properties/relax" },
+				"record": { "$ref": "#/$defs/variant/properties/record" },
+				"numbers": { "type": "string", "minLength": 10 },
+				"publish": { "enum": ["lossy", "lossless"] },
+				"waitsFor": { "type": "string", "pattern": "^tier [123]: .+$" },
+				"blocked": { "$ref": "#/$defs/variant/properties/blocked" },
+				"automation": { "$ref": "#/$defs/variant/properties/automation" },
+				"standIn": { "$ref": "#/$defs/id", "description": "The figure of this manifest the page places while this one waits or is blocked: a drawing, or the nearest honest picture (pipelines.md §11)" },
+				"noStandIn": { "type": "string", "minLength": 10, "description": "Why the page shows nothing in the place of this figure while it waits or is blocked" }
+			}
+		}
+	}
+}

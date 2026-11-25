@@ -1,0 +1,19 @@
+{
+	"figures": [
+		{
+			"id": "console-panel",
+			"kind": "editor",
+			"shows": "The editor's Console panel after 16 s of the Physics Playground's demo: the switches with Trace off, the filter box, and lines of the loggers Strata, App and Script, the warnings yellow",
+			"caption": "The Console panel shows the newest entries of the ring. Each line starts with its time in seconds and its logger, and its color gives its level: warnings are yellow. Trace is off, so trace lines are hidden.",
+			"alt": "The editor's Console panel. Above the list stand a Clear button, the switches Trace, Info, Warnings, Errors and Auto-scroll, all but Trace checked, and a filter box. Each line starts with a time in seconds and a logger in brackets: Script for the goal lines, Strata for yellow audio warnings, App for the editor's commands.",
+			"project": { "sample": "PhysicsPlayground" },
+			"play": { "steps": 960 },
+			"editorWindow": {
+				"layout": "layouts/console-panel.ini",
+				"windowSize": [1280, 800],
+				"panel": "Console",
+				"steps": []
+			}
+		}
+	]
+}

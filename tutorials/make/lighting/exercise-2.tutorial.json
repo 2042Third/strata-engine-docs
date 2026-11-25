@@ -1,0 +1,15 @@
+{
+	"page": "make/lighting",
+	"startsFrom": { "tutorial": "make/lighting" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "lighting.applySkyPreset", "parameters": { "preset": "GoldenHour", "sunAzimuth": 20 },
+					"expect": { "/preset": { "equals": "GoldenHour" } },
+					"checks": [ { "pointer": "/sunDirection/1", "approx": 0.1045, "tolerance": 0.002 } ] }
+			],
+			"endState": true
+		}
+	]
+}

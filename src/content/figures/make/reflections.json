@@ -1,0 +1,2095 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "The finished courtyard seen from its doorway, the sun behind the camera, under the Clear preset and under the Golden Hour preset. It has the room and yard probes, the wet floor and screen-space reflections, and each preset has its own baked probes.",
+			"caption": "The finished courtyard at noon and at dusk, each with its own baked probes. Notice the sphere: it mirrors the room, its walls and the bright doorway, not the sky. The wet floor mirrors the soil bed. At noon the sun lays a short patch inside the door, at dusk a long band across the floor and a warm patch on the back wall.",
+			"alt": "The inside of a plaster room seen from its doorway, with a mirror-like metal sphere on the left and a dark soil bed against the back wall, on a dark polished floor. In the first picture the light is a neutral gray, and the sun lays a short pale patch on the floor inside the door. The sphere shows the pale walls of the room and the bright doorway, and the floor mirrors the soil bed. In the second the whole room turns warm orange, the sphere mirrors the warm room and a long band of sunlight crosses the floor. A door-shaped patch of light, with the shadow of the sphere, lies on the back wall.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.5,
+					2.6
+				],
+				"target": [
+					0,
+					0.9,
+					-2.0
+				],
+				"fov": 70
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [],
+			"variants": {
+				"noon": {
+					"setup": [
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/result-noon/Plaster.stmat",
+								"properties": {
+									"BaseColor": [
+										0.8,
+										0.78,
+										0.74,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.9
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/result-noon/Soil.stmat",
+								"properties": {
+									"BaseColor": [
+										0.08,
+										0.05,
+										0.035,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.95
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/result-noon/Steel.stmat",
+								"properties": {
+									"BaseColor": [
+										0.8,
+										0.8,
+										0.82,
+										1.0
+									],
+									"Metallic": 1.0,
+									"Roughness": 0.1
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/result-noon/Wet.stmat",
+								"properties": {
+									"BaseColor": [
+										0.16,
+										0.15,
+										0.14,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.04,
+									"IOR": 1.33
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Back",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-noon/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											1.5,
+											-2.1
+										],
+										"Scale": [
+											6.4,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Left",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-noon/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-3.1,
+											1.5,
+											0
+										],
+										"Scale": [
+											0.2,
+											3,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Right",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-noon/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											3.1,
+											1.5,
+											0
+										],
+										"Scale": [
+											0.2,
+											3,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Front Left",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-noon/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-1.9,
+											1.5,
+											2.1
+										],
+										"Scale": [
+											2.6,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Front Right",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-noon/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											1.9,
+											1.5,
+											2.1
+										],
+										"Scale": [
+											2.6,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Lintel",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-noon/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											2.5,
+											2.1
+										],
+										"Scale": [
+											1.2,
+											1,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Roof",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-noon/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											3.1,
+											0
+										],
+										"Scale": [
+											6.4,
+											0.2,
+											4.4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Soil Bed",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-noon/Soil.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											2,
+											0.15,
+											-1.5
+										],
+										"Scale": [
+											2,
+											0.3,
+											1
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Metal Sphere",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Sphere",
+										"Material": "Materials/result-noon/Steel.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-1.2,
+											0.5,
+											0.8
+										],
+										"Scale": [
+											1,
+											1,
+											1
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "lighting.applySkyPreset",
+							"parameters": {
+								"preset": "Clear",
+								"sunAzimuth": 70
+							}
+						},
+						{
+							"command": "component.set",
+							"entityName": "Ground",
+							"parameters": {
+								"component": "MeshRenderer",
+								"values": {
+									"Material": "Materials/result-noon/Wet.stmat"
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Room Probe",
+								"components": {
+									"Transform": {
+										"Translation": [
+											0,
+											1.5,
+											0
+										]
+									},
+									"ReflectionProbe": {
+										"Extents": [
+											3.3,
+											1.8,
+											2.3
+										],
+										"BlendDistance": 0.3,
+										"Priority": 1
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Yard Probe",
+								"components": {
+									"Transform": {
+										"Translation": [
+											0,
+											1.5,
+											4.2
+										]
+									},
+									"ReflectionProbe": {
+										"Extents": [
+											4,
+											1.8,
+											2.5
+										],
+										"BlendDistance": 0.5
+									}
+								}
+							}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						}
+					],
+					"postProcess": {
+						"ScreenSpaceReflections": true
+					}
+				},
+				"dusk": {
+					"setup": [
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/result-dusk/Plaster.stmat",
+								"properties": {
+									"BaseColor": [
+										0.8,
+										0.78,
+										0.74,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.9
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/result-dusk/Soil.stmat",
+								"properties": {
+									"BaseColor": [
+										0.08,
+										0.05,
+										0.035,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.95
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/result-dusk/Steel.stmat",
+								"properties": {
+									"BaseColor": [
+										0.8,
+										0.8,
+										0.82,
+										1.0
+									],
+									"Metallic": 1.0,
+									"Roughness": 0.1
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/result-dusk/Wet.stmat",
+								"properties": {
+									"BaseColor": [
+										0.16,
+										0.15,
+										0.14,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.04,
+									"IOR": 1.33
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Back",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-dusk/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											1.5,
+											-2.1
+										],
+										"Scale": [
+											6.4,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Left",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-dusk/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-3.1,
+											1.5,
+											0
+										],
+										"Scale": [
+											0.2,
+											3,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Right",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-dusk/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											3.1,
+											1.5,
+											0
+										],
+										"Scale": [
+											0.2,
+											3,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Front Left",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-dusk/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-1.9,
+											1.5,
+											2.1
+										],
+										"Scale": [
+											2.6,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Front Right",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-dusk/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											1.9,
+											1.5,
+											2.1
+										],
+										"Scale": [
+											2.6,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Lintel",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-dusk/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											2.5,
+											2.1
+										],
+										"Scale": [
+											1.2,
+											1,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Roof",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-dusk/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											3.1,
+											0
+										],
+										"Scale": [
+											6.4,
+											0.2,
+											4.4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Soil Bed",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-dusk/Soil.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											2,
+											0.15,
+											-1.5
+										],
+										"Scale": [
+											2,
+											0.3,
+											1
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Metal Sphere",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Sphere",
+										"Material": "Materials/result-dusk/Steel.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-1.2,
+											0.5,
+											0.8
+										],
+										"Scale": [
+											1,
+											1,
+											1
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "lighting.applySkyPreset",
+							"parameters": {
+								"preset": "GoldenHour",
+								"sunAzimuth": 70
+							}
+						},
+						{
+							"command": "component.set",
+							"entityName": "Ground",
+							"parameters": {
+								"component": "MeshRenderer",
+								"values": {
+									"Material": "Materials/result-dusk/Wet.stmat"
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Room Probe",
+								"components": {
+									"Transform": {
+										"Translation": [
+											0,
+											1.5,
+											0
+										]
+									},
+									"ReflectionProbe": {
+										"Extents": [
+											3.3,
+											1.8,
+											2.3
+										],
+										"BlendDistance": 0.3,
+										"Priority": 1
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Yard Probe",
+								"components": {
+									"Transform": {
+										"Translation": [
+											0,
+											1.5,
+											4.2
+										]
+									},
+									"ReflectionProbe": {
+										"Extents": [
+											4,
+											1.8,
+											2.5
+										],
+										"BlendDistance": 0.5
+									}
+								}
+							}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						}
+					],
+					"postProcess": {
+						"ScreenSpaceReflections": true
+					}
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "ao-views",
+			"shows": "The courtyard room from inside its doorway, looking down at the floor, the sphere and the soil bed, in the AO debug view and in the lit view",
+			"caption": "The occlusion that darkens the indirect light, and the lit picture it darkens. Notice the gray bands in the corners, around the foot of the soil bed and under the sphere. In the lit picture they only darken the corners a little and lay a faint shade on the floor under the sphere.",
+			"alt": "The plaster room seen from inside its doorway, looking down at the floor. In the first picture everything is white except soft gray bands along the corners and around the foot of the soil bed, and a faint banded gray crescent under the sphere. In the lit picture the walls are blue-gray and the metal sphere mirrors the blue sky. The floor is dark blue, with a pale stripe of light from the doorway at the bottom left. Its corners are only slightly darker than the open walls, and a faint shade lies under the sphere.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0.6,
+					1.8,
+					1.9
+				],
+				"target": [
+					-0.5,
+					-0.1,
+					-1.2
+				],
+				"fov": 70
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [],
+			"variants": {
+				"ao": {
+					"debugView": "ao",
+					"setup": [
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/ao-views-ao/Plaster.stmat",
+								"properties": {
+									"BaseColor": [
+										0.8,
+										0.78,
+										0.74,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.9
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/ao-views-ao/Soil.stmat",
+								"properties": {
+									"BaseColor": [
+										0.08,
+										0.05,
+										0.035,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.95
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/ao-views-ao/Steel.stmat",
+								"properties": {
+									"BaseColor": [
+										0.8,
+										0.8,
+										0.82,
+										1.0
+									],
+									"Metallic": 1.0,
+									"Roughness": 0.1
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Back",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-ao/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											1.5,
+											-2.1
+										],
+										"Scale": [
+											6.4,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Left",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-ao/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-3.1,
+											1.5,
+											0
+										],
+										"Scale": [
+											0.2,
+											3,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Right",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-ao/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											3.1,
+											1.5,
+											0
+										],
+										"Scale": [
+											0.2,
+											3,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Front Left",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-ao/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-1.9,
+											1.5,
+											2.1
+										],
+										"Scale": [
+											2.6,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Front Right",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-ao/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											1.9,
+											1.5,
+											2.1
+										],
+										"Scale": [
+											2.6,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Lintel",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-ao/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											2.5,
+											2.1
+										],
+										"Scale": [
+											1.2,
+											1,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Roof",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-ao/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											3.1,
+											0
+										],
+										"Scale": [
+											6.4,
+											0.2,
+											4.4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Soil Bed",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-ao/Soil.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											2,
+											0.15,
+											-1.5
+										],
+										"Scale": [
+											2,
+											0.3,
+											1
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Metal Sphere",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Sphere",
+										"Material": "Materials/ao-views-ao/Steel.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-1.2,
+											0.5,
+											0.8
+										],
+										"Scale": [
+											1,
+											1,
+											1
+										]
+									}
+								}
+							}
+						}
+					]
+				},
+				"lit": {
+					"setup": [
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/ao-views-lit/Plaster.stmat",
+								"properties": {
+									"BaseColor": [
+										0.8,
+										0.78,
+										0.74,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.9
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/ao-views-lit/Soil.stmat",
+								"properties": {
+									"BaseColor": [
+										0.08,
+										0.05,
+										0.035,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.95
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/ao-views-lit/Steel.stmat",
+								"properties": {
+									"BaseColor": [
+										0.8,
+										0.8,
+										0.82,
+										1.0
+									],
+									"Metallic": 1.0,
+									"Roughness": 0.1
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Back",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-lit/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											1.5,
+											-2.1
+										],
+										"Scale": [
+											6.4,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Left",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-lit/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-3.1,
+											1.5,
+											0
+										],
+										"Scale": [
+											0.2,
+											3,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Right",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-lit/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											3.1,
+											1.5,
+											0
+										],
+										"Scale": [
+											0.2,
+											3,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Front Left",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-lit/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-1.9,
+											1.5,
+											2.1
+										],
+										"Scale": [
+											2.6,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Front Right",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-lit/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											1.9,
+											1.5,
+											2.1
+										],
+										"Scale": [
+											2.6,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Lintel",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-lit/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											2.5,
+											2.1
+										],
+										"Scale": [
+											1.2,
+											1,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Roof",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-lit/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											3.1,
+											0
+										],
+										"Scale": [
+											6.4,
+											0.2,
+											4.4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Soil Bed",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/ao-views-lit/Soil.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											2,
+											0.15,
+											-1.5
+										],
+										"Scale": [
+											2,
+											0.3,
+											1
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Metal Sphere",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Sphere",
+										"Material": "Materials/ao-views-lit/Steel.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-1.2,
+											0.5,
+											0.8
+										],
+										"Scale": [
+											1,
+											1,
+											1
+										]
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "wet-floor",
+			"shows": "The wet courtyard floor (Roughness 0.04, IOR 1.33) with the baked room probe, seen low from the doorway, with Screen Space Reflections off and on",
+			"caption": "The wet floor with the baked probe, without and with screen-space reflections. Notice the floor under the sphere: without them it mirrors only the probe's smeared room, with them an upside-down copy of the sphere, and one of the soil bed, appear in it.",
+			"alt": "A low view across a polished dark floor toward a mirror-like metal sphere and a dark soil bed against a pale plaster wall. In the first picture the floor shows a soft, blurred gray picture of the room's walls and the sphere only casts a soft shadow. In the second the floor shows a sharp upside-down copy of the sphere under it, with a faint dotted grain in its darkest part, and a dark copy of the soil bed under the bed.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0.3,
+					0.8,
+					2.6
+				],
+				"target": [
+					-0.7,
+					0.35,
+					-1.0
+				],
+				"fov": 50
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [],
+			"variants": {
+				"off": {
+					"postProcess": {
+						"ScreenSpaceReflections": false
+					},
+					"setup": [
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/wet-floor-off/Plaster.stmat",
+								"properties": {
+									"BaseColor": [
+										0.8,
+										0.78,
+										0.74,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.9
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/wet-floor-off/Soil.stmat",
+								"properties": {
+									"BaseColor": [
+										0.08,
+										0.05,
+										0.035,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.95
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/wet-floor-off/Steel.stmat",
+								"properties": {
+									"BaseColor": [
+										0.8,
+										0.8,
+										0.82,
+										1.0
+									],
+									"Metallic": 1.0,
+									"Roughness": 0.1
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/wet-floor-off/Wet.stmat",
+								"properties": {
+									"BaseColor": [
+										0.16,
+										0.15,
+										0.14,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.04,
+									"IOR": 1.33
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Back",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-off/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											1.5,
+											-2.1
+										],
+										"Scale": [
+											6.4,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Left",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-off/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-3.1,
+											1.5,
+											0
+										],
+										"Scale": [
+											0.2,
+											3,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Right",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-off/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											3.1,
+											1.5,
+											0
+										],
+										"Scale": [
+											0.2,
+											3,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Front Left",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-off/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-1.9,
+											1.5,
+											2.1
+										],
+										"Scale": [
+											2.6,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Front Right",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-off/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											1.9,
+											1.5,
+											2.1
+										],
+										"Scale": [
+											2.6,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Lintel",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-off/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											2.5,
+											2.1
+										],
+										"Scale": [
+											1.2,
+											1,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Roof",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-off/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											3.1,
+											0
+										],
+										"Scale": [
+											6.4,
+											0.2,
+											4.4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Soil Bed",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-off/Soil.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											2,
+											0.15,
+											-1.5
+										],
+										"Scale": [
+											2,
+											0.3,
+											1
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Metal Sphere",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Sphere",
+										"Material": "Materials/wet-floor-off/Steel.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-1.2,
+											0.5,
+											0.8
+										],
+										"Scale": [
+											1,
+											1,
+											1
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "component.set",
+							"entityName": "Ground",
+							"parameters": {
+								"component": "MeshRenderer",
+								"values": {
+									"Material": "Materials/wet-floor-off/Wet.stmat"
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Room Probe",
+								"components": {
+									"Transform": {
+										"Translation": [
+											0,
+											1.5,
+											0
+										]
+									},
+									"ReflectionProbe": {
+										"Extents": [
+											3.3,
+											1.8,
+											2.3
+										],
+										"BlendDistance": 0.3,
+										"Priority": 1
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Yard Probe",
+								"components": {
+									"Transform": {
+										"Translation": [
+											0,
+											1.5,
+											4.2
+										]
+									},
+									"ReflectionProbe": {
+										"Extents": [
+											4,
+											1.8,
+											2.5
+										],
+										"BlendDistance": 0.5
+									}
+								}
+							}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						}
+					]
+				},
+				"on": {
+					"postProcess": {
+						"ScreenSpaceReflections": true
+					},
+					"setup": [
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/wet-floor-on/Plaster.stmat",
+								"properties": {
+									"BaseColor": [
+										0.8,
+										0.78,
+										0.74,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.9
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/wet-floor-on/Soil.stmat",
+								"properties": {
+									"BaseColor": [
+										0.08,
+										0.05,
+										0.035,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.95
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/wet-floor-on/Steel.stmat",
+								"properties": {
+									"BaseColor": [
+										0.8,
+										0.8,
+										0.82,
+										1.0
+									],
+									"Metallic": 1.0,
+									"Roughness": 0.1
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/wet-floor-on/Wet.stmat",
+								"properties": {
+									"BaseColor": [
+										0.16,
+										0.15,
+										0.14,
+										1.0
+									],
+									"Metallic": 0.0,
+									"Roughness": 0.04,
+									"IOR": 1.33
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Back",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-on/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											1.5,
+											-2.1
+										],
+										"Scale": [
+											6.4,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Left",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-on/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-3.1,
+											1.5,
+											0
+										],
+										"Scale": [
+											0.2,
+											3,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Right",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-on/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											3.1,
+											1.5,
+											0
+										],
+										"Scale": [
+											0.2,
+											3,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Front Left",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-on/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-1.9,
+											1.5,
+											2.1
+										],
+										"Scale": [
+											2.6,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall Front Right",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-on/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											1.9,
+											1.5,
+											2.1
+										],
+										"Scale": [
+											2.6,
+											3,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Lintel",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-on/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											2.5,
+											2.1
+										],
+										"Scale": [
+											1.2,
+											1,
+											0.2
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Roof",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-on/Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											3.1,
+											0
+										],
+										"Scale": [
+											6.4,
+											0.2,
+											4.4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Soil Bed",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/wet-floor-on/Soil.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											2,
+											0.15,
+											-1.5
+										],
+										"Scale": [
+											2,
+											0.3,
+											1
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Metal Sphere",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Sphere",
+										"Material": "Materials/wet-floor-on/Steel.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-1.2,
+											0.5,
+											0.8
+										],
+										"Scale": [
+											1,
+											1,
+											1
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "component.set",
+							"entityName": "Ground",
+							"parameters": {
+								"component": "MeshRenderer",
+								"values": {
+									"Material": "Materials/wet-floor-on/Wet.stmat"
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Room Probe",
+								"components": {
+									"Transform": {
+										"Translation": [
+											0,
+											1.5,
+											0
+										]
+									},
+									"ReflectionProbe": {
+										"Extents": [
+											3.3,
+											1.8,
+											2.3
+										],
+										"BlendDistance": 0.3,
+										"Priority": 1
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Yard Probe",
+								"components": {
+									"Transform": {
+										"Translation": [
+											0,
+											1.5,
+											4.2
+										]
+									},
+									"ReflectionProbe": {
+										"Extents": [
+											4,
+											1.8,
+											2.5
+										],
+										"BlendDistance": 0.5
+									}
+								}
+							}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						},
+						{
+							"command": "lighting.bakeProbes",
+							"parameters": {}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		}
+	]
+}

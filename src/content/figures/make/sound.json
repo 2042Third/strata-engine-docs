@@ -1,0 +1,566 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "Coin Run on the Basic 3D ground after two seconds of play: the metal ball at rest after its fall, and the five gold coins on a half circle in front of it, their faces toward the camera",
+			"caption": "The result: Coin Run's ball and its five coins. From this page on, each coin chimes where it is collected and the ball thuds where it hits.",
+			"alt": "A grey metal ball resting on grey-brown ground under a blue sky, with five round gold coins standing in the air on a half circle around it, their flat faces toward the viewer.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0.0,
+					2.8,
+					9.0
+				],
+				"target": [
+					0.0,
+					0.7,
+					0.8
+				],
+				"fov": 40
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"expect": "complete",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Ball.stmat",
+						"properties": {
+							"BaseColor": [
+								0.55,
+								0.56,
+								0.58,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.45
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Gold.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Ball.stmat"
+							},
+							"SphereCollider": {
+								"Radius": 0.5
+							},
+							"Transform": {
+								"Translation": [
+									-0.9,
+									3,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Ball",
+					"parameters": {
+						"component": "RigidBody"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold.stmat"
+							},
+							"SphereCollider": {
+								"Radius": 0.3
+							},
+							"Transform": {
+								"Translation": [
+									-4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Coin1",
+					"parameters": {
+						"component": "RigidBody"
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Coin1",
+					"parameters": {
+						"component": "RigidBody",
+						"values": {
+							"Type": "Kinematic",
+							"IsTrigger": true
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold.stmat"
+							},
+							"SphereCollider": {
+								"Radius": 0.3
+							},
+							"Transform": {
+								"Translation": [
+									-2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Coin2",
+					"parameters": {
+						"component": "RigidBody"
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Coin2",
+					"parameters": {
+						"component": "RigidBody",
+						"values": {
+							"Type": "Kinematic",
+							"IsTrigger": true
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold.stmat"
+							},
+							"SphereCollider": {
+								"Radius": 0.3
+							},
+							"Transform": {
+								"Translation": [
+									0.0,
+									0.8,
+									3.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Coin3",
+					"parameters": {
+						"component": "RigidBody"
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Coin3",
+					"parameters": {
+						"component": "RigidBody",
+						"values": {
+							"Type": "Kinematic",
+							"IsTrigger": true
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold.stmat"
+							},
+							"SphereCollider": {
+								"Radius": 0.3
+							},
+							"Transform": {
+								"Translation": [
+									2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Coin4",
+					"parameters": {
+						"component": "RigidBody"
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Coin4",
+					"parameters": {
+						"component": "RigidBody",
+						"values": {
+							"Type": "Kinematic",
+							"IsTrigger": true
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin5",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold.stmat"
+							},
+							"SphereCollider": {
+								"Radius": 0.3
+							},
+							"Transform": {
+								"Translation": [
+									4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Coin5",
+					"parameters": {
+						"component": "RigidBody"
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Coin5",
+					"parameters": {
+						"component": "RigidBody",
+						"values": {
+							"Type": "Kinematic",
+							"IsTrigger": true
+						}
+					}
+				}
+			],
+			"play": {
+				"steps": 120
+			}
+		},
+		{
+			"id": "asset-preview",
+			"shows": "The Asset tab of the clip Coin: Load Mode under Import Settings, and under Preview the Play button, the length 0:00.3 and an orange waveform that starts tall and thins out to the right",
+			"caption": "The Asset tab shows a clip's waveform and its length; the Play button plays it for you, outside any scene.",
+			"alt": "The Asset tab of the clip Coin, with its Load Mode under Import Settings. Under Preview are a Play button, the length 0:00.3 and an orange waveform, tall at the left and thinning toward the right.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-sound-short.ini",
+				"windowSize": [
+					1280,
+					540
+				],
+				"panel": "AssetInspector",
+				"steps": [
+					{
+						"command": "selection.set",
+						"parameters": {
+							"asset": "Sounds/Coin.ogg"
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "AssetInspector"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "inspector-source",
+			"shows": "The Inspector of the entity Hum: Transform at the origin, and the Audio Source with Clip Coin, Volume 1, Pitch 1, Loop, Play On Start and Spatial ticked, Min Distance 1, Max Distance 50 and Rolloff 1",
+			"caption": "The Audio Source in the Inspector: the clip, the volume, the pitch, the loop switch and the distance fields.",
+			"alt": "The Inspector of the entity Hum. Its Audio Source has Clip Coin, Volume 1 and Pitch 1; Loop, Play On Start and Spatial are ticked; Min Distance is 1, Max Distance 50 and Rolloff 1.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-sound.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Hum",
+							"components": {
+								"AudioSource": {
+									"Clip": "Sounds/Coin.ogg",
+									"Loop": true
+								}
+							}
+						},
+						"bind": {
+							"hum": "/id"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "hum"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Inspector"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "coin-console",
+			"shows": "The Console after the Third Person sample's scripts were built and the game played four seconds with the forward key held: its course script, which requests the coin clip when it is created, logs coin 1 of 12 and coin 2 of 12, and no warning about a dropped sound follows",
+			"caption": "The Console after a game whose script requests its coin clip early, here the Third Person sample: two coins collected, and no warning about a dropped sound.",
+			"alt": "The Console with lines marked App and Script: the course loaded with 12 coins, the reply of play.start with the state Play, then coin 1 of 12 and coin 2 of 12. No line warns about a sound.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-sound.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Console",
+				"steps": []
+			},
+			"crops": [
+				{
+					"name": "log",
+					"rect": [
+						0,
+						0.4033,
+						1,
+						0.76
+					],
+					"scale": 1
+				}
+			],
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "script.build",
+					"parameters": {
+						"wait": true
+					}
+				}
+			],
+			"play": {
+				"steps": 240,
+				"input": [
+					{
+						"step": 0,
+						"key": "W",
+						"action": "press"
+					}
+				]
+			}
+		},
+		{
+			"id": "impact-clip",
+			"shows": "The Asset tab of the Physics Playground clip Soft in Sounds/Impacts: length 0:00.1, and a waveform of a few large swings at the left that die away to a flat line",
+			"caption": "The soft impact clip: a short burst that starts loud and dies away, which suits a thud.",
+			"alt": "The Asset tab of the clip Soft from the folder Sounds/Impacts, 0:00.1 long. Its orange waveform has a few large swings at the left that shrink quickly to a flat line.",
+			"kind": "editor",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-sound-short.ini",
+				"windowSize": [
+					1280,
+					540
+				],
+				"panel": "AssetInspector",
+				"steps": [
+					{
+						"command": "selection.set",
+						"parameters": {
+							"asset": "Sounds/Impacts/Soft.ogg"
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "AssetInspector"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "music-source",
+			"shows": "The Inspector of the entity Music: an Audio Source with the clip Complete, Loop and Play On Start ticked and the Spatial box clear",
+			"caption": "The music source: the tune Complete, looping, with Spatial cleared so the volume does not depend on distance.",
+			"alt": "The Inspector of the entity Music. Its Audio Source has the clip Complete, Loop and Play On Start ticked, while the Spatial box below them is clear.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-sound.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Music",
+							"components": {
+								"AudioSource": {
+									"Clip": "Sounds/Complete.ogg",
+									"Loop": true,
+									"Spatial": false
+								}
+							}
+						},
+						"bind": {
+							"music": "/id"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "music"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Inspector"
+						}
+					}
+				]
+			}
+		}
+	]
+}

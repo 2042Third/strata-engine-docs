@@ -1,0 +1,2632 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "Two screens over the basic 3D scene's ground: the main menu with Play, Settings and Quit, and the settings screen with a volume slider, three window toggles, a vsync toggle and three size buttons",
+			"caption": "The finished screens.",
+			"alt": "Two dark panels: a main menu and settings.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "Menu"
+					},
+					"bind": {
+						"menu": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "menu"
+						},
+						"component": "UICanvas",
+						"values": {
+							"ReferenceResolution": [
+								1280,
+								720
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "panel",
+						"name": "MainPanel",
+						"parent": {
+							"$ref": "menu"
+						},
+						"anchor": "middleCenter",
+						"position": [
+							-262,
+							0
+						],
+						"size": [
+							420,
+							360
+						]
+					},
+					"bind": {
+						"main": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "verticalLayout",
+						"name": "Column",
+						"parent": {
+							"$ref": "main"
+						},
+						"anchor": "stretch",
+						"size": [
+							0,
+							0
+						]
+					},
+					"bind": {
+						"mainColumn": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "mainColumn"
+						},
+						"component": "UILayout",
+						"values": {
+							"Padding": [
+								32,
+								28,
+								32,
+								32
+							],
+							"Spacing": [
+								0,
+								14
+							],
+							"ChildAlignment": "TopCenter",
+							"StretchChildren": true
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "Title",
+						"parent": {
+							"$ref": "mainColumn"
+						},
+						"text": "Strata Course",
+						"size": [
+							356,
+							64
+						]
+					},
+					"bind": {
+						"mainColumnTitle": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "mainColumnTitle"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 44
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Play",
+						"parent": {
+							"$ref": "mainColumn"
+						},
+						"text": "Play",
+						"size": [
+							356,
+							64
+						]
+					},
+					"bind": {
+						"Play": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Settings",
+						"parent": {
+							"$ref": "mainColumn"
+						},
+						"text": "Settings",
+						"size": [
+							356,
+							64
+						]
+					},
+					"bind": {
+						"Settings": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Quit",
+						"parent": {
+							"$ref": "mainColumn"
+						},
+						"text": "Quit",
+						"size": [
+							356,
+							64
+						]
+					},
+					"bind": {
+						"Quit": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "panel",
+						"name": "SettingsPanel",
+						"parent": {
+							"$ref": "menu"
+						},
+						"anchor": "middleCenter",
+						"position": [
+							232,
+							0
+						],
+						"size": [
+							460,
+							556
+						]
+					},
+					"bind": {
+						"settings": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "verticalLayout",
+						"name": "Column",
+						"parent": {
+							"$ref": "settings"
+						},
+						"anchor": "stretch",
+						"size": [
+							0,
+							0
+						]
+					},
+					"bind": {
+						"settingsColumn": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "settingsColumn"
+						},
+						"component": "UILayout",
+						"values": {
+							"Padding": [
+								32,
+								28,
+								32,
+								32
+							],
+							"Spacing": [
+								0,
+								14
+							],
+							"ChildAlignment": "TopCenter",
+							"StretchChildren": true
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "Title",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"text": "Settings",
+						"size": [
+							396,
+							64
+						]
+					},
+					"bind": {
+						"settingsColumnTitle": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "settingsColumnTitle"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 44
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "VolumeLabel",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"text": "Volume",
+						"size": [
+							396,
+							36
+						]
+					},
+					"bind": {
+						"volumeLabel": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "volumeLabel"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 28,
+							"Alignment": "Left"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "slider",
+						"name": "Volume",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"size": [
+							396,
+							40
+						]
+					},
+					"bind": {
+						"volume": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "volume"
+						},
+						"component": "UISlider",
+						"values": {
+							"Value": 0.8
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "toggle",
+						"name": "Windowed",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"text": "Windowed",
+						"size": [
+							396,
+							48
+						]
+					},
+					"bind": {
+						"Windowed": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "Windowed"
+						},
+						"component": "UIToggle",
+						"values": {
+							"IsOn": true,
+							"Group": {
+								"$ref": "settings"
+							}
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "toggle",
+						"name": "Borderless",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"text": "Borderless",
+						"size": [
+							396,
+							48
+						]
+					},
+					"bind": {
+						"Borderless": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "Borderless"
+						},
+						"component": "UIToggle",
+						"values": {
+							"IsOn": false,
+							"Group": {
+								"$ref": "settings"
+							}
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "toggle",
+						"name": "Fullscreen",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"text": "Fullscreen",
+						"size": [
+							396,
+							48
+						]
+					},
+					"bind": {
+						"Fullscreen": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "Fullscreen"
+						},
+						"component": "UIToggle",
+						"values": {
+							"IsOn": false,
+							"Group": {
+								"$ref": "settings"
+							}
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "toggle",
+						"name": "VSync",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"text": "VSync",
+						"size": [
+							396,
+							48
+						]
+					},
+					"bind": {
+						"VSync": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "VSync"
+						},
+						"component": "UIToggle",
+						"values": {
+							"IsOn": true
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "horizontalLayout",
+						"name": "Sizes",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"size": [
+							396,
+							56
+						]
+					},
+					"bind": {
+						"sizes": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "sizes"
+						},
+						"component": "UILayout",
+						"values": {
+							"Spacing": [
+								12,
+								0
+							],
+							"ChildAlignment": "MiddleCenter"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Size720",
+						"parent": {
+							"$ref": "sizes"
+						},
+						"text": "720p",
+						"size": [
+							124,
+							56
+						]
+					},
+					"bind": {
+						"Size720": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Size1080",
+						"parent": {
+							"$ref": "sizes"
+						},
+						"text": "1080p",
+						"size": [
+							124,
+							56
+						]
+					},
+					"bind": {
+						"Size1080": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Size1440",
+						"parent": {
+							"$ref": "sizes"
+						},
+						"text": "1440p",
+						"size": [
+							124,
+							56
+						]
+					},
+					"bind": {
+						"Size1440": "/entity"
+					}
+				}
+			]
+		},
+		{
+			"id": "menu-works",
+			"shows": "The main menu over black: the title Strata Course and the buttons Play, Settings and Quit",
+			"caption": "The main menu: a title and three buttons.",
+			"alt": "Three blue buttons, Play, Settings and Quit, under the title Strata Course.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"entityName": "Ground",
+					"parameters": {
+						"active": false
+					}
+				},
+				{
+					"command": "entity.setActive",
+					"entityName": "Sky",
+					"parameters": {
+						"active": false
+					}
+				},
+				{
+					"command": "entity.setActive",
+					"entityName": "Sun",
+					"parameters": {
+						"active": false
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Main Camera",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"ClearColor": [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "Menu"
+					},
+					"bind": {
+						"menu": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "menu"
+						},
+						"component": "UICanvas",
+						"values": {
+							"ReferenceResolution": [
+								1280,
+								720
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "panel",
+						"name": "MainPanel",
+						"parent": {
+							"$ref": "menu"
+						},
+						"anchor": "middleCenter",
+						"position": [
+							0,
+							0
+						],
+						"size": [
+							420,
+							360
+						]
+					},
+					"bind": {
+						"main": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "verticalLayout",
+						"name": "Column",
+						"parent": {
+							"$ref": "main"
+						},
+						"anchor": "stretch",
+						"size": [
+							0,
+							0
+						]
+					},
+					"bind": {
+						"mainColumn": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "mainColumn"
+						},
+						"component": "UILayout",
+						"values": {
+							"Padding": [
+								32,
+								28,
+								32,
+								32
+							],
+							"Spacing": [
+								0,
+								14
+							],
+							"ChildAlignment": "TopCenter",
+							"StretchChildren": true
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "Title",
+						"parent": {
+							"$ref": "mainColumn"
+						},
+						"text": "Strata Course",
+						"size": [
+							356,
+							64
+						]
+					},
+					"bind": {
+						"mainColumnTitle": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "mainColumnTitle"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 44
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Play",
+						"parent": {
+							"$ref": "mainColumn"
+						},
+						"text": "Play",
+						"size": [
+							356,
+							64
+						]
+					},
+					"bind": {
+						"Play": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Settings",
+						"parent": {
+							"$ref": "mainColumn"
+						},
+						"text": "Settings",
+						"size": [
+							356,
+							64
+						]
+					},
+					"bind": {
+						"Settings": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Quit",
+						"parent": {
+							"$ref": "mainColumn"
+						},
+						"text": "Quit",
+						"size": [
+							356,
+							64
+						]
+					},
+					"bind": {
+						"Quit": "/entity"
+					}
+				}
+			]
+		},
+		{
+			"id": "focus-shown",
+			"shows": "The main menu after one press of the Down arrow: Play has the focus and is drawn in its Focused Color, orange, while Settings and Quit keep their normal blue",
+			"caption": "The focused button, Play, takes its Focused Color.",
+			"alt": "Play is orange; Settings and Quit are blue.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "Menu"
+					},
+					"bind": {
+						"menu": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "menu"
+						},
+						"component": "UICanvas",
+						"values": {
+							"ReferenceResolution": [
+								1280,
+								720
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "panel",
+						"name": "MainPanel",
+						"parent": {
+							"$ref": "menu"
+						},
+						"anchor": "middleCenter",
+						"position": [
+							0,
+							0
+						],
+						"size": [
+							420,
+							360
+						]
+					},
+					"bind": {
+						"main": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "verticalLayout",
+						"name": "Column",
+						"parent": {
+							"$ref": "main"
+						},
+						"anchor": "stretch",
+						"size": [
+							0,
+							0
+						]
+					},
+					"bind": {
+						"mainColumn": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "mainColumn"
+						},
+						"component": "UILayout",
+						"values": {
+							"Padding": [
+								32,
+								28,
+								32,
+								32
+							],
+							"Spacing": [
+								0,
+								14
+							],
+							"ChildAlignment": "TopCenter",
+							"StretchChildren": true
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "Title",
+						"parent": {
+							"$ref": "mainColumn"
+						},
+						"text": "Strata Course",
+						"size": [
+							356,
+							64
+						]
+					},
+					"bind": {
+						"mainColumnTitle": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "mainColumnTitle"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 44
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Play",
+						"parent": {
+							"$ref": "mainColumn"
+						},
+						"text": "Play",
+						"size": [
+							356,
+							64
+						]
+					},
+					"bind": {
+						"Play": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Settings",
+						"parent": {
+							"$ref": "mainColumn"
+						},
+						"text": "Settings",
+						"size": [
+							356,
+							64
+						]
+					},
+					"bind": {
+						"Settings": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Quit",
+						"parent": {
+							"$ref": "mainColumn"
+						},
+						"text": "Quit",
+						"size": [
+							356,
+							64
+						]
+					},
+					"bind": {
+						"Quit": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "Play"
+						},
+						"component": "UIImage",
+						"values": {
+							"Color": [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "Play"
+						},
+						"component": "UISelectable",
+						"values": {
+							"NormalColor": [
+								0.23,
+								0.47,
+								0.93,
+								1
+							],
+							"HoverColor": [
+								0.23,
+								0.47,
+								0.93,
+								1
+							],
+							"FocusedColor": [
+								0.98,
+								0.6,
+								0.15,
+								1
+							],
+							"FadeDuration": 0
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "Settings"
+						},
+						"component": "UIImage",
+						"values": {
+							"Color": [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "Settings"
+						},
+						"component": "UISelectable",
+						"values": {
+							"NormalColor": [
+								0.23,
+								0.47,
+								0.93,
+								1
+							],
+							"HoverColor": [
+								0.23,
+								0.47,
+								0.93,
+								1
+							],
+							"FocusedColor": [
+								0.98,
+								0.6,
+								0.15,
+								1
+							],
+							"FadeDuration": 0
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "Quit"
+						},
+						"component": "UIImage",
+						"values": {
+							"Color": [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "Quit"
+						},
+						"component": "UISelectable",
+						"values": {
+							"NormalColor": [
+								0.23,
+								0.47,
+								0.93,
+								1
+							],
+							"HoverColor": [
+								0.23,
+								0.47,
+								0.93,
+								1
+							],
+							"FocusedColor": [
+								0.98,
+								0.6,
+								0.15,
+								1
+							],
+							"FadeDuration": 0
+						}
+					}
+				}
+			],
+			"play": {
+				"steps": 20,
+				"input": [
+					{
+						"step": 0,
+						"key": "Down",
+						"action": "tap"
+					}
+				]
+			}
+		},
+		{
+			"id": "paused",
+			"shows": "The pause canvas (Sort Order 10) over the HUD canvas (Sort Order 0) on the basic 3D scene: the HUD corner texts Coins left: 3 and Time: 42 stay clear, the dark, slightly see-through Paused panel lies over the lower middle of the HUD yellow banner, whose text shows only faintly through it, and Resume has the focus and shows its Focused Color, orange",
+			"caption": "The pause canvas, Sort Order 10, draws over the HUD at 0.",
+			"alt": "A game screen with Coins left: 3, Time: 42 and a yellow banner. A dark panel titled Paused, with an orange Resume button, lies over the banner.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "HUD"
+					},
+					"bind": {
+						"hud": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "hud"
+						},
+						"component": "UICanvas",
+						"values": {
+							"ReferenceResolution": [
+								1280,
+								720
+							],
+							"SortOrder": 0,
+							"ReceivesInput": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "CoinText",
+						"parent": {
+							"$ref": "hud"
+						},
+						"text": "Coins left: 3",
+						"anchor": "topLeft",
+						"position": [
+							24,
+							24
+						],
+						"size": [
+							360,
+							48
+						]
+					},
+					"bind": {
+						"cointext": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "cointext"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 36,
+							"Alignment": "Left"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "TimerText",
+						"parent": {
+							"$ref": "hud"
+						},
+						"text": "Time: 42",
+						"anchor": "topRight",
+						"position": [
+							-24,
+							24
+						],
+						"size": [
+							360,
+							48
+						]
+					},
+					"bind": {
+						"timertext": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "timertext"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 36,
+							"Alignment": "Right"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "Banner",
+						"parent": {
+							"$ref": "hud"
+						},
+						"anchor": "middleCenter",
+						"position": [
+							0,
+							-100
+						],
+						"size": [
+							820,
+							72
+						]
+					},
+					"bind": {
+						"banner": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "banner"
+						},
+						"component": "UIImage",
+						"values": {
+							"Color": [
+								0.95,
+								0.75,
+								0.2,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "BannerText",
+						"parent": {
+							"$ref": "banner"
+						},
+						"text": "Find the three coins before the time runs out",
+						"anchor": "stretch",
+						"size": [
+							0,
+							0
+						]
+					},
+					"bind": {
+						"bannertext": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "bannertext"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 32,
+							"Color": [
+								0.1,
+								0.1,
+								0.12,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "Pause"
+					},
+					"bind": {
+						"menu": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "menu"
+						},
+						"component": "UICanvas",
+						"values": {
+							"ReferenceResolution": [
+								1280,
+								720
+							]
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "menu"
+						},
+						"component": "UICanvas",
+						"values": {
+							"SortOrder": 10
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "panel",
+						"name": "Panel",
+						"parent": {
+							"$ref": "menu"
+						},
+						"anchor": "middleCenter",
+						"position": [
+							0,
+							0
+						],
+						"size": [
+							420,
+							210
+						]
+					},
+					"bind": {
+						"panel": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "verticalLayout",
+						"name": "Column",
+						"parent": {
+							"$ref": "panel"
+						},
+						"anchor": "stretch",
+						"size": [
+							0,
+							0
+						]
+					},
+					"bind": {
+						"panelColumn": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "panelColumn"
+						},
+						"component": "UILayout",
+						"values": {
+							"Padding": [
+								32,
+								28,
+								32,
+								32
+							],
+							"Spacing": [
+								0,
+								14
+							],
+							"ChildAlignment": "TopCenter",
+							"StretchChildren": true
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "Title",
+						"parent": {
+							"$ref": "panelColumn"
+						},
+						"text": "Paused",
+						"size": [
+							356,
+							64
+						]
+					},
+					"bind": {
+						"panelColumnTitle": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "panelColumnTitle"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 44
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Resume",
+						"parent": {
+							"$ref": "panelColumn"
+						},
+						"text": "Resume",
+						"size": [
+							356,
+							64
+						]
+					},
+					"bind": {
+						"Resume": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "Resume"
+						},
+						"component": "UIImage",
+						"values": {
+							"Color": [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "Resume"
+						},
+						"component": "UISelectable",
+						"values": {
+							"NormalColor": [
+								0.23,
+								0.47,
+								0.93,
+								1
+							],
+							"HoverColor": [
+								0.23,
+								0.47,
+								0.93,
+								1
+							],
+							"FocusedColor": [
+								0.98,
+								0.6,
+								0.15,
+								1
+							],
+							"FadeDuration": 0
+						}
+					}
+				}
+			],
+			"play": {
+				"steps": 20,
+				"input": [
+					{
+						"step": 0,
+						"key": "Down",
+						"action": "tap"
+					}
+				]
+			},
+			"numbers": "The setup sets the UICanvas SortOrder of the pause canvas to 10 and of the HUD canvas to 0."
+		},
+		{
+			"id": "settings-screen",
+			"shows": "The settings screen with the volume slider at 0.5 and, of the window toggles that share one Group, only Borderless on; VSync is off",
+			"caption": "The slider fills to its value, 0.5, and of the three window toggles only the one without a border is on.",
+			"alt": "A Settings panel: a half-filled slider, four toggles with one ticked, three size buttons.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "Menu"
+					},
+					"bind": {
+						"menu": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "menu"
+						},
+						"component": "UICanvas",
+						"values": {
+							"ReferenceResolution": [
+								1280,
+								720
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "panel",
+						"name": "SettingsPanel",
+						"parent": {
+							"$ref": "menu"
+						},
+						"anchor": "middleCenter",
+						"position": [
+							0,
+							0
+						],
+						"size": [
+							460,
+							556
+						]
+					},
+					"bind": {
+						"settings": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "verticalLayout",
+						"name": "Column",
+						"parent": {
+							"$ref": "settings"
+						},
+						"anchor": "stretch",
+						"size": [
+							0,
+							0
+						]
+					},
+					"bind": {
+						"settingsColumn": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "settingsColumn"
+						},
+						"component": "UILayout",
+						"values": {
+							"Padding": [
+								32,
+								28,
+								32,
+								32
+							],
+							"Spacing": [
+								0,
+								14
+							],
+							"ChildAlignment": "TopCenter",
+							"StretchChildren": true
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "Title",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"text": "Settings",
+						"size": [
+							396,
+							64
+						]
+					},
+					"bind": {
+						"settingsColumnTitle": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "settingsColumnTitle"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 44
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "VolumeLabel",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"text": "Volume",
+						"size": [
+							396,
+							36
+						]
+					},
+					"bind": {
+						"volumeLabel": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "volumeLabel"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 28,
+							"Alignment": "Left"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "slider",
+						"name": "Volume",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"size": [
+							396,
+							40
+						]
+					},
+					"bind": {
+						"volume": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "volume"
+						},
+						"component": "UISlider",
+						"values": {
+							"Value": 0.5
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "toggle",
+						"name": "Windowed",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"text": "Windowed",
+						"size": [
+							396,
+							48
+						]
+					},
+					"bind": {
+						"Windowed": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "Windowed"
+						},
+						"component": "UIToggle",
+						"values": {
+							"IsOn": false,
+							"Group": {
+								"$ref": "settings"
+							}
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "toggle",
+						"name": "Borderless",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"text": "Borderless",
+						"size": [
+							396,
+							48
+						]
+					},
+					"bind": {
+						"Borderless": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "Borderless"
+						},
+						"component": "UIToggle",
+						"values": {
+							"IsOn": true,
+							"Group": {
+								"$ref": "settings"
+							}
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "toggle",
+						"name": "Fullscreen",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"text": "Fullscreen",
+						"size": [
+							396,
+							48
+						]
+					},
+					"bind": {
+						"Fullscreen": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "Fullscreen"
+						},
+						"component": "UIToggle",
+						"values": {
+							"IsOn": false,
+							"Group": {
+								"$ref": "settings"
+							}
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "toggle",
+						"name": "VSync",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"text": "VSync",
+						"size": [
+							396,
+							48
+						]
+					},
+					"bind": {
+						"VSync": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "VSync"
+						},
+						"component": "UIToggle",
+						"values": {
+							"IsOn": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "horizontalLayout",
+						"name": "Sizes",
+						"parent": {
+							"$ref": "settingsColumn"
+						},
+						"size": [
+							396,
+							56
+						]
+					},
+					"bind": {
+						"sizes": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "sizes"
+						},
+						"component": "UILayout",
+						"values": {
+							"Spacing": [
+								12,
+								0
+							],
+							"ChildAlignment": "MiddleCenter"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Size720",
+						"parent": {
+							"$ref": "sizes"
+						},
+						"text": "720p",
+						"size": [
+							124,
+							56
+						]
+					},
+					"bind": {
+						"Size720": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Size1080",
+						"parent": {
+							"$ref": "sizes"
+						},
+						"text": "1080p",
+						"size": [
+							124,
+							56
+						]
+					},
+					"bind": {
+						"Size1080": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Size1440",
+						"parent": {
+							"$ref": "sizes"
+						},
+						"text": "1440p",
+						"size": [
+							124,
+							56
+						]
+					},
+					"bind": {
+						"Size1440": "/entity"
+					}
+				}
+			],
+			"numbers": "The setup sets the slider's UISlider Value to 0.5 in its range of 0 to 1."
+		},
+		{
+			"id": "rebind-capturing",
+			"shows": "The rebinding screen while the Jump row listens: its button reads Press a control..., the Boost row's button still shows its binding Key/LeftShift, then Reset and Back",
+			"caption": "The Jump row listens, while Boost still shows its key.",
+			"alt": "A Controls panel with four buttons: Press a control..., the left shift key, Reset and Back.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "Menu"
+					},
+					"bind": {
+						"menu": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "menu"
+						},
+						"component": "UICanvas",
+						"values": {
+							"ReferenceResolution": [
+								1280,
+								720
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "panel",
+						"name": "RebindPanel",
+						"parent": {
+							"$ref": "menu"
+						},
+						"anchor": "middleCenter",
+						"position": [
+							0,
+							0
+						],
+						"size": [
+							460,
+							444
+						]
+					},
+					"bind": {
+						"panel": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "verticalLayout",
+						"name": "Column",
+						"parent": {
+							"$ref": "panel"
+						},
+						"anchor": "stretch",
+						"size": [
+							0,
+							0
+						]
+					},
+					"bind": {
+						"panelColumn": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "panelColumn"
+						},
+						"component": "UILayout",
+						"values": {
+							"Padding": [
+								32,
+								28,
+								32,
+								32
+							],
+							"Spacing": [
+								0,
+								14
+							],
+							"ChildAlignment": "TopCenter",
+							"StretchChildren": true
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "Title",
+						"parent": {
+							"$ref": "panelColumn"
+						},
+						"text": "Controls",
+						"size": [
+							396,
+							64
+						]
+					},
+					"bind": {
+						"panelColumnTitle": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "panelColumnTitle"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 44
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Jump",
+						"parent": {
+							"$ref": "panelColumn"
+						},
+						"text": "Press a control...",
+						"size": [
+							396,
+							64
+						]
+					},
+					"bind": {
+						"Jump": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Boost",
+						"parent": {
+							"$ref": "panelColumn"
+						},
+						"text": "Key/LeftShift",
+						"size": [
+							396,
+							64
+						]
+					},
+					"bind": {
+						"Boost": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Reset",
+						"parent": {
+							"$ref": "panelColumn"
+						},
+						"text": "Reset",
+						"size": [
+							396,
+							64
+						]
+					},
+					"bind": {
+						"Reset": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Back",
+						"parent": {
+							"$ref": "panelColumn"
+						},
+						"text": "Back",
+						"size": [
+							396,
+							64
+						]
+					},
+					"bind": {
+						"Back": "/entity"
+					}
+				}
+			]
+		},
+		{
+			"id": "name-shown",
+			"shows": "The name field holding Ana and, below it, the label Player: Ana",
+			"caption": "After Enter the label repeats the name the field holds.",
+			"alt": "A Name panel with a text field and, below it, the text Player and the name.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "Menu"
+					},
+					"bind": {
+						"menu": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "menu"
+						},
+						"component": "UICanvas",
+						"values": {
+							"ReferenceResolution": [
+								1280,
+								720
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "panel",
+						"name": "NamePanel",
+						"parent": {
+							"$ref": "menu"
+						},
+						"anchor": "middleCenter",
+						"position": [
+							0,
+							0
+						],
+						"size": [
+							460,
+							260
+						]
+					},
+					"bind": {
+						"panel": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "verticalLayout",
+						"name": "Column",
+						"parent": {
+							"$ref": "panel"
+						},
+						"anchor": "stretch",
+						"size": [
+							0,
+							0
+						]
+					},
+					"bind": {
+						"panelColumn": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "panelColumn"
+						},
+						"component": "UILayout",
+						"values": {
+							"Padding": [
+								32,
+								28,
+								32,
+								32
+							],
+							"Spacing": [
+								0,
+								14
+							],
+							"ChildAlignment": "TopCenter",
+							"StretchChildren": true
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "Title",
+						"parent": {
+							"$ref": "panelColumn"
+						},
+						"text": "Name",
+						"size": [
+							396,
+							64
+						]
+					},
+					"bind": {
+						"panelColumnTitle": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "panelColumnTitle"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 44
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "inputField",
+						"name": "NameInput",
+						"parent": {
+							"$ref": "panelColumn"
+						},
+						"text": "Your name",
+						"size": [
+							396,
+							56
+						]
+					},
+					"bind": {
+						"field": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "field"
+						},
+						"component": "UIInputField",
+						"values": {
+							"Text": "Ana",
+							"CharacterLimit": 12
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "NameLabel",
+						"parent": {
+							"$ref": "panelColumn"
+						},
+						"text": "Player: Ana",
+						"size": [
+							396,
+							48
+						]
+					}
+				}
+			],
+			"play": {
+				"steps": 5
+			}
+		},
+		{
+			"id": "credits-sign",
+			"shows": "Left, a title bar over the credits text cut off at the edges of its masked panel; right, a sign on a wall in the scene: a world-space canvas with the title Shop and an Open button, seen at an angle",
+			"caption": "The credits show only inside the masked panel; the sign is a canvas on a wall, seen in perspective.",
+			"alt": "Left, a title bar over credits cut at the panel's edges. Right, a sign titled Shop with a blue Open button on a wall.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "Menu"
+					},
+					"bind": {
+						"menu": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "menu"
+						},
+						"component": "UICanvas",
+						"values": {
+							"ReferenceResolution": [
+								1280,
+								720
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "panel",
+						"name": "CreditsHeader",
+						"parent": {
+							"$ref": "menu"
+						},
+						"anchor": "middleLeft",
+						"position": [
+							80,
+							-196
+						],
+						"size": [
+							380,
+							64
+						]
+					},
+					"bind": {
+						"creditsHeader": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "CreditsTitle",
+						"parent": {
+							"$ref": "creditsHeader"
+						},
+						"text": "Credits",
+						"anchor": "stretch",
+						"size": [
+							0,
+							0
+						]
+					},
+					"bind": {
+						"creditsTitle": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "creditsTitle"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 40
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "panel",
+						"name": "CreditsPanel",
+						"parent": {
+							"$ref": "menu"
+						},
+						"anchor": "middleLeft",
+						"position": [
+							80,
+							20
+						],
+						"size": [
+							380,
+							320
+						]
+					},
+					"bind": {
+						"credits": "/entity"
+					}
+				},
+				{
+					"command": "component.add",
+					"parameters": {
+						"entity": {
+							"$ref": "credits"
+						},
+						"component": "UIMask"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "CreditsText",
+						"parent": {
+							"$ref": "credits"
+						},
+						"text": "Strata Course\n\nDesign\nAna Lima\n\nCode\nRobo Team\n\nArt\nKenney (CC0)\n\nMusic\nNight Lights\n\nTesting\nEveryone\n\nThanks for playing",
+						"anchor": "topCenter",
+						"position": [
+							0,
+							-130
+						],
+						"size": [
+							340,
+							760
+						]
+					},
+					"bind": {
+						"creditsText": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "creditsText"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 30,
+							"VerticalAlignment": "Top"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall",
+						"components": {
+							"Transform": {
+								"Translation": [
+									1.9,
+									1.25,
+									-0.2
+								],
+								"Rotation": [
+									0,
+									-25,
+									0
+								],
+								"Scale": [
+									3.6,
+									2.5,
+									0.3
+								]
+							},
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							}
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "Sign"
+					},
+					"bind": {
+						"sign": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "sign"
+						},
+						"component": "UICanvas",
+						"values": {
+							"RenderMode": "WorldSpace",
+							"ReferenceResolution": [
+								240,
+								150
+							],
+							"WorldUnitsPerUnit": 0.01
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "sign"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								1.832,
+								1.4,
+								-0.055
+							],
+							"Rotation": [
+								0,
+								-25,
+								0
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "panel",
+						"name": "SignPanel",
+						"parent": {
+							"$ref": "sign"
+						},
+						"anchor": "stretch",
+						"size": [
+							0,
+							0
+						]
+					},
+					"bind": {
+						"signPanel": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "SignTitle",
+						"parent": {
+							"$ref": "signPanel"
+						},
+						"text": "Shop",
+						"anchor": "topCenter",
+						"position": [
+							0,
+							12
+						],
+						"size": [
+							220,
+							50
+						]
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "button",
+						"name": "Open",
+						"parent": {
+							"$ref": "signPanel"
+						},
+						"text": "Open",
+						"anchor": "bottomCenter",
+						"position": [
+							0,
+							-16
+						],
+						"size": [
+							160,
+							56
+						]
+					}
+				}
+			]
+		}
+	]
+}

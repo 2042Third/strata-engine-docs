@@ -1,0 +1,36 @@
+{
+	"figures": [
+		{
+			"id": "tone-curves",
+			"shows": "The six curves on one plot: display value against stops from middle gray on a log axis, with the marks where each curve passes middle gray, and the toe, the linear part and the shoulder of the Filmic curve labelled",
+			"caption": "Every curve flattens in the highlights; besides the plain clamp, only Filmic returns middle gray to itself.",
+			"alt": "A plot with stops from middle gray along the bottom and display value up the side. Six curves rise from the lower left and flatten toward the top right. The Filmic curve has its toe, straight part and shoulder labelled.",
+			"kind": "diagram"
+		},
+		{
+			"id": "hue-skew",
+			"shows": "The color wheel with the path of the lantern color through a per-channel curve, a luminance curve and Filmic's blend as exposure rises",
+			"caption": "A per-channel curve bends the path toward yellow, a luminance curve holds the hue but leaves the gamut, and Filmic's blend runs to white nearly straight.",
+			"alt": "A color wheel seen from above. Three paths start at a saturated orange-red point. One bends toward yellow and white, one runs straight out of the circle, and one runs almost straight to the center.",
+			"kind": "diagram"
+		},
+		{
+			"id": "lanterns",
+			"shows": "The door of the Showcase outpost's hut at dusk, seen from about 3.5 m, with the lantern hanging from the beam over it and the wall lit by the low sun, rendered at the same exposure with the ACES curve and with the Filmic curve",
+			"caption": "At the same exposure, ACES draws the wall darker and redder than Filmic, because its curve puts middle gray lower (see the table). The lantern's glass is near white under both.",
+			"alt": "A hut wall at dusk with a dark doorway and a small lantern hanging from the beam above it. In the first picture the wall is a dark red-orange. In the second it is a lighter orange. The glass of the lantern is near white in both, and its light makes a pale patch on the wall above it.",
+			"kind": "scene",
+			"project": { "sample": "Showcase" },
+			"station": "Dusk",
+			"camera": { "position": [-17.93, 1.6, -13.58], "target": [-20.76, 1.75, -15.63], "fov": 30 },
+			"size": [1280, 720],
+			"quality": "high",
+			"variants": {
+				"aces": { "postProcess": { "Tonemapper": "ACES" } },
+				"filmic": { "postProcess": { "Tonemapper": "Filmic" } }
+			},
+			"publish": "lossy",
+			"expect": "complete"
+		}
+	]
+}

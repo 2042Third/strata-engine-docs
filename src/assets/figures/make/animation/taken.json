@@ -1,0 +1,312 @@
+{
+	"files": {
+		"controller-live.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				722
+			],
+			"figure": "controller-live",
+			"variant": null,
+			"crop": null,
+			"original": "b5ac8108412251b20d272349ad8de88a221662359893e3cd9f7242b7350c670d",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "e70c8363603ed4f032ba79296f74d46c329c5d54caf69e371885baad76cf2879"
+		},
+		"culling.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				882
+			],
+			"figure": "culling",
+			"variant": null,
+			"crop": null,
+			"original": "ffa9a08e4a91bd36baedc1c29fc52e776289f0e6fd664d2737f6275f0a4e3731",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "21f285cd66d2c1d7fbbc58650d6a0d1e2644f1bbcdeb006eca3d91629924558f"
+		},
+		"flag-hand.avif": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				797,
+				499
+			],
+			"figure": "flag-hand",
+			"variant": null,
+			"crop": null,
+			"original": "bb87477f5c60929d3086390d3dc69b3c12a28f8d06eaeccc9d054a9e3e2a0e94",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 90,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "2e519df2934ba28617df19d14af81c3779852372bc7af6f57baaa1d4fbc39413"
+		},
+		"footsteps-script.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				882
+			],
+			"figure": "footsteps-script",
+			"variant": null,
+			"crop": null,
+			"original": "eb370cfd65e7347b913ed523508227450f28aee78307cd1f2e9ec65fe4f4b5c8",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "00e6b7eace6d509d0dd2f16d974044e724e4f5a5f37abf81a77e2726711bf80d"
+		},
+		"jump-live.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				722
+			],
+			"figure": "jump-live",
+			"variant": null,
+			"crop": null,
+			"original": "22363e9d9800b381f41145a9ef2a184aa586cc0b73005f55022008590e434de6",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "9c2db54664199b164bb4020eee8ecdae10dba9aa66cdda3229a4674a0076a373"
+		},
+		"result.avif": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1920,
+				1080
+			],
+			"figure": "result",
+			"variant": null,
+			"crop": null,
+			"original": "f93adeec6630d65442d4c5770d58634a8a995391e75fc79d08a0e2d8b8205e5d",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 80,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "28e56dea77eaceb4b1d79b8cee28f82438f1fca91a6ad6a0c85de3e93e4c8bfa"
+		},
+		"robot-placed.avif": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				960,
+				540
+			],
+			"figure": "robot-placed",
+			"variant": null,
+			"crop": null,
+			"original": "c5ca0c04650433f5fe396c412dd22a8750e396ea8bd03cd11abf4fc5267bc6cf",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 90,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "d7f907024d393834a547c4e5b899d7fe03a4b3eadcea3ffec9d33732c67da1be"
+		},
+		"second-robot.avif": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				960,
+				540
+			],
+			"figure": "second-robot",
+			"variant": null,
+			"crop": null,
+			"original": "c9cfe3e3724d90ac653a6a3355137d5b5dae0725bbddee13d62078783bd6c49e",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 90,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "029d929a23260621969bcf3b47286d83dfb94e81980ffcc180708ec4926eefea"
+		},
+		"speed-live.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				722
+			],
+			"figure": "speed-live",
+			"variant": null,
+			"crop": null,
+			"original": "29a48642126bde36508a65e51d69e379f3047ccc1ed5a184881b0ecb2955fa20",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "b844c1602c3d4745d893c5adb6f5091ff1c2655f1b0da8f8dbd5e03e70ed034a"
+		},
+		"tables-walk-run.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				700,
+				722
+			],
+			"figure": "tables-walk-run",
+			"variant": null,
+			"crop": null,
+			"original": "44c816a16ba71b6f87a53c175fbcbcd287def986051bb0c6c1737ba6cc776298",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "99ff90a47ae7164369412e0ae9edf9965c896865135e04b232caf9895552fd35"
+		}
+	}
+}

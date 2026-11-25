@@ -1,0 +1,16 @@
+{
+	"figures": [
+		{
+			"id": "core-shard-list",
+			"kind": "text",
+			"shows": "The list of the tests labelled core in the Debug configuration, one line per shard, without running them",
+			"caption": "Each numbered line is one shard of the test program as CTest knows it, and the last line counts them. A mark at the start of a line stands for a warning cut out: the build that made this list holds no test program.",
+			"alt": "A numbered list of thirteen test names that start with the same prefix and end in the name of a shard, followed by a line with the total number of tests.",
+			"text": {
+				"program": "ctest",
+				"arguments": ["--test-dir", "../..", "-C", "Debug", "-L", "core", "-N"],
+				"redact": ["Test project [^\\n]*\\n", "…?Could not find executable [^\\n]*\\nLooked in the following places:\\n(?:[^\\n]*StrataTests\\.exe[^\\n]*\\n)+"]
+			}
+		}
+	]
+}

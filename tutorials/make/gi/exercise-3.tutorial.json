@@ -1,0 +1,200 @@
+{
+	"page": "make/gi",
+	"startsFrom": {
+		"tutorial": "make/gi"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "component.set",
+					"entityName": "Wall East Low",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								2.145,
+								0.65,
+								0
+							],
+							"Scale": [
+								0.25,
+								0.7,
+								4
+							]
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Scale/0",
+							"approx": 0.25,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/Translation/0",
+							"approx": 2.145,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Wall East Low",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								2.12,
+								0.65,
+								0
+							],
+							"Scale": [
+								0.2,
+								0.7,
+								4
+							]
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Scale/0",
+							"approx": 0.2,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/Translation/0",
+							"approx": 2.12,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Wall East Low",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								2.095,
+								0.65,
+								0
+							],
+							"Scale": [
+								0.15,
+								0.7,
+								4
+							]
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Scale/0",
+							"approx": 0.15,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/Translation/0",
+							"approx": 2.095,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Wall East Low",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								2.07,
+								0.65,
+								0
+							],
+							"Scale": [
+								0.1,
+								0.7,
+								4
+							]
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Scale/0",
+							"approx": 0.1,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/Translation/0",
+							"approx": 2.07,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Wall East Low",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								2.045,
+								0.65,
+								0
+							],
+							"Scale": [
+								0.05,
+								0.7,
+								4
+							]
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Scale/0",
+							"approx": 0.05,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/Translation/0",
+							"approx": 2.045,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Wall East Low",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								2.025,
+								0.65,
+								0
+							],
+							"Scale": [
+								0.05,
+								0.7,
+								4
+							]
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Scale/0",
+							"approx": 0.05,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/Translation/0",
+							"approx": 2.025,
+							"tolerance": 0.001
+						}
+					]
+				}
+			],
+			"endState": true
+		}
+	]
+}

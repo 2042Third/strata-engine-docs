@@ -1,0 +1,44 @@
+[
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/Course.stscene"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Post Process"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "PostProcess",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Camera"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Camera",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	}
+]

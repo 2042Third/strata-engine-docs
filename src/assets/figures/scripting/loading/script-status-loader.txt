@@ -1,0 +1,168 @@
+{
+  "loaded": true,
+  "moduleName": "TetrisScripts",
+  "loadCount": 1,
+  "hotReload": true,
+  "classes": [
+    {
+      "callbacks": [
+        "OnCreate",
+        "OnUpdate",
+        "OnReload"
+      ],
+      "fields": [
+        {
+          "default": 60,
+          "name": "Seed",
+          "type": "Int"
+        },
+        {
+          "default": 1,
+          "name": "StartLevel",
+          "type": "Int"
+        },
+        {
+          "default": 10,
+          "name": "LinesPerLevel",
+          "type": "Int"
+        },
+        {
+          "default": 0.8,
+          "name": "StartInterval",
+          "type": "Float"
+        },
+        {
+          "default": 0.85,
+          "name": "IntervalFactor",
+          "type": "Float"
+        },
+        {
+          "default": 0.05,
+          "name": "MinInterval",
+          "type": "Float"
+        },
+        {
+          "default": 0.04,
+          "name": "SoftDropInterval",
+          "type": "Float"
+        },
+        {
+          "default": 0.17,
+          "name": "RepeatDelay",
+          "type": "Float"
+        },
+        {
+          "default": 0.05,
+          "name": "RepeatInterval",
+          "type": "Float"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "CellMesh",
+          "type": "Asset"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "MaterialI",
+          "type": "Asset"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "MaterialO",
+          "type": "Asset"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "MaterialT",
+          "type": "Asset"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "MaterialS",
+          "type": "Asset"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "MaterialZ",
+          "type": "Asset"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "MaterialJ",
+          "type": "Asset"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "MaterialL",
+          "type": "Asset"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "GhostMaterial",
+          "type": "Asset"
+        },
+        {
+          "default": 0.92,
+          "name": "CellScale",
+          "type": "Float"
+        },
+        {
+          "default": [
+            12,
+            15,
+            0
+          ],
+          "name": "PreviewOffset",
+          "type": "Vec3"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "ScoreText",
+          "type": "Entity"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "LevelText",
+          "type": "Entity"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "LinesText",
+          "type": "Entity"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "MessageText",
+          "type": "Entity"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "MessagePanel",
+          "type": "Entity"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "MoveSound",
+          "type": "Asset"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "LockSound",
+          "type": "Asset"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "ClearSound",
+          "type": "Asset"
+        },
+        {
+          "default": "0000000000000000",
+          "name": "GameOverSound",
+          "type": "Asset"
+        }
+      ],
+      "name": "TetrisBoard"
+    }
+  ],
+  "fault": null
+}

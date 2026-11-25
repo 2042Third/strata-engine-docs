@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 578">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: rows of 26 from y 60 (menu 16..360, 52..562); the Mesh only row (8) opens a flyout at x 368..568 from its top; collider of each shape entry right-aligned at x 344 in blue; H = 562 + 16 = 578. Entries: GetPresets and GetMeshOnlyPresets, StrataEditor/src/Panels/SceneHierarchyPanel.cpp. -->
+<rect class="plate line-muted" x="16" y="16" width="32" height="28" rx="4"/>
+<text class="ink large bold" x="32" y="37" text-anchor="middle">+</text>
+<text class="muted" x="58" y="35">the + button at the top of the Hierarchy</text>
+<rect class="plate line-muted" x="16" y="52" width="344" height="510" rx="4"/>
+<text class="ink" x="32" y="78">Empty</text>
+<text class="ink" x="32" y="104">Cube</text>
+<text class="blue small" x="344" y="103" text-anchor="end">Box Collider</text>
+<text class="ink" x="32" y="130">Sphere</text>
+<text class="blue small" x="344" y="129" text-anchor="end">Sphere Collider</text>
+<text class="ink" x="32" y="156">Plane</text>
+<text class="blue small" x="344" y="155" text-anchor="end">Box Collider</text>
+<text class="ink" x="32" y="182">Cylinder</text>
+<text class="blue small" x="344" y="181" text-anchor="end">convex Mesh Collider</text>
+<text class="ink" x="32" y="208">Capsule</text>
+<text class="blue small" x="344" y="207" text-anchor="end">Capsule Collider</text>
+<text class="ink" x="32" y="234">Cone</text>
+<text class="blue small" x="344" y="233" text-anchor="end">convex Mesh Collider</text>
+<text class="ink" x="32" y="260">Torus</text>
+<text class="blue small" x="344" y="259" text-anchor="end">convex Mesh Collider</text>
+<rect class="orange-area" x="20" y="268" width="336" height="26" rx="3"/>
+<text class="ink" x="32" y="286">Mesh only</text>
+<polygon class="ink" points="338,276 346,281 338,286"/>
+<text class="ink" x="32" y="312">Camera</text>
+<text class="ink" x="32" y="338">Directional Light</text>
+<text class="ink" x="32" y="364">Point Light</text>
+<text class="ink" x="32" y="390">Spot Light</text>
+<text class="ink" x="32" y="416">Rect Light</text>
+<text class="ink" x="32" y="442">Sky Light</text>
+<text class="ink" x="32" y="468">Post Process</text>
+<text class="ink" x="32" y="494">3D Text</text>
+<text class="ink" x="32" y="520">Audio Source</text>
+<text class="ink" x="32" y="546">UI</text>
+<polygon class="ink" points="338,536 346,541 338,546"/>
+<rect class="plate line-orange" x="368" y="260" width="200" height="198" rx="4"/>
+<text class="ink" x="384" y="286">Cube</text>
+<text class="ink" x="384" y="312">Sphere</text>
+<text class="ink" x="384" y="338">Plane</text>
+<text class="ink" x="384" y="364">Cylinder</text>
+<text class="ink" x="384" y="390">Capsule</text>
+<text class="ink" x="384" y="416">Cone</text>
+<text class="ink" x="384" y="442">Torus</text>
+<text class="orange" x="584" y="349">the same shapes,</text>
+<text class="orange" x="584" y="371">a Mesh Renderer</text>
+<text class="orange" x="584" y="393">and no collider</text>
+<text class="muted" x="376" y="546">elements of the game's interface</text>
+</svg>

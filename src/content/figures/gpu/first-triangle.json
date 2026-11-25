@@ -1,0 +1,20 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"kind": "diagram",
+			"shows": "The 64 by 64 image the triangle test renders: a red triangle on the blue clear color, with the two pixels the test reads marked",
+			"caption": "The triangle covers the upper half of the image only where it narrows to its tip; the test reads one pixel inside it and one below it.",
+			"alt": "A square image with a blue background and a red triangle whose base lies on the horizontal middle line and whose tip touches the top edge. Two marked pixels sit on the vertical middle line: one inside the triangle, labelled red, and one in the lower half, labelled blue.",
+			"numbers": "Image 64 x 64 pixels. Triangle corners at pixels (0, 32), (64, 32), (32, 0). Marked pixels (32, 16), red 255 0 0 255, and (32, 48), blue 0 0 255 255."
+		},
+		{
+			"id": "checker",
+			"kind": "diagram",
+			"shows": "The 64 by 64 image the checker shader renders: eight by eight cells in four colors, with the five pixels the test reads marked",
+			"caption": "Green in the upper half shows that V grows downwards; the checker parity shows that the cell index follows the texture coordinates.",
+			"alt": "A square image of eight by eight cells. The upper four rows alternate yellow and green; the lower four rows alternate red and black. Five pixels are marked: two in the top row, two in the seventh row and one in the last cell.",
+			"numbers": "Image 64 x 64 pixels, cells of 8 pixels. Marked pixels: (4, 4) yellow, (12, 4) green, (4, 52) red, (12, 52) black, (60, 60) red."
+		}
+	]
+}

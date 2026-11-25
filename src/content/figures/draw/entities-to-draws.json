@@ -1,0 +1,53 @@
+{
+	"figures": [
+		{
+			"id": "stats-overlay",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The Scene view of the Showcase sample with the Stats chip enabled and the camera standing still, so the overlay lists the frame time, the draw calls and instances, the proxies the view kept and no uploaded bytes",
+			"caption": "The overlay over a still view of the Showcase. It counts the draw calls and instances, the proxies the view kept out of all of them, and the bytes sent to the GPU, here none.",
+			"alt": "The Scene view showing a red drum, a blue drum and a stack of tires before an old yellow bus. A dark box at the top left holds a dozen lines of numbers, among them draw calls, instances, visible proxies and uploaded bytes at zero.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"windowSize": [
+					1280,
+					720
+				],
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"stats": true
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								5.5,
+								2.0,
+								3.0
+							],
+							"target": [
+								9.85,
+								0.6,
+								-0.8
+							],
+							"fov": 40
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					}
+				]
+			}
+		}
+	]
+}

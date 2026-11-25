@@ -1,0 +1,398 @@
+id	type	heading	label
+build-test:28	feature	1.1 The CMake project and its options	Root project
+build-test:29	feature	1.1 The CMake project and its options	Program switches
+build-test:30	feature	1.1 The CMake project and its options	Tracy switch
+build-test:31	feature	1.1 The CMake project and its options	Warnings as errors
+build-test:32	feature	1.1 The CMake project and its options	Optional engine modules
+build-test:33	feature	1.1 The CMake project and its options	Optional window backend
+build-test:34	feature	1.1 The CMake project and its options	Editor needs every module
+build-test:35	feature	1.1 The CMake project and its options	`ST_WITH_*` definitions
+build-test:36	feature	1.1 The CMake project and its options	Compiler cache
+build-test:37	feature	1.1 The CMake project and its options	Precompiled headers
+build-test:38	feature	1.1 The CMake project and its options	Instruction-set options
+build-test:39	feature	1.1 The CMake project and its options	Build configurations
+build-test:40	feature	1.1 The CMake project and its options	C++20, no extensions, compile_commands
+build-test:41	feature	1.1 The CMake project and its options	Static MSVC runtime
+build-test:42	feature	1.1 The CMake project and its options	Release linker flags (MSVC)
+build-test:43	feature	1.1 The CMake project and its options	Output layout
+build-test:44	feature	1.1 The CMake project and its options	Warning policy
+build-test:45	feature	1.1 The CMake project and its options	Vendor warnings off
+build-test:46	feature	1.1 The CMake project and its options	GCC <14.4 workaround
+build-test:47	feature	1.1 The CMake project and its options	Runtime resource copy
+build-test:48	feature	1.1 The CMake project and its options	Windows application manifest
+build-test:49	feature	1.1 The CMake project and its options	Source globbing
+build-test:55	feature	1.2 Presets	Configure presets
+build-test:56	feature	1.2 Presets	Build presets
+build-test:57	feature	1.2 Presets	Test presets
+build-test:58	feature	1.2 Presets	Parallel-agent build dirs
+build-test:64	feature	1.3 Engine library structure in the build (the layer table is the build)	Layer libraries
+build-test:65	feature	1.3 Engine library structure in the build (the layer table is the build)	Glob-to-regex
+build-test:66	feature	1.3 Engine library structure in the build (the layer table is the build)	`LayerLibraries.json`
+build-test:67	feature	1.3 Engine library structure in the build (the layer table is the build)	`strata_layer_link`
+build-test:68	feature	1.3 Engine library structure in the build (the layer table is the build)	`Strata` and `StrataTooling`
+build-test:69	feature	1.3 Engine library structure in the build (the layer table is the build)	Link-closure check
+build-test:70	feature	1.3 Engine library structure in the build (the layer table is the build)	Linker-map check
+build-test:71	feature	1.3 Engine library structure in the build (the layer table is the build)	Vendor libraries only tools use
+build-test:77	feature	1.4 Generated code at build/configure time	Shader build
+build-test:78	feature	1.4 Generated code at build/configure time	slangc flags
+build-test:79	feature	1.4 Generated code at build/configure time	StrataShaderTool
+build-test:80	feature	1.4 Generated code at build/configure time	Runtime lookup
+build-test:81	feature	1.4 Generated code at build/configure time	Slang pin
+build-test:82	feature	1.4 Generated code at build/configure time	Embedded files
+build-test:83	feature	1.4 Generated code at build/configure time	Version header
+build-test:84	feature	1.4 Generated code at build/configure time	Build commit header
+build-test:85	feature	1.4 Generated code at build/configure time	Sample copy
+build-test:91	feature	1.5 Third-party code	19 pinned shallow submodules
+build-test:92	feature	1.5 Third-party code	Vendor wrapper
+build-test:93	feature	1.5 Third-party code	box3d built from sources
+build-test:94	feature	1.5 Third-party code	zstd split
+build-test:95	feature	1.5 Third-party code	stb one object per header
+build-test:96	feature	1.5 Third-party code	Third-party notices
+build-test:97	feature	1.5 Third-party code	Upgrade procedure
+build-test:98	feature	1.5 Third-party code	Code-from-other-projects rule
+build-test:99	feature	1.5 Third-party code	Box3D determinism scenario for tests
+build-test:105	feature	1.6 Test programs and CTest organisation	`StrataTests` executable
+build-test:106	feature	1.6 Test programs and CTest organisation	Test-build definitions
+build-test:107	feature	1.6 Test programs and CTest organisation	Module-dependent test files
+build-test:108	feature	1.6 Test programs and CTest organisation	Test script modules
+build-test:109	feature	1.6 Test programs and CTest organisation	`main` of the test runner
+build-test:110	feature	1.6 Test programs and CTest organisation	Helper modes
+build-test:111	feature	1.6 Test programs and CTest organisation	Fake CMake
+build-test:112	feature	1.6 Test programs and CTest organisation	Crash naming
+build-test:113	feature	1.6 Test programs and CTest organisation	Shards
+build-test:114	feature	1.6 Test programs and CTest organisation	`Testing.Shards`
+build-test:115	feature	1.6 Test programs and CTest organisation	Sweeps and the fuzz run
+build-test:116	feature	1.6 Test programs and CTest organisation	Resource lock
+build-test:117	feature	1.6 Test programs and CTest organisation	CTest fixtures
+build-test:118	feature	1.6 Test programs and CTest organisation	Labels
+build-test:119	feature	1.6 Test programs and CTest organisation	Expect-failure runner
+build-test:120	feature	1.6 Test programs and CTest organisation	Run-and-expect runner
+build-test:121	feature	1.6 Test programs and CTest organisation	Command scripts
+build-test:122	feature	1.6 Test programs and CTest organisation	Editor smoke and script checks
+build-test:123	feature	1.6 Test programs and CTest organisation	Export chain and runtime option tests
+build-test:124	feature	1.6 Test programs and CTest organisation	End-to-end suites
+build-test:125	feature	1.6 Test programs and CTest organisation	GPU test context
+build-test:126	feature	1.6 Test programs and CTest organisation	GPU test helpers
+build-test:127	feature	1.6 Test programs and CTest organisation	General test helpers
+build-test:128	feature	1.6 Test programs and CTest organisation	Editor test helpers
+build-test:129	feature	1.6 Test programs and CTest organisation	Scene cache checks in tests
+build-test:135	feature	1.7 The perf lab	Perf suites
+build-test:136	feature	1.7 The perf lab	Measurement
+build-test:137	feature	1.7 The perf lab	Budget file
+build-test:138	feature	1.7 The perf lab	Confirmed checks
+build-test:139	feature	1.7 The perf lab	Results file
+build-test:140	feature	1.7 The perf lab	Canary
+build-test:141	feature	1.7 The perf lab	Lab self-tests
+build-test:142	feature	1.7 The perf lab	Scene generators and fixtures
+build-test:143	feature	1.7 The perf lab	Peak-memory helpers
+build-test:144	feature	1.7 The perf lab	GPU timing in perf
+build-test:145	feature	1.7 The perf lab	Medium preset rule
+build-test:146	feature	1.7 The perf lab	Perf suites inventory
+build-test:147	feature	1.7 The perf lab	Ratchet and re-baselining
+build-test:148	feature	1.7 The perf lab	`Tools/PerfStability.py`
+build-test:149	feature	1.7 The perf lab	`Tools/PerfLock.py`
+build-test:155	feature	1.8 The feature test (golden rule 6)	Feature project
+build-test:156	feature	1.8 The feature test (golden rule 6)	Coverage checks
+build-test:157	feature	1.8 The feature test (golden rule 6)	Runners
+build-test:158	feature	1.8 The feature test (golden rule 6)	Script side
+build-test:164	feature	1.9 Package, install and sample tests	Script-SDK package tests
+build-test:165	feature	1.9 Package, install and sample tests	`StrataTests.Package`
+build-test:166	feature	1.9 Package, install and sample tests	`StrataEditor.Scripts`
+build-test:167	feature	1.9 Package, install and sample tests	Sample tests
+build-test:168	feature	1.9 Package, install and sample tests	Install test
+build-test:169	feature	1.9 Package, install and sample tests	Package version test
+build-test:170	feature	1.9 Package, install and sample tests	Slang fetch test
+build-test:171	feature	1.9 Package, install and sample tests	HLSL target check
+build-test:172	feature	1.9 Package, install and sample tests	Tools tests
+build-test:180	feature	1.10 Architecture and documentation checks that run as tests	`Architecture.Layering`
+build-test:181	feature	1.10 Architecture and documentation checks that run as tests	`Architecture.Libraries`
+build-test:182	feature	1.10 Architecture and documentation checks that run as tests	`Architecture.PrecompiledHeaders`
+build-test:183	feature	1.10 Architecture and documentation checks that run as tests	`Architecture.HeaderWeight`
+build-test:184	feature	1.10 Architecture and documentation checks that run as tests	`Architecture.ScriptSDK`
+build-test:185	feature	1.10 Architecture and documentation checks that run as tests	`Architecture.Shaders`
+build-test:186	feature	1.10 Architecture and documentation checks that run as tests	`Docs.AgentGuide`
+build-test:192	feature	1.11 CI	Triggers
+build-test:193	feature	1.11 CI	Matrix
+build-test:194	feature	1.11 CI	Dev environment import
+build-test:195	feature	1.11 CI	Compiler cache in Actions
+build-test:196	feature	1.11 CI	Build with keep-going
+build-test:197	feature	1.11 CI	Shader checks
+build-test:198	feature	1.11 CI	Test step
+build-test:199	feature	1.11 CI	Failure annotations
+build-test:200	feature	1.11 CI	Windows Dist job
+build-test:201	feature	1.11 CI	`Tools/CIStatus.py`
+build-test:202	feature	1.11 CI	`Tools/CompatLint.py`
+build-test:208	feature	1.12 Packaging and releases	Install rules
+build-test:209	feature	1.12 Packaging and releases	Installation marker
+build-test:210	feature	1.12 Packaging and releases	CPack
+build-test:211	feature	1.12 Packaging and releases	Package version
+build-test:212	feature	1.12 Packaging and releases	Release workflow
+build-test:213	feature	1.12 Packaging and releases	Release notes
+build-test:214	feature	1.12 Packaging and releases	Release procedure
+build-test:215	feature	1.12 Packaging and releases	Dist-only expectations
+build-test:221	feature	1.13 Tools/ (every tool)	`Tools/CIStatus.py`
+build-test:222	feature	1.13 Tools/ (every tool)	`Tools/CompatLint.py`
+build-test:223	feature	1.13 Tools/ (every tool)	`Tools/PerfLock.py`
+build-test:224	feature	1.13 Tools/ (every tool)	`Tools/PerfStability.py`
+build-test:225	feature	1.13 Tools/ (every tool)	`Tools/PhysicsSweep.py`
+build-test:226	feature	1.13 Tools/ (every tool)	`Tools/LookDev.py` (+ `Tools/LookDev/LookDevScene.json`, `Shots.json`)
+build-test:227	feature	1.13 Tools/ (every tool)	`Tools/GenerateBlueNoise.py`
+build-test:228	feature	1.13 Tools/ (every tool)	`Tools/FitFilmic.py`
+build-test:229	feature	1.13 Tools/ (every tool)	`Tools/FitAOMultiBounce.py`
+build-test:230	feature	1.13 Tools/ (every tool)	`Tools/GenerateAreaTable.py`
+build-test:231	feature	1.13 Tools/ (every tool)	`Tools/GenerateWhiteBalance.py`
+build-test:232	feature	1.13 Tools/ (every tool)	`Tools/GenerateBrandAssets.py`
+build-test:233	feature	1.13 Tools/ (every tool)	`Tools/GenerateIslandTerrain.py`
+build-test:234	feature	1.13 Tools/ (every tool)	`Tools/GenerateShowcaseTerrain.py`
+build-test:235	feature	1.13 Tools/ (every tool)	`Tools/GenerateShowcaseProps.py`
+build-test:236	feature	1.13 Tools/ (every tool)	`StrataTests/FeatureTest/Tools/GenerateAssets.py`
+build-test:237	feature	1.13 Tools/ (every tool)	`StrataEditor/Tools/GenerateIconHeader.py`
+build-test:238	feature	1.13 Tools/ (every tool)	`.github/scripts/annotate_failures.py`, `validate_shaders.sh`, `convert_shaders_to_metal.sh`
+build-test:240	feature	1.13 Tools/ (every tool)	All Python tools are standard-library only and are run with `python -I` where the docs say so…
+build-test:246	feature	1.14 Review and commit process	Golden rules 2, 3, 5, 6
+build-test:247	feature	1.14 Review and commit process	Pre-commit review checklist
+build-test:248	feature	1.14 Review and commit process	Verify in a clean worktree
+build-test:249	feature	1.14 Review and commit process	Debugging a crashing test
+build-test:250	feature	1.14 Review and commit process	Validation layer setup
+build-test:271	concept		From source files to a program: compiling and linking
+build-test:277	concept		Meta-build: configure vs build vs test steps
+build-test:282	concept		Targets and usage requirements
+build-test:286	concept		Build configurations and preprocessor-driven builds
+build-test:290	concept		Compiler warnings as a policy
+build-test:292	concept		Portability across compilers and standard libraries
+build-test:296	concept		Compile time engineering
+build-test:301	concept		CPU instruction sets and floating-point determinism
+build-test:305	concept		Third-party dependencies
+build-test:310	concept		Reproducible, verified downloads
+build-test:313	concept		Code generation in the build
+build-test:319	concept		Architecture enforced by the build
+build-test:323	concept		Optional modules and feature flags
+build-test:327	concept		What a test is; unit vs integration vs end-to-end; test frameworks
+build-test:330	concept		Test organisation at scale: test runners, CTest, labels, sharding, fixtures, resource locks
+build-test:335	concept		Determinism and flakiness
+build-test:339	concept		The test binary as its own helper process
+build-test:342	concept		Crash containment vs test frameworks
+build-test:345	concept		Fuzzing and corruption sweeps
+build-test:348	concept		GPU testing
+build-test:351	concept		Performance testing and noise
+build-test:356	concept		Coverage by construction (the feature test)
+build-test:359	concept		Image regression testing
+build-test:362	concept		Continuous integration
+build-test:365	concept		Packaging, installation and releases
+build-test:369	concept		Process discipline: review checklist, commit hygiene, clean-worktree verification
+build-test:378	code		1: `CMakeLists.txt` l.1-91
+build-test:379	code		2: `CMakePresets.json` l.1-89
+build-test:380	code		3: `CMake/StrataConfigurations.cmake` l.1-56
+build-test:381	code		4: `CMake/StrataCompilerOptions.cmake` l.95-120 (`strata_configure_target`)
+build-test:382	code		5: `CMake/StrataCompilerOptions.cmake` l.44-93 (`strata_engine_cpu_options`)
+build-test:383	code		6: `Strata/vendor/CMakeLists.txt` l.144-182
+build-test:384	code		7: `Strata/vendor/CMakeLists.txt` l.184-227
+build-test:385	code		8: `CMake/StrataLayers.cmake` l.155-186
+build-test:386	code		9: `CMake/StrataLayers.cmake` l.367-429
+build-test:387	code		10: `StrataTests/Architecture/CheckNoTooling.cmake` l.47-107
+build-test:388	code		11: `CMake/StrataShaders.cmake` l.64-86 and l.170-191
+build-test:389	code		12: `CMake/StrataShaders.cmake` l.202-221
+build-test:390	code		13: `CMake/StrataShaderTool/SpirvModule.cpp` l.27-65 (`ParseSpirv`)
+build-test:391	code		14: `CMake/StrataShaderTool/SpirvModule.cpp` l.101-166 (`DecoratePositionInvariant`)
+build-test:392	code		15: `CMake/StrataShaderTool/StrataShaderTool.cpp` l.83-116 (`WriteFileAtomically`)
+build-test:393	code		16: `CMake/StrataSlang.cmake` l.128-251 (`strata_slang_fetch`)
+build-test:394	code		17: `CMake/StrataVersionCommit.cmake` l.1-24 and `Strata/CMakeLists.txt` l.31-42
+build-test:395	code		18: `CMake/StrataEmbeddedFiles.cmake` l.8-46
+build-test:396	code		19: `StrataTests/CoreShards.json` (36 lines) and `StrataTests/CMakeLists.txt` l.209-255
+build-test:397	code		20: `StrataTests/src/Testing/ShardTests.cpp` l.26-58 (`MatchesFilter`) and l.118-153…
+build-test:398	code		21: `StrataTests/src/TestHelpers.cpp` l.700-737 (`SelectSweepOffsets`) and…
+build-test:399	code		22: `StrataTests/src/TestMain.cpp` l.1309-1370
+build-test:400	code		23: `StrataTests/src/TestCrashReporter.cpp` l.19-80
+build-test:401	code		24: `StrataTests/src/Renderer/GPUTestUtils.cpp` l.17-50 and `GPUTestUtilsTests.cpp` l.23-57
+build-test:402	code		25: `StrataTests/src/Perf/PerfUtils.cpp` l.104-146 (`Summarize`, `Measure`)
+build-test:403	code		26: `StrataTests/src/Perf/PerfUtils.cpp` l.291-370 (`CheckConfirmed`)
+build-test:404	code		27: `StrataTests/Perf/Budgets.json` l.2-30
+build-test:405	code		28: `StrataTests/src/Perf/PerfHarnessTests.cpp` l.512-541
+build-test:406	code		29: `Tools/PerfStability.py` l.348-391 (`classify`)
+build-test:407	code		30: `StrataTests/src/FeatureTest/FeatureTests.cpp` l.152-196 and…
+build-test:408	code		31: `.github/workflows/ci.yml` l.19-60, l.195-215
+build-test:409	code		32: `.github/workflows/release.yml` l.45-93, l.175-226
+build-test:410	code		33: `CMake/StrataPackaging.cmake` l.54-107 and `CMake/StrataPackageVersion.cmake` l.7-24
+build-test:411	code		34: `StrataTests/Editor/SmokeCommands.json.in` l.1-30
+build-test:420	figure		The three steps
+build-test:423	figure		Target graph
+build-test:425	figure		Layer table to libraries
+build-test:427	figure		"Games contain no tooling" proven twice
+build-test:429	figure		Shader pipeline
+build-test:432	figure		SPIR-V word layout
+build-test:434	figure		Slang fetch state machine
+build-test:436	figure		Shards
+build-test:438	figure		CTest fixture chains
+build-test:440	figure		Confirmed perf check
+build-test:443	figure		The budget lifecycle
+build-test:445	figure		CI matrix
+build-test:446	figure		Compiler cache keys in GitHub Actions
+build-test:448	figure		Release workflow
+build-test:450	figure		Installed layout
+build-test:451	figure		Feature test coverage loop
+build-test:454	figure		Look-dev harness
+build-test:458	figure		A configure log showing `-- Slang 2026.20: ... (cached)` and the compiler-cache status line.
+build-test:459	figure		A configure failure naming a source file in no layer (made in a scratch copy) and the…
+build-test:461	figure		Visual Studio's Solution Explorer folders (`Strata/Layers`, `Vendor`, `Strata/TestScripts`,…
+build-test:462	figure		`ctest --preset windows-debug -N -L core` output listing the shards; a `ctest -j 8` run summary.
+build-test:463	figure		A failing `Testing.Shards` message (suite in no shard).
+build-test:464	figure		Perf output lines `[perf] ...` and an "over the budget in attempt 1 of 3, measuring again" line; a…
+build-test:466	figure		`Tools/PerfStability.py --runs 5` report table.
+build-test:467	figure		GitHub Actions: CI matrix run page; a failure annotation in a pull request; the Release page with…
+build-test:469	figure		`Tools/LookDev.py compare` `index.html` with side-by-side and signed difference images (one pair…
+build-test:471	figure		The installed folder of a release archive in a file browser.
+build-test:472	figure		`StrataEditor.Smoke`'s `SmokeViewport.png` capture (floor, crate, lights) as an example of an…
+build-test:478	rule		Re-configure after adding or removing sources
+build-test:480	rule		Shaders are listed, not globbed
+build-test:482	rule		Each parallel agent gets its own build directory
+build-test:483	rule		CI always builds with warnings as errors; never silence a warning locally
+build-test:485	rule		Never put an engine/editor/test header that changes into a precompiled header
+build-test:487	rule		Include what you use even though the pch has it
+build-test:489	rule		Keep headers light
+build-test:491	rule		`ST_WITH_*` are definitions, never header macros; `#if ST_WITH_<MODULE>` only in the composition…
+build-test:494	rule		Never widen `MayInclude` or add an allowlist line to make an include pass; invert the dependency
+build-test:496	rule		Games link no tooling
+build-test:498	rule		Cached CMake options survive re-configure
+build-test:499	rule		Compiler caches need Ninja/Makefiles and embedded debug info; caches do not cache MSVC pch
+build-test:500	rule		Push large integrations as `ci/<name>` and wait for green
+build-test:502	rule		Never change the Slang digest to match a download
+build-test:504	rule		Upgrade a submodule in its own commit, update `ThirdPartyNotices.md`, run every test
+build-test:506	rule		Copyleft code is read for ideas only
+build-test:508	rule		Every test case belongs to a TEST_SUITE, every new suite prefix to a shard
+build-test:510	rule		Tests that crash the dynamic loader go in `LoaderFaults`
+build-test:512	rule		Never create a graphics device in a test; end GPU tests with `CHECK(gpu.GetNewErrorCount() == 0)`
+build-test:514	rule		Wait by the clock or a condition, never by frames; size job pools explicitly
+build-test:516	rule		Never set the test process's environment for a child; use `run-with-environment`
+build-test:518	rule		Tests write only into `CreateTemporaryDirectory()` and never open samples in place
+build-test:520	rule		Check that a new regression test fails without its fix
+build-test:521	rule		doctest's POSIX signal handling is disabled
+build-test:523	rule		Perf limits live only in `Budgets.json`; budgets only go down; at most 1.5 x measured; commits…
+build-test:525	rule		A failure on a busy machine says nothing about the code
+build-test:527	rule		Perf numbers only from optimized builds, without validation layers, through `ExecuteAndWait`
+build-test:530	rule		Peak-memory metrics in a fresh helper process
+build-test:531	rule		Complexity claims belong in deterministic unit tests, not perf tests
+build-test:532	rule		Keep the feature test current
+build-test:534	rule		Release tests run Dist; expectations that differ say `#if defined(ST_DIST)`
+build-test:536	rule		A file releases must ship needs an install rule and an entry in `StrataEditor.Install`'s layout
+build-test:538	rule		Use CMake's own `cpack` on Windows runners
+build-test:539	rule		Annotations, not logs, carry CI failures
+build-test:541	rule		PowerShell does not wait for GUI-subsystem programs
+build-test:543	rule		Verify exactly what is staged in a clean worktree, Debug and Release
+build-test:551	hands-on		Build from scratch on your OS
+build-test:553	hands-on		Read the configure log
+build-test:555	hands-on		Add a source file and see why re-configure matters
+build-test:558	hands-on		Break the layering on purpose
+build-test:561	hands-on		Build a game without physics and audio
+build-test:564	hands-on		Measure pch and cache effects
+build-test:566	hands-on		Run `Tools/CompatLint.py --changed-since main`
+build-test:568	hands-on		Add a shader variant
+build-test:570	hands-on		Write a tiny SPIR-V inspector with `SpirvModule.h`
+build-test:572	hands-on		Add a new test suite with a new prefix
+build-test:574	hands-on		Write a corruption sweep for a small parser
+build-test:576	hands-on		Write a GPU readback test
+build-test:578	hands-on		Add a perf metric
+build-test:582	hands-on		Write a helper-mode process test
+build-test:584	hands-on		Add a component and satisfy the feature test
+build-test:586	hands-on		Make a local package
+build-test:589	hands-on		Dry-run a release on a fork
+build-test:591	hands-on		Read a CI failure from annotations only
+build-test:595	hands-on		Install a release archive and check it
+build-test:597	hands-on		Build Strata from source to get a newer engine
+build-test:598	hands-on		Write a command script as a smoke test for your game
+build-test:601	hands-on		Check your exported game headless
+build-test:603	hands-on		Read `ThirdPartyNotices.md` and your sample's `CREDITS.md`
+build-test:609	term		Translation unit
+build-test:610	term		Linker
+build-test:611	term		Static library / shared library / module library
+build-test:613	term		Interface library (CMake)
+build-test:615	term		Usage requirements, PUBLIC/PRIVATE/INTERFACE
+build-test:617	term		Generator (CMake)
+build-test:618	term		Multi-config generator
+build-test:619	term		Preset
+build-test:620	term		Cache variable / `CMakeCache.txt`
+build-test:621	term		Generator expression
+build-test:622	term		`GLOB_RECURSE CONFIGURE_DEPENDS`
+build-test:623	term		Script mode (`cmake -P`)
+build-test:624	term		`cmake_language(DEFER)`
+build-test:625	term		`EXCLUDE_FROM_ALL`
+build-test:626	term		SYSTEM include
+build-test:627	term		Debug / Release / Dist
+build-test:628	term		`ST_CORE_ASSERT` / `ST_CORE_VERIFY`
+build-test:629	term		Precompiled header (pch)
+build-test:630	term		Forward declaration
+build-test:631	term		Compiler cache (ccache, sccache)
+build-test:632	term		Compiler launcher
+build-test:633	term		`/Z7` vs PDB
+build-test:634	term		Instruction set extension
+build-test:635	term		FMA contraction
+build-test:636	term		Determinism (cross-platform)
+build-test:637	term		Submodule (git)
+build-test:638	term		Vendoring
+build-test:639	term		Permissive / copyleft license
+build-test:640	term		SHA-256 pin
+build-test:641	term		Per-user cache
+build-test:642	term		File lock
+build-test:643	term		Atomic rename
+build-test:644	term		Slang / slangc
+build-test:645	term		SPIR-V
+build-test:646	term		spirv-val
+build-test:647	term		MoltenVK
+build-test:648	term		Invariant (position)
+build-test:650	term		Embedded shader registry
+build-test:651	term		Layer (Strata)
+build-test:652	term		Layer table / `MayInclude` / `Tooling` / `Option`
+build-test:654	term		Composition root
+build-test:655	term		Link closure
+build-test:656	term		Linker map
+build-test:657	term		doctest
+build-test:658	term		CTest
+build-test:659	term		Label (CTest)
+build-test:660	term		Shard
+build-test:661	term		Fixture (CTest)
+build-test:662	term		Resource lock
+build-test:663	term		`RUN_SERIAL`
+build-test:664	term		Helper mode
+build-test:665	term		Fake CMake / fake editor
+build-test:666	term		Sweep / `.Sweep` suite
+build-test:667	term		Fuzz run
+build-test:668	term		Validation layer
+build-test:669	term		Readback
+build-test:670	term		Headless
+build-test:671	term		Perf lab
+build-test:672	term		Metric / budget / target / provisional
+build-test:674	term		Reference machine
+build-test:675	term		Confirmed check
+build-test:676	term		Ratchet
+build-test:677	term		Canary
+build-test:678	term		Interleaved A/B
+build-test:679	term		Median / p95 / nearest rank
+build-test:680	term		Feature test
+build-test:681	term		Journal (feature test)
+build-test:682	term		Command script
+build-test:683	term		End-to-end test
+build-test:684	term		Smoke test
+build-test:685	term		CI (continuous integration)
+build-test:686	term		Runner (GitHub Actions)
+build-test:687	term		Matrix
+build-test:688	term		Annotation
+build-test:689	term		`ci/<name>` branch
+build-test:690	term		Install tree / prefix
+build-test:691	term		CPack
+build-test:692	term		Installation marker
+build-test:693	term		Pre-release suffix / release candidate (rc)
+build-test:694	term		Dry run
+build-test:695	term		Checksum file
+build-test:696	term		Look-dev harness
+build-test:697	term		Signed difference image
+build-test:698	term		Committed generator
+build-test:746	open		Did not read: `StrataTests/src/TestHelpers.cpp` beyond the sweep functions; most of…
+build-test:755	open		Documentation drift found (worth a correction in the engine docs, and care in the book):
+build-test:756	open		DG Shards (l.404-405) and SK list 12 shards; `StrataTests/CoreShards.json` has 13 (`SceneTiming`,…
+build-test:758	open		DG Feature test l.828 names `Tools/GenerateAssets.py`; the file is…
+build-test:759	open		DG Building l.172-177's option list omits `STRATA_WITH_GLFW` (described in Optional modules…
+build-test:760	open		Exact shader count: about 113 registered entries counted by a rough grep of…
+build-test:762	open		Exact count of CTests per configuration not determined (about 88 `add_test` calls, several in…
+build-test:765	open		Release history per feature is partial: the documents date the perf lab (wave 1), layer libraries,…
+build-test:769	open		Whether `Tools/PhysicsSweep.py` and the committed generators have CTests other than the two…
+build-test:772	open		macOS Metal known-failure list and how MoltenVK runs the bindless table at run time: only the…
+build-test:774	open		Screenshots of CI pages require GitHub access, which this survey did not use.

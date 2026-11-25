@@ -1,0 +1,8885 @@
+{
+	"generated": "tools/pages.py outline --write; do not edit",
+	"sources": {
+		"plan/outline-1.md": "d4121ba116077dd721e4a3b7283c4b74b63661f68829d59b716ba0e24f2741e5",
+		"plan/outline-2.md": "db55243c5ddc7999043709048061027b7e180d3f891fc2f36ad8fae153b3f54b",
+		"plan/outline-3.md": "23283a9bbc9d909969b87cfd4a144f21f412dca3850b8b93c6bff830a724b6cb",
+		"plan/outline-4.md": "98e4471842e02de066907774651336bb955832bad8ddfc7aade2b99ccca3e8a3",
+		"plan/tracks.md": "fd61996b509dab281b7757ca9405ade52c351fc245ddbe3924d65eba18a1f9b8"
+	},
+	"parts": [
+		{
+			"number": 0,
+			"slug": "start",
+			"title": "Start here",
+			"tracks": [
+				"G",
+				"B",
+				"E"
+			],
+			"needs": [],
+			"pages": [
+				"start/welcome",
+				"start/how-to-read",
+				"start/install",
+				"start/first-game",
+				"start/what-an-engine-is",
+				"start/coming-from"
+			],
+			"partPages": false
+		},
+		{
+			"number": 1,
+			"slug": "make",
+			"title": "Making games",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"start/how-to-read",
+				"start/what-an-engine-is",
+				"basics/tools|start/install",
+				"basics/programming-3",
+				"basics/debugging"
+			],
+			"pages": [
+				"make/editor-tour",
+				"make/project-files",
+				"make/scenes-entities",
+				"make/transforms-units",
+				"make/assets",
+				"make/materials",
+				"make/prefabs",
+				"make/lighting",
+				"make/first-script",
+				"make/script-loop",
+				"make/scripting-scene",
+				"make/input",
+				"make/physics",
+				"make/sound",
+				"make/hud",
+				"make/play-test-debug",
+				"make/export",
+				"make/project-coin-run",
+				"make/gameplay-math",
+				"make/timers-events",
+				"make/script-fields",
+				"make/patterns",
+				"make/recipes",
+				"make/script-builds",
+				"make/characters-cameras",
+				"make/animation",
+				"make/menus",
+				"make/levels-saves",
+				"make/lamps",
+				"make/reflections",
+				"make/gi",
+				"make/look",
+				"make/quality",
+				"make/large-worlds",
+				"make/performance",
+				"make/automated-playtests",
+				"make/commands",
+				"make/with-an-agent",
+				"make/samples",
+				"make/designing-a-game",
+				"make/project-tetris",
+				"make/project-platformer"
+			],
+			"partPages": true
+		},
+		{
+			"number": 2,
+			"slug": "basics",
+			"title": "Foundations",
+			"tracks": [
+				"G",
+				"B",
+				"E"
+			],
+			"needs": [
+				"start/first-game",
+				"start/install",
+				"make/first-script|start/first-game"
+			],
+			"pages": [
+				"basics/computer",
+				"basics/tools",
+				"basics/programming-1",
+				"basics/programming-2",
+				"basics/programming-3",
+				"basics/debugging",
+				"basics/git",
+				"basics/numbers",
+				"basics/data-structures",
+				"basics/trees-graphs",
+				"basics/cpp-memory",
+				"basics/cpp-classes",
+				"basics/cpp-generic",
+				"basics/cpp-modern",
+				"basics/build",
+				"basics/bytes",
+				"basics/data-formats",
+				"basics/math-vectors",
+				"basics/math-matrices",
+				"basics/math-bases",
+				"basics/math-projection",
+				"basics/math-rotations",
+				"basics/math-geometry",
+				"basics/math-change",
+				"basics/math-interpolation",
+				"basics/color",
+				"basics/signals",
+				"basics/math-probability",
+				"basics/math-sphere",
+				"basics/threads"
+			],
+			"partPages": true
+		},
+		{
+			"number": 3,
+			"slug": "core",
+			"title": "Engine architecture",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/build",
+				"start/what-an-engine-is",
+				"basics/cpp-classes",
+				"basics/git",
+				"basics/cpp-modern",
+				"basics/threads",
+				"basics/math-change",
+				"basics/trees-graphs",
+				"basics/data-formats",
+				"basics/bytes",
+				"basics/debugging",
+				"basics/math-rotations",
+				"basics/math-projection",
+				"basics/math-geometry"
+			],
+			"pages": [
+				"core/map",
+				"core/first-change",
+				"core/conventions",
+				"core/reading-code",
+				"core/first-frame",
+				"core/frame-loop",
+				"core/time",
+				"core/windows-events",
+				"core/engine-modules",
+				"core/layers-registries",
+				"core/jobs",
+				"core/platform",
+				"core/files",
+				"core/profiling",
+				"core/debugging",
+				"core/math"
+			],
+			"partPages": true
+		},
+		{
+			"number": 4,
+			"slug": "world",
+			"title": "Scenes and the ECS",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/computer",
+				"basics/cpp-classes",
+				"basics/data-structures",
+				"core/frame-loop",
+				"basics/cpp-generic",
+				"core/conventions",
+				"basics/math-rotations",
+				"core/math",
+				"core/jobs",
+				"basics/threads",
+				"core/time",
+				"core/engine-modules",
+				"core/layers-registries",
+				"basics/math-interpolation",
+				"basics/cpp-modern",
+				"basics/data-formats",
+				"core/files",
+				"core/first-change",
+				"start/first-game"
+			],
+			"pages": [
+				"world/what-a-world-is",
+				"world/ecs",
+				"world/scene-graph",
+				"world/systems",
+				"world/interpolation",
+				"world/reflection",
+				"world/serialization",
+				"world/prefabs",
+				"world/sub-scenes",
+				"world/projects-settings",
+				"world/tutorial-component"
+			],
+			"partPages": true
+		},
+		{
+			"number": 5,
+			"slug": "gpu",
+			"title": "The GPU and the renderer's core",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/threads",
+				"basics/math-projection",
+				"basics/color",
+				"basics/signals",
+				"core/frame-loop",
+				"basics/cpp-classes",
+				"basics/numbers",
+				"core/layers-registries",
+				"core/platform",
+				"basics/build",
+				"core/first-change",
+				"core/math",
+				"world/scene-graph",
+				"core/debugging",
+				"core/profiling",
+				"world/tutorial-component",
+				"basics/bytes"
+			],
+			"pages": [
+				"gpu/how-a-gpu-frame-works",
+				"gpu/vulkan-nvrhi",
+				"gpu/shaders",
+				"gpu/compute",
+				"gpu/coordinates",
+				"gpu/first-triangle",
+				"gpu/debugging",
+				"gpu/resources-lifetimes",
+				"gpu/upload-queue",
+				"gpu/binding",
+				"gpu/geometry-pool",
+				"gpu/frame-tour",
+				"gpu/readback-timing",
+				"gpu/debug-drawing",
+				"gpu/text"
+			],
+			"partPages": true
+		},
+		{
+			"number": 6,
+			"slug": "assets",
+			"title": "Assets",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/data-formats",
+				"core/layers-registries",
+				"world/ecs",
+				"core/files",
+				"world/reflection",
+				"core/jobs",
+				"basics/color",
+				"basics/signals",
+				"gpu/how-a-gpu-frame-works",
+				"basics/numbers",
+				"gpu/geometry-pool",
+				"world/prefabs",
+				"gpu/resources-lifetimes",
+				"basics/trees-graphs",
+				"world/serialization",
+				"gpu/upload-queue",
+				"world/tutorial-component"
+			],
+			"pages": [
+				"assets/what-is-an-asset",
+				"assets/handles-meta",
+				"assets/importing",
+				"assets/textures",
+				"assets/texture-cooking",
+				"assets/models-gltf",
+				"assets/loading",
+				"assets/residency",
+				"assets/references",
+				"assets/uploads",
+				"assets/packs-export",
+				"assets/robustness",
+				"assets/extending"
+			],
+			"partPages": true
+		},
+		{
+			"number": 7,
+			"slug": "draw",
+			"title": "Drawing a scene",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/frame-tour",
+				"world/scene-graph",
+				"world/interpolation",
+				"world/sub-scenes",
+				"core/jobs",
+				"basics/math-geometry",
+				"core/math",
+				"assets/residency",
+				"gpu/geometry-pool",
+				"gpu/binding",
+				"basics/numbers",
+				"gpu/coordinates",
+				"gpu/upload-queue",
+				"gpu/compute",
+				"gpu/readback-timing",
+				"assets/texture-cooking",
+				"assets/uploads"
+			],
+			"pages": [
+				"draw/entities-to-draws",
+				"draw/render-scene",
+				"draw/bounds-culling",
+				"draw/asset-requests",
+				"draw/batching",
+				"draw/lod",
+				"draw/mirrors-camera-relative",
+				"draw/render-scene-gpu",
+				"draw/gpu-driven",
+				"draw/occlusion",
+				"draw/mip-streaming",
+				"draw/skinned",
+				"draw/motion-vectors"
+			],
+			"partPages": true
+		},
+		{
+			"number": 8,
+			"slug": "light",
+			"title": "Light and materials",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/frame-tour",
+				"basics/numbers",
+				"basics/color",
+				"basics/math-sphere",
+				"assets/textures",
+				"basics/math-bases",
+				"basics/math-vectors",
+				"basics/math-probability",
+				"gpu/binding",
+				"assets/loading",
+				"basics/signals",
+				"gpu/compute",
+				"gpu/readback-timing",
+				"gpu/debug-drawing",
+				"draw/render-scene",
+				"world/interpolation",
+				"draw/bounds-culling",
+				"draw/gpu-driven",
+				"gpu/coordinates",
+				"basics/math-projection",
+				"draw/occlusion",
+				"assets/texture-cooking",
+				"draw/batching"
+			],
+			"pages": [
+				"light/units-exposure",
+				"light/materials",
+				"light/reflectance",
+				"light/material-data",
+				"light/brdf",
+				"light/energy",
+				"light/measuring-light",
+				"light/lights",
+				"light/many-lights",
+				"light/area-lights",
+				"light/shadow-basics",
+				"light/sun-shadows-1",
+				"light/sun-shadows-2",
+				"light/local-shadows",
+				"light/sky",
+				"light/atmosphere",
+				"light/fog",
+				"light/clearcoat-transmission"
+			],
+			"partPages": true
+		},
+		{
+			"number": 9,
+			"slug": "image",
+			"title": "The image",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/frame-tour",
+				"light/brdf",
+				"gpu/compute",
+				"gpu/coordinates",
+				"light/measuring-light",
+				"basics/numbers",
+				"gpu/readback-timing",
+				"assets/importing",
+				"basics/signals",
+				"draw/motion-vectors",
+				"basics/math-projection",
+				"light/sun-shadows-2",
+				"world/projects-settings",
+				"gpu/first-triangle",
+				"core/first-change"
+			],
+			"pages": [
+				"image/why-post",
+				"image/exposure",
+				"image/pre-exposure",
+				"image/tone-mapping",
+				"image/grading",
+				"image/encoding",
+				"image/lens-effects",
+				"image/spatial-aa",
+				"image/taa",
+				"image/motion-blur",
+				"image/depth-of-field",
+				"image/quality-settings",
+				"image/tutorial-post-effect"
+			],
+			"partPages": true
+		},
+		{
+			"number": 10,
+			"slug": "indirect",
+			"title": "Indirect light",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/brdf",
+				"light/sky",
+				"light/energy",
+				"basics/math-sphere",
+				"gpu/compute",
+				"basics/signals",
+				"image/pre-exposure",
+				"assets/residency",
+				"basics/math-geometry",
+				"draw/mip-streaming",
+				"image/taa",
+				"light/clearcoat-transmission",
+				"gpu/geometry-pool",
+				"draw/render-scene",
+				"light/measuring-light",
+				"light/atmosphere"
+			],
+			"pages": [
+				"indirect/problem",
+				"indirect/ibl",
+				"indirect/seam",
+				"indirect/ao",
+				"indirect/probes",
+				"indirect/ssr",
+				"indirect/gi-voxels",
+				"indirect/gi-cascades",
+				"indirect/gi-limits"
+			],
+			"partPages": true
+		},
+		{
+			"number": 11,
+			"slug": "physics",
+			"title": "Physics",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/scene-graph",
+				"basics/math-vectors",
+				"basics/math-geometry",
+				"basics/trees-graphs",
+				"core/time",
+				"basics/math-change",
+				"basics/math-rotations",
+				"world/systems",
+				"core/jobs",
+				"assets/loading",
+				"world/interpolation",
+				"world/projects-settings",
+				"world/sub-scenes",
+				"core/profiling"
+			],
+			"pages": [
+				"physics/why",
+				"physics/bodies-colliders",
+				"physics/collision-detection",
+				"physics/dynamics",
+				"physics/building-bodies",
+				"physics/world-step",
+				"physics/collision-layers",
+				"physics/contacts-triggers",
+				"physics/queries",
+				"physics/character-controllers",
+				"physics/scale-streaming",
+				"physics/tuning"
+			],
+			"partPages": true
+		},
+		{
+			"number": 12,
+			"slug": "animation",
+			"title": "Animation",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/scene-graph",
+				"basics/math-rotations",
+				"assets/importing",
+				"assets/loading",
+				"basics/math-interpolation",
+				"draw/skinned",
+				"assets/models-gltf",
+				"physics/character-controllers",
+				"world/systems",
+				"core/jobs",
+				"assets/residency",
+				"draw/bounds-culling",
+				"draw/gpu-driven"
+			],
+			"pages": [
+				"animation/problem",
+				"animation/skeletons",
+				"animation/clips",
+				"animation/skinning",
+				"animation/importing",
+				"animation/state-machines",
+				"animation/blending",
+				"animation/time-events",
+				"animation/root-motion",
+				"animation/system",
+				"animation/culling",
+				"animation/editor",
+				"animation/limits"
+			],
+			"partPages": true
+		},
+		{
+			"number": 13,
+			"slug": "audio",
+			"title": "Audio",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/numbers",
+				"basics/signals",
+				"basics/threads",
+				"core/frame-loop",
+				"core/engine-modules",
+				"assets/importing",
+				"assets/loading",
+				"basics/math-vectors",
+				"world/systems",
+				"physics/bodies-colliders",
+				"core/first-change"
+			],
+			"pages": [
+				"audio/sound-in-a-computer",
+				"audio/engine",
+				"audio/clips-voices-sources",
+				"audio/spatial",
+				"audio/scene-system",
+				"audio/testing"
+			],
+			"partPages": false
+		},
+		{
+			"number": 14,
+			"slug": "input",
+			"title": "Input",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/frame-loop",
+				"core/windows-events",
+				"core/time",
+				"basics/bytes",
+				"basics/math-vectors",
+				"world/projects-settings"
+			],
+			"pages": [
+				"input/how-input-works",
+				"input/devices-state",
+				"input/mouse-cursor",
+				"input/gamepads",
+				"input/actions",
+				"input/rebinding",
+				"input/simulated"
+			],
+			"partPages": false
+		},
+		{
+			"number": 15,
+			"slug": "scripting",
+			"title": "Scripting",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/ecs",
+				"basics/build",
+				"basics/cpp-classes",
+				"basics/cpp-generic",
+				"world/reflection",
+				"core/platform",
+				"core/files",
+				"core/conventions",
+				"core/debugging",
+				"world/systems",
+				"assets/residency",
+				"physics/contacts-triggers",
+				"animation/time-events",
+				"core/engine-modules",
+				"core/layers-registries",
+				"world/tutorial-component",
+				"core/first-change"
+			],
+			"pages": [
+				"scripting/why-scripts",
+				"scripting/shared-libraries",
+				"scripting/abi-sdk",
+				"scripting/loading",
+				"scripting/crash-containment",
+				"scripting/symbolization",
+				"scripting/script-system",
+				"scripting/hot-reload",
+				"scripting/host-api",
+				"scripting/tutorial-host-function"
+			],
+			"partPages": true
+		},
+		{
+			"number": 16,
+			"slug": "ui",
+			"title": "Game UI",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/scene-graph",
+				"input/actions",
+				"input/mouse-cursor",
+				"scripting/script-system",
+				"basics/math-geometry",
+				"gpu/text",
+				"input/devices-state",
+				"gpu/binding",
+				"gpu/debug-drawing",
+				"draw/mirrors-camera-relative"
+			],
+			"pages": [
+				"ui/what-game-ui-does",
+				"ui/layout",
+				"ui/contract",
+				"ui/input",
+				"ui/text",
+				"ui/drawing"
+			],
+			"partPages": false
+		},
+		{
+			"number": 17,
+			"slug": "worlds",
+			"title": "Large worlds and shipping",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/sub-scenes",
+				"assets/residency",
+				"basics/numbers",
+				"assets/handles-meta",
+				"world/serialization",
+				"core/jobs",
+				"physics/scale-streaming",
+				"scripting/abi-sdk",
+				"assets/packs-export",
+				"world/projects-settings",
+				"core/files",
+				"basics/data-formats",
+				"basics/color",
+				"assets/robustness",
+				"core/engine-modules",
+				"core/windows-events",
+				"scripting/script-system",
+				"image/quality-settings"
+			],
+			"pages": [
+				"worlds/why-streaming",
+				"worlds/grids",
+				"worlds/streamer",
+				"worlds/physics-scripts",
+				"worlds/export",
+				"worlds/game-identity",
+				"worlds/runtime"
+			],
+			"partPages": false
+		},
+		{
+			"number": 18,
+			"slug": "editor",
+			"title": "The editor's core",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/systems",
+				"core/windows-events",
+				"core/layers-registries",
+				"world/reflection",
+				"basics/data-formats",
+				"core/time",
+				"assets/importing",
+				"world/serialization",
+				"core/files",
+				"core/jobs",
+				"world/projects-settings",
+				"world/sub-scenes",
+				"assets/references",
+				"world/prefabs",
+				"scripting/script-system",
+				"worlds/streamer",
+				"scripting/hot-reload",
+				"basics/build",
+				"input/simulated",
+				"basics/math-geometry",
+				"draw/bounds-culling",
+				"gpu/frame-tour",
+				"gpu/readback-timing",
+				"assets/residency",
+				"gpu/coordinates",
+				"basics/math-rotations",
+				"scripting/tutorial-host-function",
+				"core/first-change"
+			],
+			"pages": [
+				"editor/program",
+				"editor/commands",
+				"editor/deferred-commands",
+				"editor/undo",
+				"editor/saving",
+				"editor/recovery",
+				"editor/projects",
+				"editor/trash-references",
+				"editor/prefab-instances",
+				"editor/play-mode",
+				"editor/worlds",
+				"editor/script-builds",
+				"editor/stepping",
+				"editor/command-scripts",
+				"editor/journal",
+				"editor/placement",
+				"editor/thumbnails",
+				"editor/camera-viewport",
+				"editor/tutorial-command"
+			],
+			"partPages": true
+		},
+		{
+			"number": 19,
+			"slug": "editor-ui",
+			"title": "The editor's interface",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/program",
+				"ui/what-game-ui-does",
+				"core/windows-events",
+				"core/engine-modules",
+				"gpu/binding",
+				"gpu/resources-lifetimes",
+				"basics/color",
+				"gpu/text",
+				"editor/saving",
+				"editor/thumbnails",
+				"editor/prefab-instances",
+				"world/reflection",
+				"editor/camera-viewport",
+				"editor/placement",
+				"gpu/frame-tour",
+				"gpu/readback-timing",
+				"editor/play-mode",
+				"input/mouse-cursor",
+				"core/profiling",
+				"editor/projects",
+				"editor/recovery",
+				"editor/trash-references",
+				"worlds/export",
+				"world/projects-settings",
+				"physics/collision-layers",
+				"input/rebinding",
+				"image/quality-settings",
+				"editor/journal",
+				"editor/script-builds",
+				"worlds/streamer",
+				"core/first-change"
+			],
+			"pages": [
+				"editor-ui/immediate-mode",
+				"editor-ui/imgui",
+				"editor-ui/imgui-backends",
+				"editor-ui/ui-scale",
+				"editor-ui/design-system",
+				"editor-ui/widget-kit",
+				"editor-ui/shell",
+				"editor-ui/lists",
+				"editor-ui/inspectors",
+				"editor-ui/scene-view",
+				"editor-ui/game-view",
+				"editor-ui/status",
+				"editor-ui/launcher-dialogs",
+				"editor-ui/settings-windows",
+				"editor-ui/instrument-panels",
+				"editor-ui/ui-testing",
+				"editor-ui/tutorial-panel"
+			],
+			"partPages": true
+		},
+		{
+			"number": 20,
+			"slug": "automation",
+			"title": "Automation and AI agents",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/journal",
+				"basics/data-formats",
+				"basics/threads",
+				"core/platform",
+				"editor/deferred-commands",
+				"core/jobs",
+				"core/files"
+			],
+			"pages": [
+				"automation/agents",
+				"automation/json-rpc",
+				"automation/rpc-server",
+				"automation/security",
+				"automation/sessions",
+				"automation/mcp"
+			],
+			"partPages": false
+		},
+		{
+			"number": 21,
+			"slug": "engineering",
+			"title": "Building, testing and releasing the engine",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/first-change",
+				"core/layers-registries",
+				"basics/numbers",
+				"gpu/shaders",
+				"gpu/first-triangle",
+				"editor/command-scripts",
+				"world/reflection",
+				"scripting/abi-sdk",
+				"core/profiling",
+				"gpu/frame-tour"
+			],
+			"pages": [
+				"engineering/building",
+				"engineering/cmake",
+				"engineering/flags-portability",
+				"engineering/third-party",
+				"engineering/generated-code",
+				"engineering/testing",
+				"engineering/test-program",
+				"engineering/test-kinds",
+				"engineering/feature-test",
+				"engineering/perf-lab",
+				"engineering/look-dev",
+				"engineering/ci",
+				"engineering/releasing",
+				"engineering/contributing"
+			],
+			"partPages": true
+		},
+		{
+			"number": 22,
+			"slug": "capstone",
+			"title": "Capstone: one feature through every layer",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/tutorial-component",
+				"scripting/tutorial-host-function",
+				"editor/tutorial-command",
+				"engineering/contributing",
+				"core/reading-code",
+				"physics/world-step",
+				"gpu/debug-drawing",
+				"editor-ui/inspectors",
+				"engineering/feature-test",
+				"engineering/perf-lab",
+				"engineering/ci"
+			],
+			"pages": [
+				"capstone/plan",
+				"capstone/build",
+				"capstone/land"
+			],
+			"partPages": false
+		},
+		{
+			"number": 23,
+			"slug": "reference",
+			"title": "Reference",
+			"tracks": [],
+			"needs": [
+				"basics/programming-3",
+				"editor/commands",
+				"basics/data-formats",
+				"world/what-a-world-is",
+				"world/projects-settings",
+				"assets/handles-meta",
+				"gpu/frame-tour",
+				"physics/bodies-colliders",
+				"animation/state-machines",
+				"input/actions",
+				"ui/layout",
+				"worlds/runtime",
+				"editor-ui/shell",
+				"automation/json-rpc",
+				"basics/build",
+				"engineering/perf-lab",
+				"make/first-script"
+			],
+			"pages": [
+				"reference/script-api",
+				"reference/commands",
+				"reference/components",
+				"reference/settings",
+				"reference/scene",
+				"reference/assets",
+				"reference/renderer",
+				"reference/physics",
+				"reference/animation",
+				"reference/audio-input",
+				"reference/ui",
+				"reference/worlds-runtime",
+				"reference/editor",
+				"reference/automation",
+				"reference/core",
+				"reference/build",
+				"reference/performance",
+				"reference/game-makers",
+				"reference/notation",
+				"reference/glossary",
+				"reference/term-index",
+				"reference/figures"
+			],
+			"partPages": true
+		},
+		{
+			"number": 24,
+			"slug": "appendix",
+			"title": "Appendices",
+			"tracks": [],
+			"needs": [
+				"automation/json-rpc",
+				"core/time",
+				"basics/trees-graphs",
+				"basics/math-geometry"
+			],
+			"pages": [
+				"appendix/not-in-strata",
+				"appendix/networking",
+				"appendix/game-ai",
+				"appendix/math-cheatsheet",
+				"appendix/history",
+				"appendix/further-reading",
+				"appendix/credits"
+			],
+			"partPages": false
+		}
+	],
+	"pages": [
+		{
+			"id": "start/welcome",
+			"title": "What Strata is and what this book teaches",
+			"kind": "concept",
+			"size": "S",
+			"tracks": [
+				"G",
+				"B",
+				"E"
+			],
+			"needs": [],
+			"part": "start",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:153"
+		},
+		{
+			"id": "start/how-to-read",
+			"title": "How to read this book",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"G",
+				"B",
+				"E"
+			],
+			"needs": [],
+			"part": "start",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:154"
+		},
+		{
+			"id": "start/install",
+			"title": "Installing Strata and the C++ build tools",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"G",
+				"B",
+				"E"
+			],
+			"needs": [
+				"start/how-to-read"
+			],
+			"part": "start",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:155"
+		},
+		{
+			"id": "start/first-game",
+			"title": "Your first game",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"G",
+				"B",
+				"E"
+			],
+			"needs": [
+				"start/install"
+			],
+			"part": "start",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:156"
+		},
+		{
+			"id": "start/what-an-engine-is",
+			"title": "What a game engine is: one frame, start to finish",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"G",
+				"B",
+				"E"
+			],
+			"needs": [
+				"start/first-game"
+			],
+			"part": "start",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:157"
+		},
+		{
+			"id": "start/coming-from",
+			"title": "Coming from Unity, Unreal or Godot",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"G",
+				"E"
+			],
+			"needs": [
+				"start/what-an-engine-is"
+			],
+			"part": "start",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:158"
+		},
+		{
+			"id": "make/editor-tour",
+			"title": "A tour of the editor",
+			"kind": "tutorial",
+			"size": "M",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"start/how-to-read",
+				"start/what-an-engine-is"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:179"
+		},
+		{
+			"id": "make/project-files",
+			"title": "Projects, saving, undo and recovery",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/editor-tour"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:180"
+		},
+		{
+			"id": "make/scenes-entities",
+			"title": "Scenes, entities and components",
+			"kind": "tutorial",
+			"size": "M",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/editor-tour"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:181"
+		},
+		{
+			"id": "make/transforms-units",
+			"title": "Positions, rotations and units",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/scenes-entities"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:182"
+		},
+		{
+			"id": "make/assets",
+			"title": "Bringing in assets",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/transforms-units",
+				"make/project-files"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:183"
+		},
+		{
+			"id": "make/materials",
+			"title": "Materials",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/assets"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:184"
+		},
+		{
+			"id": "make/prefabs",
+			"title": "Prefabs",
+			"kind": "tutorial",
+			"size": "M",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/materials"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:185"
+		},
+		{
+			"id": "make/lighting",
+			"title": "Lighting a scene: sun, sky and exposure",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/prefabs"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:186"
+		},
+		{
+			"id": "make/first-script",
+			"title": "Your first script",
+			"kind": "tutorial",
+			"size": "M",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/lighting",
+				"basics/tools|start/install"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:187"
+		},
+		{
+			"id": "make/script-loop",
+			"title": "The game loop from a script's side",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/first-script",
+				"basics/programming-3"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:188"
+		},
+		{
+			"id": "make/scripting-scene",
+			"title": "Scripts and the scene: finding, spawning and changing entities",
+			"kind": "how-to",
+			"size": "L",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/script-loop"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:189"
+		},
+		{
+			"id": "make/input",
+			"title": "Input and input actions",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/scripting-scene"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:190"
+		},
+		{
+			"id": "make/physics",
+			"title": "Physics for game makers",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/input"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:191"
+		},
+		{
+			"id": "make/sound",
+			"title": "Sound",
+			"kind": "tutorial",
+			"size": "M",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/physics"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:192"
+		},
+		{
+			"id": "make/hud",
+			"title": "HUDs: text, score and bars",
+			"kind": "tutorial",
+			"size": "M",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/sound"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:193"
+		},
+		{
+			"id": "make/play-test-debug",
+			"title": "Playing, testing and debugging",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/hud",
+				"basics/debugging"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:194"
+		},
+		{
+			"id": "make/export",
+			"title": "Exporting and shipping",
+			"kind": "tutorial",
+			"size": "M",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/project-files",
+				"make/hud"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:195"
+		},
+		{
+			"id": "make/project-coin-run",
+			"title": "Project: Coin Run, a first finished game",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"G",
+				"B"
+			],
+			"needs": [
+				"make/export",
+				"make/sound",
+				"make/play-test-debug"
+			],
+			"part": "make",
+			"block": "A",
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 1,
+			"row": "plan/outline-1.md:196"
+		},
+		{
+			"id": "make/gameplay-math",
+			"title": "The math of moving things: vectors, directions, angles and smoothing",
+			"kind": "how-to",
+			"size": "L",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/project-coin-run",
+				"make/transforms-units|basics/math-vectors"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:202"
+		},
+		{
+			"id": "make/timers-events",
+			"title": "Timers, time scale and events between scripts",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/project-coin-run"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:203"
+		},
+		{
+			"id": "make/script-fields",
+			"title": "Tuning scripts from the editor: fields, references and prefabs",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/project-coin-run"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:204"
+		},
+		{
+			"id": "make/patterns",
+			"title": "Patterns for game code: state machines, managers and object pools",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/timers-events",
+				"make/script-fields"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:205"
+		},
+		{
+			"id": "make/recipes",
+			"title": "Building blocks and recipes",
+			"kind": "how-to",
+			"size": "L",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/patterns",
+				"make/gameplay-math"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:206"
+		},
+		{
+			"id": "make/script-builds",
+			"title": "Building and shipping script modules",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/project-coin-run",
+				"basics/tools|start/install"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:207"
+		},
+		{
+			"id": "make/characters-cameras",
+			"title": "Characters and cameras",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/gameplay-math",
+				"make/script-fields"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:208"
+		},
+		{
+			"id": "make/animation",
+			"title": "Animation for game makers",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/characters-cameras"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:209"
+		},
+		{
+			"id": "make/menus",
+			"title": "Menus: buttons, navigation, pause and settings screens",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/timers-events",
+				"make/script-fields"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:210"
+		},
+		{
+			"id": "make/levels-saves",
+			"title": "Levels, loading screens and save files",
+			"kind": "how-to",
+			"size": "L",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/menus"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:211"
+		},
+		{
+			"id": "make/lamps",
+			"title": "Lamps: point, spot and area lights and their shadows",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/project-coin-run"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": "W8",
+			"markSection": null,
+			"wave": "B",
+			"level": 1,
+			"row": "plan/outline-1.md:212"
+		},
+		{
+			"id": "make/reflections",
+			"title": "Sky light, ambient occlusion and reflections in your game",
+			"kind": "how-to",
+			"size": "L",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/project-coin-run"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:213"
+		},
+		{
+			"id": "make/gi",
+			"title": "Trying global illumination",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/reflections"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": "W8",
+			"markSection": null,
+			"wave": "B",
+			"level": 1,
+			"row": "plan/outline-1.md:214"
+		},
+		{
+			"id": "make/look",
+			"title": "The camera's image",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/project-coin-run"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": "W8r",
+			"markSection": "the effects' quality presets",
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:215"
+		},
+		{
+			"id": "make/quality",
+			"title": "Graphics quality and options for players",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/look",
+				"make/menus"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": "W8r",
+			"markSection": "the presets table",
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:216"
+		},
+		{
+			"id": "make/large-worlds",
+			"title": "Large worlds",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/levels-saves"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:217"
+		},
+		{
+			"id": "make/performance",
+			"title": "Making your game run fast",
+			"kind": "tutorial",
+			"size": "M",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/quality",
+				"make/large-worlds",
+				"make/animation"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": "W8r",
+			"markSection": "the `renderStats` keys and the Performance panel's numbers",
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:218"
+		},
+		{
+			"id": "make/automated-playtests",
+			"title": "Automated play-tests",
+			"kind": "how-to",
+			"size": "L",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/menus",
+				"basics/tools|start/install"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:219"
+		},
+		{
+			"id": "make/commands",
+			"title": "Driving the editor from outside: the CLI and command scripts",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/automated-playtests",
+				"make/animation"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:220"
+		},
+		{
+			"id": "make/with-an-agent",
+			"title": "Making a game with an AI agent",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/commands"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:221"
+		},
+		{
+			"id": "make/samples",
+			"title": "Studying the samples",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/project-coin-run"
+			],
+			"part": "make",
+			"block": "B",
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 1,
+			"row": "plan/outline-1.md:222"
+		},
+		{
+			"id": "make/designing-a-game",
+			"title": "Planning a small game: the core loop, scope, prototype and playtest",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/project-coin-run"
+			],
+			"part": "make",
+			"block": "C",
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 1,
+			"row": "plan/outline-1.md:228"
+		},
+		{
+			"id": "make/project-tetris",
+			"title": "Project: Tetris",
+			"kind": "tutorial",
+			"size": "XL",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/designing-a-game",
+				"make/recipes",
+				"make/automated-playtests"
+			],
+			"part": "make",
+			"block": "C",
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 1,
+			"row": "plan/outline-1.md:229"
+		},
+		{
+			"id": "make/project-platformer",
+			"title": "Project: a third-person platformer",
+			"kind": "tutorial",
+			"size": "XL",
+			"tracks": [
+				"G"
+			],
+			"needs": [
+				"make/designing-a-game",
+				"make/animation",
+				"make/levels-saves",
+				"make/commands"
+			],
+			"part": "make",
+			"block": "C",
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 1,
+			"row": "plan/outline-1.md:230"
+		},
+		{
+			"id": "basics/computer",
+			"title": "How a computer runs a program: CPU, memory, caches and processes",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"start/first-game"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:248"
+		},
+		{
+			"id": "basics/tools",
+			"title": "The tools: the terminal, files and a code editor",
+			"kind": "primer",
+			"size": "M",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"start/install"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:249"
+		},
+		{
+			"id": "basics/programming-1",
+			"title": "Programming from zero I: values, variables, expressions and decisions",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"G",
+				"B",
+				"E"
+			],
+			"needs": [
+				"make/first-script|start/first-game"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:250"
+		},
+		{
+			"id": "basics/programming-2",
+			"title": "Programming from zero II: loops, functions, lists and structs",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"G",
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/programming-1"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:251"
+		},
+		{
+			"id": "basics/programming-3",
+			"title": "Programming from zero III: classes, references, files of code and reading errors",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"G",
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/programming-2"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:252"
+		},
+		{
+			"id": "basics/debugging",
+			"title": "Finding bugs: a method, the log and the debugger",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"G",
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/programming-3"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:253"
+		},
+		{
+			"id": "basics/git",
+			"title": "Version control with git",
+			"kind": "primer",
+			"size": "M",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/tools"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:254"
+		},
+		{
+			"id": "basics/numbers",
+			"title": "Numbers in a computer: binary, integers, floating point and precision",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/computer",
+				"basics/programming-1"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:255"
+		},
+		{
+			"id": "basics/data-structures",
+			"title": "Data structures I: arrays, lists, hash maps and their cost",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/programming-3",
+				"basics/numbers"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:256"
+		},
+		{
+			"id": "basics/trees-graphs",
+			"title": "Data structures II: trees, heaps, graphs and sorting",
+			"kind": "primer",
+			"size": "M",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/data-structures"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:257"
+		},
+		{
+			"id": "basics/cpp-memory",
+			"title": "C++ memory: pointers, references, lifetimes, RAII and smart pointers",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/programming-3",
+				"basics/computer"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:258"
+		},
+		{
+			"id": "basics/cpp-classes",
+			"title": "C++ classes in depth: inheritance, virtual calls and interfaces",
+			"kind": "primer",
+			"size": "M",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/cpp-memory"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:259"
+		},
+		{
+			"id": "basics/cpp-generic",
+			"title": "Generic C++: templates, lambdas and the standard containers",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/cpp-classes",
+				"basics/trees-graphs"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:260"
+		},
+		{
+			"id": "basics/cpp-modern",
+			"title": "Modern C++ as Strata uses it: move semantics, constexpr, optional, variant, span and concepts",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/cpp-generic"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:261"
+		},
+		{
+			"id": "basics/build",
+			"title": "How a C++ program is built: from two files by hand to CMake",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/tools",
+				"basics/programming-3",
+				"basics/computer"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:262"
+		},
+		{
+			"id": "basics/bytes",
+			"title": "Bytes in files and memory: layouts, byte order and text encodings",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/numbers",
+				"basics/tools",
+				"basics/cpp-generic"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:263"
+		},
+		{
+			"id": "basics/data-formats",
+			"title": "JSON, Base64, hashes and UUIDs",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/bytes"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:264"
+		},
+		{
+			"id": "basics/math-vectors",
+			"title": "Vectors: length, direction, dot and cross products",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/programming-2"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:265"
+		},
+		{
+			"id": "basics/math-matrices",
+			"title": "Matrices and transforms: TRS, hierarchies, spaces and conventions",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/math-vectors",
+				"basics/numbers"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:266"
+		},
+		{
+			"id": "basics/math-bases",
+			"title": "Bases, determinants and normals: orthonormal frames, tangent space, mirrors and the inverse transpose",
+			"kind": "primer",
+			"size": "M",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/math-matrices"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:267"
+		},
+		{
+			"id": "basics/math-projection",
+			"title": "Cameras and projection: perspective, homogeneous coordinates and depth",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/math-matrices"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:268"
+		},
+		{
+			"id": "basics/math-rotations",
+			"title": "Rotations and quaternions",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/math-bases"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:269"
+		},
+		{
+			"id": "basics/math-geometry",
+			"title": "Geometry for engines: rays, planes, boxes and intersection tests",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/math-matrices",
+				"basics/math-projection"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:270"
+		},
+		{
+			"id": "basics/math-change",
+			"title": "Change over time: rates, accumulation, Euler steps and Newton's laws",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/math-vectors"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:271"
+		},
+		{
+			"id": "basics/math-interpolation",
+			"title": "Blending and smoothing: lerp, easing, curves and exponential smoothing",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/math-change",
+				"basics/numbers"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:272"
+		},
+		{
+			"id": "basics/color",
+			"title": "Color and light for programmers: linear, sRGB and HDR",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/numbers",
+				"basics/math-matrices"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:273"
+		},
+		{
+			"id": "basics/signals",
+			"title": "Sampling, aliasing and filtering",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/math-interpolation",
+				"basics/color"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:274"
+		},
+		{
+			"id": "basics/math-probability",
+			"title": "Chance: probability, noise, integrals and Monte Carlo",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/math-change",
+				"basics/signals"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:275"
+		},
+		{
+			"id": "basics/math-sphere",
+			"title": "Directions on a sphere: solid angles, spherical harmonics and octahedral maps",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/math-probability"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:276"
+		},
+		{
+			"id": "basics/threads",
+			"title": "Threads, atomics and races",
+			"kind": "primer",
+			"size": "L",
+			"tracks": [
+				"B",
+				"E"
+			],
+			"needs": [
+				"basics/computer",
+				"basics/cpp-generic"
+			],
+			"part": "basics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:277"
+		},
+		{
+			"id": "core/map",
+			"title": "How Strata is put together: programs, libraries, modules and layers",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/build",
+				"start/what-an-engine-is"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 1,
+			"row": "plan/outline-1.md:289"
+		},
+		{
+			"id": "core/first-change",
+			"title": "Your first engine change: build from source, change one thing, test it",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/map",
+				"basics/cpp-classes",
+				"basics/git"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:290"
+		},
+		{
+			"id": "core/conventions",
+			"title": "Ownership, errors and logging in Strata",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/first-change",
+				"basics/cpp-modern"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:291"
+		},
+		{
+			"id": "core/reading-code",
+			"title": "Finding your way in a large codebase",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/first-change",
+				"core/conventions"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:292"
+		},
+		{
+			"id": "core/first-frame",
+			"title": "From main to the first frame",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/conventions"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:293"
+		},
+		{
+			"id": "core/frame-loop",
+			"title": "The frame loop",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/first-frame",
+				"basics/threads"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:294"
+		},
+		{
+			"id": "core/time",
+			"title": "Time: delta time, the fixed step and time scale",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/frame-loop",
+				"basics/math-change"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:295"
+		},
+		{
+			"id": "core/windows-events",
+			"title": "Windows, events and layers",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/frame-loop"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:296"
+		},
+		{
+			"id": "core/engine-modules",
+			"title": "Engine modules",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/frame-loop",
+				"basics/trees-graphs"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:297"
+		},
+		{
+			"id": "core/layers-registries",
+			"title": "Layers, registries and the composition root",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/engine-modules",
+				"basics/data-formats"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:298"
+		},
+		{
+			"id": "core/jobs",
+			"title": "Threads and the job system",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/frame-loop",
+				"basics/threads"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:299"
+		},
+		{
+			"id": "core/platform",
+			"title": "Talking to the operating system",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/jobs"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:300"
+		},
+		{
+			"id": "core/files",
+			"title": "Files you can trust",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/platform",
+				"basics/bytes"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:301"
+		},
+		{
+			"id": "core/profiling",
+			"title": "Measuring the frame: the frame profiler, Tracy and the method",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/jobs"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:302"
+		},
+		{
+			"id": "core/debugging",
+			"title": "Debugging the engine: debuggers, asserts, the log and crash reports",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/first-change",
+				"core/platform",
+				"basics/debugging"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:303"
+		},
+		{
+			"id": "core/math",
+			"title": "Strata's math toolkit",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/math-rotations",
+				"basics/math-projection",
+				"basics/math-geometry",
+				"core/conventions"
+			],
+			"part": "core",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-1.md:304"
+		},
+		{
+			"id": "world/what-a-world-is",
+			"title": "What a game world is made of",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/computer",
+				"basics/cpp-classes",
+				"basics/data-structures",
+				"core/frame-loop"
+			],
+			"part": "world",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-2.md:13"
+		},
+		{
+			"id": "world/ecs",
+			"title": "Entities and components, with EnTT inside",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/what-a-world-is",
+				"basics/cpp-generic",
+				"core/conventions"
+			],
+			"part": "world",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-2.md:14"
+		},
+		{
+			"id": "world/scene-graph",
+			"title": "The scene graph: hierarchy, transforms and the transform contract",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/ecs",
+				"basics/math-rotations",
+				"core/math",
+				"core/jobs"
+			],
+			"part": "world",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-2.md:15"
+		},
+		{
+			"id": "world/systems",
+			"title": "Systems, phases and fixed steps",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/ecs",
+				"basics/threads",
+				"core/time",
+				"core/engine-modules",
+				"core/layers-registries"
+			],
+			"part": "world",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-2.md:16"
+		},
+		{
+			"id": "world/interpolation",
+			"title": "Drawing between fixed steps",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/scene-graph",
+				"world/systems",
+				"basics/math-interpolation"
+			],
+			"part": "world",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-2.md:17"
+		},
+		{
+			"id": "world/reflection",
+			"title": "Reflection: one registration, many uses",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/ecs",
+				"basics/cpp-modern",
+				"basics/data-formats",
+				"core/layers-registries"
+			],
+			"part": "world",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-2.md:18"
+		},
+		{
+			"id": "world/serialization",
+			"title": "Scene documents: text, streams and the cooked form",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/scene-graph",
+				"world/reflection",
+				"core/files"
+			],
+			"part": "world",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-2.md:19"
+		},
+		{
+			"id": "world/prefabs",
+			"title": "Prefabs: the data model",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/serialization"
+			],
+			"part": "world",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-2.md:20"
+		},
+		{
+			"id": "world/sub-scenes",
+			"title": "Loading scenes: whole, additive and in slices",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/prefabs",
+				"world/systems"
+			],
+			"part": "world",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-2.md:21"
+		},
+		{
+			"id": "world/projects-settings",
+			"title": "Projects and settings",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/systems",
+				"world/reflection",
+				"core/files"
+			],
+			"part": "world",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-2.md:22"
+		},
+		{
+			"id": "world/tutorial-component",
+			"title": "Tutorial: adding a component and a system",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/first-change",
+				"start/first-game",
+				"world/systems",
+				"world/serialization"
+			],
+			"part": "world",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "1",
+			"level": 2,
+			"row": "plan/outline-2.md:23"
+		},
+		{
+			"id": "gpu/how-a-gpu-frame-works",
+			"title": "How a GPU works and draws a frame",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/threads",
+				"basics/math-projection",
+				"basics/color",
+				"basics/signals",
+				"core/frame-loop"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:33"
+		},
+		{
+			"id": "gpu/vulkan-nvrhi",
+			"title": "Vulkan, NVRHI, the graphics device and the Renderer's services",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/cpp-classes",
+				"basics/numbers",
+				"gpu/how-a-gpu-frame-works",
+				"core/layers-registries",
+				"core/platform"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:34"
+		},
+		{
+			"id": "gpu/shaders",
+			"title": "Shaders: Slang, the build and the dialect",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/vulkan-nvrhi",
+				"basics/build",
+				"core/first-change"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:35"
+		},
+		{
+			"id": "gpu/compute",
+			"title": "Compute shaders: dispatches, thread groups, shared memory and atomics",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/shaders"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:36"
+		},
+		{
+			"id": "gpu/coordinates",
+			"title": "Coordinate systems and the camera: clip space, reversed depth, UVs",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/math-projection",
+				"basics/numbers",
+				"core/math",
+				"world/scene-graph",
+				"gpu/how-a-gpu-frame-works"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:37"
+		},
+		{
+			"id": "gpu/first-triangle",
+			"title": "Tutorial: your first triangle in Strata",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/first-change",
+				"gpu/shaders",
+				"gpu/coordinates"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:38"
+		},
+		{
+			"id": "gpu/debugging",
+			"title": "Debugging the GPU: validation, frame captures, the error count and debug views",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/first-triangle",
+				"core/debugging"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:39"
+		},
+		{
+			"id": "gpu/resources-lifetimes",
+			"title": "Resources and lifetimes",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/vulkan-nvrhi",
+				"gpu/compute",
+				"gpu/first-triangle"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:40"
+		},
+		{
+			"id": "gpu/upload-queue",
+			"title": "Staging and the upload queue",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/resources-lifetimes"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:41"
+		},
+		{
+			"id": "gpu/binding",
+			"title": "Pipelines and binding: layouts, registers and bindless",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/shaders",
+				"gpu/resources-lifetimes"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:42"
+		},
+		{
+			"id": "gpu/geometry-pool",
+			"title": "Meshes on the GPU and the geometry pool",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/upload-queue",
+				"gpu/binding"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:43"
+		},
+		{
+			"id": "gpu/frame-tour",
+			"title": "A frame of the scene renderer, pass by pass",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/coordinates",
+				"gpu/binding",
+				"gpu/geometry-pool"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": "W8r",
+			"markSection": "the list of passes and the statistics they report",
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:44"
+		},
+		{
+			"id": "gpu/readback-timing",
+			"title": "Readback and GPU timing",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/frame-tour",
+				"core/profiling"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:45"
+		},
+		{
+			"id": "gpu/debug-drawing",
+			"title": "Overlays, debug drawing and gizmos",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/frame-tour",
+				"world/tutorial-component"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:46"
+		},
+		{
+			"id": "gpu/text",
+			"title": "Text: fonts, shaping and signed distance fields",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/debug-drawing",
+				"basics/bytes"
+			],
+			"part": "gpu",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "2",
+			"level": 2,
+			"row": "plan/outline-2.md:47"
+		},
+		{
+			"id": "assets/what-is-an-asset",
+			"title": "What an asset is",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/data-formats",
+				"core/layers-registries",
+				"world/ecs"
+			],
+			"part": "assets",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 2,
+			"row": "plan/outline-2.md:57"
+		},
+		{
+			"id": "assets/handles-meta",
+			"title": "Handles, `.meta` files and sub-assets",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/files",
+				"assets/what-is-an-asset"
+			],
+			"part": "assets",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 2,
+			"row": "plan/outline-2.md:58"
+		},
+		{
+			"id": "assets/importing",
+			"title": "Importing: from source files to engine data",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"assets/handles-meta",
+				"world/reflection",
+				"core/jobs",
+				"core/files"
+			],
+			"part": "assets",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 2,
+			"row": "plan/outline-2.md:59"
+		},
+		{
+			"id": "assets/textures",
+			"title": "Textures for the GPU: mips, color spaces, block compression",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/color",
+				"basics/signals",
+				"gpu/how-a-gpu-frame-works"
+			],
+			"part": "assets",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 2,
+			"row": "plan/outline-2.md:60"
+		},
+		{
+			"id": "assets/texture-cooking",
+			"title": "Cooking textures: Strata's importer, mips and BC7 encoder",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"assets/importing",
+				"assets/textures",
+				"basics/numbers"
+			],
+			"part": "assets",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 2,
+			"row": "plan/outline-2.md:61"
+		},
+		{
+			"id": "assets/models-gltf",
+			"title": "Models and the glTF importer",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"assets/texture-cooking",
+				"gpu/geometry-pool",
+				"world/prefabs"
+			],
+			"part": "assets",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 2,
+			"row": "plan/outline-2.md:62"
+		},
+		{
+			"id": "assets/loading",
+			"title": "Loading without stalling",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"assets/handles-meta",
+				"core/jobs"
+			],
+			"part": "assets",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 2,
+			"row": "plan/outline-2.md:63"
+		},
+		{
+			"id": "assets/residency",
+			"title": "Residency, eviction and pins",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"assets/loading",
+				"gpu/resources-lifetimes",
+				"basics/trees-graphs"
+			],
+			"part": "assets",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 2,
+			"row": "plan/outline-2.md:64"
+		},
+		{
+			"id": "assets/references",
+			"title": "References, closures, prefetch and loading screens",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"assets/residency",
+				"world/serialization"
+			],
+			"part": "assets",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 2,
+			"row": "plan/outline-2.md:65"
+		},
+		{
+			"id": "assets/uploads",
+			"title": "Budgeted uploads",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"assets/residency",
+				"assets/texture-cooking",
+				"gpu/upload-queue"
+			],
+			"part": "assets",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 2,
+			"row": "plan/outline-2.md:66"
+		},
+		{
+			"id": "assets/packs-export",
+			"title": "Asset packs, export and patches",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"assets/references"
+			],
+			"part": "assets",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 2,
+			"row": "plan/outline-2.md:67"
+		},
+		{
+			"id": "assets/robustness",
+			"title": "Corruption, crash safety and cancellation",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"assets/importing",
+				"assets/packs-export"
+			],
+			"part": "assets",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 2,
+			"row": "plan/outline-2.md:68"
+		},
+		{
+			"id": "assets/extending",
+			"title": "Tutorial: adding an asset type",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"assets/uploads",
+				"assets/robustness",
+				"world/tutorial-component"
+			],
+			"part": "assets",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "3",
+			"level": 2,
+			"row": "plan/outline-2.md:69"
+		},
+		{
+			"id": "draw/entities-to-draws",
+			"title": "From entities to draw calls",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/frame-tour",
+				"world/scene-graph"
+			],
+			"part": "draw",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-2.md:79"
+		},
+		{
+			"id": "draw/render-scene",
+			"title": "The render scene: persistent proxies",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/interpolation",
+				"world/sub-scenes",
+				"core/jobs"
+			],
+			"part": "draw",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-2.md:80"
+		},
+		{
+			"id": "draw/bounds-culling",
+			"title": "Bounding volumes, frustums and the spatial index",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"draw/render-scene",
+				"basics/math-geometry",
+				"core/math"
+			],
+			"part": "draw",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-2.md:81"
+		},
+		{
+			"id": "draw/asset-requests",
+			"title": "Asking for assets at draw time",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"draw/bounds-culling",
+				"assets/residency"
+			],
+			"part": "draw",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-2.md:82"
+		},
+		{
+			"id": "draw/batching",
+			"title": "Batching and instancing",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"draw/asset-requests",
+				"gpu/geometry-pool",
+				"gpu/binding"
+			],
+			"part": "draw",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-2.md:83"
+		},
+		{
+			"id": "draw/lod",
+			"title": "Levels of detail",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"draw/batching"
+			],
+			"part": "draw",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-2.md:84"
+		},
+		{
+			"id": "draw/mirrors-camera-relative",
+			"title": "Mirrors, normals and camera-relative positions",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"draw/batching",
+				"basics/numbers",
+				"gpu/coordinates"
+			],
+			"part": "draw",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-2.md:85"
+		},
+		{
+			"id": "draw/render-scene-gpu",
+			"title": "The render scene's GPU copy",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"draw/batching",
+				"gpu/upload-queue"
+			],
+			"part": "draw",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-2.md:86"
+		},
+		{
+			"id": "draw/gpu-driven",
+			"title": "GPU-driven culling and indirect drawing",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"draw/lod",
+				"draw/mirrors-camera-relative",
+				"draw/render-scene-gpu",
+				"gpu/compute",
+				"gpu/readback-timing"
+			],
+			"part": "draw",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-2.md:87"
+		},
+		{
+			"id": "draw/occlusion",
+			"title": "Occlusion culling",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"draw/gpu-driven",
+				"gpu/coordinates"
+			],
+			"part": "draw",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-2.md:88"
+		},
+		{
+			"id": "draw/mip-streaming",
+			"title": "Mip streaming",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"draw/asset-requests",
+				"draw/gpu-driven",
+				"assets/texture-cooking",
+				"assets/uploads",
+				"gpu/binding"
+			],
+			"part": "draw",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-2.md:89"
+		},
+		{
+			"id": "draw/skinned",
+			"title": "Skinned meshes in the renderer",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"draw/gpu-driven"
+			],
+			"part": "draw",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-2.md:90"
+		},
+		{
+			"id": "draw/motion-vectors",
+			"title": "Motion vectors and motion history",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"draw/render-scene-gpu",
+				"draw/skinned"
+			],
+			"part": "draw",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-2.md:91"
+		},
+		{
+			"id": "light/units-exposure",
+			"title": "Light by the numbers: radiometric and photometric units",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/frame-tour",
+				"basics/numbers",
+				"basics/color",
+				"basics/math-sphere"
+			],
+			"part": "light",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-3.md:21"
+		},
+		{
+			"id": "light/materials",
+			"title": "Strata's material model",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"assets/textures",
+				"basics/math-bases",
+				"light/units-exposure"
+			],
+			"part": "light",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:22"
+		},
+		{
+			"id": "light/reflectance",
+			"title": "How surfaces reflect light: the reflection equation and microfacets",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/materials",
+				"basics/math-vectors",
+				"basics/math-probability",
+				"basics/math-sphere"
+			],
+			"part": "light",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:23"
+		},
+		{
+			"id": "light/material-data",
+			"title": "From a material file to the shader: the material record and its textures",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/materials",
+				"gpu/binding",
+				"assets/loading"
+			],
+			"part": "light",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:24"
+		},
+		{
+			"id": "light/brdf",
+			"title": "The forward shader and the BRDF in code",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/reflectance",
+				"light/material-data",
+				"basics/signals"
+			],
+			"part": "light",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:25"
+		},
+		{
+			"id": "light/energy",
+			"title": "Keeping the energy: directional albedo, the BRDF table and the white furnace",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/brdf",
+				"gpu/compute"
+			],
+			"part": "light",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:26"
+		},
+		{
+			"id": "light/measuring-light",
+			"title": "Measuring light: the debug views and their statistics",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/brdf",
+				"gpu/readback-timing",
+				"gpu/debug-drawing"
+			],
+			"part": "light",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:27"
+		},
+		{
+			"id": "light/lights",
+			"title": "Lights: the sun, points and spots",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/brdf",
+				"draw/render-scene",
+				"world/interpolation"
+			],
+			"part": "light",
+			"block": null,
+			"mark": "W8r",
+			"markSection": "light components and records",
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:28"
+		},
+		{
+			"id": "light/many-lights",
+			"title": "Many lights: culling and clustered forward shading",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/lights",
+				"gpu/compute",
+				"draw/bounds-culling",
+				"draw/gpu-driven"
+			],
+			"part": "light",
+			"block": null,
+			"mark": "W8r",
+			"markSection": "the forward light loop",
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:29"
+		},
+		{
+			"id": "light/area-lights",
+			"title": "Lights with size: sized highlights and area lights",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/many-lights",
+				"light/energy"
+			],
+			"part": "light",
+			"block": null,
+			"mark": "W8",
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-3.md:30"
+		},
+		{
+			"id": "light/shadow-basics",
+			"title": "Shadow mapping from first principles",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/lights",
+				"gpu/coordinates",
+				"basics/math-projection"
+			],
+			"part": "light",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:31"
+		},
+		{
+			"id": "light/sun-shadows-1",
+			"title": "Sun shadows I: stable cascades",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/shadow-basics",
+				"draw/gpu-driven",
+				"draw/occlusion"
+			],
+			"part": "light",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:32"
+		},
+		{
+			"id": "light/sun-shadows-2",
+			"title": "Sun shadows II: the soft shadow of a real sun",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/sun-shadows-1",
+				"basics/signals"
+			],
+			"part": "light",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:33"
+		},
+		{
+			"id": "light/local-shadows",
+			"title": "Shadows of point and spot lights",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/sun-shadows-1",
+				"light/many-lights",
+				"light/area-lights"
+			],
+			"part": "light",
+			"block": null,
+			"mark": "W8",
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-3.md:34"
+		},
+		{
+			"id": "light/sky",
+			"title": "The sky as a light: sources, sun extraction and presets",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/lights",
+				"assets/texture-cooking"
+			],
+			"part": "light",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:35"
+		},
+		{
+			"id": "light/atmosphere",
+			"title": "Earth's atmosphere and aerial perspective",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/sky",
+				"gpu/compute"
+			],
+			"part": "light",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:36"
+		},
+		{
+			"id": "light/fog",
+			"title": "Height fog",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/atmosphere"
+			],
+			"part": "light",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:37"
+		},
+		{
+			"id": "light/clearcoat-transmission",
+			"title": "Transparency, clear coat and glass",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/energy",
+				"draw/batching"
+			],
+			"part": "light",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:38"
+		},
+		{
+			"id": "image/why-post",
+			"title": "Why images need post-processing, and Strata's post chain",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/frame-tour",
+				"light/brdf"
+			],
+			"part": "image",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:48"
+		},
+		{
+			"id": "image/exposure",
+			"title": "Exposure: camera, eye and meter",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/compute",
+				"gpu/coordinates",
+				"light/measuring-light",
+				"image/why-post"
+			],
+			"part": "image",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:49"
+		},
+		{
+			"id": "image/pre-exposure",
+			"title": "Pre-exposure",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"image/exposure",
+				"basics/numbers",
+				"gpu/readback-timing"
+			],
+			"part": "image",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:50"
+		},
+		{
+			"id": "image/tone-mapping",
+			"title": "Tone mapping and the Filmic curve",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"image/exposure"
+			],
+			"part": "image",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:51"
+		},
+		{
+			"id": "image/grading",
+			"title": "White balance, grading and lookup tables",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"image/tone-mapping",
+				"assets/importing"
+			],
+			"part": "image",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:52"
+		},
+		{
+			"id": "image/encoding",
+			"title": "Encoding, dithering and grain",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"image/grading",
+				"basics/signals"
+			],
+			"part": "image",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:53"
+		},
+		{
+			"id": "image/lens-effects",
+			"title": "Lens effects: bloom, vignette, flares and fringes",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"image/tone-mapping",
+				"basics/signals"
+			],
+			"part": "image",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:54"
+		},
+		{
+			"id": "image/spatial-aa",
+			"title": "Anti-aliasing in one frame: FXAA and morphological AA",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"image/encoding"
+			],
+			"part": "image",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:55"
+		},
+		{
+			"id": "image/taa",
+			"title": "Temporal anti-aliasing",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"image/spatial-aa",
+				"draw/motion-vectors",
+				"basics/math-projection"
+			],
+			"part": "image",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:56"
+		},
+		{
+			"id": "image/motion-blur",
+			"title": "Motion blur",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"image/taa"
+			],
+			"part": "image",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:57"
+		},
+		{
+			"id": "image/depth-of-field",
+			"title": "Depth of field",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"image/taa",
+				"gpu/coordinates"
+			],
+			"part": "image",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:58"
+		},
+		{
+			"id": "image/quality-settings",
+			"title": "Quality settings and players' graphics options",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"image/taa",
+				"light/sun-shadows-2",
+				"world/projects-settings"
+			],
+			"part": "image",
+			"block": null,
+			"mark": "W8r",
+			"markSection": "the quality rows and their presets",
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:59"
+		},
+		{
+			"id": "image/tutorial-post-effect",
+			"title": "Tutorial: adding a post effect",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"image/taa",
+				"gpu/first-triangle",
+				"core/first-change"
+			],
+			"part": "image",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:60"
+		},
+		{
+			"id": "indirect/problem",
+			"title": "The indirect-light problem",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/brdf",
+				"light/sky"
+			],
+			"part": "indirect",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:70"
+		},
+		{
+			"id": "indirect/ibl",
+			"title": "Image-based lighting and the split sum",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"light/energy",
+				"light/sky",
+				"basics/math-sphere",
+				"gpu/compute"
+			],
+			"part": "indirect",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:71"
+		},
+		{
+			"id": "indirect/seam",
+			"title": "Where indirect light meets the surface: inputs, gathers and fallbacks",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"indirect/ibl"
+			],
+			"part": "indirect",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:72"
+		},
+		{
+			"id": "indirect/ao",
+			"title": "Ambient occlusion without history",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"indirect/seam",
+				"gpu/compute",
+				"basics/signals"
+			],
+			"part": "indirect",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:73"
+		},
+		{
+			"id": "indirect/probes",
+			"title": "Reflection probes",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"indirect/seam",
+				"image/pre-exposure",
+				"assets/residency",
+				"basics/math-geometry",
+				"draw/mip-streaming"
+			],
+			"part": "indirect",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:74"
+		},
+		{
+			"id": "indirect/ssr",
+			"title": "Screen-space reflections",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"indirect/probes",
+				"image/taa",
+				"light/clearcoat-transmission",
+				"indirect/ao"
+			],
+			"part": "indirect",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:75"
+		},
+		{
+			"id": "indirect/gi-voxels",
+			"title": "Global illumination I: a voxel copy of the world",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"indirect/seam",
+				"gpu/compute",
+				"gpu/geometry-pool",
+				"draw/render-scene",
+				"indirect/problem"
+			],
+			"part": "indirect",
+			"block": null,
+			"mark": "W8",
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-3.md:76"
+		},
+		{
+			"id": "indirect/gi-cascades",
+			"title": "Global illumination II: radiance cascades and the irradiance field",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"indirect/gi-voxels",
+				"indirect/ao",
+				"light/measuring-light",
+				"basics/math-sphere",
+				"light/atmosphere"
+			],
+			"part": "indirect",
+			"block": null,
+			"mark": "W8",
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-3.md:77"
+		},
+		{
+			"id": "indirect/gi-limits",
+			"title": "Global illumination III: moving objects, limits and what comes next",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"indirect/gi-cascades"
+			],
+			"part": "indirect",
+			"block": null,
+			"mark": "W8",
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-3.md:78"
+		},
+		{
+			"id": "physics/why",
+			"title": "Why games need physics",
+			"kind": "concept",
+			"size": "S",
+			"tracks": [
+				"E"
+			],
+			"needs": [],
+			"part": "physics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 1,
+			"row": "plan/outline-3.md:88"
+		},
+		{
+			"id": "physics/bodies-colliders",
+			"title": "Rigid bodies and colliders",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/scene-graph",
+				"basics/math-vectors"
+			],
+			"part": "physics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-3.md:89"
+		},
+		{
+			"id": "physics/collision-detection",
+			"title": "Collision detection: shapes, broad phase and narrow phase",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"physics/bodies-colliders",
+				"basics/math-geometry",
+				"basics/trees-graphs"
+			],
+			"part": "physics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-3.md:90"
+		},
+		{
+			"id": "physics/dynamics",
+			"title": "Rigid body dynamics: integration, contacts, solvers, sleep and continuous collision",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"physics/collision-detection",
+				"core/time",
+				"basics/math-change",
+				"basics/math-rotations"
+			],
+			"part": "physics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-3.md:91"
+		},
+		{
+			"id": "physics/building-bodies",
+			"title": "From entities to bodies: records, shapes, mesh colliders",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"physics/dynamics",
+				"world/systems",
+				"core/jobs",
+				"assets/loading"
+			],
+			"part": "physics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:92"
+		},
+		{
+			"id": "physics/world-step",
+			"title": "Inside `PhysicsWorld`: one step",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"physics/building-bodies",
+				"world/interpolation"
+			],
+			"part": "physics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:93"
+		},
+		{
+			"id": "physics/collision-layers",
+			"title": "Collision layers",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"physics/building-bodies",
+				"world/projects-settings"
+			],
+			"part": "physics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:94"
+		},
+		{
+			"id": "physics/contacts-triggers",
+			"title": "Contacts and triggers",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"physics/world-step",
+				"physics/collision-layers"
+			],
+			"part": "physics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:95"
+		},
+		{
+			"id": "physics/queries",
+			"title": "Physics queries",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"physics/collision-layers"
+			],
+			"part": "physics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:96"
+		},
+		{
+			"id": "physics/character-controllers",
+			"title": "Character controllers",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"physics/world-step",
+				"physics/queries"
+			],
+			"part": "physics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:97"
+		},
+		{
+			"id": "physics/scale-streaming",
+			"title": "Physics at scale and in streaming worlds",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"physics/world-step",
+				"world/sub-scenes"
+			],
+			"part": "physics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:98"
+		},
+		{
+			"id": "physics/tuning",
+			"title": "Tuning and measuring",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"physics/world-step",
+				"core/profiling"
+			],
+			"part": "physics",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:99"
+		},
+		{
+			"id": "animation/problem",
+			"title": "The animation problem",
+			"kind": "concept",
+			"size": "S",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/scene-graph"
+			],
+			"part": "animation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 2,
+			"row": "plan/outline-3.md:109"
+		},
+		{
+			"id": "animation/skeletons",
+			"title": "Skeletons and forward kinematics",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/math-rotations",
+				"assets/importing"
+			],
+			"part": "animation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:110"
+		},
+		{
+			"id": "animation/clips",
+			"title": "Clips: sampling motion",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"animation/skeletons",
+				"assets/loading",
+				"basics/math-interpolation"
+			],
+			"part": "animation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:111"
+		},
+		{
+			"id": "animation/skinning",
+			"title": "Skinning",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"animation/skeletons",
+				"draw/skinned"
+			],
+			"part": "animation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:112"
+		},
+		{
+			"id": "animation/importing",
+			"title": "Importing animated models",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"animation/clips",
+				"animation/skinning",
+				"assets/models-gltf"
+			],
+			"part": "animation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:113"
+		},
+		{
+			"id": "animation/state-machines",
+			"title": "State machines",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"animation/clips"
+			],
+			"part": "animation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:114"
+		},
+		{
+			"id": "animation/blending",
+			"title": "Blending and cross-fades",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"animation/state-machines"
+			],
+			"part": "animation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:115"
+		},
+		{
+			"id": "animation/time-events",
+			"title": "Time, loops and events",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"animation/state-machines"
+			],
+			"part": "animation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:116"
+		},
+		{
+			"id": "animation/root-motion",
+			"title": "Root motion",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"animation/time-events",
+				"physics/character-controllers",
+				"animation/blending"
+			],
+			"part": "animation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:117"
+		},
+		{
+			"id": "animation/system",
+			"title": "The Animation system",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"animation/blending",
+				"animation/root-motion",
+				"world/systems",
+				"core/jobs",
+				"assets/residency"
+			],
+			"part": "animation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:118"
+		},
+		{
+			"id": "animation/culling",
+			"title": "Animating only what is seen",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"animation/system",
+				"animation/skinning",
+				"draw/bounds-culling",
+				"draw/gpu-driven"
+			],
+			"part": "animation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:119"
+		},
+		{
+			"id": "animation/editor",
+			"title": "Edit-mode poses and previews",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"animation/system",
+				"animation/skinning"
+			],
+			"part": "animation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:120"
+		},
+		{
+			"id": "animation/limits",
+			"title": "What Strata's animation does not do yet",
+			"kind": "concept",
+			"size": "S",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"animation/system"
+			],
+			"part": "animation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-3.md:121"
+		},
+		{
+			"id": "audio/sound-in-a-computer",
+			"title": "Sound inside a computer",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/numbers",
+				"basics/signals"
+			],
+			"part": "audio",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 1,
+			"row": "plan/outline-3.md:131"
+		},
+		{
+			"id": "audio/engine",
+			"title": "The audio engine",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/threads",
+				"core/frame-loop",
+				"core/engine-modules",
+				"audio/sound-in-a-computer"
+			],
+			"part": "audio",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-3.md:132"
+		},
+		{
+			"id": "audio/clips-voices-sources",
+			"title": "Clips, voices and sources",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"audio/engine",
+				"assets/importing",
+				"assets/loading"
+			],
+			"part": "audio",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:133"
+		},
+		{
+			"id": "audio/spatial",
+			"title": "Sound in space",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"audio/clips-voices-sources",
+				"basics/math-vectors"
+			],
+			"part": "audio",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:134"
+		},
+		{
+			"id": "audio/scene-system",
+			"title": "The Audio scene system",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"audio/spatial",
+				"world/systems",
+				"physics/bodies-colliders"
+			],
+			"part": "audio",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:135"
+		},
+		{
+			"id": "audio/testing",
+			"title": "Testing sound without speakers",
+			"kind": "internals",
+			"size": "S",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"audio/scene-system",
+				"core/first-change"
+			],
+			"part": "audio",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 3,
+			"row": "plan/outline-3.md:136"
+		},
+		{
+			"id": "input/how-input-works",
+			"title": "How input reaches a game: events, polling, edges and intents",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/frame-loop",
+				"core/windows-events"
+			],
+			"part": "input",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-3.md:146"
+		},
+		{
+			"id": "input/devices-state",
+			"title": "Input devices and per-frame state",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/time",
+				"basics/bytes",
+				"input/how-input-works"
+			],
+			"part": "input",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-3.md:147"
+		},
+		{
+			"id": "input/mouse-cursor",
+			"title": "The mouse, the cursor and the game view",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"input/devices-state"
+			],
+			"part": "input",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-3.md:148"
+		},
+		{
+			"id": "input/gamepads",
+			"title": "Gamepads",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"input/devices-state",
+				"basics/math-vectors"
+			],
+			"part": "input",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-3.md:149"
+		},
+		{
+			"id": "input/actions",
+			"title": "Input actions",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"input/mouse-cursor",
+				"input/gamepads",
+				"world/projects-settings"
+			],
+			"part": "input",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-3.md:150"
+		},
+		{
+			"id": "input/rebinding",
+			"title": "Players' bindings inside the engine: the bindings file and capture",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"input/actions"
+			],
+			"part": "input",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-3.md:151"
+		},
+		{
+			"id": "input/simulated",
+			"title": "Simulated input",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"input/mouse-cursor",
+				"input/gamepads"
+			],
+			"part": "input",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "4",
+			"level": 2,
+			"row": "plan/outline-3.md:152"
+		},
+		{
+			"id": "scripting/why-scripts",
+			"title": "Why game code lives outside the engine",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/ecs"
+			],
+			"part": "scripting",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 2,
+			"row": "plan/outline-4.md:16"
+		},
+		{
+			"id": "scripting/shared-libraries",
+			"title": "Shared libraries and binary interfaces",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/build",
+				"basics/cpp-classes",
+				"scripting/why-scripts"
+			],
+			"part": "scripting",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 2,
+			"row": "plan/outline-4.md:17"
+		},
+		{
+			"id": "scripting/abi-sdk",
+			"title": "Inside the ABI and the SDK",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"scripting/shared-libraries",
+				"basics/cpp-generic",
+				"world/reflection"
+			],
+			"part": "scripting",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 2,
+			"row": "plan/outline-4.md:18"
+		},
+		{
+			"id": "scripting/loading",
+			"title": "Loading, calling and validating modules",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"scripting/abi-sdk",
+				"core/platform",
+				"core/files"
+			],
+			"part": "scripting",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 2,
+			"row": "plan/outline-4.md:19"
+		},
+		{
+			"id": "scripting/crash-containment",
+			"title": "Crash containment",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"scripting/loading",
+				"core/conventions",
+				"core/debugging"
+			],
+			"part": "scripting",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 2,
+			"row": "plan/outline-4.md:20"
+		},
+		{
+			"id": "scripting/symbolization",
+			"title": "From an address to a file and line",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"scripting/crash-containment"
+			],
+			"part": "scripting",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 2,
+			"row": "plan/outline-4.md:21"
+		},
+		{
+			"id": "scripting/script-system",
+			"title": "The script system",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"scripting/loading",
+				"world/systems",
+				"assets/residency",
+				"physics/contacts-triggers",
+				"animation/time-events"
+			],
+			"part": "scripting",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:22"
+		},
+		{
+			"id": "scripting/hot-reload",
+			"title": "Hot reload",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"scripting/script-system",
+				"core/files"
+			],
+			"part": "scripting",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:23"
+		},
+		{
+			"id": "scripting/host-api",
+			"title": "The host API: engine services behind a C table",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"scripting/script-system",
+				"core/engine-modules",
+				"core/layers-registries"
+			],
+			"part": "scripting",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:24"
+		},
+		{
+			"id": "scripting/tutorial-host-function",
+			"title": "Tutorial: adding a host function and a callback",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"scripting/host-api",
+				"world/tutorial-component",
+				"core/first-change"
+			],
+			"part": "scripting",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:25"
+		},
+		{
+			"id": "ui/what-game-ui-does",
+			"title": "What a game UI must do",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/scene-graph"
+			],
+			"part": "ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 2,
+			"row": "plan/outline-4.md:38"
+		},
+		{
+			"id": "ui/layout",
+			"title": "Rects, anchors and layout",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [],
+			"part": "ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 2,
+			"row": "plan/outline-4.md:39"
+		},
+		{
+			"id": "ui/contract",
+			"title": "The UI contract",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"ui/layout"
+			],
+			"part": "ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 2,
+			"row": "plan/outline-4.md:40"
+		},
+		{
+			"id": "ui/input",
+			"title": "UI input",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"ui/layout",
+				"input/actions",
+				"input/mouse-cursor",
+				"scripting/script-system",
+				"basics/math-geometry"
+			],
+			"part": "ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:41"
+		},
+		{
+			"id": "ui/text",
+			"title": "Text and text fields",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"ui/layout",
+				"ui/input",
+				"gpu/text",
+				"input/devices-state"
+			],
+			"part": "ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:42"
+		},
+		{
+			"id": "ui/drawing",
+			"title": "Drawing the UI",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"ui/contract",
+				"ui/text",
+				"gpu/binding",
+				"gpu/debug-drawing",
+				"draw/mirrors-camera-relative"
+			],
+			"part": "ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:43"
+		},
+		{
+			"id": "worlds/why-streaming",
+			"title": "Why levels must stream",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/sub-scenes",
+				"assets/residency",
+				"basics/numbers"
+			],
+			"part": "worlds",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:56"
+		},
+		{
+			"id": "worlds/grids",
+			"title": "Grids, keys and layers",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"assets/handles-meta",
+				"world/serialization",
+				"worlds/why-streaming"
+			],
+			"part": "worlds",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:57"
+		},
+		{
+			"id": "worlds/streamer",
+			"title": "The streamer",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"worlds/grids",
+				"core/jobs"
+			],
+			"part": "worlds",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:58"
+		},
+		{
+			"id": "worlds/physics-scripts",
+			"title": "Worlds meet physics and scripts",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"worlds/streamer",
+				"physics/scale-streaming",
+				"scripting/abi-sdk"
+			],
+			"part": "worlds",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:59"
+		},
+		{
+			"id": "worlds/export",
+			"title": "Shipping a game: the export",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"worlds/physics-scripts",
+				"assets/packs-export",
+				"world/projects-settings",
+				"core/files"
+			],
+			"part": "worlds",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:60"
+		},
+		{
+			"id": "worlds/game-identity",
+			"title": "A game's identity: the manifest, icons and platform files",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"worlds/export",
+				"basics/data-formats",
+				"basics/color",
+				"assets/robustness"
+			],
+			"part": "worlds",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:61"
+		},
+		{
+			"id": "worlds/runtime",
+			"title": "The runtime",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"worlds/game-identity",
+				"core/engine-modules",
+				"core/windows-events",
+				"scripting/script-system",
+				"image/quality-settings"
+			],
+			"part": "worlds",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:62"
+		},
+		{
+			"id": "editor/program",
+			"title": "The editor is a program: core, UI and host",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/systems",
+				"core/windows-events",
+				"core/layers-registries"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 2,
+			"row": "plan/outline-4.md:75"
+		},
+		{
+			"id": "editor/commands",
+			"title": "Commands",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/reflection",
+				"basics/data-formats",
+				"editor/program"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 2,
+			"row": "plan/outline-4.md:76"
+		},
+		{
+			"id": "editor/deferred-commands",
+			"title": "Commands that take frames",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/commands",
+				"core/time",
+				"assets/importing"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:77"
+		},
+		{
+			"id": "editor/undo",
+			"title": "Undo and redo",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/commands",
+				"world/serialization"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 2,
+			"row": "plan/outline-4.md:78"
+		},
+		{
+			"id": "editor/saving",
+			"title": "Saving without stalling",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/undo",
+				"editor/deferred-commands",
+				"core/files",
+				"core/jobs"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:79"
+		},
+		{
+			"id": "editor/recovery",
+			"title": "Autosave and crash recovery",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/saving"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:80"
+		},
+		{
+			"id": "editor/projects",
+			"title": "Opening projects and scenes: templates, background loads and migration",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/saving",
+				"world/projects-settings",
+				"world/sub-scenes"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:81"
+		},
+		{
+			"id": "editor/trash-references",
+			"title": "The trash and references",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/undo",
+				"assets/references"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:82"
+		},
+		{
+			"id": "editor/prefab-instances",
+			"title": "How prefab instances stay linked",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/saving",
+				"world/prefabs"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:83"
+		},
+		{
+			"id": "editor/play-mode",
+			"title": "Play mode: the running copy",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/deferred-commands",
+				"editor/undo",
+				"scripting/script-system"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:84"
+		},
+		{
+			"id": "editor/worlds",
+			"title": "Editing a streamed world",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/play-mode",
+				"editor/recovery",
+				"worlds/streamer"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:85"
+		},
+		{
+			"id": "editor/script-builds",
+			"title": "Building scripts from the editor: toolchains, CMake, diagnostics",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/play-mode",
+				"scripting/hot-reload",
+				"basics/build"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:86"
+		},
+		{
+			"id": "editor/stepping",
+			"title": "Pausing, stepping and exact tests",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/play-mode",
+				"input/simulated"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:87"
+		},
+		{
+			"id": "editor/command-scripts",
+			"title": "Command scripts and batches",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/stepping"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:88"
+		},
+		{
+			"id": "editor/journal",
+			"title": "The activity journal and replays",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/undo",
+				"editor/command-scripts"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:89"
+		},
+		{
+			"id": "editor/placement",
+			"title": "Placing content",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/undo",
+				"basics/math-geometry",
+				"draw/bounds-culling",
+				"editor/deferred-commands"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:90"
+		},
+		{
+			"id": "editor/thumbnails",
+			"title": "Thumbnails",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/projects",
+				"gpu/frame-tour",
+				"gpu/readback-timing",
+				"assets/residency"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:91"
+		},
+		{
+			"id": "editor/camera-viewport",
+			"title": "The editor camera and viewport state",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"gpu/coordinates",
+				"basics/math-rotations",
+				"draw/bounds-culling",
+				"editor/commands"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:92"
+		},
+		{
+			"id": "editor/tutorial-command",
+			"title": "Tutorial: adding a command",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/undo",
+				"scripting/tutorial-host-function",
+				"core/first-change"
+			],
+			"part": "editor",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "5",
+			"level": 3,
+			"row": "plan/outline-4.md:93"
+		},
+		{
+			"id": "editor-ui/immediate-mode",
+			"title": "Why immediate mode",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/program",
+				"ui/what-game-ui-does"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:106"
+		},
+		{
+			"id": "editor-ui/imgui",
+			"title": "Dear ImGui from first principles",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/windows-events",
+				"editor-ui/immediate-mode"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:107"
+		},
+		{
+			"id": "editor-ui/imgui-backends",
+			"title": "ImGui backends",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/imgui",
+				"core/engine-modules",
+				"gpu/binding",
+				"gpu/resources-lifetimes",
+				"basics/color"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:108"
+		},
+		{
+			"id": "editor-ui/ui-scale",
+			"title": "Pixels, points and UI scale",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/imgui-backends"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:109"
+		},
+		{
+			"id": "editor-ui/design-system",
+			"title": "The design system: theme, fonts, icons",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/ui-scale",
+				"gpu/text"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:110"
+		},
+		{
+			"id": "editor-ui/widget-kit",
+			"title": "The widget kit",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/design-system"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:111"
+		},
+		{
+			"id": "editor-ui/shell",
+			"title": "The editor shell: host, layer, docking and panels",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/widget-kit",
+				"editor/saving"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:112"
+		},
+		{
+			"id": "editor-ui/lists",
+			"title": "Lists that scale",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/shell",
+				"editor/thumbnails"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:113"
+		},
+		{
+			"id": "editor-ui/inspectors",
+			"title": "Inspectors from reflection",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/shell",
+				"editor/prefab-instances",
+				"world/reflection"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:114"
+		},
+		{
+			"id": "editor-ui/scene-view",
+			"title": "The Scene view",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/shell",
+				"editor/camera-viewport",
+				"editor/placement",
+				"gpu/frame-tour",
+				"gpu/readback-timing"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:115"
+		},
+		{
+			"id": "editor-ui/game-view",
+			"title": "The Game view, shortcuts and who owns the keyboard",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/scene-view",
+				"editor/play-mode",
+				"input/mouse-cursor"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:116"
+		},
+		{
+			"id": "editor-ui/status",
+			"title": "Status bar, toasts and idle throttling",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/shell",
+				"core/profiling"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:117"
+		},
+		{
+			"id": "editor-ui/launcher-dialogs",
+			"title": "Launcher and dialogs",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/shell",
+				"editor/projects",
+				"editor/recovery",
+				"editor/trash-references",
+				"worlds/export"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:118"
+		},
+		{
+			"id": "editor-ui/settings-windows",
+			"title": "Settings windows from schemas",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/inspectors",
+				"world/projects-settings",
+				"physics/collision-layers",
+				"input/rebinding",
+				"image/quality-settings"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:119"
+		},
+		{
+			"id": "editor-ui/instrument-panels",
+			"title": "Instrument panels",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/lists",
+				"editor-ui/status",
+				"editor/journal",
+				"editor/script-builds",
+				"worlds/streamer"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:120"
+		},
+		{
+			"id": "editor-ui/ui-testing",
+			"title": "Testing a UI without a screen",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/shell",
+				"core/first-change"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:121"
+		},
+		{
+			"id": "editor-ui/tutorial-panel",
+			"title": "Tutorial: adding a panel",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor-ui/ui-testing"
+			],
+			"part": "editor-ui",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:122"
+		},
+		{
+			"id": "automation/agents",
+			"title": "How the editor makes games with agents",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"editor/journal"
+			],
+			"part": "automation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:135"
+		},
+		{
+			"id": "automation/json-rpc",
+			"title": "Sockets, framing and JSON-RPC",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"basics/data-formats",
+				"basics/threads",
+				"core/platform",
+				"automation/agents"
+			],
+			"part": "automation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:136"
+		},
+		{
+			"id": "automation/rpc-server",
+			"title": "The editor's RPC server",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"automation/json-rpc",
+				"editor/deferred-commands",
+				"core/jobs"
+			],
+			"part": "automation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:137"
+		},
+		{
+			"id": "automation/security",
+			"title": "The security model",
+			"kind": "internals",
+			"size": "XL",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"automation/rpc-server",
+				"core/files"
+			],
+			"part": "automation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:138"
+		},
+		{
+			"id": "automation/sessions",
+			"title": "Sessions, discovery and launching",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"automation/security"
+			],
+			"part": "automation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:139"
+		},
+		{
+			"id": "automation/mcp",
+			"title": "StrataCLI and its MCP server",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"automation/sessions"
+			],
+			"part": "automation",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:140"
+		},
+		{
+			"id": "engineering/building",
+			"title": "Building Strata",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/first-change"
+			],
+			"part": "engineering",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 2,
+			"row": "plan/outline-4.md:150"
+		},
+		{
+			"id": "engineering/cmake",
+			"title": "Inside Strata's CMake",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"core/layers-registries"
+			],
+			"part": "engineering",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 2,
+			"row": "plan/outline-4.md:151"
+		},
+		{
+			"id": "engineering/flags-portability",
+			"title": "Compiler flags, compile time and portability",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"engineering/cmake",
+				"basics/numbers"
+			],
+			"part": "engineering",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 2,
+			"row": "plan/outline-4.md:152"
+		},
+		{
+			"id": "engineering/third-party",
+			"title": "Third-party code and pinned tools",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"engineering/flags-portability"
+			],
+			"part": "engineering",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 2,
+			"row": "plan/outline-4.md:153"
+		},
+		{
+			"id": "engineering/generated-code",
+			"title": "Generated code: shaders, embedded files, version stamps and committed generators",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"engineering/cmake",
+				"gpu/shaders"
+			],
+			"part": "engineering",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 2,
+			"row": "plan/outline-4.md:154"
+		},
+		{
+			"id": "engineering/testing",
+			"title": "Testing an engine",
+			"kind": "concept",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [],
+			"part": "engineering",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 2,
+			"row": "plan/outline-4.md:155"
+		},
+		{
+			"id": "engineering/test-program",
+			"title": "Inside StrataTests",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"engineering/testing",
+				"engineering/cmake"
+			],
+			"part": "engineering",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 2,
+			"row": "plan/outline-4.md:156"
+		},
+		{
+			"id": "engineering/test-kinds",
+			"title": "GPU, end-to-end and package tests",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"engineering/test-program",
+				"gpu/first-triangle",
+				"editor/command-scripts"
+			],
+			"part": "engineering",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:157"
+		},
+		{
+			"id": "engineering/feature-test",
+			"title": "The feature test",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"engineering/test-kinds",
+				"world/reflection",
+				"scripting/abi-sdk"
+			],
+			"part": "engineering",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:158"
+		},
+		{
+			"id": "engineering/perf-lab",
+			"title": "Measuring performance honestly: noise, percentiles, budgets and the perf lab",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"engineering/test-kinds",
+				"core/profiling"
+			],
+			"part": "engineering",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:159"
+		},
+		{
+			"id": "engineering/look-dev",
+			"title": "The look-dev harness",
+			"kind": "internals",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"engineering/test-kinds",
+				"gpu/frame-tour"
+			],
+			"part": "engineering",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:160"
+		},
+		{
+			"id": "engineering/ci",
+			"title": "Continuous integration",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"engineering/flags-portability",
+				"engineering/test-program"
+			],
+			"part": "engineering",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 2,
+			"row": "plan/outline-4.md:161"
+		},
+		{
+			"id": "engineering/releasing",
+			"title": "Packaging and releasing",
+			"kind": "internals",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"engineering/ci"
+			],
+			"part": "engineering",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 2,
+			"row": "plan/outline-4.md:162"
+		},
+		{
+			"id": "engineering/contributing",
+			"title": "The review checklist and the way a change lands",
+			"kind": "how-to",
+			"size": "M",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"engineering/ci",
+				"engineering/feature-test"
+			],
+			"part": "engineering",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:163"
+		},
+		{
+			"id": "capstone/plan",
+			"title": "Capstone I: designing a feature the way Strata does",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"world/tutorial-component",
+				"scripting/tutorial-host-function",
+				"editor/tutorial-command",
+				"engineering/contributing",
+				"core/reading-code"
+			],
+			"part": "capstone",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:176"
+		},
+		{
+			"id": "capstone/build",
+			"title": "Capstone II: from component to pixel",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"physics/world-step",
+				"gpu/debug-drawing",
+				"editor-ui/inspectors",
+				"capstone/plan"
+			],
+			"part": "capstone",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:177"
+		},
+		{
+			"id": "capstone/land",
+			"title": "Capstone III: tests, the feature test, a budget, the review and CI",
+			"kind": "tutorial",
+			"size": "L",
+			"tracks": [
+				"E"
+			],
+			"needs": [
+				"capstone/build",
+				"engineering/feature-test",
+				"engineering/perf-lab",
+				"engineering/ci"
+			],
+			"part": "capstone",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "6",
+			"level": 3,
+			"row": "plan/outline-4.md:178"
+		},
+		{
+			"id": "reference/script-api",
+			"title": "The complete script API",
+			"kind": "reference",
+			"size": "XL",
+			"tracks": [],
+			"needs": [
+				"basics/programming-3"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 1,
+			"row": "plan/outline-4.md:192"
+		},
+		{
+			"id": "reference/commands",
+			"title": "The command catalogue",
+			"kind": "reference",
+			"size": "XL",
+			"tracks": [],
+			"needs": [
+				"editor/commands",
+				"basics/data-formats"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-4.md:193"
+		},
+		{
+			"id": "reference/components",
+			"title": "Components and their properties",
+			"kind": "reference",
+			"size": "XL",
+			"tracks": [],
+			"needs": [
+				"world/what-a-world-is"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 2,
+			"row": "plan/outline-4.md:194"
+		},
+		{
+			"id": "reference/settings",
+			"title": "Project settings and preferences",
+			"kind": "reference",
+			"size": "L",
+			"tracks": [],
+			"needs": [
+				"world/projects-settings"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 2,
+			"row": "plan/outline-4.md:195"
+		},
+		{
+			"id": "reference/scene",
+			"title": "Scene, reflection and settings: types, flags, formats, limits",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [
+				"basics/programming-3"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 1,
+			"row": "plan/outline-4.md:196"
+		},
+		{
+			"id": "reference/assets",
+			"title": "Asset types, file formats, importer versions, budgets and statistics",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [
+				"assets/handles-meta"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-4.md:197"
+		},
+		{
+			"id": "reference/renderer",
+			"title": "Passes, bindings, switches, statistics, debug views, quality rows, device requirements",
+			"kind": "reference",
+			"size": "L",
+			"tracks": [],
+			"needs": [
+				"gpu/frame-tour"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 2,
+			"row": "plan/outline-4.md:198"
+		},
+		{
+			"id": "reference/physics",
+			"title": "Physics reference",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [
+				"physics/bodies-colliders"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-4.md:199"
+		},
+		{
+			"id": "reference/animation",
+			"title": "Animation reference",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [
+				"animation/state-machines"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-4.md:200"
+		},
+		{
+			"id": "reference/audio-input",
+			"title": "Audio and input reference",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [
+				"input/actions"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-4.md:201"
+		},
+		{
+			"id": "reference/ui",
+			"title": "Game UI reference",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [
+				"ui/layout"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-4.md:202"
+		},
+		{
+			"id": "reference/worlds-runtime",
+			"title": "Worlds, export, runtime options, manifest",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [
+				"worlds/runtime"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-4.md:203"
+		},
+		{
+			"id": "reference/editor",
+			"title": "Editor reference: panels, shortcuts, arguments",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [
+				"editor-ui/shell"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-4.md:204"
+		},
+		{
+			"id": "reference/automation",
+			"title": "Protocol, errors, CLI",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [
+				"automation/json-rpc"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-4.md:205"
+		},
+		{
+			"id": "reference/core",
+			"title": "Core utilities",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [
+				"basics/programming-3"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 1,
+			"row": "plan/outline-4.md:206"
+		},
+		{
+			"id": "reference/build",
+			"title": "CMake options, presets, test labels, tools",
+			"kind": "reference",
+			"size": "S",
+			"tracks": [],
+			"needs": [
+				"basics/build"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 1,
+			"row": "plan/outline-4.md:207"
+		},
+		{
+			"id": "reference/performance",
+			"title": "Measured costs and their budgets",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [
+				"engineering/perf-lab"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-4.md:208"
+		},
+		{
+			"id": "reference/game-makers",
+			"title": "Cheat sheet for game makers",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [
+				"make/first-script"
+			],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 1,
+			"row": "plan/outline-4.md:209"
+		},
+		{
+			"id": "reference/notation",
+			"title": "Conventions and notation",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 2,
+			"row": "plan/outline-4.md:210"
+		},
+		{
+			"id": "reference/glossary",
+			"title": "Glossary",
+			"kind": "reference",
+			"size": "XL",
+			"tracks": [],
+			"needs": [],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 2,
+			"row": "plan/outline-4.md:211"
+		},
+		{
+			"id": "reference/term-index",
+			"title": "Index of terms and engine identifiers",
+			"kind": "reference",
+			"size": "XL",
+			"tracks": [],
+			"needs": [],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 2,
+			"row": "plan/outline-4.md:212"
+		},
+		{
+			"id": "reference/figures",
+			"title": "Index of figures and their recipes",
+			"kind": "reference",
+			"size": "L",
+			"tracks": [],
+			"needs": [],
+			"part": "reference",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 2,
+			"row": "plan/outline-4.md:213"
+		},
+		{
+			"id": "appendix/not-in-strata",
+			"title": "What Strata does not do, and how engines do it",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [],
+			"needs": [],
+			"part": "appendix",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 1,
+			"row": "plan/outline-4.md:223"
+		},
+		{
+			"id": "appendix/networking",
+			"title": "Networking for games, in general",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [],
+			"needs": [
+				"automation/json-rpc",
+				"core/time"
+			],
+			"part": "appendix",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 3,
+			"row": "plan/outline-4.md:224"
+		},
+		{
+			"id": "appendix/game-ai",
+			"title": "Game AI in general: steering, pathfinding, navigation meshes and behaviour trees",
+			"kind": "concept",
+			"size": "L",
+			"tracks": [],
+			"needs": [
+				"basics/trees-graphs",
+				"basics/math-geometry"
+			],
+			"part": "appendix",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 1,
+			"row": "plan/outline-4.md:225"
+		},
+		{
+			"id": "appendix/math-cheatsheet",
+			"title": "Math cheat sheet",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [],
+			"part": "appendix",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 2,
+			"row": "plan/outline-4.md:226"
+		},
+		{
+			"id": "appendix/history",
+			"title": "Which release brought what",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [],
+			"part": "appendix",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 2,
+			"row": "plan/outline-4.md:227"
+		},
+		{
+			"id": "appendix/further-reading",
+			"title": "Further reading",
+			"kind": "reference",
+			"size": "M",
+			"tracks": [],
+			"needs": [],
+			"part": "appendix",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 2,
+			"row": "plan/outline-4.md:228"
+		},
+		{
+			"id": "appendix/credits",
+			"title": "Credits and licenses",
+			"kind": "reference",
+			"size": "S",
+			"tracks": [],
+			"needs": [],
+			"part": "appendix",
+			"block": null,
+			"mark": null,
+			"markSection": null,
+			"wave": "B",
+			"level": 2,
+			"row": "plan/outline-4.md:229"
+		}
+	],
+	"tracks": {
+		"G": [
+			{
+				"id": "start/welcome"
+			},
+			{
+				"id": "start/how-to-read"
+			},
+			{
+				"id": "start/install"
+			},
+			{
+				"id": "start/first-game"
+			},
+			{
+				"id": "start/what-an-engine-is"
+			},
+			{
+				"id": "start/coming-from"
+			},
+			{
+				"id": "make/editor-tour"
+			},
+			{
+				"id": "make/project-files"
+			},
+			{
+				"id": "make/scenes-entities"
+			},
+			{
+				"id": "make/transforms-units"
+			},
+			{
+				"id": "make/assets"
+			},
+			{
+				"id": "make/materials"
+			},
+			{
+				"id": "make/prefabs"
+			},
+			{
+				"id": "make/lighting"
+			},
+			{
+				"id": "basics/tools",
+				"sideStep": true
+			},
+			{
+				"id": "make/first-script"
+			},
+			{
+				"id": "basics/programming-1"
+			},
+			{
+				"id": "basics/programming-2"
+			},
+			{
+				"id": "basics/programming-3"
+			},
+			{
+				"id": "basics/debugging"
+			},
+			{
+				"id": "make/script-loop"
+			},
+			{
+				"id": "make/scripting-scene"
+			},
+			{
+				"id": "make/input"
+			},
+			{
+				"id": "make/physics"
+			},
+			{
+				"id": "make/sound"
+			},
+			{
+				"id": "make/hud"
+			},
+			{
+				"id": "make/play-test-debug"
+			},
+			{
+				"id": "make/export"
+			},
+			{
+				"id": "make/project-coin-run"
+			},
+			{
+				"id": "basics/math-vectors",
+				"sideStep": true
+			},
+			{
+				"id": "make/gameplay-math"
+			},
+			{
+				"id": "make/timers-events"
+			},
+			{
+				"id": "make/script-fields"
+			},
+			{
+				"id": "make/patterns"
+			},
+			{
+				"id": "make/recipes"
+			},
+			{
+				"id": "make/script-builds"
+			},
+			{
+				"id": "make/characters-cameras"
+			},
+			{
+				"id": "make/animation"
+			},
+			{
+				"id": "make/menus"
+			},
+			{
+				"id": "make/levels-saves"
+			},
+			{
+				"id": "make/lamps"
+			},
+			{
+				"id": "make/reflections"
+			},
+			{
+				"id": "make/gi"
+			},
+			{
+				"id": "make/look"
+			},
+			{
+				"id": "make/quality"
+			},
+			{
+				"id": "make/large-worlds"
+			},
+			{
+				"id": "make/performance"
+			},
+			{
+				"id": "make/automated-playtests"
+			},
+			{
+				"id": "make/commands"
+			},
+			{
+				"id": "make/with-an-agent"
+			},
+			{
+				"id": "make/samples"
+			},
+			{
+				"id": "make/designing-a-game"
+			},
+			{
+				"id": "make/project-tetris"
+			},
+			{
+				"id": "make/project-platformer"
+			}
+		],
+		"B": [
+			{
+				"id": "start/welcome"
+			},
+			{
+				"id": "start/how-to-read"
+			},
+			{
+				"id": "start/install"
+			},
+			{
+				"id": "start/first-game"
+			},
+			{
+				"id": "start/what-an-engine-is"
+			},
+			{
+				"id": "make/editor-tour"
+			},
+			{
+				"id": "make/project-files"
+			},
+			{
+				"id": "make/scenes-entities"
+			},
+			{
+				"id": "make/transforms-units"
+			},
+			{
+				"id": "make/assets"
+			},
+			{
+				"id": "make/materials"
+			},
+			{
+				"id": "make/prefabs"
+			},
+			{
+				"id": "make/lighting"
+			},
+			{
+				"id": "basics/computer"
+			},
+			{
+				"id": "basics/tools"
+			},
+			{
+				"id": "make/first-script"
+			},
+			{
+				"id": "basics/programming-1"
+			},
+			{
+				"id": "basics/programming-2"
+			},
+			{
+				"id": "basics/programming-3"
+			},
+			{
+				"id": "basics/debugging"
+			},
+			{
+				"id": "make/script-loop"
+			},
+			{
+				"id": "make/scripting-scene"
+			},
+			{
+				"id": "make/input"
+			},
+			{
+				"id": "make/physics"
+			},
+			{
+				"id": "make/sound"
+			},
+			{
+				"id": "make/hud"
+			},
+			{
+				"id": "make/play-test-debug"
+			},
+			{
+				"id": "make/export"
+			},
+			{
+				"id": "make/project-coin-run"
+			},
+			{
+				"id": "basics/git"
+			},
+			{
+				"id": "basics/numbers"
+			},
+			{
+				"id": "basics/data-structures"
+			},
+			{
+				"id": "basics/trees-graphs"
+			},
+			{
+				"id": "basics/cpp-memory"
+			},
+			{
+				"id": "basics/cpp-classes"
+			},
+			{
+				"id": "basics/cpp-generic"
+			},
+			{
+				"id": "basics/cpp-modern"
+			},
+			{
+				"id": "basics/build"
+			},
+			{
+				"id": "basics/bytes"
+			},
+			{
+				"id": "basics/data-formats"
+			},
+			{
+				"id": "basics/math-vectors"
+			},
+			{
+				"id": "basics/math-matrices"
+			},
+			{
+				"id": "basics/math-bases"
+			},
+			{
+				"id": "basics/math-projection"
+			},
+			{
+				"id": "basics/math-rotations"
+			},
+			{
+				"id": "basics/math-geometry"
+			},
+			{
+				"id": "basics/math-change"
+			},
+			{
+				"id": "basics/math-interpolation"
+			},
+			{
+				"id": "basics/color"
+			},
+			{
+				"id": "basics/signals"
+			},
+			{
+				"id": "basics/math-probability"
+			},
+			{
+				"id": "basics/math-sphere"
+			},
+			{
+				"id": "basics/threads"
+			}
+		],
+		"E": [
+			{
+				"id": "start/welcome"
+			},
+			{
+				"id": "start/how-to-read"
+			},
+			{
+				"id": "start/install"
+			},
+			{
+				"id": "start/first-game"
+			},
+			{
+				"id": "start/what-an-engine-is"
+			},
+			{
+				"id": "start/coming-from"
+			},
+			{
+				"id": "basics/computer"
+			},
+			{
+				"id": "basics/tools"
+			},
+			{
+				"id": "basics/programming-1"
+			},
+			{
+				"id": "basics/programming-2"
+			},
+			{
+				"id": "basics/programming-3"
+			},
+			{
+				"id": "basics/debugging"
+			},
+			{
+				"id": "basics/git"
+			},
+			{
+				"id": "basics/numbers"
+			},
+			{
+				"id": "basics/data-structures"
+			},
+			{
+				"id": "basics/trees-graphs"
+			},
+			{
+				"id": "basics/cpp-memory"
+			},
+			{
+				"id": "basics/cpp-classes"
+			},
+			{
+				"id": "basics/cpp-generic"
+			},
+			{
+				"id": "basics/cpp-modern"
+			},
+			{
+				"id": "basics/build"
+			},
+			{
+				"id": "basics/bytes"
+			},
+			{
+				"id": "basics/data-formats"
+			},
+			{
+				"id": "basics/math-vectors"
+			},
+			{
+				"id": "basics/math-matrices"
+			},
+			{
+				"id": "basics/math-bases"
+			},
+			{
+				"id": "basics/math-projection"
+			},
+			{
+				"id": "basics/math-rotations"
+			},
+			{
+				"id": "basics/math-geometry"
+			},
+			{
+				"id": "basics/math-change"
+			},
+			{
+				"id": "basics/math-interpolation"
+			},
+			{
+				"id": "basics/color"
+			},
+			{
+				"id": "basics/signals"
+			},
+			{
+				"id": "basics/math-probability"
+			},
+			{
+				"id": "basics/math-sphere"
+			},
+			{
+				"id": "basics/threads"
+			},
+			{
+				"id": "core/map"
+			},
+			{
+				"id": "core/first-change"
+			},
+			{
+				"id": "core/conventions"
+			},
+			{
+				"id": "core/reading-code"
+			},
+			{
+				"id": "core/first-frame"
+			},
+			{
+				"id": "core/frame-loop"
+			},
+			{
+				"id": "core/time"
+			},
+			{
+				"id": "core/windows-events"
+			},
+			{
+				"id": "core/engine-modules"
+			},
+			{
+				"id": "core/layers-registries"
+			},
+			{
+				"id": "core/jobs"
+			},
+			{
+				"id": "core/platform"
+			},
+			{
+				"id": "core/files"
+			},
+			{
+				"id": "core/profiling"
+			},
+			{
+				"id": "core/debugging"
+			},
+			{
+				"id": "core/math"
+			},
+			{
+				"id": "world/what-a-world-is"
+			},
+			{
+				"id": "world/ecs"
+			},
+			{
+				"id": "world/scene-graph"
+			},
+			{
+				"id": "world/systems"
+			},
+			{
+				"id": "world/interpolation"
+			},
+			{
+				"id": "world/reflection"
+			},
+			{
+				"id": "world/serialization"
+			},
+			{
+				"id": "world/prefabs"
+			},
+			{
+				"id": "world/sub-scenes"
+			},
+			{
+				"id": "world/projects-settings"
+			},
+			{
+				"id": "world/tutorial-component"
+			},
+			{
+				"id": "gpu/how-a-gpu-frame-works"
+			},
+			{
+				"id": "gpu/vulkan-nvrhi"
+			},
+			{
+				"id": "gpu/shaders"
+			},
+			{
+				"id": "gpu/compute"
+			},
+			{
+				"id": "gpu/coordinates"
+			},
+			{
+				"id": "gpu/first-triangle"
+			},
+			{
+				"id": "gpu/debugging"
+			},
+			{
+				"id": "gpu/resources-lifetimes"
+			},
+			{
+				"id": "gpu/upload-queue"
+			},
+			{
+				"id": "gpu/binding"
+			},
+			{
+				"id": "gpu/geometry-pool"
+			},
+			{
+				"id": "gpu/frame-tour"
+			},
+			{
+				"id": "gpu/readback-timing"
+			},
+			{
+				"id": "gpu/debug-drawing"
+			},
+			{
+				"id": "gpu/text"
+			},
+			{
+				"id": "assets/what-is-an-asset"
+			},
+			{
+				"id": "assets/handles-meta"
+			},
+			{
+				"id": "assets/importing"
+			},
+			{
+				"id": "assets/textures"
+			},
+			{
+				"id": "assets/texture-cooking"
+			},
+			{
+				"id": "assets/models-gltf"
+			},
+			{
+				"id": "assets/loading"
+			},
+			{
+				"id": "assets/residency"
+			},
+			{
+				"id": "assets/references"
+			},
+			{
+				"id": "assets/uploads"
+			},
+			{
+				"id": "assets/packs-export"
+			},
+			{
+				"id": "assets/robustness"
+			},
+			{
+				"id": "assets/extending"
+			},
+			{
+				"id": "draw/entities-to-draws"
+			},
+			{
+				"id": "draw/render-scene"
+			},
+			{
+				"id": "draw/bounds-culling"
+			},
+			{
+				"id": "draw/asset-requests"
+			},
+			{
+				"id": "draw/batching"
+			},
+			{
+				"id": "draw/lod"
+			},
+			{
+				"id": "draw/mirrors-camera-relative"
+			},
+			{
+				"id": "draw/render-scene-gpu"
+			},
+			{
+				"id": "draw/gpu-driven"
+			},
+			{
+				"id": "draw/occlusion"
+			},
+			{
+				"id": "draw/mip-streaming"
+			},
+			{
+				"id": "draw/skinned"
+			},
+			{
+				"id": "draw/motion-vectors"
+			},
+			{
+				"id": "light/units-exposure"
+			},
+			{
+				"id": "light/materials"
+			},
+			{
+				"id": "light/reflectance"
+			},
+			{
+				"id": "light/material-data"
+			},
+			{
+				"id": "light/brdf"
+			},
+			{
+				"id": "light/energy"
+			},
+			{
+				"id": "light/measuring-light"
+			},
+			{
+				"id": "light/lights"
+			},
+			{
+				"id": "light/many-lights"
+			},
+			{
+				"id": "light/area-lights"
+			},
+			{
+				"id": "light/shadow-basics"
+			},
+			{
+				"id": "light/sun-shadows-1"
+			},
+			{
+				"id": "light/sun-shadows-2"
+			},
+			{
+				"id": "light/local-shadows"
+			},
+			{
+				"id": "light/sky"
+			},
+			{
+				"id": "light/atmosphere"
+			},
+			{
+				"id": "light/fog"
+			},
+			{
+				"id": "light/clearcoat-transmission"
+			},
+			{
+				"id": "image/why-post"
+			},
+			{
+				"id": "image/exposure"
+			},
+			{
+				"id": "image/pre-exposure"
+			},
+			{
+				"id": "image/tone-mapping"
+			},
+			{
+				"id": "image/grading"
+			},
+			{
+				"id": "image/encoding"
+			},
+			{
+				"id": "image/lens-effects"
+			},
+			{
+				"id": "image/spatial-aa"
+			},
+			{
+				"id": "image/taa"
+			},
+			{
+				"id": "image/motion-blur"
+			},
+			{
+				"id": "image/depth-of-field"
+			},
+			{
+				"id": "image/quality-settings"
+			},
+			{
+				"id": "image/tutorial-post-effect"
+			},
+			{
+				"id": "indirect/problem"
+			},
+			{
+				"id": "indirect/ibl"
+			},
+			{
+				"id": "indirect/seam"
+			},
+			{
+				"id": "indirect/ao"
+			},
+			{
+				"id": "indirect/probes"
+			},
+			{
+				"id": "indirect/ssr"
+			},
+			{
+				"id": "indirect/gi-voxels"
+			},
+			{
+				"id": "indirect/gi-cascades"
+			},
+			{
+				"id": "indirect/gi-limits"
+			},
+			{
+				"id": "physics/why"
+			},
+			{
+				"id": "physics/bodies-colliders"
+			},
+			{
+				"id": "physics/collision-detection"
+			},
+			{
+				"id": "physics/dynamics"
+			},
+			{
+				"id": "physics/building-bodies"
+			},
+			{
+				"id": "physics/world-step"
+			},
+			{
+				"id": "physics/collision-layers"
+			},
+			{
+				"id": "physics/contacts-triggers"
+			},
+			{
+				"id": "physics/queries"
+			},
+			{
+				"id": "physics/character-controllers"
+			},
+			{
+				"id": "physics/scale-streaming"
+			},
+			{
+				"id": "physics/tuning"
+			},
+			{
+				"id": "animation/problem"
+			},
+			{
+				"id": "animation/skeletons"
+			},
+			{
+				"id": "animation/clips"
+			},
+			{
+				"id": "animation/skinning"
+			},
+			{
+				"id": "animation/importing"
+			},
+			{
+				"id": "animation/state-machines"
+			},
+			{
+				"id": "animation/blending"
+			},
+			{
+				"id": "animation/time-events"
+			},
+			{
+				"id": "animation/root-motion"
+			},
+			{
+				"id": "animation/system"
+			},
+			{
+				"id": "animation/culling"
+			},
+			{
+				"id": "animation/editor"
+			},
+			{
+				"id": "animation/limits"
+			},
+			{
+				"id": "audio/sound-in-a-computer"
+			},
+			{
+				"id": "audio/engine"
+			},
+			{
+				"id": "audio/clips-voices-sources"
+			},
+			{
+				"id": "audio/spatial"
+			},
+			{
+				"id": "audio/scene-system"
+			},
+			{
+				"id": "audio/testing"
+			},
+			{
+				"id": "input/how-input-works"
+			},
+			{
+				"id": "input/devices-state"
+			},
+			{
+				"id": "input/mouse-cursor"
+			},
+			{
+				"id": "input/gamepads"
+			},
+			{
+				"id": "input/actions"
+			},
+			{
+				"id": "input/rebinding"
+			},
+			{
+				"id": "input/simulated"
+			},
+			{
+				"id": "scripting/why-scripts"
+			},
+			{
+				"id": "scripting/shared-libraries"
+			},
+			{
+				"id": "scripting/abi-sdk"
+			},
+			{
+				"id": "scripting/loading"
+			},
+			{
+				"id": "scripting/crash-containment"
+			},
+			{
+				"id": "scripting/symbolization"
+			},
+			{
+				"id": "scripting/script-system"
+			},
+			{
+				"id": "scripting/hot-reload"
+			},
+			{
+				"id": "scripting/host-api"
+			},
+			{
+				"id": "scripting/tutorial-host-function"
+			},
+			{
+				"id": "ui/what-game-ui-does"
+			},
+			{
+				"id": "ui/layout"
+			},
+			{
+				"id": "ui/contract"
+			},
+			{
+				"id": "ui/input"
+			},
+			{
+				"id": "ui/text"
+			},
+			{
+				"id": "ui/drawing"
+			},
+			{
+				"id": "worlds/why-streaming"
+			},
+			{
+				"id": "worlds/grids"
+			},
+			{
+				"id": "worlds/streamer"
+			},
+			{
+				"id": "worlds/physics-scripts"
+			},
+			{
+				"id": "worlds/export"
+			},
+			{
+				"id": "worlds/game-identity"
+			},
+			{
+				"id": "worlds/runtime"
+			},
+			{
+				"id": "editor/program"
+			},
+			{
+				"id": "editor/commands"
+			},
+			{
+				"id": "editor/deferred-commands"
+			},
+			{
+				"id": "editor/undo"
+			},
+			{
+				"id": "editor/saving"
+			},
+			{
+				"id": "editor/recovery"
+			},
+			{
+				"id": "editor/projects"
+			},
+			{
+				"id": "editor/trash-references"
+			},
+			{
+				"id": "editor/prefab-instances"
+			},
+			{
+				"id": "editor/play-mode"
+			},
+			{
+				"id": "editor/worlds"
+			},
+			{
+				"id": "editor/script-builds"
+			},
+			{
+				"id": "editor/stepping"
+			},
+			{
+				"id": "editor/command-scripts"
+			},
+			{
+				"id": "editor/journal"
+			},
+			{
+				"id": "editor/placement"
+			},
+			{
+				"id": "editor/thumbnails"
+			},
+			{
+				"id": "editor/camera-viewport"
+			},
+			{
+				"id": "editor/tutorial-command"
+			},
+			{
+				"id": "editor-ui/immediate-mode"
+			},
+			{
+				"id": "editor-ui/imgui"
+			},
+			{
+				"id": "editor-ui/imgui-backends"
+			},
+			{
+				"id": "editor-ui/ui-scale"
+			},
+			{
+				"id": "editor-ui/design-system"
+			},
+			{
+				"id": "editor-ui/widget-kit"
+			},
+			{
+				"id": "editor-ui/shell"
+			},
+			{
+				"id": "editor-ui/lists"
+			},
+			{
+				"id": "editor-ui/inspectors"
+			},
+			{
+				"id": "editor-ui/scene-view"
+			},
+			{
+				"id": "editor-ui/game-view"
+			},
+			{
+				"id": "editor-ui/status"
+			},
+			{
+				"id": "editor-ui/launcher-dialogs"
+			},
+			{
+				"id": "editor-ui/settings-windows"
+			},
+			{
+				"id": "editor-ui/instrument-panels"
+			},
+			{
+				"id": "editor-ui/ui-testing"
+			},
+			{
+				"id": "editor-ui/tutorial-panel"
+			},
+			{
+				"id": "automation/agents"
+			},
+			{
+				"id": "automation/json-rpc"
+			},
+			{
+				"id": "automation/rpc-server"
+			},
+			{
+				"id": "automation/security"
+			},
+			{
+				"id": "automation/sessions"
+			},
+			{
+				"id": "automation/mcp"
+			},
+			{
+				"id": "engineering/building"
+			},
+			{
+				"id": "engineering/cmake"
+			},
+			{
+				"id": "engineering/flags-portability"
+			},
+			{
+				"id": "engineering/third-party"
+			},
+			{
+				"id": "engineering/generated-code"
+			},
+			{
+				"id": "engineering/testing"
+			},
+			{
+				"id": "engineering/test-program"
+			},
+			{
+				"id": "engineering/test-kinds"
+			},
+			{
+				"id": "engineering/feature-test"
+			},
+			{
+				"id": "engineering/perf-lab"
+			},
+			{
+				"id": "engineering/look-dev"
+			},
+			{
+				"id": "engineering/ci"
+			},
+			{
+				"id": "engineering/releasing"
+			},
+			{
+				"id": "engineering/contributing"
+			},
+			{
+				"id": "capstone/plan"
+			},
+			{
+				"id": "capstone/build"
+			},
+			{
+				"id": "capstone/land"
+			}
+		]
+	}
+}

@@ -1,0 +1,139 @@
+{
+	"page": "make/play-test-debug",
+	"startsFrom": { "tutorial": "make/hud" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "play.start", "expect": { "/state": { "equals": "Play" } }, "checks": [ { "pointer": "/paused", "equals": false } ] },
+				{ "command": "input.sequence", "parameters": { "events": [ { "step": 0, "key": "S", "action": "tap", "steps": 150 } ], "steps": 180 } },
+				{ "command": "entity.find", "parameters": { "tag": "Coin" }, "checks": [ { "pointer": "/entities", "length": 4 } ] },
+				{ "command": "play.stop" },
+				{ "command": "entity.find", "parameters": { "tag": "Coin" }, "checks": [ { "pointer": "/entities", "length": 0 } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"commands": [
+				{ "command": "component.get", "entityName": "Ball", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/1", "approx": 3, "tolerance": 0.001 } ] },
+				{ "command": "play.simulate", "checks": [ { "pointer": "/state", "contains": "Simulate" } ] },
+				{ "command": "component.get", "entityName": "Ball", "parameters": { "component": "Transform" },
+					"until": { "seconds": 20 }, "expect": { "/values/Translation/1": { "max": 0.6 } } },
+				{ "command": "entity.find", "parameters": { "tag": "Coin" }, "checks": [ { "pointer": "/entities", "length": 0 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"commands": [
+				{ "command": "play.start", "parameters": { "paused": true }, "checks": [ { "pointer": "/paused", "equals": true } ] },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "entity.find", "parameters": { "tag": "Coin" }, "bind": { "coin": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 5 } ] },
+				{ "command": "script.get", "parameters": { "entity": { "$ref": "coin" }, "class": "Coin" },
+					"checks": [ { "pointer": "/scripts/0/fields/DegreesPerSecond", "approx": 120, "tolerance": 0.001 } ] },
+				{ "command": "entity.get", "parameters": { "entity": { "$ref": "coin" }, "world": true },
+					"checks": [ { "pointer": "/world/rotation/euler/1", "approx": 58, "tolerance": 0.05 } ] },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "coin" }, "component": "Transform" },
+					"checks": [ { "pointer": "/values/Rotation/1", "approx": 0.48481, "tolerance": 0.0005 } ] },
+				{ "command": "play.step", "parameters": { "steps": 1 }, "expect": { "/stepsRun": { "equals": 1 } } },
+				{ "command": "entity.get", "parameters": { "entity": { "$ref": "coin" }, "world": true },
+					"checks": [ { "pointer": "/world/rotation/euler/1", "approx": 60, "tolerance": 0.05 } ] },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "coin" }, "component": "Transform" },
+					"checks": [ { "pointer": "/values/Rotation/1", "approx": 0.5, "tolerance": 0.0005 } ] },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } },
+					"checks": [ { "pointer": "/fixedSteps", "equals": 41 } ] },
+				{ "command": "entity.get", "parameters": { "entity": { "$ref": "coin" }, "world": true },
+					"checks": [ { "pointer": "/world/rotation/euler/1", "approx": 80, "tolerance": 0.05 } ] },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "coin" }, "component": "Transform" },
+					"checks": [ { "pointer": "/values/Rotation/1", "approx": 0.64279, "tolerance": 0.0005 } ] },
+				{ "command": "play.state", "checks": [ { "pointer": "/paused", "equals": true }, { "pointer": "/fixedSteps", "equals": 41 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"commands": [
+				{ "command": "play.start", "parameters": { "paused": true } },
+				{ "command": "component.set", "entityName": "Ball", "parameters": { "component": "Transform", "values": { "Translation": [2, 3, 0] } },
+					"checks": [ { "pointer": "/warning", "contains": "discarded by play.stop" } ] },
+				{ "command": "component.get", "entityName": "Ball", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/0", "approx": 2, "tolerance": 0.001 } ] },
+				{ "command": "script.setField", "entityName": "HUD", "parameters": { "class": "CoinHud", "field": "TimeLimit", "value": 30 } },
+				{ "command": "script.get", "entityName": "HUD", "parameters": { "class": "CoinHud" },
+					"checks": [ { "pointer": "/scripts/0/live", "equals": true }, { "pointer": "/scripts/0/fields/TimeLimit", "approx": 30, "tolerance": 0.001 } ] },
+				{ "command": "play.step", "parameters": { "steps": 90 }, "expect": { "/stepsRun": { "equals": 90 } } },
+				{ "command": "component.get", "entityName": "TimerText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Text", "equals": "Time: 29" } ] },
+				{ "command": "play.stop" },
+				{ "command": "component.get", "entityName": "Ball", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/0", "approx": 0, "tolerance": 0.001 }, { "pointer": "/values/Translation/1", "approx": 3, "tolerance": 0.001 } ] },
+				{ "command": "script.get", "entityName": "HUD", "parameters": { "class": "CoinHud" },
+					"checks": [ { "pointer": "/scripts/0/fields/TimeLimit", "approx": 60, "tolerance": 0.001 } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 5,
+			"commands": [
+				{ "command": "script.build", "parameters": { "wait": false },
+					"files": [ { "from": "book:tutorials/make/play-test-debug/CoinHudNoSemicolon.cpp", "to": "Scripts/CoinHud.cpp" } ] },
+				{ "command": "script.status", "until": { "seconds": 300 },
+					"expect": { "/build/running": { "equals": false }, "/build/last/success": { "equals": false } },
+					"checks": [ { "pointer": "/build/last/diagnostics", "contains": "CoinHud.cpp" } ] },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 20 } },
+				{ "command": "script.build", "files": [ { "from": "book:tutorials/make/play-test-debug/CoinHudRepaired.cpp", "to": "Scripts/CoinHud.cpp" } ],
+					"expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 6,
+			"commands": [
+				{ "command": "script.build", "files": [ { "from": "book:tutorials/make/play-test-debug/CoinHud.cpp", "to": "Scripts/CoinHud.cpp" },
+						{ "from": "book:tutorials/make/play-test-debug/CoinLogged.cpp", "to": "Scripts/Coin.cpp" } ],
+					"expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "input.sequence", "parameters": { "events": [ { "step": 0, "key": "S", "action": "tap", "steps": 150 } ], "steps": 180 } },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 50 },
+					"checks": [ { "pointer": "/messages", "contains": "HUD shows 5 coins in frame" }, { "pointer": "/messages", "contains": "Coin collected in frame 36" },
+						{ "pointer": "/messages", "contains": "HUD shows 4 coins in frame 37" } ] },
+				{ "command": "play.stop" },
+				{ "command": "script.build", "files": [ { "from": "book:tutorials/make/play-test-debug/Coin.cpp", "to": "Scripts/Coin.cpp" } ],
+					"expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "input.sequence", "parameters": { "events": [ { "step": 0, "key": "S", "action": "tap", "steps": 150 } ], "steps": 180 } },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 50 },
+					"checks": [ { "pointer": "/messages", "contains": "HUD shows 4 coins in frame 36" } ] },
+				{ "command": "component.get", "entityName": "CoinText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Text", "equals": "Coins left: 4" } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 7,
+			"commands": [
+				{ "command": "play.start", "parameters": { "paused": true } },
+				{ "command": "input.sequence", "parameters": { "events": [ { "step": 0, "key": "S", "action": "tap", "steps": 150 } ], "steps": 180 } },
+				{ "command": "play.state", "checks": [ { "pointer": "/fixedSteps", "equals": 180 } ] },
+				{ "command": "component.get", "entityName": "Ball", "parameters": { "component": "Transform" } },
+				{ "command": "component.get", "entityName": "CoinText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Text", "equals": "Coins left: 4" } ] },
+				{ "command": "play.stop" },
+				{ "command": "play.start", "parameters": { "paused": true } },
+				{ "command": "input.sequence", "parameters": { "events": [ { "step": 0, "key": "S", "action": "tap", "steps": 150 } ], "steps": 180 } },
+				{ "command": "play.state", "checks": [ { "pointer": "/fixedSteps", "equals": 180 } ] },
+				{ "command": "component.get", "entityName": "Ball", "parameters": { "component": "Transform" } },
+				{ "command": "component.get", "entityName": "CoinText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Text", "equals": "Coins left: 4" } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		}
+	]
+}

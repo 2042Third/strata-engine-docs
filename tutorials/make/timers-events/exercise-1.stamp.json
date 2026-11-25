@@ -1,0 +1,77 @@
+{
+	"page": "make/timers-events",
+	"runs": [
+		{
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/solutions/make/timers-events/exercise-1.zip": "04382b4b4450714b1ea85d204e247238957051f0b1bd8803b6699d6f07e20e4d",
+				"tutorials/make/timers-events.tutorial.json": "10e0343e92b2becb707aa3cbcccbf1afa64f1e9b942bef94d3658bc3fc2e2d4d",
+				"tutorials/make/timers-events/Dropper.cpp": "f67b1ca9f4b58849e3159bdfc0dc10e86cebd88a81ef79e6b0497aa853196133",
+				"tutorials/make/timers-events/Dropper.step3.cpp": "e0eac6b263b32957638dd3668876d5125115ac0217e1a24fc3a50c9da05cef34",
+				"tutorials/make/timers-events/Marker.cpp": "621328bad45da04e144bc568a6273baa643d74741fbc39976a69004be5c6150a",
+				"tutorials/make/timers-events/Pickup.cpp": "bed436378926acdffd9a32353626590e7f29cd661d595ae87f367d0de867c844",
+				"tutorials/make/timers-events/Pickup.h": "cddfdb2a038cf75484cac6bb9c271f20898305b08ad4ded7b71060d8d9c4b8b8",
+				"tutorials/make/timers-events/Player.cpp": "a1fb02f11af56f329822fb31bf682d30ac488faa3d6671b59b6dec4cb2f29f58",
+				"tutorials/make/timers-events/Player.exercise1.cpp": "f5ab9cd3d57ad945af2596bfb7b821a4307ac5283f55bd8b07356ffb91855f75",
+				"tutorials/make/timers-events/Scoreboard.cpp": "da77389c96dcb68bc4623578d2406c90f1daaf9256660a6925be5940ad9522cd",
+				"tutorials/make/timers-events/Scoreboard.h": "5bfc93e1f7521fd1a9cec4eb664db9dec4af5a861e237f3959a8a2d71e678722",
+				"tutorials/make/timers-events/TimeControl.cpp": "d53ef92f1df6684e7c373da05669e64999df042405537bdf4ff9abefac209cc4",
+				"tutorials/make/timers-events/TimeControl.step2.cpp": "99be1bde19a1e40d6eb410d1a1ed21d9e3a9c3591910e85aac7dca4cc1ac16b3",
+				"tutorials/make/timers-events/exercise-1.tutorial.json": "97b4abfb2cdf93cb31db94ba980970d050fc804c4c5ca7da737ca8be356018df"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		},
+		{
+			"build": {
+				"kind": "package",
+				"configuration": "Strata-0.8.0-windows-x64",
+				"editorSha256": "bcff21bcd56e8f51003861fc7aafb4b8ab638ad7cc521c8c0c7829c4361673be",
+				"package": "Strata-0.8.0-windows-x64.zip",
+				"packageSha256": "47a151b64d0d6bb6f2c77147ca4b477b5eaa479b7dfeafee07ccec3911a00d11"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/solutions/make/timers-events/exercise-1.zip": "04382b4b4450714b1ea85d204e247238957051f0b1bd8803b6699d6f07e20e4d",
+				"tutorials/make/timers-events.tutorial.json": "10e0343e92b2becb707aa3cbcccbf1afa64f1e9b942bef94d3658bc3fc2e2d4d",
+				"tutorials/make/timers-events/Dropper.cpp": "f67b1ca9f4b58849e3159bdfc0dc10e86cebd88a81ef79e6b0497aa853196133",
+				"tutorials/make/timers-events/Dropper.step3.cpp": "e0eac6b263b32957638dd3668876d5125115ac0217e1a24fc3a50c9da05cef34",
+				"tutorials/make/timers-events/Marker.cpp": "621328bad45da04e144bc568a6273baa643d74741fbc39976a69004be5c6150a",
+				"tutorials/make/timers-events/Pickup.cpp": "bed436378926acdffd9a32353626590e7f29cd661d595ae87f367d0de867c844",
+				"tutorials/make/timers-events/Pickup.h": "cddfdb2a038cf75484cac6bb9c271f20898305b08ad4ded7b71060d8d9c4b8b8",
+				"tutorials/make/timers-events/Player.cpp": "a1fb02f11af56f329822fb31bf682d30ac488faa3d6671b59b6dec4cb2f29f58",
+				"tutorials/make/timers-events/Player.exercise1.cpp": "f5ab9cd3d57ad945af2596bfb7b821a4307ac5283f55bd8b07356ffb91855f75",
+				"tutorials/make/timers-events/Scoreboard.cpp": "da77389c96dcb68bc4623578d2406c90f1daaf9256660a6925be5940ad9522cd",
+				"tutorials/make/timers-events/Scoreboard.h": "5bfc93e1f7521fd1a9cec4eb664db9dec4af5a861e237f3959a8a2d71e678722",
+				"tutorials/make/timers-events/TimeControl.cpp": "d53ef92f1df6684e7c373da05669e64999df042405537bdf4ff9abefac209cc4",
+				"tutorials/make/timers-events/TimeControl.step2.cpp": "99be1bde19a1e40d6eb410d1a1ed21d9e3a9c3591910e85aac7dca4cc1ac16b3",
+				"tutorials/make/timers-events/exercise-1.tutorial.json": "97b4abfb2cdf93cb31db94ba980970d050fc804c4c5ca7da737ca8be356018df"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		}
+	]
+}

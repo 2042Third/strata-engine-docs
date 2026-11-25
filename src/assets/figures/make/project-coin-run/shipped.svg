@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 372">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: three outlined boxes on the ground. Project folder x 16-328, y 16-196; data folder x 16-328, y 228-356;
+     export folder x 448-752, y 16-356, six rows of name (mono 16) and description (small), names at 72 + 44 i.
+     Arrows across the 120-unit gap: the Always Include list into the pack row (y 112), the game's row into the data
+     folder (y 290); labels centered at x 388, 10 above their lines. H 372: the lowest box 356 + 16. -->
+<rect class="line-muted" fill="none" x="16" y="16" width="312" height="180" rx="6"/>
+<text class="ink bold" x="32" y="42">Project folder</text>
+<rect class="orange-area" x="24" y="56" width="296" height="86" rx="4"/>
+<text class="ink" x="32" y="74">Always Include list</text>
+<text class="ink mono small" x="48" y="96">Prefabs</text>
+<text class="ink mono small" x="48" y="116">Materials/GoldGlow.stmat</text>
+<text class="ink mono small" x="48" y="136">Sounds</text>
+<text class="ink mono" x="32" y="166">CREDITS.md</text>
+<text class="muted small" x="32" y="186">a row for each file you did not make</text>
+
+<rect class="line-muted" fill="none" x="16" y="228" width="312" height="128" rx="6"/>
+<text class="ink bold" x="32" y="254">The game's data folder</text>
+<text class="muted small" x="32" y="276">Windows: <tspan class="mono">%LOCALAPPDATA%\CoinRun</tspan></text>
+<text class="muted small" x="32" y="296">Linux: <tspan class="mono">~/.local/share/CoinRun</tspan></text>
+<text class="ink mono" x="32" y="322">Logs/Game.log</text>
+<text class="muted small" x="32" y="342">no warning that starts <tspan class="mono">FindAsset</tspan></text>
+
+<rect class="line-muted" fill="none" x="448" y="16" width="304" height="340" rx="6"/>
+<text class="ink bold" x="464" y="42">Export folder</text>
+<text class="ink mono" x="464" y="72">CoinRun.stgame</text>
+<text class="muted small" x="464" y="92">the manifest</text>
+<rect class="orange-area" x="456" y="98" width="288" height="44" rx="4"/>
+<text class="ink mono" x="464" y="116">CoinRun.stpak</text>
+<text class="ink small" x="464" y="136">the pack: what the scenes use, and the list</text>
+<text class="ink mono" x="464" y="160">CoinRunScripts.dll</text>
+<text class="muted small" x="464" y="180">the script module (.so, .dylib)</text>
+<text class="ink mono" x="464" y="204">CoinRun.png</text>
+<text class="muted small" x="464" y="224">the icon</text>
+<text class="ink mono" x="464" y="248">ThirdPartyNotices.md</text>
+<text class="muted small" x="464" y="268">notices of the engine's libraries</text>
+<text class="ink mono" x="464" y="292">CoinRun.exe</text>
+<text class="muted small" x="464" y="312">the game (CoinRun on Linux and macOS)</text>
+
+<line class="line-ink" x1="328" y1="112" x2="436" y2="112"/>
+<polygon class="ink" points="436,108.5 446,112 436,115.5"/>
+<text class="ink small" x="388" y="102" text-anchor="middle">pruned export</text>
+
+<line class="line-ink" x1="448" y1="288" x2="340" y2="288"/>
+<polygon class="ink" points="340,284.5 330,288 340,291.5"/>
+<text class="ink small" x="388" y="278" text-anchor="middle">writes its log</text>
+</svg>

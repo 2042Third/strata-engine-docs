@@ -1,0 +1,1812 @@
+{
+	"figures": [
+		{
+			"id": "ball-on-ground",
+			"shows": "The Basic 3D scene with the white sphere on the grey ground in the middle of the view and Coin Run's five gold coins standing in an arc around the front of it, at the positions CoinPlacer gives them",
+			"caption": "The ball on the ground among Coin Run's five coins, where the Move action will carry it.",
+			"alt": "A white sphere with a short shadow in the middle of a flat grey ground under a pale grey-brown sky, with five gold coins standing on edge in an arc around the front of it.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					6,
+					7
+				],
+				"target": [
+					0,
+					0,
+					-2
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Gold-ball-on-ground.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-on-ground.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (1)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-on-ground.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (2)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-on-ground.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.0,
+									0.8,
+									3.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (3)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-on-ground.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (4)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-on-ground.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "ball-moves",
+			"shows": "The sphere 4 m from the orange start disc, away from the camera and to the right, as after W and D held for one second, with Coin Run's five coins in an arc around the front of the disc",
+			"caption": "After a second of W and D the ball sits farther from the camera and to the right of the orange disc that marks where it began (the disc is added for the picture).",
+			"alt": "A white sphere on a flat grey ground, up and to the right of an orange disc in the middle. Five gold coins stand on edge in an arc around the front of the orange disc.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					6,
+					7
+				],
+				"target": [
+					0,
+					0,
+					-2
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Gold-ball-moves.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-moves.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (1)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-moves.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (2)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-moves.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.0,
+									0.8,
+									3.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (3)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-moves.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (4)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-moves.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/StartMark-ball-moves.stmat",
+						"properties": {
+							"BaseColor": [
+								0.9,
+								0.25,
+								0.02,
+								1.0
+							],
+							"Metallic": 0.0,
+							"Roughness": 0.8
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Start Mark",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/StartMark-ball-moves.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.02,
+									0
+								],
+								"Scale": [
+									1.0,
+									0.02,
+									1.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere"
+							},
+							"Transform": {
+								"Translation": [
+									2.83,
+									0.5,
+									-2.83
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "dead-zones",
+			"shows": "Two squares of stick positions from -1 to 1 on both axes: in the left one the dead zone is a small square around the middle, in the right one a small circle; both with the same size 0.15, with the stick position (0.14, 0.90) marked in each",
+			"caption": "A square zone cuts away the sideways part of a tilt that is small, and a round zone keeps the direction of the tilt.",
+			"alt": "Two squares drawn side by side with a small shape in the middle of each. The left shape is a square and the right one is a circle. A marked point near the top edge lies outside the circle and inside the strip, near its edge, that runs up and down through the square.",
+			"kind": "diagram",
+			"numbers": "Both plots x and y from -1 to 1, a dot at (0.14, 0.90); left plot: dead zone square with half-side 0.15, the dot's x is inside the strip |x| < 0.15, so x reads 0 and y reads 0.88; right plot: dead zone circle of radius 0.15, the dot lies far outside it, so the read vector is (0.14, 0.88); also mark the unit circle of the stick's reach."
+		},
+		{
+			"id": "ball-pad",
+			"shows": "The sphere 2.4 m from the orange start disc, mostly away from the camera and a little to the right, as after one second of the stick at (0.3, 0.6), with Coin Run's five coins in an arc around the front of the disc",
+			"caption": "With the stick tilted part of the way the ball covered less ground than with the keys: up the screen and a little to the right of the orange start disc.",
+			"alt": "A white sphere on a flat grey ground, a short way up and slightly to the right of an orange disc in the middle. Five gold coins stand on edge in an arc around the front of the orange disc.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					6,
+					7
+				],
+				"target": [
+					0,
+					0,
+					-2
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Gold-ball-pad.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-pad.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (1)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-pad.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (2)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-pad.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.0,
+									0.8,
+									3.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (3)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-pad.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (4)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-pad.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/StartMark-ball-pad.stmat",
+						"properties": {
+							"BaseColor": [
+								0.9,
+								0.25,
+								0.02,
+								1.0
+							],
+							"Metallic": 0.0,
+							"Roughness": 0.8
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Start Mark",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/StartMark-ball-pad.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.02,
+									0
+								],
+								"Scale": [
+									1.0,
+									0.02,
+									1.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere"
+							},
+							"Transform": {
+								"Translation": [
+									1.09,
+									0.5,
+									-2.18
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "input-actions-page",
+			"shows": "Project Settings on the Input Actions page: the map Gameplay with the action Move of kind Vector2, its dead zone 0.15 and three binding chips (two 2D composites and the left stick), with the Add Action button and the plus button that adds a binding",
+			"caption": "The Input Actions page: the map, the action with its kind and dead zone, and the chips of its bindings. The plus sign adds a binding; the button after it, which binds the next key pressed, is dimmed for a Vector2.",
+			"alt": "The editor's Project Settings panel showing the Input Actions page with a map named Gameplay, an action named Move with three binding chips and a dead zone value.",
+			"kind": "editor",
+			"waitsFor": "tier 3: the Input Actions page of Project Settings; no command selects a Project Settings page (editor.showPanel takes no page, and the panel opens on Game)",
+			"standIn": "input-actions-drawing",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"panel": "ProjectSettings",
+				"steps": [
+					{
+						"command": "inputActions.setMap",
+						"parameters": {
+							"map": "Gameplay"
+						}
+					},
+					{
+						"command": "inputActions.setAction",
+						"parameters": {
+							"action": "Gameplay/Move",
+							"kind": "Vector2",
+							"bindings": [
+								"2D:Key/W,Key/S,Key/A,Key/D",
+								"2D:Key/Up,Key/Down,Key/Left,Key/Right",
+								"Gamepad/LeftStick"
+							]
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "ProjectSettings"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "input-actions-drawing",
+			"kind": "diagram",
+			"shows": "A drawing of the Project Settings window on its Input Actions page at the end of this section, as the pin draws it: the pages by category with Input Actions selected; the heading, the section's description and the page's own description, cut; 2 maps · 7 actions; the maps UI (game UI navigation) and Gameplay, Gameplay selected; Add Map; the map's name with its remove button and Enabled at start ticked; the action Move with the kind Vector2, the dead zone 0.15 and three binding chips with their device icons and remove buttons; the plus button and the capture button, dimmed; Add Action",
+			"caption": "A drawing of the Input Actions page at the end of this section: the map Gameplay and its action Move, with its kind, its dead zone and a chip for each binding. The plus sign adds a binding. The button after it binds the next key pressed, and a Vector2 has it dimmed: it takes a stick or four keys, added with the plus sign.",
+			"alt": "A window with Input Actions selected under Input. The page lists two maps, the reserved one and Gameplay, then the action Move: kind Vector2, dead zone 0.15 and three binding chips, two for keys and one for the left stick.",
+			"numbers": "Page list as world/projects-settings' timing-page-drawing (SettingsBrowser::BuildEntries, StrataEditor/src/UI/SettingsPages.cpp:450-485), Input Actions selected. Heading and the Input.Actions description (Strata/src/Strata/Input/InputActionSet.cpp:627-631) from SettingsBrowser::DrawPage (SettingsPages.cpp:569-571); the page (StrataEditor/src/UI/InputActionsPage.cpp): its caption (240-242), summary 2 maps · 7 actions (the UI map's six default actions, InputActionSet.cpp:146-153, and Move), DrawMaps (267-336: UI first with its note, Gameplay selected as the first map that is not UI, 176-188), DrawActions (338-468: Action, Kind, Dead zone slider 0.15 of 0 to 0.9, Bindings, Add Action), DrawBindings (470-547: a chip per binding with its device icon and an X button, then + and the capture button, disabled for a Vector2 at 528-533). Texts cut with ellipses."
+		},
+		{
+			"id": "ball-action",
+			"shows": "The sphere 4 m straight away from the camera beyond the orange start disc, as after the Move action held at (0, 1) for one second, with Coin Run's five coins in an arc around the front of the disc",
+			"caption": "The Move action, held straight up for a second, carried the ball straight away from the camera beyond the orange start disc, as W does.",
+			"alt": "A white sphere on a flat grey ground, straight up the picture from an orange disc in the middle. Five gold coins stand on edge in an arc around the front of the orange disc.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					6,
+					7
+				],
+				"target": [
+					0,
+					0,
+					-2
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Gold-ball-action.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-action.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (1)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-action.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (2)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-action.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.0,
+									0.8,
+									3.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (3)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-action.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (4)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-action.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/StartMark-ball-action.stmat",
+						"properties": {
+							"BaseColor": [
+								0.9,
+								0.25,
+								0.02,
+								1.0
+							],
+							"Metallic": 0.0,
+							"Roughness": 0.8
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Start Mark",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/StartMark-ball-action.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.02,
+									0
+								],
+								"Scale": [
+									1.0,
+									0.02,
+									1.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									-4.0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "ball-boost",
+			"shows": "Seen from high above, so both legs keep their length: the orange start disc, the blue disc 4 m on where a second of walking ends, and the sphere 8 m from the start, at equal steps up the picture; Coin Run's five coins stand in an arc below the orange disc",
+			"caption": "With Boost held for a second the ball covers twice the ground. Seen from above, the blue disc, where a second of walking ends, lies halfway between the orange start disc and the ball.",
+			"alt": "Seen from above: a flat grey ground with an orange disc low in the middle, a blue disc straight above it and a white sphere near the top at the same spacing again. Five thin gold coins stand in an arc below the orange disc.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					17,
+					-1.6
+				],
+				"target": [
+					0,
+					0,
+					-2.6
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Gold-ball-boost.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-boost.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (1)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-boost.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (2)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-boost.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.0,
+									0.8,
+									3.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (3)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-boost.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (4)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-boost.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/StartMark-ball-boost.stmat",
+						"properties": {
+							"BaseColor": [
+								0.9,
+								0.25,
+								0.02,
+								1.0
+							],
+							"Metallic": 0.0,
+							"Roughness": 0.8
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Start Mark",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/StartMark-ball-boost.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.02,
+									0
+								],
+								"Scale": [
+									1.0,
+									0.02,
+									1.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/WalkMark-ball-boost.stmat",
+						"properties": {
+							"BaseColor": [
+								0.05,
+								0.2,
+								0.85,
+								1.0
+							],
+							"Metallic": 0.0,
+							"Roughness": 0.8
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Walk Mark",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/WalkMark-ball-boost.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.02,
+									-4.0
+								],
+								"Scale": [
+									1.0,
+									0.02,
+									1.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									-8.0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "ball-look",
+			"shows": "The sphere at its start among Coin Run's coins, seen by the same camera turned about 15 degrees to the left: the ground's edges slant and the sphere sits right of the middle",
+			"caption": "The camera turned a little to the left, so the ball, which has not moved, sits right of the middle of the view.",
+			"alt": "A white sphere on a flat grey ground whose far edge slants, in the right half of the picture. Gold coins stand on edge to its left and below it, one cut by the right edge.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					6,
+					7
+				],
+				"target": [
+					-2.5,
+					0,
+					-2
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Gold-ball-look.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-look.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (1)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-look.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (2)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-look.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.0,
+									0.8,
+									3.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (3)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-look.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (4)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-look.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "ball-vehicle",
+			"shows": "Seen from high above, so both legs keep their length: the sphere 8 m up and to the right of the orange start disc, with the blue disc where a second of walking with W and D ends halfway between them; Coin Run's five coins stand in an arc below the orange disc",
+			"caption": "Driving with W and D for a second moves the ball twice as far as walking. Seen from above, the blue disc, where walking stops, lies halfway between the orange start disc and the ball.",
+			"alt": "Seen from above: a flat grey ground with an orange disc low in the middle, a blue disc up and to the right of it. A white sphere stands as far again in the same direction near the top right. Five thin gold coins stand in an arc below the orange disc.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					1,
+					15,
+					-0.5
+				],
+				"target": [
+					1,
+					0,
+					-1.5
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Gold-ball-vehicle.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-vehicle.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (1)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-vehicle.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (2)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-vehicle.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.0,
+									0.8,
+									3.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (3)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-vehicle.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.0,
+									0.8,
+									2.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (4)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold-ball-vehicle.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									4.0,
+									0.8,
+									0.0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.6,
+									0.06,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/StartMark-ball-vehicle.stmat",
+						"properties": {
+							"BaseColor": [
+								0.9,
+								0.25,
+								0.02,
+								1.0
+							],
+							"Metallic": 0.0,
+							"Roughness": 0.8
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Start Mark",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/StartMark-ball-vehicle.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.02,
+									0
+								],
+								"Scale": [
+									1.0,
+									0.02,
+									1.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/WalkMark-ball-vehicle.stmat",
+						"properties": {
+							"BaseColor": [
+								0.05,
+								0.2,
+								0.85,
+								1.0
+							],
+							"Metallic": 0.0,
+							"Roughness": 0.8
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Walk Mark",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/WalkMark-ball-vehicle.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.83,
+									0.02,
+									-2.83
+								],
+								"Scale": [
+									1.0,
+									0.02,
+									1.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere"
+							},
+							"Transform": {
+								"Translation": [
+									5.66,
+									0.5,
+									-5.66
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		}
+	]
+}

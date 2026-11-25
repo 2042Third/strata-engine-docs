@@ -1,0 +1,1838 @@
+{
+	"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+	"file": "StrataTests/Perf/Budgets.json",
+	"comment": [
+		"Budgets of the perf tests (StrataTests/src/Perf, suites Perf.* and PerfGPU.*; Docs/DeveloperGuide.md,",
+		"'Perf tests').",
+		"Every metric a test checks (Perf::CheckBudgetConfirmed, CheckBudgetsConfirmed) or records (Perf::Record) needs an",
+		"entry, or the test fails:",
+		"  \"<Suite>.<Metric>\": { \"Measured\": <number>, \"Budget\": <number>, \"Unit\": <unit>, \"Target\": <number> }",
+		"with a unit of \"ms\", \"us\", \"MB\", \"count\" or \"ratio\" (of two measurements, e.g. a new way's time to an old",
+		"way's). Lower is better: a test fails when it measures more than Budget in every attempt of its confirmed check",
+		"(express rates as cost per item). Measured is the metric on the reference machine (Intel Core i7-13700K, NVIDIA",
+		"GeForce RTX 5090, Windows 11, Release build, ctest --preset windows-release -L perf on a quiet machine); Budget is",
+		"at most 1.5 times Measured (round down), or an acceptance limit below that.",
+		"Target (optional) is a roadmap goal below Budget that the metric has not reached on every run: the budget is the",
+		"gate, the target is reported with every check. A budget lowered to its target or below drops the target.",
+		"Limits that tests check belong here, never in the test's code.",
+		"Ratchet: budgets only go down. A change that makes a metric cheaper measures it again and lowers Measured and",
+		"Budget in the same commit; a metric over its budget is a regression to fix, never a reason to raise the budget.",
+		"A commit that adds or lowers a budget states the measured values in its message. A budget goes up only for a",
+		"change of the machine, shown by the build of the commit that set it measuring as far over it on this machine, or",
+		"once for a cost the owner accepted by name (Docs/DeveloperGuide.md, 'Perf tests'; Tools/PerfStability.py",
+		"--propose-budgets --rebaseline).",
+		"Provisional: a metric the reference machine has not measured yet (while it is away, Docs/Roadmap.md) has the entry",
+		"  \"<Suite>.<Metric>\": { \"Unit\": <unit>, \"Provisional\": true, \"Target\": <number> }   (Target optional)",
+		"and is measured and recorded, never checked, until the reference machine measures it and the entry gets its",
+		"Measured and Budget. Numbers of other machines never go into an entry."
+	],
+	"budgets": [
+		{
+			"name": "Perf.Harness.Sort200k",
+			"line": 27,
+			"Measured": 10.0,
+			"Budget": 15.0,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Scene.CleanTransformUpdate1M",
+			"line": 28,
+			"Measured": 0.001321,
+			"Budget": 0.00198,
+			"Unit": "us"
+		},
+		{
+			"name": "Perf.Scene.CleanTransformUpdate1M.Recomputed",
+			"line": 29,
+			"Measured": 0,
+			"Budget": 0,
+			"Unit": "count"
+		},
+		{
+			"name": "Perf.Scene.MoveRoot1M",
+			"line": 30,
+			"Measured": 6.57,
+			"Budget": 9.855,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Scene.IdlePlayFrame1M",
+			"line": 31,
+			"Measured": 0.0818,
+			"Budget": 0.0939,
+			"Unit": "us"
+		},
+		{
+			"name": "Perf.Scene.MoveLeaf100k",
+			"line": 32,
+			"Measured": 0.1141,
+			"Budget": 0.1711,
+			"Unit": "us"
+		},
+		{
+			"name": "Perf.Scene.MoveLeaf100k.Recomputed",
+			"line": 33,
+			"Measured": 1,
+			"Budget": 1,
+			"Unit": "count"
+		},
+		{
+			"name": "Perf.Scene.MoveRoot100k",
+			"line": 34,
+			"Measured": 0.3279,
+			"Budget": 0.4918,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Scene.Copy1M",
+			"line": 35,
+			"Measured": 36.34,
+			"Budget": 54.51,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Scene.InstantiatePrefab10",
+			"line": 36,
+			"Measured": 3.22,
+			"Budget": 4.83,
+			"Unit": "us"
+		},
+		{
+			"name": "Perf.Scene.InstantiatePrefab1k",
+			"line": 37,
+			"Measured": 0.2567,
+			"Budget": 0.3849,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Scene.InstantiateMany1000x10",
+			"line": 38,
+			"Measured": 3.569,
+			"Budget": 4.788,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Runtime.SceneSwitch100kMaxFrame",
+			"line": 39,
+			"Measured": 0.1335,
+			"Budget": 0.2002,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Scripting.TrivialUpdate100k",
+			"line": 40,
+			"Measured": 1.856,
+			"Budget": 2.784,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Scripting.TrivialUpdate100k.OrderRebuilds",
+			"line": 41,
+			"Measured": 0,
+			"Budget": 0,
+			"Unit": "count"
+		},
+		{
+			"name": "Perf.Scripting.TrivialUpdate300k",
+			"line": 42,
+			"Measured": 5.745,
+			"Budget": 8.617,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Scripting.TrivialUpdate300k.OrderRebuilds",
+			"line": 43,
+			"Measured": 0,
+			"Budget": 0,
+			"Unit": "count"
+		},
+		{
+			"name": "Perf.Scripting.SpawnFrame1MOneScript",
+			"line": 44,
+			"Measured": 1.782,
+			"Budget": 2.673,
+			"Unit": "us"
+		},
+		{
+			"name": "Perf.Scripting.SpawnFrame1MOneScript.OrderRebuilds",
+			"line": 45,
+			"Measured": 0,
+			"Budget": 0,
+			"Unit": "count"
+		},
+		{
+			"name": "Perf.Scripting.ScriptedSpawnFrame100k",
+			"line": 46,
+			"Measured": 2.459,
+			"Budget": 3.688,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Scripting.ScriptedDestroy10kOf100kRoots",
+			"line": 47,
+			"Measured": 21.25,
+			"Budget": 31.87,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.FrameProfiler.Frame16Stages",
+			"line": 48,
+			"Measured": 0.6303,
+			"Budget": 0.9454,
+			"Unit": "us"
+		},
+		{
+			"name": "Perf.FramePacer.WorstRateError",
+			"line": 49,
+			"Unit": "ratio",
+			"Provisional": true,
+			"Target": 0.02
+		},
+		{
+			"name": "Perf.FramePacer.WorstIntervalP95",
+			"line": 50,
+			"Unit": "ratio",
+			"Provisional": true,
+			"Target": 1.25
+		},
+		{
+			"name": "Perf.Jobs.SubmitWait",
+			"line": 51,
+			"Measured": 1.481,
+			"Budget": 2.221,
+			"Unit": "us"
+		},
+		{
+			"name": "Perf.Jobs.SubmitMany",
+			"line": 52,
+			"Measured": 1.573,
+			"Budget": 2.359,
+			"Unit": "us"
+		},
+		{
+			"name": "Perf.Jobs.ParallelForOverhead",
+			"line": 53,
+			"Measured": 79.65,
+			"Budget": 119.4,
+			"Unit": "us"
+		},
+		{
+			"name": "Perf.Jobs.WakeLatency",
+			"line": 54,
+			"Unit": "us",
+			"Provisional": true
+		},
+		{
+			"name": "Perf.TextureCook.ColdImport",
+			"line": 55,
+			"Measured": 6941,
+			"Budget": 10410,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.TextureCook.PackSize",
+			"line": 56,
+			"Measured": 122.0,
+			"Budget": 140.0,
+			"Unit": "MB"
+		},
+		{
+			"name": "Perf.TextureCook.StoredTextures",
+			"line": 57,
+			"Measured": 111.85,
+			"Budget": 120.0,
+			"Unit": "MB"
+		},
+		{
+			"name": "Perf.TextureCook.LargestTexture2k",
+			"line": 58,
+			"Measured": 5.593,
+			"Budget": 5.6,
+			"Unit": "MB"
+		},
+		{
+			"name": "Perf.TextureCook.Texture4k",
+			"line": 59,
+			"Measured": 22.37,
+			"Budget": 22.4,
+			"Unit": "MB"
+		},
+		{
+			"name": "Perf.TextureCook.BC7High",
+			"line": 60,
+			"Measured": 14.97,
+			"Budget": 22.45,
+			"Unit": "us"
+		},
+		{
+			"name": "Perf.TextureCook.BC7Fast",
+			"line": 61,
+			"Measured": 1.119,
+			"Budget": 1.678,
+			"Unit": "us"
+		},
+		{
+			"name": "Perf.Editor.EntityCreate100kRoots",
+			"line": 62,
+			"Measured": 0.0053,
+			"Budget": 0.006,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.EntityDelete100kRoots",
+			"line": 63,
+			"Measured": 0.4954,
+			"Budget": 0.7431,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.Delete10kOf100kRoots",
+			"line": 64,
+			"Measured": 47.34,
+			"Budget": 63.96,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.UndoDelete10kOf100kRoots",
+			"line": 65,
+			"Measured": 41.18,
+			"Budget": 61.77,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.HierarchyIdleUpdate100kRoots",
+			"line": 66,
+			"Measured": 0.0096,
+			"Budget": 0.0144,
+			"Unit": "us"
+		},
+		{
+			"name": "Perf.Editor.HierarchyPanelFrame100kRoots",
+			"line": 67,
+			"Measured": 14.2,
+			"Budget": 18.4,
+			"Unit": "us"
+		},
+		{
+			"name": "Perf.Editor.HierarchyRebuild100kRoots",
+			"line": 68,
+			"Measured": 0.5926,
+			"Budget": 0.8889,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.ImportSettings4kMaxFrame",
+			"line": 69,
+			"Measured": 2.372,
+			"Budget": 3.213,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.SelectionFrame100kSelected",
+			"line": 70,
+			"Measured": 7.81,
+			"Budget": 11.71,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.FindReferences10k",
+			"line": 71,
+			"Measured": 0.1332,
+			"Budget": 0.165,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.PlacementHover200kTriangles",
+			"line": 72,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 1.2
+		},
+		{
+			"name": "Perf.Editor.SaveMaxFrame250k",
+			"line": 73,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 16
+		},
+		{
+			"name": "Perf.Editor.SaveMaxFrame1M",
+			"line": 74,
+			"Measured": 46.89,
+			"Budget": 60.0,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.SaveSeconds1M",
+			"line": 75,
+			"Measured": 1405.0,
+			"Budget": 2107.0,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.SavePeakPrivateIncrease1M",
+			"line": 76,
+			"Measured": 476.8,
+			"Budget": 600.0,
+			"Unit": "MB"
+		},
+		{
+			"name": "Perf.Editor.ImportFolder600MaxFrame",
+			"line": 77,
+			"Measured": 5.649,
+			"Budget": 8.473,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Asset.FirstScan10k",
+			"line": 78,
+			"Measured": 5567.0,
+			"Budget": 8350.0,
+			"Unit": "ms",
+			"Target": 5000.0
+		},
+		{
+			"name": "Perf.Asset.WarmScan10k",
+			"line": 79,
+			"Measured": 303.7,
+			"Budget": 455.5,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.Launch30kStatus",
+			"line": 80,
+			"Measured": 808.3,
+			"Budget": 1212.0,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Scene.CancelLoad1M",
+			"line": 81,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 100
+		},
+		{
+			"name": "Perf.Scene.RefuseOverCap1M",
+			"line": 82,
+			"Measured": 32.57,
+			"Budget": 48.85,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.WorldOpen1MPeakPrivate",
+			"line": 83,
+			"Measured": 999.1,
+			"Budget": 1498.0,
+			"Unit": "MB"
+		},
+		{
+			"name": "PerfGPU.Editor.WorldOpen1MMaxFrame",
+			"line": 84,
+			"Measured": 44.06,
+			"Budget": 66.09,
+			"Unit": "ms",
+			"Target": 20.56
+		},
+		{
+			"name": "PerfGPU.Editor.WorldOpen1MSeconds",
+			"line": 85,
+			"Measured": 2574.0,
+			"Budget": 3861.0,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.WorldOpen1MSavedPeakPrivate",
+			"line": 86,
+			"Measured": 997.8,
+			"Budget": 1496.0,
+			"Unit": "MB"
+		},
+		{
+			"name": "PerfGPU.Editor.WorldOpen1MSavedSeconds",
+			"line": 87,
+			"Measured": 2406.0,
+			"Budget": 3609.0,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Runtime.World1MStart",
+			"line": 88,
+			"Measured": 1006.0,
+			"Budget": 1500.0,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Runtime.World1MTransientMemory",
+			"line": 89,
+			"Measured": 17.98,
+			"Budget": 26.97,
+			"Unit": "MB"
+		},
+		{
+			"name": "Perf.Runtime.QuitDuringLoad1M",
+			"line": 90,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 500
+		},
+		{
+			"name": "Perf.Editor.ImportFolder24x4kPeakPrivate",
+			"line": 91,
+			"Measured": 434.4,
+			"Budget": 651.5,
+			"Unit": "MB"
+		},
+		{
+			"name": "Perf.Editor.JournalPerCommand",
+			"line": 92,
+			"Measured": 1.461,
+			"Budget": 2.191,
+			"Unit": "us"
+		},
+		{
+			"name": "Perf.Editor.RecoveryWriteMaxFrame100k",
+			"line": 93,
+			"Measured": 0.0407,
+			"Budget": 0.057,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.RecoveryWriteIOTime100k",
+			"line": 94,
+			"Measured": 5.51,
+			"Budget": 8.26,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.RecoverySnapshotMaxEntities",
+			"line": 95,
+			"Measured": 0.5986,
+			"Budget": 0.8979,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.SceneOpen10kPrefabInstancesMaxFrame",
+			"line": 96,
+			"Measured": 4.96,
+			"Budget": 7.44,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.PrefabApply10kInstances",
+			"line": 97,
+			"Measured": 1048.0,
+			"Budget": 1572.0,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.DragInPrefabInstance5kMedian",
+			"line": 98,
+			"Measured": 0.6112,
+			"Budget": 0.9168,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.DragPrefabInstanceRoot5kMedian",
+			"line": 99,
+			"Measured": 0.017,
+			"Budget": 0.0255,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Editor.Drag100PrefabInstancesMedian",
+			"line": 100,
+			"Measured": 1.195,
+			"Budget": 1.792,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.EditorPanels.Performance600FramesP95",
+			"line": 101,
+			"Measured": 0.0616,
+			"Budget": 0.0924,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.EditorPanels.Performance600FramesPausedP95",
+			"line": 102,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 0.0924
+		},
+		{
+			"name": "Perf.EditorPanels.ContentBrowser10kAssetsP95",
+			"line": 103,
+			"Measured": 0.0376,
+			"Budget": 0.0564,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.EditorPanels.Streaming10kAssetsP95",
+			"line": 104,
+			"Measured": 0.1926,
+			"Budget": 0.2172,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.EditorPanels.Streaming10kAssetsRefreshFrame",
+			"line": 105,
+			"Measured": 0.147,
+			"Budget": 0.2205,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Physics.Boxes30k.StartAnd30Frames",
+			"line": 106,
+			"Measured": 206.3,
+			"Budget": 309.4,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Physics.Boxes30k.DroppedContactWarnings",
+			"line": 107,
+			"Measured": 0,
+			"Budget": 0,
+			"Unit": "count"
+		},
+		{
+			"name": "Perf.Physics.Boxes70k.BodyErrors",
+			"line": 108,
+			"Measured": 0,
+			"Budget": 0,
+			"Unit": "count"
+		},
+		{
+			"name": "Perf.Physics.Boxes70k.ActiveFrame",
+			"line": 109,
+			"Measured": 16.05,
+			"Budget": 24.07,
+			"Unit": "ms",
+			"Target": 13.5
+		},
+		{
+			"name": "Perf.Physics.Boxes70k.StrataStepTime",
+			"line": 110,
+			"Measured": 5.873,
+			"Budget": 8.809,
+			"Unit": "ms",
+			"Target": 4.5
+		},
+		{
+			"name": "Perf.Physics.MostBodies.ReservedMemory",
+			"line": 111,
+			"Measured": 100.8,
+			"Budget": 151.2,
+			"Unit": "MB"
+		},
+		{
+			"name": "Perf.Physics.Boxes10k.ActiveFrame",
+			"line": 112,
+			"Measured": 2.2,
+			"Budget": 3.3,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Physics.Boxes10k.StrataStepTime",
+			"line": 113,
+			"Measured": 0.5054,
+			"Budget": 0.7581,
+			"Unit": "ms",
+			"Target": 0.4
+		},
+		{
+			"name": "Perf.Physics.Boxes30kTracked.ActiveFrame",
+			"line": 114,
+			"Measured": 6.798,
+			"Budget": 10.19,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Physics.Boxes30kTracked.StrataStepTime",
+			"line": 115,
+			"Measured": 2.998,
+			"Budget": 3.816,
+			"Unit": "ms",
+			"Target": 2.3
+		},
+		{
+			"name": "Perf.Physics.LargestCapacities.ReservedMemory",
+			"line": 116,
+			"Measured": 166.7,
+			"Budget": 250.0,
+			"Unit": "MB"
+		},
+		{
+			"name": "Perf.Physics.Create10kBodies",
+			"line": 117,
+			"Measured": 15.76,
+			"Budget": 23.64,
+			"Unit": "ms",
+			"Target": 7.995
+		},
+		{
+			"name": "Perf.Physics.Characters1000Step",
+			"line": 118,
+			"Measured": 0.8108,
+			"Budget": 1.2,
+			"Unit": "ms",
+			"Target": 0.7
+		},
+		{
+			"name": "PerfGPU.Editor.ImportSettings4kMaxFrame",
+			"line": 119,
+			"Measured": 3.866,
+			"Budget": 5.799,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.ImportSettings4kMaxFrame10kCubes",
+			"line": 120,
+			"Measured": 2.06,
+			"Budget": 3.09,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.ContentBrowser10kThumbnailsP95",
+			"line": 121,
+			"Measured": 0.0397,
+			"Budget": 0.057,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.ImportTexture4kMaxFrame",
+			"line": 122,
+			"Measured": 1.656,
+			"Budget": 2.484,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.ThumbnailsMaxFrame",
+			"line": 123,
+			"Measured": 0.766,
+			"Budget": 1.149,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.EditFrameNested100k",
+			"line": 124,
+			"Measured": 0.1872,
+			"Budget": 0.2808,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.PlayFrameNested100k",
+			"line": 125,
+			"Measured": 0.1952,
+			"Budget": 0.2928,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.EditFrameNested1M",
+			"line": 126,
+			"Measured": 0.279,
+			"Budget": 0.3,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.PlayFrameNested1M",
+			"line": 127,
+			"Measured": 0.2853,
+			"Budget": 0.3133,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.SceneOpen100kMaxFrame",
+			"line": 128,
+			"Measured": 1.949,
+			"Budget": 2.923,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.SceneOpen1MMaxFrame",
+			"line": 129,
+			"Measured": 16.55,
+			"Budget": 20.56,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.SceneOpen1MWorkingSet",
+			"line": 130,
+			"Measured": 543.1,
+			"Budget": 814.6,
+			"Unit": "MB"
+		},
+		{
+			"name": "PerfGPU.Editor.PlayStart1MMaxFrame",
+			"line": 131,
+			"Measured": 48.6,
+			"Budget": 69.78,
+			"Unit": "ms",
+			"Target": 50.0
+		},
+		{
+			"name": "PerfGPU.Editor.SceneOpenOver1MMaxFrame",
+			"line": 132,
+			"Measured": 0.762,
+			"Budget": 1.143,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.SceneOpen100kCubesMaxFrame",
+			"line": 133,
+			"Measured": 26.29,
+			"Budget": 31.35,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.ExportFrameStress",
+			"line": 134,
+			"Measured": 0.4145,
+			"Budget": 0.6217,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.ExportStress",
+			"line": 135,
+			"Measured": 466.7,
+			"Budget": 700,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.ExportMaxFrameStress",
+			"line": 136,
+			"Measured": 4.254,
+			"Budget": 6.38,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Pack.OpenStressPack",
+			"line": 137,
+			"Measured": 0.0364,
+			"Budget": 0.0546,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Pack.StreamStressWorld",
+			"line": 138,
+			"Measured": 39.44,
+			"Budget": 59.16,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Pack.StreamStressWorldRatio",
+			"line": 139,
+			"Measured": 1.015,
+			"Budget": 1.1,
+			"Unit": "ratio"
+		},
+		{
+			"name": "PerfGPU.Pack.UncompressedSizeRatio",
+			"line": 140,
+			"Measured": 0.7213,
+			"Budget": 0.8,
+			"Unit": "ratio"
+		},
+		{
+			"name": "PerfGPU.Renderer.EditFrameCubes100k",
+			"line": 141,
+			"Measured": 0.3301,
+			"Budget": 0.4951,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.EditFrameCubes100kStreamingView",
+			"line": 142,
+			"Measured": 0.5831,
+			"Budget": 0.8746,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.EditFrameCubes100kSelected",
+			"line": 143,
+			"Measured": 0.4625,
+			"Budget": 0.6937,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.EditFrameCubes300k",
+			"line": 144,
+			"Measured": 2.705,
+			"Budget": 4.057,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.EditFrameCubes50kNarrow",
+			"line": 145,
+			"Measured": 0.3157,
+			"Budget": 0.4735,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.EditFrameMaterials10k",
+			"line": 146,
+			"Measured": 0.993,
+			"Budget": 1.489,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.EditFramePointLights10k",
+			"line": 147,
+			"Measured": 1.461,
+			"Budget": 2.191,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.GlobalIllumination4KSunRoom",
+			"line": 148,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.GlobalIllumination4KSunRoom.Opaque",
+			"line": 149,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.GlobalIllumination4KYard",
+			"line": 150,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.GlobalIllumination4KYard.Opaque",
+			"line": 151,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.Render100kCubes",
+			"line": 152,
+			"Measured": 0.173,
+			"Budget": 0.2594,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.Render10kMaterials",
+			"line": 153,
+			"Measured": 0.4893,
+			"Budget": 0.7339,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.IdleFrame3kStreamedTextures",
+			"line": 154,
+			"Measured": 0.474,
+			"Budget": 0.711,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.Render10kMaterials.OpaqueDrawCalls",
+			"line": 155,
+			"Measured": 1,
+			"Budget": 1,
+			"Unit": "count"
+		},
+		{
+			"name": "PerfGPU.Renderer.Render300kCubes",
+			"line": 156,
+			"Measured": 2.262,
+			"Budget": 3.393,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Streaming.FramesToSettle",
+			"line": 157,
+			"Measured": 4,
+			"Budget": 6,
+			"Unit": "count"
+		},
+		{
+			"name": "PerfGPU.Streaming.MaxFinalizeTime",
+			"line": 158,
+			"Measured": 2.874,
+			"Budget": 3.885,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Streaming.MaxResidentTextures",
+			"line": 159,
+			"Measured": 33.55,
+			"Budget": 50.32,
+			"Unit": "MB"
+		},
+		{
+			"name": "PerfGPU.Streaming.PeakPrivateMemory",
+			"line": 160,
+			"Measured": 395.8,
+			"Budget": 593.7,
+			"Unit": "MB"
+		},
+		{
+			"name": "PerfGPU.Streaming.PeakPrivateMemoryAllResident",
+			"line": 161,
+			"Measured": 484.5,
+			"Budget": 650.0,
+			"Unit": "MB"
+		},
+		{
+			"name": "PerfGPU.Streaming.MaxFinalizeTimeAllResident",
+			"line": 162,
+			"Measured": 2.389,
+			"Budget": 2.907,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Streaming.RuntimeMaxFinalizeStage",
+			"line": 163,
+			"Measured": 3.176,
+			"Budget": 3.723,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Streaming.RuntimePeakPrivateMemory",
+			"line": 164,
+			"Measured": 451.8,
+			"Budget": 650.0,
+			"Unit": "MB"
+		},
+		{
+			"name": "PerfGPU.Streaming.RuntimePeakPrivateMemoryAllInView",
+			"line": 165,
+			"Measured": 450.0,
+			"Budget": 550.0,
+			"Unit": "MB"
+		},
+		{
+			"name": "PerfGPU.Streaming.Mips.PeakPrivateMemory",
+			"line": 166,
+			"Measured": 428.4,
+			"Budget": 550.0,
+			"Unit": "MB"
+		},
+		{
+			"name": "PerfGPU.Streaming.Mips.MaxUploadBytesPerFrame",
+			"line": 167,
+			"Measured": 16.78,
+			"Budget": 24.0,
+			"Unit": "MB"
+		},
+		{
+			"name": "PerfGPU.Streaming.Mips.MaxUploadStageMs",
+			"line": 168,
+			"Measured": 1.814,
+			"Budget": 2.0,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Streaming.Mips.MaxFrameRatio",
+			"line": 169,
+			"Measured": 0.7936,
+			"Budget": 1.19,
+			"Unit": "ratio"
+		},
+		{
+			"name": "Perf.Animation.Evaluate1000",
+			"line": 170,
+			"Measured": 0.3684,
+			"Budget": 0.5526,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Animation.CulledAnimators10k",
+			"line": 171,
+			"Measured": 0.1778,
+			"Budget": 0.2082,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.Skinned1000",
+			"line": 172,
+			"Measured": 0.7554,
+			"Budget": 0.9567,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.Render100kCubesGPU",
+			"line": 173,
+			"Measured": 1.436,
+			"Budget": 2.154,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.Render1MCubes",
+			"line": 174,
+			"Measured": 0.285,
+			"Budget": 0.4275,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.Render1MCubesGPU",
+			"line": 175,
+			"Measured": 12.85,
+			"Budget": 19.27,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.PlayStartRender1MCubes",
+			"line": 176,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 5.0
+		},
+		{
+			"name": "PerfGPU.Renderer.GPUTimerCost",
+			"line": 177,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 0.05
+		},
+		{
+			"name": "PerfGPU.Renderer.Render100kCubesShadowed",
+			"line": 178,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 1.5
+		},
+		{
+			"name": "PerfGPU.Renderer.Render300kCubesShadowed",
+			"line": 179,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 3.0
+		},
+		{
+			"name": "PerfGPU.Renderer.Render100kCubesShadowed4K",
+			"line": 180,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.Render100kCubesShadowed4KGPU",
+			"line": 181,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.Render100kCubesShadowedHigh4K",
+			"line": 182,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.Render100kCubesShadowedHigh4KGPU",
+			"line": 183,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.AOHigh4K",
+			"line": 184,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.AOHigh4KGPU",
+			"line": 185,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.AOHigh4KStageGPU",
+			"line": 186,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 1.8
+		},
+		{
+			"name": "PerfGPU.Renderer.AOMedium4KStageGPU",
+			"line": 187,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.Aerial4K",
+			"line": 188,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.Aerial4KGPU",
+			"line": 189,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.Aerial4KStageGPU",
+			"line": 190,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 0.05
+		},
+		{
+			"name": "PerfGPU.Renderer.Render10kUniqueMeshes",
+			"line": 191,
+			"Measured": 1.075,
+			"Budget": 1.612,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.Render10kUniqueMeshes.DrawCommands",
+			"line": 192,
+			"Measured": 8,
+			"Budget": 8,
+			"Unit": "count"
+		},
+		{
+			"name": "Perf.GameUI.Layout10k",
+			"line": 193,
+			"Measured": 0.4059,
+			"Budget": 0.6088,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.GameUI.Render10k",
+			"line": 194,
+			"Measured": 0.1006,
+			"Budget": 0.1508,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.GameUI.RenderIdle10k",
+			"line": 195,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "Perf.GameUI.IdleFrame10k",
+			"line": 196,
+			"Measured": 0.00027,
+			"Budget": 0.000405,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Physics.Grow65kMaxFrame",
+			"line": 197,
+			"Measured": 132.6,
+			"Budget": 198.8,
+			"Unit": "ms",
+			"Target": 16.7
+		},
+		{
+			"name": "Perf.Physics.Boxes10k.StrataToLibraryStep",
+			"line": 198,
+			"Measured": 0.5988,
+			"Budget": 0.8982,
+			"Unit": "ratio",
+			"Target": 0.45
+		},
+		{
+			"name": "Perf.Physics.Boxes30kTracked.StrataToLibraryStep",
+			"line": 199,
+			"Measured": 0.9663,
+			"Budget": 1.449,
+			"Unit": "ratio",
+			"Target": 0.75
+		},
+		{
+			"name": "Perf.Physics.Boxes70k.StrataToLibraryStep",
+			"line": 200,
+			"Measured": 0.7446,
+			"Budget": 1.116,
+			"Unit": "ratio",
+			"Target": 0.55
+		},
+		{
+			"name": "Perf.Physics.Create100kStaticBodies",
+			"line": 201,
+			"Measured": 166.7,
+			"Budget": 250.0,
+			"Unit": "ms",
+			"Target": 25.0
+		},
+		{
+			"name": "Perf.World.CellUnloadMaxFrame",
+			"line": 202,
+			"Measured": 7.92,
+			"Budget": 11.87,
+			"Unit": "ms",
+			"Target": 4.0
+		},
+		{
+			"name": "Perf.World.PhysicsBodiesWaiting",
+			"line": 203,
+			"Measured": 0,
+			"Budget": 0,
+			"Unit": "count"
+		},
+		{
+			"name": "Perf.World.CellDriveMaxFrame",
+			"line": 204,
+			"Measured": 7.261,
+			"Budget": 8.0,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Editor.EditFrameWorldIdle",
+			"line": 205,
+			"Measured": 0.3339,
+			"Budget": 0.5008,
+			"Unit": "ms",
+			"Target": 0.2808
+		},
+		{
+			"name": "PerfGPU.Editor.PlayStartWorldMaxFrame",
+			"line": 206,
+			"Measured": 40.12,
+			"Budget": 50.0,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.World.CellDriveMaxFrame",
+			"line": 207,
+			"Measured": 8.885,
+			"Budget": 13.32,
+			"Unit": "ms",
+			"Target": 8.0
+		},
+		{
+			"name": "PerfGPU.Samples.OpenWorldTour.FrameWorkMedianMs",
+			"line": 208,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Samples.OpenWorldTour.FrameWorkP95Ms",
+			"line": 209,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Samples.OpenWorldTour.GPUBusyMedianMs",
+			"line": 210,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Samples.ShowcaseHigh1440.GPUBusyMedianMs",
+			"line": 211,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Samples.ShowcaseHigh1440.GPUBusyP95Ms",
+			"line": 212,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Samples.ShowcaseHigh1440.FrameWorkMedianMs",
+			"line": 213,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Samples.ShowcaseUltra1440.GPUBusyMedianMs",
+			"line": 214,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Samples.ShowcaseUltra1440.GPUBusyP95Ms",
+			"line": 215,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "Perf.World.DrivePeakPrivate",
+			"line": 216,
+			"Measured": 297.4,
+			"Budget": 446.0,
+			"Unit": "MB"
+		},
+		{
+			"name": "Perf.World.DriveFrameP95",
+			"line": 217,
+			"Measured": 4.673,
+			"Budget": 7.009,
+			"Unit": "ms"
+		},
+		{
+			"name": "Perf.Input.Actions256",
+			"line": 218,
+			"Measured": 7.451,
+			"Budget": 11.17,
+			"Unit": "us"
+		},
+		{
+			"name": "PerfGPU.Renderer.Render100kCubesTAA",
+			"line": 219,
+			"Measured": 0.2034,
+			"Budget": 0.3051,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.Render100kCubesTAAGPU",
+			"line": 220,
+			"Measured": 1.017,
+			"Budget": 1.525,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.Render100kCubesTAAOriginal",
+			"line": 221,
+			"Measured": 0.2095,
+			"Budget": 0.3142,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.Render100kCubesTAAOriginalGPU",
+			"line": 222,
+			"Measured": 1.266,
+			"Budget": 1.899,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.HeightFog",
+			"line": 223,
+			"Measured": 0.1912,
+			"Budget": 0.2868,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.HeightFogGPU",
+			"line": 224,
+			"Measured": 1.235,
+			"Budget": 1.852,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.Atmosphere",
+			"line": 225,
+			"Measured": 0.21,
+			"Budget": 0.315,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.AtmosphereGPU",
+			"line": 226,
+			"Measured": 1.454,
+			"Budget": 2.181,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.AtmosphereSunMovingMaxFrame",
+			"line": 227,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.AtmosphereSunMovingMaxFrameGPU",
+			"line": 228,
+			"Measured": 1.963,
+			"Budget": 2.944,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.AtmosphereSunMovingMaxFrameHigh",
+			"line": 229,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.AtmosphereSunMovingMaxFrameHighGPU",
+			"line": 230,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 2.159
+		},
+		{
+			"name": "PerfGPU.Renderer.ReflectionProbes16",
+			"line": 231,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.ReflectionProbes16GPU",
+			"line": 232,
+			"Measured": 1.453,
+			"Budget": 2.179,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.SSR",
+			"line": 233,
+			"Measured": 0.2048,
+			"Budget": 0.3072,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.SSRGPU",
+			"line": 234,
+			"Measured": 1.529,
+			"Budget": 2.293,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.Post4K",
+			"line": 235,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 0.25
+		},
+		{
+			"name": "PerfGPU.Renderer.MotionBlur4K",
+			"line": 236,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 0.3
+		},
+		{
+			"name": "PerfGPU.Renderer.MotionBlur4KStill",
+			"line": 237,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 0.12
+		},
+		{
+			"name": "PerfGPU.Renderer.DepthOfField4K",
+			"line": 238,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 0.8
+		},
+		{
+			"name": "PerfGPU.Renderer.Morphological4K",
+			"line": 239,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 0.35
+		},
+		{
+			"name": "PerfGPU.Renderer.SSRSpatial4K",
+			"line": 240,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.SSRSpatial4KGPU",
+			"line": 241,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.SSRSpatial4KStageGPU",
+			"line": 242,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 1.2
+		},
+		{
+			"name": "PerfGPU.Renderer.SSRSpatialHigh4K",
+			"line": 243,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.SSRSpatialHigh4KGPU",
+			"line": 244,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.SSRSpatialHigh4KStageGPU",
+			"line": 245,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 1.8
+		},
+		{
+			"name": "PerfGPU.Renderer.ProbeConversion128MaxStageGPU",
+			"line": 246,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.ProbeConversion256MaxStageGPU",
+			"line": 247,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 2.0
+		},
+		{
+			"name": "PerfGPU.Renderer.Transmission",
+			"line": 248,
+			"Measured": 0.2247,
+			"Budget": 0.337,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.TransmissionGPU",
+			"line": 249,
+			"Measured": 1.35,
+			"Budget": 2.025,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows16Lights",
+			"line": 250,
+			"Measured": 0.6042,
+			"Budget": 0.9062,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows16LightsGPU",
+			"line": 251,
+			"Measured": 1.558,
+			"Budget": 2.337,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows16LightsCached",
+			"line": 252,
+			"Measured": 0.2214,
+			"Budget": 0.3321,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows16LightsCachedGPU",
+			"line": 253,
+			"Measured": 1.252,
+			"Budget": 1.878,
+			"Unit": "ms"
+		},
+		{
+			"name": "PerfGPU.Renderer.AreaLights8",
+			"line": 254,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.AreaLights8GPU",
+			"line": 255,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.AreaShadows4",
+			"line": 256,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.AreaShadows4GPU",
+			"line": 257,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows64LightsHigh",
+			"line": 258,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows64LightsHighGPU",
+			"line": 259,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows64LightsHighCached",
+			"line": 260,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows64LightsHighCachedGPU",
+			"line": 261,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows256LightsUltra",
+			"line": 262,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows256LightsUltraGPU",
+			"line": 263,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows256LightsUltraCached",
+			"line": 264,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows256LightsUltraCachedGPU",
+			"line": 265,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows256LightsUltraMoving1k",
+			"line": 266,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows256LightsUltraMoving1kExtract",
+			"line": 267,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows256LightsUltraMoving1kFind",
+			"line": 268,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 0.5
+		},
+		{
+			"name": "PerfGPU.Renderer.LocalShadows256LightsUltraMoving1kGPU",
+			"line": 269,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.TAALocalShadowsPeakMemory",
+			"line": 270,
+			"Measured": 528.4,
+			"Budget": 792.5,
+			"Unit": "MB"
+		},
+		{
+			"name": "PerfGPU.Renderer.ScreenShadows4KHigh",
+			"line": 271,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 0.45
+		},
+		{
+			"name": "PerfGPU.Renderer.ScreenShadows4KMedium",
+			"line": 272,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 0.3
+		},
+		{
+			"name": "PerfGPU.Renderer.ShadowRedraw4KHigh",
+			"line": 273,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 1.0
+		},
+		{
+			"name": "PerfGPU.Renderer.ShadowRedraw4KMedium",
+			"line": 274,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "Perf.Physics.Boxes70k.CollideMs",
+			"line": 275,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "Perf.Physics.Grow65k.GrowthMs",
+			"line": 276,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 4
+		},
+		{
+			"name": "Perf.Physics.Create10kBodies.LibraryOnly",
+			"line": 277,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "Perf.Physics.Create100kStaticBodies.LibraryOnly",
+			"line": 278,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "Perf.Physics.Grow65k.LibraryOnly",
+			"line": 279,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "Perf.World.CellUnload.LibraryOnly",
+			"line": 280,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "Perf.Physics.Sleeping70k.StepRatio",
+			"line": 281,
+			"Unit": "ratio",
+			"Provisional": true,
+			"Target": 1.2
+		},
+		{
+			"name": "Perf.Physics.BallPit2k.SettleCpuMs",
+			"line": 282,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "Perf.Physics.Boxes10k.SettleCpuMs",
+			"line": 283,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "Perf.Scene.StepFrame100k",
+			"line": 284,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "Perf.Scene.InterpolatedStepFrame100k",
+			"line": 285,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "Perf.Scene.InterpolatedStepFrame100k.Ratio",
+			"line": 286,
+			"Unit": "ratio",
+			"Provisional": true,
+			"Target": 1.5
+		},
+		{
+			"name": "Perf.Scene.InterpolatedFrame100k",
+			"line": 287,
+			"Unit": "ms",
+			"Provisional": true,
+			"Target": 0.5
+		},
+		{
+			"name": "PerfGPU.Renderer.StepFrame32k",
+			"line": 288,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.InterpolatedFrame32k",
+			"line": 289,
+			"Unit": "ms",
+			"Provisional": true
+		},
+		{
+			"name": "PerfGPU.Renderer.InterpolatedFrame32k.StepRatio",
+			"line": 290,
+			"Unit": "ratio",
+			"Provisional": true,
+			"Target": 1.15
+		}
+	]
+}

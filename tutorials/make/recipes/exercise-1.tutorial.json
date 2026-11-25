@@ -1,0 +1,20 @@
+{
+	"page": "make/recipes",
+	"startsFrom": { "template": "basic3d", "name": "Recipes" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "entity.create", "bind": { "coin": "/id" },
+					"parameters": { "name": "Coin", "components": { "Tag": { "Tag": "Coin" }, "SphereCollider": { "Radius": 0.5 }, "Transform": { "Translation": [0, 1, 0] } } } },
+				{ "command": "component.add", "entityName": "Coin", "parameters": { "component": "RigidBody", "values": { "Type": "Static", "IsTrigger": true } } },
+				{ "command": "component.get", "entityName": "Coin", "parameters": { "component": "RigidBody" },
+					"checks": [ { "pointer": "/values/Type", "equals": "Static" }, { "pointer": "/values/IsTrigger", "equals": true } ] },
+				{ "command": "component.get", "entityName": "Coin", "parameters": { "component": "SphereCollider" },
+					"checks": [ { "pointer": "/values/Radius", "equals": 0.5 } ] },
+				{ "command": "component.get", "entityName": "Coin", "parameters": { "component": "Tag" },
+					"checks": [ { "pointer": "/values/Tag", "equals": "Coin" } ] }
+			]
+		}
+	]
+}

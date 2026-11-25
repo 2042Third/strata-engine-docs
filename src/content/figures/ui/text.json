@@ -1,0 +1,1602 @@
+{
+	"figures": [
+		{
+			"id": "text-overflow",
+			"kind": "scene",
+			"shows": "The game UI over a dark backdrop: a wrapped text aligned Left, Center and Right in three boxes; one long text whose lines that do not fit run out below its box with Overflow, stop after two lines with Truncate and end with three dots with Ellipsis; and the words Text over tiles in white over white and blue tiles, without an outline and with a black outline of width 0.08",
+			"caption": "Texts in rects of equal size, each with its setting above it. Overflow draws the lines that do not fit below the rect, Truncate keeps the two that fit, and Ellipsis ends the second with three dots. Over patterned tiles, the plain text fades and the outlined one stays clear.",
+			"alt": "Three boxes at the top hold the same three lines, aligned left, centered and right. Below, one long text runs two lines past its box in the first, stops at two lines in the second and ends with three dots in the third. At the bottom, the words Text over tiles stand twice over white and blue tiles: plain white and hard to read, then with a black outline.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"publish": "lossless",
+			"setup": [
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "Board"
+					},
+					"bind": {
+						"board": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "board"
+						},
+						"component": "UICanvas",
+						"values": {
+							"ScaleMode": "ScaleWithScreen",
+							"ReferenceResolution": [
+								1280,
+								720
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "Backdrop",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "stretch",
+						"size": [
+							0,
+							0
+						]
+					},
+					"bind": {
+						"backdrop": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "backdrop"
+						},
+						"component": "UIImage",
+						"values": {
+							"Color": [
+								0.09,
+								0.1,
+								0.13,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "asset.import",
+					"parameters": {
+						"file": "G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Floor/Tiles101_Color.jpg",
+						"directory": "UI"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "AlignLeft",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							360,
+							30
+						],
+						"position": [
+							60,
+							30
+						],
+						"text": "Alignment Left"
+					},
+					"bind": {
+						"labelAlignLeft": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "labelAlignLeft"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 22,
+							"Color": [
+								0.62,
+								0.66,
+								0.75,
+								1
+							],
+							"Alignment": "Left",
+							"VerticalAlignment": "Middle",
+							"Wrap": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "AlignBoxLeft",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							360,
+							110
+						],
+						"position": [
+							60,
+							64
+						]
+					},
+					"bind": {
+						"alignBoxLeft": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "alignBoxLeft"
+						},
+						"component": "UIImage",
+						"values": {
+							"Color": [
+								0.2,
+								0.23,
+								0.3,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "AlignTextLeft",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							336,
+							98
+						],
+						"position": [
+							72,
+							70
+						],
+						"text": "Each line of a wrapped text takes the alignment of its block."
+					},
+					"bind": {
+						"alignTextLeft": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "alignTextLeft"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 26,
+							"Alignment": "Left",
+							"VerticalAlignment": "Middle",
+							"Wrap": true
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "AlignCenter",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							360,
+							30
+						],
+						"position": [
+							460,
+							30
+						],
+						"text": "Alignment Center"
+					},
+					"bind": {
+						"labelAlignCenter": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "labelAlignCenter"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 22,
+							"Color": [
+								0.62,
+								0.66,
+								0.75,
+								1
+							],
+							"Alignment": "Left",
+							"VerticalAlignment": "Middle",
+							"Wrap": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "AlignBoxCenter",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							360,
+							110
+						],
+						"position": [
+							460,
+							64
+						]
+					},
+					"bind": {
+						"alignBoxCenter": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "alignBoxCenter"
+						},
+						"component": "UIImage",
+						"values": {
+							"Color": [
+								0.2,
+								0.23,
+								0.3,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "AlignTextCenter",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							336,
+							98
+						],
+						"position": [
+							472,
+							70
+						],
+						"text": "Each line of a wrapped text takes the alignment of its block."
+					},
+					"bind": {
+						"alignTextCenter": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "alignTextCenter"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 26,
+							"Alignment": "Center",
+							"VerticalAlignment": "Middle",
+							"Wrap": true
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "AlignRight",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							360,
+							30
+						],
+						"position": [
+							860,
+							30
+						],
+						"text": "Alignment Right"
+					},
+					"bind": {
+						"labelAlignRight": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "labelAlignRight"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 22,
+							"Color": [
+								0.62,
+								0.66,
+								0.75,
+								1
+							],
+							"Alignment": "Left",
+							"VerticalAlignment": "Middle",
+							"Wrap": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "AlignBoxRight",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							360,
+							110
+						],
+						"position": [
+							860,
+							64
+						]
+					},
+					"bind": {
+						"alignBoxRight": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "alignBoxRight"
+						},
+						"component": "UIImage",
+						"values": {
+							"Color": [
+								0.2,
+								0.23,
+								0.3,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "AlignTextRight",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							336,
+							98
+						],
+						"position": [
+							872,
+							70
+						],
+						"text": "Each line of a wrapped text takes the alignment of its block."
+					},
+					"bind": {
+						"alignTextRight": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "alignTextRight"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 26,
+							"Alignment": "Right",
+							"VerticalAlignment": "Middle",
+							"Wrap": true
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "ModeOverflow",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							360,
+							30
+						],
+						"position": [
+							60,
+							210
+						],
+						"text": "Overflow Overflow"
+					},
+					"bind": {
+						"labelModeOverflow": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "labelModeOverflow"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 22,
+							"Color": [
+								0.62,
+								0.66,
+								0.75,
+								1
+							],
+							"Alignment": "Left",
+							"VerticalAlignment": "Middle",
+							"Wrap": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "ModeBoxOverflow",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							360,
+							76
+						],
+						"position": [
+							60,
+							244
+						]
+					},
+					"bind": {
+						"modeBoxOverflow": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "modeBoxOverflow"
+						},
+						"component": "UIImage",
+						"values": {
+							"Color": [
+								0.2,
+								0.23,
+								0.3,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "ModeTextOverflow",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							336,
+							64
+						],
+						"position": [
+							72,
+							250
+						],
+						"text": "A text longer than its rect: the mode decides what happens to the lines that do not fit inside it."
+					},
+					"bind": {
+						"modeTextOverflow": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "modeTextOverflow"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 26,
+							"Alignment": "Left",
+							"VerticalAlignment": "Top",
+							"Wrap": true,
+							"Overflow": "Overflow"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "ModeTruncate",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							360,
+							30
+						],
+						"position": [
+							460,
+							210
+						],
+						"text": "Overflow Truncate"
+					},
+					"bind": {
+						"labelModeTruncate": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "labelModeTruncate"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 22,
+							"Color": [
+								0.62,
+								0.66,
+								0.75,
+								1
+							],
+							"Alignment": "Left",
+							"VerticalAlignment": "Middle",
+							"Wrap": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "ModeBoxTruncate",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							360,
+							76
+						],
+						"position": [
+							460,
+							244
+						]
+					},
+					"bind": {
+						"modeBoxTruncate": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "modeBoxTruncate"
+						},
+						"component": "UIImage",
+						"values": {
+							"Color": [
+								0.2,
+								0.23,
+								0.3,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "ModeTextTruncate",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							336,
+							64
+						],
+						"position": [
+							472,
+							250
+						],
+						"text": "A text longer than its rect: the mode decides what happens to the lines that do not fit inside it."
+					},
+					"bind": {
+						"modeTextTruncate": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "modeTextTruncate"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 26,
+							"Alignment": "Left",
+							"VerticalAlignment": "Top",
+							"Wrap": true,
+							"Overflow": "Truncate"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "ModeEllipsis",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							360,
+							30
+						],
+						"position": [
+							860,
+							210
+						],
+						"text": "Overflow Ellipsis"
+					},
+					"bind": {
+						"labelModeEllipsis": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "labelModeEllipsis"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 22,
+							"Color": [
+								0.62,
+								0.66,
+								0.75,
+								1
+							],
+							"Alignment": "Left",
+							"VerticalAlignment": "Middle",
+							"Wrap": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "ModeBoxEllipsis",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							360,
+							76
+						],
+						"position": [
+							860,
+							244
+						]
+					},
+					"bind": {
+						"modeBoxEllipsis": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "modeBoxEllipsis"
+						},
+						"component": "UIImage",
+						"values": {
+							"Color": [
+								0.2,
+								0.23,
+								0.3,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "ModeTextEllipsis",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							336,
+							64
+						],
+						"position": [
+							872,
+							250
+						],
+						"text": "A text longer than its rect: the mode decides what happens to the lines that do not fit inside it."
+					},
+					"bind": {
+						"modeTextEllipsis": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "modeTextEllipsis"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 26,
+							"Alignment": "Left",
+							"VerticalAlignment": "Top",
+							"Wrap": true,
+							"Overflow": "Ellipsis"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "Plain",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							560,
+							30
+						],
+						"position": [
+							60,
+							440
+						],
+						"text": "Outline Width 0"
+					},
+					"bind": {
+						"labelPlain": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "labelPlain"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 22,
+							"Color": [
+								0.62,
+								0.66,
+								0.75,
+								1
+							],
+							"Alignment": "Left",
+							"VerticalAlignment": "Middle",
+							"Wrap": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "Outlined",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							560,
+							30
+						],
+						"position": [
+							660,
+							440
+						],
+						"text": "Outline Width 0.08, black"
+					},
+					"bind": {
+						"labelOutlined": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "labelOutlined"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 22,
+							"Color": [
+								0.62,
+								0.66,
+								0.75,
+								1
+							],
+							"Alignment": "Left",
+							"VerticalAlignment": "Middle",
+							"Wrap": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "Tiles1",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							200,
+							200
+						],
+						"position": [
+							60,
+							474
+						]
+					},
+					"bind": {
+						"tiles1": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "tiles1"
+						},
+						"component": "UIImage",
+						"values": {
+							"Texture": "UI/Tiles101_Color.jpg"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "Tiles2",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							200,
+							200
+						],
+						"position": [
+							260,
+							474
+						]
+					},
+					"bind": {
+						"tiles2": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "tiles2"
+						},
+						"component": "UIImage",
+						"values": {
+							"Texture": "UI/Tiles101_Color.jpg"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "Tiles3",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							200,
+							200
+						],
+						"position": [
+							460,
+							474
+						]
+					},
+					"bind": {
+						"tiles3": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "tiles3"
+						},
+						"component": "UIImage",
+						"values": {
+							"Texture": "UI/Tiles101_Color.jpg"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "Tiles4",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							200,
+							200
+						],
+						"position": [
+							660,
+							474
+						]
+					},
+					"bind": {
+						"tiles4": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "tiles4"
+						},
+						"component": "UIImage",
+						"values": {
+							"Texture": "UI/Tiles101_Color.jpg"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "Tiles5",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							200,
+							200
+						],
+						"position": [
+							860,
+							474
+						]
+					},
+					"bind": {
+						"tiles5": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "tiles5"
+						},
+						"component": "UIImage",
+						"values": {
+							"Texture": "UI/Tiles101_Color.jpg"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "Tiles6",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							160,
+							200
+						],
+						"position": [
+							1060,
+							474
+						]
+					},
+					"bind": {
+						"tiles6": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "tiles6"
+						},
+						"component": "UIImage",
+						"values": {
+							"Texture": "UI/Tiles101_Color.jpg",
+							"UVRect": [
+								0,
+								0,
+								0.8,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "PlainText",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							560,
+							200
+						],
+						"position": [
+							60,
+							474
+						],
+						"text": "Text over tiles"
+					},
+					"bind": {
+						"plainText": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "plainText"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 60,
+							"Color": [
+								1,
+								1,
+								1,
+								1
+							],
+							"Alignment": "Center",
+							"VerticalAlignment": "Middle",
+							"Wrap": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "OutlinedText",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							560,
+							200
+						],
+						"position": [
+							660,
+							474
+						],
+						"text": "Text over tiles"
+					},
+					"bind": {
+						"outlinedText": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "outlinedText"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 60,
+							"Color": [
+								1,
+								1,
+								1,
+								1
+							],
+							"Alignment": "Center",
+							"VerticalAlignment": "Middle",
+							"Wrap": false,
+							"OutlineWidth": 0.08,
+							"OutlineColor": [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"id": "field-states",
+			"kind": "scene",
+			"shows": "Three input fields of the game UI: an empty one showing its dim placeholder Your name, one holding a short name that is not edited, and an edited one whose long text is scrolled so that its start is cut at the left edge, with its last word, field, selected in blue and the caret after it at the right edge",
+			"caption": "Three states of a field. Empty, the placeholder shows. A field that is not edited shows its text and no caret. In the edited field, the selection stands behind the last word, and the long text scrolls so the caret stays inside.",
+			"alt": "Three input fields one above the other, each under a label. The first shows a dim hint, Your name. The second holds a short name. The third holds a long line cut at the left edge that ends with the word field on a blue band and a thin white bar.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"publish": "lossless",
+			"setup": [
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "Board"
+					},
+					"bind": {
+						"board": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "board"
+						},
+						"component": "UICanvas",
+						"values": {
+							"ScaleMode": "ScaleWithScreen",
+							"ReferenceResolution": [
+								960,
+								540
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "Backdrop",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "stretch",
+						"size": [
+							0,
+							0
+						]
+					},
+					"bind": {
+						"backdrop": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "backdrop"
+						},
+						"component": "UIImage",
+						"values": {
+							"Color": [
+								0.09,
+								0.1,
+								0.13,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "Empty",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							520,
+							30
+						],
+						"position": [
+							220,
+							70
+						],
+						"text": "Empty: the placeholder shows"
+					},
+					"bind": {
+						"labelEmpty": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "labelEmpty"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 22,
+							"Color": [
+								0.62,
+								0.66,
+								0.75,
+								1
+							],
+							"Alignment": "Left",
+							"VerticalAlignment": "Middle",
+							"Wrap": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "inputField",
+						"name": "FieldEmpty",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							520,
+							56
+						],
+						"position": [
+							220,
+							100
+						],
+						"text": "Your name"
+					},
+					"bind": {
+						"fieldEmpty": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "Held",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							520,
+							30
+						],
+						"position": [
+							220,
+							200
+						],
+						"text": "Holds a text, not edited"
+					},
+					"bind": {
+						"labelHeld": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "labelHeld"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 22,
+							"Color": [
+								0.62,
+								0.66,
+								0.75,
+								1
+							],
+							"Alignment": "Left",
+							"VerticalAlignment": "Middle",
+							"Wrap": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "inputField",
+						"name": "FieldHeld",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							520,
+							56
+						],
+						"position": [
+							220,
+							230
+						],
+						"text": "Your name"
+					},
+					"bind": {
+						"fieldHeld": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "fieldHeld"
+						},
+						"component": "UIInputField",
+						"values": {
+							"Text": "Ana"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "Edited",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							520,
+							30
+						],
+						"position": [
+							220,
+							330
+						],
+						"text": "Edited: Left five times, then Shift and Right five times"
+					},
+					"bind": {
+						"labelEdited": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "labelEdited"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 22,
+							"Color": [
+								0.62,
+								0.66,
+								0.75,
+								1
+							],
+							"Alignment": "Left",
+							"VerticalAlignment": "Middle",
+							"Wrap": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "inputField",
+						"name": "FieldEdited",
+						"parent": {
+							"$ref": "board"
+						},
+						"anchor": "topLeft",
+						"size": [
+							520,
+							56
+						],
+						"position": [
+							220,
+							360
+						],
+						"text": "Your name"
+					},
+					"bind": {
+						"fieldEdited": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "fieldEdited"
+						},
+						"component": "UIInputField",
+						"values": {
+							"Text": "Ana Lima, the player with a name too long for this field"
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "board"
+						},
+						"component": "UICanvas",
+						"values": {
+							"FirstSelected": {
+								"$ref": "fieldEdited"
+							}
+						}
+					}
+				}
+			],
+			"play": {
+				"steps": 28,
+				"input": [
+					{
+						"step": 0,
+						"key": "Down",
+						"action": "tap"
+					},
+					{
+						"step": 3,
+						"key": "Left",
+						"action": "tap"
+					},
+					{
+						"step": 5,
+						"key": "Left",
+						"action": "tap"
+					},
+					{
+						"step": 7,
+						"key": "Left",
+						"action": "tap"
+					},
+					{
+						"step": 9,
+						"key": "Left",
+						"action": "tap"
+					},
+					{
+						"step": 11,
+						"key": "Left",
+						"action": "tap"
+					},
+					{
+						"step": 13,
+						"key": "LeftShift",
+						"action": "press"
+					},
+					{
+						"step": 14,
+						"key": "Right",
+						"action": "tap"
+					},
+					{
+						"step": 16,
+						"key": "Right",
+						"action": "tap"
+					},
+					{
+						"step": 18,
+						"key": "Right",
+						"action": "tap"
+					},
+					{
+						"step": 20,
+						"key": "Right",
+						"action": "tap"
+					},
+					{
+						"step": 22,
+						"key": "Right",
+						"action": "tap"
+					},
+					{
+						"step": 24,
+						"key": "LeftShift",
+						"action": "release"
+					}
+				]
+			}
+		}
+	]
+}

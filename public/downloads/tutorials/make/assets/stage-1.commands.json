@@ -1,0 +1,136 @@
+[
+	{
+		"command": "asset.createFolder",
+		"parameters": {
+			"path": "Models"
+		}
+	},
+	{
+		"command": "asset.import",
+		"parameters": {
+			"file": "<release folder>/Samples/ThirdPerson/Assets/Models/Platformer/coin-gold.glb",
+			"directory": "Models"
+		}
+	},
+	{
+		"command": "asset.info",
+		"parameters": {
+			"asset": "Models/coin-gold/coin-gold.glb"
+		}
+	},
+	{
+		"command": "asset.info",
+		"parameters": {
+			"asset": "Models/coin-gold/coin-gold.glb",
+			"bounds": false
+		}
+	},
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Models/coin-gold/coin-gold.glb",
+			"point": [
+				2,
+				0,
+				2
+			]
+		},
+		"bind": {
+			"coin": "/id"
+		}
+	},
+	{
+		"command": "asset.info",
+		"parameters": {
+			"asset": "Models/coin-gold/coin-gold.glb"
+		}
+	},
+	{
+		"command": "asset.info",
+		"parameters": {
+			"asset": "Models/coin-gold/coin-gold.glb",
+			"bounds": false
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin"
+		},
+		"bind": {
+			"old": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.delete",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "old"
+				}
+			]
+		}
+	},
+	{
+		"command": "component.add",
+		"parameters": {
+			"entity": {
+				"$ref": "coin"
+			},
+			"component": "Tag",
+			"values": {
+				"Tag": "Coin"
+			}
+		}
+	},
+	{
+		"command": "entity.rename",
+		"parameters": {
+			"entity": {
+				"$ref": "coin"
+			},
+			"name": "Coin"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin"
+		}
+	},
+	{
+		"command": "asset.moveFolder",
+		"parameters": {
+			"path": "Models",
+			"to": "Props"
+		}
+	},
+	{
+		"command": "asset.info",
+		"parameters": {
+			"asset": "Props/coin-gold/coin-gold.glb",
+			"bounds": false
+		},
+		"expect": {
+			"/importing": {
+				"equals": false
+			}
+		},
+		"until": {
+			"seconds": 120
+		}
+	},
+	{
+		"command": "asset.moveFolder",
+		"parameters": {
+			"path": "Props",
+			"to": "Models"
+		}
+	},
+	{
+		"command": "asset.findReferences",
+		"parameters": {
+			"asset": "Models/coin-gold/coin-gold.glb"
+		}
+	}
+]

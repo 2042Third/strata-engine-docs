@@ -1,0 +1,69 @@
+[
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 1
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 1
+			}
+		}
+	},
+	{
+		"command": "log.read",
+		"parameters": {
+			"newest": true,
+			"limit": 50
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "script.build",
+		"parameters": {
+			"wait": false
+		}
+	},
+	{
+		"command": "script.status",
+		"expect": {
+			"/build/running": {
+				"equals": false
+			},
+			"/build/last/success": {
+				"equals": false
+			}
+		},
+		"until": {
+			"seconds": 300
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.status"
+	}
+]

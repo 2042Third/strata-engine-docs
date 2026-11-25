@@ -1,0 +1,30 @@
+[
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin"
+		},
+		"bind": {
+			"coin": "/entities/0"
+		}
+	},
+	{
+		"command": "prefab.create",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "coin"
+				}
+			],
+			"path": "Prefabs/Coin.stprefab"
+		}
+	},
+	{
+		"command": "prefab.status",
+		"parameters": {
+			"entity": {
+				"$ref": "coin"
+			}
+		}
+	}
+]

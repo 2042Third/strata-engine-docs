@@ -1,0 +1,186 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The whole editor with the new Basic 3D project open on its start scene",
+			"caption": "The new project: five entities in the Hierarchy, the ground under the sky in the Scene view.",
+			"alt": "The editor window with a list of five entities on the left, a grey ground under a blue sky in the large middle view and a details panel on the right.",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game-960.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": []
+			}
+		},
+		{
+			"id": "layout",
+			"kind": "editor",
+			"shows": "The whole editor in its default layout, with every panel, the button strip and the status bar marked by name",
+			"caption": "Every part of the default layout, marked: the views in the middle, the lists at the sides and bottom, the button strip above and the status bar below.",
+			"alt": "The editor window with each area marked by a label. Two view tabs are in the middle, a list of entities is on the left, and detail tabs are on the right. Tabs for messages and files are at the bottom, with a strip of buttons above and a bar of small labels below.",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game-960.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": []
+			},
+			"waitsFor": "tier 3: labels drawn over the editor picture; no command marks the panels by name",
+			"standIn": "layout-areas"
+		},
+		{
+			"id": "layout-areas",
+			"kind": "diagram",
+			"shows": "The default layout's areas in a 960 by 540 window: the menus, the button strip, the Hierarchy at the left, the Scene and Game tabs in the middle, the Inspector and Asset tabs at the right, the Console, Problems and Content Browser tabs under the views, and the status bar, with each area's share",
+			"caption": "The default layout: the views in the middle, the lists at the sides and under the views, the menus and the button strip above and the status bar below.",
+			"alt": "A window drawn as boxes. A row of menus and a button strip run along the top, and a status bar runs along the bottom. Between them, a Hierarchy column on the left takes 23 % of the width, 16 text heights, and an Inspector and Asset column on the right takes 26 %, 18 text heights. In a wider window they take 15 % and 20 %. The Scene and Game tabs fill the middle, and the Console, Problems and Content Browser tabs take 22 % of the height under the views only.",
+			"numbers": "EditorLayer.cpp:79-85: c_HierarchyWidth 0.15, c_InspectorWidth 0.20 of the dock space's width, but at least c_MinHierarchyFontSizes 16 and c_MinInspectorFontSizes 18 font sizes (lines 1612-1619); c_BottomHeight 0.22 split from the center after both side columns (under the views only). At 960 x 540, layouts/first-game-960.ini: Hierarchy 223 px (23 %), Inspector 251 px (26 %), views 482 px; bottom 102 of 462 px (22 %). Panels at lines 1621-1633; button strip lines 2008-2024, 2061-2135; status bar pills lines 2179-2220."
+		},
+		{
+			"id": "ground-selected",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The Scene view moved around the Ground, which is selected, with its outline and its components in the Inspector, and the Main Camera's white view lines over the floor",
+			"caption": "The camera looks down at the floor from one side; the floor has an orange outline, the white lines show what the Main Camera sees, and the Inspector lists the floor's parts.",
+			"alt": "The editor window. The middle view shows the grey floor from above at an angle, with an orange outline and colored arrows at its center. Thin white lines, a box that widens away from the viewer, cross the floor: they mark what the Main Camera sees. The floor's row is highlighted in the list on the left, and its parts are listed on the right.",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game-960.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Ground",
+							"limit": 1
+						},
+						"bind": {
+							"ground": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "ground"
+								}
+							]
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"yaw": 30,
+							"pitch": -25,
+							"distance": 14
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "no-camera",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The Game view with the text No camera to show after the Primary box of the Main Camera is cleared, the empty Primary box in the Inspector",
+			"caption": "With the Main Camera's Primary box cleared, on the right, the game view shows a text instead of a picture.",
+			"alt": "The editor window with the two views side by side. The left view shows the grey ground under a blue sky. The right view is dark and shows a short text that says there is no camera to show. On the far right, the Main Camera's details show its Primary box empty.",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/editor-tour-side-600.ini",
+				"windowSize": [
+					960,
+					600
+				],
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Main Camera",
+							"limit": 1
+						},
+						"bind": {
+							"camera": "/entities/0"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "camera"
+							},
+							"component": "Camera",
+							"values": {
+								"Primary": false
+							}
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "camera"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "side-by-side",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The whole editor playing, the Scene view and the Game view side by side, with the Game camera chip on",
+			"caption": "While the scene plays, both views show the same picture, and the Scene view keeps the editor's overlays. The Game camera chip, last in the Scene view's second row of chips, is lit.",
+			"alt": "The editor window with two views side by side. Both show the grey ground under a blue sky from the same place. The left one adds grid lines and a red and a blue line, and its Game camera chip is lit. The status bar says Playing.",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/editor-tour-side.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "play.start"
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"pilotGameCamera": true
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 60
+						}
+					}
+				]
+			}
+		}
+	]
+}

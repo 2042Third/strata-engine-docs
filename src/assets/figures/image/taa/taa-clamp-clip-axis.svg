@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 352">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: one brightness axis, 0 at x 64, 1.0 at x 704 (640 units per 1.0): 0.1 at 128, 0.2 at 192, 0.554 at 418.6.
+     Rows: the nine pixels (dots y 64), the range clamp (bar y 126), the variance clip (bar y 216), the axis (y 280).
+     Lowest text: brightness at y 328, descent 4; H = 352. -->
+<text class="ink" x="128" y="44" text-anchor="middle">eight pixels at 0.1</text>
+<text class="ink" x="712" y="44" text-anchor="end">one glint at 1.0</text>
+<circle class="ink" cx="128" cy="64" r="6"/>
+<circle class="ink" cx="704" cy="64" r="6"/>
+<text class="blue" x="128" y="106">Range clamp: 0.1 to 1.0</text>
+<line class="line-blue" stroke-width="2.5" x1="128" y1="126" x2="704" y2="126"/>
+<line class="line-blue" stroke-width="2.5" x1="128" y1="116" x2="128" y2="136"/>
+<line class="line-blue" stroke-width="2.5" x1="704" y1="116" x2="704" y2="136"/>
+<circle class="orange" cx="704" cy="126" r="7"/>
+<text class="orange" x="712" y="158" text-anchor="end">history 1.0 stays</text>
+<text class="green" x="128" y="196">Variance clip: 0.2 + 1.25 × 0.283 = 0.554</text>
+<line class="line-green" stroke-width="2.5" x1="128" y1="216" x2="418.6" y2="216"/>
+<line class="line-green" stroke-width="2.5" x1="128" y1="206" x2="128" y2="226"/>
+<line class="line-green" stroke-width="2.5" x1="418.6" y1="206" x2="418.6" y2="226"/>
+<circle class="line-orange" fill="none" stroke-dasharray="4 3" cx="704" cy="216" r="7"/>
+<line class="line-orange" stroke-width="2.5" x1="696" y1="216" x2="438" y2="216"/>
+<polygon class="orange" points="426,216 438,211.5 438,220.5"/>
+<circle class="orange" cx="418.6" cy="216" r="7"/>
+<text class="orange" x="412" y="248">history pulled to 0.554</text>
+<text class="muted" x="712" y="248" text-anchor="end">was 1.0</text>
+<line class="line-muted" x1="64" y1="280" x2="704" y2="280"/>
+<line class="line-muted" x1="64" y1="274" x2="64" y2="286"/>
+<line class="line-muted" x1="128" y1="274" x2="128" y2="286"/>
+<line class="line-muted" x1="192" y1="274" x2="192" y2="286"/>
+<line class="line-muted" x1="418.6" y1="274" x2="418.6" y2="286"/>
+<line class="line-muted" x1="704" y1="274" x2="704" y2="286"/>
+<text class="muted small" x="64" y="304" text-anchor="middle">0</text>
+<text class="muted small" x="128" y="304" text-anchor="middle">0.1</text>
+<text class="muted small" x="192" y="304" text-anchor="middle">0.2 mean</text>
+<text class="muted small" x="418.6" y="304" text-anchor="middle">0.554</text>
+<text class="muted small" x="704" y="304" text-anchor="middle">1.0</text>
+<text class="muted" x="384" y="328" text-anchor="middle">brightness</text>
+</svg>

@@ -1,0 +1,3 @@
+# Part review of `engineering/flags-portability`
+
+No correction: `strata_configure_target` (switches, the three definitions, `-Wno-missing-field-initializers`, Slang's `-warnings-as-errors all`), the vendor `/W0` and `-w`, the GCC before 14.4 test workaround and its five files, the `STRATA_USE_*` defaults and `strata_engine_cpu_options` branches, zstd's `/arch:AVX2` under the same test, box3d's `-ffp-contract=off`, the CRC32C check in `Hash.cpp`, the contents of `stpch.h`, the compiler cache's PCH default, the Roadmap's 1,036 against 1,194 CPU-s, CompatLint's options, defaults and exit codes, the test names and every callout line hold at the pin (319075e3).

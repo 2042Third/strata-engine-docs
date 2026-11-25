@@ -1,0 +1,48 @@
+{
+	"page": "make/export",
+	"startsFrom": { "tutorial": "make/play-test-debug" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "project.setStartScene", "parameters": { "scene": "Scenes/Main.stscene" } },
+				{ "command": "asset.import", "parameters": { "file": "@RELEASE@/Samples/ThirdPerson/Assets/Icon.png" } },
+				{ "command": "project.setGameInfo", "parameters": { "title": "Coin Run", "version": "1.0.0", "company": "Your Name", "copyright": "(c) 2026 Your Name", "icon": "Icon.png" },
+					"checks": [
+						{ "pointer": "/game/title", "equals": "Coin Run" },
+						{ "pointer": "/game/version", "equals": "1.0.0" },
+						{ "pointer": "/game/company", "equals": "Your Name" },
+						{ "pointer": "/game/copyright", "equals": "(c) 2026 Your Name" },
+						{ "pointer": "/game/icon", "length": 16 }
+					] }
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"commands": [
+				{ "command": "scene.save" },
+				{ "command": "project.exportStatus" }
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"commands": [
+				{ "command": "project.exportStatus" }
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"commands": [
+				{ "command": "project.setExportSettings", "parameters": { "alwaysInclude": [ "Prefabs/Coin.stprefab", "Materials/GoldGlow.stmat", "Sounds" ] },
+					"checks": [
+						{ "pointer": "/alwaysInclude", "equals": [ "Prefabs/Coin.stprefab", "Materials/GoldGlow.stmat", "Sounds" ] },
+						{ "pointer": "/loadingScene", "equals": null }
+					] }
+			],
+			"endState": true
+		}
+	]
+}

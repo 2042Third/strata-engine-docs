@@ -1,0 +1,13 @@
+diff --git a/StrataTests/src/Core/StringUtilsTests.cpp b/StrataTests/src/Core/StringUtilsTests.cpp
+index aa00554f..245c0fd2 100644
+--- a/StrataTests/src/Core/StringUtilsTests.cpp
++++ b/StrataTests/src/Core/StringUtilsTests.cpp
+@@ -47,5 +47,8 @@ TEST_SUITE("Core.StringUtils")
+ 		CHECK(StringUtils::ToUpper("Debug") == "DEBUG");
+ 		CHECK(StringUtils::ToUpper("file.png") == "FILE.PNG");
+ 		CHECK(StringUtils::ToUpper("x64 build 2") == "X64 BUILD 2");
++		// Empty text stays empty; the two bytes of each UTF-8 letter are not ASCII and stay as they are.
++		CHECK(StringUtils::ToUpper("") == "");
++		CHECK(StringUtils::ToUpper("\xC3\xA9t\xC3\xA9") == "\xC3\xA9T\xC3\xA9");
+ 	}
+ }

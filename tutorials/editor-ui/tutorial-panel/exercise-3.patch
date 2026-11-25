@@ -1,0 +1,72 @@
+diff --git a/StrataEditor/src/Panels/SelectionSummaryPanel.cpp b/StrataEditor/src/Panels/SelectionSummaryPanel.cpp
+index 818d1435..a91c2bf2 100644
+--- a/StrataEditor/src/Panels/SelectionSummaryPanel.cpp
++++ b/StrataEditor/src/Panels/SelectionSummaryPanel.cpp
+@@ -63,6 +63,12 @@ namespace Strata
+ 		RunEditorCommand(panelContext.Context, panelContext.Commands, "camera.focus", { { "entities", std::move(entities) } });
+ 	}
+ 
++	void SelectionSummaryPanel::FrameScene(EditorPanelContext& panelContext) const
++	{
++		// Without entities camera.focus frames every active entity of the scene.
++		RunEditorCommand(panelContext.Context, panelContext.Commands, "camera.focus");
++	}
++
+ 	void SelectionSummaryPanel::OnImGuiRender(EditorPanelContext& panelContext)
+ 	{
+ 		EditorContext& context = panelContext.Context;
+@@ -79,6 +85,11 @@ namespace Strata
+ 			m_HistoryVersion = historyVersion;
+ 		}
+ 
++		// Above the empty state, which returns: the whole scene can be framed with nothing selected.
++		if (UI::ActionButton("SelectionSummary.FrameScene", Icons::Maximize, "Frame scene", "Point the Scene view at every active entity"))
++			FrameScene(panelContext);
++		ImGui::Spacing();
++
+ 		if (m_SelectedCount == 0)
+ 		{
+ 			UI::CenteredText("SelectionSummary.Empty", "Select entities in the Hierarchy or the Scene view to summarize them.", colors.TextSecondary);
+diff --git a/StrataEditor/src/Panels/SelectionSummaryPanel.h b/StrataEditor/src/Panels/SelectionSummaryPanel.h
+index 72524bb0..ce05a452 100644
+--- a/StrataEditor/src/Panels/SelectionSummaryPanel.h
++++ b/StrataEditor/src/Panels/SelectionSummaryPanel.h
+@@ -25,6 +25,7 @@ namespace Strata
+ 	private:
+ 		void Rebuild(EditorContext& context);
+ 		void FrameSelection(EditorPanelContext& panelContext) const;
++		void FrameScene(EditorPanelContext& panelContext) const;
+ 	private:
+ 		size_t m_SelectedCount = 0;
+ 		std::vector<std::string> m_SharedComponents; // Display names, in registration order
+diff --git a/StrataTests/src/Editor/SelectionSummaryUITests.cpp b/StrataTests/src/Editor/SelectionSummaryUITests.cpp
+index 14cdae50..1c25233a 100644
+--- a/StrataTests/src/Editor/SelectionSummaryUITests.cpp
++++ b/StrataTests/src/Editor/SelectionSummaryUITests.cpp
+@@ -127,6 +127,26 @@ TEST_SUITE("Editor.UI.SelectionSummary")
+ 		CHECK(entry->Parameters["entities"].size() == 2);
+ 	}
+ 
++	TEST_CASE("The Frame scene button runs camera.focus without entities, also with nothing selected")
++	{
++		HarnessEditor editor({}, WithFeatureProject("SelectionSummaryScene"));
++		editor.Frames(2);
++		editor.Run("editor.showPanel", { { "panel", "SelectionSummary" } });
++		editor.Run("selection.set", { { "entities", nlohmann::json::array() } });
++		editor.Frames(2);
++
++		const CommandJournal& journal = editor.Context().GetJournal();
++		const uint64_t before = journal.GetLatestId();
++		REQUIRE(editor.Click("SelectionSummary.FrameScene"));
++		editor.Frames(1);
++
++		const auto entry = std::find_if(journal.GetEntries().begin(), journal.GetEntries().end(),
++			[before](const CommandJournalEntry& candidate) { return candidate.Id > before && candidate.Command == "camera.focus"; });
++		REQUIRE(entry != journal.GetEntries().end());
++		CHECK(entry->Source == CommandSource::UI);
++		CHECK_FALSE(entry->Parameters.contains("entities"));
++	}
++
+ 	TEST_CASE("A layout saved before the panel gives way to the default layout, which docks it beside the Inspector")
+ 	{
+ 		std::string settings;

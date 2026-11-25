@@ -1,0 +1,282 @@
+{
+	"frame": {
+		"avgMs": 1.0835000276565552,
+		"maxMs": 1.6119999885559082,
+		"p50Ms": 1.083299994468689,
+		"p95Ms": 1.2860000133514404
+	},
+	"frames": 60,
+	"framesPerSecond": 598.646484375,
+	"gameRenderStats": null,
+	"gpu": {
+		"boundBy": "unknown",
+		"busy": {
+			"avgMs": 0.0,
+			"maxMs": 0.0,
+			"p50Ms": 0.0,
+			"p95Ms": 0.0
+		},
+		"frames": 0,
+		"latencyFrames": 0.0,
+		"stages": {
+			"GPU.AO": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.Aerial": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.Cull": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.DepthOfField": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.MotionBlur": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.Opaque": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.Overlays": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.Post": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.Prepass": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.RadianceCascades": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.Reflections": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.ScreenShadows": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.Setup": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.Shadows": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.TAA": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.Transparent": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.UI": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			},
+			"GPU.Uploads": {
+				"avgMs": 0.0,
+				"maxMs": 0.0,
+				"p50Ms": 0.0,
+				"p95Ms": 0.0
+			}
+		}
+	},
+	"interval": {
+		"avgMs": 1.6704349517822266,
+		"maxMs": 17.98040008544922,
+		"p50Ms": 1.0917999744415283,
+		"p95Ms": 1.4320000410079956
+	},
+	"jobs": {
+		"backgroundBusyPercent": 0.0,
+		"backgroundThreads": 20,
+		"ioBusyPercent": 0.0,
+		"ioThreads": 2,
+		"queued": 0,
+		"running": 0,
+		"workerBusyPercent": 22.161090850830078,
+		"workerThreads": 23
+	},
+	"renderStats": null,
+	"stageSum": {
+		"avgMs": 1.0733516216278076,
+		"maxMs": 1.604200005531311,
+		"p50Ms": 1.0742000341415405,
+		"p95Ms": 1.2782000303268433
+	},
+	"stages": {
+		"Assets.Finalize": {
+			"avgMs": 0.0009950000094249845,
+			"inFrameTime": true,
+			"maxMs": 0.004399999976158142,
+			"p50Ms": 0.0008999999845400453,
+			"p95Ms": 0.0020000000949949026
+		},
+		"Assets.Update": {
+			"avgMs": 0.0016233333153650165,
+			"inFrameTime": true,
+			"maxMs": 0.004800000227987766,
+			"p50Ms": 0.001500000013038516,
+			"p95Ms": 0.002400000113993883
+		},
+		"Editor.Commands": {
+			"avgMs": 0.0005616666749119759,
+			"inFrameTime": true,
+			"maxMs": 0.008700000122189522,
+			"p50Ms": 0.00039999998989515007,
+			"p95Ms": 0.0006000000284984708
+		},
+		"Editor.UI": {
+			"avgMs": 0.0,
+			"inFrameTime": true,
+			"maxMs": 0.0,
+			"p50Ms": 0.0,
+			"p95Ms": 0.0
+		},
+		"Input": {
+			"avgMs": 0.0010166666470468044,
+			"inFrameTime": true,
+			"maxMs": 0.0038999998942017555,
+			"p50Ms": 0.0010000000474974513,
+			"p95Ms": 0.0012000000569969416
+		},
+		"Present": {
+			"avgMs": 0.0,
+			"inFrameTime": false,
+			"maxMs": 0.0,
+			"p50Ms": 0.0,
+			"p95Ms": 0.0
+		},
+		"Render.Extract": {
+			"avgMs": 0.0,
+			"inFrameTime": true,
+			"maxMs": 0.0,
+			"p50Ms": 0.0,
+			"p95Ms": 0.0
+		},
+		"Render.Submit": {
+			"avgMs": 0.0,
+			"inFrameTime": true,
+			"maxMs": 0.0,
+			"p50Ms": 0.0,
+			"p95Ms": 0.0
+		},
+		"Render.UI": {
+			"avgMs": 0.0,
+			"inFrameTime": true,
+			"maxMs": 0.0,
+			"p50Ms": 0.0,
+			"p95Ms": 0.0
+		},
+		"Scene.Animation": {
+			"avgMs": 0.0002749999985098839,
+			"inFrameTime": true,
+			"maxMs": 0.0005000000237487257,
+			"p50Ms": 0.0003000000142492354,
+			"p95Ms": 0.00039999998989515007
+		},
+		"Scene.Audio": {
+			"avgMs": 0.001846666680648923,
+			"inFrameTime": true,
+			"maxMs": 0.00839999970048666,
+			"p50Ms": 0.0017999999690800905,
+			"p95Ms": 0.002400000113993883
+		},
+		"Scene.Load": {
+			"avgMs": 0.0,
+			"inFrameTime": true,
+			"maxMs": 0.0,
+			"p50Ms": 0.0,
+			"p95Ms": 0.0
+		},
+		"Scene.Physics": {
+			"avgMs": 0.7026150226593018,
+			"inFrameTime": true,
+			"maxMs": 1.0566999912261963,
+			"p50Ms": 0.7008000016212463,
+			"p95Ms": 0.8729000091552734
+		},
+		"Scene.Scripts": {
+			"avgMs": 0.346503347158432,
+			"inFrameTime": true,
+			"maxMs": 0.5144000053405762,
+			"p50Ms": 0.3440999984741211,
+			"p95Ms": 0.43860000371932983
+		},
+		"Scene.Transforms": {
+			"avgMs": 0.014546666294336319,
+			"inFrameTime": true,
+			"maxMs": 0.021800000220537186,
+			"p50Ms": 0.014399999752640724,
+			"p95Ms": 0.01860000006854534
+		},
+		"Scene.UI": {
+			"avgMs": 0.0031966667156666517,
+			"inFrameTime": true,
+			"maxMs": 0.004600000102072954,
+			"p50Ms": 0.0031999999191612005,
+			"p95Ms": 0.004000000189989805
+		},
+		"World.Streaming": {
+			"avgMs": 0.0001716666592983529,
+			"inFrameTime": true,
+			"maxMs": 0.00039999998989515007,
+			"p50Ms": 0.00019999999494757503,
+			"p95Ms": 0.00019999999494757503
+		}
+	},
+	"untimed": {
+		"avgMs": 0.010148338973522186,
+		"maxMs": 0.09539999812841415,
+		"p50Ms": 0.007299900054931641,
+		"p95Ms": 0.009600043296813965
+	}
+}

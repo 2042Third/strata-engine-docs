@@ -1,0 +1,8 @@
+{
+	"page": "scripting/tutorial-host-function",
+	"startsFrom": { "tutorial": "gpu/debug-drawing", "exercise": 3 },
+	"patch": {
+		"file": "tutorials/scripting/tutorial-host-function.patch",
+		"tests": [ "Scripting.Wind", "Scripting.Module", "Architecture.Layering", "FeatureTest" ]
+	}
+}

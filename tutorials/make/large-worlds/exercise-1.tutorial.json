@@ -1,0 +1,32 @@
+{
+	"page": "make/large-worlds",
+	"startsFrom": { "tutorial": "make/large-worlds" },
+	"stages": [
+		{
+			"step": 1,
+			"files": [ { "from": "book:tutorials/make/large-worlds/exercise-1/LayerToggle.cpp", "to": "Scripts/LayerToggle.cpp" } ],
+			"commands": [
+				{ "command": "scene.open", "parameters": { "scene": "Worlds/Meadow.stscene" } },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.add", "entityName": "Ball", "parameters": { "class": "LayerToggle" } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "world.status", "parameters": {},
+					"checks": [ { "pointer": "/playing/loaded", "equals": 7 } ] },
+				{ "command": "input.key", "parameters": { "key": "P" } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "world.status", "parameters": {},
+					"checks": [ { "pointer": "/playing/loaded", "equals": 4 } ] },
+				{ "command": "input.key", "parameters": { "key": "P" } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "world.status", "parameters": {},
+					"checks": [ { "pointer": "/playing/wanted", "equals": 7 } ] },
+				{ "command": "world.status", "parameters": {}, "until": { "steps": 600 },
+					"expect": { "/playing/loaded": { "equals": 7 } } },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		}
+	]
+}

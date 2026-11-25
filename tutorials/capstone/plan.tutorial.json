@@ -1,0 +1,12 @@
+{
+	"page": "capstone/plan",
+	"startsFrom": {
+		"tutorial": "editor/tutorial-command"
+	},
+	"patch": {
+		"file": "tutorials/capstone/plan.patch",
+		"tests": [
+			"Architecture.Layering"
+		]
+	}
+}

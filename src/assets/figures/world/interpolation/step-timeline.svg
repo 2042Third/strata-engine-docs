@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 436">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: x = 96 + 12 px per ms (0 to 50 ms -> 96 to 696); steps 0, 16.7, 33.3 ms at 96, 296, 496; clock 37.5 ms at 546; drawn time 20.8 ms at 346; time axis y 84; lanes y 216, 316, 400; H 436 -->
+<line class="line-orange" x1="346" y1="38" x2="346" y2="420" stroke-width="2" stroke-dasharray="4 3"/>
+<line class="line-ink" x1="546" y1="38" x2="546" y2="160" stroke-dasharray="4 3"/>
+<text class="orange bold" x="346" y="30" text-anchor="middle">drawn time 20.8 ms</text>
+<text class="ink bold" x="546" y="30" text-anchor="middle">clock 37.5 ms</text>
+<line class="line-muted" x1="356" y1="56" x2="536" y2="56"/>
+<polygon class="muted" points="346,56 356,52.5 356,59.5"/>
+<polygon class="muted" points="546,56 536,59.5 536,52.5"/>
+<rect class="ground" x="384" y="44" width="124" height="22"/>
+<text class="muted small" x="446" y="61" text-anchor="middle">one step, 16.7 ms</text>
+<text class="muted" x="16" y="89">steps</text>
+<line class="line-ink" x1="96" y1="84" x2="696" y2="84"/>
+<polygon class="ink" points="706,84 696,87.5 696,80.5"/>
+<text class="ink" x="714" y="89">t</text>
+<line class="line-ink" x1="96" y1="76" x2="96" y2="92" stroke-width="2"/>
+<text class="ink" x="96" y="112" text-anchor="middle">0 ms</text>
+<line class="line-ink" x1="296" y1="76" x2="296" y2="92" stroke-width="2"/>
+<text class="ink" x="296" y="112" text-anchor="middle">16.7 ms</text>
+<line class="line-ink" x1="496" y1="76" x2="496" y2="92" stroke-width="2"/>
+<text class="ink" x="496" y="112" text-anchor="middle">33.3 ms</text>
+<text class="muted small" x="296" y="132" text-anchor="middle">T − h</text>
+<text class="muted small" x="496" y="132" text-anchor="middle">T</text>
+<line class="line-ink" x1="506" y1="148" x2="536" y2="148"/>
+<polygon class="ink" points="496,148 506,144.5 506,151.5"/>
+<polygon class="ink" points="546,148 536,151.5 536,144.5"/>
+<text class="ink small" x="556" y="153">a = 4.2 ms in the accumulator</text>
+<text class="ink bold" x="16" y="188">Body (Blend)</text>
+<line class="line-blue" x1="296" y1="216" x2="496" y2="216" stroke-width="2"/>
+<circle class="ground line-blue" cx="296" cy="216" r="6" stroke-width="2"/>
+<circle class="ground line-blue" cx="496" cy="216" r="6" stroke-width="2"/>
+<circle class="orange" cx="346" cy="216" r="7"/>
+<text class="blue" x="284" y="221" text-anchor="end">from 0.100 m</text>
+<text class="blue" x="508" y="221">to 0.200 m</text>
+<text class="orange bold" x="356" y="204">drawn 0.125 m</text>
+<line class="line-orange" x1="306" y1="242" x2="336" y2="242"/>
+<polygon class="orange" points="296,242 306,238.5 306,245.5"/>
+<polygon class="orange" points="346,242 336,245.5 336,238.5"/>
+<text class="orange small" x="356" y="247">alpha = 4.2 / 16.7 = 0.25</text>
+<text class="ink bold" x="16" y="288">Child light (Compose)</text>
+<circle class="orange" cx="346" cy="316" r="7"/>
+<text class="orange" x="358" y="321">parent's 0.125 m + local 0.5 m = drawn 0.625 m</text>
+<path class="line-muted" fill="none" d="M 337 262 Q 306 276 330.4 303.5"/>
+<polygon class="muted" points="337,311 327.7,305.8 333,301.2"/>
+<text class="muted small" x="302" y="281" text-anchor="end">from its parent</text>
+<text class="ink bold" x="16" y="372">Crate (Exact)</text>
+<circle class="ground line-ink" cx="496" cy="400" r="6" stroke-width="2"/>
+<text class="ink" x="508" y="394">teleported in the step</text>
+<text class="ink" x="508" y="413">at 33.3 ms, to 5.0 m</text>
+<line class="line-muted" x1="488" y1="400" x2="365" y2="400" stroke-dasharray="4 3"/>
+<polygon class="muted" points="355,400 365,396.5 365,403.5"/>
+<circle class="orange" cx="346" cy="400" r="7"/>
+<text class="orange" x="334" y="405" text-anchor="end">drawn 5.0 m, no blend</text>
+</svg>

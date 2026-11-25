@@ -1,0 +1,529 @@
+{
+	"page": "make/gi",
+	"startsFrom": {
+		"template": "basic3d",
+		"name": "GiRoom"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Plaster.stmat",
+						"properties": {
+							"BaseColor": [
+								0.73,
+								0.73,
+								0.73,
+								1
+							],
+							"Roughness": 0.9
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/RedFloor.stmat",
+						"properties": {
+							"BaseColor": [
+								0.6,
+								0.05,
+								0.04,
+								1
+							],
+							"Roughness": 0.9
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Floor",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/RedFloor.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.15,
+									0
+								],
+								"Scale": [
+									4.6,
+									0.3,
+									4.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ceiling",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/Plaster.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2.95,
+									0
+								],
+								"Scale": [
+									4.6,
+									0.3,
+									4.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall North",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/Plaster.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.55,
+									-2.15
+								],
+								"Scale": [
+									4.6,
+									2.5,
+									0.3
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall South",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/Plaster.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.55,
+									2.15
+								],
+								"Scale": [
+									4.6,
+									2.5,
+									0.3
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall West",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/Plaster.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-2.15,
+									1.55,
+									0
+								],
+								"Scale": [
+									0.3,
+									2.5,
+									4
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall East Low",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/Plaster.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.15,
+									0.65,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.7,
+									4
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall East High",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/Plaster.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.15,
+									2.4,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.8,
+									4
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "camera.set",
+					"parameters": {
+						"position": [
+							-1.7,
+							1.5,
+							1.7
+						],
+						"target": [
+							1.0,
+							0.7,
+							-0.8
+						]
+					},
+					"checks": [
+						{
+							"pointer": "/position/0",
+							"approx": -1.7,
+							"tolerance": 0.01
+						},
+						{
+							"pointer": "/position/2",
+							"approx": 1.7,
+							"tolerance": 0.01
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"GlobalIllumination": true
+						}
+					}
+				},
+				{
+					"command": "component.get",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess"
+					},
+					"checks": [
+						{
+							"pointer": "/values/GlobalIllumination",
+							"equals": true
+						},
+						{
+							"pointer": "/values/GlobalIlluminationIntensity",
+							"approx": 1,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "gi"
+					},
+					"checks": [
+						{
+							"pointer": "/debugView",
+							"equals": "gi"
+						}
+					]
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "open"
+					},
+					"checks": [
+						{
+							"pointer": "/debugView",
+							"equals": "open"
+						}
+					]
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "voxels"
+					},
+					"checks": [
+						{
+							"pointer": "/debugView",
+							"equals": "voxels"
+						}
+					]
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "probes"
+					},
+					"checks": [
+						{
+							"pointer": "/debugView",
+							"equals": "probes"
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Wall East Low",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								2.05,
+								0.65,
+								0
+							],
+							"Scale": [
+								0.06,
+								0.7,
+								4
+							]
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Translation/0",
+							"approx": 2.05,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/Scale/0",
+							"approx": 0.06,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "voxels"
+					},
+					"checks": [
+						{
+							"pointer": "/debugView",
+							"equals": "voxels"
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Wall East Low",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								2.15,
+								0.65,
+								0
+							],
+							"Scale": [
+								0.3,
+								0.7,
+								4
+							]
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Translation/0",
+							"approx": 2.15,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/Scale/0",
+							"approx": 0.3,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "gi"
+					},
+					"checks": [
+						{
+							"pointer": "/debugView",
+							"equals": "gi"
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"GlobalIllumination": false
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/GlobalIllumination",
+							"equals": false
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"GlobalIllumination": true
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/GlobalIllumination",
+							"equals": true
+						}
+					]
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "none"
+					},
+					"checks": [
+						{
+							"pointer": "/debugView",
+							"equals": "none"
+						}
+					]
+				},
+				{
+					"command": "lighting.applySkyPreset",
+					"parameters": {
+						"preset": "Clear",
+						"sunElevation": 40,
+						"sunAzimuth": 70
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"GlobalIlluminationIntensity": 2
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/GlobalIlluminationIntensity",
+							"approx": 2,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"GlobalIlluminationIntensity": 0.5
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/GlobalIlluminationIntensity",
+							"approx": 0.5,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"GlobalIlluminationIntensity": 1
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/GlobalIlluminationIntensity",
+							"approx": 1,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"quality": "medium"
+					},
+					"checks": [
+						{
+							"pointer": "/quality",
+							"equals": "medium"
+						}
+					]
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"quality": "project"
+					},
+					"checks": [
+						{
+							"pointer": "/quality",
+							"equals": "project"
+						}
+					]
+				}
+			],
+			"endState": true
+		}
+	]
+}

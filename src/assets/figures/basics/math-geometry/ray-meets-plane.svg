@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 400">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: unit 70, x -1..5 at 174..594, y at 492 - 70 y: origin (0, 5) at 244,142, floor y = 2 at 352, hit 401.5,352; H 400 -->
+<line class="line-ink" x1="174" y1="352" x2="594" y2="352" stroke-width="2.5"/>
+<text class="ink" x="594" y="342" text-anchor="end">floor, y = 2</text>
+<line class="line-muted" x1="244" y1="147" x2="244" y2="347" stroke-width="1.5" stroke-dasharray="4 3"/>
+<circle class="ground line-muted" cx="244" cy="352" r="5" stroke-width="1.5"/>
+<text class="muted" x="232" y="342" text-anchor="end">t = −3</text>
+<line class="line-muted" x1="244" y1="137" x2="244" y2="40" stroke-width="1.5" stroke-dasharray="4 3"/>
+<polygon class="muted" points="244,30 247.5,40 240.5,40"/>
+<text class="muted" x="254" y="63">d = (0, 1)</text>
+<line class="line-blue" x1="244" y1="142" x2="391.3" y2="338.4" stroke-width="2.5"/>
+<polygon class="blue" points="398.5,348 387.7,341.1 394.9,335.7"/>
+<line class="line-blue" x1="280.4" y1="202.2" x2="291.6" y2="193.8" stroke-width="2"/>
+<text class="blue" x="297.2" y="194.6">t = 1</text>
+<line class="line-blue" x1="322.4" y1="258.2" x2="333.6" y2="249.8" stroke-width="2"/>
+<text class="blue" x="339.2" y="250.6">t = 2</text>
+<line class="line-blue" x1="364.4" y1="314.2" x2="375.6" y2="305.8" stroke-width="2"/>
+<text class="blue" x="381.2" y="306.6">t = 3</text>
+<text class="blue" x="273.6" y="158.8">d = (0.6, −0.8)</text>
+<circle class="orange" cx="401.5" cy="352" r="5"/>
+<text class="orange bold" x="401.5" y="378" text-anchor="middle">t = 3.75 at (2.25, 2)</text>
+<circle class="ink" cx="244" cy="142" r="4.5"/>
+<text class="ink" x="232" y="147" text-anchor="end">origin (0, 5)</text>
+</svg>

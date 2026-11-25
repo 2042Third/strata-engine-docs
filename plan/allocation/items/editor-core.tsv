@@ -1,0 +1,392 @@
+id	type	heading	label
+editor-core:39	feature	1.1 The editor's architecture: core without UI, one API	Core/UI split
+editor-core:40	feature	1.1 The editor's architecture: core without UI, one API	`EditorContext`
+editor-core:41	feature	1.1 The editor's architecture: core without UI, one API	`EditorContextSpecification`
+editor-core:42	feature	1.1 The editor's architecture: core without UI, one API	Per-frame update
+editor-core:43	feature	1.1 The editor's architecture: core without UI, one API	Frame order
+editor-core:44	feature	1.1 The editor's architecture: core without UI, one API	Selection
+editor-core:45	feature	1.1 The editor's architecture: core without UI, one API	Inspection target
+editor-core:46	feature	1.1 The editor's architecture: core without UI, one API	Notifications
+editor-core:47	feature	1.1 The editor's architecture: core without UI, one API	Status providers
+editor-core:48	feature	1.1 The editor's architecture: core without UI, one API	Command line
+editor-core:54	feature	1.2 Commands	`EditorCommand`
+editor-core:55	feature	1.2 Commands	`EditorCommandResult`
+editor-core:56	feature	1.2 Commands	`EditorCommandRegistry::Execute`
+editor-core:57	feature	1.2 Commands	Schema check before handler
+editor-core:58	feature	1.2 Commands	`CommandArguments`
+editor-core:59	feature	1.2 Commands	`CommandUtils`
+editor-core:60	feature	1.2 Commands	Command kinds as a tested decision
+editor-core:61	feature	1.2 Commands	Commands wait for the asset scan
+editor-core:62	feature	1.2 Commands	`editor.commands`
+editor-core:63	feature	1.2 Commands	UI-only commands
+editor-core:64	feature	1.2 Commands	Value ranges
+editor-core:65	feature	1.2 Commands	Output paths
+editor-core:74	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`scene.*`
+editor-core:75	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`entity.*`
+editor-core:76	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`component.*`
+editor-core:77	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`prefab.*`
+editor-core:78	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`asset.*`
+editor-core:79	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`material.*`
+editor-core:80	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`project.*`
+editor-core:81	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`edit.*`
+editor-core:82	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`editor.*`
+editor-core:83	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`selection.*`
+editor-core:84	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`log.read`
+editor-core:85	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`play.*`
+editor-core:86	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`input.*`
+editor-core:87	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`camera.*`
+editor-core:88	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`viewport.*`
+editor-core:89	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`script.*`
+editor-core:90	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`animation.*`
+editor-core:91	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`world.*`, `physics.*`
+editor-core:92	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`lighting.*`
+editor-core:93	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`ui.*`
+editor-core:94	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`audio.state`
+editor-core:95	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`preferences.*`
+editor-core:96	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`inputActions.*`
+editor-core:97	feature	1.2.1 Every command group and what it is for (153 commands: 151 core + 2 UI)	`graphics.resetPlayerOptions`
+editor-core:103	feature	1.3 Undo and redo	`EditorAction`
+editor-core:104	feature	1.3 Undo and redo	`UndoStack`
+editor-core:105	feature	1.3 Undo and redo	Failure semantics
+editor-core:106	feature	1.3 Undo and redo	Save point / modified flag
+editor-core:107	feature	1.3 Undo and redo	`SavePoint` for background saves
+editor-core:108	feature	1.3 Undo and redo	`EditorActionGroup`
+editor-core:109	feature	1.3 Undo and redo	Groups for batches
+editor-core:110	feature	1.3 Undo and redo	`UndoStackObserver`
+editor-core:111	feature	1.3 Undo and redo	`EntityState`
+editor-core:112	feature	1.3 Undo and redo	`SceneEditTransaction`
+editor-core:113	feature	1.3 Undo and redo	`SceneEditAction`
+editor-core:114	feature	1.3 Undo and redo	`SceneEdit::ApplyEntities`
+editor-core:115	feature	1.3 Undo and redo	Cells in undo
+editor-core:116	feature	1.3 Undo and redo	Names in steps
+editor-core:117	feature	1.3 Undo and redo	`SceneSettingsAction`
+editor-core:118	feature	1.3 Undo and redo	`CommitEdit`
+editor-core:119	feature	1.3 Undo and redo	`FinishEdit` / `RollBackEdit`
+editor-core:120	feature	1.3 Undo and redo	`PropertyEdit`
+editor-core:121	feature	1.3 Undo and redo	`TransformDrag`
+editor-core:122	feature	1.3 Undo and redo	`AssetDocumentAction`
+editor-core:123	feature	1.3 Undo and redo	`ProjectSettingsAction`
+editor-core:124	feature	1.3 Undo and redo	`edit.undo`/`redo`/`history`
+editor-core:130	feature	1.4 Saving without stalling and without losing data	`DocumentSaver`
+editor-core:131	feature	1.4 Saving without stalling and without losing data	Scene save
+editor-core:132	feature	1.4 Saving without stalling and without losing data	`scene.save {wait}`
+editor-core:133	feature	1.4 Saving without stalling and without losing data	`SettingsFileWriter`
+editor-core:134	feature	1.4 Saving without stalling and without losing data	Unsaved-changes guard
+editor-core:135	feature	1.4 Saving without stalling and without losing data	`AfterSaves`
+editor-core:136	feature	1.4 Saving without stalling and without losing data	`ResetScene`
+editor-core:137	feature	1.4 Saving without stalling and without losing data	`ReleaseProject`
+editor-core:138	feature	1.4 Saving without stalling and without losing data	UI questions
+editor-core:139	feature	1.4 Saving without stalling and without losing data	Asset documents saved in the frame
+editor-core:145	feature	1.5 Autosave and crash recovery	`SceneRecovery` journal
+editor-core:146	feature	1.5 Autosave and crash recovery	Base hash
+editor-core:147	feature	1.5 Autosave and crash recovery	Folding
+editor-core:148	feature	1.5 Autosave and crash recovery	Complete journals
+editor-core:149	feature	1.5 Autosave and crash recovery	Discards are kept
+editor-core:150	feature	1.5 Autosave and crash recovery	Saves during journaling
+editor-core:151	feature	1.5 Autosave and crash recovery	Ownership
+editor-core:152	feature	1.5 Autosave and crash recovery	Follow moves
+editor-core:153	feature	1.5 Autosave and crash recovery	`scene.recoveryStatus`, `scene.recover {scene, action: apply/discard, force}`
+editor-core:154	feature	1.5 Autosave and crash recovery	Recover dialog
+editor-core:160	feature	1.6 Asset file actions and the trash	`AssetFileAction` family
+editor-core:161	feature	1.6 Asset file actions and the trash	Delete to trash
+editor-core:162	feature	1.6 Asset file actions and the trash	Reference check
+editor-core:163	feature	1.6 Asset file actions and the trash	Precondition checks
+editor-core:164	feature	1.6 Asset file actions and the trash	Agent deletes are announced
+editor-core:165	feature	1.6 Asset file actions and the trash	Files a save writes are locked
+editor-core:166	feature	1.6 Asset file actions and the trash	Panels never touch files
+editor-core:172	feature	1.7 Prefabs	Instance link
+editor-core:173	feature	1.7 Prefabs	Root's own transform and name
+editor-core:174	feature	1.7 Prefabs	`prefab.create`
+editor-core:175	feature	1.7 Prefabs	`prefab.instantiate`
+editor-core:176	feature	1.7 Prefabs	`prefab.status`
+editor-core:177	feature	1.7 Prefabs	`prefab.apply`
+editor-core:178	feature	1.7 Prefabs	`prefab.revert`, `prefab.unpack`, `prefab.select`
+editor-core:179	feature	1.7 Prefabs	Overrides
+editor-core:180	feature	1.7 Prefabs	Override upkeep on every edit
+editor-core:181	feature	1.7 Prefabs	`PrefabSync`
+editor-core:182	feature	1.7 Prefabs	Catch-up when a scene opens
+editor-core:183	feature	1.7 Prefabs	Perf instrumentation
+editor-core:184	feature	1.7 Prefabs	No prefab edit mode
+editor-core:190	feature	1.8 Placing content	`SceneRaycast::Cast`
+editor-core:191	feature	1.8 Placing content	`EditorPlacement::Place`
+editor-core:192	feature	1.8 Placing content	`FindPivotSurface`
+editor-core:193	feature	1.8 Placing content	`MakeRayRequest` / `MakeViewRay`
+editor-core:194	feature	1.8 Placing content	`PlacementPreview`
+editor-core:195	feature	1.8 Placing content	`AssetBounds`
+editor-core:196	feature	1.8 Placing content	`scene.raycast`, `asset.place`
+editor-core:197	feature	1.8 Placing content	`entity.dropToGround`
+editor-core:198	feature	1.8 Placing content	`SceneBounds`
+editor-core:204	feature	1.9 Opening scenes and projects	`BeginOpenScene`
+editor-core:205	feature	1.9 Opening scenes and projects	`CheckSceneEditable`
+editor-core:206	feature	1.9 Opening scenes and projects	`scene.open`
+editor-core:207	feature	1.9 Opening scenes and projects	`scene.loadStatus`
+editor-core:208	feature	1.9 Opening scenes and projects	`BeginOpenProject`
+editor-core:209	feature	1.9 Opening scenes and projects	Templates and samples
+editor-core:210	feature	1.9 Opening scenes and projects	Recent projects
+editor-core:216	feature	1.10 Play mode, the Game view, stepping, edits while playing	`SceneState`
+editor-core:217	feature	1.10 Play mode, the Game view, stepping, edits while playing	`Play`/`StartRuntime`/`Stop`
+editor-core:218	feature	1.10 Play mode, the Game view, stepping, edits while playing	`GetActiveScene`
+editor-core:219	feature	1.10 Play mode, the Game view, stepping, edits while playing	Edits while playing
+editor-core:220	feature	1.10 Play mode, the Game view, stepping, edits while playing	Runtime requests
+editor-core:221	feature	1.10 Play mode, the Game view, stepping, edits while playing	Time dilation
+editor-core:222	feature	1.10 Play mode, the Game view, stepping, edits while playing	Pause / step
+editor-core:223	feature	1.10 Play mode, the Game view, stepping, edits while playing	`play.start {build, paused}`
+editor-core:224	feature	1.10 Play mode, the Game view, stepping, edits while playing	`play.step {steps, wait}`
+editor-core:225	feature	1.10 Play mode, the Game view, stepping, edits while playing	Stepping lifts frame cap
+editor-core:226	feature	1.10 Play mode, the Game view, stepping, edits while playing	Simulated input
+editor-core:227	feature	1.10 Play mode, the Game view, stepping, edits while playing	Game shell
+editor-core:228	feature	1.10 Play mode, the Game view, stepping, edits while playing	Game input focus
+editor-core:229	feature	1.10 Play mode, the Game view, stepping, edits while playing	Game view resolution
+editor-core:230	feature	1.10 Play mode, the Game view, stepping, edits while playing	View resolution
+editor-core:236	feature	1.11 Deferred commands, the runner, scripts, batches, the journal, replays	`Defer(poll)`
+editor-core:237	feature	1.11 Deferred commands, the runner, scripts, batches, the journal, replays	`EditorCommandRunner`
+editor-core:238	feature	1.11 Deferred commands, the runner, scripts, batches, the journal, replays	`FrameTimeRecorder`
+editor-core:239	feature	1.11 Deferred commands, the runner, scripts, batches, the journal, replays	`editor.wait {frames}`, `editor.perf`
+editor-core:240	feature	1.11 Deferred commands, the runner, scripts, batches, the journal, replays	`EditorCommandScript`
+editor-core:241	feature	1.11 Deferred commands, the runner, scripts, batches, the journal, replays	`editor.batch {steps, atomic}`
+editor-core:242	feature	1.11 Deferred commands, the runner, scripts, batches, the journal, replays	`CommandJournal`
+editor-core:243	feature	1.11 Deferred commands, the runner, scripts, batches, the journal, replays	`editor.activity`, `editor.activity.export`
+editor-core:244	feature	1.11 Deferred commands, the runner, scripts, batches, the journal, replays	Replay end-to-end test
+editor-core:245	feature	1.11 Deferred commands, the runner, scripts, batches, the journal, replays	Smoke command script
+editor-core:251	feature	1.12 The editor camera, viewport state, thumbnails, project pictures	`EditorCamera`
+editor-core:252	feature	1.12 The editor camera, viewport state, thumbnails, project pictures	`EditorViewport`
+editor-core:253	feature	1.12 The editor camera, viewport state, thumbnails, project pictures	`ViewportSettings`
+editor-core:254	feature	1.12 The editor camera, viewport state, thumbnails, project pictures	First view framing
+editor-core:255	feature	1.12 The editor camera, viewport state, thumbnails, project pictures	View commands
+editor-core:256	feature	1.12 The editor camera, viewport state, thumbnails, project pictures	`ThumbnailCache`
+editor-core:257	feature	1.12 The editor camera, viewport state, thumbnails, project pictures	`ProjectThumbnail`
+editor-core:258	feature	1.12 The editor camera, viewport state, thumbnails, project pictures	Hierarchy and asset views
+editor-core:290	concept		What an editor is, and why it is a separate program from the game
+editor-core:295	concept		Model/view separation: an editor core without UI
+editor-core:299	concept		The command pattern and a single API
+editor-core:305	concept		Validate first, change nothing on failure
+editor-core:307	concept		Stable identity
+editor-core:310	concept		Undo/redo
+editor-core:319	concept		The "modified" flag as a save point in the history
+editor-core:322	concept		Never block a frame: the frame loop and asynchronous work
+editor-core:326	concept		Saving safely
+editor-core:330	concept		No silent data loss
+editor-core:333	concept		Autosave and crash recovery
+editor-core:338	concept		Files are part of the history too
+editor-core:340	concept		Prefabs (reusable templates with linked instances)
+editor-core:347	concept		Play-in-editor
+editor-core:352	concept		Fixed-step simulation, pausing and stepping
+editor-core:355	concept		Asynchronous commands
+editor-core:359	concept		Scripts of commands, record and replay
+editor-core:361	concept		Opening content in the background
+editor-core:363	concept		Placing objects in 3D
+editor-core:367	concept		Editor cameras
+editor-core:370	concept		Caches keyed by content
+editor-core:372	concept		Telling the person what happened
+editor-core:381	code		`StrataEditor/src/Editor/EditorCommands.h` 44-80 — `EditorCommandResult`: value/error/kind/defer…
+editor-core:383	code		`StrataEditor/src/Editor/EditorCommands.h` 84-113 — `EditorCommand` and `MayDefer`: metadata as…
+editor-core:385	code		`StrataEditor/src/Editor/Commands/EntityCommands.cpp` 514-528 — `entity.rename`: the smallest…
+editor-core:387	code		`StrataEditor/src/Editor/Commands/EntityCommands.cpp` 170-218 — `entity.create` and…
+editor-core:389	code		`StrataEditor/src/Editor/EditorCommands.cpp` 105-151 — `EditorCommandRegistry::Execute`: journal,…
+editor-core:391	code		`StrataEditor/src/Editor/EditorCommands.cpp` 174-221 — `Run` and `CheckParameters`: schema as…
+editor-core:393	code		`StrataEditor/src/Editor/UndoStack.h` 27-56 — `EditorAction`: the undo interface, including…
+editor-core:395	code		`StrataEditor/src/Editor/UndoStack.cpp` 48-106 — `UndoStack::Push`: discard redo branch, merge,…
+editor-core:397	code		`StrataEditor/src/Editor/UndoStack.cpp` 156-221 — `Undo`/`Redo` with their different failure…
+editor-core:398	code		`StrataEditor/src/Editor/UndoStack.cpp` 278-311 — `GetSavePoint`, `MarkSaved(point)`,…
+editor-core:399	code		`StrataTests/src/Editor/UndoStackTests.cpp` 17-69 and 262-374 — a toy `AddAction` and tests of…
+editor-core:401	code		`StrataEditor/src/Editor/SceneEdit.h` 21-37 and 132-169 — `EntityState` and `SceneEditTransaction`…
+editor-core:403	code		`StrataEditor/src/Editor/SceneEdit.cpp` 187-281 — `SceneEdit::ApplyEntities`: batch destroy, batch…
+editor-core:406	code		`StrataEditor/src/Editor/SceneEdit.cpp` 351-363 and 388-463 — merge rule and the transaction's…
+editor-core:408	code		`StrataEditor/src/Editor/PropertyEdit.cpp` 135-155 — `SetPropertyWithUndo`: the inspector's path,…
+editor-core:410	code		`StrataEditor/src/Editor/EditorContext.cpp` 1875-1891 — `CommitEdit`: the gate (playing, opening,…
+editor-core:412	code		`StrataEditor/src/Editor/Commands/BatchCommands.cpp` 45-119 — `editor.batch`: up-front refusal,…
+editor-core:414	code		`StrataEditor/src/Editor/CommandUtils.cpp` 276-332 — `CheckUnsavedChanges` and `AfterSaves`:…
+editor-core:416	code		`StrataEditor/src/Editor/EditorSceneCommands.cpp` 379-406 — `scene.new`: the guard, `AfterSaves`,…
+editor-core:418	code		`StrataEditor/src/Editor/EditorContext.cpp` 1045-1103 — `SubmitSceneSave`/`OnSceneSaveEnded`:…
+editor-core:420	code		`StrataEditor/src/Editor/DocumentSaver.cpp` 114-211 and 218-268 and 293-343 — job run (per-item…
+editor-core:423	code		`StrataEditor/src/Editor/EditorContext.cpp` 688-717 — `ResetScene`: everything that must happen…
+editor-core:425	code		`StrataEditor/src/Editor/SceneRecovery.cpp` 61-77, 629-688, 754-767 — `IsStructural`, `OnApplied`…
+editor-core:427	code		`StrataEditor/src/Editor/EditorAssetCommands.cpp` 899-939 and `AssetFileAction.cpp` 94-107 —…
+editor-core:429	code		`StrataEditor/src/Editor/EditorContext.cpp` 1893-1981 — `UpdatePrefabOverrides`: finding touched…
+editor-core:431	code		`StrataEditor/src/Editor/EditorPrefabCommands.cpp` 436-583 (with 39-72) — `prefab.apply`: template…
+editor-core:434	code		`StrataEditor/src/Editor/PrefabSync.cpp` 336-383 — `CatchUp`: version and hash decide updated vs.…
+editor-core:436	code		`StrataEditor/src/Editor/EditorContext.cpp` 1363-1433 — `StartRuntime`/`Stop`: what play mode…
+editor-core:438	code		`StrataEditor/src/Editor/Commands/PlayCommands.cpp` 191-256 — `play.step`: a deferred Session…
+editor-core:440	code		`StrataEditor/src/Editor/EditorCommandRunner.cpp` 274-309 and 337-369 — polling pending results…
+editor-core:443	code		`StrataEditor/src/Editor/EditorPlacement.cpp` 125-213 — `Place` and `RestOn` (box support function…
+editor-core:445	code		`StrataEditor/src/Editor/EditorCamera.cpp` 70-91, 136-170, 256-259 — orbit, pan by…
+editor-core:447	code		`StrataEditor/src/Editor/ViewportRenderer.cpp` 24-95 — which camera a view uses and what editor…
+editor-core:449	code		`StrataEditor/src/EditorLayer.cpp` 614-668 — the editor's frame order. Before: game loop.
+editor-core:450	code		`StrataTests/Editor/SmokeCommands.json.in` 1-30 — a real command script with `bind`, `$ref` and…
+editor-core:461	figure	Diagrams	Layer stack
+editor-core:463	figure	Diagrams	Three clients, one registry
+editor-core:465	figure	Diagrams	Command lifecycle
+editor-core:467	figure	Diagrams	Editor frame timeline
+editor-core:470	figure	Diagrams	Undo stack state
+editor-core:472	figure	Diagrams	SceneEditTransaction flow
+editor-core:474	figure	Diagrams	ApplyEntities batches
+editor-core:476	figure	Diagrams	Background save timeline
+editor-core:478	figure	Diagrams	Data-loss guard decision tree
+editor-core:481	figure	Diagrams	Recovery journal file
+editor-core:484	figure	Diagrams	Asset delete with trash and undo
+editor-core:486	figure	Diagrams	Prefab instance anatomy
+editor-core:489	figure	Diagrams	Prefab instance states
+editor-core:491	figure	Diagrams	Prefab change propagation
+editor-core:494	figure	Diagrams	Play mode state machine
+editor-core:496	figure	Diagrams	Fixed steps vs frames timeline
+editor-core:498	figure	Diagrams	Placement decision flow and RestOn geometry
+editor-core:500	figure	Diagrams	Editor camera model
+editor-core:502	figure	Diagrams	Scene open in the background
+editor-core:504	figure	Diagrams	Record and replay
+editor-core:511	figure	Screenshots (editor UI; this area has no rendering features of its own)	The editor as a whole with the Scene view, Hierarchy, Inspector, Content Browser, Activity panel…
+editor-core:513	figure	Screenshots (editor UI; this area has no rendering features of its own)	Activity panel listing commands from the person, an agent (by name) and a command script, with an…
+editor-core:515	figure	Screenshots (editor UI; this area has no rendering features of its own)	Edit menu or `edit.history` result showing named steps ("Create 'Wall'", "Delete 3 entities",…
+editor-core:516	figure	Screenshots (editor UI; this area has no rendering features of its own)	The unsaved-changes dialog (edit, then File > Open Scene).
+editor-core:517	figure	Screenshots (editor UI; this area has no rendering features of its own)	The saving status pill and the saving dialog while a large scene saves (any big world sample,…
+editor-core:519	figure	Screenshots (editor UI; this area has no rendering features of its own)	The Recover Unsaved Changes dialog after a simulated crash (edit, kill the process, reopen the…
+editor-core:521	figure	Screenshots (editor UI; this area has no rendering features of its own)	Content Browser delete refusal (Delete Asset dialog listing users) and the toast of an agent's…
+editor-core:522	figure	Screenshots (editor UI; this area has no rendering features of its own)	Inspector prefab bar with overrides marked (bold label, accent bar) and the Overrides menu (change…
+editor-core:524	figure	Screenshots (editor UI; this area has no rendering features of its own)	Hierarchy marks of a modified and an outdated instance (apply a prefab from one scene, change an…
+editor-core:526	figure	Screenshots (editor UI; this area has no rendering features of its own)	Placement ghost: dragging a prefab over the Scene view, (a) on a surface with the ring and label…
+editor-core:528	figure	Screenshots (editor UI; this area has no rendering features of its own)	Scene view and Game view side by side while playing (drag the Game tab beside the Scene tab),…
+editor-core:530	figure	Screenshots (editor UI; this area has no rendering features of its own)	Paused game after `play.step {steps: 30}` with the status bar showing the step count (or…
+editor-core:531	figure	Screenshots (editor UI; this area has no rendering features of its own)	Scene opening in the background: viewport load card and the Hierarchy/Inspector read-only banner…
+editor-core:533	figure	Screenshots (editor UI; this area has no rendering features of its own)	Launcher with project cards showing `ProjectThumbnail` pictures; Content Browser grid showing…
+editor-core:535	figure	Screenshots (editor UI; this area has no rendering features of its own)	Command script run: terminal output of `StrataEditor --commands SmokeCommands.json --no-gpu…
+editor-core:542	rule		Every change goes through a command (or `SceneEditTransaction`/`SetPropertyWithUndo`)
+editor-core:544	rule		Panels never write, move or remove files
+editor-core:546	rule		Reject invalid input without side effects; one undo step per successful mutation
+editor-core:548	rule		Track before you change, track created entities after you create them; `TrackSubtree` before…
+editor-core:550	rule		Signal component writes (`MarkModified`)
+editor-core:552	rule		Give continuous edits a merge key and break the merge when the drag ends
+editor-core:554	rule		Undo can fail; design for it
+editor-core:556	rule		Steps that don't change the scene say so (`ChangesScene() == false`)
+editor-core:558	rule		Mark every command's kind; mark session queries; mark `MayDefer` and `WaitsForAssets`
+editor-core:561	rule		Never serialize a document on the main thread for a save
+editor-core:563	rule		Take the save point after `BreakMerge`
+editor-core:565	rule		Commands that replace the scene, close the project or quit: `CheckUnsavedChanges` + `AfterSaves` +…
+editor-core:567	rule		The UI passes `force` only for what the person was asked about
+editor-core:569	rule		Only `SceneRecovery` writes recovery files; every scene replacement goes through `ResetScene`
+editor-core:571	rule		A scene being opened is read-only: check `CheckSceneEditable` outside `CommitEdit`
+editor-core:573	rule		Edits while playing are not recorded and are discarded by `play.stop`; say so in the result
+editor-core:575	rule		Commands never block a frame; polls own their data, allocate nothing per frame, wait by the clock
+editor-core:578	rule		Never `LoadAssetSync` in the editor or a game; load scenes through `SceneLoader`, release with…
+editor-core:580	rule		Tools count game time in fixed steps, never frames
+editor-core:582	rule		Code that writes a prefab sets the sync's baseline (`SetBaseline`) and marks instances synced…
+editor-core:585	rule		Code that records a scene step outside `CommitEdit` keeps override lists current…
+editor-core:587	rule		Never apply an outdated instance without `force`
+editor-core:589	rule		Place content through `EditorPlacement::Place`; the drop and its ghost use one request
+editor-core:591	rule		Files written for clients go through `ResolveOutputPath`
+editor-core:593	rule		Bump `ThumbnailCache::c_Version` when thumbnails would look different
+editor-core:595	rule		Never walk the scene or the asset directory per frame in UI code; use the cached views
+editor-core:604	hands-on	For game developers (using the editor)	Undo is your friend
+editor-core:606	hands-on	For game developers (using the editor)	Prefab round trip
+editor-core:609	hands-on	For game developers (using the editor)	Outdated instances
+editor-core:611	hands-on	For game developers (using the editor)	Play, pause, step
+editor-core:613	hands-on	For game developers (using the editor)	Game view resolutions
+editor-core:614	hands-on	For game developers (using the editor)	Recover after a crash
+editor-core:615	hands-on	For game developers (using the editor)	A first command script
+editor-core:618	hands-on	For game developers (using the editor)	Export your session as a regression script
+editor-core:623	hands-on	For engine developers (changing the editor)	Read the undo tests
+editor-core:625	hands-on	For engine developers (changing the editor)	Add a mutating command
+editor-core:628	hands-on	For engine developers (changing the editor)	Add a deferred command
+editor-core:631	hands-on	For engine developers (changing the editor)	Write a non-scene undo action
+editor-core:633	hands-on	For engine developers (changing the editor)	Trace a background save
+editor-core:635	hands-on	For engine developers (changing the editor)	Break and fix the guard
+editor-core:637	hands-on	For engine developers (changing the editor)	Extend placement
+editor-core:639	hands-on	For engine developers (changing the editor)	Recovery folding exercise
+editor-core:641	hands-on	For engine developers (changing the editor)	Camera math exercise
+editor-core:648	term		Editor core (`StrataEditorCore`)
+editor-core:649	term		`EditorContext`
+editor-core:650	term		`EditorHost`
+editor-core:651	term		Command
+editor-core:652	term		Command registry
+editor-core:653	term		JSON Schema
+editor-core:654	term		Command kind
+editor-core:655	term		Session results
+editor-core:656	term		`InvalidParameters` / `Failed`
+editor-core:657	term		Deferred command
+editor-core:658	term		Poll function
+editor-core:659	term		`MayDefer`
+editor-core:660	term		`WaitsForAssets`
+editor-core:661	term		Command runner
+editor-core:662	term		Command script
+editor-core:663	term		`expect`
+editor-core:664	term		`bind` / `$ref`
+editor-core:665	term		`until`
+editor-core:666	term		JSON pointer
+editor-core:667	term		Batch; atomic
+editor-core:668	term		Activity journal
+editor-core:669	term		Origin
+editor-core:670	term		Replay script
+editor-core:671	term		Undo step / action
+editor-core:672	term		Undo stack / history
+editor-core:673	term		Redo branch
+editor-core:674	term		Merge / merge key
+editor-core:675	term		No-op step
+editor-core:676	term		Break the merge
+editor-core:677	term		Action group
+editor-core:678	term		Serial
+editor-core:679	term		Save point
+editor-core:680	term		Generation
+editor-core:681	term		Memento / snapshot
+editor-core:682	term		`EntityState`
+editor-core:683	term		Scene edit transaction
+editor-core:684	term		Rollback
+editor-core:685	term		Sibling index
+editor-core:686	term		UUID / asset handle
+editor-core:687	term		`.meta` file
+editor-core:688	term		Running copy
+editor-core:689	term		Edited scene; active scene
+editor-core:690	term		Play / Simulate
+editor-core:691	term		Fixed step
+editor-core:692	term		Time dilation
+editor-core:693	term		Stepping
+editor-core:694	term		Game view / Scene view
+editor-core:695	term		Primary camera
+editor-core:696	term		Editor view
+editor-core:697	term		Preview lighting
+editor-core:698	term		Game shell
+editor-core:699	term		Simulated input
+editor-core:700	term		Input sequence
+editor-core:701	term		Snapshot (save)
+editor-core:702	term		Atomic write
+editor-core:703	term		Document claim
+editor-core:704	term		Publish
+editor-core:705	term		Coalescing
+editor-core:706	term		Unwritten settings
+editor-core:707	term		Discard scope
+editor-core:708	term		`force`
+editor-core:709	term		Recovery journal
+editor-core:710	term		Base hash
+editor-core:711	term		Structural step
+editor-core:712	term		Discarded (recovery)
+editor-core:713	term		Trash
+editor-core:714	term		Referencer
+editor-core:715	term		Prefab
+editor-core:716	term		Instance / instance root
+editor-core:717	term		Template id (`PrefabEntityID`)
+editor-core:718	term		Override
+editor-core:719	term		Apply / Revert / Unpack
+editor-core:720	term		Propagation
+editor-core:721	term		Baseline
+editor-core:722	term		Catch-up
+editor-core:723	term		Outdated
+editor-core:724	term		Part version / synced hash
+editor-core:725	term		Raycast
+editor-core:726	term		Spatial index / broad phase
+editor-core:727	term		Support function
+editor-core:728	term		Snapping
+editor-core:729	term		Placement ghost
+editor-core:730	term		Orbit camera
+editor-core:731	term		Pivot
+editor-core:732	term		Dolly / pan / fly
+editor-core:733	term		Reversed-Z
+editor-core:734	term		Framing
+editor-core:735	term		Thumbnail cache
+editor-core:736	term		Content stamp
+editor-core:737	term		Readback
+editor-core:738	term		Notification / toast
+editor-core:739	term		Headless
+editor-core:740	term		Asset scan
+editor-core:789	open		Not read in full: `EditorContext.cpp` beyond the functions cited (project open 365-487, scene load…
+editor-core:797	open		The engine pieces the area relies on were read only by their headers:…
+editor-core:800	open		Release of arrival not determined for: time dilation, per-scene editor cameras, scene switches in…
+editor-core:804	open		Whether the "Prefabs and the Asset tab's editors still save in the frame" limitation (RN 0.7.0)…
+editor-core:807	open		No screenshots were taken (no editor may be run in this survey); the screenshot list is a…
+editor-core:808	open		I did not check the feature test project (`StrataTests/FeatureTest/`) for which editor commands it…

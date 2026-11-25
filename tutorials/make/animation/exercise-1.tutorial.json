@@ -1,0 +1,45 @@
+{
+	"page": "make/animation",
+	"startsFrom": { "tutorial": "make/animation" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "animation.setController", "parameters": { "controller": "Animations/Player.stanimator",
+					"parameters": [ { "Name": "Speed", "Type": "Float" }, { "Name": "Grounded", "Type": "Bool", "Default": true }, { "Name": "Jump", "Type": "Trigger" },
+						{ "Name": "Crouching", "Type": "Bool", "Default": false } ],
+					"states": [ { "Name": "Idle", "Clip": "E9C1D4AC112447DE" },
+						{ "Name": "Walk", "Clip": "57D5825B3AB8DCFD", "Events": [ { "Name": "Footstep", "Time": 0.02 }, { "Name": "Footstep", "Time": 0.5 } ] },
+						{ "Name": "Run", "Clip": "76CC7E24795F51DA", "Events": [ { "Name": "Footstep", "Time": 0.28 }, { "Name": "Footstep", "Time": 0.76 } ] },
+						{ "Name": "Jump", "Clip": "5C84360EC5B352B3", "Loop": false },
+						{ "Name": "Crouch", "Clip": "DAF94FC182D3BE4B" } ],
+					"transitions": [
+						{ "AnyState": true, "To": "Jump", "Duration": 0.1, "Conditions": [ { "Parameter": "Jump", "Mode": "Set" } ] },
+						{ "From": "Idle", "To": "Walk", "Duration": 0.15, "Conditions": [ { "Parameter": "Speed", "Mode": "Greater", "Threshold": 0.1 } ] },
+						{ "From": "Walk", "To": "Idle", "Duration": 0.2, "Conditions": [ { "Parameter": "Speed", "Mode": "Less", "Threshold": 0.1 } ] },
+						{ "From": "Walk", "To": "Run", "Duration": 0.2, "Conditions": [ { "Parameter": "Speed", "Mode": "Greater", "Threshold": 4.5 } ] },
+						{ "From": "Run", "To": "Walk", "Duration": 0.2, "Conditions": [ { "Parameter": "Speed", "Mode": "Less", "Threshold": 4.5 } ] },
+						{ "From": "Jump", "To": "Idle", "Duration": 0.15, "ExitTime": 0.4,
+							"Conditions": [ { "Parameter": "Grounded", "Mode": "True" }, { "Parameter": "Speed", "Mode": "Less", "Threshold": 0.1 } ] },
+						{ "From": "Jump", "To": "Walk", "Duration": 0.15, "ExitTime": 0.4,
+							"Conditions": [ { "Parameter": "Grounded", "Mode": "True" }, { "Parameter": "Speed", "Mode": "Greater", "Threshold": 0.1 } ] },
+						{ "From": "Idle", "To": "Crouch", "Duration": 0.2, "Conditions": [ { "Parameter": "Crouching", "Mode": "True" } ] },
+						{ "From": "Crouch", "To": "Idle", "Duration": 0.2, "Conditions": [ { "Parameter": "Crouching", "Mode": "False" } ] } ] },
+					"checks": [
+						{ "pointer": "/controller/Parameters", "length": 4 },
+						{ "pointer": "/controller/States", "length": 5 },
+						{ "pointer": "/controller/Transitions", "length": 9 },
+						{ "pointer": "/clips/4/name", "equals": "Sitting" }
+					] },
+				{ "command": "edit.undo" },
+				{ "command": "animation.info", "parameters": { "asset": "Animations/Player.stanimator" },
+					"checks": [
+						{ "pointer": "/controller/Parameters", "length": 3 },
+						{ "pointer": "/controller/States", "length": 4 },
+						{ "pointer": "/controller/Transitions", "length": 7 }
+					] }
+			],
+			"endState": true
+		}
+	]
+}

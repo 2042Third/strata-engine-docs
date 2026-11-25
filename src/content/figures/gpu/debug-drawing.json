@@ -1,0 +1,276 @@
+{
+	"figures": [
+		{
+			"id": "overlays-off",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The Scene view of a white cube on a gray floor, the cube selected, with Grid, Outline and Gizmos off in the view's toolbar: only the finished image",
+			"caption": "The image alone, as the renderer finishes it. The cube is selected, but nothing marks the floor, the selection or the collider.",
+			"alt": "The editor's Scene view with a white cube on a plain gray floor under a sky. The Grid, Outline and Gizmos buttons above the view are off, and no line is drawn over the image.",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Crate",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										0
+									]
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.6,
+										0.55,
+										0.6
+									],
+									"Offset": [
+										0,
+										0.06,
+										0
+									]
+								}
+							}
+						},
+						"bind": {
+							"crate": "/id"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Main Camera"
+						},
+						"bind": {
+							"cam": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "cam"
+								}
+							]
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								}
+							]
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								2.4,
+								2.5,
+								3.3
+							],
+							"target": [
+								0,
+								0.4,
+								0
+							],
+							"fov": 40
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"grid": false,
+							"selectionOutline": false,
+							"sceneGizmos": false,
+							"gizmo": "None",
+							"stats": false
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 30
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "overlays-on",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The same view with Grid, Outline and Gizmos on: the grid's faint gray squares on the floor, clearest on the far floor near the top, a red and a blue axis line, an orange outline around the cube and a green collider box a little larger than it",
+			"caption": "The overlays on. The grid is the faint gray squares on the floor, clearest on the far floor near the top. The red and blue axis lines, the orange outline and the green collider box lie over the same image, and the cube hides the part of the red line inside it.",
+			"alt": "The same Scene view with the Grid, Outline and Gizmos buttons on. Faint gray grid squares, a little lighter than the floor, cover it and show best on the far floor at the top. A red and a blue axis line cross the floor. The cube has an orange outline inside a green box a little larger than the cube, and the red line stops at the cube and continues past it.",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Crate",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										0
+									]
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.6,
+										0.55,
+										0.6
+									],
+									"Offset": [
+										0,
+										0.06,
+										0
+									]
+								}
+							}
+						},
+						"bind": {
+							"crate": "/id"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Main Camera"
+						},
+						"bind": {
+							"cam": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "cam"
+								}
+							]
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								}
+							]
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								2.4,
+								2.5,
+								3.3
+							],
+							"target": [
+								0,
+								0.4,
+								0
+							],
+							"fov": 40
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"grid": true,
+							"selectionOutline": true,
+							"sceneGizmos": true,
+							"gizmo": "None",
+							"stats": false
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 30
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "entity-tints",
+			"kind": "scene",
+			"shows": "The LOD debug view on a small scene: both drawn entities, the white cube and the gray ground, tinted green for the finest level of detail over the finished image, with the cube's shaded face and its shadow still darker; the sky, no entity, untinted",
+			"caption": "The LOD view tints every entity drawn at its finest level of detail green over the finished image. Without the view the ground is gray and the cube white: all the green is the tint. The cube's shaded face and its shadow still show darker under it; the sky, which is no entity, is not tinted.",
+			"alt": "A cube on a ground plane under a gray sky. Cube and ground are both tinted green. The cube's top and right faces are light green and its left face, turned from the sun, is a darker green. Its shadow on the ground in front of it is darker still; the sky keeps its own color.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					-3.6,
+					1.9,
+					2.6
+				],
+				"target": [
+					0,
+					0.45,
+					0
+				],
+				"fov": 35
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"debugView": "lod",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Cube",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		}
+	]
+}

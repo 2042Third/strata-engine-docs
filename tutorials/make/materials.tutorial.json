@@ -1,0 +1,613 @@
+{
+	"page": "make/materials",
+	"startsFrom": {
+		"tutorial": "make/assets"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"endState": true,
+			"commands": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Gold.stmat"
+					},
+					"checks": [
+						{
+							"pointer": "/warnings",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Gold.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/BaseColor",
+							"equals": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							]
+						},
+						{
+							"pointer": "/values/Metallic",
+							"approx": 1,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/Roughness",
+							"approx": 0.3,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "MeshRenderer",
+						"values": {
+							"Material": "Materials/Gold.stmat"
+						}
+					},
+					"entityName": "coin-gold"
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Gold.stmat",
+						"properties": {
+							"Roughness": 1.0,
+							"Metallic": 0.0
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Roughness",
+							"approx": 1,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Gold.stmat",
+						"properties": {
+							"Roughness": 0.3,
+							"Metallic": 1.0
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/Roughness",
+							"approx": 0.3,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "scene.save"
+				}
+			]
+		},
+		{
+			"step": 2,
+			"endState": true,
+			"commands": [
+				{
+					"command": "asset.import",
+					"parameters": {
+						"files": [
+							"@RELEASE@/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_Color.jpg",
+							"@RELEASE@/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_MetallicRoughness.jpg",
+							"@RELEASE@/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_NormalGL.jpg"
+						],
+						"directory": "Textures/Metal"
+					},
+					"checks": [
+						{
+							"pointer": "/items",
+							"length": 3
+						}
+					]
+				},
+				{
+					"command": "asset.info",
+					"parameters": {
+						"asset": "Textures/Metal/Metal032_Color.jpg"
+					},
+					"until": {
+						"seconds": 120
+					},
+					"expect": {
+						"/importing": {
+							"equals": false
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/importSettings/Usage",
+							"equals": "Color"
+						}
+					]
+				},
+				{
+					"command": "asset.info",
+					"parameters": {
+						"asset": "Textures/Metal/Metal032_MetallicRoughness.jpg"
+					},
+					"until": {
+						"seconds": 120
+					},
+					"expect": {
+						"/importing": {
+							"equals": false
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/importSettings/Usage",
+							"equals": "Data"
+						}
+					]
+				},
+				{
+					"command": "asset.info",
+					"parameters": {
+						"asset": "Textures/Metal/Metal032_NormalGL.jpg"
+					},
+					"until": {
+						"seconds": 120
+					},
+					"expect": {
+						"/importing": {
+							"equals": false
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/importSettings/Usage",
+							"equals": "NormalMap"
+						}
+					]
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Ball.stmat",
+						"properties": {
+							"BaseColorMap": "Textures/Metal/Metal032_Color.jpg",
+							"MetallicRoughnessMap": "Textures/Metal/Metal032_MetallicRoughness.jpg",
+							"Metallic": 1.0,
+							"Roughness": 1.0,
+							"UVTiling": [
+								2.0,
+								2.0
+							]
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/warnings",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "MeshRenderer",
+						"values": {
+							"Material": "Materials/Ball.stmat"
+						}
+					},
+					"entityName": "Ball"
+				},
+				{
+					"command": "scene.save"
+				}
+			]
+		},
+		{
+			"step": 3,
+			"endState": true,
+			"commands": [
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Ball.stmat",
+						"properties": {
+							"NormalMap": "Textures/Metal/Metal032_NormalGL.jpg"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/warnings",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "asset.setImportSettings",
+					"parameters": {
+						"asset": "Textures/Metal/Metal032_NormalGL.jpg",
+						"settings": {
+							"Usage": "Color"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/importSettings/Usage",
+							"equals": "Color"
+						}
+					]
+				},
+				{
+					"command": "material.get",
+					"parameters": {
+						"material": "Materials/Ball.stmat"
+					},
+					"checks": [
+						{
+							"pointer": "/warnings",
+							"length": 1
+						},
+						{
+							"pointer": "/warnings/0/property",
+							"equals": "NormalMap"
+						},
+						{
+							"pointer": "/warnings/0/message",
+							"equals": "Metal032_NormalGL is imported as Color: its normals will be wrong"
+						}
+					]
+				},
+				{
+					"command": "asset.setImportSettings",
+					"parameters": {
+						"asset": "Textures/Metal/Metal032_NormalGL.jpg",
+						"settings": {
+							"Usage": "NormalMap"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/importSettings/Usage",
+							"equals": "NormalMap"
+						}
+					]
+				},
+				{
+					"command": "material.get",
+					"parameters": {
+						"material": "Materials/Ball.stmat"
+					},
+					"checks": [
+						{
+							"pointer": "/warnings",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "asset.setImportSettings",
+					"parameters": {
+						"asset": "Textures/Metal/Metal032_NormalGL.jpg",
+						"settings": {
+							"FlipGreen": true
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/importSettings/FlipGreen",
+							"equals": true
+						}
+					]
+				},
+				{
+					"command": "asset.setImportSettings",
+					"parameters": {
+						"asset": "Textures/Metal/Metal032_NormalGL.jpg",
+						"settings": {
+							"FlipGreen": false
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/importSettings/FlipGreen",
+							"equals": false
+						}
+					]
+				},
+				{
+					"command": "scene.save"
+				}
+			]
+		},
+		{
+			"step": 4,
+			"endState": true,
+			"commands": [
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Gold.stmat",
+						"properties": {
+							"EmissiveColor": [
+								1.0,
+								0.6,
+								0.1
+							],
+							"EmissiveIntensity": 50.0
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/EmissiveColor",
+							"equals": [
+								1.0,
+								0.6,
+								0.1
+							]
+						},
+						{
+							"pointer": "/values/EmissiveIntensity",
+							"approx": 50,
+							"tolerance": 0.01
+						}
+					]
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Scratch.stmat",
+						"properties": {
+							"BaseColor": [
+								0.2,
+								0.5,
+								1.0,
+								0.4
+							]
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/warnings",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Scratch",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/Scratch.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.5,
+									0
+								]
+							}
+						}
+					},
+					"bind": {
+						"scratch": "/id"
+					}
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Scratch.stmat",
+						"properties": {
+							"AlphaMode": "Mask",
+							"AlphaCutoff": 0.3
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/AlphaMode",
+							"equals": "Mask"
+						},
+						{
+							"pointer": "/values/AlphaCutoff",
+							"approx": 0.3,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/BaseColor/3",
+							"approx": 0.4,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Scratch.stmat",
+						"properties": {
+							"AlphaMode": "Blend"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/AlphaMode",
+							"equals": "Blend"
+						}
+					]
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Scratch.stmat",
+						"properties": {
+							"AlphaMode": "Opaque",
+							"BaseColor": [
+								1,
+								1,
+								1,
+								1
+							],
+							"Roughness": 0.0,
+							"Transmission": 1.0,
+							"IOR": 1.5
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/AlphaMode",
+							"equals": "Opaque"
+						},
+						{
+							"pointer": "/values/Roughness",
+							"approx": 0,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/Transmission",
+							"approx": 1,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/IOR",
+							"approx": 1.5,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "entity.delete",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "scratch"
+							}
+						]
+					}
+				},
+				{
+					"command": "scene.save"
+				}
+			]
+		},
+		{
+			"step": 5,
+			"endState": true,
+			"commands": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Chalk.stmat",
+						"properties": {
+							"BaseColor": [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/warnings",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/Chalk.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.0,
+									-1.5
+								],
+								"Scale": [
+									4,
+									2,
+									0.2
+								]
+							}
+						}
+					},
+					"bind": {
+						"wall": "/id"
+					}
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "albedo"
+					}
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Chalk.stmat",
+						"properties": {
+							"BaseColor": [
+								0.8,
+								0.8,
+								0.8,
+								1
+							]
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/BaseColor/0",
+							"approx": 0.8,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "entity.delete",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "wall"
+							}
+						]
+					}
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "none"
+					}
+				},
+				{
+					"command": "scene.save"
+				}
+			]
+		}
+	]
+}

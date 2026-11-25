@@ -1,0 +1,30 @@
+{
+	"description": "The C++ features a page's quotes and sketches may show, each with the page that teaches it (plan/style.md §9.1, rule cpp-feature; the seed is style.md's table, which the basics brief completes). The patterns are Python regular expressions, matched on the code without its comments and string literals. A feature whose home is neither the page nor in its Needs closure needs a :::question aside before its first fence that links the home.",
+	"features": [
+		{"feature": "the types int, float, double and bool", "home": "basics/programming-1", "patterns": ["\\b(int|float|double|bool)\\b"]},
+		{"feature": "variables and operators", "home": "basics/programming-1", "patterns": ["\\b[A-Za-z_]\\w*\\s*(=|\\+=|-=|\\*=|/=)\\s*[^=]"]},
+		{"feature": "if and else", "home": "basics/programming-1", "patterns": ["\\bif\\s*\\(", "\\belse\\b"]},
+		{"feature": "for and while loops", "home": "basics/programming-2", "patterns": ["\\bfor\\s*\\(", "\\bwhile\\s*\\("]},
+		{"feature": "functions", "home": "basics/programming-2", "patterns": ["\\b[A-Za-z_]\\w*\\s+[A-Za-z_]\\w*\\s*\\([^;{}]*\\)\\s*(const\\s*)?(override\\s*)?\\{?\\s*$", "\\breturn\\b"]},
+		{"feature": "std::vector and std::array", "home": "basics/programming-2", "patterns": ["\\bstd::(vector|array)\\b"]},
+		{"feature": "struct", "home": "basics/programming-2", "patterns": ["\\bstruct\\s+\\w"]},
+		{"feature": "class, public: and private:, member functions", "home": "basics/programming-3", "patterns": ["\\bclass\\s+\\w", "\\b(public|private|protected)\\s*:(?!:)", "\\b\\w+::\\w+\\s*\\(", "(\\.|->)\\w+\\s*\\("]},
+		{"feature": "references (& in a type)", "home": "basics/programming-3", "patterns": ["\\b[A-Za-z_][\\w:<>]*&\\s+[A-Za-z_]", "\\bconst\\s+[\\w:<>]+\\s*&(?!&)"]},
+		{"feature": "#include, header and source files", "home": "basics/programming-3", "patterns": ["^\\s*#\\s*include\\b", "^\\s*#\\s*pragma\\s+once\\b"]},
+		{"feature": "pointers (* in a type, ->, nullptr)", "home": "basics/programming-3", "patterns": ["\\b[A-Za-z_][\\w:<>]*\\*\\s+[A-Za-z_]", "->", "\\bnullptr\\b"]},
+		{"feature": "destructors", "home": "basics/cpp-memory", "patterns": ["~\\w+\\s*\\("]},
+		{"feature": "Ref<T>, Scope<T>, std::unique_ptr and std::shared_ptr", "home": "basics/cpp-memory", "patterns": ["\\b(Ref|Scope|CreateRef|CreateScope)\\s*<", "\\bstd::(unique_ptr|shared_ptr|make_unique|make_shared)\\b"]},
+		{"feature": "inheritance (: public)", "home": "basics/cpp-classes", "patterns": ["(class|struct)\\s+\\w+[^;{]*:\\s*(public|protected|private)\\s+\\w"]},
+		{"feature": "virtual, override and = 0", "home": "basics/cpp-classes", "patterns": ["\\bvirtual\\b", "\\boverride\\b", "\\)\\s*(const\\s*)?=\\s*0\\s*;"]},
+		{"feature": "templates", "home": "basics/cpp-generic", "patterns": ["\\btemplate\\s*<"]},
+		{"feature": "lambdas", "home": "basics/cpp-generic", "patterns": ["\\[[^\\]\\[]*\\]\\s*(\\([^)]*\\))?\\s*(mutable\\s*)?(->\\s*[\\w:<>]+\\s*)?\\{"]},
+		{"feature": "std::unordered_map and std::map", "home": "basics/cpp-generic", "patterns": ["\\bstd::(unordered_map|map)\\b"]},
+		{"feature": "the standard algorithms", "home": "basics/cpp-generic", "patterns": ["\\bstd::(sort|stable_sort|find|find_if|count|count_if|copy|copy_if|transform|accumulate|remove|remove_if|any_of|all_of|none_of|for_each|min_element|max_element|lower_bound|upper_bound|binary_search|fill|reverse|unique|partition)\\b"]},
+		{"feature": "std::move and && in a type", "home": "basics/cpp-modern", "patterns": ["\\bstd::(move|forward)\\b", "\\b[A-Za-z_][\\w:<>]*&&\\s+[A-Za-z_]"]},
+		{"feature": "constexpr", "home": "basics/cpp-modern", "patterns": ["\\bconstexpr\\b"]},
+		{"feature": "std::optional, has_value and value_or", "home": "basics/programming-3", "patterns": ["\\bstd::optional\\b", "\\.(has_value|value_or)\\s*\\("]},
+		{"feature": "std::variant, std::span and std::nullopt", "home": "basics/cpp-modern", "patterns": ["\\bstd::(variant|span|nullopt)\\b"]},
+		{"feature": "requires and concept", "home": "basics/cpp-modern", "patterns": ["\\brequires\\b", "\\bconcept\\s+\\w"]},
+		{"feature": "std::thread, std::mutex, std::atomic and memory_order", "home": "basics/threads", "patterns": ["\\bstd::(thread|jthread|mutex|lock_guard|scoped_lock|unique_lock|atomic|condition_variable)\\b", "\\bmemory_order\\w*\\b"]}
+	]
+}

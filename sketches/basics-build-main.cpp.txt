@@ -1,0 +1,9 @@
+#include "Greeting.h"
+
+#include <iostream>
+
+int main()
+{
+	std::cout << MakeGreeting("Coin Run") << "\n";
+	return 0;
+}

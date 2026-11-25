@@ -1,0 +1,3475 @@
+{
+	"terms": [
+		{
+			"id": "game-logic",
+			"term": "game logic",
+			"definition": "The rules of a game and how its things behave: what happens when the player presses a button, scores a point or loses.",
+			"home": "start/welcome",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "visual-scripting",
+			"term": "visual scripting",
+			"definition": "A way to write game logic by joining boxes with arrows on the screen instead of writing text.",
+			"home": "start/welcome",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "editor",
+			"term": "editor",
+			"definition": "The part of Strata in which you make a game: you lay out its levels, change the settings of its things and play it to test it.",
+			"home": "start/welcome",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "reading-track",
+			"term": "reading track",
+			"definition": "One of the book's three reading orders, each made for one kind of reader: those who make games, those who start from zero and those who want to know how Strata works inside.",
+			"home": "start/how-to-read",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "prerequisite",
+			"term": "prerequisite",
+			"definition": "A page to read before another one, listed at the top of that page under Before you start.",
+			"home": "start/how-to-read",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "primer",
+			"term": "primer",
+			"definition": "A page that teaches from zero something that is not special to Strata, such as mathematics or how a computer works.",
+			"home": "start/how-to-read",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "tutorial-checkpoint",
+			"term": "tutorial checkpoint",
+			"definition": "A download of a tutorial's work as it should be at the end of one section, from which you can continue.",
+			"home": "start/how-to-read",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "engine-release",
+			"term": "engine release",
+			"definition": "A version of Strata published for download and named by three numbers, such as 0.8.0.",
+			"home": "start/how-to-read",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "programming-language",
+			"term": "programming language",
+			"definition": "A written language with exact rules in which people tell a computer what to do, such as C++ or Python.",
+			"home": "start/how-to-read",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "source-code",
+			"term": "source code",
+			"definition": "Text written in a programming language, which tells a computer exactly what to do.",
+			"home": "start/how-to-read",
+			"aliases": [
+				"code"
+			],
+			"avoid": []
+		},
+		{
+			"id": "comment",
+			"term": "comment",
+			"definition": "Text in source code that the computer skips, written to explain the code to the people who read it.",
+			"home": "start/how-to-read",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "pseudocode",
+			"term": "pseudocode",
+			"definition": "Steps written in a form close to source code but in plain words, for people to read and for no computer to run.",
+			"home": "start/how-to-read",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "operating-system",
+			"term": "operating system",
+			"definition": "The software that a computer runs first when it is switched on, and that runs all other software on it, such as Windows, Linux or macOS.",
+			"home": "start/install",
+			"aliases": [
+				"OS"
+			],
+			"avoid": []
+		},
+		{
+			"id": "gpu",
+			"term": "GPU",
+			"definition": "The part of a computer that draws pictures, built to do the same small calculation on very many numbers at once.",
+			"home": "start/install",
+			"aliases": [
+				"graphics processing unit",
+				"graphics card"
+			],
+			"avoid": []
+		},
+		{
+			"id": "driver",
+			"term": "driver",
+			"definition": "Software that lets the operating system and other software use one piece of hardware, such as the GPU.",
+			"home": "start/install",
+			"aliases": [
+				"device driver"
+			],
+			"avoid": []
+		},
+		{
+			"id": "build-tools",
+			"term": "build tools",
+			"definition": "The software that turns C++ source code into a form that a computer can run.",
+			"home": "start/install",
+			"aliases": [
+				"C++ build tools",
+				"toolchain"
+			],
+			"avoid": []
+		},
+		{
+			"id": "log",
+			"term": "log",
+			"definition": "The list of messages that Strata or a game writes, one line each, about what it is doing, which you read to find out what went wrong.",
+			"home": "start/install",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "project",
+			"term": "project",
+			"definition": "Everything that one game is made of, kept together and opened as a whole: its levels, pictures, sounds, code and settings.",
+			"home": "start/first-game",
+			"aliases": [
+				"game project"
+			],
+			"avoid": []
+		},
+		{
+			"id": "script",
+			"term": "script",
+			"definition": "A piece of C++ source code that gives things in a game their behavior, such as making a coin spin.",
+			"home": "start/first-game",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "build",
+			"term": "build",
+			"definition": "Turning a project's source code into a form that the computer can run, as Strata does with its scripts before you play, or what that work makes.",
+			"home": "start/first-game",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "scene",
+			"term": "scene",
+			"definition": "One level, menu or other place of a game, kept as a list of everything in it.",
+			"home": "start/first-game",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "entity",
+			"term": "entity",
+			"definition": "One thing in a scene, such as the player, a coin, a light or the camera; in C++, the name of two ways to point at one: Strata's own, which must not be kept, and a script's, which may be.",
+			"home": "start/first-game",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "component",
+			"term": "component",
+			"definition": "One block of data attached to an entity that gives it one ability, such as a place in the scene, a shape to draw or a body for physics.",
+			"home": "start/first-game",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "game-engine",
+			"term": "game engine",
+			"definition": "Software that does the work most games share, such as drawing pictures, playing sounds, moving things by physics and reading the player's controls, so that each game adds only its own content and rules.",
+			"home": "start/what-an-engine-is",
+			"aliases": [
+				"engine"
+			],
+			"avoid": []
+		},
+		{
+			"id": "game-loop",
+			"term": "game loop",
+			"definition": "The cycle that runs a game again and again: read the player's input, change the game, draw a picture and start again.",
+			"home": "start/what-an-engine-is",
+			"aliases": [
+				"frame loop",
+				"main loop"
+			],
+			"avoid": []
+		},
+		{
+			"id": "frame",
+			"term": "frame",
+			"definition": "One pass of the game loop, which reads the input, changes the game and draws one picture.",
+			"home": "start/what-an-engine-is",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "frame-rate",
+			"term": "frame rate",
+			"definition": "How many frames a game finishes in one second.",
+			"home": "start/what-an-engine-is",
+			"aliases": [
+				"frames per second",
+				"FPS"
+			],
+			"avoid": []
+		},
+		{
+			"id": "frame-time",
+			"term": "frame time",
+			"definition": "The time one frame takes from its start to the start of the next, usually given in milliseconds.",
+			"home": "start/what-an-engine-is",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "export",
+			"term": "export",
+			"definition": "Making a copy of a game from its project that players can start and play without the editor.",
+			"home": "start/what-an-engine-is",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "runtime",
+			"term": "runtime",
+			"definition": "The part of Strata that plays an exported game, copied into every export under the game's name.",
+			"home": "start/what-an-engine-is",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "asset",
+			"term": "asset",
+			"definition": "A piece of content that a game uses, such as a 3D shape, a picture, a sound or a scene, kept with its project.",
+			"home": "start/what-an-engine-is",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "renderer",
+			"term": "renderer",
+			"definition": "The part of a game engine that draws the scene as a picture in every frame, with the help of the GPU.",
+			"home": "start/what-an-engine-is",
+			"aliases": [
+				"rendering"
+			],
+			"avoid": []
+		},
+		{
+			"id": "pixel",
+			"term": "pixel",
+			"definition": "One of the tiny dots of color that make up a picture on a screen.",
+			"home": "start/what-an-engine-is",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "shader",
+			"term": "shader",
+			"definition": "A small piece of source code that the GPU runs very many times at once, for example once for each pixel, to compute a picture.",
+			"home": "start/what-an-engine-is",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "program",
+			"term": "program",
+			"definition": "A set of instructions that tells a computer how to do a task, stored so that the computer can run it whenever it is asked.",
+			"home": "basics/computer",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "machine-instruction",
+			"term": "machine instruction",
+			"definition": "One small step that a processor can do, such as adding two numbers or copying a number to another place.",
+			"home": "basics/computer",
+			"aliases": [
+				"processor instruction"
+			],
+			"avoid": []
+		},
+		{
+			"id": "machine-code",
+			"term": "machine code",
+			"definition": "A program written as machine instructions, the numbers that a processor reads directly.",
+			"home": "basics/computer",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "processor",
+			"term": "processor",
+			"definition": "The part of a computer that runs programs by doing their machine instructions one after another, billions of times each second.",
+			"home": "basics/computer",
+			"aliases": [
+				"CPU",
+				"central processing unit"
+			],
+			"avoid": []
+		},
+		{
+			"id": "processor-core",
+			"term": "processor core",
+			"definition": "One complete unit inside a processor that runs machine instructions on its own, so that a processor with eight of them can do eight things at once.",
+			"home": "basics/computer",
+			"aliases": [
+				"CPU core"
+			],
+			"avoid": []
+		},
+		{
+			"id": "memory",
+			"term": "memory",
+			"definition": "The part of a computer that holds the running programs and the data they work on, as a long row of numbered cells that empties when the computer is switched off.",
+			"home": "basics/computer",
+			"aliases": [
+				"RAM",
+				"main memory"
+			],
+			"avoid": []
+		},
+		{
+			"id": "byte",
+			"term": "byte",
+			"definition": "One cell of memory, which holds a whole number from 0 to 255; sizes of memory are counted in them, as in KB and GB.",
+			"home": "basics/computer",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "memory-address",
+			"term": "memory address",
+			"definition": "The number of one byte in memory, used to find it the way a house number finds a house.",
+			"home": "basics/computer",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "storage",
+			"term": "storage",
+			"definition": "The part of a computer that keeps programs and data while the computer is switched off.",
+			"home": "basics/computer",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "process",
+			"term": "process",
+			"definition": "A program while it runs, with its own memory, which the operating system gives it.",
+			"home": "basics/computer",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "stack",
+			"term": "stack",
+			"definition": "A region of a process's memory that works like a pile of plates: the program puts short-lived data on top and always removes the newest first.",
+			"home": "basics/computer",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "heap",
+			"term": "heap",
+			"definition": "A region of a process's memory where a program asks for space of any size at any time and gives it back when it is done.",
+			"home": "basics/computer",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "cpu-cache",
+			"term": "CPU cache",
+			"definition": "A small, fast memory inside the processor that keeps copies of the data used most recently, so that the processor waits less.",
+			"home": "basics/computer",
+			"aliases": [
+				"processor cache"
+			],
+			"avoid": []
+		},
+		{
+			"id": "cache-line",
+			"term": "cache line",
+			"definition": "The block of bytes, often 64, that the CPU cache copies from memory or back as one piece.",
+			"home": "basics/computer",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "simd",
+			"term": "SIMD",
+			"definition": "Machine instructions that do the same calculation on several numbers at once, such as four additions in one step.",
+			"home": "basics/computer",
+			"aliases": [
+				"single instruction, multiple data"
+			],
+			"avoid": []
+		},
+		{
+			"id": "terminal",
+			"term": "terminal",
+			"definition": "A program in which you write commands as lines of text and read the text they print.",
+			"home": "basics/tools",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "shell",
+			"term": "shell",
+			"definition": "The program inside a terminal that reads each command you write and runs it, such as PowerShell, bash or zsh.",
+			"home": "basics/tools",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "terminal-command",
+			"term": "terminal command",
+			"definition": "One line of text written in a terminal that runs a program, with the program's name first and the words it should work on after it.",
+			"home": "basics/tools",
+			"aliases": [
+				"shell command",
+				"command line"
+			],
+			"avoid": []
+		},
+		{
+			"id": "command-line-argument",
+			"term": "command-line argument",
+			"definition": "A word written after a program's name in a terminal command, which the program reads to know what to do.",
+			"home": "basics/tools",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "file",
+			"term": "file",
+			"definition": "A named piece of data kept on storage, such as a picture, a text or a program.",
+			"home": "basics/tools",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "folder",
+			"term": "folder",
+			"definition": "A named place on storage that groups files and can hold more such places inside it.",
+			"home": "basics/tools",
+			"aliases": [],
+			"avoid": [
+				"directory"
+			]
+		},
+		{
+			"id": "path",
+			"term": "path",
+			"definition": "The text that says where a file or folder is, by naming each folder on the way to it.",
+			"home": "basics/tools",
+			"aliases": [
+				"file path"
+			],
+			"avoid": []
+		},
+		{
+			"id": "current-folder",
+			"term": "current folder",
+			"definition": "The folder a terminal works in, where it looks first for the files that a command names.",
+			"home": "basics/tools",
+			"aliases": [
+				"working folder"
+			],
+			"avoid": [
+				"working directory",
+				"current directory"
+			]
+		},
+		{
+			"id": "absolute-path",
+			"term": "absolute path",
+			"definition": "A path that starts at the top of the storage, such as C:\\ on Windows or / on Linux, so that it names the same file from any current folder.",
+			"home": "basics/tools",
+			"aliases": [
+				"full path"
+			],
+			"avoid": []
+		},
+		{
+			"id": "standard-output",
+			"term": "standard output",
+			"definition": "The stream of text that a program prints, which a terminal shows unless the command sends it elsewhere.",
+			"home": "basics/tools",
+			"aliases": [
+				"stdout"
+			],
+			"avoid": []
+		},
+		{
+			"id": "standard-error",
+			"term": "standard error",
+			"definition": "A second stream of text that a program prints, kept for its error messages so that they are seen even when the standard output goes elsewhere.",
+			"home": "basics/tools",
+			"aliases": [
+				"stderr"
+			],
+			"avoid": []
+		},
+		{
+			"id": "standard-input",
+			"term": "standard input",
+			"definition": "The stream of text that a program reads, which the terminal fills with what you write or with what another program sends.",
+			"home": "basics/tools",
+			"aliases": [
+				"stdin"
+			],
+			"avoid": []
+		},
+		{
+			"id": "pipe",
+			"term": "pipe",
+			"definition": "A link written | between two terminal commands, which sends the standard output of the first to the standard input of the second.",
+			"home": "basics/tools",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "exit-code",
+			"term": "exit code",
+			"definition": "The whole number that a program gives the operating system when it ends: 0 when it worked, another number when it failed.",
+			"home": "basics/tools",
+			"aliases": [
+				"exit status"
+			],
+			"avoid": []
+		},
+		{
+			"id": "environment-variable",
+			"term": "environment variable",
+			"definition": "A named piece of text that each process carries, which programs read to learn settings such as where to find other programs.",
+			"home": "basics/tools",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "user-data-folder",
+			"term": "user data folder",
+			"definition": "The folder where the operating system keeps the settings and records that programs save for each user, such as %LOCALAPPDATA% on Windows.",
+			"home": "basics/tools",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "code-editor",
+			"term": "code editor",
+			"definition": "A program for writing source code, which colors it, marks mistakes and completes names while you write, such as Visual Studio Code.",
+			"home": "basics/tools",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "value",
+			"term": "value",
+			"definition": "One piece of data that a program works with, such as the number 3, the text \"Coin\" or true.",
+			"home": "basics/programming-1",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "type",
+			"term": "type",
+			"definition": "The kind of a value, which decides what it can hold and what can be done with it, such as a whole number, a number with a fraction or true and false.",
+			"home": "basics/programming-1",
+			"aliases": [
+				"data type"
+			],
+			"avoid": []
+		},
+		{
+			"id": "boolean",
+			"term": "boolean",
+			"definition": "A value of the type bool, which is either true or false.",
+			"home": "basics/programming-1",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "variable",
+			"term": "variable",
+			"definition": "A named place in memory that holds one value of one type, which the program can read and change.",
+			"home": "basics/programming-1",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "statement",
+			"term": "statement",
+			"definition": "One complete step of source code, such as storing a value in a variable; in C++ most of them end with a semicolon.",
+			"home": "basics/programming-1",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "assignment",
+			"term": "assignment",
+			"definition": "A statement that stores a new value in a variable, written with = in C++, as in speed = 2.",
+			"home": "basics/programming-1",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "operator",
+			"term": "operator",
+			"definition": "A symbol that computes a value from other values, such as + for adding or < for comparing.",
+			"home": "basics/programming-1",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "expression",
+			"term": "expression",
+			"definition": "A piece of code that computes a value, such as speed * 2.",
+			"home": "basics/programming-1",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "comparison-operator",
+			"term": "comparison operator",
+			"definition": "An operator that compares two values and gives true or false, such as == for equal or < for less than.",
+			"home": "basics/programming-1",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "logical-operator",
+			"term": "logical operator",
+			"definition": "An operator that joins true-or-false values, such as && (and) and || (or).",
+			"home": "basics/programming-1",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "condition",
+			"term": "condition",
+			"definition": "An expression whose value is true or false, which decides what the program does next.",
+			"home": "basics/programming-1",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "if-statement",
+			"term": "if statement",
+			"definition": "A statement that runs a piece of code only when its condition is true, and can run another piece, after else, when it is false.",
+			"home": "basics/programming-1",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "switch-statement",
+			"term": "switch statement",
+			"definition": "A statement that compares one value with a list of cases and runs the code of the case that matches.",
+			"home": "basics/programming-1",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "scope",
+			"term": "scope",
+			"definition": "The part of the source code, usually between { and }, in which a name can be used.",
+			"home": "basics/programming-1",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "scoped-enumeration",
+			"term": "scoped enumeration",
+			"definition": "A type whose values are a fixed list of names, each written after the type's name and ::, such as CursorMode::Locked.",
+			"home": "basics/programming-1",
+			"aliases": [
+				"enum class",
+				"scoped enum"
+			],
+			"avoid": []
+		},
+		{
+			"id": "namespace",
+			"term": "namespace",
+			"definition": "A named group of names in C++, written before a name with ::, as in glm::vec3.",
+			"home": "basics/programming-1",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "loop",
+			"term": "loop",
+			"definition": "Code that runs again and again, while a condition holds or once for each item of a list.",
+			"home": "basics/programming-2",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "for-loop",
+			"term": "for loop",
+			"definition": "A loop that counts: it gives a variable a first value, runs while a condition holds and changes the variable after each pass.",
+			"home": "basics/programming-2",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "while-loop",
+			"term": "while loop",
+			"definition": "A loop that runs its code for as long as its condition is true.",
+			"home": "basics/programming-2",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "function",
+			"term": "function",
+			"definition": "A named piece of code that does one task, which other code can run by its name and give values to.",
+			"home": "basics/programming-2",
+			"aliases": [],
+			"avoid": [
+				"subroutine",
+				"procedure"
+			]
+		},
+		{
+			"id": "function-call",
+			"term": "function call",
+			"definition": "Running a function from another place in the code, written as its name followed by parentheses.",
+			"home": "basics/programming-2",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "parameter",
+			"term": "parameter",
+			"definition": "A variable of a function that receives a value each time the function is called.",
+			"home": "basics/programming-2",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "function-argument",
+			"term": "function argument",
+			"definition": "A value given to a function when it is called, which one of its parameters receives.",
+			"home": "basics/programming-2",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "return-value",
+			"term": "return value",
+			"definition": "The value a function gives back to the code that called it.",
+			"home": "basics/programming-2",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "local-variable",
+			"term": "local variable",
+			"definition": "A variable made inside a function, which exists only while that function runs.",
+			"home": "basics/programming-2",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "static-member-function",
+			"term": "static member function",
+			"definition": "A function that belongs to a type and is called through the type's name and ::, as in Input::IsActionDown, without a value of that type.",
+			"home": "basics/programming-2",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "array",
+			"term": "array",
+			"definition": "A list of a fixed number of values of one type, kept side by side in memory and found by their position.",
+			"home": "basics/programming-2",
+			"aliases": [
+				"std::array"
+			],
+			"avoid": []
+		},
+		{
+			"id": "array-index",
+			"term": "array index",
+			"definition": "The number of a value's position in an array, counted from 0.",
+			"home": "basics/programming-2",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "dynamic-array",
+			"term": "dynamic array",
+			"definition": "An array that can grow and shrink while the program runs.",
+			"home": "basics/programming-2",
+			"aliases": [
+				"std::vector"
+			],
+			"avoid": []
+		},
+		{
+			"id": "struct",
+			"term": "struct",
+			"definition": "A type that groups several named values, possibly of different types, into one, such as a position with x, y and z.",
+			"home": "basics/programming-2",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "member",
+			"term": "member",
+			"definition": "One of the named values or functions that belong to a struct, reached with a dot, as in position.x.",
+			"home": "basics/programming-2",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "string",
+			"term": "string",
+			"definition": "A value that holds text, such as \"Coin Run\".",
+			"home": "basics/programming-2",
+			"aliases": [
+				"text string",
+				"std::string"
+			],
+			"avoid": []
+		},
+		{
+			"id": "class",
+			"term": "class",
+			"definition": "A type that groups values and the functions that work on them, and can hide some of them from other code.",
+			"home": "basics/programming-3",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "object",
+			"term": "object",
+			"definition": "One value of a class type, with its own copy of the data the class describes.",
+			"home": "basics/programming-3",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "member-function",
+			"term": "member function",
+			"definition": "A function that belongs to a class or struct and works on one object of it, called with a dot, as in coin.Spin().",
+			"home": "basics/programming-3",
+			"aliases": [
+				"method"
+			],
+			"avoid": []
+		},
+		{
+			"id": "constructor",
+			"term": "constructor",
+			"definition": "A member function that runs when an object is made and gives its data their first values.",
+			"home": "basics/programming-3",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "inheritance",
+			"term": "inheritance",
+			"definition": "Making a new class from an existing one, so that the new class has every member of the old one and can add more or change some.",
+			"home": "basics/programming-3",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "base-class",
+			"term": "base class",
+			"definition": "The class that another class is made from by inheritance.",
+			"home": "basics/programming-3",
+			"aliases": [
+				"parent class"
+			],
+			"avoid": []
+		},
+		{
+			"id": "derived-class",
+			"term": "derived class",
+			"definition": "A class made from a base class by inheritance.",
+			"home": "basics/programming-3",
+			"aliases": [
+				"subclass",
+				"child class"
+			],
+			"avoid": []
+		},
+		{
+			"id": "c-reference",
+			"term": "C++ reference",
+			"definition": "Another name for an existing variable or object, written with & in its type, so that code works on the original instead of a copy.",
+			"home": "basics/programming-3",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "pointer",
+			"term": "pointer",
+			"definition": "A variable that holds the memory address of a value, written with * in its type; -> reaches the members of what it points to.",
+			"home": "basics/programming-3",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "null-pointer",
+			"term": "null pointer",
+			"definition": "A pointer that points to nothing, written nullptr, which code must check for before it uses the pointer.",
+			"home": "basics/programming-3",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "optional-value",
+			"term": "optional value",
+			"definition": "A value that may be missing, such as the std::optional that Game::ReadSaveText returns, which code checks with has_value before it uses it.",
+			"home": "basics/programming-3",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "template-argument",
+			"term": "template argument",
+			"definition": "A type or value written in angle brackets after a name, such as float in GetProperty<float>, which chooses the version of the code to use.",
+			"home": "basics/programming-3",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "header-file",
+			"term": "header file",
+			"definition": "A file of C++ source code, often ending in .h, that declares names so that other files can use them.",
+			"home": "basics/programming-3",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "source-file",
+			"term": "source file",
+			"definition": "A file of C++ source code, often ending in .cpp, that holds the full code of functions.",
+			"home": "basics/programming-3",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "include-directive",
+			"term": "include directive",
+			"definition": "A line such as #include \"Coin.h\" that copies the text of a header file into a source file before the code is turned into a program.",
+			"home": "basics/programming-3",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "declaration",
+			"term": "declaration",
+			"definition": "A line of code that names a function, class or variable and gives its type, so that other code can use it.",
+			"home": "basics/programming-3",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "compile-error",
+			"term": "compile error",
+			"definition": "An error that the build tools report when source code breaks a rule of C++, so that no new program is made.",
+			"home": "basics/programming-3",
+			"aliases": [
+				"compiler error"
+			],
+			"avoid": []
+		},
+		{
+			"id": "compile-time",
+			"term": "compile time",
+			"definition": "The time when the build tools turn source code into a program, before the program runs.",
+			"home": "basics/programming-3",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "bug",
+			"term": "bug",
+			"definition": "A mistake in a program that makes it do something its maker did not mean.",
+			"home": "basics/debugging",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "debugging",
+			"term": "debugging",
+			"definition": "Finding the cause of a bug and removing it.",
+			"home": "basics/debugging",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "debugger",
+			"term": "debugger",
+			"definition": "A program that runs or watches another program and lets you stop it, look at its variables and run it line by line.",
+			"home": "basics/debugging",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "attaching-a-debugger",
+			"term": "attaching a debugger",
+			"definition": "Connecting a debugger to a process that is already running, such as the editor's.",
+			"home": "basics/debugging",
+			"aliases": [
+				"attach to process"
+			],
+			"avoid": []
+		},
+		{
+			"id": "breakpoint",
+			"term": "breakpoint",
+			"definition": "A mark on a line of code where the debugger stops the program before that line runs.",
+			"home": "basics/debugging",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "stepping-through-code",
+			"term": "stepping through code",
+			"definition": "Running a stopped program in the debugger one line or one function call at a time.",
+			"home": "basics/debugging",
+			"aliases": [
+				"step over",
+				"step into",
+				"step out"
+			],
+			"avoid": []
+		},
+		{
+			"id": "call-stack",
+			"term": "call stack",
+			"definition": "The list of the function calls in progress at one moment, each waiting for the one it called, as a debugger shows it.",
+			"home": "basics/debugging",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "stack-frame",
+			"term": "stack frame",
+			"definition": "The part of the stack that one function call uses for its parameters and local variables.",
+			"home": "basics/debugging",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "crash",
+			"term": "crash",
+			"definition": "The sudden end of a program because it did something not allowed, such as reading memory it does not own.",
+			"home": "basics/debugging",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "stack-trace",
+			"term": "stack trace",
+			"definition": "The call stack written down when a program crashed or reported an error, naming the function and line of each call.",
+			"home": "basics/debugging",
+			"aliases": [
+				"backtrace"
+			],
+			"avoid": []
+		},
+		{
+			"id": "debug-information",
+			"term": "debug information",
+			"definition": "Data kept beside a program that tells a debugger which line of source code and which variable each part of the running program comes from.",
+			"home": "basics/debugging",
+			"aliases": [
+				"debug symbols"
+			],
+			"avoid": []
+		},
+		{
+			"id": "version-control",
+			"term": "version control",
+			"definition": "Keeping every saved state of a set of files, so that you can compare them, return to an old state and work with others.",
+			"home": "basics/git",
+			"aliases": [
+				"source control"
+			],
+			"avoid": []
+		},
+		{
+			"id": "git",
+			"term": "git",
+			"definition": "The version control program most programmers use, which keeps the history of a set of files in a repository.",
+			"home": "basics/git",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "repository",
+			"term": "repository",
+			"definition": "A folder whose files git watches, together with the whole history of their changes.",
+			"home": "basics/git",
+			"aliases": [
+				"repo"
+			],
+			"avoid": []
+		},
+		{
+			"id": "commit",
+			"term": "commit",
+			"definition": "One saved state of a repository's files, with a message and a name of letters and digits such as 822a7a46.",
+			"home": "basics/git",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "clone",
+			"term": "clone",
+			"definition": "A copy of a whole repository, history included, made on your computer.",
+			"home": "basics/git",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "git-branch",
+			"term": "git branch",
+			"definition": "A named line of commits in a repository, which keeps one piece of work apart from the main line until it is ready.",
+			"home": "basics/git",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "diff",
+			"term": "diff",
+			"definition": "A list of the lines that changed between two states of some files: the lines removed and the lines added.",
+			"home": "basics/git",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "power",
+			"term": "power",
+			"definition": "A number multiplied by itself a given number of times, such as 2³ = 2 × 2 × 2 = 8.",
+			"home": "basics/numbers",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "exponent",
+			"term": "exponent",
+			"definition": "The small raised number of a power, which says how many times the number is multiplied, such as the 3 in 2³.",
+			"home": "basics/numbers",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "binary",
+			"term": "binary",
+			"definition": "Writing numbers with the two digits 0 and 1, in which each place is worth twice the place to its right.",
+			"home": "basics/numbers",
+			"aliases": [
+				"base 2"
+			],
+			"avoid": []
+		},
+		{
+			"id": "bit",
+			"term": "bit",
+			"definition": "One binary digit, 0 or 1, the smallest piece of data a computer stores.",
+			"home": "basics/numbers",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "hexadecimal",
+			"term": "hexadecimal",
+			"definition": "Writing numbers with sixteen digits, 0 to 9 and A to F, so that each digit stands for four bits.",
+			"home": "basics/numbers",
+			"aliases": [
+				"hex",
+				"base 16"
+			],
+			"avoid": []
+		},
+		{
+			"id": "integer",
+			"term": "integer",
+			"definition": "A whole number, such as -3, 0 or 42, or a C++ type such as int that holds whole numbers within a fixed range.",
+			"home": "basics/numbers",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "unsigned-integer",
+			"term": "unsigned integer",
+			"definition": "An integer type that holds only zero and positive numbers, such as uint32_t.",
+			"home": "basics/numbers",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "twos-complement",
+			"term": "two's complement",
+			"definition": "The way computers store signed integers, in which the top bit counts as a large negative amount, so that adding works the same for every sign.",
+			"home": "basics/numbers",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "integer-overflow",
+			"term": "integer overflow",
+			"definition": "A result too large or too small for its integer type, which then wraps around to the other end of the range or breaks a rule of C++.",
+			"home": "basics/numbers",
+			"aliases": [
+				"overflow"
+			],
+			"avoid": []
+		},
+		{
+			"id": "bitwise-operator",
+			"term": "bitwise operator",
+			"definition": "An operator that works on each bit of an integer separately: & (and), | (or), ^ (exclusive or) and ~ (not).",
+			"home": "basics/numbers",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "bit-shift",
+			"term": "bit shift",
+			"definition": "Moving all the bits of an integer to the left or right by some places, written << or >>, which multiplies or divides by a power of two.",
+			"home": "basics/numbers",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "bit-mask",
+			"term": "bit mask",
+			"definition": "An integer whose 1 bits mark the bits of another integer to keep, clear or change with a bitwise operator.",
+			"home": "basics/numbers",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "floating-point-number",
+			"term": "floating-point number",
+			"definition": "A number with a fractional part, stored as a sign, a fixed number of binary digits and an exponent, such as the C++ type float.",
+			"home": "basics/numbers",
+			"aliases": [
+				"floating point"
+			],
+			"avoid": []
+		},
+		{
+			"id": "precision",
+			"term": "precision",
+			"definition": "How finely a number type can tell values apart: the gap between one number it can store and the next.",
+			"home": "basics/numbers",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "rounding-error",
+			"term": "rounding error",
+			"definition": "The small difference between an exact result and the nearest number that a type can store.",
+			"home": "basics/numbers",
+			"aliases": [
+				"round-off error"
+			],
+			"avoid": []
+		},
+		{
+			"id": "determinism",
+			"term": "determinism",
+			"definition": "Giving exactly the same results, bit for bit, every time the same inputs are used.",
+			"home": "basics/numbers",
+			"aliases": [
+				"deterministic"
+			],
+			"avoid": []
+		},
+		{
+			"id": "logarithm",
+			"term": "logarithm",
+			"definition": "The exponent to which a base must be raised to give a number: for base 10, the answer for 1000 is 3, because 10³ = 1000.",
+			"home": "basics/numbers",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "exposure-stop",
+			"term": "exposure stop",
+			"definition": "A factor of two in the amount of light: one stop brighter is twice the light, and two stops are four times the light.",
+			"home": "basics/numbers",
+			"aliases": [
+				"EV stop"
+			],
+			"avoid": []
+		},
+		{
+			"id": "decibel",
+			"term": "decibel",
+			"definition": "A unit for loudness and other ratios, in which adding 10 of them means ten times the energy.",
+			"home": "basics/numbers",
+			"aliases": [
+				"dB"
+			],
+			"avoid": []
+		},
+		{
+			"id": "eulers-number",
+			"term": "Euler's number",
+			"definition": "The number e, about 2.71828, the base of the exponential function.",
+			"home": "basics/numbers",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "exponential-function",
+			"term": "exponential function",
+			"definition": "The rule that turns x into e raised to the power x, whose result grows by the same factor for each equal step of x.",
+			"home": "basics/numbers",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "data-structure",
+			"term": "data structure",
+			"definition": "A way of arranging data in memory so that some operations on it are fast, such as an array or a hash map.",
+			"home": "basics/data-structures",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "algorithm",
+			"term": "algorithm",
+			"definition": "An exact list of steps that solves a problem, such as finding a name in a sorted list.",
+			"home": "basics/data-structures",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "big-o-notation",
+			"term": "big-O notation",
+			"definition": "A way to say how the work of an algorithm grows with the size n of its input, written as O(n), O(1) and so on.",
+			"home": "basics/data-structures",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "constant-time",
+			"term": "constant time",
+			"definition": "Work that takes the same time however much data there is, written O(1).",
+			"home": "basics/data-structures",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "binary-search",
+			"term": "binary search",
+			"definition": "Finding a value in a sorted array by looking at the middle element and halving the part left to search each time.",
+			"home": "basics/data-structures",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "linked-list",
+			"term": "linked list",
+			"definition": "A list in which each item holds a pointer to the next one, so that items can be added anywhere but are visited in order.",
+			"home": "basics/data-structures",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "node",
+			"term": "node",
+			"definition": "One item of a linked list or a similar data structure, with its data and its links to other items.",
+			"home": "basics/data-structures",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "hash",
+			"term": "hash",
+			"definition": "A number of fixed size computed from data of any length, always the same for the same data and almost never the same for different data.",
+			"home": "basics/data-structures",
+			"aliases": [
+				"hash value"
+			],
+			"avoid": []
+		},
+		{
+			"id": "hash-function",
+			"term": "hash function",
+			"definition": "The function that computes a hash from data.",
+			"home": "basics/data-structures",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "hash-map",
+			"term": "hash map",
+			"definition": "A data structure that stores values under keys, such as names, and finds the value of a key in about constant time by computing from the key where to look.",
+			"home": "basics/data-structures",
+			"aliases": [
+				"hash table"
+			],
+			"avoid": []
+		},
+		{
+			"id": "queue",
+			"term": "queue",
+			"definition": "A list in which items join at the back and leave from the front, in the order they came.",
+			"home": "basics/data-structures",
+			"aliases": [
+				"FIFO"
+			],
+			"avoid": []
+		},
+		{
+			"id": "array-of-structs",
+			"term": "array of structs",
+			"definition": "Storing many records as one array whose elements are whole structs.",
+			"home": "basics/data-structures",
+			"aliases": [
+				"AoS"
+			],
+			"avoid": []
+		},
+		{
+			"id": "struct-of-arrays",
+			"term": "struct of arrays",
+			"definition": "Storing many records as one array for each member, so that the values of one member lie side by side in memory.",
+			"home": "basics/data-structures",
+			"aliases": [
+				"SoA"
+			],
+			"avoid": []
+		},
+		{
+			"id": "sparse-set",
+			"term": "sparse set",
+			"definition": "A data structure that keeps items packed tightly in one array and finds an item from its number through a second, mostly empty array.",
+			"home": "basics/data-structures",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "tree",
+			"term": "tree",
+			"definition": "A data structure of nodes in which every node except the root has one parent, and any node may have children.",
+			"home": "basics/trees-graphs",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "directed-graph",
+			"term": "directed graph",
+			"definition": "A set of nodes joined by arrows, each arrow leading from one node to another.",
+			"home": "basics/trees-graphs",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "dependency-graph",
+			"term": "dependency graph",
+			"definition": "A directed graph whose arrows lead from each thing to the things it needs first.",
+			"home": "basics/trees-graphs",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "lifetime",
+			"term": "lifetime",
+			"definition": "The time from an object's creation to its destruction, during which code may use it.",
+			"home": "basics/cpp-memory",
+			"aliases": [
+				"object lifetime"
+			],
+			"avoid": []
+		},
+		{
+			"id": "dereference",
+			"term": "dereference",
+			"definition": "To reach the value that a pointer points to, written *pointer, or a member of it, written pointer->member.",
+			"home": "basics/cpp-memory",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "dynamic-allocation",
+			"term": "dynamic allocation",
+			"definition": "Asking for memory on the heap while the program runs, as new does in C++; that memory stays taken until the program gives it back.",
+			"home": "basics/cpp-memory",
+			"aliases": [
+				"heap allocation"
+			],
+			"avoid": []
+		},
+		{
+			"id": "memory-leak",
+			"term": "memory leak",
+			"definition": "Memory that a program took and never gave back, so that its memory use grows for as long as it runs.",
+			"home": "basics/cpp-memory",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "dangling-pointer",
+			"term": "dangling pointer",
+			"definition": "A pointer to an object whose lifetime has ended, so that using it reads wrong data or crashes.",
+			"home": "basics/cpp-memory",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "ownership",
+			"term": "ownership",
+			"definition": "The duty of one part of a program to destroy an object when it is no longer needed, so that the owner decides when the object's lifetime ends.",
+			"home": "basics/cpp-memory",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "destructor",
+			"term": "destructor",
+			"definition": "A member function that runs by itself when an object's lifetime ends, to give back what the object holds.",
+			"home": "basics/cpp-memory",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "raii",
+			"term": "RAII",
+			"definition": "Tying a resource to an object, so that the object's constructor takes the resource and its destructor gives it back.",
+			"home": "basics/cpp-memory",
+			"aliases": [
+				"resource acquisition is initialization"
+			],
+			"avoid": []
+		},
+		{
+			"id": "smart-pointer",
+			"term": "smart pointer",
+			"definition": "An object that holds a pointer and owns what it points to, destroying it when no owner is left.",
+			"home": "basics/cpp-memory",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "unique-pointer",
+			"term": "unique pointer",
+			"definition": "A smart pointer that is the only owner of its object, such as std::unique_ptr, which Strata calls Scope.",
+			"home": "basics/cpp-memory",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "shared-pointer",
+			"term": "shared pointer",
+			"definition": "A smart pointer of which many copies can own one object together, which is destroyed when the last copy goes, such as std::shared_ptr or Strata's Ref.",
+			"home": "basics/cpp-memory",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "allocator",
+			"term": "allocator",
+			"definition": "Code that hands out memory to a program and takes it back, such as the heap's own or a faster one made for one use.",
+			"home": "basics/cpp-memory",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "undefined-behavior",
+			"term": "undefined behavior",
+			"definition": "Code that breaks a rule of C++ that nothing checks, after which the program may do anything at all, from working to crashing.",
+			"home": "basics/cpp-memory",
+			"aliases": [
+				"UB"
+			],
+			"avoid": []
+		},
+		{
+			"id": "virtual-function",
+			"term": "virtual function",
+			"definition": "A member function marked virtual that a derived class may replace, so that a call through the base class reaches the version of the object's real class.",
+			"home": "basics/cpp-classes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "pure-virtual-function",
+			"term": "pure virtual function",
+			"definition": "A virtual function with no code of its own, marked = 0, which a derived class must write before objects of it can be made.",
+			"home": "basics/cpp-classes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "abstract-class",
+			"term": "abstract class",
+			"definition": "A class with at least one pure virtual function, of which no object can be made directly.",
+			"home": "basics/cpp-classes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "interface",
+			"term": "interface",
+			"definition": "A base class with only pure virtual functions, which says what a kind of object can do but not how.",
+			"home": "basics/cpp-classes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "polymorphism",
+			"term": "polymorphism",
+			"definition": "Using objects of different derived classes through one base class, each answering the same call in its own way.",
+			"home": "basics/cpp-classes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "operator-overloading",
+			"term": "operator overloading",
+			"definition": "Giving an operator such as + or == a meaning for a type of your own, as glm does for its position and color types.",
+			"home": "basics/cpp-classes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "c-template",
+			"term": "C++ template",
+			"definition": "Code written once with types left open, which C++ fills in again for each type it is used with, such as std::vector.",
+			"home": "basics/cpp-generic",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "standard-library",
+			"term": "standard library",
+			"definition": "The collection of ready-made types and functions that every C++ setup provides, whose names start with std::.",
+			"home": "basics/cpp-generic",
+			"aliases": [
+				"C++ standard library"
+			],
+			"avoid": []
+		},
+		{
+			"id": "container",
+			"term": "container",
+			"definition": "A type that holds many elements and manages their memory, such as a dynamic array or a hash map.",
+			"home": "basics/cpp-generic",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "iterator",
+			"term": "iterator",
+			"definition": "An object that marks one element of a container and can move to the next, used to walk through the container.",
+			"home": "basics/cpp-generic",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "lambda",
+			"term": "lambda",
+			"definition": "A function written inside an expression without a name, which can be kept in a variable or given to another function.",
+			"home": "basics/cpp-generic",
+			"aliases": [
+				"lambda expression"
+			],
+			"avoid": []
+		},
+		{
+			"id": "lambda-capture",
+			"term": "lambda capture",
+			"definition": "A variable from around a lambda that the lambda keeps, as a copy or as a C++ reference, so that it can use it later.",
+			"home": "basics/cpp-generic",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "function-object",
+			"term": "function object",
+			"definition": "An object that can be called like a function, such as any of those that std::function can hold.",
+			"home": "basics/cpp-generic",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "callback",
+			"term": "callback",
+			"definition": "A function given to other code, which that code calls later when something happens.",
+			"home": "basics/cpp-generic",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "type-erasure",
+			"term": "type erasure",
+			"definition": "Hiding an object's real type behind one common type, as std::function does, so that code can keep different kinds of objects in the same way.",
+			"home": "basics/cpp-generic",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "crtp",
+			"term": "CRTP",
+			"definition": "A pattern in which a class inherits from a C++ template of its own class, so that the base class can call the derived class's functions without virtual calls.",
+			"home": "basics/cpp-generic",
+			"aliases": [
+				"curiously recurring template pattern"
+			],
+			"avoid": []
+		},
+		{
+			"id": "move-semantics",
+			"term": "move semantics",
+			"definition": "Handing an object's resources to a new object instead of copying them, which leaves the old object empty but still usable.",
+			"home": "basics/cpp-modern",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "constexpr",
+			"term": "constexpr",
+			"definition": "A word of C++ that marks a variable or function whose value can be computed at compile time.",
+			"home": "basics/cpp-modern",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "span",
+			"term": "span",
+			"definition": "A view of a run of elements in an array that belongs to someone else, made of where the run starts and how long it is.",
+			"home": "basics/cpp-modern",
+			"aliases": [
+				"std::span"
+			],
+			"avoid": []
+		},
+		{
+			"id": "string-view",
+			"term": "string view",
+			"definition": "A view of text stored elsewhere, made of where it starts and its length, which reads the text without copying it, as std::string_view does.",
+			"home": "basics/cpp-modern",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "c-concept",
+			"term": "C++ concept",
+			"definition": "A named rule about a type, such as being comparable, that a C++ template can require of its template arguments.",
+			"home": "basics/cpp-modern",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "requires-clause",
+			"term": "requires clause",
+			"definition": "The part of a C++ template, starting with requires, that lists the rules its template arguments must meet.",
+			"home": "basics/cpp-modern",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "preprocessor",
+			"term": "preprocessor",
+			"definition": "The step before the code is compiled that follows the lines starting with #, such as #include and #define, and rewrites the text of the source code.",
+			"home": "basics/cpp-modern",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "macro",
+			"term": "macro",
+			"definition": "A name that the preprocessor replaces with other text, defined with #define, such as ST_CORE_ASSERT.",
+			"home": "basics/cpp-modern",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "compiler",
+			"term": "compiler",
+			"definition": "The program that turns C++ source files into machine code, one file at a time.",
+			"home": "basics/build",
+			"aliases": [
+				"compiling",
+				"compilation"
+			],
+			"avoid": []
+		},
+		{
+			"id": "translation-unit",
+			"term": "translation unit",
+			"definition": "One source file together with all the header files it includes, which the compiler turns into machine code as one piece.",
+			"home": "basics/build",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "object-file",
+			"term": "object file",
+			"definition": "The machine code that the compiler makes from one translation unit, not yet joined with the others.",
+			"home": "basics/build",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "linker",
+			"term": "linker",
+			"definition": "The program that joins object files and libraries into one executable or library, connecting each use of a name to the code that defines it.",
+			"home": "basics/build",
+			"aliases": [
+				"linking"
+			],
+			"avoid": []
+		},
+		{
+			"id": "link-error",
+			"term": "link error",
+			"definition": "An error that the linker reports, such as a function that is used but defined nowhere.",
+			"home": "basics/build",
+			"aliases": [
+				"linker error"
+			],
+			"avoid": []
+		},
+		{
+			"id": "executable",
+			"term": "executable",
+			"definition": "A file that holds a whole program in machine code, which the operating system can start.",
+			"home": "basics/build",
+			"aliases": [
+				"executable file"
+			],
+			"avoid": []
+		},
+		{
+			"id": "library",
+			"term": "library",
+			"definition": "A file of compiled code that programs use, which cannot run on its own.",
+			"home": "basics/build",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "static-library",
+			"term": "static library",
+			"definition": "A library whose code the linker copies into each executable that uses it.",
+			"home": "basics/build",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "shared-library",
+			"term": "shared library",
+			"definition": "A library kept in a file of its own and loaded by programs while they run, such as a .dll file on Windows or a .so file on Linux.",
+			"home": "basics/build",
+			"aliases": [
+				"dynamic library",
+				"DLL"
+			],
+			"avoid": []
+		},
+		{
+			"id": "build-system",
+			"term": "build system",
+			"definition": "A program that knows which files must be compiled and linked and in what order, and runs the compiler only for what changed.",
+			"home": "basics/build",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "cmake",
+			"term": "CMake",
+			"definition": "The build system that Strata and its scripts use, which reads CMakeLists.txt files and writes the instructions for another tool that runs the build.",
+			"home": "basics/build",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "configure-step",
+			"term": "configure step",
+			"definition": "The step in which CMake reads the CMakeLists.txt files and writes what the build then follows.",
+			"home": "basics/build",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "build-configuration",
+			"term": "build configuration",
+			"definition": "A named set of build settings, such as Debug, which helps with finding bugs, or Release, which makes a faster program.",
+			"home": "basics/build",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "text-character",
+			"term": "text character",
+			"definition": "One letter, digit, mark or other sign of written text.",
+			"home": "basics/bytes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "unicode",
+			"term": "Unicode",
+			"definition": "The standard that gives every text character of every writing system its own number.",
+			"home": "basics/bytes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "code-point",
+			"term": "code point",
+			"definition": "The number that Unicode gives one text character, such as 65 for the letter A.",
+			"home": "basics/bytes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "text-encoding",
+			"term": "text encoding",
+			"definition": "The rule that turns the code points of text into bytes and back.",
+			"home": "basics/bytes",
+			"aliases": [
+				"character encoding"
+			],
+			"avoid": []
+		},
+		{
+			"id": "ascii",
+			"term": "ASCII",
+			"definition": "The old standard that gives 128 basic English text characters the numbers 0 to 127, one byte each.",
+			"home": "basics/bytes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "utf-8",
+			"term": "UTF-8",
+			"definition": "The text encoding that stores each code point in one to four bytes and stores ASCII characters as single bytes of the same value.",
+			"home": "basics/bytes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "file-format",
+			"term": "file format",
+			"definition": "The agreed layout of the bytes of one kind of file, which every program that reads or writes such files follows.",
+			"home": "basics/bytes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "endianness",
+			"term": "endianness",
+			"definition": "The order in which the bytes of a number longer than one byte are stored, where little-endian puts the lowest byte first.",
+			"home": "basics/bytes",
+			"aliases": [
+				"byte order"
+			],
+			"avoid": []
+		},
+		{
+			"id": "serialization",
+			"term": "serialization",
+			"definition": "Turning data in memory into bytes or text, so that it can be saved to a file or sent to another program.",
+			"home": "basics/bytes",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "json",
+			"term": "JSON",
+			"definition": "A text format that writes data as named values between braces and lists between brackets, with strings in double quotes, numbers, true, false and null.",
+			"home": "basics/data-formats",
+			"aliases": [
+				"JavaScript Object Notation"
+			],
+			"avoid": []
+		},
+		{
+			"id": "json-object",
+			"term": "JSON object",
+			"definition": "A part of JSON written between { and } that holds pairs of a name in double quotes and a value, separated by commas.",
+			"home": "basics/data-formats",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "json-array",
+			"term": "JSON array",
+			"definition": "A part of JSON written between [ and ] that holds a list of values separated by commas.",
+			"home": "basics/data-formats",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "checksum",
+			"term": "checksum",
+			"definition": "A hash stored together with data, so that a reader can tell whether the data was damaged.",
+			"home": "basics/data-formats",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "cryptographic-hash",
+			"term": "cryptographic hash",
+			"definition": "A hash made so that nobody can find two inputs that give the same result, such as SHA-256.",
+			"home": "basics/data-formats",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "base64",
+			"term": "Base64",
+			"definition": "A way to write any bytes as text with 64 safe characters, four characters for every three bytes.",
+			"home": "basics/data-formats",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "uuid",
+			"term": "UUID",
+			"definition": "A number so large and so randomly chosen that two of them made anywhere will almost never be equal, used as a name that never changes.",
+			"home": "basics/data-formats",
+			"aliases": [
+				"universally unique identifier",
+				"GUID"
+			],
+			"avoid": []
+		},
+		{
+			"id": "coordinate",
+			"term": "coordinate",
+			"definition": "One of the numbers that together give a position or a vector, such as its x, y or z.",
+			"home": "basics/math-vectors",
+			"aliases": [
+				"vector component"
+			],
+			"avoid": []
+		},
+		{
+			"id": "origin",
+			"term": "origin",
+			"definition": "The position where every coordinate is zero, written (0, 0, 0).",
+			"home": "basics/math-vectors",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "vector",
+			"term": "vector",
+			"definition": "A quantity with a size and a direction, written as coordinates such as (1, 0, 2) and drawn as an arrow.",
+			"home": "basics/math-vectors",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "pythagorean-theorem",
+			"term": "Pythagorean theorem",
+			"definition": "In a triangle with a right angle, the square of the longest side equals the sum of the squares of the other two.",
+			"home": "basics/math-vectors",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "vector-length",
+			"term": "vector length",
+			"definition": "The size of a vector: the square root of the sum of its squared coordinates, by the Pythagorean theorem.",
+			"home": "basics/math-vectors",
+			"aliases": [
+				"magnitude",
+				"norm"
+			],
+			"avoid": []
+		},
+		{
+			"id": "unit-vector",
+			"term": "unit vector",
+			"definition": "A vector of length 1, used to give a direction alone.",
+			"home": "basics/math-vectors",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "normalization",
+			"term": "normalization",
+			"definition": "Dividing a vector by its length, which keeps its direction and makes its length 1.",
+			"home": "basics/math-vectors",
+			"aliases": [
+				"normalize"
+			],
+			"avoid": []
+		},
+		{
+			"id": "pi",
+			"term": "pi",
+			"definition": "The distance around a circle divided by its width, about 3.14159, written π.",
+			"home": "basics/math-vectors",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "radian",
+			"term": "radian",
+			"definition": "The unit of angle in which a full turn is 2π, about 6.28, so that one of them marks a piece of the circle's edge as long as its radius.",
+			"home": "basics/math-vectors",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "unit-circle",
+			"term": "unit circle",
+			"definition": "The circle of radius 1 around the origin, on which the point at angle θ is (cos θ, sin θ).",
+			"home": "basics/math-vectors",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "sine",
+			"term": "sine",
+			"definition": "For an angle, the y coordinate of the point at that angle on the unit circle, written sin.",
+			"home": "basics/math-vectors",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "cosine",
+			"term": "cosine",
+			"definition": "For an angle, the x coordinate of the point at that angle on the unit circle, written cos.",
+			"home": "basics/math-vectors",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "tangent-function",
+			"term": "tangent function",
+			"definition": "The sine of an angle divided by its cosine, written tan.",
+			"home": "basics/math-vectors",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "atan2",
+			"term": "atan2",
+			"definition": "The function that gives the angle of a direction from its two coordinates y and x, right in all four quarters of the circle.",
+			"home": "basics/math-vectors",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "dot-product",
+			"term": "dot product",
+			"definition": "A number made from two vectors by multiplying their matching coordinates and adding the results, which is largest when they point the same way.",
+			"home": "basics/math-vectors",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "cross-product",
+			"term": "cross product",
+			"definition": "A vector made from two vectors that is at a right angle to both, and whose length is largest when the two are at a right angle to each other.",
+			"home": "basics/math-vectors",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "surface-normal",
+			"term": "surface normal",
+			"definition": "A unit vector that points straight out of a surface, at a right angle to it.",
+			"home": "basics/math-vectors",
+			"aliases": [
+				"normal vector"
+			],
+			"avoid": []
+		},
+		{
+			"id": "matrix",
+			"term": "matrix",
+			"definition": "A grid of numbers in rows and columns, such as the 4 by 4 grid that moves, turns and resizes the points of a shape in one multiplication.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "matrix-multiplication",
+			"term": "matrix multiplication",
+			"definition": "Combining two matrices into one, in which each number of the result is the dot product of a row of the first and a column of the second.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "identity-matrix",
+			"term": "identity matrix",
+			"definition": "The matrix that changes nothing, with 1 on the line from its top left corner to its bottom right corner and 0 everywhere else.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "inverse-matrix",
+			"term": "inverse matrix",
+			"definition": "The matrix that undoes another one, so that multiplying the two gives the identity matrix.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "axis",
+			"term": "axis",
+			"definition": "A line along which one coordinate is measured; space has three of them, x, y and z, at right angles to each other.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "transform",
+			"term": "transform",
+			"definition": "A change that moves, turns or resizes the points of a shape, or the numbers that describe it, often kept as a matrix.",
+			"home": "basics/math-matrices",
+			"aliases": [
+				"transformation"
+			],
+			"avoid": []
+		},
+		{
+			"id": "translation",
+			"term": "translation",
+			"definition": "A transform that moves every point by the same offset.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "rotation",
+			"term": "rotation",
+			"definition": "A transform that turns every point around an axis by an angle.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "scale",
+			"term": "scale",
+			"definition": "A transform that resizes a shape by multiplying its coordinates, by one factor or by one factor per axis.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "trs",
+			"term": "TRS",
+			"definition": "A transform stored as a translation, a rotation and a scale, applied as scale first, then rotation, then translation.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "coordinate-space",
+			"term": "coordinate space",
+			"definition": "An origin and three axes against which coordinates are measured, such as world space or the local space of a shape.",
+			"home": "basics/math-matrices",
+			"aliases": [
+				"coordinate system"
+			],
+			"avoid": []
+		},
+		{
+			"id": "world-space",
+			"term": "world space",
+			"definition": "The coordinate space of the whole scene, which every entity in it shares.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "local-space",
+			"term": "local space",
+			"definition": "The coordinate space of one entity, which moves and turns with it.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "transform-hierarchy",
+			"term": "transform hierarchy",
+			"definition": "A tree of entities in which each child's transform is relative to its parent's, so that moving a parent moves its children too.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "handedness",
+			"term": "handedness",
+			"definition": "Whether the axes follow the right hand or the left hand: on the right hand, with x along the thumb and y along the first finger, z runs along the middle finger.",
+			"home": "basics/math-matrices",
+			"aliases": [
+				"right-handed",
+				"left-handed"
+			],
+			"avoid": []
+		},
+		{
+			"id": "up-axis",
+			"term": "up axis",
+			"definition": "The axis that points up in a coordinate space, which in Strata is +Y.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "basis-vector",
+			"term": "basis vector",
+			"definition": "One of the unit vectors along the axes of a coordinate space, which the columns of a transform's matrix move to their new places.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "matrix-order",
+			"term": "matrix order",
+			"definition": "The convention for writing and multiplying matrices: whether a vector stands as a column on the right or as a row on the left, which sets the order in which transforms combine.",
+			"home": "basics/math-matrices",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "view-matrix",
+			"term": "view matrix",
+			"definition": "The matrix that moves and turns the whole scene so that the camera sits at the origin looking along one axis.",
+			"home": "basics/math-projection",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "projection",
+			"term": "projection",
+			"definition": "Turning the 3D positions of a scene into 2D positions on a picture, as a camera does.",
+			"home": "basics/math-projection",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "projection-matrix",
+			"term": "projection matrix",
+			"definition": "The matrix that does a projection, turning positions seen from the camera into positions in clip space.",
+			"home": "basics/math-projection",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "perspective-projection",
+			"term": "perspective projection",
+			"definition": "A projection in which far things look smaller, as in a photograph.",
+			"home": "basics/math-projection",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "orthographic-projection",
+			"term": "orthographic projection",
+			"definition": "A projection in which things keep their size at every distance, as in a technical drawing.",
+			"home": "basics/math-projection",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "field-of-view",
+			"term": "field of view",
+			"definition": "How wide a camera sees, given as the angle between the edges of its picture.",
+			"home": "basics/math-projection",
+			"aliases": [
+				"FOV"
+			],
+			"avoid": []
+		},
+		{
+			"id": "near-plane",
+			"term": "near plane",
+			"definition": "The smallest distance from the camera at which things are drawn.",
+			"home": "basics/math-projection",
+			"aliases": [
+				"near clip plane"
+			],
+			"avoid": []
+		},
+		{
+			"id": "far-plane",
+			"term": "far plane",
+			"definition": "The largest distance from the camera at which things are drawn.",
+			"home": "basics/math-projection",
+			"aliases": [
+				"far clip plane"
+			],
+			"avoid": []
+		},
+		{
+			"id": "view-frustum",
+			"term": "view frustum",
+			"definition": "The part of space that a camera sees, a pyramid with its top cut off, between the near plane and the far plane.",
+			"home": "basics/math-projection",
+			"aliases": [
+				"frustum"
+			],
+			"avoid": []
+		},
+		{
+			"id": "homogeneous-coordinates",
+			"term": "homogeneous coordinates",
+			"definition": "A 3D position written with a fourth number, w, so that one 4 by 4 matrix can both move it and apply a projection to it.",
+			"home": "basics/math-projection",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "clip-space",
+			"term": "clip space",
+			"definition": "The coordinate space right after the projection matrix, before the perspective divide.",
+			"home": "basics/math-projection",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "perspective-divide",
+			"term": "perspective divide",
+			"definition": "Dividing x, y and z by w after the projection matrix, which makes far things smaller.",
+			"home": "basics/math-projection",
+			"aliases": [
+				"perspective division"
+			],
+			"avoid": []
+		},
+		{
+			"id": "normalized-device-coordinates",
+			"term": "normalized device coordinates",
+			"definition": "Positions after the perspective divide, with x and y from -1 to 1 across the picture and depth from 0 to 1.",
+			"home": "basics/math-projection",
+			"aliases": [
+				"NDC"
+			],
+			"avoid": []
+		},
+		{
+			"id": "depth",
+			"term": "depth",
+			"definition": "How far a surface is from the camera, kept for each pixel as a number from 0 to 1.",
+			"home": "basics/math-projection",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "depth-buffer",
+			"term": "depth buffer",
+			"definition": "A picture that keeps for each pixel the depth of the nearest surface drawn so far, so that nearer surfaces hide farther ones.",
+			"home": "basics/math-projection",
+			"aliases": [
+				"z-buffer"
+			],
+			"avoid": []
+		},
+		{
+			"id": "reversed-z",
+			"term": "reversed Z",
+			"definition": "Storing depth with the near plane at 1 and the far plane at 0, which spreads the precision of floating-point numbers more evenly over the distance.",
+			"home": "basics/math-projection",
+			"aliases": [
+				"reverse Z"
+			],
+			"avoid": []
+		},
+		{
+			"id": "euler-angles",
+			"term": "Euler angles",
+			"definition": "A rotation given as three angles, one around each axis, applied in a fixed order.",
+			"home": "basics/math-rotations",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "yaw-angle",
+			"term": "yaw angle",
+			"definition": "A turn around the up axis, as when you shake your head.",
+			"home": "basics/math-rotations",
+			"aliases": [
+				"yaw"
+			],
+			"avoid": []
+		},
+		{
+			"id": "pitch-angle",
+			"term": "pitch angle",
+			"definition": "A turn around the axis that runs from side to side, as when you nod.",
+			"home": "basics/math-rotations",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "roll-angle",
+			"term": "roll angle",
+			"definition": "A turn around the forward axis, as when you tilt your head toward one shoulder.",
+			"home": "basics/math-rotations",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "gimbal-lock",
+			"term": "gimbal lock",
+			"definition": "The loss of one way of turning that happens when two of the three axes of Euler angles line up.",
+			"home": "basics/math-rotations",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "axis-angle",
+			"term": "axis-angle",
+			"definition": "A rotation given as one axis and the angle to turn around it.",
+			"home": "basics/math-rotations",
+			"aliases": [
+				"axis and angle"
+			],
+			"avoid": []
+		},
+		{
+			"id": "quaternion",
+			"term": "quaternion",
+			"definition": "Four numbers that store a rotation, which combine by multiplying and blend smoothly without gimbal lock.",
+			"home": "basics/math-rotations",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "slerp",
+			"term": "slerp",
+			"definition": "Blending between two rotations along the shortest way around, at an even speed.",
+			"home": "basics/math-rotations",
+			"aliases": [
+				"spherical linear interpolation"
+			],
+			"avoid": []
+		},
+		{
+			"id": "ray",
+			"term": "ray",
+			"definition": "A line that starts at a point and goes on forever in one direction.",
+			"home": "basics/math-geometry",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "plane",
+			"term": "plane",
+			"definition": "A flat surface that goes on forever, given by a normal vector and its distance from the origin.",
+			"home": "basics/math-geometry",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "bounding-box",
+			"term": "bounding box",
+			"definition": "A box that encloses a shape completely, which tests use as a simple stand-in for the shape.",
+			"home": "basics/math-geometry",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "axis-aligned-bounding-box",
+			"term": "axis-aligned bounding box",
+			"definition": "A bounding box whose edges run along the x, y and z axes, given by its smallest and largest corners.",
+			"home": "basics/math-geometry",
+			"aliases": [
+				"AABB"
+			],
+			"avoid": []
+		},
+		{
+			"id": "oriented-bounding-box",
+			"term": "oriented bounding box",
+			"definition": "A bounding box that may be turned to fit a shape closely, given by a center, three axes and three half sizes.",
+			"home": "basics/math-geometry",
+			"aliases": [
+				"OBB"
+			],
+			"avoid": []
+		},
+		{
+			"id": "bounding-sphere",
+			"term": "bounding sphere",
+			"definition": "A sphere that encloses a shape completely, given by a center and a radius.",
+			"home": "basics/math-geometry",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "intersection-test",
+			"term": "intersection test",
+			"definition": "A calculation that answers whether two shapes overlap, and often where.",
+			"home": "basics/math-geometry",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "tolerance",
+			"term": "tolerance",
+			"definition": "A small amount by which two floating-point results may differ and still count as equal, because rounding errors make exact checks fail.",
+			"home": "basics/math-geometry",
+			"aliases": [
+				"epsilon"
+			],
+			"avoid": []
+		},
+		{
+			"id": "rate-of-change",
+			"term": "rate of change",
+			"definition": "How fast a quantity changes: its change divided by the time the change took.",
+			"home": "basics/math-change",
+			"aliases": [
+				"rate"
+			],
+			"avoid": []
+		},
+		{
+			"id": "velocity",
+			"term": "velocity",
+			"definition": "Speed together with direction: a vector that gives how far a thing moves each second and which way.",
+			"home": "basics/math-change",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "acceleration",
+			"term": "acceleration",
+			"definition": "The rate of change of velocity: how much the velocity changes in each second.",
+			"home": "basics/math-change",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "derivative",
+			"term": "derivative",
+			"definition": "The rate of change of a quantity at one moment, found by measuring its change over shorter and shorter times.",
+			"home": "basics/math-change",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "accumulation",
+			"term": "accumulation",
+			"definition": "Adding up many small amounts over time, such as the distance gained from the speed in each short moment.",
+			"home": "basics/math-change",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "integral",
+			"term": "integral",
+			"definition": "The total that a quantity adds up to over a range, which is the area under its graph.",
+			"home": "basics/math-change",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "numerical-integration",
+			"term": "numerical integration",
+			"definition": "Computing how a quantity grows over time by adding its rate of change step by step.",
+			"home": "basics/math-change",
+			"aliases": [
+				"integration"
+			],
+			"avoid": []
+		},
+		{
+			"id": "time-step",
+			"term": "time step",
+			"definition": "The length of time by which one step of a simulation moves forward, such as 1/60 of a second.",
+			"home": "basics/math-change",
+			"aliases": [
+				"timestep"
+			],
+			"avoid": []
+		},
+		{
+			"id": "explicit-euler-method",
+			"term": "explicit Euler method",
+			"definition": "A step that moves a position by the old velocity and only then changes the velocity, which slowly adds energy and drifts.",
+			"home": "basics/math-change",
+			"aliases": [
+				"forward Euler"
+			],
+			"avoid": []
+		},
+		{
+			"id": "semi-implicit-euler-method",
+			"term": "semi-implicit Euler method",
+			"definition": "A step that first changes the velocity and then moves the position by the new velocity, which stays stable where the explicit Euler method drifts.",
+			"home": "basics/math-change",
+			"aliases": [
+				"symplectic Euler"
+			],
+			"avoid": []
+		},
+		{
+			"id": "force",
+			"term": "force",
+			"definition": "A push or a pull on a thing, measured in newtons, that changes its velocity.",
+			"home": "basics/math-change",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "mass",
+			"term": "mass",
+			"definition": "How much matter a thing has, measured in kilograms, which decides how hard it is to change its velocity.",
+			"home": "basics/math-change",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "newtons-laws-of-motion",
+			"term": "Newton's laws of motion",
+			"definition": "The three rules of motion: a thing keeps its velocity unless a force acts on it, force equals mass times acceleration, and every force has an equal and opposite force.",
+			"home": "basics/math-change",
+			"aliases": [
+				"Newton's laws"
+			],
+			"avoid": []
+		},
+		{
+			"id": "momentum",
+			"term": "momentum",
+			"definition": "Mass times velocity: the amount of motion a thing carries, which stays the same unless a force acts.",
+			"home": "basics/math-change",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "impulse",
+			"term": "impulse",
+			"definition": "A sudden change of momentum, as from a hit, equal to a force times the short time it acts.",
+			"home": "basics/math-change",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "interpolation",
+			"term": "interpolation",
+			"definition": "Finding values between known values, such as the position halfway between two others.",
+			"home": "basics/math-interpolation",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "linear-interpolation",
+			"term": "linear interpolation",
+			"definition": "Blending two values along a straight line by a weight t, as a + (b - a) × t, which gives a at t = 0 and b at t = 1.",
+			"home": "basics/math-interpolation",
+			"aliases": [
+				"lerp"
+			],
+			"avoid": []
+		},
+		{
+			"id": "inverse-linear-interpolation",
+			"term": "inverse linear interpolation",
+			"definition": "Finding the weight t at which a value lies between two others.",
+			"home": "basics/math-interpolation",
+			"aliases": [
+				"inverse lerp"
+			],
+			"avoid": []
+		},
+		{
+			"id": "remapping",
+			"term": "remapping",
+			"definition": "Moving a value from one range to another, such as from 0 to 10 into 0 to 1, with an inverse lerp and then a lerp.",
+			"home": "basics/math-interpolation",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "smoothstep",
+			"term": "smoothstep",
+			"definition": "An S-shaped curve from 0 to 1 that starts and ends slowly, 3t² - 2t³ for t from 0 to 1.",
+			"home": "basics/math-interpolation",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "easing-function",
+			"term": "easing function",
+			"definition": "A curve that shapes how a motion speeds up and slows down between its start and its end.",
+			"home": "basics/math-interpolation",
+			"aliases": [
+				"easing"
+			],
+			"avoid": []
+		},
+		{
+			"id": "keyframe",
+			"term": "keyframe",
+			"definition": "A value set for one moment of time; a curve between such values gives the values of the moments in between.",
+			"home": "basics/math-interpolation",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "cubic-hermite-curve",
+			"term": "cubic Hermite curve",
+			"definition": "A smooth curve between two keyframes, shaped by their values and their slopes.",
+			"home": "basics/math-interpolation",
+			"aliases": [
+				"Hermite curve"
+			],
+			"avoid": []
+		},
+		{
+			"id": "bezier-curve",
+			"term": "Bezier curve",
+			"definition": "A smooth curve shaped by control points that pull it toward them, which passes through only the first and the last of them.",
+			"home": "basics/math-interpolation",
+			"aliases": [
+				"Bézier curve"
+			],
+			"avoid": []
+		},
+		{
+			"id": "exponential-smoothing",
+			"term": "exponential smoothing",
+			"definition": "Moving a value a fixed fraction of the remaining way toward a target in each step, so that it slows down as it nears the target.",
+			"home": "basics/math-interpolation",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "frame-rate-independence",
+			"term": "frame-rate independence",
+			"definition": "Behavior that gives the same result at any frame rate, such as smoothing with 1 - exp(-k × dt) instead of a fixed fraction per frame.",
+			"home": "basics/math-interpolation",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "color-channel",
+			"term": "color channel",
+			"definition": "One of the numbers of a color, such as its red, green or blue amount.",
+			"home": "basics/color",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "linear-color",
+			"term": "linear color",
+			"definition": "Color values in proportion to the amount of light, so that twice the value means twice the light.",
+			"home": "basics/color",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "gamma-encoding",
+			"term": "gamma encoding",
+			"definition": "Storing color values on a curve that keeps more of the levels for dark tones, where eyes see more difference.",
+			"home": "basics/color",
+			"aliases": [
+				"gamma"
+			],
+			"avoid": []
+		},
+		{
+			"id": "transfer-function",
+			"term": "transfer function",
+			"definition": "The curve that converts between linear color values and the encoded values that a file or a screen uses.",
+			"home": "basics/color",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "chromaticity",
+			"term": "chromaticity",
+			"definition": "What a color is apart from its brightness, such as how red or how blue it is, given as two numbers x and y.",
+			"home": "basics/color",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "white-point",
+			"term": "white point",
+			"definition": "The chromaticity that a color space calls white, such as the white of daylight.",
+			"home": "basics/color",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "gamut",
+			"term": "gamut",
+			"definition": "The range of colors that a color space or a screen can show.",
+			"home": "basics/color",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "color-space",
+			"term": "color space",
+			"definition": "A way of giving colors as numbers, fixed by its exact red, green and blue, its white point and its transfer function.",
+			"home": "basics/color",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "rec-709",
+			"term": "Rec. 709",
+			"definition": "The standard color space of HD television, whose red, green, blue and white point sRGB shares.",
+			"home": "basics/color",
+			"aliases": [
+				"BT.709"
+			],
+			"avoid": []
+		},
+		{
+			"id": "srgb",
+			"term": "sRGB",
+			"definition": "The color space of most screens and pictures, which has the red, green, blue and white point of BT.709 and its own transfer function.",
+			"home": "basics/color",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "scene-linear",
+			"term": "scene-linear",
+			"definition": "Linear color values that measure the light of a scene with no top limit, before anything fits them to a screen.",
+			"home": "basics/color",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "working-color-space",
+			"term": "working color space",
+			"definition": "The color space in which an engine does its lighting calculations, which in Strata is scene-linear BT.709.",
+			"home": "basics/color",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "luminance",
+			"term": "luminance",
+			"definition": "How bright a color looks to the eye, computed as a weighted sum of its linear red, green and blue.",
+			"home": "basics/color",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "high-dynamic-range",
+			"term": "high dynamic range",
+			"definition": "Color values that may go far above 1, to hold the brightness of real light such as the sun.",
+			"home": "basics/color",
+			"aliases": [
+				"HDR"
+			],
+			"avoid": []
+		},
+		{
+			"id": "half-float",
+			"term": "half-float",
+			"definition": "A 16-bit floating-point number, which holds values up to 65504 with about three significant digits.",
+			"home": "basics/color",
+			"aliases": [
+				"half precision"
+			],
+			"avoid": []
+		},
+		{
+			"id": "quantization",
+			"term": "quantization",
+			"definition": "Rounding values to a small set of levels, such as the 256 levels of an 8-bit channel.",
+			"home": "basics/color",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "banding",
+			"term": "banding",
+			"definition": "Visible steps between shades where a smooth change of color is stored with too few levels.",
+			"home": "basics/color",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "signal",
+			"term": "signal",
+			"definition": "A quantity that changes across time or space, such as the pressure of a sound or the brightness along a row of pixels.",
+			"home": "basics/signals",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "signal-sample",
+			"term": "signal sample",
+			"definition": "The value of a signal measured at one moment or one place.",
+			"home": "basics/signals",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "sampling",
+			"term": "sampling",
+			"definition": "Measuring a signal at separate moments or places, such as once for each pixel or 48,000 times a second.",
+			"home": "basics/signals",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "frequency",
+			"term": "frequency",
+			"definition": "How many times something repeats in one second, or across one unit of distance.",
+			"home": "basics/signals",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "sample-rate",
+			"term": "sample rate",
+			"definition": "How many signal samples are taken in one second or across one unit of distance.",
+			"home": "basics/signals",
+			"aliases": [
+				"sampling rate"
+			],
+			"avoid": []
+		},
+		{
+			"id": "nyquist-limit",
+			"term": "Nyquist limit",
+			"definition": "The highest frequency that sampling can capture, which is half the sample rate.",
+			"home": "basics/signals",
+			"aliases": [
+				"Nyquist frequency"
+			],
+			"avoid": []
+		},
+		{
+			"id": "aliasing",
+			"term": "aliasing",
+			"definition": "False patterns, stair steps or flicker that appear when a signal holds frequencies above the Nyquist limit of its sampling.",
+			"home": "basics/signals",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "filtering",
+			"term": "filtering",
+			"definition": "Replacing each signal sample by a weighted average of the samples near it, which smooths the signal and removes its highest frequencies.",
+			"home": "basics/signals",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "filter-kernel",
+			"term": "filter kernel",
+			"definition": "The table of weights that filtering gives to each nearby signal sample.",
+			"home": "basics/signals",
+			"aliases": [
+				"convolution kernel"
+			],
+			"avoid": []
+		},
+		{
+			"id": "convolution",
+			"term": "convolution",
+			"definition": "Sliding a filter kernel along a signal and adding up, at each place, the samples times their weights.",
+			"home": "basics/signals",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "prefiltering",
+			"term": "prefiltering",
+			"definition": "Filtering a signal before sampling it, so that no frequency above the Nyquist limit is left to cause aliasing.",
+			"home": "basics/signals",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "dithering",
+			"term": "dithering",
+			"definition": "Adding small, planned changes to values before quantization, so that banding turns into fine grain.",
+			"home": "basics/signals",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "ordered-dither",
+			"term": "ordered dither",
+			"definition": "Dithering with a fixed pattern of offsets that repeats across the picture, such as a 4 by 4 table.",
+			"home": "basics/signals",
+			"aliases": [
+				"Bayer dither"
+			],
+			"avoid": []
+		},
+		{
+			"id": "denoising",
+			"term": "denoising",
+			"definition": "Removing random grain from a picture by averaging each pixel with similar pixels near it.",
+			"home": "basics/signals",
+			"aliases": [
+				"spatial denoising"
+			],
+			"avoid": []
+		},
+		{
+			"id": "probability",
+			"term": "probability",
+			"definition": "A number from 0 to 1 that says how likely an event is, where 0 never happens and 1 always happens.",
+			"home": "basics/math-probability",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "random-variable",
+			"term": "random variable",
+			"definition": "A quantity whose value is decided by chance, such as the number a die shows.",
+			"home": "basics/math-probability",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "probability-distribution",
+			"term": "probability distribution",
+			"definition": "How likely each value of a random variable is, given as a list or a curve.",
+			"home": "basics/math-probability",
+			"aliases": [
+				"distribution"
+			],
+			"avoid": []
+		},
+		{
+			"id": "probability-density",
+			"term": "probability density",
+			"definition": "For a random variable that can take any value of a range, the curve whose area over a part of the range is the probability of that part.",
+			"home": "basics/math-probability",
+			"aliases": [
+				"probability density function"
+			],
+			"avoid": []
+		},
+		{
+			"id": "expected-value",
+			"term": "expected value",
+			"definition": "The average a random variable would have over very many tries: each value times its probability, all added up.",
+			"home": "basics/math-probability",
+			"aliases": [
+				"expectation"
+			],
+			"avoid": []
+		},
+		{
+			"id": "pseudo-random-number-generator",
+			"term": "pseudo-random number generator",
+			"definition": "Code that computes a sequence of numbers that look random, each from the one before by a fixed rule, so that the same start gives the same sequence.",
+			"home": "basics/math-probability",
+			"aliases": [
+				"random number generator",
+				"PRNG"
+			],
+			"avoid": []
+		},
+		{
+			"id": "seed",
+			"term": "seed",
+			"definition": "The starting value of a pseudo-random number generator, which decides every number it gives after it.",
+			"home": "basics/math-probability",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "monte-carlo-integration",
+			"term": "Monte Carlo integration",
+			"definition": "Estimating an integral by averaging the quantity at random points, with an error that shrinks as the points grow in number.",
+			"home": "basics/math-probability",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "noise",
+			"term": "noise",
+			"definition": "Random variation in values, such as the grain of a picture or the hiss of a sound.",
+			"home": "basics/math-probability",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "white-noise",
+			"term": "white noise",
+			"definition": "Noise in which no value depends on its neighbors, so that it forms clumps and gaps.",
+			"home": "basics/math-probability",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "blue-noise",
+			"term": "blue noise",
+			"definition": "Noise whose values avoid clumps and gaps, so that it looks even to the eye and holds mostly high frequencies.",
+			"home": "basics/math-probability",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "low-discrepancy-sequence",
+			"term": "low-discrepancy sequence",
+			"definition": "A sequence of points that fills a space evenly, with fewer clumps and gaps than random points.",
+			"home": "basics/math-probability",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "hammersley-sequence",
+			"term": "Hammersley sequence",
+			"definition": "A low-discrepancy sequence of a chosen count of points, made by reversing the binary digits of each point's number.",
+			"home": "basics/math-probability",
+			"aliases": [
+				"Hammersley set"
+			],
+			"avoid": []
+		},
+		{
+			"id": "vogel-disk",
+			"term": "Vogel disk",
+			"definition": "Points placed along a spiral, each turned by the same fixed angle from the one before, which cover a disk evenly.",
+			"home": "basics/math-probability",
+			"aliases": [
+				"Vogel spiral"
+			],
+			"avoid": []
+		},
+		{
+			"id": "poisson-disk-sampling",
+			"term": "Poisson disk sampling",
+			"definition": "Placing random points so that no two of them lie closer than a set distance.",
+			"home": "basics/math-probability",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "interleaved-gradient-noise",
+			"term": "interleaved gradient noise",
+			"definition": "A cheap pattern computed from a pixel's position that gives each pixel a different value and looks like fine noise.",
+			"home": "basics/math-probability",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "unit-sphere",
+			"term": "unit sphere",
+			"definition": "The sphere of radius 1 around the origin, on which every direction ends at one point.",
+			"home": "basics/math-sphere",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "spherical-coordinates",
+			"term": "spherical coordinates",
+			"definition": "A direction given by two angles: how far it leans from the up axis and how far it turns around that axis.",
+			"home": "basics/math-sphere",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "solid-angle",
+			"term": "solid angle",
+			"definition": "The size of a patch of directions, given as the area the patch covers on the unit sphere.",
+			"home": "basics/math-sphere",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "steradian",
+			"term": "steradian",
+			"definition": "The unit of solid angle, of which the whole sphere of directions holds 4π.",
+			"home": "basics/math-sphere",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "hemisphere",
+			"term": "hemisphere",
+			"definition": "Half of the unit sphere: the directions on one side of a plane, such as all the directions above a surface.",
+			"home": "basics/math-sphere",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "octahedral-map",
+			"term": "octahedral map",
+			"definition": "A way to store a value for every direction in one square picture, by unfolding an eight-sided shape that wraps the sphere.",
+			"home": "basics/math-sphere",
+			"aliases": [
+				"octahedral mapping"
+			],
+			"avoid": []
+		},
+		{
+			"id": "spherical-harmonics",
+			"term": "spherical harmonics",
+			"definition": "A set of smooth patterns on the sphere that, added with weights, approximate any value that changes slowly with direction, such as the light from the sky.",
+			"home": "basics/math-sphere",
+			"aliases": [
+				"SH"
+			],
+			"avoid": []
+		},
+		{
+			"id": "basis-function",
+			"term": "basis function",
+			"definition": "One of a fixed set of patterns that, added together with weights, make up a more complex pattern.",
+			"home": "basics/math-sphere",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "thread",
+			"term": "thread",
+			"definition": "One line of work inside a process, which runs at the same time as the process's other such lines and shares its memory.",
+			"home": "basics/threads",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "main-thread",
+			"term": "main thread",
+			"definition": "The thread that a program starts with, which in a game engine usually runs the game loop.",
+			"home": "basics/threads",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "parallelism",
+			"term": "parallelism",
+			"definition": "Several tasks running at the same moment on different processor cores.",
+			"home": "basics/threads",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "data-race",
+			"term": "data race",
+			"definition": "Two threads using the same memory at the same time, at least one of them writing, with nothing to order them, which is undefined behavior.",
+			"home": "basics/threads",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "race-condition",
+			"term": "race condition",
+			"definition": "A bug in which the result depends on which thread happens to arrive first.",
+			"home": "basics/threads",
+			"aliases": [
+				"race"
+			],
+			"avoid": []
+		},
+		{
+			"id": "lock",
+			"term": "lock",
+			"definition": "Anything that lets only one thread at a time use some data, so that the other threads wait their turn.",
+			"home": "basics/threads",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "mutex",
+			"term": "mutex",
+			"definition": "The most common lock, an object that one thread holds at a time, so that the code it guards runs in one thread at a time.",
+			"home": "basics/threads",
+			"aliases": [
+				"mutual exclusion"
+			],
+			"avoid": []
+		},
+		{
+			"id": "deadlock",
+			"term": "deadlock",
+			"definition": "Threads that each wait forever for a lock that another of them holds.",
+			"home": "basics/threads",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "condition-variable",
+			"term": "condition variable",
+			"definition": "An object on which a thread waits until another thread tells it that what it waits for has happened.",
+			"home": "basics/threads",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "atomic-operation",
+			"term": "atomic operation",
+			"definition": "An operation on memory that other threads see as done completely or not at all, never half done.",
+			"home": "basics/threads",
+			"aliases": [
+				"atomic"
+			],
+			"avoid": []
+		},
+		{
+			"id": "memory-order",
+			"term": "memory order",
+			"definition": "The rules for when the writes of one thread to memory become visible to other threads, and in what order.",
+			"home": "basics/threads",
+			"aliases": [
+				"memory ordering"
+			],
+			"avoid": []
+		},
+		{
+			"id": "lock-free",
+			"term": "lock-free",
+			"definition": "Sharing data between threads through atomic operations instead of locks, so that no thread can stop the others by waiting.",
+			"home": "basics/threads",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "thread-pool",
+			"term": "thread pool",
+			"definition": "A fixed set of threads that wait for work and run each task that they are given.",
+			"home": "basics/threads",
+			"aliases": [],
+			"avoid": []
+		},
+		{
+			"id": "job",
+			"term": "job",
+			"definition": "A small piece of work given to a thread pool to run.",
+			"home": "basics/threads",
+			"aliases": [],
+			"avoid": []
+		}
+	]
+}

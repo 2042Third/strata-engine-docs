@@ -1,0 +1,70 @@
+{
+	"figures": [
+		{
+			"id": "simulation-settings",
+			"shows": "The Project Settings window on its Physics category and Simulation page, with the five fields of the section at their values",
+			"caption": "The five fields at their defaults; each label but Contact damping names its unit, and each tooltip gives the range and the default.",
+			"alt": "The Project Settings window with a list of categories on the left and the Simulation page on the right. The page lists five number fields: contact recycle distance, sleep threshold, contact stiffness, contact damping and overlap push speed.",
+			"kind": "editor",
+			"project": { "sample": "PhysicsPlayground" },
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"panel": "ProjectSettings",
+				"steps": [
+					{ "command": "editor.showPanel", "parameters": { "panel": "ProjectSettings" } }
+				]
+			},
+			"waitsFor": "tier 3: the Simulation page of Project Settings; no command selects a Project Settings page (editor.showPanel takes no page, and the panel opens on Game)",
+			"standIn": "simulation-page"
+		},
+		{
+			"id": "simulation-page",
+			"kind": "diagram",
+			"shows": "The Simulation page of the Project Settings panel as the editor's code at the pin lays it out: the list of pages with its search field and the Physics category (Collision Layers, Timing, Simulation selected), the page's heading and description, the five fields at their defaults, and the Reset to Defaults button",
+			"caption": "The five fields at their defaults, each label but Contact damping with its unit. Reset to Defaults stays dimmed until the project stores the section.",
+			"alt": "A drawing of a settings panel. On the left, a list under a search field shows the category Physics with Collision Layers, Timing and the selected Simulation. On the right, the page Simulation has a short description, then five fields: Contact recycle distance (m) 0.05, Sleep threshold (m/s) 0.08, Contact stiffness (Hz) 30, Contact damping 10 and Overlap push speed (m/s) 3. A dimmed Reset to Defaults button is below them. Notes under the panel point at the values (defaults) and the button (dimmed), and say each label's tooltip gives the range, default and effect.",
+			"numbers": "Labels, description, defaults and order from Strata/src/Strata/Physics/PhysicsSimulationSettings.cpp (MakeSection) and PhysicsTypes.h (c_Default*); the list from StrataEditor/src/UI/SettingsPages.cpp (BuildEntries, DrawList: categories in registration order, the Scene module's Collision Layers and Timing before the Physics module's Simulation); Reset to Defaults is enabled only when the section is stored (GenericSettingsPage::Draw)."
+		},
+		{
+			"id": "streaming-physics",
+			"shows": "The Streaming panel's Physics section after 300 paused fixed steps of the Physics Playground with Count contacts checked: the Bodies bar, Never grew, and the step line with the awake bodies and the recycled share",
+			"caption": "The line of the step names the whole step and the library's part, the awake bodies of all moving ones, and the share of recycled contacts. Here most moving bodies are still awake, and almost all of their contacts were recycled.",
+			"alt": "The Streaming panel with its Physics section open. A bar named Bodies reads 642 of 2048. Lines below it say that nothing was built or destroyed in the last frame, Never grew, and reserves 4.9 MB. The step line reads 0.88 ms with the library's 0.54, awake 516 of 615, recycled 99 percent. A check box named Count contacts is checked.",
+			"kind": "editor",
+			"project": { "sample": "PhysicsPlayground" },
+			"editorWindow": {
+				"layout": "layouts/physics-tuning-streaming.ini",
+				"windowSize": [960, 540],
+				"panel": "Streaming",
+				"steps": [
+					{ "command": "editor.showPanel", "parameters": { "panel": "Streaming" } }
+				]
+			},
+			"setup": [
+				{ "command": "play.start" },
+				{ "command": "play.pause", "parameters": { "paused": true } },
+				{ "command": "physics.setDetailedStats", "parameters": { "enabled": true } },
+				{ "command": "play.step", "parameters": { "steps": 300 } }
+			]
+		},
+		{
+			"id": "physics-stats-answer",
+			"kind": "text",
+			"shows": "The answer of physics.stats for the Physics Playground after 600 fixed steps with detailed counting on, reduced to the step, sleep, contacts, settling and settings parts",
+			"caption": "The answer groups what the last step did: its times, the sleeping bodies, the contacts, the settling instruments and the tuning that applied. The library's stages nest, so the stages inside solve are not added again. The library total is the measured time of box3d's step, about the sum of pairs, collide, solve and sensors (here 0.5305 of 0.5312 ms), and Strata's own total is the sum of its parts. The effective contact value equals the setting within float rounding.",
+			"numbers": "0.5305 and 0.5312 come from the published text: pairs 0.0181, collide 0.0859, solve 0.4179 and sensors 0.0086 add to 0.5305; libraryMs is 0.5312.",
+			"alt": "A block of JSON text with five groups. The step group holds times in milliseconds with the library's stages. The sleep group holds body counts. The contacts group holds counts and a recycled share near 1. The settling group holds the fastest body's speed, and the settings group holds the five tuning values with the effective contact stiffness, 29.999998, which is 30 within float rounding.",
+			"project": { "sample": "PhysicsPlayground" },
+			"setup": [
+				{ "command": "play.start" },
+				{ "command": "play.pause", "parameters": { "paused": true } },
+				{ "command": "physics.setDetailedStats", "parameters": { "enabled": true } },
+				{ "command": "play.step", "parameters": { "steps": 600 } }
+			],
+			"text": {
+				"command": { "command": "physics.stats", "parameters": {} },
+				"keep": [ "/step", "/sleep", "/contacts", "/settling", "/settings" ]
+			}
+		}
+	]
+}

@@ -1,0 +1,3 @@
+# Part review: make/commands
+
+No corrections: the status pill's text, StrataCLI's `call`, `list`, `status` and `launch`, its exit codes 0 to 5 and 30000 ms timeout, the UTF-16 and params-file messages, `Unknown parameter '...' for ...`, `prefab.instantiate`'s `instances` (1 to 100,000, `Instance N: unknown key`, the coins' names, which the tutorial file checks), `animation.createController`, `animation.preview`'s chip and refusal, `world.setLayers`, `viewport.capture`'s `camera` and `debugView` values, `lighting.bakeProbes`' refusal and `editor.batch`'s numbering from 0 and its refusals agree with the pin and the part.

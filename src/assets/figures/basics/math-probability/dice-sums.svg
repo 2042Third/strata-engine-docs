@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 392">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plot area: x 88 to 728 (eleven slots of 58.2), y 330 for 0 pairs and 40 units a pair. -->
+<path class="line-faint" d="M88 290H728M88 250H728M88 210H728M88 170H728M88 130H728M88 90H728" fill="none" stroke-width="1"/>
+<g class="small" text-anchor="end">
+<text x="76" y="335">0</text>
+<text x="76" y="295">1</text>
+<text x="76" y="255">2</text>
+<text x="76" y="215">3</text>
+<text x="76" y="175">4</text>
+<text x="76" y="135">5</text>
+<text x="76" y="95">6</text>
+</g>
+<rect class="blue-area line-blue" x="97.1" y="290" width="40" height="40"/>
+<rect class="blue-area line-blue" x="155.3" y="250" width="40" height="80"/>
+<rect class="blue-area line-blue" x="213.5" y="210" width="40" height="120"/>
+<rect class="blue-area line-blue" x="271.6" y="170" width="40" height="160"/>
+<rect class="blue-area line-blue" x="329.8" y="130" width="40" height="200"/>
+<rect class="orange-area line-orange" x="388.0" y="90" width="40" height="240"/>
+<rect class="blue-area line-blue" x="446.2" y="130" width="40" height="200"/>
+<rect class="blue-area line-blue" x="504.4" y="170" width="40" height="160"/>
+<rect class="blue-area line-blue" x="562.5" y="210" width="40" height="120"/>
+<rect class="blue-area line-blue" x="620.7" y="250" width="40" height="80"/>
+<rect class="blue-area line-blue" x="678.9" y="290" width="40" height="40"/>
+<path class="line-ink" d="M88 330H728" fill="none"/>
+<g class="small" text-anchor="middle">
+<text x="117.1" y="282">1</text>
+<text x="175.3" y="242">2</text>
+<text x="233.5" y="202">3</text>
+<text x="291.6" y="162">4</text>
+<text x="349.8" y="122">5</text>
+<text x="408.0" y="82">6</text>
+<text x="466.2" y="122">5</text>
+<text x="524.4" y="162">4</text>
+<text x="582.5" y="202">3</text>
+<text x="640.7" y="242">2</text>
+<text x="698.9" y="282">1</text>
+<text x="117.1" y="352">2</text>
+<text x="175.3" y="352">3</text>
+<text x="233.5" y="352">4</text>
+<text x="291.6" y="352">5</text>
+<text x="349.8" y="352">6</text>
+<text x="408.0" y="352">7</text>
+<text x="466.2" y="352">8</text>
+<text x="524.4" y="352">9</text>
+<text x="582.5" y="352">10</text>
+<text x="640.7" y="352">11</text>
+<text x="698.9" y="352">12</text>
+</g>
+<text class="small muted" x="40" y="66">pairs of 36</text>
+<text class="small muted" x="408" y="380" text-anchor="middle">sum of the two dice</text>
+<text class="orange bold" x="408" y="58" text-anchor="middle">6 of 36: chance 0.167</text>
+</svg>

@@ -1,0 +1,3 @@
+# Part review: ui/contract (group 1 of 1)
+
+No corrections: every statement checked against the pin held: the signals of the constructor and their handlers, `OnTextChanged`'s layout mark only for a fitted rect, `UpdateLayout`'s climb, `c_MaxLayoutsPerCanvas` 4 and the least recently used replacement, `Validate`'s checks (activity, raycast flag, field emptiness, boxes within 1e-4, clip rects) and its message, the `GameUI.Dirty` counts (10,001, 4,800, 8, 1, 25, 3840 x 2160 and 1280 x 1024), the budgets of `Perf.GameUI.Layout10k` (0.4059 against 0.6088 ms), `IdleFrame10k` (0.00027 against 0.000405 ms), `PerfGPU.GameUI.Render10k` (0.1006 against 0.1508 ms) and the provisional `RenderIdle10k`; no contradiction with the digest.

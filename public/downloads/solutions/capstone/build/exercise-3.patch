@@ -1,0 +1,60 @@
+diff --git a/Strata/src/Strata/Physics/WindForce.cpp b/Strata/src/Strata/Physics/WindForce.cpp
+index 660563b0..668a8093 100644
+--- a/Strata/src/Strata/Physics/WindForce.cpp
++++ b/Strata/src/Strata/Physics/WindForce.cpp
+@@ -38,6 +38,13 @@ namespace Strata
+ 		return zones;
+ 	}
+ 
++	float GetGustFactor(uint64_t fixedStep)
++	{
++		// The remainder first: a long run keeps the angle small, so that the sine stays exact.
++		const float phase = static_cast<float>(fixedStep % c_GustPeriodSteps) / static_cast<float>(c_GustPeriodSteps);
++		return 1.0f + 0.5f * std::sin(phase * 6.28318530718f);
++	}
++
+ 	glm::vec3 GetWindForce(const WindZoneSample& zone, const glm::vec3& position)
+ 	{
+ 		if (!(zone.Strength > 0.0f) || !std::isfinite(zone.Strength) || !IsFinite(position))
+diff --git a/Strata/src/Strata/Physics/WindForce.h b/Strata/src/Strata/Physics/WindForce.h
+index f212d71c..4e6920c1 100644
+--- a/Strata/src/Strata/Physics/WindForce.h
++++ b/Strata/src/Strata/Physics/WindForce.h
+@@ -5,6 +5,7 @@
+ #include <entt/entt.hpp>
+ #include <glm/glm.hpp>
+ 
++#include <cstdint>
+ #include <span>
+ #include <vector>
+ 
+@@ -28,6 +29,11 @@ namespace Strata
+ 	// caches: call Scene::UpdateWorldTransforms first when the scene was edited.
+ 	std::vector<WindZoneSample> GatherWindZones(Scene& scene);
+ 
++	// How strongly the wind gusts in a fixed step: 1 on average, between 0.5 and 1.5, repeating every c_GustPeriodSteps. It
++	// depends on the step count alone, so that a run repeats; the frame rate never enters.
++	constexpr uint64_t c_GustPeriodSteps = 120;
++	float GetGustFactor(uint64_t fixedStep);
++
+ 	// The force, in newtons, that one zone applies at a world position.
+ 	// Directional: Strength along the zone's local -Z (Strata's forward) turned by its world rotation, everywhere.
+ 	// Spherical: Strength away from the center within Radius of it, and nothing at the center itself or outside.
+diff --git a/Strata/src/Strata/Physics/WindZoneSystem.cpp b/Strata/src/Strata/Physics/WindZoneSystem.cpp
+index d58d02ff..5661670e 100644
+--- a/Strata/src/Strata/Physics/WindZoneSystem.cpp
++++ b/Strata/src/Strata/Physics/WindZoneSystem.cpp
+@@ -81,8 +81,12 @@ namespace Strata
+ 				bodies->AddForce(body, force);
+ 		};
+ 
+-		for (const WindZoneSample& zone : m_Zones)
++		// The gust belongs to the push alone: the zones' strengths, which the service and the events report, stay the component's.
++		const float gust = GetGustFactor(m_Scene.GetFixedStepCount());
++		for (const WindZoneSample& gathered : m_Zones)
+ 		{
++			WindZoneSample zone = gathered;
++			zone.Strength *= gust;
+ 			if (!(zone.Strength > 0.0f))
+ 				continue;
+ 			if (zone.Mode == WindZoneMode::Spherical)

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 404">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Frustum: parallel view of camera space (u = -Z forward, x right, y up) turned 15 degrees about y and tilted 18 degrees, 41 units per metre, camera at (56, 190); vertical field of view 60 degrees, aspect 1.5, near at 1.6 and far at 5.4 (out of scale). Hidden sides: near, left (leader to the upper back edge at x 212), bottom (leader to the lower front edge at x 168); the edge between left and bottom is dashed. Side view: tip (548, 210), sides at plus and minus 30 degrees, near at 70, far at 190. -->
+<polygon class="green-area line-green" stroke-width="2" points="319.48,28.91 220.23,143.37 220.23,386.51 319.48,272.05"/>
+<line class="line-muted" stroke-dasharray="4 3" x1="56" y1="190" x2="134.07" y2="142.27"/>
+<line class="line-muted" stroke-dasharray="4 3" x1="56" y1="190" x2="104.66" y2="176.18"/>
+<line class="line-muted" stroke-dasharray="4 3" x1="56" y1="190" x2="104.66" y2="248.22"/>
+<line class="line-muted" stroke-dasharray="4 3" x1="104.66" y1="248.22" x2="134.07" y2="214.31"/>
+<line class="line-muted" stroke-dasharray="4 3" x1="56" y1="190" x2="134.07" y2="214.31"/>
+<line class="line-muted" stroke-dasharray="4 3" x1="134.07" y1="214.31" x2="319.48" y2="272.05"/>
+<line class="line-muted" stroke-dasharray="4 3" x1="134.07" y1="214.31" x2="134.07" y2="142.27"/>
+<polygon class="blue-area" points="134.07,142.27 104.66,176.18 104.66,248.22 134.07,214.31"/>
+<line class="line-ink" stroke-width="2" x1="134.07" y1="142.27" x2="319.48" y2="28.91"/>
+<line class="line-blue" stroke-width="2" x1="134.07" y1="142.27" x2="104.66" y2="176.18"/>
+<line class="line-ink" stroke-width="2" x1="104.66" y1="176.18" x2="220.23" y2="143.37"/>
+<line class="line-blue" stroke-width="2" x1="104.66" y1="176.18" x2="104.66" y2="248.22"/>
+<line class="line-ink" stroke-width="2" x1="104.66" y1="248.22" x2="220.23" y2="386.51"/>
+<line class="line-orange" stroke-width="2" x1="56" y1="190" x2="378.7" y2="216.72"/>
+<polygon class="orange" points="388.66,217.54 378.41,220.21 378.99,213.23"/>
+<circle class="ink" cx="56" cy="190" r="5"/>
+<text class="ink" x="46" y="172" text-anchor="middle">camera</text>
+<text class="blue" x="100" y="128" text-anchor="middle">near plane</text>
+<text class="green" x="328" y="296">far plane</text>
+<text class="ink" x="194.61" y="127.68" text-anchor="middle">top</text>
+<text class="ink" x="165" y="278" text-anchor="middle">right</text>
+<line class="line-muted" x1="188" y1="63" x2="212" y2="94.62"/>
+<text class="ink" x="175" y="56" text-anchor="middle">left <tspan class="muted small">(behind)</tspan></text>
+<line class="line-muted" x1="146" y1="338" x2="168" y2="324.01"/>
+<text class="ink" x="140" y="346" text-anchor="end">bottom</text>
+<text class="muted small" x="140" y="364" text-anchor="end">(underneath)</text>
+<text class="orange" x="396.66" y="214.54">view direction</text>
+<text class="orange" x="396.66" y="234.54">−Z</text>
+<line class="line-ink" stroke-width="2" x1="548" y1="210" x2="738" y2="100.3"/>
+<line class="line-ink" stroke-width="2" x1="548" y1="210" x2="738" y2="319.7"/>
+<line class="line-blue" stroke-width="2.5" x1="618" y1="169.59" x2="618" y2="250.41"/>
+<line class="line-green" stroke-width="2.5" x1="738" y1="100.3" x2="738" y2="319.7"/>
+<path class="line-orange" fill="none" stroke-width="2" d="M 570.52 197 A 26 26 0 0 1 570.52 223"/>
+<circle class="ink" cx="548" cy="210" r="5"/>
+<text class="orange" x="582" y="215">60°</text>
+<text class="muted" x="643" y="40" text-anchor="middle">side view</text>
+<text class="ink" x="640" y="136.04" text-anchor="middle">top</text>
+<text class="ink" x="650" y="300" text-anchor="middle">bottom</text>
+<text class="blue" x="612" y="270" text-anchor="end">near 0.1</text>
+<text class="green" x="738" y="345.7" text-anchor="end">far 1000</text>
+</svg>

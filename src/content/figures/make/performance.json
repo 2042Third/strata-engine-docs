@@ -1,0 +1,717 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "The editor in Play: a field of spheres under the Stats overlay, the Performance panel below",
+			"caption": "The result, with spheres in place of the rock: the field plays while the overlay counts the draws and the panel shows where the time goes.",
+			"alt": "The editor with rows of white spheres behind a block of figures, and below them a panel with frame times, two bar graphs and a table of stage timings.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"files": [
+				{
+					"stage": 1
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/make-performance-result.ini",
+				"windowSize": [
+					960,
+					640
+				],
+				"steps": [
+					{
+						"command": "scene.new",
+						"parameters": {
+							"template": "basic3d",
+							"name": "Main",
+							"force": true
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Rock",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Sphere"
+								}
+							}
+						},
+						"bind": {
+							"rock": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "rock"
+								}
+							],
+							"path": "Prefabs/Rock.stprefab",
+							"link": false
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "rock"
+								}
+							]
+						}
+					},
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Field"
+						},
+						"bind": {
+							"field": "/id"
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "field"
+							},
+							"class": "FieldSpawner"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Hut",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										148,
+										1.5,
+										-14
+									],
+									"Scale": [
+										10,
+										3,
+										4
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"stats": true
+						}
+					},
+					{
+						"command": "play.start"
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-8,
+								4,
+								-8
+							],
+							"target": [
+								40,
+								0,
+								30
+							],
+							"fov": 40
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Performance"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "field-stats",
+			"shows": "The Scene view in Play from behind the hut, with the Stats overlay",
+			"caption": "Behind the hut, the overlay's fifth line counts the proxies the hut hides, which the engine does not draw; the eighth counts those still visible.",
+			"alt": "A gray box before a field of small rocks that shows on both its sides, below an overlay of lines.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"files": [
+				{
+					"stage": 1
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/make-performance-scene.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "scene.new",
+						"parameters": {
+							"template": "basic3d",
+							"name": "Main",
+							"force": true
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Rock",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "9A6A5C34C949116A"
+								}
+							}
+						},
+						"bind": {
+							"rock": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "rock"
+								}
+							],
+							"path": "Prefabs/Rock.stprefab",
+							"link": false
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "rock"
+								}
+							]
+						}
+					},
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Field"
+						},
+						"bind": {
+							"field": "/id"
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "field"
+							},
+							"class": "FieldSpawner"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Hut",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										148,
+										1.5,
+										-14
+									],
+									"Scale": [
+										10,
+										3,
+										4
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"stats": true
+						}
+					},
+					{
+						"command": "play.start"
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								148,
+								1.6,
+								-24
+							],
+							"target": [
+								148,
+								1.2,
+								60
+							],
+							"fov": 60
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "panel-bound",
+			"shows": "The Performance panel in Play, its stage table's GPU part naming what bounds the frame",
+			"caption": "Under the CPU stages, the GPU part of the table names what bounds the frame: here Capped, the rate of the display. The line runs on past the Stage column.",
+			"alt": "A panel with frame times, two bar graphs and a long table of stage timings. After the CPU stages, a line starts with Capped and is cut at the column's edge.",
+			"kind": "editor",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"files": [
+				{
+					"stage": 1
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/make-performance-tall.ini",
+				"windowSize": [
+					1280,
+					1040
+				],
+				"panel": "Performance",
+				"steps": [
+					{
+						"command": "scene.new",
+						"parameters": {
+							"template": "basic3d",
+							"name": "Main",
+							"force": true
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Rock",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "9A6A5C34C949116A"
+								}
+							}
+						},
+						"bind": {
+							"rock": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "rock"
+								}
+							],
+							"path": "Prefabs/Rock.stprefab",
+							"link": false
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "rock"
+								}
+							]
+						}
+					},
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Field"
+						},
+						"bind": {
+							"field": "/id"
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "field"
+							},
+							"class": "FieldSpawner"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Hut",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										148,
+										1.5,
+										-14
+									],
+									"Scale": [
+										10,
+										3,
+										4
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"stats": true
+						}
+					},
+					{
+						"command": "play.start"
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-30,
+								30,
+								-40
+							],
+							"target": [
+								150,
+								0,
+								75
+							],
+							"fov": 40
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "lod-view",
+			"shows": "The LOD debug view over a field of scanned boulders, all at their simplest levels",
+			"caption": "With a scanned boulder in place of the rock, every boulder is tinted for its simplest levels: from here its finest detail is smaller than a pixel.",
+			"alt": "A field of boulders all tinted red over green ground, with a legend that counts them all at level 3 and beyond and none at levels 1 and 2.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "Showcase"
+			},
+			"files": [
+				{
+					"stage": 1
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/make-performance.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "scene.new",
+						"parameters": {
+							"template": "basic3d",
+							"name": "Main",
+							"force": true
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Rock",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "A245B2D06B14B7C3"
+								}
+							}
+						},
+						"bind": {
+							"rock": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "rock"
+								}
+							],
+							"path": "Prefabs/Rock.stprefab",
+							"link": false
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "rock"
+								}
+							]
+						}
+					},
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Field"
+						},
+						"bind": {
+							"field": "/id"
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "field"
+							},
+							"class": "FieldSpawner"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Hut",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										148,
+										1.5,
+										-14
+									],
+									"Scale": [
+										10,
+										3,
+										4
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"stats": true
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"debugView": "lod"
+						}
+					},
+					{
+						"command": "play.start"
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-8,
+								4,
+								-8
+							],
+							"target": [
+								40,
+								0,
+								30
+							],
+							"fov": 40
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "streaming-view",
+			"shows": "The Open World copy in Play in the Streaming debug view, with the cell map of the Streaming panel",
+			"caption": "The rocks keep their own orange and blue-green; the legend counts no yellow loads and no red failures. The two yellow cells at the map's left edge still load, but the view tints entities, not cells.",
+			"alt": "Orange and blue-green rocks and trees, a legend that counts none, and a map of squares: orange ones around the player, two yellow ones at the left edge.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-performance-960.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"debugView": "streaming"
+						}
+					},
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					},
+					{
+						"command": "play.start"
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								70,
+								48,
+								96
+							],
+							"target": [
+								0,
+								0,
+								0
+							],
+							"fov": 50
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Streaming"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "perf-chart",
+			"shows": "A spreadsheet line chart of the WorkMs column of a perf log over 600 frames",
+			"caption": "Frame times as a line chart.",
+			"alt": "A flat line with spikes.",
+			"kind": "tool",
+			"waitsFor": "tier 3: the chart of a spreadsheet program; no debug view shows it",
+			"takenBy": "owner",
+			"standIn": "perf-log-chart"
+		},
+		{
+			"id": "perf-log-chart",
+			"kind": "diagram",
+			"shows": "A sketch with made-up values: the first lines of run.csv as text, its WorkMs field highlighted in each line, an arrow for selecting that column and inserting a line chart, and the line chart of WorkMs over 600 rows: a flat run near 4 ms with three single-row spikes",
+			"caption": "A sketch with made-up values: the log as text, and its chart of work times, flat but for slow frames.",
+			"alt": "Lines of text, the second field of each highlighted, above its line chart: flat, with three spikes.",
+			"numbers": "The header's first columns are Frame, WorkMs and IntervalMs, joined by commas (Strata/src/Strata/Runtime/FramePerfLog.cpp:103, :123-128). The values are made up: WorkMs near 4.1 ms with spikes of 8.9, 13.2 and 11.0 ms at rows 120, 290 and 470, IntervalMs 8.33 ms."
+		}
+	]
+}

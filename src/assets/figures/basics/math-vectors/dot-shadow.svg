@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 450">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Grid: one unit is 100; the origin is at 160, 360; v = (3, 2), u = (1, 0), shadow 0 to 3, leftover from (3, 0) to (3, 2). -->
+<line class="line-muted" x1="120" y1="360" x2="620" y2="360"/>
+<text class="muted" x="628" y="365">axis</text>
+<line class="line-muted" x1="240" y1="30" x2="240" y2="82" stroke-width="1.5"/>
+<polygon class="muted" points="240,92 236.5,82 243.5,82"/>
+<line class="line-muted" x1="340" y1="30" x2="340" y2="82" stroke-width="1.5"/>
+<polygon class="muted" points="340,92 336.5,82 343.5,82"/>
+<line class="line-muted" x1="440" y1="30" x2="440" y2="82" stroke-width="1.5"/>
+<polygon class="muted" points="440,92 436.5,82 443.5,82"/>
+<text class="muted" x="228" y="66" text-anchor="end">light</text>
+<rect class="orange-area line-orange" x="160" y="355" width="300" height="10"/>
+<line class="line-blue" x1="160" y1="360" x2="248" y2="360" stroke-width="2.5"/>
+<polygon class="blue" points="260,360 248,364.5 248,355.5"/>
+<path class="line-ink" d="M446 355V341H460" fill="none"/>
+<line class="line-green" x1="460" y1="355" x2="460" y2="172" stroke-width="2.5"/>
+<polygon class="green" points="460,160 464.5,172 455.5,172"/>
+<line class="line-purple" x1="160" y1="360" x2="450" y2="166.7" stroke-width="2.5"/>
+<polygon class="purple" points="460,160 452.5,170.4 447.5,162.9"/>
+<circle class="ink" cx="160" cy="360" r="4"/>
+<text class="purple bold" x="296" y="246" text-anchor="end">v = (3, 2)</text>
+<text class="blue bold" x="210" y="386" text-anchor="middle">u = (1, 0)</text>
+<text class="orange bold" x="310" y="412" text-anchor="middle">shadow: (v · u) u = (3, 0)</text>
+<text class="orange" x="310" y="434" text-anchor="middle">its length: v · u = 3</text>
+<text class="green" x="472" y="254">left over:</text>
+<text class="green bold" x="472" y="276">v − (v · u) u = (0, 2)</text>
+</svg>

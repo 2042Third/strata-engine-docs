@@ -1,0 +1,38 @@
+{
+	"files": {
+		"mip-view-settled.avif": {
+			"kind": "scene",
+			"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "c853214492987c3525d0a7ed5a2ae06c4d03d322456bf4512e18b36a80d3a294"
+			},
+			"reportedCommit": "822a7a46dbcd",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1280,
+				720
+			],
+			"figure": "mip-view-settled",
+			"variant": null,
+			"crop": null,
+			"original": "34345b7e6eec6b9ac7cb985aa2796bfb0d7f0f0fc15299316433226906da60f0",
+			"recorded": {},
+			"checkedAt": [
+				"319075e3f92b316db5cdd30560de08c1ffe0ae26"
+			],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 80,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "b31fa42038364e6b0c4e174d64672de8f539190a9b2ff0fc0ce976680c6bc04e"
+		}
+	}
+}

@@ -1,0 +1,41 @@
+{
+	"figures": [
+		{
+			"id": "banding-pair",
+			"shows": "The Showcase's dark dusk sky filling most of the frame above a thin strip of ridge and rocks, with the output dither off and on",
+			"caption": "The same dark dusk sky with the dither off and on. In the first picture the sky climbs in flat bands, each one code brighter than the one above it, and wider toward the top. In the second, a fine grain takes the place of the edges. The bands are faint: one code of a dark blue, clearest on a bright screen in a dark room.",
+			"alt": "Two views of the same dark blue dusk sky that fills most of the picture, above a thin strip of brown ridge with rocks. In the first, the sky gets lighter toward the ridge in faint flat bands with edges between them. In the second, the same sky has a fine grain and no visible bands.",
+			"kind": "scene",
+			"project": { "sample": "Showcase" },
+			"station": "Dusk",
+			"camera": { "position": [-2.0, 1.6, -2.0], "target": [-16.0, 18.2, -16.0], "fov": 50 },
+			"size": [1280, 720],
+			"quality": "high",
+			"publish": "lossless",
+			"variants": {
+				"off": { "renderer": { "DitherOutput": false } },
+				"on": { "renderer": { "DitherOutput": true } }
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "grain-sweep",
+			"shows": "The ThirdPerson main menu's robot seen close from slightly below, its interface hidden, at one picture pixel per screen pixel, with FilmGrain 0 and 1",
+			"caption": "The same view without film grain and at full strength: the grain covers the gray rings, the yellow body and the clouds with a clear texture. It is weaker on the dark eye lenses, least on their shaded lower halves.",
+			"alt": "Two views of the same robot, built of flat faces, against a cloudy sky. In the first, every surface is smooth. In the second, a fine grain covers the gray metal rings, the yellow body, the green tree and the clouds. On the black eye lenses and the bars above them the grain is weaker, least on the lenses' shaded lower halves.",
+			"kind": "scene",
+			"project": { "sample": "ThirdPerson" },
+			"camera": { "position": [0.85, 0.85, 2.2], "target": [1.55, 1.1, 0.1], "fov": 40 },
+			"size": [768, 432],
+			"setup": [
+				{ "command": "entity.setActive", "parameters": { "entity": "4BEF9D5D8DF755AA", "active": false } }
+			],
+			"publish": "lossless",
+			"variants": {
+				"none": { "postProcess": { "FilmGrain": 0 } },
+				"strong": { "postProcess": { "FilmGrain": 1 } }
+			},
+			"expect": "complete"
+		}
+	]
+}

@@ -1,0 +1,178 @@
+[
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Player"
+		},
+		"bind": {
+			"player": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Main Camera"
+		},
+		"bind": {
+			"camera": "/entities/0"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "camera"
+			},
+			"class": "FollowCamera",
+			"fields": {
+				"Target": {
+					"$ref": "player"
+				}
+			}
+		}
+	},
+	{
+		"command": "project.setSettings",
+		"parameters": {
+			"section": "Scene.Timing",
+			"value": {
+				"FixedRate": "30"
+			}
+		},
+		"expect": {
+			"/value/FixedRate": {
+				"equals": "30"
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 30
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 30
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Main Camera"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "W",
+			"steps": 15
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 30
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 30
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Main Camera"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 30
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 30
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Main Camera"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

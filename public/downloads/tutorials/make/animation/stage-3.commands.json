@@ -1,0 +1,91 @@
+[
+	{
+		"command": "animation.setController",
+		"parameters": {
+			"controller": "Animations/Player.stanimator",
+			"parameters": [
+				{
+					"Name": "Speed",
+					"Type": "Float",
+					"Default": 0
+				}
+			]
+		}
+	},
+	{
+		"command": "animation.setController",
+		"parameters": {
+			"controller": "Animations/Player.stanimator",
+			"states": [
+				{
+					"Name": "Idle",
+					"Clip": "E9C1D4AC112447DE"
+				},
+				{
+					"Name": "Walk",
+					"Clip": "57D5825B3AB8DCFD"
+				},
+				{
+					"Name": "Run",
+					"Clip": "76CC7E24795F51DA"
+				}
+			]
+		}
+	},
+	{
+		"command": "animation.setController",
+		"parameters": {
+			"controller": "Animations/Player.stanimator",
+			"transitions": [
+				{
+					"From": "Idle",
+					"To": "Walk",
+					"Duration": 0.15,
+					"Conditions": [
+						{
+							"Parameter": "Speed",
+							"Mode": "Greater",
+							"Threshold": 0.1
+						}
+					]
+				},
+				{
+					"From": "Walk",
+					"To": "Idle",
+					"Duration": 0.2,
+					"Conditions": [
+						{
+							"Parameter": "Speed",
+							"Mode": "Less",
+							"Threshold": 0.1
+						}
+					]
+				},
+				{
+					"From": "Walk",
+					"To": "Run",
+					"Duration": 0.2,
+					"Conditions": [
+						{
+							"Parameter": "Speed",
+							"Mode": "Greater",
+							"Threshold": 4.5
+						}
+					]
+				},
+				{
+					"From": "Run",
+					"To": "Walk",
+					"Duration": 0.2,
+					"Conditions": [
+						{
+							"Parameter": "Speed",
+							"Mode": "Less",
+							"Threshold": 4.5
+						}
+					]
+				}
+			]
+		}
+	}
+]

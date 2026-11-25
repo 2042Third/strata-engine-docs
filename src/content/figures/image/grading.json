@@ -1,0 +1,78 @@
+{
+	"figures": [
+		{
+			"id": "white-balance-sweep",
+			"shows": "The Basic 3D view with the white balance temperature at 3200, 6500 and 9000 K, then the tint at -1 and +1 at 6500 K",
+			"caption": "The same view at five white balance settings: 3,200, 6,500 and 9,000 K, then a tint of -1 and +1 at 6,500 K. A low temperature turns the picture blue and a high one warms it. The point 3,200 K lies about 159 mireds (a million divided by the kelvin) from 6,500 K and 9,000 K only about 43, so the blue cast is far stronger than the warm one. The tint moves the picture toward green or toward magenta.",
+			"numbers": "The variants' WhiteBalanceTemperature (3200, 6500, 9000) and WhiteBalanceTint (-1, +1). Mireds are 1,000,000 / K: 3,200 K is 312.5, 6,500 K 153.8 and 9,000 K 111.1, so 3,200 K lies 158.7 (about 159) mireds from 6,500 K and 9,000 K 42.7 (about 43).",
+			"alt": "Five pictures of a flat gray ground under a sky. The first is strongly blue, the second is a near-neutral gray, the third is a light tan, the fourth is greenish and the fifth is pinkish.",
+			"kind": "scene",
+			"project": { "template": "basic3d" },
+			"camera": "scene",
+			"size": [1280, 720],
+			"quality": "high",
+			"publish": "lossless",
+			"variants": {
+				"k3200": { "postProcess": { "WhiteBalanceTemperature": 3200 } },
+				"k6500": { "postProcess": { "WhiteBalanceTemperature": 6500 } },
+				"k9000": { "postProcess": { "WhiteBalanceTemperature": 9000 } },
+				"tint-minus": { "postProcess": { "WhiteBalanceTemperature": 6500, "WhiteBalanceTint": -1 } },
+				"tint-plus": { "postProcess": { "WhiteBalanceTemperature": 6500, "WhiteBalanceTint": 1 } }
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "grading-compare",
+			"shows": "The third-person sample's robot, grass and sky without grading, then with a slope that lifts red and lowers blue, a warm offset and a power of 1.2 on all channels",
+			"caption": "The same view with the slope, offset and power of the grade off and on; no lookup is set in either picture. The grade is a slope of 1.1, 1 and 0.9, an offset of 0.03, 0.01 and -0.02 (red, green, blue) and a power of 1.2 on all three channels. Look at the long shadow on the right and the dark bush at the bottom right, which turn darker and less blue. The clouds lose blue toward tan, and the lit grass turns yellower. The offset warms the dark parts most, the slope warms the bright parts, and the power darkens the shadows around the unchanged middle gray.",
+			"numbers": "The on variant's ColorSlope [1.1, 1, 0.9], ColorOffset [0.03, 0.01, -0.02] and ColorPower [1.2, 1.2, 1.2]; the off variant holds the identity values.",
+			"alt": "Two pictures of a yellow robot on a green island under gray clouds. The first has plain colors. In the second the shadows on the grass are darker and less blue, the lit grass is yellower and the clouds are tan.",
+			"kind": "scene",
+			"project": { "sample": "ThirdPerson" },
+			"scene": "Scenes/Course.stscene",
+			"camera": "scene",
+			"setup": [
+				{ "command": "entity.setActive", "parameters": { "active": false }, "entityName": "HUD" },
+				{ "command": "entity.setActive", "parameters": { "active": false }, "entityName": "Menus" }
+			],
+			"size": [1280, 720],
+			"quality": "high",
+			"publish": "lossless",
+			"variants": {
+				"off": { "postProcess": { "ColorSlope": [1, 1, 1], "ColorOffset": [0, 0, 0], "ColorPower": [1, 1, 1] } },
+				"on": { "postProcess": { "ColorSlope": [1.1, 1, 0.9], "ColorOffset": [0.03, 0.01, -0.02], "ColorPower": [1.2, 1.2, 1.2] } }
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "lookup-sweep",
+			"shows": "The third-person sample's robot and sky with a warm color lookup at intensity 0, 0.5 and 1, each with a crop of the sky and one of the robot",
+			"caption": "The same shot with one lookup, the feature test's mild warm grade, mixed in at no, half and full intensity. The grade is gentle: it lifts red and lowers blue in the mid-tones (0.5 becomes 0.53, 0.51 and 0.475), so the grass turns a little yellower and the clouds a little warmer. Each step moves the colors by only a few levels in 255, too little to see from one picture to the next. Compare the first and the last in the clouds of the sky crop (the top left of the frame) and in the lit grass at the lower left. In the robot crop, the robot's yellow body gains about 6 levels of red and loses about 4 of blue.",
+			"numbers": "Warm.cube (StrataTests/FeatureTest/Assets/Lighting/Feature/Warm.cube, 17 points each way) at its middle point (8, 8, 8), input 0.5: 0.530000 0.507500 0.475000. The step size was measured on the taken pictures (mean R/G/B): lit grass at the lower left (x 20-320, y 560-700) 75/157/113, 78/158/110, 82/158/106; sky crop region (x 0-384, y 0-144) 85/102/104, 88/103/101, 91/104/98: 3 to 4 levels per step. Robot crop (rect 0.4-0.6 by 0.45-0.8, 256 x 252), its yellow pixels (R above 120, G above 100, B below 90, R at least B + 50, about 4,500 pixels) at intensity 0, 0.5 and 1: 149.2/118.4/52.3, 152.6/119.3/50.4, 155.4/119.7/48.2, so red rises 6.2 and blue falls 4.1 from the first to the last.",
+			"alt": "Three pictures of a yellow robot on a green island under gray clouds, each beside a close crop of the sky and one of the robot's legs and lower body. The first has plain colors. The second and third are each slightly warmer: grass a little yellower, the robot's body a little more orange, clouds a little less blue. The steps are too small to see between neighbours.",
+			"kind": "scene",
+			"project": { "sample": "ThirdPerson" },
+			"scene": "Scenes/Course.stscene",
+			"camera": "scene",
+			"crops": [
+				{ "name": "robot", "rect": [0.4, 0.45, 0.6, 0.8], "scale": 4 },
+				{ "name": "sky", "rect": [0.0, 0.0, 0.3, 0.2], "scale": 4 }
+			],
+			"setup": [
+				{ "command": "asset.import", "parameters": { "file": "G:/GameEngineAI/.worktrees/docs-pin/StrataTests/FeatureTest/Assets/Lighting/Feature/Warm.cube", "directory": "Looks" } },
+				{ "command": "component.set", "parameters": { "component": "PostProcess", "values": { "ColorLookup": "Looks/Warm.cube", "ColorLookupIntensity": 1 } }, "entityName": "Post Process" },
+				{ "command": "entity.setActive", "parameters": { "active": false }, "entityName": "HUD" },
+				{ "command": "entity.setActive", "parameters": { "active": false }, "entityName": "Menus" }
+			],
+			"size": [1280, 720],
+			"quality": "high",
+			"publish": "lossless",
+			"variants": {
+				"intensity-0": { "setup": [ { "command": "component.set", "parameters": { "component": "PostProcess", "values": { "ColorLookupIntensity": 0 } }, "entityName": "Post Process" } ] },
+				"intensity-half": { "setup": [ { "command": "component.set", "parameters": { "component": "PostProcess", "values": { "ColorLookupIntensity": 0.5 } }, "entityName": "Post Process" } ] },
+				"intensity-1": { "setup": [ { "command": "component.set", "parameters": { "component": "PostProcess", "values": { "ColorLookupIntensity": 1 } }, "entityName": "Post Process" } ] }
+			},
+			"expect": "complete"
+		}
+	]
+}

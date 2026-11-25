@@ -1,0 +1,12 @@
+diff --git a/Strata/src/Strata/Renderer/SceneRenderData.h b/Strata/src/Strata/Renderer/SceneRenderData.h
+--- a/Strata/src/Strata/Renderer/SceneRenderData.h
++++ b/Strata/src/Strata/Renderer/SceneRenderData.h
+@@ -768,7 +768,7 @@
+ 		constexpr uint32_t c_GIMaxTiles = 32768;         // Tiles per batch; beyond them a triangle walks its tiles itself (counted)
+ 		// A proxy placed anew is moving: out of the voxels its triangles made, in the dynamic layer (GI/VoxelMovers.comp) until it
+ 		// has kept its place for this long by the renderer's clock (never frames), when its triangles are voxelized again.
+-		constexpr float c_GIMoverRestSeconds = 0.25f;
++		constexpr float c_GIMoverRestSeconds = 0.1f;
+ 		// Its triangles' voxels and its box are two forms of it (whole voxels, a box with soft edges): where one takes the other's
+ 		// place, when it starts to move and when it has rested, the voxels fade from what they showed to what they hold over this
+ 		// long by the same clock, so the light around it never steps.

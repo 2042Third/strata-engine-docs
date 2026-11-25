@@ -1,0 +1,178 @@
+[
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Board"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"class": "TetrisBoard",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "input.sequence",
+		"parameters": {
+			"steps": 4,
+			"events": [
+				{
+					"step": 0,
+					"key": "Left",
+					"action": "tap"
+				},
+				{
+					"step": 2,
+					"key": "Space",
+					"action": "tap"
+				}
+			]
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 4
+			}
+		}
+	},
+	{
+		"command": "log.read",
+		"parameters": {
+			"newest": true,
+			"limit": 50
+		}
+	},
+	{
+		"command": "input.sequence",
+		"parameters": {
+			"steps": 24,
+			"events": [
+				{
+					"step": 0,
+					"key": "Down",
+					"action": "press"
+				},
+				{
+					"step": 23,
+					"key": "Down",
+					"action": "release"
+				}
+			]
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 24
+			}
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 48
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 48
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Board"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"class": "TetrisBoard",
+			"field": "MinInterval",
+			"value": 0.01,
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Board"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"class": "TetrisBoard",
+			"field": "StartInterval",
+			"value": 0.01,
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 600
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 600
+			}
+		}
+	},
+	{
+		"command": "log.read",
+		"parameters": {
+			"newest": true,
+			"limit": 100
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Board"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"class": "TetrisBoard",
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	}
+]

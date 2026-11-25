@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 436">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- the drawing: roles as classes (plan/card/drawing.md) -->
+<!-- plan: x = log10(km) 0..2 on 96..736; y = log10(mm) -1.4..1.2 on 360..40; gap = 2^(e-23) m, e = floor(log2(m)) -->
+<line class="line-faint" stroke-width="1" x1="96.0" y1="310.8" x2="736.0" y2="310.8"/>
+<line class="line-faint" stroke-width="1" x1="96.0" y1="187.7" x2="736.0" y2="187.7"/>
+<line class="line-faint" stroke-width="1" x1="96.0" y1="64.6" x2="736.0" y2="64.6"/>
+<line class="line-faint" stroke-width="1" x1="416.0" y1="40.0" x2="416.0" y2="360.0"/>
+<line class="line-faint" stroke-width="1" x1="736.0" y1="40.0" x2="736.0" y2="360.0"/>
+<path class="line-ink" fill="none" d="M 96.0 40.0 V 360.0 H 736.0"/>
+<line class="line-ink" x1="96.0" y1="360.0" x2="96.0" y2="366.0"/>
+<text class="ink" x="96.0" y="384.0" text-anchor="middle">1</text>
+<line class="line-ink" x1="192.3" y1="360.0" x2="192.3" y2="366.0"/>
+<text class="ink" x="192.3" y="384.0" text-anchor="middle">2</text>
+<line class="line-ink" x1="319.7" y1="360.0" x2="319.7" y2="366.0"/>
+<text class="ink" x="319.7" y="384.0" text-anchor="middle">5</text>
+<line class="line-ink" x1="416.0" y1="360.0" x2="416.0" y2="366.0"/>
+<text class="ink" x="416.0" y="384.0" text-anchor="middle">10</text>
+<line class="line-ink" x1="512.3" y1="360.0" x2="512.3" y2="366.0"/>
+<text class="ink" x="512.3" y="384.0" text-anchor="middle">20</text>
+<line class="line-ink" x1="639.7" y1="360.0" x2="639.7" y2="366.0"/>
+<text class="ink" x="639.7" y="384.0" text-anchor="middle">50</text>
+<line class="line-ink" x1="736.0" y1="360.0" x2="736.0" y2="366.0"/>
+<text class="ink" x="736.0" y="384.0" text-anchor="middle">100</text>
+<line class="line-ink" x1="90.0" y1="310.8" x2="96.0" y2="310.8"/>
+<text class="ink" x="86.0" y="315.8" text-anchor="end">0.1</text>
+<line class="line-ink" x1="90.0" y1="187.7" x2="96.0" y2="187.7"/>
+<text class="ink" x="86.0" y="192.7" text-anchor="end">1</text>
+<line class="line-ink" x1="90.0" y1="64.6" x2="96.0" y2="64.6"/>
+<text class="ink" x="86.0" y="69.6" text-anchor="end">10</text>
+<text class="muted" x="416.0" y="414" text-anchor="middle">Distance from the origin in km (logarithmic scale)</text>
+<text class="muted" x="16" y="28">Gap to the next float in mm (logarithmic scale)</text>
+<line class="line-red" stroke-width="2" stroke-dasharray="4 3" x1="512.3" y1="40.0" x2="512.3" y2="360.0"/>
+<text class="red bold halo" x="502.3" y="92" text-anchor="end">Supported extent, 20 km</text>
+<path class="line-blue" fill="none" stroke-width="2.5" d="M 96.0 337.2 H 99.3 V 300.1 H 195.6 V 263.1 H 292.0 V 226.0 H 388.3 V 189.0 H 484.6 V 151.9 H 580.9 V 114.9 H 677.3 V 77.8 H 736.0"/>
+<text class="blue" x="590.9" y="138.4">doubles at 2<tspan class="small" dy="-6">15</tspan><tspan dy="6"> m</tspan></text>
+<circle class="ink" cx="96.0" cy="337.2" r="5"/>
+<text class="ink bold halo" x="110.0" y="331.2" text-anchor="start">0.061 mm</text>
+<circle class="ink" cx="512.3" cy="151.9" r="5"/>
+<text class="ink bold halo" x="502.3" y="139.9" text-anchor="end">1.95 mm</text>
+<circle class="ink" cx="736.0" cy="77.8" r="5"/>
+<text class="ink bold halo" x="736.0" y="63.8" text-anchor="end">7.81 mm</text>
+</svg>

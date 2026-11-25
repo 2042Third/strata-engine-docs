@@ -1,0 +1,198 @@
+[
+	{
+		"command": "asset.import",
+		"parameters": {
+			"file": "<release folder>/Samples/ThirdPerson/Assets/Sounds/Coin.ogg",
+			"directory": "Sounds"
+		}
+	},
+	{
+		"command": "asset.info",
+		"parameters": {
+			"asset": "Sounds/Coin.ogg"
+		},
+		"expect": {
+			"/importing": {
+				"equals": false
+			}
+		},
+		"until": {
+			"seconds": 120
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Hum",
+			"components": {
+				"AudioSource": {
+					"Clip": "Sounds/Coin.ogg",
+					"Loop": true
+				}
+			}
+		},
+		"bind": {
+			"hum": "/id"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "hum"
+			},
+			"component": "AudioSource"
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "audio.state",
+		"expect": {
+			"/voices/0/playing": {
+				"equals": true
+			}
+		},
+		"until": {
+			"seconds": 60
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Hum"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "Transform",
+			"values": {
+				"Translation": [
+					0,
+					0.5,
+					30
+				]
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Hum"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "AudioSource",
+			"values": {
+				"MaxDistance": 5,
+				"Rolloff": 3
+			},
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "audio.state"
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ball"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "component.add",
+		"parameters": {
+			"component": "AudioListener",
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Main Camera"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "AudioListener",
+			"values": {
+				"Active": false
+			},
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Main Camera"
+		},
+		"bind": {
+			"entityName.5": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.5"
+			}
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "audio.state",
+		"expect": {
+			"/voices/0/playing": {
+				"equals": true
+			}
+		},
+		"until": {
+			"seconds": 60
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "entity.delete",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "hum"
+				}
+			]
+		}
+	}
+]

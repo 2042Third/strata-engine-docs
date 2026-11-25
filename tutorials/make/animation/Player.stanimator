@@ -1,0 +1,20 @@
+{
+	"AnimationController": {
+		"DefaultState": "Idle",
+		"Parameters": [],
+		"States": [
+			{
+				"Clip": "E9C1D4AC112447DE",
+				"Events": [],
+				"Loop": true,
+				"Name": "Idle",
+				"Speed": 1.0
+			}
+		],
+		"Transitions": []
+	},
+	"Strata": {
+		"Format": "AnimationController",
+		"Version": 1
+	}
+}

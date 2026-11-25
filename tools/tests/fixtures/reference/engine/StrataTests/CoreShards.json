@@ -1,0 +1,11 @@
+{
+	"Description": "How CTest runs the pretend engine's suites (tools/tests/test_reference.py).",
+	"OwnTests": [
+		{ "Test": "StrataTests.Perf", "Suites": [ "Perf.*" ] }
+	],
+	"FuzzSuites": [ "*.Sweep" ],
+	"Shards": [
+		{ "Name": "Core", "Suites": [ "Core*" ] },
+		{ "Name": "Scene", "Suites": [ "Scene*" ], "Exclude": [ "Scene.Big" ] }
+	]
+}

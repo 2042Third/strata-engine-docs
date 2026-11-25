@@ -1,0 +1,14 @@
+… [info] App: Strata Editor 0.8.0 (Windows)
+… [info] Strata: Engine modules: Input, Scene, Renderer, Physics, Audio, Animation, Scripting, World, GameUI. Scene systems update in the order UI, Scripting, Animation, World, Physics, Audio
+… [info] Strata: JobSystem: 23 worker threads, 2 I/O threads, 20 background threads
+… [info] Strata: AudioEngine: mixing without an output device (48000 Hz, 2 channels)
+… [info] Strata: Asset scan: 0 assets, 0 imported, 0 failed (0 ms)
+… [info] App: Opened project 'FallTest' (S:/FallTestProject)
+… [info] App: project.create -> {"discardedChanges":false,"discardedSettings":false,"projectFile":"S:/FallTestProject/FallTest.stproj","startScene":null,"template":"empty"}
+… [info] App: entity.create -> {"id":"…"}
+… [info] App: play.start -> {"paused":true,"state":"Play"}
+… [info] App: Started in …
+… [info] App: play.step -> {"fixedSteps":60,"frameIndex":60,"paused":true,"state":"Play","stepsRun":60,"time":1.0000000521540642}
+… [info] App: component.get -> {"values":{"Rotation":[0,0,0,1],"Scale":[1,1,1],"Translation":[0,5.1553044,0]}}
+… [info] App: Command script finished (5 commands)
+… [info] Strata: AudioEngine: shut down

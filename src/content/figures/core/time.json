@@ -1,0 +1,11 @@
+{
+	"figures": [
+		{
+			"id": "accumulator-timeline",
+			"shows": "Five frames of 35, 6, 4, 16 and 130 ms on a clock row, and below them the fixed steps of 10 ms that each frame ran, with the last frame's backlog dropped and one step kept",
+			"caption": "The third frame runs no step. The fifth owes more steps than the cap allows, so the cap drops the rest and the accumulator keeps one.",
+			"alt": "A clock row of five blue blocks of different widths. Below it a row of equal blue squares grouped by frame, then a striped block for the dropped steps and a dashed square for the step that stays. A ruler runs below both rows.",
+			"kind": "diagram"
+		}
+	]
+}

@@ -1,0 +1,150 @@
+{
+	"figures": [
+		{
+			"id": "letterboxed-16x9",
+			"shows": "The Game view in play with a 16:9 image in a tall panel, with bars above and below",
+			"caption": "A tall panel shows the game in its wide shape, and flat bars fill the spare height above and below the image.",
+			"alt": "The Game view of the editor while a sample plays. The picture of the game is wide and sits in the middle of a tall panel, with a dark bar above it and another below it.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/game-view-tall.ini",
+				"steps": [
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"gameView": {
+								"mode": "16:9"
+							}
+						}
+					},
+					{
+						"command": "play.start",
+						"parameters": {
+							"paused": true
+						}
+					},
+					{
+						"command": "play.step",
+						"parameters": {
+							"steps": 120
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					}
+				],
+				"panel": "Game"
+			}
+		},
+		{
+			"id": "fixed-1920x1080",
+			"shows": "The Game view in play with a fixed 1920 by 1080 image scaled to fit a smaller panel",
+			"caption": "The chip at top left reads 1920 x 1080. The rectangle is the same as with 16:9, but the picture holds 1920 by 1080 pixels, scaled down to fit the panel.",
+			"alt": "The Game view of the editor while a sample plays. The chip at top left reads 1920 x 1080, and the game picture has the same wide shape and dark bars as with 16:9, shrunk to fit inside the panel.",
+			"numbers": "1920 x 1080 is the mode the recipe sets (viewport.setSettings gameView mode 1920x1080), which the chip shows; 16:9 is the mode of the figure letterboxed-16x9 just before it, whose image has the same 516 x 290 rectangle in the 516 x 540 panel.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/game-view-tall.ini",
+				"steps": [
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"gameView": {
+								"mode": "1920x1080"
+							}
+						}
+					},
+					{
+						"command": "play.start",
+						"parameters": {
+							"paused": true
+						}
+					},
+					{
+						"command": "play.step",
+						"parameters": {
+							"steps": 120
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					}
+				],
+				"panel": "Game"
+			}
+		},
+		{
+			"id": "no-camera",
+			"shows": "The Game view of a new, empty scene, which has no primary camera",
+			"caption": "The view says that there is no camera to show and names the scene, as an exported game does.",
+			"alt": "The Game view of the editor with a dark panel and a short grey text in the middle that says that the scene has no camera marked primary.",
+			"kind": "editor",
+			"project": {
+				"sample": "Tetris"
+			},
+			"editorWindow": {
+				"layout": "layouts/game-view-tall.ini",
+				"steps": [
+					{
+						"command": "scene.new",
+						"parameters": {
+							"force": true,
+							"name": "Level"
+						}
+					}
+				],
+				"panel": "Game"
+			}
+		},
+		{
+			"id": "locked-cursor-hint",
+			"shows": "The Game view while the game has locked the cursor, with the hint box at the top of the image and play mode's window-request notice at the bottom",
+			"caption": "A box at the top of the image tells the person how to free the mouse and how to stop the game. The line at the bottom is play mode's notice that the game's window request is not applied.",
+			"alt": "The Game view of the editor while a game plays. A small box at the top of the picture holds one line of text that names two key combinations, one to free the mouse and one to stop the game. A second line at the bottom says that the game asked for a window with vsync on and that play mode keeps the editor's window.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"editorWindow": {
+				"layout": "layouts/game-view-tall.ini",
+				"steps": [
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					},
+					{
+						"command": "play.start",
+						"parameters": {
+							"paused": false
+						}
+					}
+				],
+				"panel": "Game"
+			}
+		}
+	]
+}

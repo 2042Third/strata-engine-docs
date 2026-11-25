@@ -1,0 +1,258 @@
+{
+	"page": "make/animation",
+	"startsFrom": { "tutorial": "make/characters-cameras" },
+	"stages": [
+		{
+			"step": 1,
+			"setup": [
+				{ "command": "asset.import", "parameters": { "file": "@BOOK@/tutorials/make/animation/Player.stanimator", "directory": "Animations" } }
+			],
+			"commands": [
+				{ "command": "asset.import", "parameters": { "directories": [ "@RELEASE@/Samples/ThirdPerson/Assets/Models/Robot" ], "directory": "Models" } },
+				{ "command": "asset.import", "parameters": { "directories": [ "@RELEASE@/Samples/ThirdPerson/Assets/Sounds/Footsteps" ], "directory": "Sounds" } },
+				{ "command": "animation.info", "parameters": { "asset": "Models/Robot/RobotExpressive.glb" },
+					"checks": [
+						{ "pointer": "/skeletons", "length": 1 },
+						{ "pointer": "/clips", "contains": "Idle" },
+						{ "pointer": "/clips", "contains": "Walking" },
+						{ "pointer": "/clips", "contains": "Running" },
+						{ "pointer": "/clips", "contains": "Jump" },
+						{ "pointer": "/clips", "contains": "57D5825B3AB8DCFD" }
+					] },
+				{ "command": "entity.find", "parameters": { "name": "Player" }, "bind": { "player": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "entity.find", "parameters": { "name": "Body" }, "bind": { "capsule": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "asset.place", "parameters": { "asset": "Models/Robot/RobotExpressive.glb", "point": [0, 0, 0], "rotation": [0, 180, 0], "scale": 0.4 },
+					"bind": { "robot": "/id" } },
+				{ "command": "entity.setParent", "parameters": { "entity": { "$ref": "robot" }, "parent": { "$ref": "player" }, "keepWorldTransform": false } },
+				{ "command": "entity.rename", "parameters": { "entity": { "$ref": "robot" }, "name": "Robot" } },
+				{ "command": "entity.delete", "parameters": { "entities": [ { "$ref": "capsule" } ] } },
+				{ "command": "component.get", "entityName": "Robot", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": 0, "tolerance": 0.01 },
+						{ "pointer": "/values/Translation/1", "approx": 0, "tolerance": 0.01 },
+						{ "pointer": "/values/Translation/2", "approx": 0, "tolerance": 0.01 },
+						{ "pointer": "/values/Scale/0", "approx": 0.4, "tolerance": 0.001 },
+						{ "pointer": "/values/Scale/1", "approx": 0.4, "tolerance": 0.001 }
+					] },
+				{ "command": "component.get", "entityName": "Robot", "parameters": { "component": "Animator" },
+					"checks": [ { "pointer": "/values/Clip", "equals": "D2261DDA1C78AC15" } ] },
+				{ "command": "animation.info", "entityName": "Robot",
+					"checks": [ { "pointer": "/clip", "equals": "D2261DDA1C78AC15" }, { "pointer": "/playing", "equals": false } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"commands": [
+				{ "command": "component.set", "entityName": "Robot", "parameters": { "component": "Animator", "values": { "Controller": "Animations/Player.stanimator" } } },
+				{ "command": "component.get", "entityName": "Robot", "parameters": { "component": "Animator" },
+					"checks": [ { "pointer": "/inactive/Clip", "contains": "ontroller" } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 120 }, "expect": { "/stepsRun": { "equals": 120 } } },
+				{ "command": "animation.info", "entityName": "Robot",
+					"checks": [ { "pointer": "/playing", "equals": true }, { "pointer": "/state", "equals": "Idle" }, { "pointer": "/parameters", "length": 0 },
+						{ "pointer": "/normalizedTime", "approx": 0.6, "tolerance": 0.03 } ] },
+				{ "command": "play.step", "parameters": { "steps": 120 }, "expect": { "/stepsRun": { "equals": 120 } } },
+				{ "command": "animation.info", "entityName": "Robot",
+					"checks": [ { "pointer": "/state", "equals": "Idle" }, { "pointer": "/normalizedTime", "approx": 1.2, "tolerance": 0.05 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"commands": [
+				{ "command": "animation.setController", "parameters": { "controller": "Animations/Player.stanimator",
+					"parameters": [ { "Name": "Speed", "Type": "Float", "Default": 0 } ] },
+					"checks": [ { "pointer": "/controller/Parameters", "length": 1 }, { "pointer": "/controller/Parameters/0/Name", "equals": "Speed" } ] },
+				{ "command": "animation.setController", "parameters": { "controller": "Animations/Player.stanimator",
+					"states": [ { "Name": "Idle", "Clip": "E9C1D4AC112447DE" },
+						{ "Name": "Walk", "Clip": "57D5825B3AB8DCFD" },
+						{ "Name": "Run", "Clip": "76CC7E24795F51DA" } ] },
+					"checks": [
+						{ "pointer": "/controller/States", "length": 3 },
+						{ "pointer": "/controller/States/1/Loop", "equals": true },
+						{ "pointer": "/clips/1/name", "equals": "Walking" },
+						{ "pointer": "/clips/2/name", "equals": "Running" }
+					] },
+				{ "command": "animation.setController", "parameters": { "controller": "Animations/Player.stanimator",
+					"transitions": [
+						{ "From": "Idle", "To": "Walk", "Duration": 0.15, "Conditions": [ { "Parameter": "Speed", "Mode": "Greater", "Threshold": 0.1 } ] },
+						{ "From": "Walk", "To": "Idle", "Duration": 0.2, "Conditions": [ { "Parameter": "Speed", "Mode": "Less", "Threshold": 0.1 } ] },
+						{ "From": "Walk", "To": "Run", "Duration": 0.2, "Conditions": [ { "Parameter": "Speed", "Mode": "Greater", "Threshold": 4.5 } ] },
+						{ "From": "Run", "To": "Walk", "Duration": 0.2, "Conditions": [ { "Parameter": "Speed", "Mode": "Less", "Threshold": 4.5 } ] } ] },
+					"checks": [
+						{ "pointer": "/controller/Transitions", "length": 4 },
+						{ "pointer": "/controller/Parameters", "length": 1 },
+						{ "pointer": "/controller/States", "length": 3 }
+					] }
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"files": [ { "from": "book:tutorials/make/animation/PlayerAnimation.cpp", "to": "Scripts/PlayerAnimation.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "entity.find", "parameters": { "name": "Robot" }, "bind": { "robot": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "script.add", "entityName": "Player", "parameters": { "class": "PlayerAnimation", "fields": { "Robot": { "$ref": "robot" } } } },
+				{ "command": "script.setField", "entityName": "Player", "parameters": { "class": "PlayerController", "field": "WalkSpeed", "value": 3 } },
+				{ "command": "animation.setController", "parameters": { "controller": "Animations/Player.stanimator",
+					"parameters": [ { "Name": "Speed", "Type": "Float", "Default": 0 }, { "Name": "Grounded", "Type": "Bool", "Default": true } ] },
+					"checks": [ { "pointer": "/controller/Parameters", "length": 2 }, { "pointer": "/controller/Parameters/1/Default", "equals": true } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "animation.info", "entityName": "Robot",
+					"checks": [ { "pointer": "/state", "equals": "Idle" }, { "pointer": "/parameters/Speed", "approx": 0, "tolerance": 0.05 },
+						{ "pointer": "/parameters/Grounded", "equals": true } ] },
+				{ "command": "input.key", "parameters": { "key": "W", "steps": 90 } },
+				{ "command": "play.step", "parameters": { "steps": 60 }, "expect": { "/stepsRun": { "equals": 60 } } },
+				{ "command": "animation.info", "entityName": "Robot",
+					"checks": [ { "pointer": "/state", "equals": "Walk" }, { "pointer": "/parameters/Speed", "approx": 3, "tolerance": 0.2 } ] },
+				{ "command": "play.step", "parameters": { "steps": 60 }, "expect": { "/stepsRun": { "equals": 60 } } },
+				{ "command": "animation.info", "entityName": "Robot",
+					"checks": [ { "pointer": "/state", "equals": "Idle" }, { "pointer": "/parameters/Speed", "approx": 0, "tolerance": 0.05 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 5,
+			"files": [ { "from": "book:tutorials/make/animation/PlayerAnimationJump.cpp", "to": "Scripts/PlayerAnimation.cpp" } ],
+			"commands": [
+				{ "command": "animation.setController", "parameters": { "controller": "Animations/Player.stanimator",
+					"parameters": [ { "Name": "Speed", "Type": "Float" }, { "Name": "Grounded", "Type": "Bool", "Default": true }, { "Name": "Jump", "Type": "Trigger" } ],
+					"states": [ { "Name": "Idle", "Clip": "E9C1D4AC112447DE" }, { "Name": "Walk", "Clip": "57D5825B3AB8DCFD" },
+						{ "Name": "Run", "Clip": "76CC7E24795F51DA" }, { "Name": "Jump", "Clip": "5C84360EC5B352B3", "Loop": false } ] },
+					"checks": [ { "pointer": "/controller/States", "length": 4 }, { "pointer": "/controller/States/3/Loop", "equals": false },
+						{ "pointer": "/controller/Parameters", "length": 3 }, { "pointer": "/clips/3/name", "equals": "Jump" } ] },
+				{ "command": "animation.setController", "parameters": { "controller": "Animations/Player.stanimator",
+					"transitions": [
+						{ "AnyState": true, "To": "Jump", "Duration": 0.1, "Conditions": [ { "Parameter": "Jump", "Mode": "Set" } ] },
+						{ "From": "Idle", "To": "Walk", "Duration": 0.15, "Conditions": [ { "Parameter": "Speed", "Mode": "Greater", "Threshold": 0.1 } ] },
+						{ "From": "Walk", "To": "Idle", "Duration": 0.2, "Conditions": [ { "Parameter": "Speed", "Mode": "Less", "Threshold": 0.1 } ] },
+						{ "From": "Walk", "To": "Run", "Duration": 0.2, "Conditions": [ { "Parameter": "Speed", "Mode": "Greater", "Threshold": 4.5 } ] },
+						{ "From": "Run", "To": "Walk", "Duration": 0.2, "Conditions": [ { "Parameter": "Speed", "Mode": "Less", "Threshold": 4.5 } ] },
+						{ "From": "Jump", "To": "Idle", "Duration": 0.15, "ExitTime": 0.4,
+							"Conditions": [ { "Parameter": "Grounded", "Mode": "True" }, { "Parameter": "Speed", "Mode": "Less", "Threshold": 0.1 } ] },
+						{ "From": "Jump", "To": "Walk", "Duration": 0.15, "ExitTime": 0.4,
+							"Conditions": [ { "Parameter": "Grounded", "Mode": "True" }, { "Parameter": "Speed", "Mode": "Greater", "Threshold": 0.1 } ] } ] },
+					"checks": [ { "pointer": "/controller/Transitions", "length": 7 }, { "pointer": "/controller/Transitions/0/AnyState", "equals": true } ] },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 20 }, "expect": { "/stepsRun": { "equals": 20 } } },
+				{ "command": "animation.info", "entityName": "Robot", "checks": [ { "pointer": "/state", "equals": "Idle" } ] },
+				{ "command": "input.key", "parameters": { "key": "Space", "steps": 1 } },
+				{ "command": "play.step", "parameters": { "steps": 20 }, "expect": { "/stepsRun": { "equals": 20 } } },
+				{ "command": "animation.info", "entityName": "Robot", "checks": [ { "pointer": "/state", "equals": "Jump" } ] },
+				{ "command": "play.step", "parameters": { "steps": 180 }, "expect": { "/stepsRun": { "equals": 180 } } },
+				{ "command": "animation.info", "entityName": "Robot", "checks": [ { "pointer": "/state", "equals": "Idle" } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 6,
+			"files": [ { "from": "book:tutorials/make/animation/Footsteps.cpp", "to": "Scripts/Footsteps.cpp" } ],
+			"commands": [
+				{ "command": "animation.setController", "parameters": { "controller": "Animations/Player.stanimator",
+					"states": [ { "Name": "Idle", "Clip": "E9C1D4AC112447DE" },
+						{ "Name": "Walk", "Clip": "57D5825B3AB8DCFD", "Events": [ { "Name": "Footstep", "Time": 0.02 }, { "Name": "Footstep", "Time": 0.5 } ] },
+						{ "Name": "Run", "Clip": "76CC7E24795F51DA", "Events": [ { "Name": "Footstep", "Time": 0.28 }, { "Name": "Footstep", "Time": 0.76 } ] },
+						{ "Name": "Jump", "Clip": "5C84360EC5B352B3", "Loop": false } ] },
+					"checks": [ { "pointer": "/controller/States/1/Events", "length": 2 }, { "pointer": "/controller/States/2/Events", "length": 2 },
+						{ "pointer": "/controller/Transitions", "length": 7 } ] },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.add", "entityName": "Robot", "parameters": { "class": "Footsteps", "fields": {
+					"Step1": "Sounds/Footsteps/Grass1.ogg", "Step2": "Sounds/Footsteps/Grass2.ogg",
+					"Step3": "Sounds/Footsteps/Grass3.ogg", "Step4": "Sounds/Footsteps/Grass4.ogg" } } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "input.key", "parameters": { "key": "W", "steps": 150 } },
+				{ "command": "play.step", "parameters": { "steps": 151 }, "expect": { "/stepsRun": { "equals": 151 } } },
+				{ "command": "script.get", "entityName": "Robot", "parameters": { "class": "Footsteps" },
+					"checks": [ { "pointer": "/scripts/0/fields/Steps", "approx": 6, "tolerance": 1 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 7,
+			"commands": [
+				{ "command": "asset.import", "parameters": {
+					"file": "@RELEASE@/Samples/ThirdPerson/Assets/Models/Platformer/flag.glb", "directory": "Models" } },
+				{ "command": "asset.place", "parameters": { "asset": "Models/flag/flag.glb", "point": [3, 0, 0] }, "bind": { "flag": "/id" } },
+				{ "command": "entity.find", "parameters": { "name": "Robot" }, "bind": { "robot": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "entity.create", "parameters": { "name": "FlagHolder", "components": { "AttachToJoint": { "Animator": { "$ref": "robot" }, "Joint": "Palm2.R" } } },
+					"bind": { "holder": "/id" } },
+				{ "command": "entity.setParent", "parameters": { "entity": { "$ref": "flag" }, "parent": { "$ref": "holder" }, "keepWorldTransform": false } },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "flag" }, "component": "Transform",
+					"values": { "Translation": [0, 0.008, 0], "Rotation": [180, 0, 0], "Scale": [0.035, 0.035, 0.035] } } },
+				{ "command": "component.get", "entityName": "FlagHolder", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/0", "approx": 0, "tolerance": 0.001 }, { "pointer": "/values/Translation/1", "approx": 0, "tolerance": 0.001 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "component.get", "entityName": "FlagHolder", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": 0.52, "tolerance": 0.15 },
+						{ "pointer": "/values/Translation/1", "approx": 0.3, "tolerance": 0.15 },
+						{ "pointer": "/values/Translation/2", "approx": 1.63, "tolerance": 0.15 }
+					] },
+				{ "command": "input.key", "parameters": { "key": "W", "steps": 60 } },
+				{ "command": "play.step", "parameters": { "steps": 61 }, "expect": { "/stepsRun": { "equals": 61 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/2", "approx": -1, "tolerance": 0.2 } ] },
+				{ "command": "component.get", "entityName": "FlagHolder", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/2", "approx": -1.46, "tolerance": 0.4 }, { "pointer": "/values/Translation/1", "approx": 0.35, "tolerance": 0.25 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 8,
+			"commands": [
+				{ "command": "entity.find", "parameters": { "name": "Robot" }, "bind": { "robot": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "entity.duplicate", "parameters": { "entity": { "$ref": "robot" } }, "bind": { "copy": "/id" } },
+				{ "command": "entity.setParent", "parameters": { "entity": { "$ref": "copy" }, "parent": null } },
+				{ "command": "component.set", "entityName": "Robot (1)", "parameters": { "component": "Transform", "values": { "Translation": [-3, 0, 5] } } },
+				{ "command": "component.add", "entityName": "Robot (1)", "parameters": { "component": "CharacterController", "values": { "Height": 1.8, "Radius": 0.3, "StepHeight": 0.35 } } },
+				{ "command": "component.set", "entityName": "Robot (1)", "parameters": { "component": "Animator",
+					"values": { "Controller": null, "Clip": "57D5825B3AB8DCFD", "ApplyRootMotion": true } } },
+				{ "command": "component.get", "entityName": "Robot (1)", "parameters": { "component": "Animator" },
+					"checks": [ { "pointer": "/values/Controller", "equals": "0000000000000000" }, { "pointer": "/values/Clip", "equals": "57D5825B3AB8DCFD" },
+						{ "pointer": "/values/ApplyRootMotion", "equals": true } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 300 }, "expect": { "/stepsRun": { "equals": 300 } } },
+				{ "command": "animation.info", "entityName": "Robot (1)", "checks": [ { "pointer": "/playing", "equals": true } ] },
+				{ "command": "component.get", "entityName": "Robot (1)", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": -3, "tolerance": 0.05 },
+						{ "pointer": "/values/Translation/1", "approx": 0, "tolerance": 0.05 },
+						{ "pointer": "/values/Translation/2", "approx": 5, "tolerance": 0.05 }
+					] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 9,
+			"commands": [
+				{ "command": "component.set", "entityName": "Robot (1)", "parameters": { "component": "Animator", "values": { "CullingMode": "WhenVisible" } } },
+				{ "command": "component.get", "entityName": "Robot (1)", "parameters": { "component": "Animator" },
+					"checks": [ { "pointer": "/values/CullingMode", "equals": "WhenVisible" }, { "pointer": "/values/ApplyRootMotion", "equals": true } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "animation.info", "entityName": "Robot (1)" },
+				{ "command": "play.step", "parameters": { "steps": 120 }, "expect": { "/stepsRun": { "equals": 120 } } },
+				{ "command": "animation.info", "entityName": "Robot (1)", "checks": [ { "pointer": "/playing", "equals": true } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		}
+	]
+}

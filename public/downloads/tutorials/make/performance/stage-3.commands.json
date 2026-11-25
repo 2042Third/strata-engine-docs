@@ -1,0 +1,128 @@
+[
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"debugView": "lod"
+		},
+		"expect": {
+			"/debugView": {
+				"equals": "lod"
+			}
+		}
+	},
+	{
+		"command": "project.setSettings",
+		"parameters": {
+			"section": "Renderer.Quality",
+			"value": {
+				"Preset": "Low"
+			}
+		},
+		"expect": {
+			"/value/Preset": {
+				"equals": "Low"
+			}
+		}
+	},
+	{
+		"command": "project.setSettings",
+		"parameters": {
+			"section": "Renderer.Quality",
+			"value": {
+				"Preset": "Ultra"
+			}
+		},
+		"expect": {
+			"/value/Preset": {
+				"equals": "Ultra"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "prefab.instantiate",
+		"parameters": {
+			"prefab": "Prefabs/Rock.stprefab"
+		},
+		"bind": {
+			"copy": "/id"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "rock_largeA",
+			"component": "MeshRenderer"
+		},
+		"bind": {
+			"mesh": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "mesh"
+			},
+			"component": "MeshRenderer",
+			"values": {
+				"CastShadows": false
+			}
+		}
+	},
+	{
+		"command": "prefab.apply",
+		"parameters": {
+			"entity": {
+				"$ref": "mesh"
+			},
+			"component": "MeshRenderer"
+		}
+	},
+	{
+		"command": "entity.delete",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "copy"
+				}
+			]
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "play.state",
+		"expect": {
+			"/running/entityCount": {
+				"min": 15000
+			}
+		},
+		"until": {
+			"seconds": 60
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "rock_largeA",
+			"component": "MeshRenderer",
+			"limit": 1
+		},
+		"bind": {
+			"spawned": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "spawned"
+			},
+			"component": "MeshRenderer"
+		}
+	}
+]

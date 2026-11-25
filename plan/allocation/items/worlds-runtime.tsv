@@ -1,0 +1,316 @@
+id	type	heading	label
+worlds-runtime:23	feature	1.1 The World asset and its grid (`Strata/src/Strata/World/`)	World document `.stworld`
+worlds-runtime:24	feature	1.1 The World asset and its grid (`Strata/src/Strata/World/`)	Layers
+worlds-runtime:25	feature	1.1 The World asset and its grid (`Strata/src/Strata/World/`)	Cells
+worlds-runtime:26	feature	1.1 The World asset and its grid (`Strata/src/Strata/World/`)	Cell file layout and derived handles
+worlds-runtime:27	feature	1.1 The World asset and its grid (`Strata/src/Strata/World/`)	Cooked index
+worlds-runtime:28	feature	1.1 The World asset and its grid (`Strata/src/Strata/World/`)	Validation
+worlds-runtime:29	feature	1.1 The World asset and its grid (`Strata/src/Strata/World/`)	Limits
+worlds-runtime:30	feature	1.1 The World asset and its grid (`Strata/src/Strata/World/`)	Fast lookups
+worlds-runtime:31	feature	1.1 The World asset and its grid (`Strata/src/Strata/World/`)	Memory accounting
+worlds-runtime:32	feature	1.1 The World asset and its grid (`Strata/src/Strata/World/`)	References
+worlds-runtime:33	feature	1.1 The World asset and its grid (`Strata/src/Strata/World/`)	Loader registration
+worlds-runtime:34	feature	1.1 The World asset and its grid (`Strata/src/Strata/World/`)	Cell keys
+worlds-runtime:35	feature	1.1 The World asset and its grid (`Strata/src/Strata/World/`)	Grid math
+worlds-runtime:41	feature	1.2 Components and the World scene system	`WorldComponent`
+worlds-runtime:42	feature	1.2 Components and the World scene system	`StreamingSourceComponent`
+worlds-runtime:43	feature	1.2 Components and the World scene system	"World" scene system
+worlds-runtime:44	feature	1.2 Components and the World scene system	Source gathering
+worlds-runtime:45	feature	1.2 Components and the World scene system	Idle cost
+worlds-runtime:46	feature	1.2 Components and the World scene system	`IWorldStreaming` service
+worlds-runtime:47	feature	1.2 Components and the World scene system	Prepared start
+worlds-runtime:48	feature	1.2 Components and the World scene system	`WaitForStartCells`
+worlds-runtime:49	feature	1.2 Components and the World scene system	`PinCell` on the system
+worlds-runtime:55	feature	1.3 The streaming core (`WorldStreamer`)	`WorldStreamer`
+worlds-runtime:56	feature	1.3 The streaming core (`WorldStreamer`)	Source description
+worlds-runtime:57	feature	1.3 The streaming core (`WorldStreamer`)	Cell states
+worlds-runtime:58	feature	1.3 The streaming core (`WorldStreamer`)	Wanted cells
+worlds-runtime:59	feature	1.3 The streaming core (`WorldStreamer`)	Hysteresis
+worlds-runtime:60	feature	1.3 The streaming core (`WorldStreamer`)	Load ordering
+worlds-runtime:61	feature	1.3 The streaming core (`WorldStreamer`)	View bias
+worlds-runtime:62	feature	1.3 The streaming core (`WorldStreamer`)	Pins
+worlds-runtime:63	feature	1.3 The streaming core (`WorldStreamer`)	Layer toggles
+worlds-runtime:64	feature	1.3 The streaming core (`WorldStreamer`)	Unloads and cancellation
+worlds-runtime:65	feature	1.3 The streaming core (`WorldStreamer`)	Physics reservation
+worlds-runtime:66	feature	1.3 The streaming core (`WorldStreamer`)	Idle/determinism
+worlds-runtime:67	feature	1.3 The streaming core (`WorldStreamer`)	Polling in flight
+worlds-runtime:68	feature	1.3 The streaming core (`WorldStreamer`)	Failures
+worlds-runtime:69	feature	1.3 The streaming core (`WorldStreamer`)	Adoption
+worlds-runtime:70	feature	1.3 The streaming core (`WorldStreamer`)	World asset never held
+worlds-runtime:71	feature	1.3 The streaming core (`WorldStreamer`)	Queries
+worlds-runtime:72	feature	1.3 The streaming core (`WorldStreamer`)	`SetReloadCells`
+worlds-runtime:78	feature	1.4 Sub-scenes and the frame's loading budget (shared with the Scene area)	Sub-scenes (additive loads)
+worlds-runtime:79	feature	1.4 Sub-scenes and the frame's loading budget (shared with the Scene area)	Sub-scene state machine
+worlds-runtime:80	feature	1.4 Sub-scenes and the frame's loading budget (shared with the Scene area)	`SubSceneComponent`
+worlds-runtime:81	feature	1.4 Sub-scenes and the frame's loading budget (shared with the Scene area)	`SceneWorkBudget`
+worlds-runtime:82	feature	1.4 Sub-scenes and the frame's loading budget (shared with the Scene area)	Slice limits
+worlds-runtime:83	feature	1.4 Sub-scenes and the frame's loading budget (shared with the Scene area)	`SceneLoadOptions::PrepareSystems`
+worlds-runtime:89	feature	1.5 Scripting surface	SDK `World` class
+worlds-runtime:90	feature	1.5 Scripting surface	Host functions
+worlds-runtime:91	feature	1.5 Scripting surface	Game window from scripts
+worlds-runtime:92	feature	1.5 Scripting surface	Graphics options from scripts
+worlds-runtime:93	feature	1.5 Scripting surface	Scene loads from scripts
+worlds-runtime:99	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	`EditorWorld`
+worlds-runtime:100	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	Edit settings
+worlds-runtime:101	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	Keep-loaded reasons
+worlds-runtime:102	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	Dirty tracking as an undo observer
+worlds-runtime:103	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	Cells in undo steps
+worlds-runtime:104	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	Re-celling
+worlds-runtime:105	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	`MoveEntities`
+worlds-runtime:106	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	World save
+worlds-runtime:107	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	Play copy
+worlds-runtime:108	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	Recovery
+worlds-runtime:109	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	Cell IO
+worlds-runtime:110	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	The cook (`world.cook`)
+worlds-runtime:111	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	World commands
+worlds-runtime:112	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	`world.create` defaults
+worlds-runtime:113	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	Cell map
+worlds-runtime:114	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	Hierarchy world strip and search
+worlds-runtime:115	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	Inspector cell line
+worlds-runtime:116	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	Viewport cell bounds
+worlds-runtime:117	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	Asset panel / Content Browser
+worlds-runtime:118	feature	1.6 The editor's world (`StrataEditor/src/Editor/`)	Precision guard
+worlds-runtime:124	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	`GameRuntime`
+worlds-runtime:125	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	Runtime options
+worlds-runtime:126	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	Non-blocking scene loads
+worlds-runtime:127	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	Loading scene
+worlds-runtime:128	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	Fixed-step accounting
+worlds-runtime:129	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	Frame-rate cap while loading
+worlds-runtime:130	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	Perf log columns of the runtime
+worlds-runtime:131	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	`GameRenderer`
+worlds-runtime:132	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	Render perf columns
+worlds-runtime:133	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	`GamePresentation`
+worlds-runtime:134	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	`GameWindowService`
+worlds-runtime:135	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	`GameGraphicsService`
+worlds-runtime:136	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	`FramePerfLog`
+worlds-runtime:137	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	`StrataRuntime` executable
+worlds-runtime:138	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	Manifest discovery
+worlds-runtime:139	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	Windows packaging of the runtime
+worlds-runtime:140	feature	1.7 The runtime (`Strata/src/Strata/Runtime/`, `StrataRuntime/`)	No tooling in games
+worlds-runtime:146	feature	1.8 The game manifest and identity (`Strata/src/Strata/Project/`)	`.stgame` manifest v5
+worlds-runtime:147	feature	1.8 The game manifest and identity (`Strata/src/Strata/Project/`)	Plain-file-name rule
+worlds-runtime:148	feature	1.8 The game manifest and identity (`Strata/src/Strata/Project/`)	`ProjectGameInfo`
+worlds-runtime:149	feature	1.8 The game manifest and identity (`Strata/src/Strata/Project/`)	Save/log directory identity
+worlds-runtime:155	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	`GameExport`
+worlds-runtime:156	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	Up-front checks
+worlds-runtime:157	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	Waiting and planning
+worlds-runtime:158	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	World cooking at export
+worlds-runtime:159	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	Asset pack
+worlds-runtime:160	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	Pruning
+worlds-runtime:161	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	Patch packs
+worlds-runtime:162	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	Script module
+worlds-runtime:163	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	Game icon
+worlds-runtime:164	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	Windows version resources
+worlds-runtime:165	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	Linux desktop entry
+worlds-runtime:166	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	macOS Dock icon
+worlds-runtime:167	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	Export commands
+worlds-runtime:168	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	Export dialog
+worlds-runtime:169	feature	1.9 Exporting (`StrataEditor/src/Editor/GameExport.*` and helpers)	Installed layout
+worlds-runtime:175	feature	1.10 Launcher, templates, samples, recent projects	Launcher
+worlds-runtime:176	feature	1.10 Launcher, templates, samples, recent projects	Project dialogs
+worlds-runtime:177	feature	1.10 Launcher, templates, samples, recent projects	Templates
+worlds-runtime:178	feature	1.10 Launcher, templates, samples, recent projects	Recent projects
+worlds-runtime:179	feature	1.10 Launcher, templates, samples, recent projects	Samples
+worlds-runtime:180	feature	1.10 Launcher, templates, samples, recent projects	Project thumbnails
+worlds-runtime:181	feature	1.10 Launcher, templates, samples, recent projects	Commands
+worlds-runtime:185	feature	1.11 Samples and tests that exercise the area	Open World sample
+worlds-runtime:189	feature	1.11 Samples and tests that exercise the area	Feature test world
+worlds-runtime:191	feature	1.11 Samples and tests that exercise the area	Unit tests: `World.Asset` (`StrataTests/src/World/WorldAssetTests.cpp` 79-327), `World.Streamer`…
+worlds-runtime:227	concept		What "a level" is in memory, and why it must be bounded
+worlds-runtime:232	concept		Loading without stopping the frame
+worlds-runtime:237	concept		Additive scenes (sub-scenes)
+worlds-runtime:241	concept		Spatial partitioning by a uniform grid
+worlds-runtime:247	concept		Layers of different granularity
+worlds-runtime:251	concept		Streaming sources and interest management
+worlds-runtime:255	concept		Hysteresis
+worlds-runtime:257	concept		Deterministic, idle-cheap decision making
+worlds-runtime:261	concept		Coupling streaming with physics
+worlds-runtime:265	concept		Offline "cooking" of level metadata
+worlds-runtime:268	concept		Floating-point range
+worlds-runtime:272	concept		No HLOD yet
+worlds-runtime:274	concept		Editing a streamed world
+worlds-runtime:279	concept		Shipping: from project to product
+worlds-runtime:284	concept		A runtime that is not the editor
+worlds-runtime:288	concept		Startup and scene switching UX
+worlds-runtime:292	concept		Game identity and platform integration
+worlds-runtime:295	concept		Measuring a shipped game
+worlds-runtime:298	concept		Players' options
+worlds-runtime:308	code		1: `Strata/src/Strata/World/WorldAsset.h` 19-40
+worlds-runtime:309	code		2: `Strata/src/Strata/World/WorldGrid.cpp` 16-49
+worlds-runtime:310	code		3: `WorldGrid.cpp` 54-74
+worlds-runtime:311	code		4: `WorldAsset.cpp` 373-430 (first half of `Validate`)
+worlds-runtime:312	code		5: `WorldAsset.cpp` 507-511
+worlds-runtime:313	code		6: `Strata/src/Strata/World/WorldComponents.h` 13-28
+worlds-runtime:314	code		7: `Strata/src/Strata/World/WorldRegistration.cpp` 31-70
+worlds-runtime:315	code		8: `Strata/src/Strata/World/WorldStreamer.cpp` 31-60
+worlds-runtime:316	code		9: `WorldStreamer.cpp` 228-253
+worlds-runtime:317	code		10: `WorldStreamer.cpp` 421-574 (`Evaluate`)
+worlds-runtime:318	code		11: `WorldStreamer.cpp` 287-366 (`PollCellsInFlight`)
+worlds-runtime:319	code		12: `WorldStreamer.cpp` 368-390
+worlds-runtime:320	code		13: `WorldStreamer.cpp` 576-599 (`ReserveBodies`)
+worlds-runtime:321	code		14: `Strata/src/Strata/World/WorldStreamingSystem.cpp` 101-138
+worlds-runtime:322	code		15: `WorldStreamingSystem.cpp` 194-228
+worlds-runtime:323	code		16: `WorldStreamingSystem.cpp` 276-337 (`PrepareLoadedScene`)
+worlds-runtime:324	code		17: `Strata/src/Strata/Scene/SceneWorkBudget.cpp` 32-59
+worlds-runtime:325	code		18: `StrataEditor/src/Editor/WorldCook.cpp` 336-396 (`ComputeMaxBodiesInRadius`)
+worlds-runtime:326	code		19: `StrataEditor/src/Editor/EditorWorld.cpp` 275-345 (`EnsureCellSubScene`, `Recell`)
+worlds-runtime:327	code		20: `EditorWorld.cpp` 477-535 (`SyncPins`, `Update`)
+worlds-runtime:328	code		21: `EditorWorld.cpp` 760-799 (`PrepareRuntimeCopy`)
+worlds-runtime:329	code		22: `Strata/src/Strata/Runtime/GameRuntime.cpp` 45-156 (`Create`)
+worlds-runtime:330	code		23: `GameRuntime.cpp` 226-282 and 296-314
+worlds-runtime:331	code		24: `GameRuntime.cpp` 28-41
+worlds-runtime:332	code		25: `Strata/src/Strata/Runtime/GameRenderer.cpp` 95-152
+worlds-runtime:333	code		26: `StrataRuntime/src/RuntimeApplication.cpp` 138-198
+worlds-runtime:334	code		27: `RuntimeApplication.cpp` 378-410 and 424-533
+worlds-runtime:335	code		28: `Strata/src/Strata/Project/GameManifest.cpp` 16-24 and 95-114
+worlds-runtime:336	code		29: `StrataEditor/src/Editor/GameExport.cpp` 595-650
+worlds-runtime:337	code		30: `Strata/src/Strata/Runtime/GameWindowService.cpp` 95-~160
+worlds-runtime:338	code		Test
+worlds-runtime:346	figure		World anatomy
+worlds-runtime:348	figure		Layer grids overlaid
+worlds-runtime:350	figure		Key packing
+worlds-runtime:351	figure		Wanted / keep rings
+worlds-runtime:353	figure		Cell state machine
+worlds-runtime:355	figure		One streamer update (flowchart)
+worlds-runtime:357	figure		Frame timeline of a game frame
+worlds-runtime:359	figure		Prepared world start timeline
+worlds-runtime:362	figure		Physics capacity budgeting
+worlds-runtime:364	figure		Editor world
+worlds-runtime:366	figure		World save sequence diagram
+worlds-runtime:369	figure		Play from the editor
+worlds-runtime:372	figure		Export pipeline state machine
+worlds-runtime:374	figure		Exported game folder
+worlds-runtime:376	figure		Asset pack layout
+worlds-runtime:378	figure		Runtime composition
+worlds-runtime:380	figure		Graphics option layering
+worlds-runtime:382	figure		Perf log row timing
+worlds-runtime:383	figure		Float precision chart
+worlds-runtime:388	figure		Open World sample in the editor, Hierarchy world strip visible (edit layer combo, loaded/unsaved…
+worlds-runtime:390	figure		Viewport with the Cells chip on (`viewport.setSettings {cellBounds: true}`): loading (Sulfur),…
+worlds-runtime:392	figure		Streaming panel's World section with the cell map (View > Streaming), one layer selected, sources'…
+worlds-runtime:394	figure		Cell map while playing (the game's streamer), showing cells loading ahead of the moving player…
+worlds-runtime:395	figure		The cell map's context menu (Load and pin / Unpin / Show in Content Browser) and a pinned cell.
+worlds-runtime:396	figure		Inspector header "Cell: Vegetation (x, z)" of a selected tree; Hierarchy search `l:Vegetation` and…
+worlds-runtime:397	figure		An unsaved cell outlined in the warning color in the cell map after moving an entity.
+worlds-runtime:398	figure		The Asset panel of a World asset (layers table, Cook button) and the `world.info` / `world.cook`…
+worlds-runtime:399	figure		Content Browser New > World menu.
+worlds-runtime:400	figure		Export dialog before, during (strata-band progress bar, stage text) and after (Open Folder).
+worlds-runtime:401	figure		The exported folder in the OS file browser, and on Windows the executable's Properties > Details…
+worlds-runtime:403	figure		The exported Open World game running: its loading scene with the progress bar, then the world.
+worlds-runtime:404	figure		The runtime's "No camera to show" message frame (a scene without a primary camera).
+worlds-runtime:405	figure		Launcher (WelcomePanel): template cards, sample cards with pictures, recent projects, "Connect an…
+worlds-runtime:406	figure		New Project dialog with the basic3d template; the resulting basic3d scene.
+worlds-runtime:407	figure		Project Settings > Game page (title, version, company, copyright, icon).
+worlds-runtime:408	figure		A perf log CSV opened in a spreadsheet with the World* and Physics* columns plotted over an Open…
+worlds-runtime:414	rule		Never `Scene::Copy` a whole world
+worlds-runtime:416	rule		Cell membership changes only through `Scene::SetSubSceneOf` and `EditorWorld`
+worlds-runtime:418	rule		Only `EditorWorld` writes cell documents, through the `DocumentSaver`
+worlds-runtime:420	rule		Mark saved only after the World document is written
+worlds-runtime:422	rule		Worlds stay within 20 km of the origin
+worlds-runtime:423	rule		Scenes that will run load with `SceneLoadOptions::PrepareSystems`
+worlds-runtime:425	rule		Loading work draws from the frame's `SceneWorkBudget`
+worlds-runtime:427	rule		Physics never leaves a body without collision below its growth limit; bodies at the limit wait,…
+worlds-runtime:429	rule		Request the World asset every update, never hold a `Ref` across frames
+worlds-runtime:431	rule		Decisions in a total order
+worlds-runtime:433	rule		Hysteresis is not optional
+worlds-runtime:434	rule		Unloads are sliced and deactivate at once
+worlds-runtime:436	rule		Script code never runs while engine state it could invalidate is in use
+worlds-runtime:438	rule		Roaming objects belong in the persistent scene
+worlds-runtime:440	rule		Entity IDs must be unique across cells and the persistent scene
+worlds-runtime:442	rule		Pruning is off by default
+worlds-runtime:444	rule		The manifest is untrusted input; it names only files next to it
+worlds-runtime:446	rule		Fail before writing
+worlds-runtime:448	rule		Saves are keyed by the manifest's Name, never the title
+worlds-runtime:449	rule		Window changes apply between frames, and only when they change something
+worlds-runtime:451	rule		Only `GameGraphicsService` touches `GraphicsOptions.json`
+worlds-runtime:453	rule		Games link no tooling
+worlds-runtime:455	rule		Never block a frame on an asset in UI code; draw cached views
+worlds-runtime:457	rule		Deterministic test runs keep every fixed step
+worlds-runtime:459	rule		A signed runtime cannot be stamped
+worlds-runtime:467	hands-on		Make your first world
+worlds-runtime:469	hands-on		Put a streaming source on the player
+worlds-runtime:471	hands-on		Tune layers
+worlds-runtime:473	hands-on		Prefetch before a teleport
+worlds-runtime:475	hands-on		Toggle a layer from gameplay
+worlds-runtime:477	hands-on		Cook and read the numbers
+worlds-runtime:479	hands-on		Export and ship
+worlds-runtime:481	hands-on		Measure a run
+worlds-runtime:483	hands-on		Prune safely
+worlds-runtime:488	hands-on		Write `CellAt` and `Pack` yourself
+worlds-runtime:490	hands-on		Add a streaming statistic
+worlds-runtime:492	hands-on		Make the concurrency limit a property
+worlds-runtime:494	hands-on		Replace view bias by a cone of priority
+worlds-runtime:496	hands-on		Distance-based hysteresis experiment
+worlds-runtime:498	hands-on		Design origin rebasing on paper
+worlds-runtime:500	hands-on		Sketch HLOD for Strata
+worlds-runtime:502	hands-on		Add a runtime command-line option
+worlds-runtime:504	hands-on		Add a perf-log column group
+worlds-runtime:506	hands-on		Trace a scene switch
+worlds-runtime:513	term		World
+worlds-runtime:514	term		World asset (`.stworld`)
+worlds-runtime:515	term		Persistent scene
+worlds-runtime:516	term		Layer
+worlds-runtime:517	term		Cell
+worlds-runtime:518	term		Cell key (`WorldCellKey`)
+worlds-runtime:519	term		Grid origin
+worlds-runtime:520	term		Streaming distance
+worlds-runtime:521	term		Distance scale
+worlds-runtime:522	term		Streaming source
+worlds-runtime:523	term		View bias
+worlds-runtime:524	term		Hysteresis (H)
+worlds-runtime:525	term		Wanted cell
+worlds-runtime:526	term		Pin
+worlds-runtime:527	term		Sub-scene / additive load
+worlds-runtime:528	term		`SubSceneComponent`
+worlds-runtime:529	term		Slice
+worlds-runtime:530	term		Scene work budget
+worlds-runtime:531	term		Prepared start / `PrepareSystems`
+worlds-runtime:532	term		`LoadBeforeStart`
+worlds-runtime:533	term		Cook (world cook)
+worlds-runtime:534	term		Index
+worlds-runtime:535	term		Content stamp
+worlds-runtime:536	term		Closure (dependency closure)
+worlds-runtime:537	term		MaxBodiesInRadius
+worlds-runtime:538	term		Physics capacity
+worlds-runtime:539	term		Growth limit
+worlds-runtime:540	term		Adoption
+worlds-runtime:541	term		Re-celling
+worlds-runtime:542	term		Edit layer
+worlds-runtime:543	term		Dirty cell
+worlds-runtime:544	term		Cell map
+worlds-runtime:545	term		Cell bounds
+worlds-runtime:546	term		Origin rebasing
+worlds-runtime:547	term		HLOD
+worlds-runtime:548	term		Export
+worlds-runtime:549	term		Asset pack (`.stpak`)
+worlds-runtime:550	term		Cooked documents
+worlds-runtime:551	term		Pruning
+worlds-runtime:552	term		Patch pack
+worlds-runtime:553	term		Game manifest (`.stgame`)
+worlds-runtime:554	term		Loading scene
+worlds-runtime:555	term		Start scene
+worlds-runtime:556	term		Runtime (`StrataRuntime`)
+worlds-runtime:557	term		Headless
+worlds-runtime:558	term		Game identity
+worlds-runtime:559	term		PE resources
+worlds-runtime:560	term		Desktop entry
+worlds-runtime:561	term		Perf log
+worlds-runtime:562	term		Column group
+worlds-runtime:563	term		Time dilation
+worlds-runtime:564	term		Fixed step
+worlds-runtime:565	term		Graphics preset
+worlds-runtime:566	term		Launcher
+worlds-runtime:567	term		Template
+worlds-runtime:568	term		Sample
+worlds-runtime:610	open		`Scene/SceneSubScenes.cpp` (630 lines) and `SceneLoader.cpp` were read only in outline; the…
+worlds-runtime:612	open		`EditorWorld::BeginSave`/`FinishSave` (537-758) were read only at the start; their per-document…
+worlds-runtime:614	open		`WorldCook.cpp` read only around `ComputeMaxBodiesInRadius` and `Finish`; `WorldCellIO.cpp`,…
+worlds-runtime:618	open		`GameExport::Start` (165-322) and `Update` (335-462) were read through their comments only.
+worlds-runtime:619	open		`PEResources.cpp`, `GameIcon.cpp`, `DesktopEntry.cpp`, `ProjectTemplates.cpp`,…
+worlds-runtime:621	open		`FramePerfLog.cpp` and `GameGraphicsService.cpp` internals were outlined only (the…
+worlds-runtime:623	open		`AssetPack*`, `RuntimeAssetManager` and `AssetDependencies` (closure scopes) are referenced from…
+worlds-runtime:625	open		`CMake/StrataPackaging.cmake`, `.github/workflows/release.yml`, `StrataRuntime.rc.in` and the…
+worlds-runtime:627	open		The exact Architecture.md line numbers of subsections inside "World partition" (marked "~") are…
+worlds-runtime:629	open		The test bodies were sampled (one streamer test read whole); expected numbers in other tests were…
+worlds-runtime:630	open		`ProjectMigration` was found in the editor folder but its relation to a game's life (opening older…
+worlds-runtime:632	open		Whether `Samples/OpenWorld` currently exports with a cooked index committed (its `Island.stworld`…

@@ -1,0 +1,108 @@
+{
+	"figures": [
+		{
+			"id": "lod-view",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The Scene view over a group of boulders in the LOD debug view with its statistics and legend, once at the Low preset and once at the Ultra preset",
+			"caption": "The same boulders at the lower and at the higher preset. At the lower preset every boulder is red, the last row of the key at the bottom left; at the higher they are yellow and the nearest is blue, the two middle rows. The triangles line of the statistics at the top left is more than three times as large. The key counts every visible entity, the ground included, which is green because it is drawn at level 0. At the lower preset it also counts two entities at level 2 that cover no pixel, so no yellow shows.",
+			"numbers": "Read from the key at the bottom left of the taken pictures: Low counts LOD 0 6, LOD 1 0, LOD 2 2, LOD 3+ 11; Ultra counts LOD 0 8, LOD 1 2, LOD 2 9, LOD 3+ 0 (19 visible of 472 proxies in both). The Low picture holds no yellow pixel outside the overlays (counted on the taken PNG), so its two LOD 2 entities cover no pixel; the ground's green is the LOD 0 row's color.",
+			"alt": "Two pictures of the Scene view over a group of boulders on ground tinted green, level 0, each object tinted by the level it is drawn at. Frame statistics stand at the top left and a key of four colors with counts at the bottom left. In the first every boulder is red and the key counts 11 entities at the last level. In the second the same boulders are yellow, the nearest one blue, and the key counts none at the last level.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"variants": {
+				"low": {
+					"setup": [
+						{
+							"command": "project.setSettings",
+							"parameters": {
+								"section": "Renderer.Quality",
+								"value": {
+									"Preset": "Low"
+								}
+							}
+						}
+					]
+				},
+				"ultra": {
+					"setup": [
+						{
+							"command": "project.setSettings",
+							"parameters": {
+								"section": "Renderer.Quality",
+								"value": {
+									"Preset": "Ultra"
+								}
+							}
+						}
+					]
+				}
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"windowSize": [
+					1280,
+					720
+				],
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"debugView": "lod",
+							"stats": true
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-42,
+								10,
+								-2
+							],
+							"target": [
+								-52,
+								-0.5,
+								11
+							],
+							"fov": 35
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "lod-fade-dither",
+			"kind": "scene",
+			"shows": "One prop captured in the middle of a cross-fade, zoomed so that the dither of both levels shows",
+			"caption": "Halfway through a fade two levels share the pixels of a fixed tile.",
+			"alt": "One prop whose surface mixes the pixels of two levels in a small tile.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"waitsFor": "tier 3: cross-fade mid-transition; no debug view shows the dither of a fade",
+			"standIn": "lod-fade-masks"
+		},
+		{
+			"id": "lod-fade-masks",
+			"kind": "diagram",
+			"shows": "The masks of a cross-fade at steps 1, 8 and 15 on four tiles of the 4×4 ordered dither: pixels of the new level filled, of the old level open",
+			"caption": "Fade masks at steps 1, 8 and 15 on four tiles of 4×4 pixels: filled pixels draw the new level, open ones the old.",
+			"alt": "Three grids of 8 by 8 pixels in four tiles. Step 1 fills one pixel per tile, step 8 a checkerboard with arrows naming both levels, step 15 all but one.",
+			"numbers": "The thresholds are the table of IsLODFadeDrawn (Strata/shaders/Include/Scene.slang:178), row by row 0 8 2 10, 12 4 14 6, 3 11 1 9, 15 7 13 5; a pixel is filled where its threshold is below the step, so step 1 fills threshold 0, step 8 thresholds 0 to 7 and step 15 thresholds 0 to 14."
+		}
+	]
+}

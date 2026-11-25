@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 448">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plot: origin (96, 380), 140 units a second across, 40 units per m/s up; columns [k, k + 1] x 2k, gaps the triangles above them, area 1 m each; the first column, of height 0, is a thick blue base stroke labelled below the axis. -->
+<rect class="blue-area line-blue" x="236" y="300" width="140" height="80"/>
+<rect class="blue-area line-blue" x="376" y="220" width="140" height="160"/>
+<rect class="blue-area line-blue" x="516" y="140" width="140" height="240"/>
+<polygon class="orange-area line-orange" points="96,380 236,380 236,300"/>
+<polygon class="orange-area line-orange" points="236,300 376,300 376,220"/>
+<polygon class="orange-area line-orange" points="376,220 516,220 516,140"/>
+<polygon class="orange-area line-orange" points="516,140 656,140 656,60"/>
+<path class="line-ink" d="M96 380H676M96 380V58" fill="none"/>
+<polygon class="ink" points="686,380 676,376.5 676,383.5"/>
+<polygon class="ink" points="96,48 92.5,58 99.5,58"/>
+<path class="line-blue" d="M96 380H236" fill="none" stroke-width="4"/>
+<path class="line-ink" d="M96 380L656 60" fill="none" stroke-width="2.5"/>
+<g class="small muted" text-anchor="middle">
+<text x="96" y="402">0</text>
+<text x="236" y="402">1</text>
+<text x="376" y="402">2</text>
+<text x="516" y="402">3</text>
+<text x="656" y="402">4</text>
+</g>
+<g class="small muted" text-anchor="end">
+<text x="86" y="385">0</text>
+<text x="86" y="305">2</text>
+<text x="86" y="225">4</text>
+<text x="86" y="145">6</text>
+<text x="86" y="65">8</text>
+</g>
+<text class="muted" x="376" y="426" text-anchor="middle">time t (s)</text>
+<text class="muted" x="108" y="44">speed v (m/s)</text>
+<text class="blue bold" x="166" y="401" text-anchor="middle">0 m</text>
+<text class="blue bold" x="306" y="346" text-anchor="middle">2 m</text>
+<text class="blue bold" x="446" y="306" text-anchor="middle">4 m</text>
+<text class="blue bold" x="586" y="266" text-anchor="middle">6 m</text>
+<text class="orange small" x="189" y="360" text-anchor="middle">1 m</text>
+<text class="orange small" x="329" y="280" text-anchor="middle">1 m</text>
+<text class="orange small" x="469" y="200" text-anchor="middle">1 m</text>
+<text class="orange small" x="609" y="120" text-anchor="middle">1 m</text>
+<text class="ink" x="668" y="65">v = 2 t</text>
+<text class="blue" x="120" y="104">Columns: 0 + 2 + 4 + 6 = 12 m</text>
+<text class="orange" x="120" y="130">Gaps: 4 × 1 = 4 m</text>
+<text class="ink" x="120" y="156">Under the line: 16 m</text>
+</svg>

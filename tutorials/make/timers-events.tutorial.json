@@ -1,0 +1,205 @@
+{
+	"page": "make/timers-events",
+	"startsFrom": {
+		"template": "basic3d",
+		"name": "ArcadeRoom"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "entity.create", "parameters": { "name": "Crate", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "BoxCollider": { "HalfExtents": [0.5, 0.5, 0.5] }, "RigidBody": {}, "Transform": { "Translation": [0, 6, 0] } } } },
+				{ "command": "entity.find", "parameters": { "name": "Crate" }, "bind": { "crate": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "prefab.create", "parameters": { "entities": [ { "$ref": "crate" } ], "path": "Prefabs/Crate.stprefab" } },
+				{ "command": "entity.delete", "parameters": { "entities": [ { "$ref": "crate" } ] } },
+				{ "command": "asset.info", "parameters": { "asset": "Prefabs/Crate.stprefab", "bounds": false },
+					"checks": [ { "pointer": "/path", "equals": "Prefabs/Crate.stprefab" } ] },
+				{ "command": "entity.find", "parameters": { "name": "Crate" },
+					"checks": [ { "pointer": "/entities", "length": 0 } ] },
+				{ "command": "entity.create", "parameters": { "name": "Player", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "Transform": { "Translation": [0, 0.5, 0] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Game" } },
+				{ "command": "entity.create", "parameters": { "name": "Marker", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "Transform": { "Translation": [0, 1.5, -4], "Scale": [0.5, 0.5, 0.5] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Slot1", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "Transform": { "Translation": [-4, 0.5, -4] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Slot2", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "Transform": { "Translation": [-2, 0.5, -4] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Slot3", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "Transform": { "Translation": [0, 0.5, -4] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Slot4", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "Transform": { "Translation": [2, 0.5, -4] } } } },
+				{ "command": "entity.create", "parameters": { "name": "Slot5", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "Transform": { "Translation": [4, 0.5, -4] } } } },
+				{ "command": "ui.create", "parameters": { "type": "canvas", "name": "HUD" }, "bind": { "hud": "/entity" } },
+				{ "command": "ui.create", "parameters": { "type": "text", "parent": { "$ref": "hud" }, "name": "ScoreText", "text": "Score: 0", "anchor": "topLeft", "position": [24, 24], "size": [360, 48] } },
+				{ "command": "ui.create", "parameters": { "type": "text", "parent": { "$ref": "hud" }, "name": "PausedText", "text": "Paused", "anchor": "middleCenter", "size": [360, 48] } },
+				{ "command": "component.get", "entityName": "ScoreText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Text", "equals": "Score: 0" } ] },
+				{ "command": "component.get", "entityName": "PausedText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Text", "equals": "Paused" } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"files": [ { "from": "book:tutorials/make/timers-events/TimeControl.step2.cpp", "to": "Scripts/TimeControl.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.add", "entityName": "Game", "parameters": { "class": "TimeControl" } },
+				{ "command": "play.start", "parameters": { "build": false } },
+				{ "command": "input.key", "parameters": { "key": "D2" } },
+				{ "command": "input.key", "parameters": { "key": "L" } },
+				{ "command": "input.key", "parameters": { "key": "P", "action": "press" } },
+				{ "command": "input.key", "parameters": { "key": "L", "action": "press" } },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 50 },
+					"checks": [
+						{ "pointer": "/messages", "contains": "scale 0.25 delta " },
+						{ "pointer": "/messages", "contains": "scale 0 delta 0 unscaled " }
+					] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"files": [ { "from": "book:tutorials/make/timers-events/Dropper.step3.cpp", "to": "Scripts/Dropper.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.add", "entityName": "Game", "parameters": { "class": "Dropper", "fields": { "Period": 2 } } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 110 }, "expect": { "/stepsRun": { "equals": 110 } } },
+				{ "command": "entity.find", "parameters": { "name": "Crate" },
+					"checks": [ { "pointer": "/entities", "length": 0 } ] },
+				{ "command": "play.step", "parameters": { "steps": 40 }, "expect": { "/stepsRun": { "equals": 40 } } },
+				{ "command": "entity.find", "parameters": { "name": "Crate" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "play.step", "parameters": { "steps": 150 }, "expect": { "/stepsRun": { "equals": 150 } } },
+				{ "command": "entity.find", "parameters": { "name": "Crate" }, "bind": { "first": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 2 } ] },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "first" }, "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": -6, "tolerance": 0.2 },
+						{ "pointer": "/values/Translation/1", "approx": 0.5, "tolerance": 0.1 }
+					] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"files": [ { "from": "book:tutorials/make/timers-events/Player.cpp", "to": "Scripts/Player.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.add", "entityName": "Player", "parameters": { "class": "Player" } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "input.key", "parameters": { "key": "D", "steps": 15 } },
+				{ "command": "play.step", "parameters": { "steps": 16 }, "expect": { "/stepsRun": { "equals": 16 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/0", "approx": 1, "tolerance": 0.1 } ] },
+				{ "command": "input.key", "parameters": { "key": "LeftShift", "steps": 1 } },
+				{ "command": "play.step", "parameters": { "steps": 2 }, "expect": { "/stepsRun": { "equals": 2 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/0", "approx": 4, "tolerance": 0.1 } ] },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "input.key", "parameters": { "key": "LeftShift", "steps": 1 } },
+				{ "command": "play.step", "parameters": { "steps": 2 }, "expect": { "/stepsRun": { "equals": 2 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/0", "approx": 4, "tolerance": 0.1 } ] },
+				{ "command": "play.step", "parameters": { "steps": 70 }, "expect": { "/stepsRun": { "equals": 70 } } },
+				{ "command": "input.key", "parameters": { "key": "LeftShift", "steps": 1 } },
+				{ "command": "play.step", "parameters": { "steps": 2 }, "expect": { "/stepsRun": { "equals": 2 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/0", "approx": 7, "tolerance": 0.1 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 5,
+			"files": [ { "from": "book:tutorials/make/timers-events/Marker.cpp", "to": "Scripts/Marker.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.add", "entityName": "Marker", "parameters": { "class": "Marker" } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 5 }, "expect": { "/stepsRun": { "equals": 5 } } },
+				{ "command": "component.get", "entityName": "Marker", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/0", "approx": 0, "tolerance": 0.01 } ] },
+				{ "command": "input.key", "parameters": { "key": "Right", "steps": 1 } },
+				{ "command": "play.step", "parameters": { "steps": 3 }, "expect": { "/stepsRun": { "equals": 3 } } },
+				{ "command": "component.get", "entityName": "Marker", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/0", "approx": 2, "tolerance": 0.01 } ] },
+				{ "command": "input.key", "parameters": { "key": "Left", "steps": 10 } },
+				{ "command": "play.step", "parameters": { "steps": 12 }, "expect": { "/stepsRun": { "equals": 12 } } },
+				{ "command": "component.get", "entityName": "Marker", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/0", "approx": 0, "tolerance": 0.01 } ] },
+				{ "command": "input.key", "parameters": { "key": "Left", "steps": 40 } },
+				{ "command": "play.step", "parameters": { "steps": 42 }, "expect": { "/stepsRun": { "equals": 42 } } },
+				{ "command": "component.get", "entityName": "Marker", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/0", "approx": -4, "tolerance": 0.01 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 6,
+			"files": [ { "from": "book:tutorials/make/timers-events/TimeControl.cpp", "to": "Scripts/TimeControl.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "component.get", "entityName": "PausedText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Color/3", "approx": 0, "tolerance": 0.01 } ] },
+				{ "command": "input.key", "parameters": { "key": "P", "steps": 1 } },
+				{ "command": "play.step", "parameters": { "steps": 5 }, "expect": { "/stepsRun": { "equals": 5 } } },
+				{ "command": "component.get", "entityName": "PausedText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Color/3", "approx": 1, "tolerance": 0.01 } ] },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "component.get", "entityName": "PausedText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Color/3", "approx": 0, "tolerance": 0.01 } ] },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "component.get", "entityName": "PausedText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Color/3", "approx": 1, "tolerance": 0.01 } ] },
+				{ "command": "input.key", "parameters": { "key": "P", "steps": 1 } },
+				{ "command": "play.step", "parameters": { "steps": 3 }, "expect": { "/stepsRun": { "equals": 3 } } },
+				{ "command": "component.get", "entityName": "PausedText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Color/3", "approx": 0, "tolerance": 0.01 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 7,
+			"files": [
+				{ "from": "book:tutorials/make/timers-events/Scoreboard.h", "to": "Scripts/Scoreboard.h" },
+				{ "from": "book:tutorials/make/timers-events/Scoreboard.cpp", "to": "Scripts/Scoreboard.cpp" },
+				{ "from": "book:tutorials/make/timers-events/Pickup.h", "to": "Scripts/Pickup.h" },
+				{ "from": "book:tutorials/make/timers-events/Pickup.cpp", "to": "Scripts/Pickup.cpp" },
+				{ "from": "book:tutorials/make/timers-events/Dropper.cpp", "to": "Scripts/Dropper.cpp" }
+			],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.add", "entityName": "Game", "parameters": { "class": "Scoreboard" } },
+				{ "command": "script.get", "entityName": "Game", "parameters": { "class": "Scoreboard" },
+					"checks": [ { "pointer": "/scripts/0/fields/Score", "equals": 0 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 200 }, "expect": { "/stepsRun": { "equals": 200 } } },
+				{ "command": "entity.find", "parameters": { "name": "Crate" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "input.key", "parameters": { "key": "A", "steps": 90 } },
+				{ "command": "play.step", "parameters": { "steps": 92 }, "expect": { "/stepsRun": { "equals": 92 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/0", "approx": -6, "tolerance": 0.1 } ] },
+				{ "command": "script.get", "entityName": "Game", "parameters": { "class": "Scoreboard" },
+					"checks": [ { "pointer": "/scripts/0/fields/Score", "equals": 1 } ] },
+				{ "command": "component.get", "entityName": "ScoreText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Text", "equals": "Score: 1" } ] },
+				{ "command": "entity.find", "parameters": { "name": "Crate" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		}
+	]
+}

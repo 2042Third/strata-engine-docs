@@ -1,0 +1,18 @@
+{
+	"figures": [
+		{
+			"id": "listener-frame",
+			"shows": "A top view of a listener that faces minus Z with plus X on its right and a source on the right, then the same listener turned to face plus Z, where the source is on the left",
+			"caption": "The right side is always forward crossed with up, so turning the listener round swaps the ears of a source.",
+			"alt": "Two panels seen from above. In the left panel a listener faces up the page along minus Z, plus X points right and a source on the right is marked louder in the right ear. In the right panel the listener faces down the page along plus Z, its right side is minus X and the same source is on its left.",
+			"kind": "diagram"
+		},
+		{
+			"id": "gain-curves",
+			"shows": "The gain against distance for the four attenuation models with minimum distance 1, maximum distance 50 and rolloff 1, with the clamped regions shaded",
+			"caption": "Inverse and exponential coincide, linear reaches silence at the maximum distance, and nothing changes in the shaded regions.",
+			"alt": "A line chart of gain from 0 to 1 against distance from 0 to 60. A flat line stays at 1. The inverse and exponential curve falls fast to 0.02 at 50. A straight line falls to 0 at 50. Both ends of the distance axis are shaded as clamped.",
+			"kind": "diagram"
+		}
+	]
+}

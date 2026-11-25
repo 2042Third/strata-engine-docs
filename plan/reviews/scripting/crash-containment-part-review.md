@@ -1,0 +1,5 @@
+# Part review of `scripting/crash-containment`
+
+- unclear: "Look at the three marked lines" before the `InvokeWithSEH` quote, which marks no line (its fence has no `mark`); now "Three of its lines matter", and the callouts name them.
+
+Checked and holding: the filter's 19 codes (17 hardware, the C++ and the abort code), the access kinds 0, 8 and other, the 32 KiB stack guarantee and its warning, the six POSIX signals and the 64 KiB alternate stack never freed, the handler, `Invoke` and the abort entry file with their callout lines, the watchdog's clamp of a quarter between 1 and 250 ms and its log text, the 250 ms test with a 1500 ms call reported once, the Console line and the toast title of `EditorContext::StopOnScriptFault`, `RecordFault`'s log line, "threw an exception" of `ScriptSystem`, the suites `Scripting.Faults`, `Scripting.Exceptions`, `Scripting.LoaderFaults` and the `Core.Platform` helper cases (128 plus `SIGFPE`, 128 plus `SIGABRT`, "called abort()"), the fault kinds per platform; no contradiction with the digest.

@@ -1,0 +1,91 @@
+[
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Post Process"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "PostProcess",
+			"values": {
+				"MotionBlur": true
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Post Process"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "PostProcess",
+			"values": {
+				"MotionBlurShutterAngle": 90
+			},
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Post Process"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "PostProcess",
+			"values": {
+				"MotionBlurShutterAngle": 180
+			},
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "play.stop",
+		"parameters": {}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Post Process"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "PostProcess",
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	}
+]

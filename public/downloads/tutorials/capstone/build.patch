@@ -1,0 +1,579 @@
+diff --git a/Docs/Architecture.md b/Docs/Architecture.md
+index f5e8d476..9a0aa648 100644
+--- a/Docs/Architecture.md
++++ b/Docs/Architecture.md
+@@ -1226,7 +1226,7 @@ which means the module is not in the build or its system does not run in this mo
+ | `ISkinningPoses`: each animator's pose (model-space joint matrices with a version), and which animators renderers drew | `AnimationSystem`; the editor's pose preview for edited scenes | `RenderScene` (palettes of skinned meshes), `SceneRenderer` (reports the animators of what it drew) |
+ | `IAnimatorControl`: play, cross-fade, parameters, speed, state queries, joint transforms, whether an entity has an animator (`HasAnimator`) | `AnimationSystem` | script host (`Animator`), tools and tests |
+ | `IAnimationEventSource`: listeners of the events controller states fire | `AnimationSystem` | `ScriptSystem` (`OnAnimationEvent`), tools and tests |
+-| `IWindZones`: the wind at a position | `WindZoneSystem` | `ScriptSystem` (`Wind::GetStrength`) |
++| `IWindZones`: the wind at a position, as strength and as force | `WindZoneSystem` | `ScriptSystem` (`Wind::GetStrength`) |
+ | `IWindEventSource`: listeners of the zones' strength changes | `WindZoneSystem` | `ScriptSystem` (`OnWindChanged`) |
+ | `IUIEvents`: listeners of the game UI's widget events (clicks, value changes, focus changes, input field submits) | `GameUISystem` | `ScriptSystem` (`OnUIClick`, `OnUIValueChanged`, `OnUIFocusChanged`, `OnUISubmit`), tools and tests |
+ | `IUIControl`: the game UI's elements (texts, images, colors, interactability, values), the focus, the pointer and the UI actions | `GameUISystem` | script host (`UIElement`, `UI`) |
+diff --git a/Strata/src/Strata/Physics/PhysicsComponents.cpp b/Strata/src/Strata/Physics/PhysicsComponents.cpp
+index 83cff277..c8ea9fcd 100644
+--- a/Strata/src/Strata/Physics/PhysicsComponents.cpp
++++ b/Strata/src/Strata/Physics/PhysicsComponents.cpp
+@@ -114,10 +114,30 @@ namespace Strata
+ 			return true;
+ 		}
+ 
+-		// A wind zone shows its reach: a sphere of its radius around the entity's origin. Not scaled, like the zone itself.
++		// How long a directional zone's arrow is drawn, in meters: it shows the direction, not the strength.
++		constexpr float c_WindArrowLength = 2.0f;
++
++		// The Radius of a directional zone does nothing: the wind blows everywhere (PropertyInfo::InactiveReason).
++		std::string WithoutRadius(const WindZoneComponent& zone)
++		{
++			return zone.Mode == WindZoneMode::Directional ? "Directional zones have no radius" : std::string();
++		}
++
++		// A spherical zone shows its reach: a sphere of its radius around the entity's origin, not scaled like the zone itself. A
++		// directional zone shows an arrow along the entity's -Z, where the wind blows.
+ 		bool WindZoneGizmo(const entt::registry&, entt::entity, const void* component, const glm::mat4& world, ComponentGizmoShape& outShape)
+ 		{
+ 			const WindZoneComponent& zone = *static_cast<const WindZoneComponent*>(component);
++			if (zone.Mode == WindZoneMode::Directional)
++			{
++				const glm::vec3 axis = glm::vec3(world[2]);
++				if (!std::isfinite(glm::length(axis)) || !(glm::length(axis) > 1.0e-6f))
++					return false;
++				outShape.Type = ComponentGizmoShape::Kind::Arrow;
++				outShape.Transform = world;
++				outShape.Length = c_WindArrowLength;
++				return true;
++			}
+ 			if (!std::isfinite(zone.Radius) || zone.Radius <= 0.0f)
+ 				return false;
+ 			outShape.Type = ComponentGizmoShape::Kind::Sphere;
+@@ -204,6 +224,7 @@ namespace Strata
+ 			.Property("Radius", &WindZoneComponent::Radius, WithTooltip(Range(0.01f, c_Unbounded, 0.05f), "How far the zone reaches from its center, in meters"))
+ 			.EnumProperty("Mode", &WindZoneComponent::Mode, { { "Directional", 0 }, { "Spherical", 1 } })
+ 			.Gizmo(ComponentGizmoGroup::Collider, WindZoneGizmo);
++		ComponentRegistry::SetInactiveReason<WindZoneComponent>("Radius", &WithoutRadius);
+ 	}
+ 
+ }
+diff --git a/Strata/src/Strata/Physics/PhysicsRegistration.cpp b/Strata/src/Strata/Physics/PhysicsRegistration.cpp
+index 1bf2deb9..dd9cd188 100644
+--- a/Strata/src/Strata/Physics/PhysicsRegistration.cpp
++++ b/Strata/src/Strata/Physics/PhysicsRegistration.cpp
+@@ -31,6 +31,7 @@ namespace Strata
+ 		SceneSystemDescriptor windDescriptor = MakeSceneSystemDescriptor<WindZoneSystem>("WindZone", true, [](Scene& scene) { return CreateScope<WindZoneSystem>(scene); });
+ 		windDescriptor.AfterIfPresent = { "Scripting" };
+ 		windDescriptor.BeforeIfPresent = { "Physics" };
++		windDescriptor.ProfileStage = "Scene.Wind";
+ 		const bool windRegistered = SceneSystemRegistry::Register(std::move(windDescriptor));
+ 		ST_CORE_VERIFY(windRegistered, "The physics module could not register the wind zone scene system");
+ 	}
+diff --git a/Strata/src/Strata/Physics/WindForce.cpp b/Strata/src/Strata/Physics/WindForce.cpp
+new file mode 100644
+index 00000000..660563b0
+--- /dev/null
++++ b/Strata/src/Strata/Physics/WindForce.cpp
+@@ -0,0 +1,76 @@
++#include "stpch.h"
++#include "Strata/Physics/WindForce.h"
++
++#include "Strata/Scene/Entity.h"
++#include "Strata/Scene/Scene.h"
++
++#include <cmath>
++
++namespace Strata
++{
++
++	namespace
++	{
++
++		// Below this length a world transform's Z axis has no direction (a scale of nearly zero).
++		constexpr float c_MinAxisLength = 1.0e-6f;
++
++		bool IsFinite(const glm::vec3& value)
++		{
++			return std::isfinite(value.x) && std::isfinite(value.y) && std::isfinite(value.z);
++		}
++
++	}
++
++	std::vector<WindZoneSample> GatherWindZones(Scene& scene)
++	{
++		std::vector<WindZoneSample> zones;
++		for (const auto [handle, zone] : scene.GetRegistry().view<WindZoneComponent>().each())
++		{
++			const Entity entity(handle, &scene);
++			if (!scene.IsActiveInHierarchy(entity))
++				continue;
++
++			// Reading the world transform changes nothing, so the transform contract asks for no signal.
++			const glm::mat4 world = scene.GetWorldTransform(entity);
++			zones.push_back({ handle, glm::vec3(world[3]), world, zone.Strength, zone.Radius, zone.Mode });
++		}
++		return zones;
++	}
++
++	glm::vec3 GetWindForce(const WindZoneSample& zone, const glm::vec3& position)
++	{
++		if (!(zone.Strength > 0.0f) || !std::isfinite(zone.Strength) || !IsFinite(position))
++			return glm::vec3(0.0f);
++
++		if (zone.Mode == WindZoneMode::Directional)
++		{
++			// -Z is forward. Dividing by the axis' length keeps the scale of the entity out of the strength.
++			const glm::vec3 axis = -glm::vec3(zone.World[2]);
++			const float length = glm::length(axis);
++			if (!IsFinite(axis) || !(length > c_MinAxisLength))
++				return glm::vec3(0.0f);
++			return axis / length * zone.Strength;
++		}
++
++		const glm::vec3 offset = position - zone.Position;
++		const float distance = glm::length(offset);
++		if (!(distance > 0.0f) || !(distance <= zone.Radius) || !std::isfinite(distance))
++			return glm::vec3(0.0f);
++		return offset / distance * zone.Strength;
++	}
++
++	glm::vec3 GetWindForceAt(std::span<const WindZoneSample> zones, const glm::vec3& position)
++	{
++		glm::vec3 force(0.0f);
++		for (const WindZoneSample& zone : zones)
++			force += GetWindForce(zone, position);
++		return force;
++	}
++
++	glm::vec3 GetWindForceAt(Scene& scene, const glm::vec3& position)
++	{
++		return GetWindForceAt(GatherWindZones(scene), position);
++	}
++
++}
+diff --git a/Strata/src/Strata/Physics/WindForce.h b/Strata/src/Strata/Physics/WindForce.h
+new file mode 100644
+index 00000000..f212d71c
+--- /dev/null
++++ b/Strata/src/Strata/Physics/WindForce.h
+@@ -0,0 +1,43 @@
++#pragma once
++
++#include "Strata/Physics/PhysicsComponents.h"
++
++#include <entt/entt.hpp>
++#include <glm/glm.hpp>
++
++#include <span>
++#include <vector>
++
++namespace Strata
++{
++
++	class Scene;
++
++	// One wind zone as the wind code reads it: the component's values and where the zone stands in the world.
++	struct WindZoneSample
++	{
++		entt::entity Handle = entt::null;
++		glm::vec3 Position = { 0.0f, 0.0f, 0.0f }; // The zone's center in world space
++		glm::mat4 World = glm::mat4(1.0f);         // The zone's world transform: its rotation turns a directional zone's wind
++		float Strength = 0.0f;                     // Newtons
++		float Radius = 0.0f;                       // Meters, never scaled by the entity's scale
++		WindZoneMode Mode = WindZoneMode::Directional;
++	};
++
++	// The scene's zones that are active in the hierarchy, in the order of the registry. Reads the world transforms the scene
++	// caches: call Scene::UpdateWorldTransforms first when the scene was edited.
++	std::vector<WindZoneSample> GatherWindZones(Scene& scene);
++
++	// The force, in newtons, that one zone applies at a world position.
++	// Directional: Strength along the zone's local -Z (Strata's forward) turned by its world rotation, everywhere.
++	// Spherical: Strength away from the center within Radius of it, and nothing at the center itself or outside.
++	// A zone whose transform has no direction, a zone without strength and a position that is not finite give no force.
++	glm::vec3 GetWindForce(const WindZoneSample& zone, const glm::vec3& position);
++
++	// The sum of the forces of the zones at a world position.
++	glm::vec3 GetWindForceAt(std::span<const WindZoneSample> zones, const glm::vec3& position);
++
++	// The same sum over the active zones of a scene, read now: it works while the scene is edited, when no system runs.
++	glm::vec3 GetWindForceAt(Scene& scene, const glm::vec3& position);
++
++}
+diff --git a/Strata/src/Strata/Physics/WindZoneSystem.cpp b/Strata/src/Strata/Physics/WindZoneSystem.cpp
+index 2071428c..d58d02ff 100644
+--- a/Strata/src/Strata/Physics/WindZoneSystem.cpp
++++ b/Strata/src/Strata/Physics/WindZoneSystem.cpp
+@@ -3,6 +3,7 @@
+ 
+ #include "Strata/Scene/Entity.h"
+ #include "Strata/Scene/Scene.h"
++#include "Strata/Physics/PhysicsTypes.h"
+ 
+ #include <algorithm>
+ 
+@@ -34,6 +35,11 @@ namespace Strata
+ 		return strength;
+ 	}
+ 
++	glm::vec3 WindZoneSystem::GetForceAt(const glm::vec3& position) const
++	{
++		return GetWindForceAt(m_Zones, position);
++	}
++
+ 	void WindZoneSystem::OnFixedUpdate(float)
+ 	{
+ 		ST_PROFILE_FUNCTION();
+@@ -42,16 +48,7 @@ namespace Strata
+ 		const std::vector<WindZoneSample> previous = std::move(m_Zones);
+ 
+ 		// Gathered anew every step, so that a zone that was destroyed, deactivated or moved needs no bookkeeping.
+-		m_Zones.clear();
+-		for (const auto [handle, zone] : m_Scene.GetRegistry().view<WindZoneComponent>().each())
+-		{
+-			const Entity entity(handle, &m_Scene);
+-			if (!m_Scene.IsActiveInHierarchy(entity))
+-				continue;
+-
+-			// Reading the world transform changes nothing, so the transform contract asks for no signal.
+-			m_Zones.push_back({ handle, glm::vec3(m_Scene.GetWorldTransform(entity)[3]), zone.Strength, zone.Radius, zone.Mode });
+-		}
++		m_Zones = GatherWindZones(m_Scene);
+ 
+ 		// A zone that was gathered before and now holds another strength. The comparison is exact: a strength changes only
+ 		// when someone writes it. A zone seen for the first time did not change.
+@@ -65,6 +62,44 @@ namespace Strata
+ 			changes.push_back({ entity, entity.GetUUID(), zone.Strength });
+ 		}
+ 		DispatchChanges(changes);
++		PushBodies();
++	}
++
++	void WindZoneSystem::PushBodies()
++	{
++		// Looked up in every step: the Physics system is created after this one, and a scene without it has no bodies to push.
++		IPhysicsQueries* queries = m_Scene.GetService<IPhysicsQueries>();
++		IBodyControl* bodies = m_Scene.GetService<IBodyControl>();
++		if (!queries || !bodies)
++			return;
++
++		// A force wakes its body, so a calm zone pushes nothing at all.
++		const auto push = [&](const WindZoneSample& zone, Entity body)
++		{
++			const glm::vec3 force = GetWindForce(zone, glm::vec3(m_Scene.GetWorldTransform(body)[3]));
++			if (force != glm::vec3(0.0f))
++				bodies->AddForce(body, force);
++		};
++
++		for (const WindZoneSample& zone : m_Zones)
++		{
++			if (!(zone.Strength > 0.0f))
++				continue;
++			if (zone.Mode == WindZoneMode::Spherical)
++			{
++				// Triggers do not feel wind: they are no bodies that move.
++				for (const Entity body : queries->OverlapSphere(zone.Position, zone.Radius, c_AllPhysicsLayers, false))
++					push(zone, body);
++			}
++			else
++			{
++				for (const auto [handle, rigidBody] : m_Scene.GetRegistry().view<RigidBodyComponent>().each())
++				{
++					if (rigidBody.Type == RigidBodyType::Dynamic)
++						push(zone, Entity(handle, &m_Scene));
++				}
++			}
++		}
+ 	}
+ 
+ 	WindChangeListenerID WindZoneSystem::AddWindChangeListener(WindChangeCallback callback)
+diff --git a/Strata/src/Strata/Physics/WindZoneSystem.h b/Strata/src/Strata/Physics/WindZoneSystem.h
+index 46fc76f4..a39b2c62 100644
+--- a/Strata/src/Strata/Physics/WindZoneSystem.h
++++ b/Strata/src/Strata/Physics/WindZoneSystem.h
+@@ -1,6 +1,7 @@
+ #pragma once
+ 
+ #include "Strata/Physics/PhysicsComponents.h"
++#include "Strata/Physics/WindForce.h"
+ #include "Strata/Scene/SceneServices.h"
+ #include "Strata/Scene/SceneSystem.h"
+ 
+@@ -13,18 +14,8 @@ namespace Strata
+ 
+ 	class Scene;
+ 
+-	// One wind zone as WindZoneSystem read it in the last fixed step.
+-	struct WindZoneSample
+-	{
+-		entt::entity Handle = entt::null;
+-		glm::vec3 Position = { 0.0f, 0.0f, 0.0f }; // The zone's center in world space
+-		float Strength = 0.0f;                     // Newtons
+-		float Radius = 0.0f;                       // Meters
+-		WindZoneMode Mode = WindZoneMode::Directional;
+-	};
+-
+-	// Gathers the scene's active wind zones once per fixed step, with the world position of each. It writes no transform and
+-	// no component: the forces on bodies come in a later change. It offers IWindZones (the wind at a position) and
++	// Gathers the scene's active wind zones once per fixed step and pushes the dynamic bodies they reach (IBodyControl::AddForce,
++	// before the physics step that takes them). It writes no transform and no component: physics moves the bodies. It offers IWindZones (the wind at a position) and
+ 	// IWindEventSource (a notice when a zone's strength changes between two steps) while it exists. Main thread only.
+ 	class WindZoneSystem : public SceneSystem, public IWindZones, public IWindEventSource
+ 	{
+@@ -39,6 +30,7 @@ namespace Strata
+ 
+ 		// IWindZones
+ 		float GetStrengthAt(const glm::vec3& position) const override;
++		glm::vec3 GetForceAt(const glm::vec3& position) const override;
+ 
+ 		// IWindEventSource
+ 		WindChangeListenerID AddWindChangeListener(WindChangeCallback callback) override;
+@@ -51,6 +43,7 @@ namespace Strata
+ 		};
+ 
+ 		void DispatchChanges(const std::vector<WindChangeInfo>& changes);
++		void PushBodies();
+ 
+ 		Scene& m_Scene;
+ 		std::vector<WindZoneSample> m_Zones;
+diff --git a/Strata/src/Strata/Reflection/ComponentGizmo.h b/Strata/src/Strata/Reflection/ComponentGizmo.h
+index 4f29e257..de16eefd 100644
+--- a/Strata/src/Strata/Reflection/ComponentGizmo.h
++++ b/Strata/src/Strata/Reflection/ComponentGizmo.h
+@@ -27,7 +27,8 @@ namespace Strata
+ 			Box,       // A box of HalfExtents around Transform's origin, along its axes
+ 			Sphere,    // A sphere of Radius around Transform's origin
+ 			Capsule,   // A capsule of Radius along Transform's Y axis, its cylinder 2 * HalfHeight long
+-			MeshBounds // The bounds of Mesh (when it is loaded: gizmos never load assets), placed by Transform
++			MeshBounds, // The bounds of Mesh (when it is loaded: gizmos never load assets), placed by Transform
++			Arrow       // An arrow of Length from Transform's origin along its -Z axis (forward)
+ 		};
+ 
+ 		Kind Type = Kind::Box;
+@@ -35,6 +36,7 @@ namespace Strata
+ 		glm::vec3 HalfExtents = glm::vec3(0.0f);
+ 		float Radius = 0.0f;
+ 		float HalfHeight = 0.0f;
++		float Length = 0.0f;
+ 		AssetHandle Mesh = AssetHandle::Null();
+ 	};
+ 
+diff --git a/Strata/src/Strata/Renderer/SceneGizmos.cpp b/Strata/src/Strata/Renderer/SceneGizmos.cpp
+index 471776a4..70286108 100644
+--- a/Strata/src/Strata/Renderer/SceneGizmos.cpp
++++ b/Strata/src/Strata/Renderer/SceneGizmos.cpp
+@@ -143,6 +143,14 @@ namespace Strata
+ 						debugDraw.Capsule(shape.Transform, shape.Radius, shape.HalfHeight, settings.ColliderColor, settings.Depth);
+ 					return;
+ 				}
++				case ComponentGizmoShape::Kind::Arrow:
++				{
++					const glm::vec3 from(shape.Transform[3]);
++					const glm::vec3 forward = -glm::normalize(glm::vec3(shape.Transform[2]));
++					if (view.IsVisible(from + forward * (shape.Length * 0.5f), shape.Length * 0.5f))
++						debugDraw.Arrow(from, from + forward * shape.Length, settings.ColliderColor, settings.Depth);
++					return;
++				}
+ 				case ComponentGizmoShape::Kind::MeshBounds:
+ 				{
+ 					const Ref<Mesh> mesh = assets && assets->GetAssetState(shape.Mesh) == AssetState::Ready ? assets->PeekLoadedAsset<Mesh>(shape.Mesh) : nullptr;
+diff --git a/Strata/src/Strata/Scene/SceneServices.h b/Strata/src/Strata/Scene/SceneServices.h
+index 9a3a1c2e..804b281e 100644
+--- a/Strata/src/Strata/Scene/SceneServices.h
++++ b/Strata/src/Strata/Scene/SceneServices.h
+@@ -388,6 +388,9 @@ namespace Strata
+ 		// The strength, in newtons, that the active zones reaching a world position add up to, as of the last fixed step: a
+ 		// zone reaches the positions within its radius of its center. 0 where no zone reaches, and before the first step.
+ 		virtual float GetStrengthAt(const glm::vec3& position) const = 0;
++		// The force, in newtons, that the zones add up to at a world position, as of the last fixed step: a directional zone
++		// blows along its entity's -Z everywhere, a spherical one away from its center within its radius. Zero before the first step.
++		virtual glm::vec3 GetForceAt(const glm::vec3& position) const = 0;
+ 	};
+ 
+ 	//////////////////////////////////////////////////////////////////////////
+diff --git a/Strata/src/Strata/Scripting/ScriptHostAPI.cpp b/Strata/src/Strata/Scripting/ScriptHostAPI.cpp
+index 6c615e90..4677af5f 100644
+--- a/Strata/src/Strata/Scripting/ScriptHostAPI.cpp
++++ b/Strata/src/Strata/Scripting/ScriptHostAPI.cpp
+@@ -3439,6 +3439,35 @@ namespace Strata
+ 			});
+ 		}
+ 
++		bool HostGetWindForce(StrataScriptContext* context, const float* position, float outForce[3])
++		{
++			// The failure value is the zero vector, written before anything can go wrong.
++			if (outForce)
++				WriteVector3(glm::vec3(0.0f), outForce);
++			return HostCall("GetWindForce", false, [&]()
++			{
++				ScriptSystem* system = ResolveContext(context, "GetWindForce");
++				if (!system)
++					return false;
++				if (!outForce)
++				{
++					system->ReportProblem("GetWindForce", "the output pointer is null");
++					return false;
++				}
++				const std::optional<glm::vec3> point = ReadVector3(*system, position, "position", "GetWindForce");
++				if (!point)
++					return false;
++				const IWindZones* wind = system->GetScene().GetService<IWindZones>();
++				if (!wind)
++				{
++					system->ReportProblem("GetWindForce", c_WithoutWind);
++					return false;
++				}
++				WriteVector3(wind->GetForceAt(*point), outForce);
++				return true;
++			});
++		}
++
+ 		////////////////////////////////////////////////////////////////////////////////
+ 		// The table
+ 		////////////////////////////////////////////////////////////////////////////////
+@@ -3613,7 +3642,8 @@ namespace Strata
+ 	X(GetStepAlpha) \
+ 	X(GetDrawnTransform) \
+ 	X(ResetInterpolation) \
+-	X(GetWindStrength)
++	X(GetWindStrength) \
++	X(GetWindForce)
+ 
+ 		struct HostFunctionEntry
+ 		{
+diff --git a/StrataEditor/src/Editor/Commands/WindCommands.cpp b/StrataEditor/src/Editor/Commands/WindCommands.cpp
+index 760c091f..f59579ce 100644
+--- a/StrataEditor/src/Editor/Commands/WindCommands.cpp
++++ b/StrataEditor/src/Editor/Commands/WindCommands.cpp
+@@ -4,6 +4,7 @@
+ #include "Editor/SceneEdit.h"
+ 
+ #include <Strata/Physics/PhysicsComponents.h>
++#include <Strata/Physics/WindForce.h>
+ #include <Strata/Reflection/ComponentRegistry.h>
+ #include <Strata/Reflection/PropertyJson.h>
+ #include <Strata/Scene/Scene.h>
+@@ -92,6 +93,27 @@ namespace Strata
+ 				return EditorCommandResult::Ok({ { "zones", std::move(zones) } });
+ 			}, EditorCommandKind::Query });
+ 
++		registry.Register({ "wind.sample",
++			"Gives the force, in newtons, that the active WindZone components of the scene add up to at a world position: {position, force "
++			"([x, y, z]), strength (the length of the force)}. A directional zone blows along its entity's -Z everywhere, a spherical zone "
++			"away from its center within its radius, and nothing blows at a center or outside it. Reads the scene as it stands, so it answers "
++			"while editing and, while playing, for the running copy. Changes nothing.",
++			ObjectSchema({ { "position", Vec3Schema("World position, in meters") } }, { "position" }),
++			[](EditorContext& context, const nlohmann::json& parameters)
++			{
++				CommandArguments arguments(parameters);
++				const std::optional<glm::vec3> position =
++					arguments.Has("position") ? ReadVec3(parameters["position"]) : std::nullopt;
++				if (!position)
++					return EditorCommandResult::InvalidParameters("Parameter 'position' must be three finite numbers");
++
++				Scene& scene = *context.GetActiveScene();
++				scene.UpdateWorldTransforms();
++				const glm::vec3 force = GetWindForceAt(scene, *position);
++				return EditorCommandResult::Ok({ { "position", { position->x, position->y, position->z } },
++					{ "force", { force.x, force.y, force.z } }, { "strength", glm::length(force) } });
++			}, EditorCommandKind::Query });
++
+ 		registry.Register({ "wind.set",
+ 			"Sets the strength, radius or mode of the WindZone of one or more entities in one undo step (while playing it changes the "
+ 			"running copy only). Values left out stay as they are; at least one is required. Refuses, changing nothing, an entity without a "
+diff --git a/StrataScriptCore/Include/StrataScript/ScriptABI.h b/StrataScriptCore/Include/StrataScript/ScriptABI.h
+index 04c47b11..06b15bd0 100644
+--- a/StrataScriptCore/Include/StrataScript/ScriptABI.h
++++ b/StrataScriptCore/Include/StrataScript/ScriptABI.h
+@@ -759,6 +759,14 @@ extern "C"
+ 		 */
+ 		float (*GetWindStrength)(StrataScriptContext* context, const float* position);
+ 
++		/*
++		 * GetWindForce (added after GetWindStrength: check ST_SCRIPT_HAS_MEMBER before use) writes the force, in newtons, that the
++		 * active wind zones add up to at the world position (x, y, z; three floats) to outForce (three floats) and returns true.
++		 * For a null or non-finite position, a null output or a scene without wind zones it writes (0, 0, 0) where it can and
++		 * returns false.
++		 */
++		bool (*GetWindForce)(StrataScriptContext* context, const float* position, float outForce[3]);
++
+ 		/* New functions are appended here (see the compatibility rules above). */
+ 	} StrataScriptHostAPI;
+ 
+diff --git a/StrataScriptCore/Include/StrataScript/Wind.h b/StrataScriptCore/Include/StrataScript/Wind.h
+index f8ecf862..47103b00 100644
+--- a/StrataScriptCore/Include/StrataScript/Wind.h
++++ b/StrataScriptCore/Include/StrataScript/Wind.h
+@@ -18,6 +18,18 @@ namespace Strata
+ 			const StrataScriptHostAPI* host = ST_SCRIPT_DETAIL_HOST_WITH(GetWindStrength);
+ 			return host ? host->GetWindStrength(Detail::GetContext(), &position.x) : 0.0f;
+ 		}
++
++		// The force, in newtons, that the active wind zones add up to at a world position: a directional zone blows along its
++		// entity's -Z, a spherical one away from its center. The zero vector where none reaches it, for a position that is not
++		// finite, and with an engine that has no wind forces.
++		static glm::vec3 GetForceAt(const glm::vec3& position)
++		{
++			glm::vec3 force(0.0f);
++			const StrataScriptHostAPI* host = ST_SCRIPT_DETAIL_HOST_WITH(GetWindForce);
++			if (host)
++				host->GetWindForce(Detail::GetContext(), &position.x, &force.x);
++			return force;
++		}
+ 	};
+ 
+ }
+diff --git a/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene b/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
+index 26bd5387..5335668d 100644
+--- a/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
++++ b/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
+@@ -5718,7 +5718,7 @@
+ 						"Translation": [
+ 							8,
+ 							1,
+-							-7
++							-40
+ 						]
+ 					},
+ 					"WindZone": {
+diff --git a/StrataTests/FeatureTest/Scripts/WindFeatures.cpp b/StrataTests/FeatureTest/Scripts/WindFeatures.cpp
+index f34357a3..baf8c72e 100644
+--- a/StrataTests/FeatureTest/Scripts/WindFeatures.cpp
++++ b/StrataTests/FeatureTest/Scripts/WindFeatures.cpp
+@@ -29,6 +29,10 @@ public:
+ 		Expect(Near(Wind::GetStrength(center), 25.0f), "the wind at the center of a zone is its strength");
+ 		Expect(Near(Wind::GetStrength(center + glm::vec3(8.0f, 0.0f, 0.0f)), 25.0f), "the wind reaches 8 meters from the center");
+ 		Expect(Wind::GetStrength(center + glm::vec3(9.0f, 0.0f, 0.0f)) == 0.0f, "no wind 9 meters from the center, beyond the radius");
++		// The force points away from the center of a spherical zone, with the zone's strength, and is nothing at the center.
++		Expect(glm::length(Wind::GetForceAt(center)) == 0.0f, "no wind force at the center of a spherical zone");
++		Expect(Near(glm::length(Wind::GetForceAt(center + glm::vec3(8.0f, 0.0f, 0.0f)) - glm::vec3(25.0f, 0.0f, 0.0f)), 0.0f), "the wind force points away from the center");
++		Expect(glm::length(Wind::GetForceAt(center + glm::vec3(9.0f, 0.0f, 0.0f))) == 0.0f, "no wind force beyond the radius");
+ 		Completed = true;
+ 	}
+ };
+diff --git a/StrataTests/src/Editor/CommandJournalTests.cpp b/StrataTests/src/Editor/CommandJournalTests.cpp
+index 750c4084..64c838ff 100644
+--- a/StrataTests/src/Editor/CommandJournalTests.cpp
++++ b/StrataTests/src/Editor/CommandJournalTests.cpp
+@@ -141,7 +141,7 @@ namespace
+ 		"selection.get",
+ 		"ui.hitTest", "ui.layout",
+ 		"viewport.capture", "viewport.getSettings",
+-		"wind.list",
++		"wind.list", "wind.sample",
+ 		"world.info", "world.status",
+ 	};
+ 	constexpr std::string_view c_SessionCommands[] = {
+diff --git a/StrataTests/src/Physics/WindZoneTests.cpp b/StrataTests/src/Physics/WindZoneTests.cpp
+index edaa7d82..eb8d331e 100644
+--- a/StrataTests/src/Physics/WindZoneTests.cpp
++++ b/StrataTests/src/Physics/WindZoneTests.cpp
+@@ -92,7 +92,9 @@ TEST_SUITE("Physics.WindZone")
+ 		Entity gust = scene.CreateEntity("Gust");
+ 		gust.GetTransform().Translation = { 4.0f, 1.0f, -2.0f };
+ 		gust.MarkModified<TransformComponent>();
+-		gust.AddComponent<WindZoneComponent>().Radius = 3.0f;
++		WindZoneComponent& zone = gust.AddComponent<WindZoneComponent>();
++		zone.Mode = WindZoneMode::Spherical; // A directional zone shows an arrow instead
++		zone.Radius = 3.0f;
+ 		scene.UpdateWorldTransforms();
+ 
+ 		SceneGizmoSettings settings;

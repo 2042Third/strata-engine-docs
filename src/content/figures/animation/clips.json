@@ -1,0 +1,11 @@
+{
+	"figures": [
+		{
+			"id": "interpolation-curves",
+			"shows": "One channel with three keys at 0, 1 and 3 seconds and values 0, 2 and 1, drawn three times: as a step, as straight lines and as a cubic spline with tangents",
+			"caption": "The three curves meet at the keys and differ between them: the step jumps, the line turns at each key and the cubic curve leaves each key along its tangent.",
+			"alt": "A line chart of value against time from 0 to 3.5 seconds with three black dots at the keys. A dashed orange step line stays flat and jumps at each key. A blue straight line joins the keys. A dotted green curve passes through the keys and overshoots above 2 between the second and third key. All three stay flat after the last key.",
+			"kind": "diagram"
+		}
+	]
+}

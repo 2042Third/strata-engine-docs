@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 524">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plot: t 0 to 10 s at 50 units a second from x 96; x -10 to 10 m at 20 units a metre around y 260. Points: the spring program, 20 steps of 0.5 s, float arithmetic. -->
+<path class="line-faint" d="M96 460H596M96 360H596M96 160H596M96 60H596M196 60V460M296 60V460M396 60V460M496 60V460M596 60V460" fill="none" stroke-width="1"/>
+<path class="line-ink" d="M96 260H596M96 460V60" fill="none"/>
+<g class="small muted" text-anchor="end">
+<text x="86" y="65">10</text>
+<text x="86" y="165">5</text>
+<text x="86" y="265">0</text>
+<text x="86" y="365">−5</text>
+<text x="86" y="465">−10</text>
+</g>
+<g class="small muted" text-anchor="middle">
+<text x="96" y="482">0</text>
+<text x="196" y="482">2</text>
+<text x="296" y="482">4</text>
+<text x="396" y="482">6</text>
+<text x="496" y="482">8</text>
+<text x="596" y="482">10</text>
+</g>
+<text class="muted" x="346" y="506" text-anchor="middle">time t (s)</text>
+<text class="muted" x="108" y="40">position x (m)</text>
+<path class="line-ink" d="M96 240 L98.5 240 L101 240.1 L103.5 240.2 L106 240.4 L108.5 240.6 L111 240.9 L113.5 241.2 L116 241.6 L118.5 242 L121 242.4 L123.5 242.9 L126 243.5 L128.5 244.1 L131 244.7 L133.5 245.4 L136 246.1 L138.5 246.8 L141 247.6 L143.5 248.4 L146 249.2 L148.5 250 L151 250.9 L153.5 251.8 L156 252.8 L158.5 253.7 L161 254.7 L163.5 255.6 L166 256.6 L168.5 257.6 L171 258.6 L173.5 259.6 L176 260.6 L178.5 261.6 L181 262.6 L183.5 263.6 L186 264.5 L188.5 265.5 L191 266.5 L193.5 267.4 L196 268.3 L198.5 269.2 L201 270.1 L203.5 270.9 L206 271.8 L208.5 272.6 L211 273.3 L213.5 274.1 L216 274.7 L218.5 275.4 L221 276 L223.5 276.6 L226 277.1 L228.5 277.6 L231 278.1 L233.5 278.5 L236 278.8 L238.5 279.2 L241 279.4 L243.5 279.6 L246 279.8 L248.5 279.9 L251 280 L253.5 280 L256 280 L258.5 279.9 L261 279.7 L263.5 279.6 L266 279.3 L268.5 279.1 L271 278.7 L273.5 278.4 L276 277.9 L278.5 277.5 L281 277 L283.5 276.4 L286 275.8 L288.5 275.2 L291 274.5 L293.5 273.8 L296 273.1 L298.5 272.3 L301 271.5 L303.5 270.7 L306 269.8 L308.5 268.9 L311 268 L313.5 267.1 L316 266.1 L318.5 265.2 L321 264.2 L323.5 263.2 L326 262.2 L328.5 261.2 L331 260.2 L333.5 259.2 L336 258.3 L338.5 257.3 L341 256.3 L343.5 255.3 L346 254.3 L348.5 253.4 L351 252.4 L353.5 251.5 L356 250.6 L358.5 249.8 L361 248.9 L363.5 248.1 L366 247.3 L368.5 246.5 L371 245.8 L373.5 245.1 L376 244.5 L378.5 243.9 L381 243.3 L383.5 242.8 L386 242.3 L388.5 241.8 L391 241.5 L393.5 241.1 L396 240.8 L398.5 240.5 L401 240.3 L403.5 240.2 L406 240.1 L408.5 240 L411 240 L413.5 240 L416 240.1 L418.5 240.3 L421 240.5 L423.5 240.7 L426 241 L428.5 241.3 L431 241.7 L433.5 242.1 L436 242.6 L438.5 243.1 L441 243.7 L443.5 244.3 L446 244.9 L448.5 245.6 L451 246.3 L453.5 247.1 L456 247.8 L458.5 248.6 L461 249.5 L463.5 250.3 L466 251.2 L468.5 252.1 L471 253.1 L473.5 254 L476 255 L478.5 255.9 L481 256.9 L483.5 257.9 L486 258.9 L488.5 259.9 L491 260.9 L493.5 261.9 L496 262.9 L498.5 263.9 L501 264.9 L503.5 265.8 L506 266.8 L508.5 267.7 L511 268.6 L513.5 269.5 L516 270.4 L518.5 271.2 L521 272 L523.5 272.8 L526 273.6 L528.5 274.3 L531 275 L533.5 275.6 L536 276.2 L538.5 276.8 L541 277.3 L543.5 277.8 L546 278.2 L548.5 278.6 L551 279 L553.5 279.2 L556 279.5 L558.5 279.7 L561 279.8 L563.5 279.9 L566 280 L568.5 280 L571 279.9 L573.5 279.8 L576 279.7 L578.5 279.5 L581 279.2 L583.5 279 L586 278.6 L588.5 278.2 L591 277.8 L593.5 277.3 L596 276.8" fill="none" stroke-width="1.5" stroke-dasharray="4 3"/>
+<path class="line-red" d="M96 240 L121 240 L146 245 L171 255 L196 268.8 L221 283.8 L246 296.6 L271 303.4 L296 301.2 L321 288 L346 264.6 L371 234.2 L396 202.6 L421 177.5 L446 166.7 L471 176.5 L496 209.7 L521 263.7 L546 330.3 L571 396 L596 444.1" fill="none" stroke-width="2"/>
+<path class="line-green" d="M96 240 L121 245 L146 253.8 L171 264.1 L196 273.4 L221 279.3 L246 280.4 L271 276.5 L296 268.4 L321 258.2 L346 248.4 L371 241.6 L396 239.4 L421 242.3 L446 249.6 L471 259.6 L496 269.6 L521 277.3 L546 280.6 L571 278.8 L596 272.3" fill="none" stroke-width="2"/>
+<circle class="red" cx="96" cy="240" r="3"/>
+<circle class="red" cx="121" cy="240" r="3"/>
+<circle class="red" cx="146" cy="245" r="3"/>
+<circle class="red" cx="171" cy="255" r="3"/>
+<circle class="red" cx="196" cy="268.8" r="3"/>
+<circle class="red" cx="221" cy="283.8" r="3"/>
+<circle class="red" cx="246" cy="296.6" r="3"/>
+<circle class="red" cx="271" cy="303.4" r="3"/>
+<circle class="red" cx="296" cy="301.2" r="3"/>
+<circle class="red" cx="321" cy="288" r="3"/>
+<circle class="red" cx="346" cy="264.6" r="3"/>
+<circle class="red" cx="371" cy="234.2" r="3"/>
+<circle class="red" cx="396" cy="202.6" r="3"/>
+<circle class="red" cx="421" cy="177.5" r="3"/>
+<circle class="red" cx="446" cy="166.7" r="3"/>
+<circle class="red" cx="471" cy="176.5" r="3"/>
+<circle class="red" cx="496" cy="209.7" r="3"/>
+<circle class="red" cx="521" cy="263.7" r="3"/>
+<circle class="red" cx="546" cy="330.3" r="3"/>
+<circle class="red" cx="571" cy="396" r="3"/>
+<circle class="red" cx="596" cy="444.1" r="3"/>
+<circle class="green" cx="96" cy="240" r="3"/>
+<circle class="green" cx="121" cy="245" r="3"/>
+<circle class="green" cx="146" cy="253.8" r="3"/>
+<circle class="green" cx="171" cy="264.1" r="3"/>
+<circle class="green" cx="196" cy="273.4" r="3"/>
+<circle class="green" cx="221" cy="279.3" r="3"/>
+<circle class="green" cx="246" cy="280.4" r="3"/>
+<circle class="green" cx="271" cy="276.5" r="3"/>
+<circle class="green" cx="296" cy="268.4" r="3"/>
+<circle class="green" cx="321" cy="258.2" r="3"/>
+<circle class="green" cx="346" cy="248.4" r="3"/>
+<circle class="green" cx="371" cy="241.6" r="3"/>
+<circle class="green" cx="396" cy="239.4" r="3"/>
+<circle class="green" cx="421" cy="242.3" r="3"/>
+<circle class="green" cx="446" cy="249.6" r="3"/>
+<circle class="green" cx="471" cy="259.6" r="3"/>
+<circle class="green" cx="496" cy="269.6" r="3"/>
+<circle class="green" cx="521" cy="277.3" r="3"/>
+<circle class="green" cx="546" cy="280.6" r="3"/>
+<circle class="green" cx="571" cy="278.8" r="3"/>
+<circle class="green" cx="596" cy="272.3" r="3"/>
+<text class="red bold" x="608" y="449.1">explicit</text>
+<text class="green bold" x="608" y="262.3">semi-implicit</text>
+<text class="ink" x="608" y="298.8">exact, cos t</text>
+</svg>

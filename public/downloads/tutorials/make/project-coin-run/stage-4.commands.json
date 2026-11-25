@@ -1,0 +1,26 @@
+[
+	{
+		"command": "project.info"
+	},
+	{
+		"command": "project.setExportSettings",
+		"parameters": {
+			"alwaysInclude": [
+				"Prefabs",
+				"Materials/GoldGlow.stmat",
+				"Sounds"
+			]
+		}
+	},
+	{
+		"command": "scene.save"
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	}
+]

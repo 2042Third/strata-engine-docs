@@ -1,0 +1,32 @@
+[
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Main Camera"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Sun"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Sky"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ground"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Post Process"
+		}
+	}
+]

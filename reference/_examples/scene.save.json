@@ -1,0 +1,24 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"command": "scene.save",
+	"parameters": {},
+	"result": {
+		"bytes": 3923,
+		"entities": 6,
+		"frameTimes": {
+			"count": 1,
+			"maxMs": 0.2132000000001355,
+			"meanMs": 0.2132000000001355,
+			"medianMs": 0.2132000000001355,
+			"p95Ms": 0.2132000000001355
+		},
+		"frames": 1,
+		"memory": {
+			"peakPrivateMBDuring": 18.21875,
+			"privateMBBefore": 18.05078125
+		},
+		"path": "Scenes/Main.stscene",
+		"scene": "…",
+		"seconds": 0.0169169
+	}
+}

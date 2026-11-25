@@ -1,0 +1,56 @@
+{
+	"page": "make/script-fields",
+	"startsFrom": { "template": "basic3d", "name": "ScriptFields" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "script.create", "parameters": { "class": "Spawner" } },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] }
+			]
+		},
+		{
+			"step": 2,
+			"files": [ { "from": "book:tutorials/make/script-fields/Spawner.cpp", "to": "Scripts/Spawner.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "entity.create", "parameters": { "name": "Crate", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" } } },
+					"bind": { "crate": "/id" } },
+				{ "command": "prefab.create", "parameters": { "entities": [ { "$ref": "crate" } ], "path": "Prefabs/Crate.stprefab" } },
+				{ "command": "entity.create", "parameters": { "name": "Barrel", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" } } },
+					"bind": { "barrel": "/id" } },
+				{ "command": "prefab.create", "parameters": { "entities": [ { "$ref": "barrel" } ], "path": "Prefabs/Barrel.stprefab" } },
+				{ "command": "entity.create", "parameters": { "name": "Spawner" }, "bind": { "first": "/id" } },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "first" }, "class": "Spawner" } },
+				{ "command": "script.setField", "parameters": { "entity": { "$ref": "first" }, "class": "Spawner", "field": "CratePrefab", "value": "Prefabs/Crate.stprefab" } },
+				{ "command": "prefab.create", "parameters": { "entities": [ { "$ref": "first" } ], "path": "Prefabs/Spawner.stprefab" } },
+				{ "command": "prefab.instantiate", "parameters": { "prefab": "Prefabs/Spawner.stprefab" }, "bind": { "second": "/id" } },
+				{ "command": "prefab.status", "parameters": { "entity": { "$ref": "second" } },
+					"checks": [ { "pointer": "/linked", "equals": true }, { "pointer": "/overrides", "length": 0 } ] },
+				{ "command": "script.setField", "parameters": { "entity": { "$ref": "second" }, "class": "Spawner", "field": "Interval", "value": 5 },
+					"checks": [ { "pointer": "/script/fields/Interval", "approx": 5, "tolerance": 0.001 } ] },
+				{ "command": "prefab.status", "parameters": { "entity": { "$ref": "second" } },
+					"checks": [ { "pointer": "/overrides", "length": 1 }, { "pointer": "/overrides/0/property", "equals": "Spawner.Interval" } ] },
+				{ "command": "script.get", "parameters": { "entity": { "$ref": "first" }, "class": "Spawner" },
+					"checks": [ { "pointer": "/scripts/0/fields/Interval", "approx": 2, "tolerance": 0.001 } ] },
+				{ "command": "script.setField", "parameters": { "entity": { "$ref": "second" }, "class": "Spawner", "field": "CratePrefab", "value": "Prefabs/Barrel.stprefab" } },
+				{ "command": "prefab.status", "parameters": { "entity": { "$ref": "second" } },
+					"checks": [ { "pointer": "/overrides", "length": 2 } ] },
+				{ "command": "prefab.revert", "parameters": { "entity": { "$ref": "second" }, "component": "Script", "property": "Spawner.Interval" } },
+				{ "command": "prefab.status", "parameters": { "entity": { "$ref": "second" } },
+					"checks": [ { "pointer": "/overrides", "length": 1 }, { "pointer": "/overrides/0/property", "equals": "Spawner.CratePrefab" } ] },
+				{ "command": "prefab.revert", "parameters": { "entity": { "$ref": "second" }, "component": "Script", "property": "Spawner.CratePrefab" } },
+				{ "command": "prefab.status", "parameters": { "entity": { "$ref": "second" } },
+					"checks": [ { "pointer": "/overrides", "length": 0 } ] },
+				{ "command": "script.get", "parameters": { "entity": { "$ref": "second" }, "class": "Spawner" },
+					"checks": [ { "pointer": "/scripts/0/fields/Interval", "approx": 2, "tolerance": 0.001 } ],
+					"bind": { "endPrefab": "/scripts/0/fields/CratePrefab" } },
+				{ "command": "asset.info", "parameters": { "asset": { "$ref": "endPrefab" }, "bounds": false },
+					"checks": [ { "pointer": "/path", "equals": "Prefabs/Crate.stprefab" } ] }
+			],
+			"endState": true
+		}
+	]
+}

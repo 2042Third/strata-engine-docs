@@ -1,0 +1,86 @@
+{
+	"figures": [
+		{
+			"id": "foxes-afar",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The Scene view from above after the six foxes of the OpenWorld sample's loaded Wildlife cell are set to When Visible. Two foxes are in view: one on the grass by a red flower on the right, one on top of the round tree at the left edge",
+			"caption": "The open world's loaded cell from above, after its six foxes are set to When Visible. One fox is on the grass by a red flower on the right; another stands on top of the round tree on the left. Foxes whose bodies or shadows the view draws are posed every update. Foxes outside the frame keep their time and skip their poses. The fox model is by PixelMannen under Creative Commons Zero (CC0); rigging and animation are by tomkranis, and the glTF conversion is by AsoboStudio and scurest, under the Creative Commons Attribution license.",
+			"alt": "A view from above of open grass and a round tree. A small orange fox is on the grass by a red flower on the right; another stands on top of the round tree at the left edge.",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"sceneGizmos": false,
+							"editPose": "clipStart"
+						}
+					},
+					{
+						"command": "world.loadCells",
+						"parameters": {
+							"layers": [
+								"Wildlife"
+							],
+							"region": {
+								"center": [
+									-144,
+									13,
+									-48
+								],
+								"radius": 40
+							},
+							"wait": true
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"component": "Animator"
+						},
+						"bind": {
+							"foxes": "/entities"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"component": "Animator",
+							"entities": {
+								"$ref": "foxes"
+							},
+							"values": {
+								"CullingMode": "WhenVisible"
+							}
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"target": [
+								-139.3,
+								14,
+								-59.2
+							],
+							"yaw": 157,
+							"pitch": -65,
+							"distance": 28,
+							"fov": 24
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 120
+						}
+					}
+				]
+			}
+		}
+	]
+}

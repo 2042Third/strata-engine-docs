@@ -1,0 +1,25 @@
+{
+	"page": "make/transforms-units",
+	"startsFrom": { "template": "basic3d" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "entity.create", "bind": { "sun": "/id" }, "parameters": { "name": "Sun" } },
+				{ "command": "entity.create", "bind": { "earth": "/id" },
+					"parameters": { "name": "Earth", "parent": { "$ref": "sun" }, "components": { "Transform": { "Translation": [10, 0, 0] } } } },
+				{ "command": "entity.create", "bind": { "moon": "/id" },
+					"parameters": { "name": "Moon", "parent": { "$ref": "earth" }, "components": { "Transform": { "Translation": [2, 0, 0] } } } },
+				{ "command": "entity.get", "parameters": { "entity": { "$ref": "moon" }, "world": true },
+					"checks": [ { "pointer": "/world/position/0", "approx": 12, "tolerance": 0.001 } ] },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "sun" }, "component": "Transform", "values": { "Rotation": [0, 90, 0] } } },
+				{ "command": "entity.get", "parameters": { "entity": { "$ref": "moon" }, "world": true },
+					"checks": [ { "pointer": "/world/position/0", "approx": 0, "tolerance": 0.001 },
+						{ "pointer": "/world/position/2", "approx": -12, "tolerance": 0.001 },
+						{ "pointer": "/components/Transform/Translation/0", "approx": 2, "tolerance": 0.001 },
+						{ "pointer": "/components/Transform/Translation/2", "approx": 0, "tolerance": 0.001 } ] }
+			],
+			"endState": true
+		}
+	]
+}

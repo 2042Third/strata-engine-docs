@@ -1,0 +1,31 @@
+[
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 120
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 120
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

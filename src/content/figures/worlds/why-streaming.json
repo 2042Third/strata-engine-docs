@@ -1,0 +1,37 @@
+{
+	"figures": [
+		{
+			"id": "cell-map-island",
+			"shows": "The Streaming panel's cell map of the Open World island with the cells around the player loaded",
+			"caption": "The cell map draws each cell of a layer as a square, and the loaded squares cluster around the player while the rest of the island stays unloaded.",
+			"alt": "The editor's Streaming panel with a grid of squares for the island's cells. The squares near a marker for the player are orange, as loaded, and the others are dark gray, as unloaded. A blue circle around the marker shows how far the player reaches.",
+			"kind": "editor",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"editorWindow": {
+				"layout": "layouts/why-streaming.ini",
+				"windowSize": [960, 526],
+				"panel": "Streaming",
+				"steps": [
+					{"command": "editor.showPanel", "parameters": {"panel": "Inspector"}},
+					{"command": "component.set", "entityName": "Player", "parameters": {"component": "Transform", "values": {"Translation": [0, 140, 0]}}},
+					{"command": "script.build", "parameters": {"wait": true}, "expect": {"/success": {"equals": true}}},
+					{"command": "script.setField", "entityName": "Player", "parameters": {"class": "Explorer", "field": "TourOnStart", "value": false}},
+					{"command": "play.start", "parameters": {"paused": true}},
+					{"command": "play.step", "parameters": {"steps": 120}},
+					{"command": "editor.wait", "parameters": {"frames": 300}},
+					{"command": "selection.set", "parameters": {"entities": []}},
+					{"command": "editor.showPanel", "parameters": {"panel": "Streaming"}}
+				]
+			}
+		},
+		{
+			"id": "spacing-chart",
+			"shows": "The gap between neighbouring float values from 1 km to 100 km on log axes, with the supported extent marked",
+			"caption": "The gap stays flat inside each range of powers of two and doubles at each power, and the dashed line marks the supported extent of a world.",
+			"alt": "A line chart on logarithmic axes. A blue stepped line rises from left to right and doubles at each power of two. A dashed red vertical line marks the supported extent, and three black dots mark the gaps at 1, 20 and 100 kilometres.",
+			"kind": "diagram"
+		}
+	]
+}

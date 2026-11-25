@@ -1,0 +1,47 @@
+{
+	"figures": [
+		{
+			"id": "showcase-viewport",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The editor's Scene view of the Showcase sample at its saved settings, looking past the oil tank and the old bus toward the hill, with the grid and gizmos drawn over the image: the image one frame produces",
+			"caption": "One frame is one finished image like this one. The editor draws a new one many times each second, and the rest of the page follows what the graphics card does to make it. The grid, the white lines of a camera's view at the right and the small icons are drawn by the editor over the scene.",
+			"alt": "The editor's Scene view of the Showcase: a large rusty tank, an old orange bus and a few drums stand on flat ground before a sandy hill under a blue sky. A grid, the white lines of a camera's view and small icons are drawn over the image.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"windowSize": [
+					1280,
+					720
+				],
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								26,
+								3,
+								16
+							],
+							"target": [
+								6,
+								2.2,
+								8
+							],
+							"fov": 50
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					}
+				]
+			}
+		}
+	]
+}

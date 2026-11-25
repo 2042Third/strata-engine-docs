@@ -1,0 +1,983 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "Five gold coins hovering in a row over the Basic 3D ground: four face the camera and the middle one, with the higher speed, has turned further around its upright axis",
+			"caption": "The result: each coin turns around its upright axis while the game plays, and the middle coin, the one you gave its own higher speed, has turned further than the other four.",
+			"alt": "Five gold coins hover in a row over a grey floor under a blue sky. Four face the camera as round discs; the middle one has turned around its upright axis and shows as a narrow oval with its edge in view.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0.0,
+					2.2,
+					6.0
+				],
+				"target": [
+					0.0,
+					0.8,
+					-4.0
+				],
+				"fov": 26
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Gold.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-3,
+									0.8,
+									-4
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.8,
+									0.1,
+									0.8
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (1)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-1.5,
+									0.8,
+									-4
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.8,
+									0.1,
+									0.8
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (2)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.8,
+									-4
+								],
+								"Rotation": [
+									90,
+									60,
+									0
+								],
+								"Scale": [
+									0.8,
+									0.1,
+									0.8
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (3)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									1.5,
+									0.8,
+									-4
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.8,
+									0.1,
+									0.8
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (4)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									3,
+									0.8,
+									-4
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.8,
+									0.1,
+									0.8
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "prefs",
+			"shows": "The Preferences dialog on its External Editor page, with the editors found on the machine listed",
+			"caption": "The External Editor page lists the editors Strata found; click one to use it.",
+			"alt": "The Preferences dialog with the External Editor page open: a Command field and a list of the code editors found on the machine.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/dialogs.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "editor.showDialog",
+						"parameters": {
+							"dialog": "externalEditor"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "new-script-dialog",
+			"shows": "The New Script dialog before a name is typed: the Class name field, the Empty class box and the line that names the file it writes",
+			"caption": "The New Script dialog: type the class name in the field, and the line under it says which file it writes.",
+			"alt": "A small dialog with a Class name field that shows a grey example name, a box for an empty class, a line about the file it writes, and Cancel and Create buttons.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/dialogs.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "editor.showDialog",
+						"parameters": {
+							"dialog": "newScript"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "scripts-root",
+			"shows": "The Content Browser on its Scripts root, listing the files of the Scripts folder with the class each one registers",
+			"caption": "The Scripts root of the Content Browser lists the files and the class each one registers.",
+			"alt": "The Content Browser on its Scripts root: a list of three files, with the class Coin beside the file of the same name and a second class beside the script that the template brought.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-script.ini",
+				"panel": "ContentBrowser",
+				"steps": [
+					{
+						"command": "script.create",
+						"parameters": {
+							"class": "Coin",
+							"fields": {
+								"DegreesPerSecond": "float"
+							}
+						}
+					},
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						},
+						"expect": {
+							"/success": {
+								"equals": true
+							}
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "ContentBrowser",
+							"scripts": true
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "inspector-coin",
+			"shows": "The Inspector of one coin with the Script component, the class Coin and the field Degrees Per Second",
+			"caption": "The Script component of a coin shows its class and the value of its field.",
+			"alt": "The Inspector of a selected coin with a Script component, the class Coin and a number field Degrees Per Second.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-script.ini",
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "script.create",
+						"parameters": {
+							"class": "Coin",
+							"fields": {
+								"DegreesPerSecond": "float"
+							}
+						}
+					},
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						},
+						"expect": {
+							"/success": {
+								"equals": true
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.8,
+										-4
+									],
+									"Rotation": [
+										0.7071,
+										0,
+										0,
+										0.7071
+									],
+									"Scale": [
+										0.8,
+										0.1,
+										0.8
+									]
+								}
+							}
+						},
+						"bind": {
+							"coin": "/id"
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "coin"
+							},
+							"class": "Coin",
+							"fields": {
+								"DegreesPerSecond": 90
+							}
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "coin"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "problems-error",
+			"shows": "The Problems panel after a failed build, with one error row naming Coin.cpp and a line",
+			"caption": "The Problems panel names the file, the line and the message of the error.",
+			"alt": "The Problems panel with one error row: the message of the compiler that a ';' is missing before a '}', the file of the class Coin and line 13.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"files": [
+				{
+					"from": "book:tutorials/make/first-script/CoinNoSemicolon.cpp",
+					"to": "Scripts/Coin.cpp"
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/first-script.ini",
+				"panel": "Problems",
+				"steps": [
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": false
+						}
+					},
+					{
+						"command": "script.status",
+						"until": {
+							"seconds": 300
+						},
+						"expect": {
+							"/build/running": {
+								"equals": false
+							},
+							"/build/last/errorCount": {
+								"min": 1
+							}
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "console-log",
+			"shows": "The Console after Play started, with five lines marked [Script] from the Coin script's Log::Info call between lines marked [App] from the editor's commands",
+			"caption": "The lines marked [Script] are the coins' lines, one for each coin with the value of its field; the [App] lines are the editor's commands.",
+			"alt": "The Console panel with five lines marked Script, Coin starts with 90 degrees per second four times and 180 once, between lines marked App about the commands the editor ran.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"files": [
+				{
+					"from": "book:tutorials/make/first-script/CoinLog.cpp",
+					"to": "Scripts/Coin.cpp"
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/first-script.ini",
+				"panel": "Console",
+				"steps": [
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						},
+						"expect": {
+							"/success": {
+								"equals": true
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder"
+								},
+								"Transform": {
+									"Translation": [
+										-3,
+										0.8,
+										-4
+									],
+									"Rotation": [
+										0.7071,
+										0,
+										0,
+										0.7071
+									],
+									"Scale": [
+										0.8,
+										0.1,
+										0.8
+									]
+								}
+							}
+						},
+						"bind": {
+							"c1": "/id"
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "c1"
+							},
+							"class": "Coin",
+							"fields": {
+								"DegreesPerSecond": 90
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder"
+								},
+								"Transform": {
+									"Translation": [
+										-1.5,
+										0.8,
+										-4
+									],
+									"Rotation": [
+										0.7071,
+										0,
+										0,
+										0.7071
+									],
+									"Scale": [
+										0.8,
+										0.1,
+										0.8
+									]
+								}
+							}
+						},
+						"bind": {
+							"c2": "/id"
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "c2"
+							},
+							"class": "Coin",
+							"fields": {
+								"DegreesPerSecond": 90
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.8,
+										-4
+									],
+									"Rotation": [
+										0.7071,
+										0,
+										0,
+										0.7071
+									],
+									"Scale": [
+										0.8,
+										0.1,
+										0.8
+									]
+								}
+							}
+						},
+						"bind": {
+							"c3": "/id"
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "c3"
+							},
+							"class": "Coin",
+							"fields": {
+								"DegreesPerSecond": 180
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder"
+								},
+								"Transform": {
+									"Translation": [
+										1.5,
+										0.8,
+										-4
+									],
+									"Rotation": [
+										0.7071,
+										0,
+										0,
+										0.7071
+									],
+									"Scale": [
+										0.8,
+										0.1,
+										0.8
+									]
+								}
+							}
+						},
+						"bind": {
+							"c4": "/id"
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "c4"
+							},
+							"class": "Coin",
+							"fields": {
+								"DegreesPerSecond": 90
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder"
+								},
+								"Transform": {
+									"Translation": [
+										3,
+										0.8,
+										-4
+									],
+									"Rotation": [
+										0.7071,
+										0,
+										0,
+										0.7071
+									],
+									"Scale": [
+										0.8,
+										0.1,
+										0.8
+									]
+								}
+							}
+						},
+						"bind": {
+							"c5": "/id"
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "c5"
+							},
+							"class": "Coin",
+							"fields": {
+								"DegreesPerSecond": 90
+							}
+						}
+					},
+					{
+						"command": "play.start",
+						"parameters": {
+							"build": false
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "crash-toast",
+			"shows": "The editor after a script crash: the toast Script crash: play mode stopped with Show Problems, and the Problems panel with its one crash row",
+			"caption": "After the crash the editor stands in edit mode, with a toast and a Problems row that names the function of Coin that crashed, the file and the line. The crash happened in that function itself, so no stack rows follow it.",
+			"alt": "The editor in edit mode with a message box over the Scene view that reads Script crash: play mode stopped. The box then gives the whole message: an access violation in the update function of Coin on the entity Coin. Below it, the Problems panel holds one row: the crash in the update function of Coin, the file of the class and line 18.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"files": [
+				{
+					"from": "book:tutorials/make/first-script/CoinCrash.cpp",
+					"to": "Scripts/Coin.cpp"
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/first-script-crash.ini",
+				"windowSize": [
+					960,
+					620
+				],
+				"steps": [
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						},
+						"expect": {
+							"/success": {
+								"equals": true
+							}
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.8,
+										-4
+									],
+									"Rotation": [
+										0.7071,
+										0,
+										0,
+										0.7071
+									],
+									"Scale": [
+										0.8,
+										0.1,
+										0.8
+									]
+								}
+							}
+						},
+						"bind": {
+							"c1": "/id"
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "c1"
+							},
+							"class": "Coin",
+							"fields": {
+								"DegreesPerSecond": 90
+							}
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Problems"
+						}
+					},
+					{
+						"command": "play.start",
+						"parameters": {
+							"build": false
+						}
+					},
+					{
+						"command": "script.status",
+						"until": {
+							"seconds": 60
+						},
+						"expect": {
+							"/lastFault/class": {
+								"equals": "Coin"
+							}
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "coins-reloaded",
+			"shows": "The same five coins as turned by the rebuilt script: each has tipped over around the horizontal axis along the row, and the faster middle coin lies almost flat",
+			"caption": "After the rebuild the coins turn around a horizontal axis instead: each has tipped over, and the faster middle coin is almost flat.",
+			"alt": "Five gold coins hover in a row over a grey floor. Four are tipped over so that each shows as a wide oval with its rim along the top; the middle one lies almost flat as a thin band.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0.0,
+					2.2,
+					6.0
+				],
+				"target": [
+					0.0,
+					0.8,
+					-4.0
+				],
+				"fov": 26
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/TumbleGold.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/TumbleGold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-3,
+									0.8,
+									-4
+								],
+								"Rotation": [
+									130,
+									0,
+									0
+								],
+								"Scale": [
+									0.8,
+									0.1,
+									0.8
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (1)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/TumbleGold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-1.5,
+									0.8,
+									-4
+								],
+								"Rotation": [
+									130,
+									0,
+									0
+								],
+								"Scale": [
+									0.8,
+									0.1,
+									0.8
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (2)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/TumbleGold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.8,
+									-4
+								],
+								"Rotation": [
+									165,
+									0,
+									0
+								],
+								"Scale": [
+									0.8,
+									0.1,
+									0.8
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (3)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/TumbleGold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									1.5,
+									0.8,
+									-4
+								],
+								"Rotation": [
+									130,
+									0,
+									0
+								],
+								"Scale": [
+									0.8,
+									0.1,
+									0.8
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin (4)",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/TumbleGold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									3,
+									0.8,
+									-4
+								],
+								"Rotation": [
+									130,
+									0,
+									0
+								],
+								"Scale": [
+									0.8,
+									0.1,
+									0.8
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		}
+	]
+}

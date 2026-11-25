@@ -1,0 +1,17 @@
+{
+	"page": "animation/limits",
+	"startsFrom": { "template": "basic3d" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "asset.import", "parameters": { "file": "@RELEASE@/Samples/ThirdPerson/Assets/Models/Robot/RobotExpressive.glb", "directory": "Models" } },
+				{ "command": "log.read", "parameters": { "minLevel": "Warn", "limit": 20 },
+					"checks": [
+						{ "pointer": "/messages/0/message", "contains": "Not imported: morph target animation" },
+						{ "pointer": "/messages/1/message", "contains": "Not imported: morph targets" }
+					] }
+			]
+		}
+	]
+}

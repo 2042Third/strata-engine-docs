@@ -1,0 +1,19 @@
+{
+	"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+	"libraries": {
+		"box3d": {
+			"name": "box3d",
+			"version": "efca0c1",
+			"license": "MIT",
+			"repository": "https://github.com/erincatto/box3d",
+			"commit": "efca0c184d40fd6a82016983f1601c4d23965867"
+		},
+		"entt": {
+			"name": "EnTT",
+			"version": "3.16.0",
+			"license": "MIT",
+			"repository": "https://github.com/skypjack/entt",
+			"commit": "b4e58bdd364ad72246c123a0c28538eab3252672"
+		}
+	}
+}

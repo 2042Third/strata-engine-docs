@@ -1,0 +1,399 @@
+id	type	heading	label
+gamedev:20	feature	1.1 Getting Strata and starting it	Release archives
+gamedev:21	feature	1.1 Getting Strata and starting it	Requirements and first start
+gamedev:22	feature	1.1 Getting Strata and starting it	Script toolchain discovery
+gamedev:23	feature	1.1 Getting Strata and starting it	Logs
+gamedev:24	feature	1.1 Getting Strata and starting it	GUI-subsystem programs
+gamedev:30	feature	1.2 The launcher, projects, templates, samples	Launcher
+gamedev:31	feature	1.2 The launcher, projects, templates, samples	Continue without a project
+gamedev:32	feature	1.2 The launcher, projects, templates, samples	Templates
+gamedev:33	feature	1.2 The launcher, projects, templates, samples	Project creation
+gamedev:34	feature	1.2 The launcher, projects, templates, samples	Project file
+gamedev:35	feature	1.2 The launcher, projects, templates, samples	Samples, Open Sample
+gamedev:36	feature	1.2 The launcher, projects, templates, samples	Recent projects
+gamedev:37	feature	1.2 The launcher, projects, templates, samples	Project migration
+gamedev:43	feature	1.3 The editor's windows	Panel set
+gamedev:44	feature	1.3 The editor's windows	Menus
+gamedev:45	feature	1.3 The editor's windows	Bedrock look
+gamedev:46	feature	1.3 The editor's windows	Status bar pills
+gamedev:47	feature	1.3 The editor's windows	Toasts / notifications
+gamedev:48	feature	1.3 The editor's windows	Scene view (viewport)
+gamedev:49	feature	1.3 The editor's windows	Game view
+gamedev:50	feature	1.3 The editor's windows	Hierarchy
+gamedev:51	feature	1.3 The editor's windows	Inspector
+gamedev:52	feature	1.3 The editor's windows	Asset tab
+gamedev:53	feature	1.3 The editor's windows	Content Browser
+gamedev:54	feature	1.3 The editor's windows	Console, Problems
+gamedev:55	feature	1.3 The editor's windows	Activity panel
+gamedev:56	feature	1.3 The editor's windows	Streaming, Performance panels
+gamedev:57	feature	1.3 The editor's windows	Undo/redo for everything
+gamedev:58	feature	1.3 The editor's windows	Autosave and crash recovery
+gamedev:59	feature	1.3 The editor's windows	Background saves
+gamedev:60	feature	1.3 The editor's windows	Placement and drop ghost
+gamedev:61	feature	1.3 The editor's windows	Preferences
+gamedev:67	feature	1.4 Scenes, entities and components (the maker's view)	Registered components (40)
+gamedev:68	feature	1.4 Scenes, entities and components (the maker's view)	Reflection-driven editing
+gamedev:69	feature	1.4 Scenes, entities and components (the maker's view)	Built-in meshes
+gamedev:70	feature	1.4 Scenes, entities and components (the maker's view)	Scene settings
+gamedev:71	feature	1.4 Scenes, entities and components (the maker's view)	Conventions a maker must know
+gamedev:77	feature	1.5 Assets: importing models, textures, sounds, fonts	Drop-to-import, `asset.import`
+gamedev:78	feature	1.5 Assets: importing models, textures, sounds, fonts	Formats
+gamedev:79	feature	1.5 Assets: importing models, textures, sounds, fonts	Asset types
+gamedev:80	feature	1.5 Assets: importing models, textures, sounds, fonts	`.meta` sidecars, handles
+gamedev:81	feature	1.5 Assets: importing models, textures, sounds, fonts	Import settings a maker uses
+gamedev:82	feature	1.5 Assets: importing models, textures, sounds, fonts	Asset deletes and references
+gamedev:83	feature	1.5 Assets: importing models, textures, sounds, fonts	Downloaded assets policy
+gamedev:89	feature	1.6 Materials	Material documents
+gamedev:90	feature	1.6 Materials	Material guidance for makers
+gamedev:96	feature	1.7 Prefabs	Prefab create/instantiate
+gamedev:97	feature	1.7 Prefabs	Overrides, apply, revert, unpack, outdated
+gamedev:98	feature	1.7 Prefabs	Models as prefabs
+gamedev:106	feature	1.8 Lighting, cameras, the camera's image, graphics quality (maker's controls)	Light units
+gamedev:107	feature	1.8 Lighting, cameras, the camera's image, graphics quality (maker's controls)	Sky sources
+gamedev:108	feature	1.8 Lighting, cameras, the camera's image, graphics quality (maker's controls)	Sky presets
+gamedev:109	feature	1.8 Lighting, cameras, the camera's image, graphics quality (maker's controls)	Height fog
+gamedev:110	feature	1.8 Lighting, cameras, the camera's image, graphics quality (maker's controls)	Shadows
+gamedev:111	feature	1.8 Lighting, cameras, the camera's image, graphics quality (maker's controls)	Reflection probes
+gamedev:112	feature	1.8 Lighting, cameras, the camera's image, graphics quality (maker's controls)	SSR
+gamedev:113	feature	1.8 Lighting, cameras, the camera's image, graphics quality (maker's controls)	Ambient occlusion, GI (experimental)
+gamedev:114	feature	1.8 Lighting, cameras, the camera's image, graphics quality (maker's controls)	Debug views
+gamedev:115	feature	1.8 Lighting, cameras, the camera's image, graphics quality (maker's controls)	Exposure and camera image
+gamedev:116	feature	1.8 Lighting, cameras, the camera's image, graphics quality (maker's controls)	Anti-aliasing
+gamedev:117	feature	1.8 Lighting, cameras, the camera's image, graphics quality (maker's controls)	Graphics Quality
+gamedev:118	feature	1.8 Lighting, cameras, the camera's image, graphics quality (maker's controls)	Preview lighting
+gamedev:124	feature	1.9 Scripts (C++ game logic)	Script module
+gamedev:125	feature	1.9 Scripts (C++ game logic)	Script class and fields
+gamedev:126	feature	1.9 Scripts (C++ game logic)	Lifecycle callbacks (15)
+gamedev:127	feature	1.9 Scripts (C++ game logic)	SDK namespaces
+gamedev:128	feature	1.9 Scripts (C++ game logic)	Generic component access
+gamedev:129	feature	1.9 Scripts (C++ game logic)	New Script
+gamedev:130	feature	1.9 Scripts (C++ game logic)	Build, Play builds first
+gamedev:131	feature	1.9 Scripts (C++ game logic)	Attach and fields
+gamedev:132	feature	1.9 Scripts (C++ game logic)	Hot reload
+gamedev:133	feature	1.9 Scripts (C++ game logic)	Crash containment
+gamedev:134	feature	1.9 Scripts (C++ game logic)	Code editor and IDE
+gamedev:135	feature	1.9 Scripts (C++ game logic)	Debugger attach
+gamedev:136	feature	1.9 Scripts (C++ game logic)	Long-path fallback
+gamedev:137	feature	1.9 Scripts (C++ game logic)	Script ABI
+gamedev:143	feature	1.10 Input and input actions	Device input
+gamedev:144	feature	1.10 Input and input actions	Input actions
+gamedev:145	feature	1.10 Input and input actions	Player rebinding
+gamedev:146	feature	1.10 Input and input actions	KeyRepeat
+gamedev:152	feature	1.11 Physics and characters (maker's view)	Bodies and colliders
+gamedev:153	feature	1.11 Physics and characters (maker's view)	Script API
+gamedev:154	feature	1.11 Physics and characters (maker's view)	Collision layers
+gamedev:155	feature	1.11 Physics and characters (maker's view)	Simulation tuning
+gamedev:156	feature	1.11 Physics and characters (maker's view)	Timing
+gamedev:157	feature	1.11 Physics and characters (maker's view)	Character controller
+gamedev:158	feature	1.11 Physics and characters (maker's view)	Time dilation
+gamedev:159	feature	1.11 Physics and characters (maker's view)	Gotchas
+gamedev:167	feature	1.12 Animation (maker's view)	Import skinned glTF
+gamedev:168	feature	1.12 Animation (maker's view)	Animation controllers `.stanimator`
+gamedev:169	feature	1.12 Animation (maker's view)	Script API
+gamedev:170	feature	1.12 Animation (maker's view)	AttachToJoint, root motion, culling mode
+gamedev:171	feature	1.12 Animation (maker's view)	Rest pose while editing / first frame
+gamedev:172	feature	1.12 Animation (maker's view)	Not imported
+gamedev:178	feature	1.13 Audio (maker's view)	`AudioSource` (clip, volume, pitch, loop, 3D) + `AudioListener` (or the camera); scripts…
+gamedev:185	feature	1.14 Game UI and menus (maker's view)	Canvases (Screen/World space, Scale With Screen + reference resolution, Sort Order, Receives…
+gamedev:198	feature	1.15 Game flow: scenes, loading, saves, window, graphics options	Scene switch
+gamedev:199	feature	1.15 Game flow: scenes, loading, saves, window, graphics options	Quit
+gamedev:200	feature	1.15 Game flow: scenes, loading, saves, window, graphics options	Additive sub-scenes, many instances
+gamedev:201	feature	1.15 Game flow: scenes, loading, saves, window, graphics options	Module state across scene loads
+gamedev:202	feature	1.15 Game flow: scenes, loading, saves, window, graphics options	Start scene, loading scene
+gamedev:203	feature	1.15 Game flow: scenes, loading, saves, window, graphics options	Save files
+gamedev:204	feature	1.15 Game flow: scenes, loading, saves, window, graphics options	Window
+gamedev:205	feature	1.15 Game flow: scenes, loading, saves, window, graphics options	Graphics options for players
+gamedev:206	feature	1.15 Game flow: scenes, loading, saves, window, graphics options	Game identity
+gamedev:210	feature	1.16 Worlds (maker's view)	New > World, layers (cell size, streaming distance, Load Before Start), edit layer strip in…
+gamedev:222	feature	1.17 Playing and testing	Play / Simulate / Stop / Pause / Step
+gamedev:223	feature	1.17 Playing and testing	Edits while playing
+gamedev:224	feature	1.17 Playing and testing	Simulated input
+gamedev:225	feature	1.17 Playing and testing	Deterministic sequences
+gamedev:226	feature	1.17 Playing and testing	Viewport capture
+gamedev:227	feature	1.17 Playing and testing	Command scripts and expectations
+gamedev:228	feature	1.17 Playing and testing	Session replay
+gamedev:229	feature	1.17 Playing and testing	Sample regressions
+gamedev:230	feature	1.17 Playing and testing	Observability
+gamedev:236	feature	1.18 Exporting and the runtime	Export
+gamedev:237	feature	1.18 Exporting and the runtime	Pruned export, alwaysInclude
+gamedev:238	feature	1.18 Exporting and the runtime	Export refusals
+gamedev:239	feature	1.18 Exporting and the runtime	Runtime options
+gamedev:240	feature	1.18 Exporting and the runtime	GameRuntime
+gamedev:246	feature	1.19 AI agents as game makers	Commands are the API
+gamedev:247	feature	1.19 AI agents as game makers	StrataCLI and MCP
+gamedev:248	feature	1.19 AI agents as game makers	Skills shipped
+gamedev:254	feature	1.20 The five samples	Tetris (0.3.0; HUD as UI canvas 0.4.0)
+gamedev:255	feature	1.20 The five samples	Third-Person Adventure "Sky Islands" (0.5.0; input actions, probes, extracted sun 0.6.0; graphics…
+gamedev:256	feature	1.20 The five samples	Physics Playground (0.5.0; clear coat/glass 0.6.0)
+gamedev:257	feature	1.20 The five samples	Open World (0.5.0; atmosphere, fog, shadows 0.6.0; aerial perspective, sRGB factors 0.7.0)
+gamedev:258	feature	1.20 The five samples	High Desert Outpost (Showcase) (wave 8)
+gamedev:260	feature	1.20 The five samples	Sample rules (all samples): README with feature-to-file table, controls, how it was made, credits;…
+gamedev:286	concept		What a game is to a computer: a loop
+gamedev:291	concept		Engine vs game vs editor vs runtime
+gamedev:294	concept		Projects and files
+gamedev:298	concept		Scenes, entities, components (ECS from the user side)
+gamedev:301	concept		Transforms and hierarchy
+gamedev:304	concept		Assets and import
+gamedev:306	concept		Prefabs and instances
+gamedev:309	concept		Materials and physically based shading (user level)
+gamedev:311	concept		Light, units and exposure
+gamedev:314	concept		The camera's image and quality
+gamedev:317	concept		Scripts in C++
+gamedev:321	concept		Script lifecycle and ordering
+gamedev:323	concept		Hot reload and state
+gamedev:325	concept		Input: devices vs actions
+gamedev:328	concept		Rigid-body physics for makers
+gamedev:331	concept		Characters
+gamedev:333	concept		Cameras that follow
+gamedev:335	concept		Animation for makers
+gamedev:337	concept		Audio
+gamedev:339	concept		UI
+gamedev:342	concept		Game flow and persistence
+gamedev:344	concept		Large worlds
+gamedev:346	concept		Testing a game
+gamedev:348	concept		Shipping
+gamedev:351	concept		Licenses of assets
+gamedev:359	code		1: `StrataEditor/src/Editor/ScriptProject.cpp` L224-257 (the generated `Spinner` example)
+gamedev:360	code		2: `Docs/Manual/Scripting.md` L14-40 (New Script template `DoorOpener`)
+gamedev:361	code		3: `StrataScriptCore/Include/StrataScript/Script.h` L30-110
+gamedev:362	code		4: `Script.h` L348-376 and L842-865
+gamedev:363	code		5: `StrataScriptCore/Include/StrataScript/Entity.h` L358-396 and `Host.h` L19-24, L105-111
+gamedev:364	code		6: `StrataEditor/src/Editor/ScriptProject.cpp` L207-222
+gamedev:365	code		7: `StrataEditor/src/Editor/ProjectTemplates.cpp` L31-95
+gamedev:366	code		8: `StrataEditor/src/Panels/SceneHierarchyPanel.cpp` L72-91 and L129-150
+gamedev:367	code		9: `Strata/src/Strata/Scene/Scene.cpp` L2239-2330
+gamedev:368	code		10: `StrataEditor/src/Editor/EditorContext.cpp` L1362-1430
+gamedev:369	code		11: `Strata/src/Strata/Input/InputActionSet.h` L61-96
+gamedev:370	code		12: `Strata/src/Strata/Input/InputActions.cpp` L441-450 and L513-531
+gamedev:371	code		13: `StrataScriptCore/Include/StrataScript/Gameplay.h` L181-219
+gamedev:372	code		14: `Samples/Tetris/Scripts/TetrisGame.h` L8-106
+gamedev:373	code		15: `Samples/Tetris/Scripts/TetrisBoard.cpp` L60-104, L109-150
+gamedev:374	code		16: `Samples/Tetris/Scripts/TetrisBoard.cpp` L282-369
+gamedev:375	code		17: `StrataTests/Editor/TetrisCommands.json.in` L1-25
+gamedev:376	code		18: `.claude/skills/strata-make-a-game/SKILL.md` L158-189
+gamedev:377	code		19: `Samples/ThirdPerson/Scripts/ThirdPersonPlayer.cpp` L54-137
+gamedev:378	code		20: `Samples/ThirdPerson/Scripts/FollowCamera.cpp` L43-101
+gamedev:379	code		21: `Samples/ThirdPerson/Scripts/ThirdPerson.h` L1-63 + `ThirdPerson.cpp` L67-77
+gamedev:380	code		22: `Samples/ThirdPerson/Scripts/SettingsMenu.cpp` L26-38
+gamedev:381	code		23: `Samples/ThirdPerson/Assets/Animations/Robot.stanimator` (parameters, Walk/Run states with…
+gamedev:382	code		24: `Samples/PhysicsPlayground/Scripts/Playground.cpp` L183-207
+gamedev:383	code		25: `Playground.cpp` L223-275
+gamedev:384	code		26: `Samples/PhysicsPlayground/Scripts/Impact.cpp` L13-61
+gamedev:385	code		27: `Samples/OpenWorld/Scripts/Explorer.cpp` L209-247
+gamedev:386	code		28: `Samples/OpenWorld/Scripts/DayNight.h` L16-72
+gamedev:387	code		29: `Samples/Showcase/Scripts/Stations.h` L38-42 + `Outpost.cpp` L205-293
+gamedev:388	code		30: `StrataRuntime/src/RuntimeApplication.cpp` L339-353 and `StrataEditor/src/Editor/GameExport.h`…
+gamedev:396	figure	Diagrams	The maker's journey map
+gamedev:398	figure	Diagrams	Project folder anatomy
+gamedev:400	figure	Diagrams	Editor layout
+gamedev:402	figure	Diagrams	Entity = ID + components
+gamedev:404	figure	Diagrams	Coordinate conventions
+gamedev:405	figure	Diagrams	Frame timeline (central)
+gamedev:408	figure	Diagrams	Play mode copy
+gamedev:410	figure	Diagrams	Script module boundary
+gamedev:412	figure	Diagrams	Script lifecycle state machine
+gamedev:414	figure	Diagrams	Input actions pipeline
+gamedev:416	figure	Diagrams	Prefab override model
+gamedev:418	figure	Diagrams	Physics body choices
+gamedev:420	figure	Diagrams	Character controller and follow camera
+gamedev:422	figure	Diagrams	Animation state machine of the robot
+gamedev:424	figure	Diagrams	UI anchoring
+gamedev:426	figure	Diagrams	UI event routing
+gamedev:427	figure	Diagrams	Scene flow of Sky Islands
+gamedev:428	figure	Diagrams	World streaming
+gamedev:429	figure	Diagrams	Export pipeline
+gamedev:431	figure	Diagrams	Testing loop
+gamedev:433	figure	Diagrams	Agent path
+gamedev:438	figure	Screenshots	Launcher with templates, samples (five pictures) and agent card.
+gamedev:439	figure	Screenshots	New Project dialog with Basic 3D chosen; Open Sample dialog.
+gamedev:440	figure	Screenshots	The fresh Basic 3D scene in the editor (default layout).
+gamedev:441	figure	Screenshots	Scene view vs Game view side by side during Play (drag tab beside); F8 Game camera chip.
+gamedev:442	figure	Screenshots	Game view resolution menu; "no primary camera" notice.
+gamedev:443	figure	Screenshots	Hierarchy "+" menu (meshes with colliders, lights, UI submenu).
+gamedev:444	figure	Screenshots	Inspector with two entities selected (multi-edit) and with nothing selected (scene settings, Sky…
+gamedev:445	figure	Screenshots	Content Browser grid with thumbnails; Scripts root with classes.
+gamedev:446	figure	Screenshots	Drop ghost with label "Crate on 'Ground'" and a dimmed ghost over empty space.
+gamedev:447	figure	Screenshots	Prefab bar and overridden properties (bold + accent bar), Overrides menu.
+gamedev:448	figure	Screenshots	Material editor in the Asset tab; normal-map warning with Fix.
+gamedev:449	figure	Screenshots	New Script dialog; the generated file open in VS Code.
+gamedev:450	figure	Screenshots	Problems panel with a build error; crash toast and the crash with stack.
+gamedev:451	figure	Screenshots	Project Settings: Game page (title, version, icon), Input Actions page (Gameplay map, binding…
+gamedev:453	figure	Screenshots	Preferences: External Editor page with detected editors.
+gamedev:454	figure	Screenshots	Export dialog with progress; exported folder in Explorer showing the icon.
+gamedev:455	figure	Screenshots	Activity panel listing commands by person and agent.
+gamedev:456	figure	Screenshots	Viewport 2D canvas mode for Tetris HUD; Game UI chip on.
+gamedev:457	figure	Screenshots	World editing: Hierarchy strip with edit layer, Cells chip, cell map in Streaming panel (OpenWorld…
+gamedev:458	figure	Screenshots	Animation controller tables in the Asset tab (Robot.stanimator); `animation.preview` pose.
+gamedev:461	figure	Screenshots	Basic 3D under each sky preset: `lighting.applySkyPreset {preset: Clear|Hazy|Overcast|GoldenHour}`.
+gamedev:462	figure	Screenshots	Exposure: same scene Auto Exposure on/off; "washed out gray" failure (auto exposure on a dark…
+gamedev:463	figure	Screenshots	Preview lighting: a scene with no lights in an editor capture vs the Game view (black).
+gamedev:464	figure	Screenshots	Debug views `luminance` and `albedo` on ThirdPerson course (`viewport.capture {debugView}`).
+gamedev:465	figure	Screenshots	TAA vs FXAA on a thin-detail scene (Post Process `AntiAliasingMethod`); TAA on pixel-art-like…
+gamedev:466	figure	Screenshots	Graphics Quality Low vs High on the Showcase Shot 2 (`--quality low` / `project.setSettings…
+gamedev:469	figure	Screenshots	Tetris playing with HUD and ghost piece; game over panel.
+gamedev:470	figure	Screenshots	Sky Islands: main menu, settings menu (Graphics row), course with coin and jump pad (existing…
+gamedev:472	figure	Screenshots	Physics Playground: overview, ball pit after a pour (existing), grab in action, slow motion.
+gamedev:473	figure	Screenshots	Open World: tour (existing `Tour.png`), forest (`Forest.png`), night with campfires, teleport fade.
+gamedev:474	figure	Screenshots	Showcase: the six tour shots (existing Screenshots), photo mode panel.
+gamedev:475	figure	Screenshots	Exported game running windowed with its title in the window bar.
+gamedev:481	rule		Never edit `.stscene`, `.stmat`, `.stproj`, `.meta` by hand; move/rename/delete through the editor
+gamedev:484	rule		Initialize in `OnCreate`, not the constructor
+gamedev:486	rule		Only public members registered with `ST_SCRIPT_FIELD` survive hot reload
+gamedev:488	rule		Read presses in `OnUpdate`, apply forces in `OnFixedUpdate`
+gamedev:490	rule		Follow moving bodies with `GetDrawnPosition()` in `OnLateUpdate`
+gamedev:492	rule		Teleport with `Teleport`, not by writing a transform
+gamedev:494	rule		Request assets early; `Instantiate` never waits
+gamedev:496	rule		Never keep `GetScript<T>()` pointers across frames; store `Entity` and check `IsValid()`
+gamedev:497	rule		Never block or start threads in scripts
+gamedev:498	rule		Read controls as input actions
+gamedev:500	rule		One of RigidBody or CharacterController, never both
+gamedev:501	rule		Triggers do not see triangle-mesh colliders
+gamedev:502	rule		Spawn bodies apart; `Instantiate` with a translation sets scale 1
+gamedev:503	rule		Collision layers are the project's, not the scene's
+gamedev:504	rule		Entities do not survive `Game::LoadScene`
+gamedev:506	rule		A scene with no light is unlit in the game even though editor captures show preview lighting
+gamedev:508	rule		Automatic exposure brightens dark scenes to gray
+gamedev:509	rule		Do not build HUDs from screen-space `Text`; use a UI canvas
+gamedev:510	rule		UIText alignment defaults to Center
+gamedev:511	rule		Pruned exports drop assets loaded by path; list them in Export > Always Include
+gamedev:512	rule		Export refuses while a build runs, the module changed since load, or scripts are unbuilt
+gamedev:513	rule		Unsaved scene blocks `scene.open`/`project.*`/quit unless forced
+gamedev:514	rule		Keep worlds within 20 km; roaming things in the persistent scene
+gamedev:515	rule		Prefetch cells before a teleport
+gamedev:516	rule		Deterministic play-tests: seeds, fixed-step input durations, `input.sequence`, paused `until` waits
+gamedev:518	rule		No render scale, ever
+gamedev:519	rule		Asset licenses: CC0 or CC-BY only, credited
+gamedev:520	rule		In a toggle group act only on value 1
+gamedev:521	rule		Windows path length
+gamedev:522	rule		Rebuilding the engine while an editor runs fails
+gamedev:523	rule		`ST_SCRIPT_CLASS` once per class, in a `.cpp`, never in a header
+gamedev:524	rule		Shared libraries a module links must sit next to it / RUNPATH; `$ORIGIN` fails under hot reload
+gamedev:534	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G1: Install, open the launcher, open a copy of Tetris, Play it, read its README
+gamedev:535	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G2: New Project (Basic 3D); add a Cube from "+", move/rotate/scale with gizmos, Play, Stop (see it…
+gamedev:536	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G3: Add a dynamic RigidBody to the cube, drop it on the ground; make a ramp; change…
+gamedev:537	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G4: Import a glTF model and a texture; fix the model's scale with `asset.info` bounds; make a…
+gamedev:538	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G5: Turn the cube into a prefab, place five, override one's color, apply another's change
+gamedev:539	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G6: Attach `Spinner`; change `DegreesPerSecond`; edit code during Play and watch hot reload
+gamedev:540	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G7: Light the scene with each sky preset; break exposure (auto off at -15), fix it; add a lantern…
+gamedev:541	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G8: Small finished game: "Coin Run" (from Basic 3D): input actions Move/Jump, player with…
+gamedev:542	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G9: Second game: Tetris from scratch guided by `Samples/Tetris` (rules class, board script,…
+gamedev:543	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G10: Add a main menu scene (canvas, no camera), settings menu with volume slider and Graphics row,…
+gamedev:544	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G11: Larger game: a third-person platformer (Sky Islands-lite): skinned character + controller…
+gamedev:545	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G12: Physics toy: shoot balls through the cursor (port `GetPointerRay`), a goal trigger that…
+gamedev:546	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G13: Make a small world: `world.create`, place props into a layer, streaming source on the player,…
+gamedev:547	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G14: Rebindable controls menu: list bindings, capture a new key, save, reset
+gamedev:548	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G15: Let an agent build a level: connect Claude Code via MCP, ask it to place props with…
+gamedev:549	hands-on	For game developers (progression ends with a finished small game, then a larger one)	G16: Day/night script driving the sun under the atmosphere, campfires by tag (port `DayNight.h`)
+gamedev:555	hands-on	For engine developers (changing the engine from the game maker's side)	E1: Read `PopulateBasic3D`; add a third template "basic2d" (orthographic camera, FXAA, no sky)…
+gamedev:556	hands-on	For engine developers (changing the engine from the game maker's side)	E2: Add a Hierarchy preset (e.g. "Trigger Box": BoxCollider + RigidBody IsTrigger) that goes…
+gamedev:557	hands-on	For engine developers (changing the engine from the game maker's side)	E3: Add an SDK helper in `Gameplay.h` (e.g. a `Cooldown` class) used only inside a script module,…
+gamedev:558	hands-on	For engine developers (changing the engine from the game maker's side)	E4: Add a host function (e.g. `Game::GetLanguage`) appended to `StrataScriptHostAPI` and…
+gamedev:559	hands-on	For engine developers (changing the engine from the game maker's side)	E5: Add a runtime option to `c_Arguments` (e.g. `--mute`) with tests
+gamedev:560	hands-on	For engine developers (changing the engine from the game maker's side)	E6: Add a new component the maker can use (skill add-component), with Inspector tooltip units and…
+gamedev:561	hands-on	For engine developers (changing the engine from the game maker's side)	E7: Trace `Game::LoadScene` from the SDK to `EditorContext::HandleRuntimeRequests` and…
+gamedev:562	hands-on	For engine developers (changing the engine from the game maker's side)	E8: Extend a sample's command script with a new `expect` for a feature you added; run the CTest
+gamedev:563	hands-on	For engine developers (changing the engine from the game maker's side)	E9: Measure the fixed-step loop: set FixedRate 30/60/240, read `Time::GetStepAlpha` and…
+gamedev:569	term		Engine
+gamedev:570	term		Editor
+gamedev:571	term		Runtime
+gamedev:572	term		Launcher
+gamedev:573	term		Project
+gamedev:574	term		Template
+gamedev:575	term		Sample
+gamedev:576	term		Scene
+gamedev:577	term		Start scene / loading scene
+gamedev:578	term		Entity
+gamedev:579	term		Component
+gamedev:580	term		Transform
+gamedev:581	term		World position / local position
+gamedev:582	term		Quaternion
+gamedev:583	term		Forward (-Z)
+gamedev:584	term		Asset
+gamedev:585	term		Asset handle
+gamedev:586	term		Import / import settings
+gamedev:587	term		Sub-asset
+gamedev:588	term		Built-in mesh
+gamedev:589	term		Material
+gamedev:590	term		PBR
+gamedev:591	term		Prefab / instance / override
+gamedev:592	term		Apply / Revert / Unpack
+gamedev:593	term		Outdated instance
+gamedev:594	term		Gizmo
+gamedev:595	term		Scene view / Game view
+gamedev:596	term		Play / Simulate / Pause / Step
+gamedev:597	term		Preview lighting
+gamedev:598	term		Lux, candela, nits
+gamedev:599	term		Exposure (EV)
+gamedev:600	term		Tone mapping (Filmic, ACES)
+gamedev:601	term		Anti-aliasing (FXAA, TAA, Morphological)
+gamedev:602	term		Graphics Quality preset
+gamedev:603	term		Reflection probe / bake
+gamedev:604	term		Script / script class / script module
+gamedev:605	term		SDK
+gamedev:606	term		ABI
+gamedev:607	term		Host function
+gamedev:608	term		Field
+gamedev:609	term		Hot reload
+gamedev:610	term		Crash containment
+gamedev:611	term		CMake, toolchain, preset
+gamedev:612	term		External editor
+gamedev:613	term		Problems panel
+gamedev:614	term		Frame / delta time
+gamedev:615	term		Fixed step / fixed timestep
+gamedev:616	term		Accumulator
+gamedev:617	term		Time scale
+gamedev:618	term		Unscaled time
+gamedev:619	term		Interpolation / drawn pose / step alpha
+gamedev:620	term		Time dilation
+gamedev:621	term		Rigid body (static, dynamic, kinematic)
+gamedev:622	term		Collider (box, sphere, capsule, mesh; convex, triangle)
+gamedev:623	term		Trigger
+gamedev:624	term		Collision layer / layer matrix / mask
+gamedev:625	term		Raycast / overlap
+gamedev:626	term		Continuous collision
+gamedev:627	term		Sleeping
+gamedev:628	term		Character controller
+gamedev:629	term		Coyote time
+gamedev:630	term		Skeleton, joint, clip, skin
+gamedev:631	term		Animator / animation controller / state / transition / parameter / trigger parameter
+gamedev:632	term		Cross-fade
+gamedev:633	term		Animation event
+gamedev:634	term		Root motion
+gamedev:635	term		AttachToJoint
+gamedev:636	term		Audio source / listener / one-shot
+gamedev:637	term		Canvas (screen space, world space)
+gamedev:638	term		Reference resolution / scale mode
+gamedev:639	term		Rect, anchor, pivot
+gamedev:640	term		Nine-slice (sliced image)
+gamedev:641	term		Layout group, mask
+gamedev:642	term		Selectable, focus, navigation
+gamedev:643	term		Event target
+gamedev:644	term		Toggle group
+gamedev:645	term		Input action / map / binding / composite / dead zone
+gamedev:646	term		Rebinding / binding capture
+gamedev:647	term		Save file
+gamedev:648	term		Sub-scene (additive load)
+gamedev:649	term		World, persistent scene, layer, cell, streaming source, edit layer, cook
+gamedev:650	term		Prefetch
+gamedev:651	term		Export / pruned export / always include
+gamedev:652	term		Manifest (`.stgame`) / pack (`.stpak`)
+gamedev:653	term		Headless
+gamedev:654	term		Game identity
+gamedev:655	term		Command / command script / expect / until / bind
+gamedev:656	term		Simulated input / input sequence
+gamedev:657	term		Viewport capture
+gamedev:658	term		Activity journal / replay
+gamedev:659	term		Recovery journal
+gamedev:660	term		MCP, toolset
+gamedev:661	term		Attract mode
+gamedev:662	term		7-bag
+gamedev:663	term		Seed
+gamedev:664	term		Token bucket
+gamedev:665	term		CC0 / CC-BY
+gamedev:691	open		Not read in full
+gamedev:697	open		Stale documents found
+gamedev:699	open		Release dates of some features
+gamedev:701	open		Wave 8 status
+gamedev:704	open		No editor run
+gamedev:706	open		Host function count
+gamedev:708	open		Audio and physics component properties

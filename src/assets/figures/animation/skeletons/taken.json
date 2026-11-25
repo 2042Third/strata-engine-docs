@@ -1,0 +1,34 @@
+{
+	"files": {
+		"robot-skeleton.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				722
+			],
+			"figure": "robot-skeleton",
+			"variant": null,
+			"crop": null,
+			"original": "b9fdfa2989ffaffe504b1d2167daeb403f60264ffa7ac6a2adfe95df9d0fa82d",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "2c253a115bfa0591bec800550d9ba53bc4193ce7f6c0568f605dd0a4958d7ba4"
+		}
+	}
+}

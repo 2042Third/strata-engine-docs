@@ -1,0 +1,386 @@
+diff --git a/StrataCLI/src/CLI/McpToolsets.cpp b/StrataCLI/src/CLI/McpToolsets.cpp
+index c5e12b1..97da4dc 100644
+--- a/StrataCLI/src/CLI/McpToolsets.cpp
++++ b/StrataCLI/src/CLI/McpToolsets.cpp
+@@ -50,7 +50,7 @@ namespace Strata::CLI::McpToolsets
+ 			{ "viewport.", "viewport" }, { "camera.", "viewport" },
+ 			{ "editor.", "editor" }, { "log.", "editor" },
+ 			{ "ui.", "ui" },
+-			{ "world.", "world" }, { "physics.", "world" },
++			{ "world.", "world" }, { "physics.", "world" }, { "wind.", "world" },
+ 			{ "preferences.", "settings" }, { "inputActions.", "settings" }, { "graphics.", "settings" } };
+ 
+ 		constexpr ToolsetInfo c_Toolsets[] = {
+diff --git a/StrataEditor/src/Editor/Commands/WindCommands.cpp b/StrataEditor/src/Editor/Commands/WindCommands.cpp
+new file mode 100644
+index 0000000..760c091
+--- /dev/null
++++ b/StrataEditor/src/Editor/Commands/WindCommands.cpp
+@@ -0,0 +1,156 @@
++#include "Editor/CommandUtils.h"
++#include "Editor/EditorCommands.h"
++#include "Editor/EditorContext.h"
++#include "Editor/SceneEdit.h"
++
++#include <Strata/Physics/PhysicsComponents.h>
++#include <Strata/Reflection/ComponentRegistry.h>
++#include <Strata/Reflection/PropertyJson.h>
++#include <Strata/Scene/Scene.h>
++
++#include <nlohmann/json.hpp>
++
++#include <optional>
++#include <string>
++#include <string_view>
++#include <unordered_set>
++#include <vector>
++
++// The wind.* commands: what the scene's wind zones hold, and a change of several of them at once.
++
++namespace Strata
++{
++
++	using namespace CommandUtils;
++
++	namespace
++	{
++
++		const char* ToString(WindZoneMode mode)
++		{
++			return mode == WindZoneMode::Spherical ? "Spherical" : "Directional";
++		}
++
++		// The wind zone's registered properties: commands check values against them, so that a command accepts what the
++		// Inspector accepts and refuses what lies outside a property's range.
++		struct WindProperties
++		{
++			const PropertyInfo* Strength = nullptr;
++			const PropertyInfo* Radius = nullptr;
++			const PropertyInfo* Mode = nullptr;
++		};
++
++		std::optional<WindProperties> FindWindProperties()
++		{
++			const ComponentInfo* info = ComponentRegistry::Find<WindZoneComponent>();
++			if (!info)
++				return std::nullopt;
++			const WindProperties properties { info->FindProperty("Strength"), info->FindProperty("Radius"), info->FindProperty("Mode") };
++			if (!properties.Strength || !properties.Radius || !properties.Mode)
++				return std::nullopt;
++			return properties;
++		}
++
++		// An optional parameter, read through the property it sets. A value of the wrong type, outside the range or not one of
++		// an enum's options is recorded as the first problem of the arguments.
++		std::optional<PropertyValue> ReadValue(CommandArguments& arguments, const nlohmann::json& parameters, const char* name, const PropertyInfo& property)
++		{
++			if (!arguments.Has(name))
++				return std::nullopt;
++			std::string error;
++			std::optional<PropertyValue> value = PropertyValueFromJson(property, parameters.at(name), &error);
++			if (value && property.Type == PropertyType::Enum && !property.FindEnumValue(std::get<int32_t>(*value)))
++			{
++				error = "is not one of the options";
++				value.reset();
++			}
++			if (value && !property.IsInRange(*value, &error))
++				value.reset();
++			if (!value)
++				arguments.SetError(fmt::format("Parameter '{}' {}", name, error));
++			return value;
++		}
++
++	}
++
++	void RegisterWindCommands(EditorCommandRegistry& registry)
++	{
++		registry.Register({ "wind.list",
++			"Lists every entity with a WindZone component, active or not: {zones: [{entity, name, active (the entity's own flag), strength "
++			"(newtons), radius (meters), mode (\"Directional\" or \"Spherical\")}]}. Changes nothing; while playing it lists the running copy.",
++			ObjectSchema({}),
++			[](EditorContext& context, const nlohmann::json&)
++			{
++				Scene& scene = *context.GetActiveScene();
++				nlohmann::json zones = nlohmann::json::array();
++				for (const auto [handle, zone] : scene.GetRegistry().view<WindZoneComponent>().each())
++				{
++					const Entity entity(handle, &scene);
++					zones.push_back({ { "entity", UUIDToJson(entity.GetUUID()) }, { "name", entity.GetName() }, { "active", entity.IsActive() },
++						{ "strength", zone.Strength }, { "radius", zone.Radius }, { "mode", ToString(zone.Mode) } });
++				}
++				return EditorCommandResult::Ok({ { "zones", std::move(zones) } });
++			}, EditorCommandKind::Query });
++
++		registry.Register({ "wind.set",
++			"Sets the strength, radius or mode of the WindZone of one or more entities in one undo step (while playing it changes the "
++			"running copy only). Values left out stay as they are; at least one is required. Refuses, changing nothing, an entity without a "
++			"WindZone and a value outside its property's range. Returns {entities}.",
++			ObjectSchema({
++				{ "entities", EntityArraySchema("Entities with a WindZone component") },
++				{ "strength", NumberSchema("Force of the wind on a body, in newtons (within the range of the Strength property)") },
++				{ "radius", NumberSchema("How far the zones reach from their center, in meters (within the range of the Radius property)") },
++				{ "mode", { { "type", "string" }, { "enum", { "Directional", "Spherical" } },
++					{ "description", "Directional zones blow one way through their radius, spherical zones outward from their center" } } } },
++				{ "entities" }),
++			[](EditorContext& context, const nlohmann::json& parameters)
++			{
++				Scene& scene = *context.GetActiveScene();
++				const std::optional<WindProperties> properties = FindWindProperties();
++				if (!properties)
++					return EditorCommandResult::Fail("The WindZone component is not registered", EditorCommandError::Internal);
++
++				CommandArguments arguments(parameters);
++				const std::vector<Entity> entities = arguments.GetEntities(scene, "entities");
++				const std::optional<PropertyValue> strength = ReadValue(arguments, parameters, "strength", *properties->Strength);
++				const std::optional<PropertyValue> radius = ReadValue(arguments, parameters, "radius", *properties->Radius);
++				const std::optional<PropertyValue> mode = ReadValue(arguments, parameters, "mode", *properties->Mode);
++				if (!arguments.IsValid())
++					return arguments.Fail();
++				if (!strength && !radius && !mode)
++					return EditorCommandResult::InvalidParameters("Give at least one of 'strength', 'radius' and 'mode'");
++				for (const Entity entity : entities)
++				{
++					if (!entity.HasComponent<WindZoneComponent>())
++						return EditorCommandResult::InvalidParameters(fmt::format("Parameter 'entities': '{}' has no WindZone component", entity.GetName()));
++				}
++
++				// Everything is checked: from here on the command changes the scene.
++				std::vector<UUID> ids;
++				std::unordered_set<UUID> seen;
++				for (const Entity entity : entities)
++				{
++					if (seen.insert(entity.GetUUID()).second)
++						ids.push_back(entity.GetUUID());
++				}
++				SceneEditTransaction transaction(scene, ids.size() == 1 ? fmt::format("Set the wind of {}", SceneEdit::QuoteName(entities.front().GetName())) :
++					fmt::format("Set the wind of {} entities", ids.size()), ids);
++				nlohmann::json changed = nlohmann::json::array();
++				for (const UUID id : ids)
++				{
++					Entity entity = scene.GetEntityByUUID(id);
++					WindZoneComponent& zone = entity.GetComponent<WindZoneComponent>();
++					if (strength)
++						zone.Strength = std::get<float>(*strength);
++					if (radius)
++						zone.Radius = std::get<float>(*radius);
++					if (mode)
++						zone.Mode = static_cast<WindZoneMode>(std::get<int32_t>(*mode));
++					entity.MarkModified<WindZoneComponent>();
++					changed.push_back(UUIDToJson(id));
++				}
++				return FinishEdit(context, transaction, { { "entities", std::move(changed) } });
++			} });
++	}
++
++}
+diff --git a/StrataEditor/src/Editor/EditorCommands.cpp b/StrataEditor/src/Editor/EditorCommands.cpp
+index fdc37ff..b15c4c4 100644
+--- a/StrataEditor/src/Editor/EditorCommands.cpp
++++ b/StrataEditor/src/Editor/EditorCommands.cpp
+@@ -62,6 +62,7 @@ namespace Strata
+ 		RegisterUIInputCommands(*this);
+ 		RegisterBatchCommands(*this);
+ 		RegisterPlacementCommands(*this);
++		RegisterWindCommands(*this);
+ 
+ 		Register({ "editor.commands",
+ 			"Every editor command with its description, the JSON Schema of its parameters and its kind: \"Edit\" (changes the scene, its assets or "
+diff --git a/StrataEditor/src/Editor/EditorCommands.h b/StrataEditor/src/Editor/EditorCommands.h
+index b39db1b..d3b7a64 100644
+--- a/StrataEditor/src/Editor/EditorCommands.h
++++ b/StrataEditor/src/Editor/EditorCommands.h
+@@ -215,5 +215,6 @@ namespace Strata
+ 	void RegisterAudioCommands(EditorCommandRegistry& registry); // audio.* (Commands/AudioCommands.cpp)
+ 	void RegisterUICommands(EditorCommandRegistry& registry);      // ui.create, ui.layout, ui.hitTest (EditorUICommands.cpp)
+ 	void RegisterUIInputCommands(EditorCommandRegistry& registry); // input.click, input.type (EditorInputCommands.cpp)
++	void RegisterWindCommands(EditorCommandRegistry& registry);    // wind.list, wind.set (Commands/WindCommands.cpp)
+ 
+ }
+diff --git a/StrataTests/src/Editor/CommandJournalTests.cpp b/StrataTests/src/Editor/CommandJournalTests.cpp
+index 0fd7cd2..36d9269 100644
+--- a/StrataTests/src/Editor/CommandJournalTests.cpp
++++ b/StrataTests/src/Editor/CommandJournalTests.cpp
+@@ -116,6 +116,7 @@ namespace
+ 		"scene.loadAdditive", "scene.new", "scene.open", "scene.save", "scene.saveAs", "scene.setSettings", "scene.unloadAdditive",
+ 		"script.add", "script.build", "script.create", "script.init", "script.load", "script.reload", "script.remove", "script.setField",
+ 		"ui.create",
++		"wind.set",
+ 		"world.cook", "world.create", "world.moveEntities", "world.setLayers",
+ 	};
+ 	constexpr std::string_view c_QueryCommands[] = {
+@@ -140,6 +141,7 @@ namespace
+ 		"selection.get",
+ 		"ui.hitTest", "ui.layout",
+ 		"viewport.capture", "viewport.getSettings",
++		"wind.list",
+ 		"world.info", "world.status",
+ 	};
+ 	constexpr std::string_view c_SessionCommands[] = {
+diff --git a/StrataTests/src/Editor/EditorWindCommandTests.cpp b/StrataTests/src/Editor/EditorWindCommandTests.cpp
+new file mode 100644
+index 0000000..5dce36d
+--- /dev/null
++++ b/StrataTests/src/Editor/EditorWindCommandTests.cpp
+@@ -0,0 +1,162 @@
++#include <doctest/doctest.h>
++
++#include "Editor/CommandTestUtils.h"
++#include "Editor/EditorCommands.h"
++#include "Editor/EditorContext.h"
++
++#include <Strata/Physics/PhysicsComponents.h>
++#include <Strata/Reflection/PropertyJson.h>
++#include <Strata/Scene/Entity.h>
++#include <Strata/Scene/Scene.h>
++
++#include <nlohmann/json.hpp>
++
++#include <initializer_list>
++#include <string_view>
++
++using namespace Strata;
++
++namespace
++{
++
++	struct WindHarness
++	{
++		EditorContext Context;
++		EditorCommandRegistry Commands;
++
++		EditorCommandResult Execute(std::string_view name, const nlohmann::json& parameters = nlohmann::json::object())
++		{
++			return Tests::CompleteCommand(Context, Commands.Execute(Context, name, parameters));
++		}
++
++		Scene& GetScene() { return *Context.GetActiveScene(); }
++
++		// A zone made directly in the scene: no undo step records it.
++		Entity AddZone(const char* name, float strength, float radius)
++		{
++			Entity zone = GetScene().CreateEntity(name);
++			WindZoneComponent& wind = zone.AddComponent<WindZoneComponent>();
++			wind.Strength = strength;
++			wind.Radius = radius;
++			return zone;
++		}
++
++		// A JSON array of entity IDs, as the entities parameter takes them.
++		static nlohmann::json Ids(std::initializer_list<UUID> ids)
++		{
++			nlohmann::json array = nlohmann::json::array();
++			for (const UUID id : ids)
++				array.push_back(UUIDToJson(id));
++			return array;
++		}
++
++		const WindZoneComponent& Wind(UUID id)
++		{
++			return GetScene().GetEntityByUUID(id).GetComponent<WindZoneComponent>();
++		}
++	};
++
++}
++
++TEST_SUITE("Editor.WindCommands")
++{
++	TEST_CASE("wind.list answers every zone with its values, and changes nothing")
++	{
++		WindHarness harness;
++		const Entity breeze = harness.AddZone("Breeze", 10.0f, 5.0f);
++		harness.AddZone("Gust", 25.0f, 8.5f);
++		harness.GetScene().CreateEntity("Rock");
++
++		const EditorCommandResult result = harness.Execute("wind.list");
++		REQUIRE(result.Success);
++		const nlohmann::json& zones = result.Value["zones"];
++		REQUIRE(zones.size() == 2);
++		for (const nlohmann::json& zone : zones)
++		{
++			CAPTURE(zone);
++			if (zone["name"] == "Breeze")
++			{
++				CHECK(zone["entity"] == UUIDToJson(breeze.GetUUID()));
++				CHECK(zone["strength"] == 10.0);
++				CHECK(zone["mode"] == "Directional");
++			}
++			else
++			{
++				CHECK(zone["name"] == "Gust");
++				CHECK(zone["radius"] == 8.5);
++			}
++		}
++		CHECK_FALSE(harness.Execute("edit.undo").Success);
++	}
++
++	TEST_CASE("wind.set changes several zones in one undo step")
++	{
++		WindHarness harness;
++		const UUID breeze = harness.AddZone("Breeze", 10.0f, 5.0f).GetUUID();
++		const UUID gust = harness.AddZone("Gust", 25.0f, 8.5f).GetUUID();
++
++		const EditorCommandResult result = harness.Execute("wind.set", { { "entities", WindHarness::Ids({ breeze, gust }) },
++			{ "strength", 40.0 }, { "mode", "Spherical" } });
++		REQUIRE(result.Success);
++		CHECK(result.Value["entities"].size() == 2);
++		for (const UUID id : { breeze, gust })
++		{
++			CHECK(harness.Wind(id).Strength == doctest::Approx(40.0f));
++			CHECK(harness.Wind(id).Mode == WindZoneMode::Spherical);
++		}
++		CHECK(harness.Wind(breeze).Radius == doctest::Approx(5.0f)); // Left out: unchanged
++		CHECK(harness.Wind(gust).Radius == doctest::Approx(8.5f));
++
++		REQUIRE(harness.Execute("edit.undo").Success);
++		CHECK(harness.Wind(breeze).Strength == doctest::Approx(10.0f));
++		CHECK(harness.Wind(gust).Strength == doctest::Approx(25.0f));
++		CHECK(harness.Wind(gust).Mode == WindZoneMode::Directional);
++		// One step held both zones: nothing is left to undo.
++		CHECK_FALSE(harness.Execute("edit.undo").Success);
++	}
++
++	TEST_CASE("wind.set refuses invalid input and changes nothing")
++	{
++		WindHarness harness;
++		const UUID breeze = harness.AddZone("Breeze", 10.0f, 5.0f).GetUUID();
++		const UUID rock = harness.GetScene().CreateEntity("Rock").GetUUID();
++		const nlohmann::json one = WindHarness::Ids({ breeze });
++		const nlohmann::json both = WindHarness::Ids({ breeze, rock });
++
++		const auto refused = [&harness](const nlohmann::json& parameters)
++		{
++			CAPTURE(parameters);
++			const EditorCommandResult result = harness.Execute("wind.set", parameters);
++			CHECK_FALSE(result.Success);
++			CHECK(result.ErrorKind == EditorCommandError::InvalidParameters);
++		};
++		refused({ { "entities", one }, { "strength", 5000.0 } });                  // Above the range
++		refused({ { "entities", one }, { "strength", 20.0 }, { "radius", 0.0 } });  // The second value is invalid
++		refused({ { "entities", one }, { "mode", "Sideways" } });                  // Not an option
++		refused({ { "entities", one }, { "strength", "strong" } });                // Not a number
++		refused({ { "entities", one } });                                          // No value to set
++		refused({ { "entities", both }, { "strength", 20.0 } });                   // One entity has no zone
++		refused({ { "strength", 20.0 } });                                         // No entities
++
++		CHECK(harness.Wind(breeze).Strength == doctest::Approx(10.0f));
++		CHECK(harness.Wind(breeze).Radius == doctest::Approx(5.0f));
++		CHECK_FALSE(harness.Execute("edit.undo").Success);
++	}
++
++	TEST_CASE("wind.set while playing changes the running copy and says so")
++	{
++		WindHarness harness;
++		const UUID breeze = harness.AddZone("Breeze", 10.0f, 5.0f).GetUUID();
++		REQUIRE(harness.Execute("play.start").Success);
++
++		const EditorCommandResult result = harness.Execute("wind.set", { { "entities", WindHarness::Ids({ breeze }) },
++			{ "strength", 40.0 } });
++		REQUIRE(result.Success);
++		CHECK(result.RunningCopy);
++		CHECK(result.Value.contains("warning"));
++		CHECK(harness.Wind(breeze).Strength == doctest::Approx(40.0f));
++
++		REQUIRE(harness.Execute("play.stop").Success);
++		CHECK(harness.Wind(breeze).Strength == doctest::Approx(10.0f));
++	}
++}

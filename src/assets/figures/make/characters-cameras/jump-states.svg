@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 356">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: side view, 1 m = 120 px; ledge edge x 300, top y 220, ground y 340; fall x = 5t, drop 4.905 t^2, lands at t = 0.452 s; window 0.15 s = 0.75 m = 90 px; H = 340 + 16 -->
+<rect x="24" y="220" width="276" height="120" class="plate line-ink"/>
+<line x1="24" y1="340" x2="744" y2="340" class="line-ink" fill="none"/>
+<text x="40" y="320" class="ink">Ledge, 1 m high</text>
+<text x="744" y="332" class="muted" text-anchor="end">ground</text>
+<text x="60" y="30" class="muted small mono">GroundStateNumber</text>
+<rect x="60" y="40" width="240" height="28" class="green-area"/>
+<rect x="300" y="40" width="270.9" height="28" class="blue-area"/>
+<text x="180" y="59" class="green bold" text-anchor="middle">0: on ground</text>
+<text x="435.5" y="59" class="blue bold" text-anchor="middle">3: in air</text>
+<line x1="300" y1="68" x2="300" y2="216" class="line-muted" fill="none" stroke-dasharray="4 3"/>
+<text x="306" y="96" class="muted small">last step on the ground</text>
+<circle cx="72" cy="220" r="5" class="green"/>
+<line x1="72" y1="220" x2="300" y2="220" class="line-green" fill="none" stroke-width="3"/>
+<polygon points="144,200 134,203.5 134,196.5" class="green"/>
+<line x1="84" y1="200" x2="134" y2="200" class="line-green" fill="none"/>
+<text x="152" y="205" class="green small">5 m/s</text>
+<polygon points="570.9,340 558.9,335.5 564.8,328.7" class="blue"/>
+<polyline points="300,220 306.8,220.1 313.5,220.3 320.3,220.7 327.1,221.2 333.9,221.9 340.6,222.7 347.4,223.7 354.2,224.8 361,226.1 367.7,227.5 374.5,229.1 381.3,230.8 388,232.7 394.8,234.7 401.6,236.9 408.4,239.2 415.1,241.7 421.9,244.3 428.7,247.1 435.5,250 442.2,253.1 449,256.3 455.8,259.7 462.5,263.2 469.3,266.9 476.1,270.7 482.9,274.7 489.6,278.8 496.4,283.1 503.2,287.5 510,292.1 516.7,296.8 523.5,301.7 530.3,306.7 537,311.9 543.8,317.2 550.6,322.7 557.4,328.3 564.1,334.1 561.9,332.1" class="line-blue" fill="none" stroke-width="3"/>
+<rect x="300" y="236" width="90" height="16" class="orange-area line-orange"/>
+<text x="304" y="272" class="orange bold small">coyote window</text>
+<text x="304" y="290" class="orange small">0.15 s, 0.75 m</text>
+<line x1="360" y1="219.9" x2="360" y2="150" class="line-green" fill="none"/>
+<circle cx="360" cy="225.9" r="5" class="green"/>
+<text x="366" y="154" class="green">jump pressed at 0.10 s: counts</text>
+<line x1="420" y1="237.5" x2="420" y2="186" class="line-red" fill="none"/>
+<circle cx="420" cy="243.5" r="5" class="ground line-red"/>
+<text x="426" y="190" class="red">pressed at 0.20 s: too late</text>
+</svg>

@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 600">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!--
+Plan. The Input Actions page of the ThirdPerson sample, drawn from its code. Labels x 24, values x 148 to 448 (a
+remove button 456 to 478), notes x 494 to 752 on the rows they name. Rows 22 high, 28 apart. Summary y 24, Maps
+58 to 132, the map's table 142 to 192, Move 226 to 388, Look as a dashed line 400, Jump 434 to 512, the other five
+as a dashed line 530, Add Action 562 to 584; H = 584 + 16.
+Facts (StrataEditor/src/UI/InputActionsPage.cpp at 319075e3): Draw writes the summary "<n> maps · <n> actions";
+DrawMaps lists the maps (the UI map's label adds "game UI navigation"), selects the first map that is not UI, adds
+Add Map, then Map with a remove button and Enabled at start; DrawActions writes "Actions of <map>", per action Action
+with a remove button, Kind, Dead zone only when the kind is not Button, Bindings; DrawBindings a chip with a remove
+button per binding, then + and the capture button, disabled for a Vector2. Maps and actions:
+Samples/ThirdPerson/ThirdPerson.stproj (Input.Actions). The chips' device icons and the page's opening caption are left out.
+-->
+<text x="24" y="24" class="ink small">2 maps · 14 actions</text>
+<text x="24" y="50" class="muted small">Maps</text>
+<text x="32" y="74" class="ink small">UI · game UI navigation</text>
+<rect x="24" y="82" width="454" height="22" rx="3" class="blue-area"/>
+<text x="32" y="98" class="ink small">Gameplay</text>
+<rect x="24" y="110" width="96" height="22" rx="4" class="plate line-faint"/><text x="34" y="126" class="ink small">+ Add Map</text>
+<text x="494" y="74" class="ink small">Reserved for the game UI</text>
+<text x="494" y="98" class="ink small">Selected: its actions follow</text>
+<text x="24" y="158" class="ink small">Map</text>
+<rect x="148" y="142" width="300" height="22" rx="3" class="plate line-faint"/>
+<text x="156" y="158" class="ink small">Gameplay</text>
+<rect x="456" y="142" width="22" height="22" rx="3" class="plate line-faint"/>
+<line x1="461" y1="149" x2="473" y2="149" class="line-muted"/>
+<line x1="465" y1="146.5" x2="469" y2="146.5" class="line-muted"/>
+<rect x="463" y="151" width="8" height="9" fill="none" class="line-muted"/>
+<text x="24" y="186" class="ink small">Enabled at start</text>
+<rect x="148" y="171" width="20" height="20" rx="3" class="plate line-faint"/><polyline points="152,181 156,186 164,175" fill="none" class="line-ink" stroke-width="2"/>
+<text x="24" y="218" class="muted small">Actions of Gameplay</text>
+<text x="24" y="242" class="ink small">Action</text>
+<rect x="148" y="226" width="300" height="22" rx="3" class="plate line-faint"/>
+<text x="156" y="242" class="ink small">Move</text>
+<rect x="456" y="226" width="22" height="22" rx="3" class="plate line-faint"/>
+<line x1="461" y1="233" x2="473" y2="233" class="line-muted"/>
+<line x1="465" y1="230.5" x2="469" y2="230.5" class="line-muted"/>
+<rect x="463" y="235" width="8" height="9" fill="none" class="line-muted"/>
+<text x="24" y="270" class="ink small">Kind</text>
+<rect x="148" y="254" width="330" height="22" rx="3" class="plate line-faint"/>
+<text x="156" y="270" class="ink small">Vector2</text>
+<polygon points="462,263 470,263 466,268" class="muted"/>
+<text x="24" y="298" class="ink small">Dead zone</text>
+<rect x="148" y="282" width="330" height="22" rx="3" class="plate line-faint"/><rect x="200" y="284" width="10" height="18" rx="2" class="blue"/>
+<text x="313" y="298" text-anchor="middle" class="ink small">0.15</text>
+<text x="494" y="298" class="ink small">A Vector2 has a dead zone</text>
+<text x="24" y="326" class="ink small">Bindings</text>
+<rect x="148" y="310" width="214" height="22" rx="11" class="plate line-faint"/>
+<text x="255" y="326" text-anchor="middle" class="ink small">2D:Key/W,Key/S,Key/A,Key/D</text>
+<text x="376" y="327" text-anchor="middle" class="muted">×</text>
+<rect x="148" y="338" width="288" height="22" rx="11" class="plate line-faint"/>
+<text x="292" y="354" text-anchor="middle" class="ink small">2D:Key/Up,Key/Down,Key/Left,Key/Right</text>
+<text x="450" y="355" text-anchor="middle" class="muted">×</text>
+<rect x="148" y="366" width="140" height="22" rx="11" class="plate line-faint"/>
+<text x="218" y="382" text-anchor="middle" class="ink small">Gamepad/LeftStick</text>
+<text x="302" y="383" text-anchor="middle" class="muted">×</text>
+<rect x="318" y="366" width="22" height="22" rx="3" class="plate line-faint"/>
+<line x1="324" y1="377" x2="334" y2="377" class="line-ink"/><line x1="329" y1="372" x2="329" y2="382" class="line-ink"/>
+<rect x="346" y="366" width="22" height="22" rx="3" class="plate line-faint"/>
+<circle cx="357" cy="377" r="6" fill="none" class="line-faint"/><circle cx="357" cy="377" r="2" class="faint"/>
+<text x="494" y="326" class="ink small">One chip per binding;</text>
+<text x="494" y="344" class="ink small">× removes it</text>
+<text x="494" y="382" class="ink small">+ adds a binding. Capture is off:</text>
+<text x="494" y="400" class="ink small">a key alone cannot drive a Vector2</text>
+<rect x="24" y="400" width="454" height="22" rx="3" fill="none" class="line-muted" stroke-dasharray="4 3"/>
+<text x="32" y="416" class="ink small">Look: Vector2, dead zone 0.15, Gamepad/RightStick</text>
+<text x="24" y="450" class="ink small">Action</text>
+<rect x="148" y="434" width="300" height="22" rx="3" class="plate line-faint"/>
+<text x="156" y="450" class="ink small">Jump</text>
+<rect x="456" y="434" width="22" height="22" rx="3" class="plate line-faint"/>
+<line x1="461" y1="441" x2="473" y2="441" class="line-muted"/>
+<line x1="465" y1="438.5" x2="469" y2="438.5" class="line-muted"/>
+<rect x="463" y="443" width="8" height="9" fill="none" class="line-muted"/>
+<text x="24" y="478" class="ink small">Kind</text>
+<rect x="148" y="462" width="330" height="22" rx="3" class="plate line-faint"/>
+<text x="156" y="478" class="ink small">Button</text>
+<polygon points="462,471 470,471 466,476" class="muted"/>
+<text x="24" y="506" class="ink small">Bindings</text>
+<rect x="148" y="490" width="84" height="22" rx="11" class="plate line-faint"/>
+<text x="190" y="506" text-anchor="middle" class="ink small">Key/Space</text>
+<text x="246" y="507" text-anchor="middle" class="muted">×</text>
+<rect x="260" y="490" width="92" height="22" rx="11" class="plate line-faint"/>
+<text x="306" y="506" text-anchor="middle" class="ink small">Gamepad/A</text>
+<text x="366" y="507" text-anchor="middle" class="muted">×</text>
+<rect x="382" y="490" width="22" height="22" rx="3" class="plate line-faint"/>
+<line x1="388" y1="501" x2="398" y2="501" class="line-ink"/><line x1="393" y1="496" x2="393" y2="506" class="line-ink"/>
+<rect x="410" y="490" width="22" height="22" rx="3" class="plate line-faint"/>
+<circle cx="421" cy="501" r="6" fill="none" class="line-ink"/><circle cx="421" cy="501" r="2" class="ink"/>
+<text x="494" y="478" class="ink small">A Button has no dead zone</text>
+<text x="494" y="506" class="ink small">Capture binds the next control</text>
+<text x="494" y="524" class="ink small">pressed</text>
+<rect x="24" y="530" width="454" height="22" rx="3" fill="none" class="line-muted" stroke-dasharray="4 3"/>
+<text x="32" y="546" class="ink small">Run, Wave, Dance, Respawn and Pause: Buttons</text>
+<rect x="24" y="562" width="112" height="22" rx="4" class="plate line-faint"/><text x="34" y="578" class="ink small">+ Add Action</text>
+</svg>

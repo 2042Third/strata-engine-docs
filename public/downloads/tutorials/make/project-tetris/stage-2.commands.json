@@ -1,0 +1,80 @@
+[
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Board"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Board"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"class": "TetrisBoard",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Board"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"class": "TetrisBoard",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 2
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 2
+			}
+		}
+	},
+	{
+		"command": "log.read",
+		"parameters": {
+			"newest": true,
+			"limit": 50
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

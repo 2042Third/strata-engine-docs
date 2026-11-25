@@ -1,0 +1,37 @@
+{
+	"figures": [
+		{
+			"id": "overview",
+			"shows": "The Physics Playground arena seen from above in edit mode, every station in view",
+			"caption": "The tall post at the back left is twelve 1 m crates, stacked so tightly that they look like one post. Eight pale ghost boxes hover over the far end of the ball pit, top right. Nothing simulates in edit mode, so the counters read 0.",
+			"alt": "A walled arena seen from above, with a tall post of stacked crates at the back left, a crate pyramid and a winding row of standing blocks. At the top right, eight pale boxes hover over the far end of a ball pit; a funnel, a ramp, ten white pins and a Bodies 0 counter fill the rest.",
+			"kind": "scene",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"camera": "scene",
+			"size": [1920, 1080],
+			"quality": "high",
+			"expect": "complete",
+			"numbers": "64 standing blocks: the HUD's Dominoes 0 / 64 in the picture and the sample's README; ten pins: the scene's entities Pin to Pin (9); twelve tower crates: the scene's Crate instances at x -15, y 0.501 to 11.512 (1 m crates 1 mm apart); eight ghost boxes in two rows of four: the scene's Ghost-tagged entities at y 3.5 (z -10.5) and y 4.5 (z -9.5)."
+		},
+		{
+			"id": "ball-pit",
+			"shows": "The ball pit of the Physics Playground 12 seconds into play, 6 seconds after the sample's demo poured 100 more balls into it",
+			"caption": "The pit's 500 balls of four materials (red rubber, blue plastic, dark metal and wood) still lie in neat mixed rows seen through the front glass. The 100 red balls poured in later lie loosely on top and against the glass walls. Nobody placed these balls where they lie: the physics engine did.",
+			"alt": "A glass-walled pit seen at an angle from above. Through the front glass lie neat rows of red, blue, dark metal and wooden balls, under a loose, uneven layer of mostly red balls that lets the mixed balls show through its gaps.",
+			"kind": "scene",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"camera": { "position": [1, 12, 2], "target": [9.4, 0.6, -10], "fov": 40 },
+			"size": [1920, 1080],
+			"quality": "high",
+			"play": {
+				"steps": 720
+			},
+			"expect": "complete",
+			"numbers": "500 balls of four materials: the sample's README and its four ball prefabs; 100 more: Playground::PourCount, poured by the sample's AutoDemo at DemoStart + 4 s (6 s of the 720 fixed steps of 1/60 s); the HUD reads 723 bodies after the demo also fed the goal and launched 3 balls. The poured balls are all red: Playground::SpawnBalls instantiates only BallPrefab, the scene's Ball.stprefab (handle 90A19E16BF4A05C1), whose material is RubberRed."
+		}
+	]
+}

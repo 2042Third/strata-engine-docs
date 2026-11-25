@@ -1,0 +1,349 @@
+id	type	heading	label
+gameui:42	feature	1.1 Module shape and registration	The GameUI module, a layer of its own that may include only Core, Input, Asset, Reflection, Scene,…
+gameui:43	feature	1.1 Module shape and registration	`RegisterGameUIModule`: components, overlay pass, "UI" scene system (`BeforeIfPresent =…
+gameui:44	feature	1.1 Module shape and registration	`RegisterGameUIComponents`: 12 components in category "UI", each but `UIRect`…
+gameui:45	feature	1.1 Module shape and registration	Inactive reasons: Inspector rows greyed with a reason when another property turns them off (e.g.…
+gameui:46	feature	1.1 Module shape and registration	Engine without the module still renders and plays (renderer reaches it only via…
+gameui:52	feature	1.2 Components (data, `GameUIComponents.h`)	Coordinate and color conventions; the UI contract comment
+gameui:53	feature	1.2 Components (data, `GameUIComponents.h`)	`UICanvasComponent`
+gameui:54	feature	1.2 Components (data, `GameUIComponents.h`)	`UICanvasScaleMode`
+gameui:55	feature	1.2 Components (data, `GameUIComponents.h`)	`UICanvasRenderMode`
+gameui:56	feature	1.2 Components (data, `GameUIComponents.h`)	`UIRectComponent`
+gameui:57	feature	1.2 Components (data, `GameUIComponents.h`)	`UIImageComponent`
+gameui:58	feature	1.2 Components (data, `GameUIComponents.h`)	`UITextComponent`
+gameui:59	feature	1.2 Components (data, `GameUIComponents.h`)	`UISelectableComponent`
+gameui:60	feature	1.2 Components (data, `GameUIComponents.h`)	`UIButtonComponent`
+gameui:61	feature	1.2 Components (data, `GameUIComponents.h`)	`UIToggleComponent`
+gameui:62	feature	1.2 Components (data, `GameUIComponents.h`)	`UISliderComponent`
+gameui:63	feature	1.2 Components (data, `GameUIComponents.h`)	`UILayoutComponent`
+gameui:64	feature	1.2 Components (data, `GameUIComponents.h`)	`UIInputFieldComponent`
+gameui:65	feature	1.2 Components (data, `GameUIComponents.h`)	`UIMaskComponent`
+gameui:66	feature	1.2 Components (data, `GameUIComponents.h`)	Entity references are reflected entity properties (remapped by duplicate, paste, prefab instance;…
+gameui:67	feature	1.2 Components (data, `GameUIComponents.h`)	Serialization round-trip and clamping of out-of-range document values
+gameui:73	feature	1.3 The per-scene UI model (`GameUIScene`)	One `GameUIScene` per scene, in the registry's context, created on first use; holds handles, never…
+gameui:74	feature	1.3 The per-scene UI model (`GameUIScene`)	Root canvases (a canvas with no canvas among ancestors) in hierarchy order; nested canvas = plain…
+gameui:75	feature	1.3 The per-scene UI model (`GameUIScene`)	Elements of a canvas in depth-first order (parents before children = draw order), `SubtreeEnd`…
+gameui:76	feature	1.3 The per-scene UI model (`GameUIScene`)	Widget parts resolved by UUID (slider fill/handle, toggle checkmark, selectable target image,…
+gameui:77	feature	1.3 The per-scene UI model (`GameUIScene`)	Scale per screen (`ComputeScale`) and size in canvas units (screen / scale)
+gameui:78	feature	1.3 The per-scene UI model (`GameUIScene`)	`UIScreen` (pixel size + content scale), `UICanvasView` (scale, unit size, sort order, flags)
+gameui:79	feature	1.3 The per-scene UI model (`GameUIScene`)	Up to 4 layouts per canvas keyed by unit size, LRU replacement (`c_MaxLayoutsPerCanvas`)
+gameui:80	feature	1.3 The per-scene UI model (`GameUIScene`)	Lazy layout (`EnsureLayout`), draw order by `SortOrder` then hierarchy (stable sort)
+gameui:81	feature	1.3 The per-scene UI model (`GameUIScene`)	Incremental change tracking: entt signals per component, hierarchy moves, activity changes, asset…
+gameui:82	feature	1.3 The per-scene UI model (`GameUIScene`)	Dirty marks per layout for layout, quads, clips, hit stamp
+gameui:83	feature	1.3 The per-scene UI model (`GameUIScene`)	Re-layout from the highest ancestor whose rect depends on its children
+gameui:84	feature	1.3 The per-scene UI model (`GameUIScene`)	Gameplay reparenting of plain entities costs no canvas
+gameui:85	feature	1.3 The per-scene UI model (`GameUIScene`)	Visibility: active in hierarchy, toggle checkmark off hides, placeholder hides when field has text
+gameui:86	feature	1.3 The per-scene UI model (`GameUIScene`)	Queries: element count, entity, box, subtree end, visible, raycast target, clip, visible box,…
+gameui:87	feature	1.3 The per-scene UI model (`GameUIScene`)	World-space canvas plane matrix
+gameui:88	feature	1.3 The per-scene UI model (`GameUIScene`)	Input screen (game window pixels, content scale, input-to-pixel factor)
+gameui:89	feature	1.3 The per-scene UI model (`GameUIScene`)	Selectable visual states stored for the system (state + tint)
+gameui:90	feature	1.3 The per-scene UI model (`GameUIScene`)	Input field editing state (caret, anchor, blink), caret from a point
+gameui:91	feature	1.3 The per-scene UI model (`GameUIScene`)	`Validate`: full recomputation compared with caches; Debug builds assert after every `EnsureLayout`
+gameui:92	feature	1.3 The per-scene UI model (`GameUIScene`)	`GameUISceneStats` / `TakeStats` (ElementsLaidOut, TextsShaped, QuadsBuilt, FullRebuilds)
+gameui:93	feature	1.3 The per-scene UI model (`GameUIScene`)	Root/world canvas counts cached per hierarchy version (hidden UI cost)
+gameui:99	feature	1.4 Layout (`GameUILayout.cpp`)	Root rect = canvas units inset by safe-area padding
+gameui:100	feature	1.4 Layout (`GameUILayout.cpp`)	Anchor/pivot/position/size rect math per axis
+gameui:101	feature	1.4 Layout (`GameUILayout.cpp`)	Two passes (x then y), each top-down for boxes and bottom-up (memoized) for preferred sizes
+gameui:102	feature	1.4 Layout (`GameUILayout.cpp`)	Layout groups: stack main axis, cross axis stretch or align, nine-way child alignment
+gameui:103	feature	1.4 Layout (`GameUILayout.cpp`)	Grids: fixed columns or as many as fit
+gameui:104	feature	1.4 Layout (`GameUILayout.cpp`)	`IgnoreLayout`, inactive children skipped
+gameui:105	feature	1.4 Layout (`GameUILayout.cpp`)	Fit content: text (unwrapped width; height at given width) or layout children + padding
+gameui:106	feature	1.4 Layout (`GameUILayout.cpp`)	Slider fill and handle anchored to the normalized value; reversed directions
+gameui:107	feature	1.4 Layout (`GameUILayout.cpp`)	Non-finite results zeroed
+gameui:108	feature	1.4 Layout (`GameUILayout.cpp`)	Mask clip rects: mask box inset by padding, met with outer clip; recomputed only on change
+gameui:109	feature	1.4 Layout (`GameUILayout.cpp`)	Only elements whose box changed rewrite quads / bump hit stamp
+gameui:115	feature	1.5 Text (`GameUIText.cpp`, uses `Renderer/TextLayout.h`)	Shaping from font metrics (`FontFace`, `ShapeText`) without rasterizing
+gameui:116	feature	1.5 Text (`GameUIText.cpp`, uses `Renderer/TextLayout.h`)	Default engine font while the font loads; font loading reshapes (font requested at High priority,…
+gameui:117	feature	1.5 Text (`GameUIText.cpp`, uses `Renderer/TextLayout.h`)	Shape cache per element per layout keyed by options and font
+gameui:118	feature	1.5 Text (`GameUIText.cpp`, uses `Renderer/TextLayout.h`)	Wrapping, max width, box height and overflow (truncate / ellipsis) from the rect
+gameui:119	feature	1.5 Text (`GameUIText.cpp`, uses `Renderer/TextLayout.h`)	Input field text is one line, never wrapped or cut; scrolls to keep the caret in view
+gameui:120	feature	1.5 Text (`GameUIText.cpp`, uses `Renderer/TextLayout.h`)	Caret stops (`MeasureCaretStops`)
+gameui:126	feature	1.6 Quads (`GameUIQuads.cpp`, `GameUIRenderData.h`)	`UIQuad` (64 bytes): rect, UV (or glyph pen), color, resource, flags (kind + font index), border,…
+gameui:127	feature	1.6 Quads (`GameUIQuads.cpp`, `GameUIRenderData.h`)	`UIClipRect` (32 bytes)
+gameui:128	feature	1.6 Quads (`GameUIQuads.cpp`, `GameUIRenderData.h`)	`UIDrawParameters` push constants (64 bytes), `c_MaxBoundAtlases = 4`
+gameui:129	feature	1.6 Quads (`GameUIQuads.cpp`, `GameUIRenderData.h`)	Per-element quad slots with spare room for texts (`GetTextCapacity`: +25%, at least 4; +2 for an…
+gameui:130	feature	1.6 Quads (`GameUIQuads.cpp`, `GameUIRenderData.h`)	Change journal of quad ranges (merged, at most 256, floor)
+gameui:131	feature	1.6 Quads (`GameUIQuads.cpp`, `GameUIRenderData.h`)	Full repack when a slot overflows or elements change (new `QuadArrayId`)
+gameui:132	feature	1.6 Quads (`GameUIQuads.cpp`, `GameUIRenderData.h`)	Indirection: quads reference UI texture indices and scene font indices, never GPU slots/atlas…
+gameui:133	feature	1.6 Quads (`GameUIQuads.cpp`, `GameUIRenderData.h`)	Use counting of glyphs, fonts, textures (resource version)
+gameui:134	feature	1.6 Quads (`GameUIQuads.cpp`, `GameUIRenderData.h`)	Image quads: tint from the selectable's state, image swap, solid color, preserve aspect, filled…
+gameui:135	feature	1.6 Quads (`GameUIQuads.cpp`, `GameUIRenderData.h`)	Text quads: one per glyph, pen on baseline in UV.xy for pixel snapping, outline clamped to 0.1 em;…
+gameui:136	feature	1.6 Quads (`GameUIQuads.cpp`, `GameUIRenderData.h`)	Quads carry their element's clip index
+gameui:142	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Overlay registry: modules add passes to every `SceneRenderer` without the renderer including them
+gameui:143	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	`Prepare` (layout, uploads, glyphs, textures, runs), `DrawWorld` (depth-tested, after world text),…
+gameui:144	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Screen-space canvases follow `DrawScreenSpaceText` (editor views/thumbnails hide them; counted,…
+gameui:145	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Scene without camera but with screen UI shows the UI over black (main menus)
+gameui:146	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Upload only changed ranges (merged with gap 16); whole arrays on rebuild or other scene; idle…
+gameui:147	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Clip rects uploaded beside quads when changed
+gameui:148	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	World-space transforms computed per frame, camera-relative subtraction in double, uploaded when…
+gameui:149	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Texture slot table (bindless slot + grayscale/sRGB bits), requested at High priority, white while…
+gameui:150	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Glyph table per font, from the renderer's `FontAtlasCache`; asking rasterizes within budget and…
+gameui:151	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Draw runs: one draw per canvas with up to 4 fonts; split runs beyond
+gameui:152	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Pipelines: alpha blending in display values, no culling, world pipeline depth test GreaterOrEqual…
+gameui:153	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Binding sets keyed by the four atlases, released when unused a frame; buffers released when the…
+gameui:154	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Instanced draw: 6 vertices per quad, no vertex buffer
+gameui:155	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	GPU timing stage `GPU.UI`, CPU stage `Render.UI`
+gameui:156	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Vertex shader: canvas units to pixels, pixel snapping of rect edges and glyph baselines, clip rect…
+gameui:157	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Fragment shader: rounded rect SDF with border, sRGB/grayscale texture decode, SDF glyph with…
+gameui:158	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Shared data layout with C++ (keep in step)
+gameui:159	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Screen view (editor canvas mode zoom/pan) via `SceneScreenView`
+gameui:160	feature	1.7 The UI pass (`GameUIRenderer`, shaders)	Shader entries registered
+gameui:166	feature	1.8 Hit testing and the pointer (`GameUIHitTest`)	`GameUIHitTester`: uniform grid per canvas of raycast-target visible boxes (about 2 targets per…
+gameui:167	feature	1.8 Hit testing and the pointer (`GameUIHitTest`)	Hit test: topmost canvas by sort order, within it the last drawn, half-open rects; non-input…
+gameui:168	feature	1.8 Hit testing and the pointer (`GameUIHitTest`)	`HitTestAll` (every element under a point, for tools)
+gameui:169	feature	1.8 Hit testing and the pointer (`GameUIHitTest`)	Raycast targets: image with RaycastTarget, text with RaycastTarget, or a selectable
+gameui:170	feature	1.8 Hit testing and the pointer (`GameUIHitTest`)	World-space canvases: camera ray (`GetGameViewProjection`, `MakeRay` with reversed-Z), plane…
+gameui:176	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Update order: actions, layout for input screen, hit grids, drop unusable focus, pointer, editing,…
+gameui:177	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Scene without canvases: one storage-size check, releases captures
+gameui:178	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Gestures: a press that starts over the UI is the UI's until all buttons are released; otherwise…
+gameui:179	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Binding capture (rebinding menu) left press presses no widget
+gameui:180	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Hover recomputed only when something that changes it changed
+gameui:181	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Click on release over the pressed selectable; press focuses; slider drag (also outside its rect),…
+gameui:182	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Toggles flip; groups exclusive (switching the on one off does nothing)
+gameui:183	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Values written with `registry.patch` (running scene, no undo)
+gameui:184	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Focus and `FocusChanged` events; focused input field is the edited one
+gameui:185	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	UI action map `UI/Submit`, `UI/Cancel`, `UI/Up/Down/Left/Right`, repeat after 0.4 s every 0.1 s on…
+gameui:186	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Navigation: start at topmost input canvas's `FirstSelected` else top-left selectable (screen…
+gameui:187	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Automatic navigation: score along + 2 x across between centers in screen pixels; Explicit…
+gameui:188	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Focused slider steps with direction keys (`KeyboardStep`, 0 = tenth of range)
+gameui:189	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Submit clicks focused button / flips toggle / submits a field; Cancel stops editing (scripts read…
+gameui:190	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Visual states (Disabled > Pressed > Hover > Focused > Normal), tint fades over unscaled time,…
+gameui:191	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Input field editing: keyboard capture, typed text at caret within character limit, control chars…
+gameui:192	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Click on input field places caret at nearest character (also on world canvases through the ray)
+gameui:193	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Events queued in input order, dispatched at end of update before scripts; event target resolution;…
+gameui:194	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	`OnRuntimeStop` restores input and rest states; `OnEntityDestroying` clears references
+gameui:195	feature	1.9 Input system (`GameUISystem`, Play mode, "UI" scene system)	Typed text source (`Input::GetTypedText`, `GetUncapturedTypedText`, `c_MaxTypedTextBytes = 1024`)
+gameui:201	feature	1.10 Gameplay services and scripts	`UIEventType` (Click, ValueChanged, FocusChanged, Submit), `UIEventInfo`, `IUIEvents`
+gameui:202	feature	1.10 Gameplay services and scripts	`IUIControl` (text, image, color, interactable, value, focus, pointer over UI, action state);…
+gameui:203	feature	1.10 Gameplay services and scripts	Host functions (15 UI host functions: `UIGetText` ... `UIIsActionDown`) appended to the ABI
+gameui:204	feature	1.10 Gameplay services and scripts	Script callbacks `OnUIClick`, `OnUIValueChanged`, `OnUIFocusChanged`, `OnUISubmit` (read only when…
+gameui:205	feature	1.10 Gameplay services and scripts	Dispatch to the widget's scripts then the event target's
+gameui:206	feature	1.10 Gameplay services and scripts	SDK `UIElement` (`entity.GetUI()`), `UI` (focus, pointer, actions), `UIAction`
+gameui:207	feature	1.10 Gameplay services and scripts	`Motion` helpers (SmoothDamp etc.) shipped with the stream
+gameui:208	feature	1.10 Gameplay services and scripts	`Time::GetUnscaledDeltaTime` for pause menus
+gameui:214	feature	1.11 Editor and automation (authoring)	`ui.create` (presets in one transaction, new canvas if needed, anchor presets), `ui.layout` (rects…
+gameui:215	feature	1.11 Editor and automation (authoring)	Presets: Canvas, Panel, Image, Text, Button, Toggle, Slider, InputField, Horizontal/Vertical/Grid…
+gameui:216	feature	1.11 Editor and automation (authoring)	16 anchor presets; keep a rect in place while anchors change; margins along stretched axes; game…
+gameui:217	feature	1.11 Editor and automation (authoring)	UI Rect drawer in the Inspector (anchor grid, pixels at game screen, margin rows, prefab overrides)
+gameui:218	feature	1.11 Editor and automation (authoring)	Viewport "Game UI" chip, click selects topmost element
+gameui:219	feature	1.11 Editor and automation (authoring)	2D canvas mode: letterboxed canvas, outlines/handles, drag/resize with snap, zoom about pointer,…
+gameui:220	feature	1.11 Editor and automation (authoring)	`input.click` clicks an element where the player sees it (projects world canvases), fails when…
+gameui:224	feature	1.12 Samples and feature test	Tetris HUD on a canvas (`Samples/Tetris/Assets/Scenes/Main.stscene`, `Scripts/TetrisBoard.cpp`;…
+gameui:226	feature	1.12 Samples and feature test	ThirdPerson main menu with focus, Cancel, a credits panel scrolling inside a `UIMask`, settings…
+gameui:230	feature	1.12 Samples and feature test	Feature test: `StrataTests/FeatureTest/Scripts/UIFeatures.cpp` (256 lines; a scripted…
+gameui:235	feature	1.13 Tests (intended behaviour)	`StrataTests/src/GameUI/GameUILayoutTests.cpp` (suites `GameUI.Layout`, `.Scale`, `.Dirty`,…
+gameui:236	feature	1.13 Tests (intended behaviour)	`GameUIInputTests.cpp` (`GameUI.HitTest`, `.Capture`, `.Events`, `.Navigation`, `.InputField`,…
+gameui:237	feature	1.13 Tests (intended behaviour)	`GameUITextTests.cpp` (`GameUI.Text`), `GameUIComponentTests.cpp` (`GameUI.Components`,…
+gameui:238	feature	1.13 Tests (intended behaviour)	`StrataTests/src/Renderer/GPUGameUITests.cpp` (`GPU.GameUI`: pixels, snapping, colors, masks,…
+gameui:240	feature	1.13 Tests (intended behaviour)	`StrataTests/src/Scripting/ScriptUITests.cpp` (`Scripting.UI`).
+gameui:241	feature	1.13 Tests (intended behaviour)	`StrataTests/src/Perf/GameUIPerfTests.cpp` (`Perf.GameUI.Layout10k` budget 0.6088 ms measured…
+gameui:243	feature	1.13 Tests (intended behaviour)	Editor: `EditorGameUITests.cpp`, `EditorUICommandTests.cpp`, `GPUCanvasEditTests.cpp`; also…
+gameui:264	concept		What a game UI is, and why it differs from an editor UI
+gameui:274	concept		Coordinate spaces: pixels, canvas units, +Y down
+gameui:279	concept		Resolution independence: canvas scale modes
+gameui:286	concept		Anchors and pivots (the rect model)
+gameui:292	concept		The UI as a tree; draw order is hierarchy order
+gameui:297	concept		Layout groups and measure/arrange
+gameui:303	concept		Text: shaping vs. rasterizing; signed-distance-field fonts
+gameui:310	concept		Images: nine-slice, fill, rounded rects by SDF
+gameui:315	concept		Retained mode needs change tracking: dirty flags and the "UI contract"
+gameui:323	concept		Caching layouts per screen size
+gameui:326	concept		Batching for the GPU: quads, instancing, indirection tables
+gameui:332	concept		Clipping and masks without breaking batches
+gameui:337	concept		Pixel snapping and display-value blending
+gameui:342	concept		Overlay passes and dependency inversion
+gameui:346	concept		World-space UI
+gameui:351	concept		Hit testing: picking the topmost element
+gameui:358	concept		Input routing between UI and gameplay
+gameui:363	concept		Widgets as state machines
+gameui:367	concept		Focus and spatial navigation (keyboard, gamepad, TV)
+gameui:372	concept		Text input
+gameui:376	concept		Events and decoupling game logic from widgets
+gameui:381	concept		Time: scaled vs unscaled
+gameui:384	concept		Testing UI headlessly
+gameui:394	code		1: `Strata/src/Strata/GameUI/GameUIComponents.h` 74-88 (`UIRectComponent` with its comment)
+gameui:395	code		2: `GameUIComponents.h` 41-64 (`UICanvasComponent`)
+gameui:396	code		3: `Strata/src/Strata/GameUI/GameUIScene.cpp` 80-104 (`ComputeScale`)
+gameui:397	code		4: `Strata/src/Strata/GameUI/GameUILayout.cpp` 216-285 (`LayOutAxis`)
+gameui:398	code		5: `GameUILayout.cpp` 287-367 (`PlaceGroupChildren`)
+gameui:399	code		6: `GameUILayout.cpp` 369-407 (`GetPreferredSize`, `GetContentSize`)
+gameui:400	code		7: `GameUILayout.cpp` 87-159 (`UpdateLayout`)
+gameui:401	code		8: `GameUIScene.cpp` 106-149 (constructor: signal connections)
+gameui:402	code		9: `GameUIScene.cpp` 198-242 (`OnLayoutChanged`, `OnVisualChanged`, `OnTextChanged`)
+gameui:403	code		10: `GameUIScene.cpp` 566-602 (depth-first walk and subtree ends in `RebuildCanvas`)
+gameui:404	code		11: `GameUIScene.cpp` 961-969 (`DependsOnChildren`) + 974-1023 (`EnsureLayout`)
+gameui:405	code		12: `GameUIScene.cpp` 1394-1459 (`Validate`)
+gameui:406	code		13: `StrataTests/src/GameUI/GameUILayoutTests.cpp` 485-557 and 575-586
+gameui:407	code		14: `Strata/src/Strata/GameUI/GameUIRenderData.h` 32-45 (`UIQuad`) and 57-78 (`UIDrawParameters`)
+gameui:408	code		15: `Strata/src/Strata/GameUI/GameUIQuads.cpp` 321-357 (nine-slice)
+gameui:409	code		16: `GameUIQuads.cpp` 192-267 (`BuildQuads`)
+gameui:410	code		17: `GameUIQuads.cpp` 467-484 (glyph quads)
+gameui:411	code		18: `Strata/src/Strata/GameUI/GameUIText.cpp` 111-142 (`PlaceFieldLine`)
+gameui:412	code		19: `Strata/shaders/GameUI/UIQuad.vert.slang` 41-143 (`st_Main`)
+gameui:413	code		20: `Strata/shaders/GameUI/UIQuad.frag.slang` 76-106 (`ShadeImage`)
+gameui:414	code		21: `UIQuad.frag.slang` 62-73 and 108-120 (`ShadeGlyph`, `st_Main`)
+gameui:415	code		22: `Strata/src/Strata/GameUI/GameUIRenderer.cpp` 259-362 (`UploadQuads`)
+gameui:416	code		23: `GameUIRenderer.cpp` 611-689 (`BuildRuns`)
+gameui:417	code		24: `GameUIRenderer.cpp` 364-394 (`UploadTransforms`)
+gameui:418	code		25: `Strata/src/Strata/GameUI/GameUIHitTest.cpp` 50-129 (`Build`, `HitTestGrid`)
+gameui:419	code		26: `GameUIHitTest.cpp` 208-253 (`MakeRay`, `IntersectCanvas`, `ProjectCanvasPoint`)
+gameui:420	code		27: `Strata/src/Strata/GameUI/GameUISystem.cpp` 254-328 (`UpdatePointer`)
+gameui:421	code		28: `GameUISystem.cpp` 809-861 (`Navigate`)
+gameui:422	code		29: `GameUISystem.cpp` 880-931 (`UpdateVisualStates`) + `Strata/src/Strata/Input/UIActions.cpp`…
+gameui:423	code		30: `Samples/ThirdPerson/Scripts/MainMenu.cpp` 34-137
+gameui:425	code		Also short ones for the game-developer track: `Docs/Manual/GameUI.md` 68-88 (the manual's…
+gameui:435	figure		Module map
+gameui:438	figure		Frame timeline
+gameui:442	figure		Rect math
+gameui:444	figure		Anchor preset grid
+gameui:445	figure		Scale modes chart
+gameui:447	figure		Layout passes
+gameui:449	figure		Element array
+gameui:451	figure		Dirty propagation
+gameui:453	figure		Data flow from component to pixel
+gameui:455	figure		Memory layout of `UIQuad`
+gameui:458	figure		Indirection tables
+gameui:460	figure		Draw runs
+gameui:461	figure		Rounded-rect SDF
+gameui:462	figure		Hit-test grid
+gameui:464	figure		World-space pointer ray
+gameui:466	figure		Gesture state machine
+gameui:468	figure		Selectable state priority and fade
+gameui:470	figure		Navigation scoring
+gameui:471	figure		Key repeat timeline
+gameui:472	figure		Input field model
+gameui:473	figure		Event dispatch
+gameui:477	figure		A canvas at 1280x720 and at 2560x1440 and at 21:9, ScaleWithScreen: use the Tetris sample HUD…
+gameui:480	figure		Anchors: a score anchored top-right and a bar stretched along the bottom at two aspect ratios…
+gameui:482	figure		The Inspector's UI Rect drawer with the anchor preset grid open and margin rows on a stretched…
+gameui:483	figure		The viewport's 2D canvas mode with outlines and handles on the selection (the viewport's "2D"…
+gameui:485	figure		Images: solid, rounded with border, nine-sliced panel, filled health bar at 0.3, preserve aspect…
+gameui:487	figure		Text: alignment variants, wrapping, Truncate vs Ellipsis, an outline over a busy background.
+gameui:488	figure		Pixel snapping on vs off (`UICanvas.PixelSnap`) at a fractional scale, zoomed crop to show crisp…
+gameui:489	figure		A vertical layout menu (Title, Play, Settings, Quit) and the same buttons in a grid layout;…
+gameui:490	figure		Selectable states: one button each in Normal, Hover, Pressed, Focused, Disabled (play mode,…
+gameui:492	figure		Toggle group (radio) and a slider with fill and handle at two values.
+gameui:493	figure		Input field: empty with placeholder, typing with selection highlighted and caret, long text…
+gameui:495	figure		Mask: the ThirdPerson credits panel scrolling inside a `UIMask`, Softness 0 vs 20…
+gameui:497	figure		World-space canvas: a sign on a wall in the Showcase (`Samples/Showcase/Assets/Scenes/Outpost.stsce…
+gameui:500	figure		Main menu scene without a camera shown over black (`Samples/ThirdPerson/Assets/Scenes/MainMenu.stsc…
+gameui:502	figure		Editor viewport with the "Game UI" chip off vs on (screen canvases hidden in editor views; world…
+gameui:504	figure		Gamepad navigation: focus highlight moving through a 3x3 grid (capture three frames).
+gameui:505	figure		The Performance panel showing `Render.UI` and `GPU.UI` stages on a UI-heavy scene (optional, for…
+gameui:511	rule		Signal every direct write to a UI component
+gameui:514	rule		Values written right after `AddComponent` need no signal
+gameui:516	rule		New UI components go in `GameUIComponents.h`, category "UI", `Requires("UIRect")`
+gameui:518	rule		The renderer never includes GameUI
+gameui:520	rule		`GameUIScene` holds handles, never `Ref`s or GPU objects
+gameui:522	rule		Layout never rasterizes glyphs
+gameui:524	rule		Quads refer to UI texture and font indices, never bindless slots or atlas positions
+gameui:526	rule		Masks clip in the shader, never by splitting draws
+gameui:528	rule		Code that tests where an element is shown or hit uses `GetVisibleBox`
+gameui:530	rule		`UIQuad` and the shader structs change together
+gameui:532	rule		Only `GameUISystem` reads the pointer for the UI and sets keyboard capture
+gameui:534	rule		Hit-test against the layout of the game's input screen (`GetInputScreen`)
+gameui:537	rule		World-space canvases: project or ray-intersect, never divide pixels by the scale
+gameui:539	rule		The UI runs on unscaled time
+gameui:541	rule		Widget values change with `registry.patch` in the running scene, without undo
+gameui:543	rule		Values set from code raise no events
+gameui:545	rule		Read navigation through the UI action map, not raw keys
+gameui:547	rule		The UI system runs before Scripting (soft order)
+gameui:549	rule		Disabled selectables still block
+gameui:551	rule		An idle frame costs a pointer comparison
+gameui:554	rule		Keep `UIInputField.TextElement` a `UIText` element and give the field a `UIMask`
+gameui:557	rule		Text default `RaycastTarget` is off, image default on
+gameui:559	rule		Hierarchy changes go through `Scene`
+gameui:561	rule		Known limitation (do not promise more)
+gameui:571	hands-on		First menu
+gameui:574	hands-on		HUD that survives every screen
+gameui:577	hands-on		Pause menu at time scale 0
+gameui:580	hands-on		Settings screen
+gameui:582	hands-on		Scrolling credits / list
+gameui:584	hands-on		A shop sign in the world
+gameui:586	hands-on		Agent-built UI
+gameui:591	hands-on		Trace a frame
+gameui:593	hands-on		Break the contract on purpose
+gameui:595	hands-on		Add a fill direction "Radial360"
+gameui:599	hands-on		Add a `UIScrollView` component
+gameui:602	hands-on		Spacing between grid rows only
+gameui:605	hands-on		Explain the navigation heuristic
+gameui:607	hands-on		Measure
+gameui:610	hands-on		Glyph outline thickness in pixels instead of em
+gameui:617	term		Canvas
+gameui:618	term		Root canvas
+gameui:619	term		UI element
+gameui:620	term		Canvas unit
+gameui:621	term		Scale (s)
+gameui:622	term		Reference resolution
+gameui:623	term		Match width or height
+gameui:624	term		Content scale / DPI scale
+gameui:625	term		Safe area
+gameui:626	term		Screen space / world space (render mode)
+gameui:627	term		Anchor (min/max)
+gameui:628	term		Pivot
+gameui:629	term		Stretched axis
+gameui:630	term		Margin
+gameui:631	term		Fit content
+gameui:632	term		Layout group
+gameui:633	term		Preferred size
+gameui:634	term		Measure / arrange
+gameui:635	term		Depth-first order
+gameui:636	term		Subtree range
+gameui:637	term		Sort order
+gameui:638	term		Dirty flag / dirty mark
+gameui:639	term		UI contract
+gameui:640	term		entt signal (on_construct/on_update/on_destroy)
+gameui:641	term		`registry.patch` / `MarkModified`
+gameui:642	term		Validation
+gameui:643	term		Layout (cached)
+gameui:644	term		Shaping
+gameui:645	term		Glyph / advance / kerning / baseline / em
+gameui:646	term		SDF (signed distance field)
+gameui:647	term		Glyph atlas
+gameui:648	term		Ellipsis / truncate / overflow
+gameui:649	term		Nine-slice
+gameui:650	term		Filled image
+gameui:651	term		Quad
+gameui:652	term		Instancing / vertex pulling
+gameui:653	term		Bindless texture / slot
+gameui:654	term		Draw run / batch
+gameui:655	term		Push constants
+gameui:656	term		Clip rect / mask
+gameui:657	term		Softness
+gameui:658	term		Pixel snapping
+gameui:659	term		Display (sRGB) values
+gameui:660	term		Overlay pass
+gameui:661	term		Reversed-Z
+gameui:662	term		Camera-relative transform
+gameui:663	term		Raycast target
+gameui:664	term		Hit test
+gameui:665	term		Uniform grid
+gameui:666	term		Half-open rect
+gameui:667	term		Gesture
+gameui:668	term		Pointer capture / keyboard capture
+gameui:669	term		Selectable
+gameui:670	term		Visual state
+gameui:671	term		Transition
+gameui:672	term		Focus
+gameui:673	term		Spatial (automatic) navigation
+gameui:674	term		UI actions / UI map
+gameui:675	term		Key repeat
+gameui:676	term		Hysteresis (stick)
+gameui:677	term		Caret / selection anchor
+gameui:678	term		Code point / UTF-8 continuation byte
+gameui:679	term		Placeholder
+gameui:680	term		Event target
+gameui:681	term		Scene service
+gameui:682	term		Unscaled time
+gameui:683	term		Scene system
+gameui:684	term		Canvas mode (2D)
+gameui:685	term		Screen view
+gameui:723	open		Not read in full
+gameui:730	open		Which sample scenes have world-space canvases
+gameui:733	open		Whether `MainMenu.stscene` (ThirdPerson) has a camera
+gameui:734	open		"18 host functions"
+gameui:736	open		Touch input
+gameui:737	open		Stick hysteresis values
+gameui:738	open		Exact `Space` binding for Submit
+gameui:740	open		Release history inside 0.4.0-0.7.0
+gameui:743	open		IME / composition text

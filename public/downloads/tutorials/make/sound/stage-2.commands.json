@@ -1,0 +1,75 @@
+[
+	{
+		"command": "asset.list",
+		"parameters": {
+			"type": "AudioClip"
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true
+		}
+	},
+	{
+		"command": "script.status"
+	},
+	{
+		"command": "input.sequence",
+		"parameters": {
+			"events": [
+				{
+					"step": 0,
+					"key": "S",
+					"action": "tap",
+					"steps": 150
+				}
+			],
+			"steps": 180
+		}
+	},
+	{
+		"command": "audio.state"
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true
+		}
+	},
+	{
+		"command": "input.sequence",
+		"parameters": {
+			"events": [
+				{
+					"step": 0,
+					"key": "S",
+					"action": "tap",
+					"steps": 150
+				}
+			],
+			"steps": 180
+		}
+	},
+	{
+		"command": "log.read",
+		"parameters": {
+			"newest": true,
+			"limit": 50
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	}
+]

@@ -1,0 +1,4 @@
+# Every text file of the book has LF line ends in the repository and in every checkout, Windows included: the build
+# compares fences with files byte for byte, the tools write LF, and Git for Windows would otherwise check files out
+# with CRLF (core.autocrlf). Binary files (pictures, fonts) are found by Git and left alone.
+* text=auto eol=lf

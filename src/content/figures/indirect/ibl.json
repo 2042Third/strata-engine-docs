@@ -1,0 +1,151 @@
+{
+	"figures": [
+		{
+			"id": "sky-source-spheres",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "A white, a rough metal and a smooth metal sphere under the same sun and four skies: an environment map, the procedural sky, the atmosphere, and no sky light, all at one fixed exposure",
+			"caption": "The same sun, four skies, one fixed exposure. The map's photographed clouds show on the smooth metal. The procedural gradient and the atmosphere give it a smooth sky above the horizon. With no sky light only a constant ambient colour is left, and the metal spheres turn black wherever the sun does not reach them.",
+			"alt": "Four pictures of the same three spheres on a ground: a white one, a rough metal one and a smooth metal one. Under the map the smooth metal sphere mirrors white clouds in a blue sky. Under the procedural sky it mirrors a pale, smooth gradient, and under the atmosphere a deep blue sky above a brown ground. With no sky light the background is black and the ground is a flat gray-brown. The smooth metal sphere is black but for the sun's small highlight, and the rough metal sphere is black on its shadowed half.",
+			"project": { "sample": "ThirdPerson" },
+			"camera": { "position": [0, 1.3, 5.5], "target": [0, 0.6, 0], "fov": 38 },
+			"size": [1280, 720],
+			"quality": "high",
+			"postProcess": { "AutoExposure": false, "Exposure": -0.6 },
+			"setup": [
+				{ "command": "scene.new", "parameters": { "template": "basic3d", "force": true } },
+				{ "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "Intensity": 4.433207, "Color": [0.99292886, 1.0, 0.91019446] } } },
+				{ "command": "component.set", "entityName": "Sky", "parameters": { "component": "SkyLight", "values": { "Intensity": 1.0, "EnvironmentMap": "A76F8BB1E806ACFF", "ZenithColor": [0.18, 0.32, 0.62], "HorizonColor": [0.66, 0.74, 0.84], "GroundColor": [0.22, 0.2, 0.18] } } }
+			],
+			"variants": {
+				"map": {
+					"setup": [
+						{ "command": "component.set", "entityName": "Sky", "parameters": { "component": "SkyLight", "values": { "Source": "EnvironmentMap" } } },
+						{ "command": "material.create", "parameters": { "path": "Materials/MapWhite.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Roughness": 0.6 } } },
+						{ "command": "entity.create", "parameters": { "name": "White", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/MapWhite.stmat" }, "Transform": { "Translation": [-2.2, 0.5, 0] } } } },
+						{ "command": "material.create", "parameters": { "path": "Materials/MapRoughMetal.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Metallic": 1.0, "Roughness": 0.6 } } },
+						{ "command": "entity.create", "parameters": { "name": "RoughMetal", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/MapRoughMetal.stmat" }, "Transform": { "Translation": [0.0, 0.5, 0] } } } },
+						{ "command": "material.create", "parameters": { "path": "Materials/MapSmoothMetal.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Metallic": 1.0, "Roughness": 0.05 } } },
+						{ "command": "entity.create", "parameters": { "name": "SmoothMetal", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/MapSmoothMetal.stmat" }, "Transform": { "Translation": [2.2, 0.5, 0] } } } }
+					]
+				},
+				"procedural": {
+					"setup": [
+						{ "command": "component.set", "entityName": "Sky", "parameters": { "component": "SkyLight", "values": { "Source": "Procedural" } } },
+						{ "command": "material.create", "parameters": { "path": "Materials/ProceduralWhite.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Roughness": 0.6 } } },
+						{ "command": "entity.create", "parameters": { "name": "White", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/ProceduralWhite.stmat" }, "Transform": { "Translation": [-2.2, 0.5, 0] } } } },
+						{ "command": "material.create", "parameters": { "path": "Materials/ProceduralRoughMetal.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Metallic": 1.0, "Roughness": 0.6 } } },
+						{ "command": "entity.create", "parameters": { "name": "RoughMetal", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/ProceduralRoughMetal.stmat" }, "Transform": { "Translation": [0.0, 0.5, 0] } } } },
+						{ "command": "material.create", "parameters": { "path": "Materials/ProceduralSmoothMetal.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Metallic": 1.0, "Roughness": 0.05 } } },
+						{ "command": "entity.create", "parameters": { "name": "SmoothMetal", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/ProceduralSmoothMetal.stmat" }, "Transform": { "Translation": [2.2, 0.5, 0] } } } }
+					]
+				},
+				"atmosphere": {
+					"setup": [
+						{ "command": "component.set", "entityName": "Sky", "parameters": { "component": "SkyLight", "values": { "Source": "Atmosphere" } } },
+						{ "command": "material.create", "parameters": { "path": "Materials/AtmosphereWhite.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Roughness": 0.6 } } },
+						{ "command": "entity.create", "parameters": { "name": "White", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/AtmosphereWhite.stmat" }, "Transform": { "Translation": [-2.2, 0.5, 0] } } } },
+						{ "command": "material.create", "parameters": { "path": "Materials/AtmosphereRoughMetal.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Metallic": 1.0, "Roughness": 0.6 } } },
+						{ "command": "entity.create", "parameters": { "name": "RoughMetal", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/AtmosphereRoughMetal.stmat" }, "Transform": { "Translation": [0.0, 0.5, 0] } } } },
+						{ "command": "material.create", "parameters": { "path": "Materials/AtmosphereSmoothMetal.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Metallic": 1.0, "Roughness": 0.05 } } },
+						{ "command": "entity.create", "parameters": { "name": "SmoothMetal", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/AtmosphereSmoothMetal.stmat" }, "Transform": { "Translation": [2.2, 0.5, 0] } } } }
+					]
+				},
+				"ambient": {
+					"setup": [
+						{ "command": "component.remove", "entityName": "Sky", "parameters": { "component": "SkyLight" } },
+						{ "command": "material.create", "parameters": { "path": "Materials/AmbientWhite.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Roughness": 0.6 } } },
+						{ "command": "entity.create", "parameters": { "name": "White", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/AmbientWhite.stmat" }, "Transform": { "Translation": [-2.2, 0.5, 0] } } } },
+						{ "command": "material.create", "parameters": { "path": "Materials/AmbientRoughMetal.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Metallic": 1.0, "Roughness": 0.6 } } },
+						{ "command": "entity.create", "parameters": { "name": "RoughMetal", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/AmbientRoughMetal.stmat" }, "Transform": { "Translation": [0.0, 0.5, 0] } } } },
+						{ "command": "material.create", "parameters": { "path": "Materials/AmbientSmoothMetal.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Metallic": 1.0, "Roughness": 0.05 } } },
+						{ "command": "entity.create", "parameters": { "name": "SmoothMetal", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/AmbientSmoothMetal.stmat" }, "Transform": { "Translation": [2.2, 0.5, 0] } } } }
+					]
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "sky-source-spheres-indirect",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The same three spheres in the Indirect view under the procedural sky",
+			"caption": "The Indirect view omits the sun's direct light and keeps what the procedural sky gives. The white sphere takes an even, bluish light from the whole sky. The rough metal shows a blurred gradient from blue above to the ground's brown below, and the smooth metal a sharp image of the sky and its horizon.",
+			"alt": "Three spheres in a row on a dark blue ground, drawn only with the light from the sky. The left sphere is an even pale blue. The middle one fades softly from blue at the top to gray-brown at the bottom, and the right one mirrors a blue sky above a sharp horizon line with gray-brown below it.",
+			"project": { "sample": "ThirdPerson" },
+			"camera": { "position": [0, 1.3, 5.5], "target": [0, 0.6, 0], "fov": 38 },
+			"size": [1280, 720],
+			"quality": "high",
+			"debugView": "indirect",
+			"setup": [
+				{ "command": "scene.new", "parameters": { "template": "basic3d", "force": true } },
+				{ "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "Intensity": 4.433207, "Color": [0.99292886, 1.0, 0.91019446] } } },
+				{ "command": "component.set", "entityName": "Sky", "parameters": { "component": "SkyLight", "values": { "Source": "Procedural", "Intensity": 1.0, "ZenithColor": [0.18, 0.32, 0.62], "HorizonColor": [0.66, 0.74, 0.84], "GroundColor": [0.22, 0.2, 0.18] } } },
+				{ "command": "material.create", "parameters": { "path": "Materials/IndirectWhite.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Roughness": 0.6 } } },
+				{ "command": "entity.create", "parameters": { "name": "White", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/IndirectWhite.stmat" }, "Transform": { "Translation": [-2.2, 0.5, 0] } } } },
+				{ "command": "material.create", "parameters": { "path": "Materials/IndirectRoughMetal.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Metallic": 1.0, "Roughness": 0.6 } } },
+				{ "command": "entity.create", "parameters": { "name": "RoughMetal", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/IndirectRoughMetal.stmat" }, "Transform": { "Translation": [0.0, 0.5, 0] } } } },
+				{ "command": "material.create", "parameters": { "path": "Materials/IndirectSmoothMetal.stmat", "properties": { "BaseColor": [0.9, 0.9, 0.9, 1.0], "Metallic": 1.0, "Roughness": 0.05 } } },
+				{ "command": "entity.create", "parameters": { "name": "SmoothMetal", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/IndirectSmoothMetal.stmat" }, "Transform": { "Translation": [2.2, 0.5, 0] } } } }
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "mirror-roughness-sweep",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "A metal ball lit only by an HDR sky map (no sun) at the six roughness values of the six prefiltered levels, 0 to 1 in steps of 0.2",
+			"caption": "As roughness grows, the ball's reflection of the sky loses detail in steps, until only the broad light and dark of the sky remain. Roughness 0, 0.2, 0.4, 0.6, 0.8 and 1 (labels r0 to r1), one picture per prefiltered level.",
+			"numbers": "The recipe's values: the variants r0, r02, r04, r06, r08 and r1 set the Mirror material's Roughness to 0, 0.2, 0.4, 0.6, 0.8 and 1. Forward.frag.slang reads the prefiltered map at level roughness * EnvironmentParams.z, so with six levels (0 to 5) each value lands on one level.",
+			"alt": "Six pictures of the same metal ball in the same sky. The first mirrors the sky sharply. Each next picture is more blurred, and the last shows only a smooth gradient of light and dark.",
+			"project": { "sample": "ThirdPerson" },
+			"camera": { "position": [0, 1.25, 4], "target": [0, 1, 0], "fov": 20 },
+			"size": [1280, 720],
+			"quality": "high",
+			"setup": [
+				{ "command": "scene.new", "parameters": { "template": "basic3d", "force": true } },
+				{ "command": "component.remove", "entityName": "Sun", "parameters": { "component": "DirectionalLight" } },
+				{ "command": "component.set", "entityName": "Sky", "parameters": { "component": "SkyLight", "values": { "Source": "EnvironmentMap", "Intensity": 1.0, "EnvironmentMap": "A76F8BB1E806ACFF" } } }
+			],
+			"variants": {
+				"r0": {
+					"setup": [
+						{ "command": "material.create", "parameters": { "path": "Materials/MirrorR0.stmat", "properties": { "BaseColor": [1.0, 1.0, 1.0, 1.0], "Metallic": 1.0, "Roughness": 0.0 } } },
+						{ "command": "entity.create", "parameters": { "name": "Mirror", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/MirrorR0.stmat" }, "Transform": { "Translation": [0, 1, 0] } } } }
+					]
+				},
+				"r02": {
+					"setup": [
+						{ "command": "material.create", "parameters": { "path": "Materials/MirrorR02.stmat", "properties": { "BaseColor": [1.0, 1.0, 1.0, 1.0], "Metallic": 1.0, "Roughness": 0.2 } } },
+						{ "command": "entity.create", "parameters": { "name": "Mirror", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/MirrorR02.stmat" }, "Transform": { "Translation": [0, 1, 0] } } } }
+					]
+				},
+				"r04": {
+					"setup": [
+						{ "command": "material.create", "parameters": { "path": "Materials/MirrorR04.stmat", "properties": { "BaseColor": [1.0, 1.0, 1.0, 1.0], "Metallic": 1.0, "Roughness": 0.4 } } },
+						{ "command": "entity.create", "parameters": { "name": "Mirror", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/MirrorR04.stmat" }, "Transform": { "Translation": [0, 1, 0] } } } }
+					]
+				},
+				"r06": {
+					"setup": [
+						{ "command": "material.create", "parameters": { "path": "Materials/MirrorR06.stmat", "properties": { "BaseColor": [1.0, 1.0, 1.0, 1.0], "Metallic": 1.0, "Roughness": 0.6 } } },
+						{ "command": "entity.create", "parameters": { "name": "Mirror", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/MirrorR06.stmat" }, "Transform": { "Translation": [0, 1, 0] } } } }
+					]
+				},
+				"r08": {
+					"setup": [
+						{ "command": "material.create", "parameters": { "path": "Materials/MirrorR08.stmat", "properties": { "BaseColor": [1.0, 1.0, 1.0, 1.0], "Metallic": 1.0, "Roughness": 0.8 } } },
+						{ "command": "entity.create", "parameters": { "name": "Mirror", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/MirrorR08.stmat" }, "Transform": { "Translation": [0, 1, 0] } } } }
+					]
+				},
+				"r1": {
+					"setup": [
+						{ "command": "material.create", "parameters": { "path": "Materials/MirrorR1.stmat", "properties": { "BaseColor": [1.0, 1.0, 1.0, 1.0], "Metallic": 1.0, "Roughness": 1.0 } } },
+						{ "command": "entity.create", "parameters": { "name": "Mirror", "components": { "MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/MirrorR1.stmat" }, "Transform": { "Translation": [0, 1, 0] } } } }
+					]
+				}
+			},
+			"expect": "complete"
+		}
+	]
+}

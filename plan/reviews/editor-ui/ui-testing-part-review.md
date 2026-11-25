@@ -1,0 +1,3 @@
+# Part review: `editor-ui/ui-testing`
+
+No corrections. Checked at the pin: `ImGuiHarness::ClickItem`, `FakeEditorHost`'s state, `HarnessEditor` (automation and file watchers off, a temporary project folder, `Click` adding three frames of 1/60 s, `FramesUntil` with a 10 second timeout), the Play test case, the `Editor.UI.Source` cases, their folders and self-tests, `FindFileSystemWrites` and its six-call self-test, `MeasurePanel`, 30 warm-up and 240 measured frames, the nearest-rank 95th percentile, `CheckBudgetsConfirmed`, the five `Perf.EditorPanels` rows with the paused Performance one provisional, the optimized-build requirement, and the Hierarchy view test of 100,000 roots and 1,000 updates.

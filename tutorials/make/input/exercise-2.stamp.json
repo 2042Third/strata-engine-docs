@@ -1,0 +1,103 @@
+{
+	"page": "make/input",
+	"runs": [
+		{
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/solutions/make/input/exercise-2.zip": "8afd139d865f788b958ae39c5a353a20f79713ddbc6b5ca68074de1f6f33760f",
+				"tutorials/make/assets.tutorial.json": "4ca95ec83abb4ec06329fe655787097c61515dd7abc7a242f6878ddae2e634e0",
+				"tutorials/make/editor-tour.tutorial.json": "9a35f25c6c18ee8694c1a03c82e70dca9319f5b82e4490eb91a631df0315c7d9",
+				"tutorials/make/first-script.tutorial.json": "43f755338ec5982bd5a99b7f5982d92ba5dec5d444f8b2da82f9100987a4f18b",
+				"tutorials/make/first-script/Coin.cpp": "7246591314dd3c2bb78aaa353b7f443d6103c3bceb84306581fb4091ad15c155",
+				"tutorials/make/first-script/CoinCrash.cpp": "07c11988d90faed134e3d888cb1a5fe2fe1431bd88504cbe5fafc9d0d229597a",
+				"tutorials/make/first-script/CoinLog.cpp": "9f892c25d6972de6b7c8c89c805dd55f3f3cb3b6ce44e3ca6dbb678d3b6b7827",
+				"tutorials/make/first-script/CoinNoSemicolon.cpp": "97419e3764fb406ec046bcbe52d6e67ca68fca08dcb5b8f56c03f8c494968d5f",
+				"tutorials/make/first-script/CoinTumble.cpp": "17c2549c7f9ee655f4e2c71a8ea8285ebc34d0531b0336d76f3f85316c360f8f",
+				"tutorials/make/input.tutorial.json": "e7339b41bc14a7d742649a23aae73ad873643cb2f965992f5945fdbb5994954b",
+				"tutorials/make/input/BallControl-1.cpp": "8ad7a71a5b5092f0ce5b5b8f32da1c3633f72089149d1dea914f67833d2bb7b4",
+				"tutorials/make/input/BallControl-2.cpp": "e8a1c6dfc8fdc2b97c1ec7e7cc5e15560d970c5a0512eb63f3bf002619ca082e",
+				"tutorials/make/input/BallControl-3.cpp": "b01d4bd5ef62533da2c7d9b9ba6c5909b34e68e92efbb63f50a671ab3f07e659",
+				"tutorials/make/input/BallControl-4.cpp": "4b651ac9e31a56a9a6f03cec483bd58b9dbaaeb162611b7ef407e04f252d5ded",
+				"tutorials/make/input/exercise-2.tutorial.json": "aa1b463d55e456e2daf784d92072624c98a6129b4648c0fbabc033fd8f98a4b2",
+				"tutorials/make/input/exercise-2/BallControl.cpp": "f9fe5417d83bc4918987eaf39d8735829ad99bf3d88ff2dab04e6a2f8d92625a",
+				"tutorials/make/lighting.tutorial.json": "33370e27a826de0261027aff60432d958b9323c54ac04030e86465b479f4c145",
+				"tutorials/make/materials.tutorial.json": "665e8963c08fb733be0ea70101d115ff9dd598e9861b8f2f84485ee64956f82b",
+				"tutorials/make/prefabs.tutorial.json": "952d54fbcb5624c1ead06de18d9b4e7faae8349c5cf020fbac6c95285222aa26",
+				"tutorials/make/scenes-entities.tutorial.json": "e28779abad6402d7c853f0d75f1af7749feac58663486024c9bbea500be09005",
+				"tutorials/make/scripting-scene.tutorial.json": "a12d5920ffc41d72ca08613a997ea463e65567a6f23b816b1b98a41ad6191b8c",
+				"tutorials/make/scripting-scene/Coin.cpp": "41223c12752e4f0b76a9c7a0e88d475ed12760cfdab6a322f89705cde7277aca",
+				"tutorials/make/scripting-scene/Coin.step1.cpp": "33546f5c61eaa418d5f763eec01a90cd609d28573ed332e1e7d8e3858cc61674",
+				"tutorials/make/scripting-scene/Coin.step5.cpp": "ae2df006a86f1db79f0ed5ccc6a3515485c78f0ff0c86a5939c7053ad8829646",
+				"tutorials/make/scripting-scene/Coin.step7.cpp": "053a827c747bac8ec2b56b332fbdb38e416db2b5f24df422f566588c6803436e",
+				"tutorials/make/scripting-scene/CoinPlacer.cpp": "3cda58d7c5e33ece3ac22c3d446a4c2c7c8014ad0d7ce134cf457ba547619216",
+				"tutorials/make/scripting-scene/CoinPlacer.step3.cpp": "e8b4f9331402f827d85215810c5d02eb99cea8c3b90e65189388a09af08f4c71"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		},
+		{
+			"build": {
+				"kind": "package",
+				"configuration": "Strata-0.8.0-windows-x64",
+				"editorSha256": "bcff21bcd56e8f51003861fc7aafb4b8ab638ad7cc521c8c0c7829c4361673be",
+				"package": "Strata-0.8.0-windows-x64.zip",
+				"packageSha256": "47a151b64d0d6bb6f2c77147ca4b477b5eaa479b7dfeafee07ccec3911a00d11"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/solutions/make/input/exercise-2.zip": "8afd139d865f788b958ae39c5a353a20f79713ddbc6b5ca68074de1f6f33760f",
+				"tutorials/make/assets.tutorial.json": "4ca95ec83abb4ec06329fe655787097c61515dd7abc7a242f6878ddae2e634e0",
+				"tutorials/make/editor-tour.tutorial.json": "9a35f25c6c18ee8694c1a03c82e70dca9319f5b82e4490eb91a631df0315c7d9",
+				"tutorials/make/first-script.tutorial.json": "43f755338ec5982bd5a99b7f5982d92ba5dec5d444f8b2da82f9100987a4f18b",
+				"tutorials/make/first-script/Coin.cpp": "7246591314dd3c2bb78aaa353b7f443d6103c3bceb84306581fb4091ad15c155",
+				"tutorials/make/first-script/CoinCrash.cpp": "07c11988d90faed134e3d888cb1a5fe2fe1431bd88504cbe5fafc9d0d229597a",
+				"tutorials/make/first-script/CoinLog.cpp": "9f892c25d6972de6b7c8c89c805dd55f3f3cb3b6ce44e3ca6dbb678d3b6b7827",
+				"tutorials/make/first-script/CoinNoSemicolon.cpp": "97419e3764fb406ec046bcbe52d6e67ca68fca08dcb5b8f56c03f8c494968d5f",
+				"tutorials/make/first-script/CoinTumble.cpp": "17c2549c7f9ee655f4e2c71a8ea8285ebc34d0531b0336d76f3f85316c360f8f",
+				"tutorials/make/input.tutorial.json": "e7339b41bc14a7d742649a23aae73ad873643cb2f965992f5945fdbb5994954b",
+				"tutorials/make/input/BallControl-1.cpp": "8ad7a71a5b5092f0ce5b5b8f32da1c3633f72089149d1dea914f67833d2bb7b4",
+				"tutorials/make/input/BallControl-2.cpp": "e8a1c6dfc8fdc2b97c1ec7e7cc5e15560d970c5a0512eb63f3bf002619ca082e",
+				"tutorials/make/input/BallControl-3.cpp": "b01d4bd5ef62533da2c7d9b9ba6c5909b34e68e92efbb63f50a671ab3f07e659",
+				"tutorials/make/input/BallControl-4.cpp": "4b651ac9e31a56a9a6f03cec483bd58b9dbaaeb162611b7ef407e04f252d5ded",
+				"tutorials/make/input/exercise-2.tutorial.json": "aa1b463d55e456e2daf784d92072624c98a6129b4648c0fbabc033fd8f98a4b2",
+				"tutorials/make/input/exercise-2/BallControl.cpp": "f9fe5417d83bc4918987eaf39d8735829ad99bf3d88ff2dab04e6a2f8d92625a",
+				"tutorials/make/lighting.tutorial.json": "33370e27a826de0261027aff60432d958b9323c54ac04030e86465b479f4c145",
+				"tutorials/make/materials.tutorial.json": "665e8963c08fb733be0ea70101d115ff9dd598e9861b8f2f84485ee64956f82b",
+				"tutorials/make/prefabs.tutorial.json": "952d54fbcb5624c1ead06de18d9b4e7faae8349c5cf020fbac6c95285222aa26",
+				"tutorials/make/scenes-entities.tutorial.json": "e28779abad6402d7c853f0d75f1af7749feac58663486024c9bbea500be09005",
+				"tutorials/make/scripting-scene.tutorial.json": "a12d5920ffc41d72ca08613a997ea463e65567a6f23b816b1b98a41ad6191b8c",
+				"tutorials/make/scripting-scene/Coin.cpp": "41223c12752e4f0b76a9c7a0e88d475ed12760cfdab6a322f89705cde7277aca",
+				"tutorials/make/scripting-scene/Coin.step1.cpp": "33546f5c61eaa418d5f763eec01a90cd609d28573ed332e1e7d8e3858cc61674",
+				"tutorials/make/scripting-scene/Coin.step5.cpp": "ae2df006a86f1db79f0ed5ccc6a3515485c78f0ff0c86a5939c7053ad8829646",
+				"tutorials/make/scripting-scene/Coin.step7.cpp": "053a827c747bac8ec2b56b332fbdb38e416db2b5f24df422f566588c6803436e",
+				"tutorials/make/scripting-scene/CoinPlacer.cpp": "3cda58d7c5e33ece3ac22c3d446a4c2c7c8014ad0d7ce134cf457ba547619216",
+				"tutorials/make/scripting-scene/CoinPlacer.step3.cpp": "e8b4f9331402f827d85215810c5d02eb99cea8c3b90e65189388a09af08f4c71"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		}
+	]
+}

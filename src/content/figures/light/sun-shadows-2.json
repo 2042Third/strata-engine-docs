@@ -1,0 +1,87 @@
+{
+	"figures": [
+		{
+			"id": "pcss-geometry",
+			"shows": "A sun disk of angular radius a, a blocker's edge at separation s over a receiver, and the umbra, penumbra and lit regions below it",
+			"caption": "Two grazing rays leave the disk's opposite edges and cross at the blocker's edge. Where they reach the receiver they bound the penumbra, as wide as twice the separation times the tangent of the angular radius.",
+			"alt": "A yellow sun disk above a grey bar. Two lines run from opposite edges of the disk, cross at the bar's end and reach a ground line. They mark the umbra on the left, a penumbra between the lines and light on the right.",
+			"kind": "diagram"
+		},
+		{
+			"id": "penumbra-poles",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The shadows of the look-dev scene's three poles of different thickness, seen from above, with a sun of 0.53 degrees across and then of 2 degrees across",
+			"caption": "The same poles under a small and under a large sun. With the large sun each shadow blurs toward its tip, the part farthest from the pole, and the thinnest shadow fades away.",
+			"alt": "Two pictures of three upright poles on flat grey ground, seen from above, with dark shadows running away from their feet. In the first the shadows stay sharp to their tips. In the second each shadow blurs toward its tip, and the thinnest one fades out.",
+			"project": { "lookdev": true },
+			"camera": { "position": [4.3, 2.2, 2.5], "target": [4.3, 0.3, -0.6], "fov": 40 },
+			"size": [1280, 720],
+			"quality": "high",
+			"variants": {
+				"diameter-053": { "setup": [ { "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "ShadowSoftness": 0.53 } } } ] },
+				"diameter-2": { "setup": [ { "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "ShadowSoftness": 2.0 } } } ] }
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "disk-taps",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The shadow of the look-dev's 10 cm pole under a sun 10 degrees across, filtered with 8 taps and with 32 taps, with anti-aliasing off: the two pictures differ by at most 2 of 255 levels and neither shows grain",
+			"caption": "Without anti-aliasing, the fewest taps and the most give the same smooth wide edge: the blur of the mask removes the grain that few taps would leave.",
+			"alt": "Two pictures of the same dark band across grey ground, the shadow of a pole under a very wide sun. In both the band's edges fade smoothly over many pixels, with no grain.",
+			"project": { "lookdev": true },
+			"camera": { "position": [3.8, 1.5, -0.9], "target": [4.9, 0.0, -1.8], "fov": 18 },
+			"setup": [ { "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "ShadowSoftness": 10.0 } } } ],
+			"size": [1280, 720],
+			"antiAliasing": "off",
+			"variants": {
+				"taps-8": { "quality": { "custom": { "ShadowFilterQuality": "8" } } },
+				"taps-32": { "quality": { "custom": { "ShadowFilterQuality": "32" } } }
+			}
+		},
+		{
+			"id": "stair-steps",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "A crop of a hard shadow edge on a ground the sun grazes, without and with the stair-step blur",
+			"caption": "Where the light grazes the ground, each shadow map texel covers many pixels. Without the blur the edge shows saw teeth. With it the edge is straight.",
+			"alt": "Two crops of the same shadow edge on a long flat ground. The first edge has a regular saw-tooth shape. The second edge is smooth.",
+			"project": { "sample": "OpenWorld" },
+			"camera": "scene",
+			"size": [1280, 720],
+			"variants": {
+				"blur-off": { "quality": "high" },
+				"blur-on": { "quality": "high" }
+			},
+			"waitsFor": "tier 3: viewport.capture {renderer: {StairStepBlur: false}}; no renderer switch, quality row or debug view turns the stair-step blur of the screen shadows off",
+			"standIn": "stair-step-blur"
+		},
+		{
+			"id": "stair-step-blur",
+			"shows": "A drawing of a shadow edge on a grazed receiver whose shadow map texels cover 6 by 3 pixels: in whole texels it shows saw teeth; blurred with the stair-step radius of 4 pixels it is straight",
+			"numbers": "Drawn, not run: each panel is 30 by 18 pixels; texels of 6 by 3 pixels, an example footprint above the 1.5 pixels of c_StairTexelPixels; the left panel takes, per pixel, the texel its center falls in; the right blurs it along x and then y with the radius min(6, 4) = 4 pixels of c_StairMaxBlurPixels (sigma 2, at most 8 taps each side, as Strata/shaders/Effects/ScreenShadowsBlur.frag.slang).",
+			"caption": "A drawing, not a capture. Where each texel covers 6 by 3 pixels, an edge made of whole texels shows saw teeth. Blurred with the stair-step radius of 4 pixels, the same edge is straight.",
+			"alt": "Two grids of grey squares. On the left a dark region lies under a light one, parted by steps 6 squares wide and 3 high, and one dark step is outlined in orange. On the right the same edge is a straight soft band.",
+			"kind": "diagram"
+		},
+		{
+			"id": "contact-shadows",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev plate on the floor, seen from its shaded side under a coarse shadow map (one cascade of 1024 texels reaching 200 m), with contact shadows of 0 steps and of 16 steps",
+			"caption": "Under a coarse shadow map the plate's shadow is thinner than a texel and is lost. With the march off the plate seems to float. With the march on, a thin dark line grounds it. Between the line and the plate runs a dotted row of lighter pixels, where a step's hit comes and goes from one pixel to the next.",
+			"alt": "Two pictures of a flat grey plate on a floor, seen from its shaded side. In the first nothing dark lies along the plate's lower edges. In the second a thin dark line runs along them, parted from the plate's dark face by a dotted row of lighter pixels.",
+			"project": { "lookdev": true },
+			"camera": { "position": [1.55, 0.55, -0.9], "target": [1.95, 0.0, -0.1], "fov": 30 },
+			"setup": [ { "command": "component.set", "entityName": "Sun", "parameters": { "component": "DirectionalLight", "values": { "ShadowDistance": 200.0 } } } ],
+			"size": [1280, 720],
+			"variants": {
+				"steps-0": { "quality": { "custom": { "ShadowCascades": 1, "ShadowResolution": "1024", "ContactShadows": 0 } } },
+				"steps-16": { "quality": { "custom": { "ShadowCascades": 1, "ShadowResolution": "1024", "ContactShadows": 16 } } }
+			},
+			"expect": "complete"
+		}
+	]
+}

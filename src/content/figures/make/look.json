@@ -1,0 +1,591 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "The course by day with the warm lookup, bloom 0.06 and the Height Fog of the section, seen from the scene camera",
+			"caption": "The result of the day look: a warm grade that yellows the grass and grays the sky, and a haze that fades the far islands into the gray sky.",
+			"alt": "A yellow robot seen from behind on a yellow-green island under a gray sky; the islands of the course ahead are faded by haze.",
+			"kind": "scene",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "HUD"
+				},
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "Menus"
+				},
+				{
+					"command": "asset.import",
+					"parameters": {
+						"file": "G:/GameEngineAI/.worktrees/docs-book/tutorials/make/look/warm-look.cube",
+						"directory": "Lookups"
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"ColorLookup": "Lookups/warm-look.cube",
+							"BloomIntensity": 0.06
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Height Fog",
+						"components": {
+							"HeightFog": {
+								"Density": 0.01,
+								"BaseHeight": -2,
+								"HeightFalloff": 0.1
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "start-course",
+			"shows": "The course as the sample ships it, before any change, seen from the scene camera",
+			"caption": "The starting picture: Filmic tone curve, automatic exposure, a little bloom and a light vignette.",
+			"alt": "A yellow robot seen from behind on a green island with flowers, a sign and fences; the course of islands and coins rises ahead under a blue-gray cloudy sky.",
+			"kind": "scene",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "HUD"
+				},
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "Menus"
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "exposure-luminance",
+			"shows": "The course with Exposure at plus 1, the meter unchanged",
+			"caption": "One stop more exposure: the whole picture is brighter, with lighter grass and a paler sky. The meter reads as before, so the stop shows in full.",
+			"alt": "The same course as the starting picture, brighter: lighter green grass, a lighter robot and a paler sky.",
+			"kind": "scene",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "HUD"
+				},
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "Menus"
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"Exposure": 1
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "tone-curves",
+			"shows": "The course under the Filmic curve at exposure 0 and under ACES at plus 0.8",
+			"caption": "Two curves on one scene: Filmic at 0 and ACES at +0.8. ACES is a little brighter, and its sky and grass are more saturated.",
+			"numbers": "The recipe's values: the filmic variant sets Tonemapper Filmic and Exposure 0, the aces variant Tonemapper ACES and Exposure 0.8 (the page's step 2 of \"Choose the tone curve\"). Measured on the taken pictures (mean R/G/B, chroma = max - min): sky band (y 0-200) 89/99/105, chroma 25 under Filmic; 97/109/117, chroma 30 under ACES; grass at the lower left (x 0-400, y 560-720) chroma 82 and 88.",
+			"alt": "Two pictures of the same course. The second, ACES, is slightly brighter than the first, Filmic, with a bluer sky and a stronger green.",
+			"kind": "scene",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "HUD"
+				},
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "Menus"
+				}
+			],
+			"variants": {
+				"filmic": {
+					"caption": "Back on Filmic at Exposure 0: the starting picture.",
+					"alt": "The course as in the starting picture: the yellow robot from behind on a green island, the course of islands ahead under a blue-gray cloudy sky.",
+					"postProcess": {
+						"Tonemapper": "Filmic",
+						"Exposure": 0
+					}
+				},
+				"aces": {
+					"postProcess": {
+						"Tonemapper": "ACES",
+						"Exposure": 0.8
+					}
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "lookup-intensity",
+			"shows": "The course with the warm lookup at intensity 0, 0.5 and 1",
+			"caption": "The lookup mixed in at half strength, intensity 0.5. The sky loses a little of its blue and the grass turns a little yellower.",
+			"numbers": "The recipe's values: the zero, half and full variants set Color Lookup Intensity 0, 0.5 and 1 (the page's step 4 of \"Grade the color and use a lookup\"). Measured on the taken pictures (mean R/G/B): the sky above the castle (x 760-1060, y 0-80) 90/99/116 at 0, 94/99/109 at 0.5 and 98/100/102 at 1; the grass at the lower left (x 0-400, y 560-720) 75/157/113, 79/157/106 and 82/158/99.",
+			"alt": "The course with a halfway warm grade: a slightly grayer sky and slightly yellower grass.",
+			"kind": "scene",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "HUD"
+				},
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "Menus"
+				},
+				{
+					"command": "asset.import",
+					"parameters": {
+						"file": "G:/GameEngineAI/.worktrees/docs-book/tutorials/make/look/warm-look.cube",
+						"directory": "Lookups"
+					}
+				}
+			],
+			"variants": {
+				"zero": {
+					"postProcess": {
+						"ColorLookup": "Lookups/warm-look.cube",
+						"ColorLookupIntensity": 0
+					}
+				},
+				"half": {
+					"caption": "The lookup at half strength, Color Lookup Intensity 0.5. Set it beside the starting picture near the top of the page: the sky above the castle has lost a little of its blue, and the grass at the lower left is a little yellower. Step 4 ends at 1, which doubles the change.",
+					"alt": "The course with a halfway warm grade: beside the starting picture, the sky above the castle is slightly grayer and the grass at the lower left slightly yellower.",
+					"postProcess": {
+						"ColorLookup": "Lookups/warm-look.cube",
+						"ColorLookupIntensity": 0.5
+					}
+				},
+				"full": {
+					"postProcess": {
+						"ColorLookup": "Lookups/warm-look.cube",
+						"ColorLookupIntensity": 1
+					}
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "lens-effects",
+			"shows": "The course with bloom 0.15, vignette 0.5 and film grain 0.2",
+			"caption": "The lens effects pushed far. Notice the dark corners; at this size the grain is too fine to see, and with no light in view, the bloom spreads little.",
+			"alt": "The course with darker corners than the starting picture.",
+			"kind": "scene",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "HUD"
+				},
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "Menus"
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"BloomIntensity": 0.15,
+							"Vignette": 0.5,
+							"FilmGrain": 0.2
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "height-fog",
+			"shows": "The course with the Height Fog of the section (density 0.01, base height -2, falloff 0.1)",
+			"caption": "Height Fog at a low density. Look at the castle at the end of the course, now bluish and paler, and at the clouds near the horizon, gone into haze. The near ground stays clear.",
+			"alt": "The course with a haze over the distance: the castle at the end of the course is bluish and pale, and the horizon is a plain haze without clouds.",
+			"kind": "scene",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "HUD"
+				},
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "Menus"
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Height Fog",
+						"components": {
+							"HeightFog": {
+								"Density": 0.01,
+								"BaseHeight": -2,
+								"HeightFalloff": 0.1
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "motion-blur",
+			"shows": "The Inspector of the Post Process after its Motion Blur is enabled: the Motion section with Motion Blur ticked, Motion Blur Shutter Angle 180 and Motion Blur Max Length 0.02",
+			"caption": "The Motion section with Motion Blur on, at a shutter angle of 180 degrees and a longest blur of 0.02.",
+			"alt": "The Post Process Inspector at its Motion section: Motion Blur ticked, Shutter Angle 180, Max Length 0.02.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-look.ini",
+				"windowSize": [
+					1280,
+					1360
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "component.set",
+						"entityName": "Post Process",
+						"parameters": {
+							"component": "PostProcess",
+							"values": {
+								"MotionBlur": true
+							}
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Post Process"
+						},
+						"bind": {
+							"post": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "post"
+								}
+							]
+						}
+					}
+				]
+			},
+			"scene": "Scenes/Course.stscene",
+			"waitsFor": "tier 3: a command that scrolls the Inspector to a section or property; editor.screenshot shows only the top of the panel, and Motion is the last of the Post Process's nine sections",
+			"standIn": "motion-blur-turn",
+			"numbers": "The scene's values: the Post Process of Scenes/Course.stscene holds MotionBlurShutterAngle 180 and MotionBlurMaxLength 0.02; the recipe sets only MotionBlur true (the page's step 1 of \"Add motion blur\")."
+		},
+		{
+			"id": "motion-blur-turn",
+			"shows": "A frame of the Game view while the game plays and the camera turns fast around the robot, with Motion Blur on at the scene's shutter angle of 180 degrees; the far course and the pine at the left streak sideways, the robot and the HUD stay sharp; a crop enlarges the far course 2 times",
+			"caption": "A fast turn in step 1, whole and its far course enlarged: the islands and left pine streak; the robot and text stay sharp.",
+			"alt": "Islands and a pine smeared sideways, robot and coin counter sharp.",
+			"numbers": "The recipe's values: MotionBlur true with the scene's MotionBlurShutterAngle 180 and MotionBlurMaxLength 0.02 (the page's step 1 of \"Add motion blur\"); automatic exposure held still (AutoExposureSpeed and AutoExposureLightSpeed 0) so that the three takes agree; the look turned at 1.0 from fixed step 25, captured at step 30; the crop far enlarges the far course 2 times.",
+			"kind": "live",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"postProcess": {
+				"AutoExposureSpeed": 0,
+				"AutoExposureLightSpeed": 0,
+				"MotionBlur": true
+			},
+			"play": {
+				"steps": 36,
+				"input": [
+					{
+						"step": 25,
+						"action": "Gameplay/Look",
+						"mode": "press",
+						"value": [
+							1.0,
+							0
+						]
+					}
+				]
+			},
+			"live": {
+				"atFixedStep": 30,
+				"frames": 4
+			},
+			"crops": [
+				{
+					"name": "far",
+					"rect": [
+						0.2047,
+						0.0764,
+						0.4859,
+						0.4514
+					],
+					"scale": 2
+				}
+			],
+			"publish": "lossless",
+			"expect": "complete"
+		},
+		{
+			"id": "camera-lens",
+			"shows": "The course through the game camera with depth of field at f/2.8 focused on the robot and Perspective FOV narrowed to 30, as the page's step 4 suggests when the blur is hard to see",
+			"caption": "Depth of field at f/2.8 with the view narrowed to 30 degrees, as step 4 suggests: the robot in focus stays sharp, while the barrels and islands behind it go soft. At the default 60 degrees the same f/2.8 blurs the course only slightly.",
+			"numbers": "The recipe's values on the Camera: DepthOfField true, Aperture 2.8 (f/2.8, the value step 4 returns to), FocusEntity the Robot (A94EC4E371BEB484) and PerspectiveFOV 30, the narrower view the page's step 4 suggests when the blur is hard to see; 60 is the scene's default.",
+			"alt": "The yellow robot from behind, close and sharp, on a green island; the barrels and islands behind it are blurred.",
+			"kind": "scene",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "HUD"
+				},
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "Menus"
+				},
+				{
+					"command": "component.set",
+					"entityName": "Camera",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"DepthOfField": true,
+							"Aperture": 2.8,
+							"FocusEntity": "A94EC4E371BEB484",
+							"PerspectiveFOV": 30
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "night-look",
+			"shows": "The night look near Lantern A",
+			"caption": "The night look: dark and cool. The lantern glows white and lights the tree.",
+			"alt": "A dark blue-green island at night; a lantern glows white and lights a tree.",
+			"kind": "scene",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"camera": {
+				"position": [
+					-1.2,
+					2.6,
+					-15.0
+				],
+				"target": [
+					2.3,
+					1.0,
+					-22.0
+				],
+				"fov": 45
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "HUD"
+				},
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "Menus"
+				},
+				{
+					"command": "component.set",
+					"entityName": "Sun",
+					"parameters": {
+						"component": "DirectionalLight",
+						"values": {
+							"Intensity": 0.2
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Sky",
+					"parameters": {
+						"component": "SkyLight",
+						"values": {
+							"Intensity": 0.001
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"Exposure": -1.5,
+							"AutoExposureMinEV": -2.5,
+							"WhiteBalanceTemperature": 4500,
+							"Toe": 0.6,
+							"BloomIntensity": 0.06
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		}
+	]
+}

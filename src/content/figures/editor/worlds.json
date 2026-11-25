@@ -1,0 +1,202 @@
+{
+	"figures": [
+		{
+			"id": "world-strip",
+			"kind": "editor",
+			"shows": "The Hierarchy's world strip in the Open World sample after Camp2 Logs moved from the Landmarks cell (1, 2) to (0, 2): the name Island, 32 cells loaded, 2 cells with changes not saved, the map button and the edit layer Landmarks",
+			"caption": "The strip above the Hierarchy after the example below moves Camp2 Logs from the Landmarks cell (1, 2) into (0, 2). It holds the world's name, the counts of loaded cells and of cells with changes not saved, the map button and the edit layer.",
+			"numbers": "(1, 2) and (0, 2) are the Landmarks cells of the page's example \"A crate across a border\": Camp2 Logs stands at x = 67, z = 188 in cells of 64 m, floor(67 / 64) = 1 and floor(188 / 64) = 2; the recipe's component.set moves it to x = 60, floor(60 / 64) = 0.",
+			"alt": "The editor's Hierarchy panel. A strip at its top shows a globe icon, the name Island, 32 cells loaded, 2 not saved in yellow and a map button. Under it a drop-down list reads Landmarks as the edit layer, and the list of entities follows.",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"editorWindow": {
+				"layout": "layouts/world-editing.ini",
+				"steps": [
+					{
+						"command": "world.loadCells",
+						"parameters": {
+							"cells": [
+								{
+									"layer": "Landmarks",
+									"x": 1,
+									"z": 2
+								}
+							],
+							"wait": true
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Camp2 Logs"
+						},
+						"bind": {
+							"logs": "/entities/0"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "logs"
+							},
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									60,
+									19.372288,
+									188
+								]
+							}
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Landmarks"
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								60,
+								60,
+								250
+							],
+							"target": [
+								60,
+								19,
+								188
+							],
+							"fov": 50
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 120
+						}
+					}
+				],
+				"windowSize": [
+					960,
+					540
+				],
+				"panel": "Hierarchy"
+			}
+		},
+		{
+			"id": "cell-map",
+			"kind": "editor",
+			"shows": "The Streaming panel in the Open World sample after Camp2 Logs moved from the Landmarks cell (1, 2) into (0, 2): the top line of asset counts whole, orange loaded cells, the cell (1, 2) with a yellow outline and a pin, no outline for the cell (0, 2) directly left of it, which has no file yet, the editor camera as a white dot inside its blue circle",
+			"caption": "The cell map in the Streaming panel after the example below moves Camp2 Logs from the Landmarks cell (1, 2) into (0, 2). Loaded cells are orange, and the cell the logs left has a thin yellow outline and a pin. The cell they joined, (0, 2), directly left of the pinned cell, has no file yet, so the map gives it no outline. The white dot is the editor camera, the blue circle is how far it streams, and the line at the top counts assets, not cells.",
+			"numbers": "(1, 2) and (0, 2) are the Landmarks cells of the page's example \"A crate across a border\": Camp2 Logs stands at x = 67, z = 188 in cells of 64 m, floor(67 / 64) = 1 and floor(188 / 64) = 2; the recipe's component.set moves it to x = 60, floor(60 / 64) = 0.",
+			"alt": "The Streaming panel, whose top line counts assets: registered, ready, streaming, failed, pinned and the frame. Under the World header, a grid of squares seen from above, most of them orange, inside a blue circle that runs past the map's top and bottom edges. A white dot with a short line marks the camera. One orange square near it has a thin yellow outline and a pin; the square directly left of it has none. A legend below counts 65 unloaded and 32 loaded cells.",
+			"crops": [
+				{
+					"name": "pinned",
+					"rect": [
+						0.365,
+						0.216,
+						0.692,
+						0.541
+					],
+					"scale": 4
+				}
+			],
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"editorWindow": {
+				"layout": "layouts/world-editing.ini",
+				"steps": [
+					{
+						"command": "world.loadCells",
+						"parameters": {
+							"cells": [
+								{
+									"layer": "Landmarks",
+									"x": 1,
+									"z": 2
+								}
+							],
+							"wait": true
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Camp2 Logs"
+						},
+						"bind": {
+							"logs": "/entities/0"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "logs"
+							},
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									60,
+									19.372288,
+									188
+								]
+							}
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Landmarks"
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								60,
+								60,
+								250
+							],
+							"target": [
+								60,
+								19,
+								188
+							],
+							"fov": 50
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 120
+						}
+					}
+				],
+				"windowSize": [
+					960,
+					540
+				],
+				"panel": "Streaming"
+			}
+		}
+	]
+}

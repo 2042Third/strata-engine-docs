@@ -1,0 +1,15 @@
+{
+	"page": "start/install",
+	"startsFrom": { "sample": "Tetris" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "editor.status", "parameters": { "sections": [ "engine" ] },
+					"checks": [ { "pointer": "/engineVersion", "contains": "." } ] },
+				{ "command": "log.read", "parameters": { "limit": 5 },
+					"checks": [ { "pointer": "/messages/0/message", "contains": "Strata Editor" } ] }
+			]
+		}
+	]
+}

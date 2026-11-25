@@ -1,0 +1,37 @@
+diff --git a/Strata/src/Strata/Core/StringUtils.h b/Strata/src/Strata/Core/StringUtils.h
+index c0da75b..d62e73d 100644
+--- a/Strata/src/Strata/Core/StringUtils.h
++++ b/Strata/src/Strata/Core/StringUtils.h
+@@ -18,6 +18,15 @@ namespace Strata::StringUtils
+ 		return result;
+ 	}
+ 
++	// The capital letters of ToLower's conversion: ASCII letters become upper case, other bytes are unchanged.
++	inline std::string ToUpper(std::string_view text)
++	{
++		std::string result(text);
++		for (char& character : result)
++			character = static_cast<char>(std::toupper(static_cast<unsigned char>(character)));
++		return result;
++	}
++
+ 	inline bool EqualsIgnoreCase(std::string_view a, std::string_view b)
+ 	{
+ 		if (a.size() != b.size())
+diff --git a/StrataTests/src/Core/StringUtilsTests.cpp b/StrataTests/src/Core/StringUtilsTests.cpp
+index 6cbffe3..aa00554 100644
+--- a/StrataTests/src/Core/StringUtilsTests.cpp
++++ b/StrataTests/src/Core/StringUtilsTests.cpp
+@@ -40,4 +40,12 @@ TEST_SUITE("Core.StringUtils")
+ 		const std::string repaired = StringUtils::MakeValidUTF8("\xE6\x97 \x8F\xFF ok");
+ 		CHECK(StringUtils::MakeValidUTF8(repaired) == repaired);
+ 	}
++
++	TEST_CASE("Letters become capitals, digits and punctuation stay as they are")
++	{
++		CHECK(StringUtils::ToUpper("hello") == "HELLO");
++		CHECK(StringUtils::ToUpper("Debug") == "DEBUG");
++		CHECK(StringUtils::ToUpper("file.png") == "FILE.PNG");
++		CHECK(StringUtils::ToUpper("x64 build 2") == "X64 BUILD 2");
++	}
+ }

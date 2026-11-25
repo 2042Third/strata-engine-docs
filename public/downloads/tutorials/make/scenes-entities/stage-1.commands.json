@@ -1,0 +1,26 @@
+[
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ground"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ground"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	}
+]

@@ -1,0 +1,416 @@
+diff --git a/Strata/src/Strata/Asset/AssetImporters.cpp b/Strata/src/Strata/Asset/AssetImporters.cpp
+index 3385a1e3..c8bf9774 100644
+--- a/Strata/src/Strata/Asset/AssetImporters.cpp
++++ b/Strata/src/Strata/Asset/AssetImporters.cpp
+@@ -8,6 +8,7 @@
+ #include "Strata/Core/FileSystem.h"
+ #include "Strata/Core/JsonUtils.h"
+ #include "Strata/Renderer/Font.h"
++#include "Strata/Scene/TextAsset.h"
+ 
+ #if ST_WITH_AUDIO
+ 	#include "Strata/Audio/AudioClipAsset.h"
+@@ -155,6 +156,23 @@ namespace Strata
+ 			}
+ 		};
+ 
++		// Plain text files, stored as written once they are valid.
++		class TextImporter final : public AssetImporter
++		{
++		public:
++			AssetType GetType() const override { return AssetType::Text; }
++			std::vector<std::string> GetExtensions() const override { return { ".sttxt" }; }
++			uint32_t GetVersion() const override { return 1; }
++			bool StoresSourceDirectly() const override { return true; }
++
++			bool Import(const ImportContext& context, ImportResult& result, std::string* outError) const override
++			{
++				if (!ReadSource(context, result.Data, outError))
++					return false;
++				return TextAsset::Create(result.Data, outError) != nullptr;
++			}
++		};
++
+ 	}
+ 
+ 	void RegisterAssetPipeline()
+@@ -174,6 +192,7 @@ namespace Strata
+ 		AssetImporterRegistry::Register(CreateScope<AudioClipImporter>());
+ #endif
+ 		AssetImporterRegistry::Register(CreateScope<FontImporter>());
++		AssetImporterRegistry::Register(CreateScope<TextImporter>());
+ 		AssetImporterRegistry::Register(CreateScope<ColorLookupImporter>());
+ 	}
+ 
+diff --git a/Strata/src/Strata/Asset/AssetTypes.cpp b/Strata/src/Strata/Asset/AssetTypes.cpp
+index d96e594a..a05028d4 100644
+--- a/Strata/src/Strata/Asset/AssetTypes.cpp
++++ b/Strata/src/Strata/Asset/AssetTypes.cpp
+@@ -22,6 +22,7 @@ namespace Strata
+ 			case AssetType::AnimationController: return "AnimationController";
+ 			case AssetType::World:               return "World";
+ 			case AssetType::ColorLookup:         return "ColorLookup";
++			case AssetType::Text:                return "Text";
+ 		}
+ 		return "None";
+ 	}
+@@ -32,7 +33,7 @@ namespace Strata
+ 			AssetType::None, AssetType::Scene, AssetType::Prefab, AssetType::Model, AssetType::Mesh,
+ 			AssetType::Material, AssetType::Texture, AssetType::AudioClip, AssetType::Font,
+ 			AssetType::Skeleton, AssetType::AnimationClip, AssetType::AnimationController, AssetType::World,
+-			AssetType::ColorLookup
++			AssetType::ColorLookup, AssetType::Text
+ 		};
+ 		for (AssetType type : types)
+ 		{
+diff --git a/Strata/src/Strata/Asset/AssetTypes.h b/Strata/src/Strata/Asset/AssetTypes.h
+index 65f73464..f36e621f 100644
+--- a/Strata/src/Strata/Asset/AssetTypes.h
++++ b/Strata/src/Strata/Asset/AssetTypes.h
+@@ -27,7 +27,8 @@ namespace Strata
+ 		AnimationClip,      // Joint channels of an imported animation (Animation/AnimationClip.h)
+ 		AnimationController, // States, transitions and parameters (".stanimator", Animation/AnimationController.h)
+ 		World,               // Layers and cells of a streamed world (".stworld", World/WorldAsset.h)
+-		ColorLookup          // 3D color lookup table of a grade, applied after the tone curve (".cube", Renderer/ColorLookup.h)
++		ColorLookup,         // 3D color lookup table of a grade, applied after the tone curve (".cube", Renderer/ColorLookup.h)
++		Text                 // Plain UTF-8 text stored as written (".sttxt", Scene/TextAsset.h)
+ 	};
+ 
+ 	const char* AssetTypeToString(AssetType type);
+diff --git a/Strata/src/Strata/Scene/SceneRegistration.cpp b/Strata/src/Strata/Scene/SceneRegistration.cpp
+index ad30d1ba..e2a4c991 100644
+--- a/Strata/src/Strata/Scene/SceneRegistration.cpp
++++ b/Strata/src/Strata/Scene/SceneRegistration.cpp
+@@ -7,6 +7,7 @@
+ #include "Strata/Scene/ProjectCollisionLayers.h"
+ #include "Strata/Scene/ProjectSceneTiming.h"
+ #include "Strata/Scene/SceneReadProgress.h"
++#include "Strata/Scene/TextAsset.h"
+ 
+ namespace Strata
+ {
+@@ -38,6 +39,11 @@ namespace Strata
+ 			SceneReadProgress::Tracker progress(metadata.Handle);
+ 			return SceneAsset::Deserialize(data.GetBytes(), outError, [&progress](float share) { progress.Report(share); }, [&data]() { return data.IsCancelled(); });
+ 		});
++		// Text is stored as written and checked as it loads; the bytes become the asset's own, with no second copy.
++		AssetLoaderRegistry::Register(AssetType::Text, [](const AssetMetadata&, AssetLoadData& data, std::string* outError) -> Ref<Asset>
++		{
++			return TextAsset::Create(data.TakeBytes(), outError);
++		});
+ 	}
+ 
+ }
+diff --git a/Strata/src/Strata/Scene/TextAsset.cpp b/Strata/src/Strata/Scene/TextAsset.cpp
+new file mode 100644
+index 00000000..eb52ded8
+--- /dev/null
++++ b/Strata/src/Strata/Scene/TextAsset.cpp
+@@ -0,0 +1,33 @@
++#include "stpch.h"
++#include "Strata/Scene/TextAsset.h"
++
++#include "Strata/Core/Log.h"
++#include "Strata/Core/StringUtils.h"
++
++namespace Strata
++{
++
++	Ref<TextAsset> TextAsset::Create(std::vector<uint8_t> bytes, std::string* outError)
++	{
++		if (bytes.size() > c_MaxBytes)
++		{
++			if (outError)
++				*outError = fmt::format("The text is {} bytes: a text asset holds at most {}", bytes.size(), c_MaxBytes);
++			return nullptr;
++		}
++
++		// MakeValidUTF8 replaces every invalid sequence and returns valid text unchanged, so any difference is an error.
++		const std::string_view text(reinterpret_cast<const char*>(bytes.data()), bytes.size());
++		if (StringUtils::MakeValidUTF8(text) != text)
++		{
++			if (outError)
++				*outError = "The text is not valid UTF-8";
++			return nullptr;
++		}
++
++		Ref<TextAsset> asset(new TextAsset());
++		asset->m_Bytes = std::move(bytes);
++		return asset;
++	}
++
++}
+diff --git a/Strata/src/Strata/Scene/TextAsset.h b/Strata/src/Strata/Scene/TextAsset.h
+new file mode 100644
+index 00000000..c10c3c82
+--- /dev/null
++++ b/Strata/src/Strata/Scene/TextAsset.h
+@@ -0,0 +1,35 @@
++#pragma once
++
++#include "Strata/Asset/Asset.h"
++
++#include <cstdint>
++#include <string>
++#include <string_view>
++#include <vector>
++
++namespace Strata
++{
++
++	// A plain text file, stored as written. Text files are untrusted input: Create accepts valid UTF-8 up to c_MaxBytes and
++	// nothing else, so every reader of the asset can rely on both.
++	class TextAsset : public Asset
++	{
++	public:
++		// The most bytes a text asset holds: a load or an import of a larger file fails.
++		static constexpr uint64_t c_MaxBytes = 1ull << 20;
++
++		static AssetType GetStaticType() { return AssetType::Text; }
++		AssetType GetType() const override { return GetStaticType(); }
++
++		// Takes the bytes over. Null, with the reason in outError, when they are too many or not valid UTF-8.
++		static Ref<TextAsset> Create(std::vector<uint8_t> bytes, std::string* outError = nullptr);
++
++		std::string_view GetText() const { return std::string_view(reinterpret_cast<const char*>(m_Bytes.data()), m_Bytes.size()); }
++		AssetMemoryUsage GetMemoryUsage() const override { return AssetMemoryUsage { m_Bytes.size() }; }
++	private:
++		TextAsset() = default;
++	private:
++		std::vector<uint8_t> m_Bytes;
++	};
++
++}
+diff --git a/StrataEditor/src/UI/PropertyWidgets.cpp b/StrataEditor/src/UI/PropertyWidgets.cpp
+index 9d3774c8..4cf7baa4 100644
+--- a/StrataEditor/src/UI/PropertyWidgets.cpp
++++ b/StrataEditor/src/UI/PropertyWidgets.cpp
+@@ -1156,6 +1156,7 @@ namespace Strata
+ 				case AssetType::AnimationController: return Icons::Network;
+ 				case AssetType::World:     return Icons::Earth;
+ 				case AssetType::ColorLookup: return Icons::Blend;
++				case AssetType::Text:      return Icons::FileText;
+ 				case AssetType::None:      break;
+ 			}
+ 			return Icons::File;
+@@ -1178,6 +1179,7 @@ namespace Strata
+ 				case AssetType::AnimationController: return "Animation Controller";
+ 				case AssetType::World:     return "World";
+ 				case AssetType::ColorLookup: return "Color Lookup";
++				case AssetType::Text:      return "Text";
+ 				case AssetType::None:      break;
+ 			}
+ 			return "Asset";
+diff --git a/StrataTests/FeatureTest/Assets/Text/Notes.sttxt b/StrataTests/FeatureTest/Assets/Text/Notes.sttxt
+new file mode 100644
+index 00000000..2ab58c03
+--- /dev/null
++++ b/StrataTests/FeatureTest/Assets/Text/Notes.sttxt
+@@ -0,0 +1,2 @@
++Strata text asset
++A plain text file that the feature test imports and loads.
+diff --git a/StrataTests/FeatureTest/Assets/Text/Notes.sttxt.meta b/StrataTests/FeatureTest/Assets/Text/Notes.sttxt.meta
+new file mode 100644
+index 00000000..916a8860
+--- /dev/null
++++ b/StrataTests/FeatureTest/Assets/Text/Notes.sttxt.meta
+@@ -0,0 +1,9 @@
++{
++	"Handle": "F7A0000000000013",
++	"ImportSettings": {},
++	"Strata": {
++		"Format": "AssetMeta",
++		"Version": 1
++	},
++	"Type": "Text"
++}
+diff --git a/StrataTests/src/Asset/AssetTests.cpp b/StrataTests/src/Asset/AssetTests.cpp
+index bc515912..31fa583a 100644
+--- a/StrataTests/src/Asset/AssetTests.cpp
++++ b/StrataTests/src/Asset/AssetTests.cpp
+@@ -96,7 +96,8 @@ TEST_SUITE("Asset")
+ 	TEST_CASE("Asset types convert to names and back")
+ 	{
+ 		for (AssetType type : { AssetType::None, AssetType::Scene, AssetType::Prefab, AssetType::Model, AssetType::Mesh, AssetType::Material,
+-			AssetType::Texture, AssetType::AudioClip, AssetType::Font, AssetType::World, AssetType::ColorLookup })
++			AssetType::Texture, AssetType::AudioClip, AssetType::Font, AssetType::World, AssetType::ColorLookup,
++			AssetType::Text })
+ 			CHECK(AssetTypeFromString(AssetTypeToString(type)) == type);
+ 		CHECK_FALSE(AssetTypeFromString("Shader").has_value());
+ 
+@@ -154,7 +155,7 @@ TEST_SUITE("Asset")
+ 	{
+ 		// The loaders of a module's types come with the module.
+ 		for (AssetType type : { AssetType::Scene, AssetType::Prefab, AssetType::Model, AssetType::Mesh, AssetType::Material, AssetType::Texture,
+-			AssetType::Font, AssetType::ColorLookup })
++			AssetType::Font, AssetType::ColorLookup, AssetType::Text })
+ 		{
+ 			CAPTURE(AssetTypeToString(type));
+ 			CHECK(AssetLoaderRegistry::Find(type) != nullptr);
+diff --git a/StrataTests/src/Editor/AssetCommandTests.cpp b/StrataTests/src/Editor/AssetCommandTests.cpp
+index 31705afc..fc522d2f 100644
+--- a/StrataTests/src/Editor/AssetCommandTests.cpp
++++ b/StrataTests/src/Editor/AssetCommandTests.cpp
+@@ -104,7 +104,7 @@ TEST_SUITE("Editor.AssetOperations")
+ 			types[type["type"].get<std::string>()] = type;
+ 		// Every named type once, and nothing else.
+ 		CHECK(types.size() == listing["types"].size());
+-		CHECK(types.size() == static_cast<size_t>(AssetType::ColorLookup));
++		CHECK(types.size() == static_cast<size_t>(AssetType::Text));
+ 		for (const auto& [name, type] : types)
+ 		{
+ 			CAPTURE(name);
+diff --git a/StrataTests/src/Scene/TextAssetRobustnessTests.cpp b/StrataTests/src/Scene/TextAssetRobustnessTests.cpp
+new file mode 100644
+index 00000000..d019abb9
+--- /dev/null
++++ b/StrataTests/src/Scene/TextAssetRobustnessTests.cpp
+@@ -0,0 +1,48 @@
++#include <doctest/doctest.h>
++
++#include "Scene/TextAssetTestUtils.h"
++#include "Strata/Scene/TextAsset.h"
++
++#include <cstddef>
++#include <string>
++#include <vector>
++
++using namespace Strata;
++
++TEST_SUITE("Scene.TextAsset")
++{
++	TEST_CASE("Truncated, garbage and oversized stored forms are rejected")
++	{
++		// Cutting the sample inside a multi-byte character leaves invalid UTF-8: after 13 bytes (the first byte of the
++		// accent) and after 16 or 17 (one or two bytes of the euro sign). Every other length ends between characters.
++		const std::vector<uint8_t> whole = Tests::TextToBytes(Tests::c_TextSample);
++		for (size_t length = 0; length <= whole.size(); length++)
++		{
++			CAPTURE(length);
++			std::vector<uint8_t> prefix(whole.begin(), whole.begin() + static_cast<std::ptrdiff_t>(length));
++			std::string error;
++			const bool cutInsideCharacter = length == 13 || length == 16 || length == 17;
++			CHECK((Tests::LoadText(prefix, error) != nullptr) == !cutInsideCharacter);
++			CHECK(error.empty() == !cutInsideCharacter);
++		}
++
++		const std::vector<std::vector<uint8_t>> garbage = {
++			{ 0xFF, 0xFE, 0xFD },  // bytes that start no sequence
++			{ 0xC0, 0x80 },        // an overlong form of NUL
++			{ 0xED, 0xA0, 0x80 },  // a surrogate
++			{ 0x80 } };            // a continuation byte alone
++		for (std::vector<uint8_t> bytes : garbage)
++		{
++			std::string error;
++			CHECK(Tests::LoadText(bytes, error) == nullptr);
++			CHECK_FALSE(error.empty());
++		}
++
++		std::vector<uint8_t> atLimit(TextAsset::c_MaxBytes, 'a');
++		std::string error;
++		CHECK(Tests::LoadText(atLimit, error) != nullptr);
++		std::vector<uint8_t> tooLarge(TextAsset::c_MaxBytes + 1, 'a');
++		CHECK(Tests::LoadText(tooLarge, error) == nullptr);
++		CHECK_FALSE(error.empty());
++	}
++}
+diff --git a/StrataTests/src/Scene/TextAssetTestUtils.h b/StrataTests/src/Scene/TextAssetTestUtils.h
+new file mode 100644
+index 00000000..39a95154
+--- /dev/null
++++ b/StrataTests/src/Scene/TextAssetTestUtils.h
+@@ -0,0 +1,33 @@
++#pragma once
++
++#include "Strata/Asset/AssetManager.h"
++
++#include <doctest/doctest.h>
++
++#include <string>
++#include <vector>
++
++namespace Strata::Tests
++{
++
++	// 19 bytes: "Line one\n" is 9, "Caf" 3, the e with an acute accent 2, a space 1, the euro sign 3 and the final line end 1.
++	inline const std::string c_TextSample = "Line one\nCaf\xC3\xA9 \xE2\x82\xAC\n";
++
++	inline std::vector<uint8_t> TextToBytes(const std::string& text)
++	{
++		return std::vector<uint8_t>(text.begin(), text.end());
++	}
++
++	// What the loader the Scene module registered makes of stored bytes: the asset, or null with the reason in `error`.
++	inline Ref<Asset> LoadText(std::vector<uint8_t>& bytes, std::string& error)
++	{
++		const AssetLoadFunction* loader = AssetLoaderRegistry::Find(AssetType::Text);
++		REQUIRE(loader);
++		AssetMetadata metadata;
++		metadata.Type = AssetType::Text;
++		metadata.Path = "Text/Notes.sttxt";
++		AssetLoadData data(bytes);
++		return (*loader)(metadata, data, &error);
++	}
++
++}
+diff --git a/StrataTests/src/Scene/TextAssetTests.cpp b/StrataTests/src/Scene/TextAssetTests.cpp
+new file mode 100644
+index 00000000..0432a403
+--- /dev/null
++++ b/StrataTests/src/Scene/TextAssetTests.cpp
+@@ -0,0 +1,55 @@
++#include <doctest/doctest.h>
++
++#include "Scene/TextAssetTestUtils.h"
++#include "Strata/Asset/AssetImporter.h"
++#include "Strata/Scene/TextAsset.h"
++#include "TestHelpers.h"
++
++#include <filesystem>
++#include <fstream>
++#include <string>
++#include <vector>
++
++using namespace Strata;
++
++TEST_SUITE("Scene.TextAsset")
++{
++	TEST_CASE("A text round-trips through its loader, which takes the bytes over")
++	{
++		std::vector<uint8_t> bytes = Tests::TextToBytes(Tests::c_TextSample);
++		REQUIRE(bytes.size() == 19);
++		std::string error;
++		const Ref<Asset> loaded = Tests::LoadText(bytes, error);
++		REQUIRE_MESSAGE(loaded, error);
++		CHECK(bytes.empty());
++		CHECK(loaded->GetType() == AssetType::Text);
++		CHECK(std::static_pointer_cast<TextAsset>(loaded)->GetText() == Tests::c_TextSample);
++		CHECK(loaded->GetMemoryUsage().Cpu == 19);
++		CHECK(loaded->GetMemoryUsage().GetGpu() == 0);
++	}
++
++	TEST_CASE("The importer stores a valid file as written and refuses an invalid one")
++	{
++		const AssetImporter* importer = AssetImporterRegistry::FindByExtension(".sttxt");
++		REQUIRE(importer);
++		CHECK(importer->GetType() == AssetType::Text);
++
++		const std::filesystem::path directory = Tests::CreateTemporaryDirectory("TextImporter");
++		const std::filesystem::path path = directory / "Notes.sttxt";
++		ImportContext context;
++		context.SourcePath = path;
++		context.AssetDirectory = directory;
++
++		std::ofstream(path, std::ios::binary) << "Line one\nLine two\n";
++		ImportResult result;
++		std::string error;
++		REQUIRE_MESSAGE(importer->Import(context, result, &error), error);
++		CHECK(result.Data == Tests::TextToBytes("Line one\nLine two\n"));
++
++		std::ofstream(path, std::ios::binary) << "\xFF\xFE broken";
++		ImportResult rejected;
++		error.clear();
++		CHECK_FALSE(importer->Import(context, rejected, &error));
++		CHECK_FALSE(error.empty());
++	}
++}

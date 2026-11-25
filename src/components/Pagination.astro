@@ -1,0 +1,38 @@
+---
+// "Previous" and "next". Without a chosen track they follow the sidebar (the parts in order). A reader who chose a
+// track on start/how-to-read gets that track's order instead: the links of every track that holds the page (or offers
+// it as a side step) are written into the page, each set in a <template>, and the book's script swaps in the chosen
+// set (so without scripts the page shows the sidebar's order). Rows not written yet are passed over
+// (src/lib/sidebar.mjs, trackNeighbours).
+import Default from '@astrojs/starlight/components/Pagination.astro';
+import { getCollection } from 'astro:content';
+import sidebar from '../sidebar.json';
+import { trackLinks, writtenPages } from '../lib/pagination.mjs';
+
+const { entry } = Astro.locals.starlightRoute;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const pages = writtenPages(await getCollection('docs'));
+const { tracks, chooser } = typeof entry.data.id === 'string' ? trackLinks({ sidebar, pages, id: entry.data.id, base }) : { tracks: [], chooser: null };
+---
+
+<div class="book-pagination" data-pagefind-ignore>
+	<Default />
+	{tracks.map((track) => (
+		<template data-book-track={track.key} data-book-track-label={track.label}>
+			{track.prev && (
+				<a href={track.prev.href} rel="prev">
+					<span>Previous on your track<br /><span class="link-title">{track.prev.title}</span></span>
+				</a>
+			)}
+			{track.next && (
+				<a href={track.next.href} rel="next">
+					<span>Next on your track<br /><span class="link-title">{track.next.title}</span></span>
+				</a>
+			)}
+		</template>
+	))}
+	<p class="book-pagination__track" hidden>
+		Previous and next follow your track: <span class="book-pagination__track-name"></span>.
+		{chooser && <a href={chooser.href}>Choose another track</a>}
+	</p>
+</div>

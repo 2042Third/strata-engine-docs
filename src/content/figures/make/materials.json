@@ -1,0 +1,1246 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "A gold coin leaning back on its edge, the sun's highlight a bright streak along its rim, beside a ball of smooth grey metal on the ground, in sunlight",
+			"caption": "The result: a coin of polished gold that catches the sun along its rim, and a ball of smooth grey metal.",
+			"alt": "A gold coin leans back on the ground, its face a warm yellow and its rim lit by a white streak of sunlight. Beside it stands a smooth grey metal sphere with a white highlight, on a grey ground.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.6,
+					3.6
+				],
+				"target": [
+					0,
+					0.55,
+					0
+				],
+				"fov": 30
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "asset.import",
+					"parameters": {
+						"files": [
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_Color.jpg",
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_MetallicRoughness.jpg",
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_NormalGL.jpg"
+						],
+						"directory": "Textures/result"
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/result/Gold.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/result/Gold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-0.8,
+									0.38,
+									0
+								],
+								"Rotation": [
+									115.0,
+									-35.0,
+									0.0
+								],
+								"Scale": [
+									0.8,
+									0.08,
+									0.8
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/result/Ball.stmat",
+						"properties": {
+							"BaseColorMap": "Textures/result/Metal032_Color.jpg",
+							"MetallicRoughnessMap": "Textures/result/Metal032_MetallicRoughness.jpg",
+							"Metallic": 1.0,
+							"Roughness": 1.0,
+							"UVTiling": [
+								2.0,
+								2.0
+							],
+							"NormalMap": "Textures/result/Metal032_NormalGL.jpg"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/result/Ball.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.8,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "sphere-grid",
+			"shows": "Ten spheres in two rows: red paint with metallic 0 on top and gold with metallic 1 below, roughness 0, 0.25, 0.5, 0.75 and 1 from left to right",
+			"caption": "Roughness grows from left to right: the sun's highlight spreads and fades, and the metal row shows only reflections.",
+			"alt": "Two rows of five spheres, the upper row red paint and the lower row gold metal, the left spheres glossy with small highlights and the right spheres dull with wide soft ones.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.1,
+					7.5
+				],
+				"target": [
+					0,
+					1.1,
+					0
+				],
+				"fov": 27
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/m0-r0.stmat",
+						"properties": {
+							"BaseColor": [
+								0.8,
+								0.1,
+								0.1,
+								1.0
+							],
+							"Metallic": 0.0,
+							"Roughness": 0.0
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "m0-r0",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/m0-r0.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-2.2,
+									1.75,
+									0.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/m0-r1.stmat",
+						"properties": {
+							"BaseColor": [
+								0.8,
+								0.1,
+								0.1,
+								1.0
+							],
+							"Metallic": 0.0,
+							"Roughness": 0.25
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "m0-r1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/m0-r1.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-1.1,
+									1.75,
+									0.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/m0-r2.stmat",
+						"properties": {
+							"BaseColor": [
+								0.8,
+								0.1,
+								0.1,
+								1.0
+							],
+							"Metallic": 0.0,
+							"Roughness": 0.5
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "m0-r2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/m0-r2.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.0,
+									1.75,
+									0.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/m0-r3.stmat",
+						"properties": {
+							"BaseColor": [
+								0.8,
+								0.1,
+								0.1,
+								1.0
+							],
+							"Metallic": 0.0,
+							"Roughness": 0.75
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "m0-r3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/m0-r3.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									1.1,
+									1.75,
+									0.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/m0-r4.stmat",
+						"properties": {
+							"BaseColor": [
+								0.8,
+								0.1,
+								0.1,
+								1.0
+							],
+							"Metallic": 0.0,
+							"Roughness": 1.0
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "m0-r4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/m0-r4.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.2,
+									1.75,
+									0.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/m1-r0.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.0
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "m1-r0",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/m1-r0.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-2.2,
+									0.5,
+									0.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/m1-r1.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.25
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "m1-r1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/m1-r1.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-1.1,
+									0.5,
+									0.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/m1-r2.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.5
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "m1-r2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/m1-r2.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.0,
+									0.5,
+									0.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/m1-r3.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.75
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "m1-r3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/m1-r3.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									1.1,
+									0.5,
+									0.0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/m1-r4.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 1.0
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "m1-r4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/m1-r4.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.2,
+									0.5,
+									0.0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "material-editor",
+			"shows": "The Asset tab with the new material Gold at its first values: a white Base Color, Metallic 0 and Roughness 0.5, then the other values and the empty texture slots",
+			"caption": "The Asset tab with the new material Gold: one row for each value, and a color box that opens the picker.",
+			"alt": "The Asset tab showing the new material Gold: a white box for Base Color, Metallic at 0, Roughness at 0.5, and below them more rows and the empty texture slots.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/materials-short.ini",
+				"windowSize": [
+					1280,
+					784
+				],
+				"panel": "AssetInspector",
+				"steps": [
+					{
+						"command": "material.create",
+						"parameters": {
+							"path": "Materials/Gold.stmat"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"asset": "Materials/Gold.stmat"
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "AssetInspector"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "gold-coin",
+			"shows": "The coin in the level, gold, tilted toward the sun, its face lighter at the top where it reflects the sky and the sun",
+			"caption": "The first checkpoint: the coin shows the warm yellow of gold.",
+			"alt": "A gold coin standing almost upright on a grey ground, its flat face an even warm yellow that grows lighter toward the top, with a long shadow falling to its left.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					-0.35,
+					1.08,
+					2.04
+				],
+				"target": [
+					-0.8,
+					0.4,
+					0
+				],
+				"fov": 30
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/gold-coin/Gold.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/gold-coin/Gold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-0.8,
+									0.4,
+									0
+								],
+								"Rotation": [
+									83.7,
+									37.9,
+									0
+								],
+								"Scale": [
+									0.8,
+									0.08,
+									0.8
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "ball-metal",
+			"shows": "The ball with the base color map and the metal and rough map, without a normal map: smooth grey metal",
+			"caption": "The second checkpoint: the ball takes its grey color and its metal from the textures. Metal032 varies so little that the ball looks smooth and even, with no visible wear.",
+			"alt": "A smooth grey metal sphere on a grey ground in sunlight, with a soft highlight at its upper right and a long shadow.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0.8,
+					1.0,
+					2.2
+				],
+				"target": [
+					0.8,
+					0.5,
+					0
+				]
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "asset.import",
+					"parameters": {
+						"files": [
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_Color.jpg",
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_MetallicRoughness.jpg",
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_NormalGL.jpg"
+						],
+						"directory": "Textures/ball-metal"
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/ball-metal/Ball.stmat",
+						"properties": {
+							"BaseColorMap": "Textures/ball-metal/Metal032_Color.jpg",
+							"MetallicRoughnessMap": "Textures/ball-metal/Metal032_MetallicRoughness.jpg",
+							"Metallic": 1.0,
+							"Roughness": 1.0,
+							"UVTiling": [
+								2.0,
+								2.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/ball-metal/Ball.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.8,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "normal-warning",
+			"shows": "The Asset tab with the ball's material and the warning under Normal Map that the texture is imported as Color, with the button Import as Normal Map",
+			"caption": "The warning under the Normal Map slot and the button that fixes it.",
+			"alt": "The Asset tab showing the material Ball, a warning triangle under Normal Map saying the texture is imported as Color, and the button Import as Normal Map.",
+			"kind": "editor",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"editorWindow": {
+				"layout": "layouts/materials-tall.ini",
+				"windowSize": [
+					1280,
+					866
+				],
+				"panel": "AssetInspector",
+				"steps": [
+					{
+						"command": "material.create",
+						"parameters": {
+							"path": "Materials/Ball.stmat",
+							"properties": {
+								"BaseColorMap": "Textures/Metal/Metal032_Color.jpg",
+								"MetallicRoughnessMap": "Textures/Metal/Metal032_MetallicRoughness.jpg",
+								"NormalMap": "Textures/Metal/Metal032_NormalGL.jpg",
+								"Metallic": 1.0,
+								"Roughness": 1.0,
+								"UVTiling": [
+									2.0,
+									2.0
+								]
+							}
+						}
+					},
+					{
+						"command": "asset.setImportSettings",
+						"parameters": {
+							"asset": "Textures/Metal/Metal032_NormalGL.jpg",
+							"settings": {
+								"Usage": "Color"
+							}
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"asset": "Materials/Ball.stmat"
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "AssetInspector"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "ball-normal",
+			"shows": "The ball with the normal map; the map is nearly flat, so the ball looks smooth, as at the second checkpoint",
+			"caption": "The third checkpoint: the ball with its normal map. The map of this set is nearly flat, so the ball still looks smooth and even.",
+			"alt": "A smooth grey metal sphere on a grey ground in sunlight, with a soft white highlight at its upper right and a long shadow to its left, looking as it did before the normal map.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0.8,
+					1.0,
+					2.2
+				],
+				"target": [
+					0.8,
+					0.5,
+					0
+				]
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "asset.import",
+					"parameters": {
+						"files": [
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_Color.jpg",
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_MetallicRoughness.jpg",
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_NormalGL.jpg"
+						],
+						"directory": "Textures/ball-normal"
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/ball-normal/Ball.stmat",
+						"properties": {
+							"BaseColorMap": "Textures/ball-normal/Metal032_Color.jpg",
+							"MetallicRoughnessMap": "Textures/ball-normal/Metal032_MetallicRoughness.jpg",
+							"Metallic": 1.0,
+							"Roughness": 1.0,
+							"UVTiling": [
+								2.0,
+								2.0
+							],
+							"NormalMap": "Textures/ball-normal/Metal032_NormalGL.jpg"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/ball-normal/Ball.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.8,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "coin-glow",
+			"shows": "The coin and the ball in sunlight with the coin's emission of 50 nits, which makes no visible difference by day",
+			"caption": "The fourth checkpoint: the coin glows faintly, which the sun hides by day.",
+			"alt": "A gold coin with a rim lit by the sun and a grey metal ball on a grey ground in sunlight, looking as they did before the glow was added.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.6,
+					3.6
+				],
+				"target": [
+					0,
+					0.55,
+					0
+				],
+				"fov": 30
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "asset.import",
+					"parameters": {
+						"files": [
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_Color.jpg",
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_MetallicRoughness.jpg",
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_NormalGL.jpg"
+						],
+						"directory": "Textures/coin-glow"
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/coin-glow/Gold.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3,
+							"EmissiveColor": [
+								1.0,
+								0.6,
+								0.1
+							],
+							"EmissiveIntensity": 50.0
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/coin-glow/Gold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-0.8,
+									0.38,
+									0
+								],
+								"Rotation": [
+									115.0,
+									-35.0,
+									0.0
+								],
+								"Scale": [
+									0.8,
+									0.08,
+									0.8
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/coin-glow/Ball.stmat",
+						"properties": {
+							"BaseColorMap": "Textures/coin-glow/Metal032_Color.jpg",
+							"MetallicRoughnessMap": "Textures/coin-glow/Metal032_MetallicRoughness.jpg",
+							"Metallic": 1.0,
+							"Roughness": 1.0,
+							"UVTiling": [
+								2.0,
+								2.0
+							],
+							"NormalMap": "Textures/coin-glow/Metal032_NormalGL.jpg"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/coin-glow/Ball.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.8,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "albedo-view",
+			"shows": "The Albedo debug view with a pure white wall marked in red stripes behind the gold coin and the metal ball",
+			"caption": "The Albedo view: the white wall is striped red because its base color is too bright, while the coin, the ball and the ground show plain colors. The four walls of the level, out of this view, are striped too. In the Scene view a legend also gives the share of the image that is too bright; this picture omits it.",
+			"alt": "A scene in the Albedo debug view: a wide wall covered in fine red stripes behind a plain yellow coin and a plain grey ball, on a flat grey ground.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.6,
+					3.6
+				],
+				"target": [
+					0,
+					0.8,
+					0
+				]
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "asset.import",
+					"parameters": {
+						"files": [
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_Color.jpg",
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_MetallicRoughness.jpg",
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_NormalGL.jpg"
+						],
+						"directory": "Textures/albedo-view"
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/albedo-view/Chalk.stmat",
+						"properties": {
+							"BaseColor": [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/albedo-view/Chalk.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.0,
+									-1.5
+								],
+								"Scale": [
+									4,
+									2,
+									0.2
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/albedo-view/Gold.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/albedo-view/Gold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-0.8,
+									0.4,
+									0
+								],
+								"Rotation": [
+									73.7,
+									37.9,
+									0
+								],
+								"Scale": [
+									0.8,
+									0.08,
+									0.8
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/albedo-view/Ball.stmat",
+						"properties": {
+							"BaseColorMap": "Textures/albedo-view/Metal032_Color.jpg",
+							"MetallicRoughnessMap": "Textures/albedo-view/Metal032_MetallicRoughness.jpg",
+							"Metallic": 1.0,
+							"Roughness": 1.0,
+							"UVTiling": [
+								2.0,
+								2.0
+							],
+							"NormalMap": "Textures/albedo-view/Metal032_NormalGL.jpg"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/albedo-view/Ball.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.8,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete",
+			"debugView": "albedo"
+		},
+		{
+			"id": "final",
+			"shows": "The finished level with the gold coin, its rim catching the sun, and the metal ball, as in the result",
+			"caption": "The last checkpoint: the coin is gold and the ball is metal, as in the result; the wall is gone after its fix.",
+			"alt": "A gold coin leans back on the ground, its face a warm yellow and its rim lit by a white streak of sunlight. Beside it stands a smooth grey metal sphere with a white highlight, on a grey ground.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.6,
+					3.6
+				],
+				"target": [
+					0,
+					0.55,
+					0
+				],
+				"fov": 30
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "asset.import",
+					"parameters": {
+						"files": [
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_Color.jpg",
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_MetallicRoughness.jpg",
+							"G:/GameEngineAI/.worktrees/docs-pin/Samples/PhysicsPlayground/Assets/Textures/Metal/Metal032_NormalGL.jpg"
+						],
+						"directory": "Textures/final"
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/final/Gold.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/final/Gold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-0.8,
+									0.38,
+									0
+								],
+								"Rotation": [
+									115.0,
+									-35.0,
+									0.0
+								],
+								"Scale": [
+									0.8,
+									0.08,
+									0.8
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/final/Ball.stmat",
+						"properties": {
+							"BaseColorMap": "Textures/final/Metal032_Color.jpg",
+							"MetallicRoughnessMap": "Textures/final/Metal032_MetallicRoughness.jpg",
+							"Metallic": 1.0,
+							"Roughness": 1.0,
+							"UVTiling": [
+								2.0,
+								2.0
+							],
+							"NormalMap": "Textures/final/Metal032_NormalGL.jpg"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/final/Ball.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0.8,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		}
+	]
+}

@@ -1,0 +1,128 @@
+{
+	"page": "make/lamps",
+	"startsFrom": {
+		"tutorial": "make/lamps"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "entity.setActive",
+					"entityName": "Ceiling Panel",
+					"parameters": {
+						"active": false
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Table",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.35,
+									-4
+								],
+								"Scale": [
+									0.8,
+									0.7,
+									0.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Candle",
+						"components": {
+							"PointLight": {
+								"Intensity": 1,
+								"Range": 1.5,
+								"Color": [
+									1,
+									0.7,
+									0.35
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.8,
+									-4
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Doorway Lamp",
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 3,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2,
+									-2.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposure": false,
+							"Exposure": -2
+						}
+					},
+					"entityName": "Post Process",
+					"checks": [
+						{
+							"pointer": "/values/Exposure",
+							"approx": -2,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "luminance"
+					},
+					"checks": [
+						{
+							"pointer": "/debugView",
+							"equals": "luminance"
+						}
+					]
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"debugView": "none"
+					}
+				}
+			],
+			"endState": true
+		}
+	]
+}

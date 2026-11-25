@@ -1,0 +1,21 @@
+{
+	"figures": [
+		{
+			"id": "problem-pair",
+			"shows": "The Basic 3D start view as the renderer's numbers put on the screen (every pixel 255 white), then after the post chain (blue sky, the atmosphere's hazy ground below the horizon, and the grey ground plane in front)",
+			"caption": "One frame of the Basic 3D scene, shown two ways. Left (clipped-all-white): with no tone mapping, automatic exposure or exposure compensation, every pixel is brighter than the display's white and clips to one flat white. It is as white as a light page, so its edge vanishes: drag the slider to find it. Right (post-chain): after the post chain (Filmic tone mapping, automatic exposure) the sky is blue and the ground plane grey. The plane's far edge crosses a third of the way down; beyond it lies the atmosphere's pale ground.",
+			"alt": "Two pictures of the same view. The first is entirely flat white, every pixel at full white, with no horizon or ground visible. The second shows a blue sky fading to pale haze at the horizon, a fifth of the way down. Below the horizon lies a band of lighter tan haze, the atmosphere's distant ground. From a third of the way down to the bottom lies a flat grey-brown ground plane seen from above, its straight far edge with angled sides marking where the plane ends.",
+			"kind": "scene",
+			"project": { "template": "basic3d" },
+			"camera": "scene",
+			"size": [1280, 720],
+			"quality": "high",
+			"publish": "lossless",
+			"variants": {
+				"clipped-all-white": { "postProcess": { "Tonemapper": "None", "AutoExposure": false, "Exposure": 0 } },
+				"post-chain": { "postProcess": { "Tonemapper": "Filmic" } }
+			},
+			"expect": "complete"
+		}
+	]
+}

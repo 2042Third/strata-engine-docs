@@ -1,0 +1,61 @@
+{
+	"figures": [
+		{
+			"id": "turn-off",
+			"shows": "The Third-Person course while the camera turns fast around the robot, with motion blur off",
+			"caption": "The turn without motion blur: the far course, the near trees and the robot all keep sharp edges, as if each frame were a snapshot.",
+			"alt": "A third-person game scene during a fast camera turn, with a robot in front, a course of islands behind it and every edge sharp.",
+			"kind": "live",
+			"project": { "sample": "ThirdPerson" },
+			"scene": "Scenes/Course.stscene",
+			"camera": "scene",
+			"crops": [
+				{ "name": "center", "rect": [0.35, 0.2, 0.65, 0.8], "scale": 1 },
+				{ "name": "course", "rect": [0.15, 0.08, 0.47, 0.5], "scale": 1 }
+			],
+			"postProcess": { "AutoExposureSpeed": 0, "AutoExposureLightSpeed": 0, "MotionBlur": false },
+			"play": { "steps": 36, "input": [ { "step": 24, "action": "Gameplay/Look", "mode": "press", "value": [0.75, 0] } ] },
+			"live": { "atFixedStep": 30, "frames": 4 },
+			"publish": "lossless",
+			"expect": "complete"
+		},
+		{
+			"id": "turn-mb90",
+			"shows": "The same turn with motion blur at a shutter angle of 90 degrees",
+			"caption": "With the shorter shutter the far course and the pine at the left smear sideways over a short streak: compare the far islands in the course crop with the first picture's. The robot, which the camera follows, and the near trees beside it stay as sharp as in the first picture.",
+			"alt": "The same turn with a short sideways smear over the far course and the pine at the left, and the robot in the center and the near trees beside it still sharp.",
+			"kind": "live",
+			"project": { "sample": "ThirdPerson" },
+			"scene": "Scenes/Course.stscene",
+			"camera": "scene",
+			"crops": [
+				{ "name": "center", "rect": [0.35, 0.2, 0.65, 0.8], "scale": 1 },
+				{ "name": "course", "rect": [0.15, 0.08, 0.47, 0.5], "scale": 1 }
+			],
+			"postProcess": { "AutoExposureSpeed": 0, "AutoExposureLightSpeed": 0, "MotionBlur": true, "MotionBlurShutterAngle": 90 },
+			"play": { "steps": 36, "input": [ { "step": 24, "action": "Gameplay/Look", "mode": "press", "value": [0.75, 0] } ] },
+			"live": { "atFixedStep": 30, "frames": 4 },
+			"publish": "lossless",
+			"expect": "complete"
+		},
+		{
+			"id": "turn-mb180",
+			"shows": "The same turn with motion blur at a shutter angle of 180 degrees",
+			"caption": "With the longer shutter the streaks of the far course and the pine at the left are about twice as long as with the shorter one. The robot and the near trees beside it still stay sharp.",
+			"alt": "The same turn with a long sideways smear over the far course and the pine at the left, longer than in the previous picture. The robot in the center and the near trees beside it are still sharp.",
+			"kind": "live",
+			"project": { "sample": "ThirdPerson" },
+			"scene": "Scenes/Course.stscene",
+			"camera": "scene",
+			"crops": [
+				{ "name": "center", "rect": [0.35, 0.2, 0.65, 0.8], "scale": 1 },
+				{ "name": "course", "rect": [0.15, 0.08, 0.47, 0.5], "scale": 1 }
+			],
+			"postProcess": { "AutoExposureSpeed": 0, "AutoExposureLightSpeed": 0, "MotionBlur": true, "MotionBlurShutterAngle": 180 },
+			"play": { "steps": 36, "input": [ { "step": 24, "action": "Gameplay/Look", "mode": "press", "value": [0.75, 0] } ] },
+			"live": { "atFixedStep": 30, "frames": 4 },
+			"publish": "lossless",
+			"expect": "complete"
+		}
+	]
+}

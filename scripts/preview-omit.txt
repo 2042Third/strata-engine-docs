@@ -1,0 +1,7 @@
+# Pages the preview leaves out (PREVIEW.md): each breaks a rule of the build that a one-line fix cannot mend.
+# One page id per line. Remove a line once its page passes: node scripts/preview-scan.mjs
+basics/cpp-generic
+core/platform
+make/prefabs
+make/scenes-entities
+make/sound

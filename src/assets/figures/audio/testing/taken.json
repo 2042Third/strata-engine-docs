@@ -1,0 +1,25 @@
+{
+	"files": {
+		"audio-state-answer.txt": {
+			"kind": "text",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": null,
+			"figure": "audio-state-answer",
+			"variant": null,
+			"crop": null,
+			"original": "7ecbecf81de7a43cd9212bbf6bc15f9968c9bbd633df49395e368f40031ad1bd",
+			"recorded": {},
+			"checkedAt": [],
+			"sha256": "7ecbecf81de7a43cd9212bbf6bc15f9968c9bbd633df49395e368f40031ad1bd",
+			"encoder": null
+		}
+	}
+}

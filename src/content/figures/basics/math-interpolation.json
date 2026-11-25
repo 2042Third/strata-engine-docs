@@ -1,0 +1,44 @@
+{
+	"figures": [
+		{
+			"id": "lerp-line",
+			"shows": "A horizontal number line from 10 to 30 with the points for the weights 0, 0.25, 0.5 and 1 marked at 10, 15, 20 and 30, and dashed extensions beyond both ends marked for the weights below 0 and above 1",
+			"caption": "A lerp slides along a straight line: the weight 0 is the start, the weight 1 is the end, and weights outside that range continue past the ends.",
+			"alt": "A number line from 10 to 30. Ticks mark the weight 0 at 10, 0.25 at 15, 0.5 at 20 and 1 at 30. The line continues dashed to the left of 10 and to the right of 30, labelled as weights outside 0 to 1.",
+			"kind": "diagram",
+			"numbers": "Line from 5 to 35 with solid part 10 to 30; ticks at 10 (t = 0), 15 (t = 0.25), 20 (t = 0.5), 30 (t = 1); dashed parts 5 to 10 and 30 to 35;"
+		},
+		{
+			"id": "easing-curves",
+			"shows": "A graph of four curves from (0, 0) to (1, 1): the straight line, ease in (t squared), ease out (1 minus (1 minus t) squared) and smoothstep (3 t squared minus 2 t cubed), each labelled, with dots at t = 0.25 on every curve",
+			"caption": "All four curves go from 0 to 1. Ease in starts flat, ease out ends flat, and smoothstep is flat at both ends.",
+			"alt": "A graph with the weight t along the bottom and the eased weight up the side, both from 0 to 1. A straight diagonal line, a curve that starts flat and bends up, a curve that rises fast and flattens, and an S-shaped curve cross the square. Dots at t = 0.25 sit at 0.25, 0.0625, 0.4375 and 0.156.",
+			"kind": "diagram",
+			"numbers": "Axes 0 to 1 on both; curves linear, t^2, 1-(1-t)^2, 3t^2-2t^3; dots at t = 0.25 with values 0.25, 0.0625, 0.4375, 0.15625."
+		},
+		{
+			"id": "keys-curves",
+			"shows": "A graph of time against value with two keys, (0 s, 0) with slope 1 and (2 s, 1) with slope 0, joined by three curves: a step that holds 0 and then jumps to 1, a straight line, and the Hermite curve bulging above the line",
+			"caption": "The same two keys, joined three ways: the step jumps, the line runs straight from key to key, and the Hermite curve leaves the first key along its slope and arrives flat.",
+			"alt": "A graph with time from 0 to 2 seconds along the bottom and value from 0 to 1 up the side. Two dots mark the keys. A stepped line stays at 0 and jumps to 1 at 2 seconds. A straight diagonal joins the keys. A smooth curve starts steeply, passes 0.75 at 1 second and flattens at the second key.",
+			"kind": "diagram",
+			"numbers": "Keys (0, 0, slope 1) and (2, 1, slope 0); step 0 until t = 2; linear 0.5 at t = 1; Hermite 0.75 at t = 1 and 0.9375 at t = 1.5; short tangent segments drawn at both keys."
+		},
+		{
+			"id": "bilinear-weights",
+			"shows": "A square with a corner value at each corner (0 bottom left, 4 bottom right, 2 top left, 6 top right), a point inside at 0.25 across and 0.5 up, and the four rectangles that the point cuts the square into, each labelled with its area as a weight: 0.375, 0.125, 0.375 and 0.125",
+			"caption": "The weight of a corner is the area of the rectangle opposite it, so the four weights add up to one.",
+			"alt": "A square split by a horizontal and a vertical line through an inner point. The corner values 0, 4, 2 and 6 sit at the corners. The rectangle opposite each corner is shaded in turn and labelled with its area: 0.375 for the bottom left and top left, 0.125 for the other two.",
+			"kind": "diagram",
+			"numbers": "Square 0 to 1 on both axes; point (0.25, 0.5); corner values c00 = 0, c10 = 4, c01 = 2, c11 = 6; weights (1-u)(1-v) = 0.375, u(1-v) = 0.125, (1-u)v = 0.375, uv = 0.125; result 2."
+		},
+		{
+			"id": "decay-stepped",
+			"shows": "A graph of a decay over one second with the exact curve for k = 2 per second, and two stepped curves: a fixed weight of 0.0645 per frame at 30 and at 120 frames per second, the first lying on the exact curve and the second falling far below it",
+			"caption": "A fixed fraction per frame gives a different curve at each frame rate, while the exponential weight lies on the exact curve at both.",
+			"alt": "A graph of the remaining gap over one second, falling from 1. A smooth curve ends at 0.135. Dots for 30 frames per second sit on it. Dots for 120 frames per second with the same fixed weight fall to 0.0003. A second set of dots for 120 frames with the exponential weight again lies on the smooth curve.",
+			"kind": "diagram",
+			"numbers": "Time axis 0 to 1 s, gap axis 0 to 1; exact e^(-2t) ending at 0.1353; 30 steps with weight 0.0645 ending at 0.1353; 120 steps with 0.0645 ending at 0.0003; 120 steps with 0.0165 ending at 0.1353."
+		}
+	]
+}

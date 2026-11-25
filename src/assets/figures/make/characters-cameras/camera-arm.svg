@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 356">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: side view, 1 m = 90 px; feet x 120, ground y 340, pivot y 205.0; hit x 480.0, camera x 453.0, Distance end x 705.0, ray end x 732.0; wall 0.5 m thick, 2.6 m high; H = 340 + 16 -->
+<line x1="24" y1="340" x2="744" y2="340" class="line-ink" fill="none"/>
+<rect x="93" y="178" width="54" height="162" rx="27" class="plate line-ink"/>
+<text x="120" y="290" class="ink small" text-anchor="middle">player</text>
+<rect x="480.0" y="106" width="45.0" height="234" class="plate line-ink"/>
+<text x="502.5" y="326" class="ink small" text-anchor="middle">Wall</text>
+<line x1="60" y1="340" x2="60" y2="205" class="line-ink" fill="none"/>
+<line x1="54" y1="205" x2="66" y2="205" class="line-ink" fill="none"/>
+<line x1="70" y1="205" x2="89" y2="205" class="line-faint" fill="none" stroke-width="1"/>
+<text x="54" y="286" class="ink small" text-anchor="end">1.5 m</text>
+<line x1="120" y1="205" x2="480" y2="205" class="line-blue" fill="none" stroke-dasharray="4 3" stroke-width="2"/>
+<line x1="525" y1="205" x2="732" y2="205" class="line-muted" fill="none" stroke-dasharray="4 3"/>
+<line x1="732" y1="199" x2="732" y2="211" class="line-muted" fill="none"/>
+<line x1="120" y1="205" x2="433" y2="205" class="line-orange" fill="none" stroke-width="2.5"/>
+<rect x="441" y="195" width="24" height="20" class="plate line-ink"/>
+<polygon points="441,200 441,210 433,214 433,196" class="plate line-ink"/>
+<rect x="693" y="195" width="24" height="20" class="ground line-muted" stroke-dasharray="4 3"/>
+<polygon points="693,200 693,210 685,214 685,196" class="ground line-muted" stroke-dasharray="4 3"/>
+<circle cx="120" cy="205" r="5" class="orange"/>
+<text x="88" y="197" class="orange bold" text-anchor="end">pivot</text>
+<circle cx="480" cy="205" r="4.5" class="red"/>
+<text x="453" y="185" class="ink small" text-anchor="middle">camera</text>
+<text x="705" y="185" class="muted small" text-anchor="middle">no wall</text>
+<line x1="120" y1="174" x2="120" y2="40" class="line-faint" fill="none" stroke-width="1"/>
+<line x1="705" y1="169" x2="705" y2="80" class="line-faint" fill="none" stroke-width="1"/>
+<line x1="732" y1="197" x2="732" y2="44" class="line-faint" fill="none" stroke-width="1"/>
+<line x1="120" y1="150" x2="480" y2="150" class="line-red" fill="none"/>
+<line x1="120" y1="145" x2="120" y2="155" class="line-red" fill="none"/>
+<line x1="480" y1="145" x2="480" y2="155" class="line-red" fill="none"/>
+<text x="300" y="142" class="red" text-anchor="middle">hit at 4.0 m</text>
+<line x1="120" y1="86" x2="705" y2="86" class="line-ink" fill="none"/>
+<line x1="120" y1="81" x2="120" y2="91" class="line-ink" fill="none"/>
+<line x1="705" y1="81" x2="705" y2="91" class="line-ink" fill="none"/>
+<text x="412.5" y="78" class="ink" text-anchor="middle">Distance 6.5 m</text>
+<line x1="120" y1="50" x2="732" y2="50" class="line-muted" fill="none"/>
+<line x1="120" y1="45" x2="120" y2="55" class="line-muted" fill="none"/>
+<line x1="732" y1="45" x2="732" y2="55" class="line-muted" fill="none"/>
+<text x="426" y="42" class="muted" text-anchor="middle">ray 6.8 m: Distance + WallMargin</text>
+<line x1="453" y1="217" x2="453" y2="248" class="line-faint" fill="none" stroke-width="1"/>
+<line x1="120" y1="240" x2="453" y2="240" class="line-orange" fill="none"/>
+<line x1="120" y1="235" x2="120" y2="245" class="line-orange" fill="none"/>
+<line x1="453" y1="235" x2="453" y2="245" class="line-orange" fill="none"/>
+<text x="286.5" y="262" class="orange bold" text-anchor="middle">arm 3.7 m</text>
+<line x1="453" y1="240" x2="480" y2="240" class="line-ink" fill="none"/>
+<line x1="453" y1="235" x2="453" y2="245" class="line-ink" fill="none"/>
+<line x1="480" y1="235" x2="480" y2="245" class="line-ink" fill="none"/>
+<line x1="466.5" y1="240" x2="466.5" y2="286" class="line-ink" fill="none"/>
+<text x="460.5" y="300" class="ink small" text-anchor="end">WallMargin 0.3 m</text>
+<text x="546" y="262" class="ink small">arm = max(0.4, 4.0 − 0.3)</text>
+<text x="546" y="282" class="ink small">= 3.7 m</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 156">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- grid: value v at x = 54 + (v - 5) * 22, line at y 70; solid 10 to 30, dashed 5 to 10 and 30 to 35 -->
+<line x1="64" y1="70" x2="164" y2="70" class="line-muted" stroke-dasharray="4 3" stroke-width="2"/>
+<polygon points="54,70 64,66.5 64,73.5" class="muted"/>
+<line x1="604" y1="70" x2="704" y2="70" class="line-muted" stroke-dasharray="4 3" stroke-width="2"/>
+<polygon points="714,70 704,73.5 704,66.5" class="muted"/>
+<line x1="164" y1="70" x2="604" y2="70" class="line-ink" stroke-width="2.5"/>
+<circle cx="164" cy="70" r="5" class="blue"/>
+<text x="164" y="50" class="blue" text-anchor="middle">t = 0</text>
+<text x="164" y="100" class="ink" text-anchor="middle">a = 10</text>
+<circle cx="274" cy="70" r="5" class="blue"/>
+<text x="274" y="50" class="blue" text-anchor="middle">t = 0.25</text>
+<text x="274" y="100" class="ink" text-anchor="middle">15</text>
+<circle cx="384" cy="70" r="5" class="blue"/>
+<text x="384" y="50" class="blue" text-anchor="middle">t = 0.5</text>
+<text x="384" y="100" class="ink" text-anchor="middle">20</text>
+<circle cx="604" cy="70" r="5" class="blue"/>
+<text x="604" y="50" class="blue" text-anchor="middle">t = 1</text>
+<text x="604" y="100" class="ink" text-anchor="middle">b = 30</text>
+<text x="87" y="50" class="muted" text-anchor="middle">t &lt; 0</text>
+<text x="681" y="50" class="muted" text-anchor="middle">t &gt; 1</text>
+<text x="384" y="136" class="ink" text-anchor="middle">lerp(10, 30, t) = 10 + (30 − 10) × t</text>
+</svg>

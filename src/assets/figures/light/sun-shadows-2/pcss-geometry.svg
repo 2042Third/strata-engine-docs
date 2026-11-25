@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 528">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: a drawn 15 degrees (exaggerated), edge E (384,220), sun center C (384,70), |CE| 150, R = 150 sin a = 38.82.
+Tangent points T = E + 144.89 (±sin a, −cos a) = (346.50, 80.05), (421.50, 80.05).
+Receiver y 440, s = 220, s tan a = 58.95: rays reach x 325.05 and 442.95, w = 117.9. -->
+<polygon class="plate" points="40,220 384,220 325.05,440 40,440"/>
+<polygon class="orange-area" points="384,220 442.95,440 325.05,440"/>
+<circle class="orange-area line-orange" cx="384" cy="70" r="38.82" stroke-width="2"/>
+<line class="line-muted" x1="384" y1="70" x2="384" y2="214" stroke-dasharray="4 3"/>
+<line class="line-muted" x1="384" y1="226" x2="384" y2="440" stroke-dasharray="4 3"/>
+<rect class="muted" x="40" y="214" width="344" height="12"/>
+<line class="line-ink" x1="40" y1="440" x2="728" y2="440" stroke-width="2.5"/>
+<g class="line-blue" stroke-width="2">
+<line x1="346.50" y1="80.05" x2="442.95" y2="440"/>
+<line x1="421.50" y1="80.05" x2="325.05" y2="440"/>
+</g>
+<path class="line-ink" fill="none" d="M 384 174 A 46 46 0 0 1 395.91 175.57"/>
+<path class="line-ink" fill="none" d="M 384 266 A 46 46 0 0 0 395.91 264.43"/>
+<text class="ink" x="406" y="180">a</text>
+<text class="ink" x="406" y="273">a</text>
+<text class="ink" x="436" y="75">sun disk, angular radius a</text>
+<text class="ink" x="60" y="204">blocker</text>
+<line class="line-muted" x1="392" y1="220" x2="526" y2="220" stroke-dasharray="4 3"/>
+<g class="line-ink">
+<line x1="520" y1="220" x2="520" y2="440"/>
+<line x1="514" y1="220" x2="526" y2="220"/>
+</g>
+<text class="ink" x="530" y="336">s</text>
+<text class="ink" x="180" y="425" text-anchor="middle">umbra</text>
+<text class="ink" x="620" y="425" text-anchor="middle">fully lit</text>
+<text class="muted" x="728" y="466" text-anchor="end">receiver</text>
+<g class="line-ink">
+<line x1="384" y1="462" x2="442.95" y2="462"/>
+<line x1="384" y1="456" x2="384" y2="468"/>
+<line x1="442.95" y1="456" x2="442.95" y2="468"/>
+<line x1="325.05" y1="484" x2="442.95" y2="484"/>
+<line x1="325.05" y1="478" x2="325.05" y2="490"/>
+<line x1="442.95" y1="478" x2="442.95" y2="490"/>
+</g>
+<text class="ink" x="452" y="467">s tan a</text>
+<text class="ink" x="384" y="507" text-anchor="middle">penumbra, w = 2 s tan a</text>
+</svg>

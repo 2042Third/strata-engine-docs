@@ -1,0 +1,7 @@
+[
+	{ "command": "project.create", "parameters": { "directory": "FallTestProject", "name": "FallTest" } },
+	{ "command": "entity.create", "parameters": { "name": "Ball", "components": { "Transform": { "Translation": [0, 10, 0] }, "RigidBody": { "Type": "Dynamic" }, "BoxCollider": {} } }, "bind": { "ball": "/id" } },
+	{ "command": "play.start", "parameters": { "paused": true } },
+	{ "command": "play.step", "parameters": { "steps": 60 }, "expect": { "/stepsRun": { "equals": 60 } } },
+	{ "command": "component.get", "parameters": { "entity": { "$ref": "ball" }, "component": "Transform" }, "expect": { "/values/Translation/1": { "min": 4, "max": 6 } } }
+]

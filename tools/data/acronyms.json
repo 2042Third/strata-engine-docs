@@ -1,0 +1,9 @@
+{
+	"description": "Acronyms a page may use without spelling them out at their first use (plan/style.md §2.2, rule acronym): units of size, words every persona has, and the names of products, companies and file formats. Every other word of two or more capital letters stands right before or right after its expansion in parentheses at its first use on the page.",
+	"exempt": [
+		"KB", "MB", "GB", "TB", "PC", "OK", "2D", "3D", "USB",
+		"NVIDIA", "AMD", "RTX", "GTX",
+		"PNG", "JPEG", "AVIF", "ZIP", "WAV", "MP3", "FLAC", "KTX",
+		"FMOD", "GLFW", "NVRHI", "MSVC", "GCC", "LLVM", "HLSL", "GLSL", "SPIR"
+	]
+}

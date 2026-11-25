@@ -1,0 +1,156 @@
+[
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"gameView": {
+				"mode": "16:9"
+			}
+		}
+	},
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"gameView": {
+				"mode": "4:3"
+			}
+		}
+	},
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"gameView": {
+				"mode": "21:9"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "CoinText"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"screen": [
+				1440,
+				1080
+			],
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "CoinText"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"screen": [
+				2520,
+				1080
+			],
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "TimeBar"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"screen": [
+				1440,
+				1080
+			],
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "TimeBar"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"screen": [
+				2520,
+				1080
+			],
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "StartSign",
+			"components": {
+				"Text": {
+					"Text": "Roll!",
+					"ScreenSpace": false,
+					"FontSize": 1
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						1.5,
+						0
+					],
+					"Rotation": [
+						-55,
+						0,
+						0
+					]
+				}
+			}
+		},
+		"bind": {
+			"sign": "/id"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "sign"
+			},
+			"component": "Text"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "sign"
+			},
+			"component": "Transform"
+		}
+	}
+]

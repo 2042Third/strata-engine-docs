@@ -1,0 +1,41 @@
+{
+	"figures": [
+		{
+			"id": "furnace-sweep",
+			"kind": "scene",
+			"shows": "Two rows of five spheres in a uniform gray room under one small light, plastic on top and metal below, with roughness 0, 0.25, 0.5, 0.75 and 1 from left to right",
+			"caption": "Plastic on top, metal below, smooth at the left and rough at the right. On the metal row the light's sharp point grows into a broad glow. On the plastic row the small highlight spreads until it is too faint to see. The smooth metal mirrors the even gray room, so it almost disappears except for the light's point.",
+			"alt": "Two rows of five spheres on a gray background. The upper row is darker gray; its two left spheres show a small sharp white highlight, which fades away toward the right. The lower row is almost the color of the background, and its two left spheres show little more than a white point. Toward the right that point grows into a broad soft white glow over the lit side of the last sphere.",
+			"project": { "lookdev": true },
+			"scene": "Scenes/Furnace.stscene",
+			"camera": { "position": [0, 1.1, 7], "target": [0, 1.1, 0], "fov": 40 },
+			"setup": [ { "command": "entity.create", "parameters": { "name": "Key Light", "components": { "Transform": { "Rotation": [-35, 25, 0] }, "DirectionalLight": { "Intensity": 1.5, "CastShadows": false } } } } ],
+			"size": [1920, 1080],
+			"quality": "high",
+			"publish": "lossless",
+			"crops": [
+				{ "name": "metals", "rect": [0.1, 0.5, 0.9, 0.74], "scale": 1 },
+				{ "name": "dielectrics", "rect": [0.1, 0.26, 0.9, 0.5], "scale": 1 }
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "normal-map-compare",
+			"kind": "scene",
+			"shows": "The Showcase oil tank's weathered steel at golden hour, seen from 3.5 m, with its normal map removed, then with it; a crop enlarges the darker right half",
+			"caption": "The same steel shell without and with its normal map, on the same triangles. With the map the smooth streaks of the low sun's reflection break into soft gray spots, clearest in the darker right half.",
+			"alt": "A rusty steel tank wall lit by a low sun, bright on the left and dark blue on the right. Without the map the reflection runs in smooth vertical streaks. With the map the same streaks and rust patches stay, but the darker right half is covered in soft gray spots.",
+			"project": { "sample": "Showcase" },
+			"camera": { "position": [9.7, 1.6, 14.5], "target": [6.74, 2.0, 16.37], "fov": 22 },
+			"size": [1280, 720],
+			"quality": "high",
+			"publish": "lossless",
+			"crops": [ { "name": "right", "rect": [0.45, 0.05, 0.9, 0.75], "scale": 2 } ],
+			"variants": {
+				"map-off": { "setup": [ { "command": "material.set", "parameters": { "material": "Materials/WeatheredSteel.stmat", "properties": { "NormalMap": null }, "save": false } } ] },
+				"map-on": { "setup": [ { "command": "material.set", "parameters": { "material": "Materials/WeatheredSteel.stmat", "properties": { "NormalMap": "Generated/Props/WeatheredSteel_nor_gl.png" }, "save": false } } ] }
+			},
+			"expect": "complete"
+		}
+	]
+}

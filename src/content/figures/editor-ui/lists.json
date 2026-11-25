@@ -1,0 +1,113 @@
+{
+	"figures": [
+		{
+			"id": "hierarchy-expanded",
+			"kind": "editor",
+			"shows": "The Hierarchy with expanded groups, prefab badges and an inactive entity",
+			"caption": "The Hierarchy of the Showcase scene with some groups expanded. Each row is shifted right by its depth. The names of a prefab instance and of its parts are drawn in blue. A prefab instance has a prefab badge at the right, blue when the instance matches its prefab and yellow when its values differ. The dimmed row with a crossed eye, a part of the first lantern, is an inactive entity.",
+			"alt": "The Hierarchy panel listing entities as rows shifted right by their depth, some with arrows and blue or yellow prefab badges, and a dimmed row inside the first lantern with a crossed eye. The other rows under Props have blue names.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/hierarchy.ini",
+				"panel": "Hierarchy",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "LanternA.Wick"
+						},
+						"bind": {
+							"wick": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "wick"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 10
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "hierarchy-searched",
+			"kind": "editor",
+			"shows": "The Hierarchy searched with c:Light",
+			"caption": "The same Hierarchy searched for every kind of light component. The matches stand out, white or in the blue of a prefab's parts, and their ancestors appear dimmed for context.",
+			"alt": "The Hierarchy panel with the text c:Light in its search field, listing the sky, the sun and three blue light rows under the dimmed rows of their groups.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/hierarchy-short.ini",
+				"windowSize": [960, 440],
+				"panel": "Hierarchy",
+				"steps": [
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Hierarchy",
+							"search": "c:Light"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "hierarchy-drag",
+			"kind": "editor",
+			"shows": "A Hierarchy drag with its drop line and the inside highlight",
+			"caption": "Two drags in the Hierarchy. A line between rows shows where the entities will go, and a framed row shows a drop inside that entity.",
+			"alt": "The Hierarchy panel during a drag, with an accent line between two rows on the left and an outlined row on the right.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/hierarchy.ini",
+				"steps": []
+			},
+			"blocked": "No command of the pin holds a drag in progress, so no take shows the drop line or the framed row (pin 319075e3, 2026-11-24). A picture would need a way to hold a drag of entities over a row while the editor draws.",
+			"standIn": "hierarchy-drop-zones"
+		},
+		{
+			"id": "hierarchy-drop-zones",
+			"kind": "diagram",
+			"shows": "The rows A, B, X, Y and C with B expanded, and three drops of A: before C, inside C and after B; under each the parent and index; below, one row split into its three zones",
+			"caption": "Three drops of A in the scene of the example, as the Hierarchy draws them while the pointer moves. A line marks a drop before or after a row, and it starts at the depth that the entities will have. A framed row marks a drop inside it. Under each list stand the parent and the index that the drop sends. Below them, one row is split into its zones by the pointer's height in it.",
+			"alt": "Three lists of the rows A, B, X, Y and C, with X and Y shifted right under B. The first has a blue line on top of C's row. The second has C's row framed in blue on a pale blue ground. The third has a blue line under B's row that starts at the depth of X. Below them, one tall row is split into a top quarter for before, a middle half for inside and a bottom quarter for after."
+		},
+		{
+			"id": "content-grid",
+			"kind": "editor",
+			"shows": "The Content Browser's grid at the project's top folder: folder tiles and an image tile with its thumbnail",
+			"caption": "The Content Browser as a grid. Each folder is a tile, and a picture shows its thumbnail on its tile.",
+			"alt": "The Content Browser panel with a tree of folders on the left and a grid of folder tiles and one picture tile on the right.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/content-browser.ini",
+				"panel": "ContentBrowser",
+				"steps": []
+			}
+		}
+	]
+}

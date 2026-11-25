@@ -1,0 +1,1015 @@
+diff --git a/Docs/Architecture.md b/Docs/Architecture.md
+index ddb51e9f..f5e8d476 100644
+--- a/Docs/Architecture.md
++++ b/Docs/Architecture.md
+@@ -1227,4 +1227,6 @@ which means the module is not in the build or its system does not run in this mo
+ | `IAnimatorControl`: play, cross-fade, parameters, speed, state queries, joint transforms, whether an entity has an animator (`HasAnimator`) | `AnimationSystem` | script host (`Animator`), tools and tests |
+ | `IAnimationEventSource`: listeners of the events controller states fire | `AnimationSystem` | `ScriptSystem` (`OnAnimationEvent`), tools and tests |
++| `IWindZones`: the wind at a position | `WindZoneSystem` | `ScriptSystem` (`Wind::GetStrength`) |
++| `IWindEventSource`: listeners of the zones' strength changes | `WindZoneSystem` | `ScriptSystem` (`OnWindChanged`) |
+ | `IUIEvents`: listeners of the game UI's widget events (clicks, value changes, focus changes, input field submits) | `GameUISystem` | `ScriptSystem` (`OnUIClick`, `OnUIValueChanged`, `OnUIFocusChanged`, `OnUISubmit`), tools and tests |
+ | `IUIControl`: the game UI's elements (texts, images, colors, interactability, values), the focus, the pointer and the UI actions | `GameUISystem` | script host (`UIElement`, `UI`) |
+diff --git a/Strata/src/Strata/Physics/WindZoneSystem.cpp b/Strata/src/Strata/Physics/WindZoneSystem.cpp
+index 73a1ee30..2071428c 100644
+--- a/Strata/src/Strata/Physics/WindZoneSystem.cpp
++++ b/Strata/src/Strata/Physics/WindZoneSystem.cpp
+@@ -5,4 +5,6 @@
+ #include "Strata/Scene/Scene.h"
+ 
++#include <algorithm>
++
+ namespace Strata
+ {
+@@ -11,4 +13,24 @@ namespace Strata
+ 		: m_Scene(scene)
+ 	{
++		m_Scene.RegisterService<IWindZones>(*this);
++		m_Scene.RegisterService<IWindEventSource>(*this);
++	}
++
++	WindZoneSystem::~WindZoneSystem()
++	{
++		m_Scene.UnregisterService<IWindEventSource>(*this);
++		m_Scene.UnregisterService<IWindZones>(*this);
++	}
++
++	float WindZoneSystem::GetStrengthAt(const glm::vec3& position) const
++	{
++		float strength = 0.0f;
++		for (const WindZoneSample& zone : m_Zones)
++		{
++			// Both modes reach the same sphere; the mode decides only the direction of the push, which comes later.
++			if (glm::distance(position, zone.Position) <= zone.Radius)
++				strength += zone.Strength;
++		}
++		return strength;
+ 	}
+ 
+@@ -17,4 +39,7 @@ namespace Strata
+ 		ST_PROFILE_FUNCTION();
+ 
++		// The last step's zones stay at hand, to find the strengths that changed since.
++		const std::vector<WindZoneSample> previous = std::move(m_Zones);
++
+ 		// Gathered anew every step, so that a zone that was destroyed, deactivated or moved needs no bookkeeping.
+ 		m_Zones.clear();
+@@ -28,4 +53,50 @@ namespace Strata
+ 			m_Zones.push_back({ handle, glm::vec3(m_Scene.GetWorldTransform(entity)[3]), zone.Strength, zone.Radius, zone.Mode });
+ 		}
++
++		// A zone that was gathered before and now holds another strength. The comparison is exact: a strength changes only
++		// when someone writes it. A zone seen for the first time did not change.
++		std::vector<WindChangeInfo> changes;
++		for (const WindZoneSample& zone : m_Zones)
++		{
++			const auto before = std::find_if(previous.begin(), previous.end(), [&](const WindZoneSample& old) { return old.Handle == zone.Handle; });
++			if (before == previous.end() || before->Strength == zone.Strength)
++				continue;
++			const Entity entity(zone.Handle, &m_Scene);
++			changes.push_back({ entity, entity.GetUUID(), zone.Strength });
++		}
++		DispatchChanges(changes);
++	}
++
++	WindChangeListenerID WindZoneSystem::AddWindChangeListener(WindChangeCallback callback)
++	{
++		if (!callback)
++			return 0;
++		const WindChangeListenerID id = m_NextListenerID++;
++		m_Listeners.push_back({ id, std::move(callback) });
++		return id;
++	}
++
++	bool WindZoneSystem::RemoveWindChangeListener(WindChangeListenerID id)
++	{
++		const auto it = std::find_if(m_Listeners.begin(), m_Listeners.end(), [id](const Listener& listener) { return listener.ID == id; });
++		if (it == m_Listeners.end())
++			return false;
++		m_Listeners.erase(it);
++		return true;
++	}
++
++	void WindZoneSystem::DispatchChanges(const std::vector<WindChangeInfo>& changes)
++	{
++		for (const WindChangeInfo& change : changes)
++		{
++			// A copy: a listener may add or remove listeners. One removed meanwhile is not called.
++			const std::vector<Listener> listeners = m_Listeners;
++			for (const Listener& listener : listeners)
++			{
++				const bool present = std::any_of(m_Listeners.begin(), m_Listeners.end(), [&](const Listener& entry) { return entry.ID == listener.ID; });
++				if (present)
++					listener.Callback(change);
++			}
++		}
+ 	}
+ 
+diff --git a/Strata/src/Strata/Physics/WindZoneSystem.h b/Strata/src/Strata/Physics/WindZoneSystem.h
+index 71695068..46fc76f4 100644
+--- a/Strata/src/Strata/Physics/WindZoneSystem.h
++++ b/Strata/src/Strata/Physics/WindZoneSystem.h
+@@ -2,4 +2,5 @@
+ 
+ #include "Strata/Physics/PhysicsComponents.h"
++#include "Strata/Scene/SceneServices.h"
+ #include "Strata/Scene/SceneSystem.h"
+ 
+@@ -24,9 +25,11 @@ namespace Strata
+ 
+ 	// Gathers the scene's active wind zones once per fixed step, with the world position of each. It writes no transform and
+-	// no component: the forces on bodies come in a later change. Main thread only.
+-	class WindZoneSystem : public SceneSystem
++	// no component: the forces on bodies come in a later change. It offers IWindZones (the wind at a position) and
++	// IWindEventSource (a notice when a zone's strength changes between two steps) while it exists. Main thread only.
++	class WindZoneSystem : public SceneSystem, public IWindZones, public IWindEventSource
+ 	{
+ 	public:
+ 		explicit WindZoneSystem(Scene& scene);
++		~WindZoneSystem() override;
+ 
+ 		void OnFixedUpdate(float timestep) override;
+@@ -35,7 +38,23 @@ namespace Strata
+ 		const std::vector<WindZoneSample>& GetZones() const { return m_Zones; }
+ 
++		// IWindZones
++		float GetStrengthAt(const glm::vec3& position) const override;
++
++		// IWindEventSource
++		WindChangeListenerID AddWindChangeListener(WindChangeCallback callback) override;
++		bool RemoveWindChangeListener(WindChangeListenerID id) override;
+ 	private:
++		struct Listener
++		{
++			WindChangeListenerID ID = 0;
++			WindChangeCallback Callback;
++		};
++
++		void DispatchChanges(const std::vector<WindChangeInfo>& changes);
++
+ 		Scene& m_Scene;
+ 		std::vector<WindZoneSample> m_Zones;
++		std::vector<Listener> m_Listeners;
++		WindChangeListenerID m_NextListenerID = 1;
+ 	};
+ 
+diff --git a/Strata/src/Strata/Scene/SceneServices.h b/Strata/src/Strata/Scene/SceneServices.h
+index 8bea2bdb..9a3a1c2e 100644
+--- a/Strata/src/Strata/Scene/SceneServices.h
++++ b/Strata/src/Strata/Scene/SceneServices.h
+@@ -27,5 +27,5 @@
+ //
+ // The built-in providers: PhysicsSystem offers ICollisionEventSource, IBodyMotionQuery, IBodyControl, IPhysicsQueries,
+-// ICharacterControl and IPhysicsCapacity; AudioSystem offers IAudioPlayback; the World module's system offers
++// ICharacterControl and IPhysicsCapacity; the Physics module's WindZoneSystem offers IWindZones; AudioSystem offers IAudioPlayback; the World module's system offers
+ // IWorldStreaming; the Animation module's system offers ISkinningPoses, IAnimatorControl and IAnimationEventSource (the
+ // editor's pose preview provides ISkinningPoses for edited scenes, where no system runs); the GameUI module's system offers
+@@ -376,4 +376,19 @@ namespace Strata
+ 	};
+ 
++	//////////////////////////////////////////////////////////////////////////
++	// Wind
++	//////////////////////////////////////////////////////////////////////////
++
++	// The wind of a playing scene (the Physics module's WindZoneSystem).
++	class IWindZones
++	{
++	public:
++		virtual ~IWindZones() = default;
++
++		// The strength, in newtons, that the active zones reaching a world position add up to, as of the last fixed step: a
++		// zone reaches the positions within its radius of its center. 0 where no zone reaches, and before the first step.
++		virtual float GetStrengthAt(const glm::vec3& position) const = 0;
++	};
++
+ 	//////////////////////////////////////////////////////////////////////////
+ 	// Physics capacity
+@@ -592,3 +607,26 @@ namespace Strata
+ 	};
+ 
++	// A wind zone whose strength differs from the one it had in the step before (WindZoneSystem), dispatched on the main thread
++	// during the fixed step that saw the change.
++	struct WindChangeInfo
++	{
++		Entity Zone;
++		UUID ZoneID = UUID::Null();
++		float Strength = 0.0f; // Newtons, after the change
++	};
++
++	using WindChangeCallback = std::function<void(const WindChangeInfo&)>;
++	using WindChangeListenerID = uint64_t;
++
++	// The strength changes of a playing scene's wind zones (the Physics module's WindZoneSystem). Listeners added while changes
++	// are dispatched receive the next step's; a removed one is not called again.
++	class IWindEventSource
++	{
++	public:
++		virtual ~IWindEventSource() = default;
++
++		virtual WindChangeListenerID AddWindChangeListener(WindChangeCallback callback) = 0;
++		virtual bool RemoveWindChangeListener(WindChangeListenerID id) = 0;
++	};
++
+ }
+diff --git a/Strata/src/Strata/Scripting/ScriptHostAPI.cpp b/Strata/src/Strata/Scripting/ScriptHostAPI.cpp
+index 06fb07a0..6c615e90 100644
+--- a/Strata/src/Strata/Scripting/ScriptHostAPI.cpp
++++ b/Strata/src/Strata/Scripting/ScriptHostAPI.cpp
+@@ -1173,4 +1173,5 @@ namespace Strata
+ 		constexpr const char* c_WithoutAudio = "the scene plays without audio (the engine has no audio module)";
+ 		constexpr const char* c_WithoutAnimation = "the scene plays without animation (the engine has no animation module)";
++		constexpr const char* c_WithoutWind = "the scene plays without wind zones (the engine has no physics module)";
+ 
+ 		// The scene's physics services (Scene/SceneServices.h); null when the scene plays without physics.
+@@ -3421,4 +3422,22 @@ namespace Strata
+ 		}
+ 
++		////////////////////////////////////////////////////////////////////////////////
++		// Wind (IWindZones)
++		////////////////////////////////////////////////////////////////////////////////
++
++		float HostGetWindStrength(StrataScriptContext* context, const float* position)
++		{
++			// Without a context, a usable position or the service: no wind.
++			return HostCall("GetWindStrength", 0.0f, [&]()
++			{
++				ScriptSystem* system = ResolveContext(context, "GetWindStrength");
++				const std::optional<glm::vec3> point = system ? ReadVector3(*system, position, "position", "GetWindStrength") : std::nullopt;
++				const IWindZones* wind = point ? system->GetScene().GetService<IWindZones>() : nullptr;
++				if (point && !wind)
++					system->ReportProblem("GetWindStrength", c_WithoutWind);
++				return wind ? wind->GetStrengthAt(*point) : 0.0f;
++			});
++		}
++
+ 		////////////////////////////////////////////////////////////////////////////////
+ 		// The table
+@@ -3594,5 +3613,6 @@ namespace Strata
+ 	X(GetStepAlpha) \
+ 	X(GetDrawnTransform) \
+-	X(ResetInterpolation)
++	X(ResetInterpolation) \
++	X(GetWindStrength)
+ 
+ 		struct HostFunctionEntry
+diff --git a/Strata/src/Strata/Scripting/ScriptModule.cpp b/Strata/src/Strata/Scripting/ScriptModule.cpp
+index be998932..d9bd0678 100644
+--- a/Strata/src/Strata/Scripting/ScriptModule.cpp
++++ b/Strata/src/Strata/Scripting/ScriptModule.cpp
+@@ -850,4 +850,6 @@ namespace Strata
+ 			case ScriptCallback::OnUISubmit:
+ 				return ScriptCallResult::Rejected; // They take the widget (InvokeUIEventCallback)
++			case ScriptCallback::OnWindChanged:
++				return ScriptCallResult::Rejected; // It takes the zone's strength (InvokeWindChangedCallback)
+ 		}
+ 		return ScriptCallResult::Rejected;
+@@ -879,4 +881,5 @@ namespace Strata
+ 			case ScriptCallback::OnUIFocusChanged:
+ 			case ScriptCallback::OnUISubmit:
++			case ScriptCallback::OnWindChanged:
+ 				return ScriptCallResult::Rejected; // Not contact callbacks (InvokeCallback, InvokeAnimationEventCallback, InvokeUIEventCallback)
+ 		}
+@@ -896,4 +899,13 @@ namespace Strata
+ 	}
+ 
++	ScriptCallResult ScriptModule::InvokeWindChangedCallback(const ScriptCallSite& site, StrataScriptInstance instance, float strength)
++	{
++		const ClassFunctions* functions = GetFunctions(site);
++		if (!functions || !instance)
++			return ScriptCallResult::Rejected;
++		const auto function = functions->OnWindChanged;
++		return function ? Call(site, [&]() { return function(instance, strength); }) : ScriptCallResult::Unavailable;
++	}
++
+ 	ScriptCallResult ScriptModule::InvokeUIEventCallback(const ScriptCallSite& site, StrataScriptInstance instance, ScriptCallback callback, uint64_t widget,
+ 		float value, bool focused)
+@@ -935,4 +947,5 @@ namespace Strata
+ 			case ScriptCallback::OnTriggerExit:
+ 			case ScriptCallback::OnAnimationEvent:
++			case ScriptCallback::OnWindChanged:
+ 				return ScriptCallResult::Rejected; // Not UI callbacks
+ 		}
+@@ -1015,4 +1028,6 @@ namespace Strata
+ 			if (ST_SCRIPT_HAS_MEMBER(StrataScriptClassDesc, descriptor, OnUISubmit))
+ 				functions.OnUISubmit = descriptor->OnUISubmit;
++			if (ST_SCRIPT_HAS_MEMBER(StrataScriptClassDesc, descriptor, OnWindChanged))
++				functions.OnWindChanged = descriptor->OnWindChanged;
+ 			if (!functions.Create || !functions.Destroy || !functions.GetField || !functions.SetField)
+ 			{
+@@ -1036,5 +1051,6 @@ namespace Strata
+ 				{ ScriptCallback::OnUIValueChanged, functions.OnUIValueChanged != nullptr },
+ 				{ ScriptCallback::OnUIFocusChanged, functions.OnUIFocusChanged != nullptr },
+-				{ ScriptCallback::OnUISubmit, functions.OnUISubmit != nullptr }
++				{ ScriptCallback::OnUISubmit, functions.OnUISubmit != nullptr },
++				{ ScriptCallback::OnWindChanged, functions.OnWindChanged != nullptr }
+ 			};
+ 			for (const auto& [callback, implemented] : callbacks)
+diff --git a/Strata/src/Strata/Scripting/ScriptModule.h b/Strata/src/Strata/Scripting/ScriptModule.h
+index a159e99a..5102b31c 100644
+--- a/Strata/src/Strata/Scripting/ScriptModule.h
++++ b/Strata/src/Strata/Scripting/ScriptModule.h
+@@ -106,4 +106,6 @@ namespace Strata
+ 		// OnAnimationEvent with the event's name (engine memory the module reads during the call).
+ 		ScriptCallResult InvokeAnimationEventCallback(const ScriptCallSite& site, StrataScriptInstance instance, std::string_view name);
++		// OnWindChanged with the zone's new strength.
++		ScriptCallResult InvokeWindChangedCallback(const ScriptCallSite& site, StrataScriptInstance instance, float strength);
+ 		// The game UI's callbacks (OnUIClick, OnUIValueChanged, OnUIFocusChanged, OnUISubmit) with the widget's id, the value
+ 		// (OnUIValueChanged) and whether it gained the focus (OnUIFocusChanged).
+@@ -146,4 +148,5 @@ namespace Strata
+ 			decltype(StrataScriptClassDesc::OnUIFocusChanged) OnUIFocusChanged = nullptr;
+ 			decltype(StrataScriptClassDesc::OnUISubmit) OnUISubmit = nullptr;
++			decltype(StrataScriptClassDesc::OnWindChanged) OnWindChanged = nullptr;
+ 		};
+ 
+diff --git a/Strata/src/Strata/Scripting/ScriptSystem.cpp b/Strata/src/Strata/Scripting/ScriptSystem.cpp
+index 44aaf7fb..e94a5c25 100644
+--- a/Strata/src/Strata/Scripting/ScriptSystem.cpp
++++ b/Strata/src/Strata/Scripting/ScriptSystem.cpp
+@@ -102,4 +102,6 @@ namespace Strata
+ 		if (IUIEvents* ui = m_Scene.GetService<IUIEvents>())
+ 			m_UIListener = ui->AddUIEventListener([this](const UIEventInfo& event) { OnUIEvent(event); });
++		if (IWindEventSource* wind = m_Scene.GetService<IWindEventSource>())
++			m_WindListener = wind->AddWindChangeListener([this](const WindChangeInfo& event) { OnWindChanged(event); });
+ 
+ 		// The scripted entities in hierarchy order, so that creation is deterministic: sorted when they are few among many
+@@ -172,4 +174,10 @@ namespace Strata
+ 			m_UIListener = 0;
+ 		}
++		if (m_WindListener != 0)
++		{
++			if (IWindEventSource* wind = m_Scene.GetService<IWindEventSource>())
++				wind->RemoveWindChangeListener(m_WindListener);
++			m_WindListener = 0;
++		}
+ 		m_CreationBlocked = true;
+ 		DestroyAllInstances(true);
+@@ -450,4 +458,30 @@ namespace Strata
+ 	}
+ 
++	////////////////////////////////////////////////////////////////////////////////
++	// Wind
++	////////////////////////////////////////////////////////////////////////////////
++
++	void ScriptSystem::OnWindChanged(const WindChangeInfo& event)
++	{
++		if (!m_Running || !GetUsableModule())
++			return;
++		auto it = m_Instances.find(event.ZoneID);
++		if (it == m_Instances.end() || !event.Zone || !m_Scene.IsActiveInHierarchy(event.Zone))
++			return;
++
++		// A copy: the callbacks may add or remove scripts (removed instances are flagged and skipped).
++		const std::vector<Ref<Instance>> instances = it->second;
++		for (const Ref<Instance>& instance : instances)
++		{
++			if (instance->Removed || instance->Disabled || !instance->Created || !instance->Handle || !instance->Class->Implements(ScriptCallback::OnWindChanged))
++				continue;
++			ScriptModule* module = GetUsableModule();
++			if (!module)
++				return;
++			const ScriptCallSite site = MakeCallSite(*instance, ScriptCallbackToString(ScriptCallback::OnWindChanged));
++			HandleCallResult(*instance, ScriptCallback::OnWindChanged, module->InvokeWindChangedCallback(site, instance->Handle, event.Strength));
++		}
++	}
++
+ 	////////////////////////////////////////////////////////////////////////////////
+ 	// Change tracking
+diff --git a/Strata/src/Strata/Scripting/ScriptSystem.h b/Strata/src/Strata/Scripting/ScriptSystem.h
+index b2c0c01f..b2c000d5 100644
+--- a/Strata/src/Strata/Scripting/ScriptSystem.h
++++ b/Strata/src/Strata/Scripting/ScriptSystem.h
+@@ -251,4 +251,6 @@ namespace Strata
+ 		// Calls the UI callback of the event on the scripts of the widget's entity, then on those of its event target.
+ 		void OnUIEvent(const UIEventInfo& event);
++		// Calls OnWindChanged on the scripts of the wind zone's entity.
++		void OnWindChanged(const WindChangeInfo& event);
+ 	private:
+ 		Scene& m_Scene;
+@@ -299,4 +301,5 @@ namespace Strata
+ 		AnimationEventListenerID m_AnimationListener = 0; // Registered with the scene's IAnimationEventSource while running (0: none)
+ 		UIEventListenerID m_UIListener = 0;               // Registered with the scene's IUIEvents while running (0: none)
++		WindChangeListenerID m_WindListener = 0;          // Registered with the scene's IWindEventSource while running (0: none)
+ 		std::vector<entt::scoped_connection> m_Connections;
+ 		float m_DeltaTime = 0.0f;
+diff --git a/Strata/src/Strata/Scripting/ScriptTypes.cpp b/Strata/src/Strata/Scripting/ScriptTypes.cpp
+index e46865ac..29514769 100644
+--- a/Strata/src/Strata/Scripting/ScriptTypes.cpp
++++ b/Strata/src/Strata/Scripting/ScriptTypes.cpp
+@@ -24,4 +24,5 @@ namespace Strata
+ 			case ScriptCallback::OnUIFocusChanged: return "OnUIFocusChanged";
+ 			case ScriptCallback::OnUISubmit:       return "OnUISubmit";
++			case ScriptCallback::OnWindChanged:    return "OnWindChanged";
+ 		}
+ 		return "Unknown";
+diff --git a/Strata/src/Strata/Scripting/ScriptTypes.h b/Strata/src/Strata/Scripting/ScriptTypes.h
+index ff2be9e9..1d143054 100644
+--- a/Strata/src/Strata/Scripting/ScriptTypes.h
++++ b/Strata/src/Strata/Scripting/ScriptTypes.h
+@@ -34,10 +34,12 @@ namespace Strata
+ 		OnUIValueChanged,
+ 		OnUIFocusChanged,
+-		OnUISubmit
++		OnUISubmit,
++		// The strength of the wind zone on the entity changed (see StrataScriptClassDesc and ScriptSystem).
++		OnWindChanged
+ 	};
+ 
+ 	// How many callbacks there are: code that lists or counts every callback (script.status) goes up to this, so callbacks
+ 	// appended to the enum are included without edits there. Defined from the last value: keep it pointing at the last one.
+-	constexpr size_t c_ScriptCallbackCount = static_cast<size_t>(ScriptCallback::OnUISubmit) + 1;
++	constexpr size_t c_ScriptCallbackCount = static_cast<size_t>(ScriptCallback::OnWindChanged) + 1;
+ 
+ 	const char* ScriptCallbackToString(ScriptCallback callback);
+diff --git a/StrataScriptCore/Include/StrataScript/Script.h b/StrataScriptCore/Include/StrataScript/Script.h
+index e1693b5d..fc964e7e 100644
+--- a/StrataScriptCore/Include/StrataScript/Script.h
++++ b/StrataScriptCore/Include/StrataScript/Script.h
+@@ -44,4 +44,5 @@ namespace Strata
+ 	//                   when the player clicks a button, changes a slider or toggle, moves the focus, or submits an input
+ 	//                   field's text (see below)
++	//   OnWindChanged   when the strength of the wind zone on the entity changed between two fixed steps, with the new strength
+ 	// Instances update in entity hierarchy order (parents first), then in the order of the scripts on the entity.
+ 	// Inactive entities receive no updates. Overrides may be public, protected or private.
+@@ -96,4 +97,5 @@ namespace Strata
+ 		virtual void OnUIFocusChanged([[maybe_unused]] Entity widget, [[maybe_unused]] bool focused) {}
+ 		virtual void OnUISubmit([[maybe_unused]] Entity widget) {}
++		virtual void OnWindChanged([[maybe_unused]] float strength) {}
+ 
+ 		// The entity this script is attached to.
+@@ -337,4 +339,12 @@ namespace Strata
+ 		}
+ 
++		inline uint32_t WindChangedThunk(StrataScriptInstance instance, float strength)
++		{
++			Script* script = ToScript(instance);
++			if (!script)
++				return StrataScriptResult_InvalidArgument;
++			return InvokeScript(ScriptAccess::GetInstanceContext(*script), [&]() { script->OnWindChanged(strength); });
++		}
++
+ 		// Per script class: its registered name and, while the module is loaded, its record.
+ 		template<typename T>
+@@ -363,5 +373,6 @@ namespace Strata
+ 			CallbackFlag_OnUIValueChanged = 1u << 12,
+ 			CallbackFlag_OnUIFocusChanged = 1u << 13,
+-			CallbackFlag_OnUISubmit = 1u << 14
++			CallbackFlag_OnUISubmit = 1u << 14,
++			CallbackFlag_OnWindChanged = 1u << 15
+ 		};
+ 
+@@ -504,4 +515,13 @@ namespace Strata
+ 		}
+ 
++		template<typename T>
++		constexpr bool OverridesOnWindChanged()
++		{
++			if constexpr (requires { &T::OnWindChanged; })
++				return !std::is_same_v<decltype(&T::OnWindChanged), void (Script::*)(float)>;
++			else
++				return true;
++		}
++
+ 		template<typename T>
+ 		constexpr uint32_t GetCallbackFlags()
+@@ -538,4 +558,6 @@ namespace Strata
+ 			if constexpr (OverridesOnUISubmit<T>())
+ 				flags |= CallbackFlag_OnUISubmit;
++			if constexpr (OverridesOnWindChanged<T>())
++				flags |= CallbackFlag_OnWindChanged;
+ 			return flags;
+ 		}
+@@ -687,4 +709,5 @@ namespace Strata
+ 			desc.OnUIFocusChanged = (flags & CallbackFlag_OnUIFocusChanged) ? &UIFocusChangedThunk : nullptr;
+ 			desc.OnUISubmit = (flags & CallbackFlag_OnUISubmit) ? &UISubmitThunk : nullptr;
++			desc.OnWindChanged = (flags & CallbackFlag_OnWindChanged) ? &WindChangedThunk : nullptr;
+ 			return record;
+ 		}
+diff --git a/StrataScriptCore/Include/StrataScript/ScriptABI.h b/StrataScriptCore/Include/StrataScript/ScriptABI.h
+index 1ce89813..04c47b11 100644
+--- a/StrataScriptCore/Include/StrataScript/ScriptABI.h
++++ b/StrataScriptCore/Include/StrataScript/ScriptABI.h
+@@ -753,4 +753,11 @@ extern "C"
+ 		bool (*ResetInterpolation)(StrataScriptContext* context, StrataScriptEntityID entity);
+ 
++		/*
++		 * Wind (added after ResetInterpolation, ABI version 1: check ST_SCRIPT_HAS_MEMBER before use). GetWindStrength is the
++		 * strength, in newtons, that the active wind zones reaching the world position (x, y, z; three floats) add up to: 0 where
++		 * no zone reaches. It also returns 0 for a null or non-finite position and while the scene plays without wind zones.
++		 */
++		float (*GetWindStrength)(StrataScriptContext* context, const float* position);
++
+ 		/* New functions are appended here (see the compatibility rules above). */
+ 	} StrataScriptHostAPI;
+@@ -828,4 +835,10 @@ extern "C"
+ 		uint32_t (*OnUISubmit)(StrataScriptInstance instance, StrataScriptEntityID widget);
+ 
++		/*
++		 * The strength of the wind zone on the script's entity changed between two fixed steps (added after OnUISubmit and
++		 * read only when StructSize covers it); `strength` is the new one, in newtons. Called during the fixed step that saw it.
++		 */
++		uint32_t (*OnWindChanged)(StrataScriptInstance instance, float strength);
++
+ 		/* New callbacks are appended here. */
+ 	} StrataScriptClassDesc;
+diff --git a/StrataScriptCore/Include/StrataScript/StrataScript.h b/StrataScriptCore/Include/StrataScript/StrataScript.h
+index 1a27aa05..a47aa97f 100644
+--- a/StrataScriptCore/Include/StrataScript/StrataScript.h
++++ b/StrataScriptCore/Include/StrataScript/StrataScript.h
+@@ -23,3 +23,4 @@
+ #include "StrataScript/UI.h"
+ #include "StrataScript/Value.h"
++#include "StrataScript/Wind.h"
+ #include "StrataScript/World.h"
+diff --git a/StrataScriptCore/Include/StrataScript/Wind.h b/StrataScriptCore/Include/StrataScript/Wind.h
+new file mode 100644
+index 00000000..f8ecf862
+--- /dev/null
++++ b/StrataScriptCore/Include/StrataScript/Wind.h
+@@ -0,0 +1,23 @@
++#pragma once
++
++#include "StrataScript/Host.h"
++
++#include <glm/glm.hpp>
++
++namespace Strata
++{
++
++	// The wind of the scene's wind zones.
++	class Wind
++	{
++	public:
++		// The strength, in newtons, that the active wind zones reaching a world position add up to; 0 where none reaches it,
++		// and with an engine that has no wind zones.
++		static float GetStrength(const glm::vec3& position)
++		{
++			const StrataScriptHostAPI* host = ST_SCRIPT_DETAIL_HOST_WITH(GetWindStrength);
++			return host ? host->GetWindStrength(Detail::GetContext(), &position.x) : 0.0f;
++		}
++	};
++
++}
+diff --git a/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene b/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
+index 5d4e7912..26bd5387 100644
+--- a/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
++++ b/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
+@@ -5696,4 +5696,12 @@
+ 						"Name": "Gust"
+ 					},
++					"Script": {
++						"Scripts": [
++							{
++								"Class": "WindEventFeatures",
++								"Fields": {}
++							}
++						]
++					},
+ 					"Transform": {
+ 						"Rotation": [
+@@ -5721,4 +5729,38 @@
+ 				},
+ 				"ID": "F7E00000000000A0"
++			},
++			{
++				"Components": {
++					"Name": {
++						"Name": "Wind Features"
++					},
++					"Script": {
++						"Scripts": [
++							{
++								"Class": "WindFeatures",
++								"Fields": {}
++							}
++						]
++					},
++					"Transform": {
++						"Rotation": [
++							0,
++							0,
++							0,
++							1
++						],
++						"Scale": [
++							1,
++							1,
++							1
++						],
++						"Translation": [
++							0,
++							42,
++							0
++						]
++					}
++				},
++				"ID": "F7E00000000000A1"
+ 			}
+ 		],
+diff --git a/StrataTests/FeatureTest/Scripts/WindEventFeatures.cpp b/StrataTests/FeatureTest/Scripts/WindEventFeatures.cpp
+new file mode 100644
+index 00000000..ed169462
+--- /dev/null
++++ b/StrataTests/FeatureTest/Scripts/WindEventFeatures.cpp
+@@ -0,0 +1,57 @@
++// Wind: Wind::GetStrength and Script::OnWindChanged, on "Gust", the feature scene's wind zone.
++
++#include "FeatureScript.h"
++
++using namespace Strata;
++using namespace FeatureTest;
++
++// Raises its zone's strength from 25 to 40 newtons at frame 10, hears of it once, and reads the wind at the zone's center
++// and far outside every zone.
++class WindEventFeatures : public FeatureScript
++{
++public:
++	static constexpr int32_t c_RaiseFrame = 10;
++	static constexpr int32_t c_CheckFrame = 20;
++
++	int32_t Changes = 0;     // OnWindChanged calls
++	float LastChange = 0.0f; // The strength the latest one carried
++
++	void OnCreate() override
++	{
++		Journal(*this, "WindEventFeatures", "OnCreate");
++	}
++
++	void OnUpdate(float) override
++	{
++		if (GetFrame() == c_RaiseFrame)
++			Expect(GetEntity().SetProperty("WindZone", "Strength", 40.0f), "the zone's strength is written");
++	}
++
++	void OnWindChanged(float strength) override
++	{
++		Changes++;
++		LastChange = strength;
++		if (Changes == 1)
++			Journal(*this, "WindEventFeatures", "OnWindChanged");
++	}
++
++	void OnLateUpdate(float) override
++	{
++		if (GetFrame() != c_CheckFrame)
++			return;
++		Expect(Changes == 1, "the change reached OnWindChanged once");
++		Expect(Near(LastChange, 40.0f), "OnWindChanged carries the new strength");
++		Expect(Near(Wind::GetStrength(GetTransform().GetWorldPosition()), 40.0f), "the wind at the zone's center is its strength");
++		Expect(Wind::GetStrength(glm::vec3(1000.0f, 0.0f, 0.0f)) == 0.0f, "no wind outside every zone");
++		Completed = true;
++	}
++};
++
++ST_SCRIPT_CLASS(WindEventFeatures)
++{
++	ST_SCRIPT_FIELD(Checks);
++	ST_SCRIPT_FIELD(Failure);
++	ST_SCRIPT_FIELD(Completed);
++	ST_SCRIPT_FIELD(Changes);
++	ST_SCRIPT_FIELD(LastChange);
++}
+diff --git a/StrataTests/FeatureTest/Scripts/WindFeatures.cpp b/StrataTests/FeatureTest/Scripts/WindFeatures.cpp
+new file mode 100644
+index 00000000..f34357a3
+--- /dev/null
++++ b/StrataTests/FeatureTest/Scripts/WindFeatures.cpp
+@@ -0,0 +1,41 @@
++// Wind::GetStrength, read at "Gust", the feature scene's wind zone (25 newtons within 8.5 meters of its center).
++
++#include "FeatureScript.h"
++
++using namespace Strata;
++using namespace FeatureTest;
++
++class WindFeatures : public FeatureScript
++{
++public:
++	static constexpr int32_t c_CheckFrame = 5;
++
++	void OnCreate() override
++	{
++		Journal(*this, "WindFeatures", "OnCreate");
++	}
++
++	void OnLateUpdate(float) override
++	{
++		if (GetFrame() != c_CheckFrame)
++			return;
++		const Entity gust = Scene::FindEntityByName("Gust");
++		if (!gust)
++		{
++			Expect(false, "the feature scene has the wind zone Gust");
++			return;
++		}
++		const glm::vec3 center = gust.GetTransform().GetWorldPosition();
++		Expect(Near(Wind::GetStrength(center), 25.0f), "the wind at the center of a zone is its strength");
++		Expect(Near(Wind::GetStrength(center + glm::vec3(8.0f, 0.0f, 0.0f)), 25.0f), "the wind reaches 8 meters from the center");
++		Expect(Wind::GetStrength(center + glm::vec3(9.0f, 0.0f, 0.0f)) == 0.0f, "no wind 9 meters from the center, beyond the radius");
++		Completed = true;
++	}
++};
++
++ST_SCRIPT_CLASS(WindFeatures)
++{
++	ST_SCRIPT_FIELD(Checks);
++	ST_SCRIPT_FIELD(Failure);
++	ST_SCRIPT_FIELD(Completed);
++}
+diff --git a/StrataTests/Scripts/API/WindEventScripts.cpp b/StrataTests/Scripts/API/WindEventScripts.cpp
+new file mode 100644
+index 00000000..d2b764ae
+--- /dev/null
++++ b/StrataTests/Scripts/API/WindEventScripts.cpp
+@@ -0,0 +1,28 @@
++// Wind event test scripts.
++
++#include "TestScripts.h"
++
++using namespace Strata;
++using namespace ScriptTests;
++
++// Script::OnWindChanged: counts the changes of its zone's strength it hears of.
++class WindEventProbe : public CheckingScript
++{
++public:
++	int32_t Changes = 0;     // OnWindChanged calls
++	float LastChange = 0.0f; // The strength the latest one carried
++
++	void OnWindChanged(float strength) override
++	{
++		Changes++;
++		LastChange = strength;
++	}
++};
++
++ST_SCRIPT_CLASS(WindEventProbe)
++{
++	ST_SCRIPT_FIELD(Checks);
++	ST_SCRIPT_FIELD(Failure);
++	ST_SCRIPT_FIELD(Changes);
++	ST_SCRIPT_FIELD(LastChange);
++}
+diff --git a/StrataTests/Scripts/API/WindScripts.cpp b/StrataTests/Scripts/API/WindScripts.cpp
+new file mode 100644
+index 00000000..9edf9663
+--- /dev/null
++++ b/StrataTests/Scripts/API/WindScripts.cpp
+@@ -0,0 +1,47 @@
++// Wind API test scripts.
++
++#include "TestScripts.h"
++
++#include <cstddef>
++
++using namespace Strata;
++using namespace ScriptTests;
++
++// Wind::GetStrength: on the entity of a wind zone it reads the wind at the zone's center in OnLateUpdate, and checks once
++// what an older engine gives.
++class WindProbe : public CheckingScript
++{
++public:
++	float Strength = -1.0f; // Wind::GetStrength at the entity's world position in the latest OnLateUpdate
++
++	void OnLateUpdate(float) override
++	{
++		Strength = Wind::GetStrength(GetTransform().GetWorldPosition());
++		if (!m_OlderChecked)
++		{
++			m_OlderChecked = true;
++			StrataScriptHostAPI older = *Detail::GetHost();
++			older.StructSize = static_cast<uint32_t>(offsetof(StrataScriptHostAPI, GetWindStrength));
++			CheckUnavailable(older, "an older engine");
++			StrataScriptHostAPI missing = *Detail::GetHost();
++			missing.GetWindStrength = nullptr;
++			CheckUnavailable(missing, "a null entry");
++		}
++	}
++private:
++	// Without the function: no wind.
++	void CheckUnavailable(const StrataScriptHostAPI& host, const char* what)
++	{
++		const ScopedHost scoped(&host);
++		Expect(Wind::GetStrength(glm::vec3(0.0f)) == 0.0f, what);
++	}
++
++	bool m_OlderChecked = false;
++};
++
++ST_SCRIPT_CLASS(WindProbe)
++{
++	ST_SCRIPT_FIELD(Checks);
++	ST_SCRIPT_FIELD(Failure);
++	ST_SCRIPT_FIELD(Strength);
++}
+diff --git a/StrataTests/Scripts/Invalid/Malformed.cpp b/StrataTests/Scripts/Invalid/Malformed.cpp
+index 03bc0950..9b4dcca4 100644
+--- a/StrataTests/Scripts/Invalid/Malformed.cpp
++++ b/StrataTests/Scripts/Invalid/Malformed.cpp
+@@ -85,4 +85,10 @@ namespace
+ 	}
+ 
++	uint32_t CountWindChanged(StrataScriptInstance, float)
++	{
++		s_ContactCalls++;
++		return StrataScriptResult_Ok;
++	}
++
+ 	uint32_t SetField(StrataScriptInstance, uint32_t, const StrataScriptValue*)
+ 	{
+@@ -250,4 +256,17 @@ ST_SCRIPT_EXTERN_C ST_SCRIPT_EXPORT uint32_t StrataScript_Load(const StrataScrip
+ 		s_Classes[0].StructSize = static_cast<uint32_t>(offsetof(StrataScriptClassDesc, OnUISubmit));
+ 	}
++	else if (Is(testCase, "OlderWindClass"))
++	{
++		// Both classes have every callback up to OnWindChanged, but "First" describes itself as built before it was appended.
++		for (StrataScriptClassDesc& descriptor : s_Classes)
++		{
++			descriptor.OnUIClick = &CountUIClick;
++			descriptor.OnUIValueChanged = &CountUIValueChanged;
++			descriptor.OnUIFocusChanged = &CountUIFocusChanged;
++			descriptor.OnUISubmit = &CountUISubmit;
++			descriptor.OnWindChanged = &CountWindChanged;
++		}
++		s_Classes[0].StructSize = static_cast<uint32_t>(offsetof(StrataScriptClassDesc, OnWindChanged));
++	}
+ 	else if (Is(testCase, "BadFieldType"))
+ 		s_Fields[0].Type = 999;
+diff --git a/StrataTests/src/Physics/WindZoneTests.cpp b/StrataTests/src/Physics/WindZoneTests.cpp
+index f5621333..edaa7d82 100644
+--- a/StrataTests/src/Physics/WindZoneTests.cpp
++++ b/StrataTests/src/Physics/WindZoneTests.cpp
+@@ -58,4 +58,33 @@ TEST_SUITE("Physics.WindZone")
+ 	}
+ 
++	TEST_CASE("The service adds up the strengths of the zones that reach a position")
++	{
++		Scene scene;
++		const auto addZone = [&scene](const char* name, const glm::vec3& position, float strength, float radius)
++		{
++			Entity zone = scene.CreateEntity(name);
++			zone.GetTransform().Translation = position;
++			zone.MarkModified<TransformComponent>();
++			WindZoneComponent& wind = zone.AddComponent<WindZoneComponent>();
++			wind.Strength = strength;
++			wind.Radius = radius;
++			return zone;
++		};
++		addZone("Breeze", { 0.0f, 0.0f, 0.0f }, 10.0f, 5.0f);
++		addZone("Gust", { 3.0f, 0.0f, 0.0f }, 25.0f, 8.5f);
++
++		scene.OnRuntimeStart();
++		const IWindZones* wind = scene.GetService<IWindZones>();
++		REQUIRE(wind != nullptr);
++		CHECK(wind->GetStrengthAt({ 4.0f, 0.0f, 0.0f }) == doctest::Approx(0.0f)); // Before the first step
++
++		StepScene(scene, 1);
++		CHECK(wind->GetStrengthAt({ 4.0f, 0.0f, 0.0f }) == doctest::Approx(35.0f));  // Both reach it
++		CHECK(wind->GetStrengthAt({ 5.0f, 0.0f, 0.0f }) == doctest::Approx(35.0f));  // On the Breeze's edge: inside
++		CHECK(wind->GetStrengthAt({ 7.0f, 0.0f, 0.0f }) == doctest::Approx(25.0f));  // Only the Gust reaches it
++		CHECK(wind->GetStrengthAt({ 20.0f, 0.0f, 0.0f }) == doctest::Approx(0.0f));  // Neither does
++		scene.OnRuntimeStop();
++	}
++
+ 	TEST_CASE("A wind zone shows a sphere of its radius around its origin, and none for a zone without reach")
+ 	{
+@@ -81,3 +110,36 @@ TEST_SUITE("Physics.WindZone")
+ 		CHECK(debugDraw.IsEmpty());
+ 	}
++
++	TEST_CASE("Listeners hear of a strength that changed between two steps, once, and not of a removed listener")
++	{
++		Scene scene;
++		Entity gust = scene.CreateEntity("Gust");
++		gust.AddComponent<WindZoneComponent>().Strength = 10.0f;
++
++		scene.OnRuntimeStart();
++		IWindEventSource* wind = scene.GetService<IWindEventSource>();
++		REQUIRE(wind != nullptr);
++		std::vector<float> heard;
++		const WindChangeListenerID listener = wind->AddWindChangeListener([&](const WindChangeInfo& change)
++		{
++			CHECK(change.ZoneID == gust.GetUUID());
++			heard.push_back(change.Strength);
++		});
++		CHECK(listener != 0);
++
++		StepScene(scene, 2);
++		CHECK(heard.empty()); // A zone seen for the first time did not change
++
++		gust.GetComponent<WindZoneComponent>().Strength = 20.0f;
++		StepScene(scene, 3);
++		REQUIRE(heard.size() == 1);
++		CHECK(heard[0] == doctest::Approx(20.0f));
++
++		CHECK(wind->RemoveWindChangeListener(listener));
++		CHECK_FALSE(wind->RemoveWindChangeListener(listener));
++		gust.GetComponent<WindZoneComponent>().Strength = 30.0f;
++		StepScene(scene, 1);
++		CHECK(heard.size() == 1);
++		scene.OnRuntimeStop();
++	}
+ }
+diff --git a/StrataTests/src/Scripting/ScriptModuleTests.cpp b/StrataTests/src/Scripting/ScriptModuleTests.cpp
+index 819bbad5..4132ba6d 100644
+--- a/StrataTests/src/Scripting/ScriptModuleTests.cpp
++++ b/StrataTests/src/Scripting/ScriptModuleTests.cpp
+@@ -108,5 +108,5 @@ TEST_SUITE("Scripting.Module")
+ 			"SaveRoundTrip", "SaveLoader", "PhysicsLayersAPI", "KeyboardWalker", "MotionChecks", "UIControlAPI", "UIMisuse", "UIUnavailable", "UIEventRecorder",
+ 			"UIFrameProbe", "WorldAPI", "WorldWithoutWorld", "ActionReader", "ActionAPIChecks", "BindingCapturer", "GraphicsProbe",
+-			"InterpolationProbe"
++			"InterpolationProbe", "WindProbe", "WindEventProbe"
+ 		};
+ 		std::set<std::string> classes;
+diff --git a/StrataTests/src/Scripting/ScriptWindEventTests.cpp b/StrataTests/src/Scripting/ScriptWindEventTests.cpp
+new file mode 100644
+index 00000000..9a2383bf
+--- /dev/null
++++ b/StrataTests/src/Scripting/ScriptWindEventTests.cpp
+@@ -0,0 +1,48 @@
++#include <doctest/doctest.h>
++
++#include "Scripting/ScriptTestUtils.h"
++#include "Strata/Physics/PhysicsComponents.h"
++#include "TestHelpers.h"
++
++using namespace Strata;
++using namespace Strata::Tests;
++
++TEST_SUITE("Scripting.Wind")
++{
++#if ST_WITH_PHYSICS
++	TEST_CASE("OnWindChanged reaches the scripts of the zone's entity once for each change")
++	{
++		ScopedScriptEngine engine(GetTestScriptModule(STRATA_TEST_SCRIPTS_API));
++		Scene scene;
++		Entity gust = scene.CreateEntity("Gust");
++		gust.AddComponent<WindZoneComponent>().Strength = 25.0f;
++		AddScriptEntry(gust, "WindEventProbe");
++		scene.OnRuntimeStart();
++		ScriptSystem& system = GetScriptSystem(scene);
++
++		RunFrames(scene, 5);
++		CHECK(GetField<int32_t>(system, gust, "WindEventProbe", "Changes") == 0);
++
++		gust.GetComponent<WindZoneComponent>().Strength = 40.0f;
++		RunFrames(scene, 5);
++		CHECK(GetField<int32_t>(system, gust, "WindEventProbe", "Changes") == 1);
++		CHECK(GetField<float>(system, gust, "WindEventProbe", "LastChange") == doctest::Approx(40.0f));
++		scene.OnRuntimeStop();
++	}
++#endif
++
++	TEST_CASE("OnWindChanged is read only from class descriptors large enough to hold it")
++	{
++		// "First" has the descriptor size of an SDK that has the UI callbacks but predates OnWindChanged.
++		ScopedEnvironmentVariable scopedCase("STRATA_TEST_MALFORMED_CASE", "OlderWindClass");
++		ScopedScriptEngine engine(GetTestScriptModule(STRATA_TEST_SCRIPTS_MALFORMED));
++		const ScriptClassInfo* first = engine->FindClass("First");
++		const ScriptClassInfo* second = engine->FindClass("Second");
++		REQUIRE(first);
++		REQUIRE(second);
++		CHECK(first->Implements(ScriptCallback::OnUISubmit));
++		CHECK_FALSE(first->Implements(ScriptCallback::OnWindChanged));
++		CHECK(second->Implements(ScriptCallback::OnWindChanged));
++		CHECK_FALSE(engine->IsFaulted());
++	}
++}
+diff --git a/StrataTests/src/Scripting/ScriptWindTests.cpp b/StrataTests/src/Scripting/ScriptWindTests.cpp
+new file mode 100644
+index 00000000..78b2b904
+--- /dev/null
++++ b/StrataTests/src/Scripting/ScriptWindTests.cpp
+@@ -0,0 +1,33 @@
++#include <doctest/doctest.h>
++
++#include "Scripting/ScriptTestUtils.h"
++#include "Strata/Physics/PhysicsComponents.h"
++#include "TestHelpers.h"
++
++using namespace Strata;
++using namespace Strata::Tests;
++
++#if ST_WITH_PHYSICS
++TEST_SUITE("Scripting.Wind")
++{
++	TEST_CASE("Wind API: a script reads the wind at its zone's center, also after the strength changed")
++	{
++		ScopedScriptEngine engine(GetTestScriptModule(STRATA_TEST_SCRIPTS_API));
++		Scene scene;
++		Entity gust = scene.CreateEntity("Gust");
++		gust.AddComponent<WindZoneComponent>().Strength = 25.0f;
++		AddScriptEntry(gust, "WindProbe");
++		scene.OnRuntimeStart();
++		ScriptSystem& system = GetScriptSystem(scene);
++
++		RunFrames(scene, 5);
++		CHECK(GetField<float>(system, gust, "WindProbe", "Strength") == doctest::Approx(25.0f));
++
++		gust.GetComponent<WindZoneComponent>().Strength = 40.0f;
++		RunFrames(scene, 5);
++		CHECK(GetField<float>(system, gust, "WindProbe", "Strength") == doctest::Approx(40.0f));
++		CheckScriptChecks(system, gust, "WindProbe", 2);
++		scene.OnRuntimeStop();
++	}
++}
++#endif

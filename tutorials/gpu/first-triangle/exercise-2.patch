@@ -1,0 +1,102 @@
+diff --git a/Strata/CMakeLists.txt b/Strata/CMakeLists.txt
+--- a/Strata/CMakeLists.txt
++++ b/Strata/CMakeLists.txt
+@@ -85,6 +85,7 @@ strata_add_shaders(Strata_Renderer
+ 		Debug/ColorTriangle.vert
+ 		Debug/ColorTriangle.frag
+ 		Debug/Checker.frag
++		Debug/ChannelRotate.frag
+ 		Scene/Mesh.vert
+ 		Scene/DepthPrepass.frag
+ 		Scene/Forward.frag
+diff --git a/Strata/shaders/Debug/ChannelRotate.frag.slang b/Strata/shaders/Debug/ChannelRotate.frag.slang
+new file mode 100644
+--- /dev/null
++++ b/Strata/shaders/Debug/ChannelRotate.frag.slang
+@@ -0,0 +1,33 @@
++#include "Include/Common.slang"
++
++// Diagnostic shader used by GPU tests: pure red, sent through a matrix that rotates the channels. mul(matrix, vector)
++// reads the vector as a column, so red comes out as blue.
++
++static float2 v_UV;
++static float4 o_Color;
++
++void st_Main()
++{
++	const float3x3 rotation = float3x3(0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0);
++	o_Color = float4(mul(rotation, float3(1.0, 0.0, 0.0)), 1.0);
++}
++
++// --- Entry point ---
++struct ST_Input
++{
++	[[vk::location(0)]] float2 v_UV : TEXCOORD0;
++};
++struct ST_Output
++{
++	[[vk::location(0)]] float4 o_Color : SV_Target0;
++};
++ST_Output main(ST_Input input, float4 fragCoord : SV_Position, bool frontFacing : SV_IsFrontFace)
++{
++	st_FragCoord = fragCoord;
++	st_FrontFacing = frontFacing;
++	v_UV = input.v_UV;
++	st_Main();
++	ST_Output output;
++	output.o_Color = o_Color;
++	return output;
++}
+diff --git a/StrataTests/src/Renderer/GPURendererTests.cpp b/StrataTests/src/Renderer/GPURendererTests.cpp
+--- a/StrataTests/src/Renderer/GPURendererTests.cpp
++++ b/StrataTests/src/Renderer/GPURendererTests.cpp
+@@ -218,6 +218,49 @@ TEST_SUITE("GPU.Renderer")
+ 		CHECK(gpu.GetNewErrorCount() == 0);
+ 	}
+ 
++	TEST_CASE("A matrix multiplication rotates the color channels as written")
++	{
++		Tests::GPUContext gpu;
++		REQUIRE(gpu.IsValid());
++		nvrhi::IDevice* device = gpu.GetNvrhiDevice();
++
++		constexpr uint32_t size = 64;
++		nvrhi::TextureHandle target = CreateRenderTarget(device, size, size, nvrhi::Format::RGBA8_UNORM);
++		nvrhi::FramebufferHandle framebuffer = device->createFramebuffer(nvrhi::FramebufferDesc().addColorAttachment(target));
++
++		nvrhi::GraphicsPipelineDesc pipelineDesc;
++		pipelineDesc.VS = Renderer::GetShaderLibrary().Get("PostProcess/Fullscreen.vert");
++		pipelineDesc.PS = Renderer::GetShaderLibrary().Get("Debug/ChannelRotate.frag");
++		REQUIRE(pipelineDesc.VS != nullptr);
++		REQUIRE(pipelineDesc.PS != nullptr);
++		pipelineDesc.primType = nvrhi::PrimitiveType::TriangleList;
++		pipelineDesc.renderState.rasterState.setCullNone();
++		pipelineDesc.renderState.depthStencilState.setDepthTestEnable(false).setDepthWriteEnable(false);
++		nvrhi::GraphicsPipelineHandle pipeline = device->createGraphicsPipeline(pipelineDesc, framebuffer->getFramebufferInfo());
++		REQUIRE(pipeline);
++
++		// The clear is blue, a color the shader never writes: a pixel the fullscreen triangle misses stays blue.
++		nvrhi::CommandListHandle commandList = device->createCommandList();
++		commandList->open();
++		commandList->clearTextureFloat(target, nvrhi::AllSubresources, nvrhi::Color(0.0f, 0.0f, 1.0f, 1.0f));
++		nvrhi::GraphicsState state;
++		state.pipeline = pipeline;
++		state.framebuffer = framebuffer;
++		state.viewport.addViewportAndScissorRect(nvrhi::Viewport(static_cast<float>(size), static_cast<float>(size)));
++		commandList->setGraphicsState(state);
++		commandList->draw(nvrhi::DrawArguments().setVertexCount(3));
++		commandList->close();
++		device->executeCommandList(commandList);
++
++		ReadbackImage image;
++		REQUIRE(Renderer::ReadTexture(target, image));
++		REQUIRE(image.Width == size);
++
++		// Red through the rotation is blue. With the operands of mul swapped the shader still compiles, and gives green.
++		CHECK(Tests::GetPixelRGBA8(image, 32, 32) == glm::u8vec4(0, 0, 255, 255));
++		CHECK(gpu.GetNewErrorCount() == 0);
++	}
++
+ 	TEST_CASE("ImGui renders into an offscreen target")
+ 	{
+ 		Tests::GPUContext gpu;

@@ -1,0 +1,560 @@
+{
+	"figures": [
+		{
+			"id": "one-entity",
+			"shows": "The Inspector of the point light Lamp: its Transform with red, green and blue axis labels, and its Point Light section",
+			"caption": "One entity: each component is a section, and the axis labels of vectors carry the axis colors.",
+			"alt": "The Inspector of the entity Lamp: its name and identifier, a Transform section whose fields stand behind red, green and blue axis labels, and a Point Light section whose shadow rows are drawn dim.",
+			"kind": "editor",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Lamp",
+							"components": {
+								"PointLight": {
+									"Intensity": 5
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										1,
+										0
+									]
+								}
+							}
+						},
+						"bind": {
+							"a": "/id"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "a"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "mixed-values",
+			"shows": "The Inspector with three point lights of intensities 2, 5 and 5 selected: the header 3 entities and two dashes in Intensity",
+			"caption": "Three entities: the intensity differs, so its field shows two dashes, and the header counts the entities.",
+			"alt": "The Inspector with the header 3 entities. The Intensity field shows two dashes, and so does the X field of Translation, where the three lights differ too.",
+			"kind": "editor",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Lamp A",
+							"components": {
+								"PointLight": {
+									"Intensity": 2
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										1,
+										0
+									]
+								}
+							}
+						},
+						"bind": {
+							"a": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Lamp B",
+							"components": {
+								"PointLight": {
+									"Intensity": 5
+								},
+								"Transform": {
+									"Translation": [
+										2,
+										1,
+										0
+									]
+								}
+							}
+						},
+						"bind": {
+							"b": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Lamp C",
+							"components": {
+								"PointLight": {
+									"Intensity": 5
+								},
+								"Transform": {
+									"Translation": [
+										4,
+										1,
+										0
+									]
+								}
+							}
+						},
+						"bind": {
+							"c": "/id"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "a"
+								},
+								{
+									"$ref": "b"
+								},
+								{
+									"$ref": "c"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "prefab-instance",
+			"shows": "The Inspector of LanternA.Light, a part of a prefab instance: the prefab bar with Overrides (7) and the bold label of the overridden Source Radius",
+			"caption": "A part of a prefab instance: the bar names the prefab and counts its overrides, and an overridden label is bold with a bar at its edge.",
+			"alt": "The Inspector of the light of a lantern. A bar under the name holds the prefab name Lantern and the buttons Select, Open and Overrides (7). The label Source Radius is bold with an orange bar at its left edge, and the sections Point Light and Script carry the same bar.",
+			"kind": "editor",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "LanternA.Light"
+						},
+						"bind": {
+							"l": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "l"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "inactive-property",
+			"shows": "The Post Process section with no color lookup chosen and the Color Lookup Intensity row drawn disabled, at the end of the Tone and color group; the crop lookup enlarges those two rows",
+			"caption": "An inactive property: with no color lookup chosen, the intensity row below it is drawn disabled, at the end of the Tone and color group.",
+			"alt": "The Post Process section of the Inspector. Near the bottom, at the end of the Tone and color group, Color Lookup shows None. The Color Lookup Intensity row under it is gray, with a dim slider, while the rows above it are bright.",
+			"kind": "editor",
+			"crops": [
+				{
+					"name": "lookup",
+					"rect": [
+						0,
+						0.81,
+						1,
+						0.905
+					],
+					"scale": 2
+				}
+			],
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Grade",
+							"components": {
+								"PostProcess": {}
+							}
+						},
+						"bind": {
+							"g": "/id"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "g"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "taa-preset-drawer",
+			"shows": "The post-process section with the TAA preset drawer",
+			"caption": "A property drawer: the preset row has its own drawer, and the label, mark and reason still come from the panel.",
+			"alt": "The post-process section of the Inspector with a row for the temporal anti-aliasing preset drawn as a drop-down.",
+			"kind": "editor",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-look.ini",
+				"windowSize": [
+					1280,
+					1360
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Grade",
+							"components": {
+								"PostProcess": {
+									"AntiAliasing": true,
+									"AntiAliasingMethod": "TAA"
+								}
+							}
+						},
+						"bind": {
+							"g": "/id"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "g"
+								}
+							]
+						}
+					}
+				]
+			},
+			"waitsFor": "tier 3: a command that scrolls the Inspector to a section or property; editor.screenshot shows only the top of the panel, and the TAA Preset row stands below the tone, exposure, bloom, ambient occlusion and global illumination groups of the Post Process section",
+			"standIn": "taa-preset-row"
+		},
+		{
+			"id": "taa-preset-row",
+			"kind": "diagram",
+			"shows": "The TAA Preset row of the Anti-aliasing group under its two neighbors, split into the label cell the panel draws and the value cell the property drawer draws, with what each part does",
+			"caption": "The row of the TAA preset: the panel draws the label with its marks, and the drawer draws the value cell, where a choice becomes one command and one undo step.",
+			"alt": "Three rows of the Anti-aliasing group: Anti Aliasing checked, Anti Aliasing Method at TAA, and TAA Preset at Sharp, the last one on a gray band. A bracket under its label says that the panel draws the name and its tooltip, the bold name and accent bar of an override, and the gray of an inactive row with its reason. A bracket under its value says that the drawer draws the generic drop-down of Sharp, Original and Custom. A choice there sends one command with the preset and, for Custom, the start values, so it is one undo step.",
+			"numbers": "The label's marks: DrawPropertyRow and PropertyLabel (StrataEditor/src/Panels/InspectorPanel.cpp:990-1011). The reason Anti Aliasing is off and the options Sharp, Original and Custom: WithTemporalAntiAliasing and the TAAPreset property (Strata/src/Strata/Renderer/RendererComponents.cpp). The value cell: DrawTemporalAntiAliasingPreset and GetTemporalAntiAliasingPresetValues (StrataEditor/src/UI/ComponentDrawers.cpp)."
+		},
+		{
+			"id": "add-component",
+			"shows": "The Add Component popup with text typed into its filter",
+			"caption": "The popup lists the components the selection lacks, grouped by category, and the filter narrows it by name.",
+			"alt": "A popup below the Add Component button with a search field at the top and a list of components under category headings.",
+			"kind": "editor",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Lamp",
+							"components": {
+								"PointLight": {
+									"Intensity": 5
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										1,
+										0
+									]
+								}
+							}
+						},
+						"bind": {
+							"a": "/id"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "a"
+								}
+							]
+						}
+					}
+				]
+			},
+			"waitsFor": "tier 3: the Add Component popup open with text typed into its filter; no command opens a popup or types into a field",
+			"standIn": "add-component-popup"
+		},
+		{
+			"id": "add-component-popup",
+			"kind": "diagram",
+			"shows": "The Add Component popup for two selected lamps with the letters li in its search field: the components whose display names contain them and that some selected entity lacks, under their categories",
+			"caption": "The popup for two lamps, with two letters typed: it lists by category the components that some selected entity lacks and whose names contain the letters.",
+			"alt": "Left, the selection: Lamp A with Transform and Point Light, and Lamp B with Transform, Point Light and Audio Listener. Middle, the popup with the letters l and i in its search field. Its four categories stand in the order of the alphabet: Audio with Audio Listener, Lighting with five lights but no Point Light, Physics with Box, Sphere, Capsule and Mesh Collider, and UI with UI Slider. Notes say that Lamp A lacks Audio Listener, that both lamps have Point Light, and that the letters match inside Collider.",
+			"numbers": "The rule and the order: DrawAddComponentPopup (StrataEditor/src/Panels/InspectorPanel.cpp:1168-1215): a std::map of categories, registration order within each, the filter lowered and found anywhere in the display name. The names with li are those the pin registers (RendererComponents.cpp, PhysicsComponents.cpp, AudioComponents.cpp, GameUIComponents.cpp)."
+		},
+		{
+			"id": "ui-rect-drawer",
+			"shows": "The UI Rect section of a stretched element under the Tetris HUD: the Anchors button that reads Stretch, and the rows Left, Right, Top and Bottom at 24",
+			"caption": "The drawer of the UI rectangle: the Anchors button opens the grid of presets, and a stretched element gets margin rows. On Screen gives the rect in pixels at the game's screen, after the canvas scales its units (24 becomes 17 here).",
+			"numbers": "24 is each margin the recipe sets (a stretched rect of Size -48, -48). 17 is the On Screen line the picture shows, 17, 17 639 x 475: the editor prints the laid-out box times the canvas's scale, about 0.71 at the editor's game view (34 pixels for the 48 units of two margins).",
+			"alt": "The UI Rect section of the Inspector. An Anchors button reads Stretch. Under it stand Left, Right, Top and Bottom, each 24, and a line with the place and size of the rectangle on the screen.",
+			"kind": "editor",
+			"project": {
+				"sample": "Tetris"
+			},
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "HUD"
+						},
+						"bind": {
+							"hud": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Frame",
+							"parent": {
+								"$ref": "hud"
+							},
+							"components": {
+								"UIRect": {
+									"AnchorMin": [
+										0,
+										0
+									],
+									"AnchorMax": [
+										1,
+										1
+									],
+									"Position": [
+										0,
+										0
+									],
+									"Size": [
+										-48,
+										-48
+									]
+								},
+								"UIImage": {}
+							}
+						},
+						"bind": {
+							"f": "/id"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "f"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "camera-orthographic",
+			"shows": "A camera in Orthographic mode with Depth Of Field checked: its three perspective rows and its depth of field rows drawn disabled",
+			"caption": "The projection mode switches fields off: with an orthographic camera, the perspective rows are drawn disabled. So are the depth of field rows, though Depth Of Field is checked, because an orthographic camera has no depth of field.",
+			"alt": "The Camera section of the Inspector with Projection set to Orthographic. The three perspective rows are gray, and the three orthographic rows under them are bright. Lower down, the five rows under Depth of field, from Depth Of Field to Sensor Height, are gray too, and the Depth Of Field box is checked.",
+			"kind": "editor",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Cam",
+							"components": {
+								"Camera": {
+									"Projection": "Orthographic",
+									"DepthOfField": true
+								}
+							}
+						},
+						"bind": {
+							"c": "/id"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "c"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "asset-material",
+			"shows": "The Asset tab of the material Planks: its header, the button that imports it again and the Material section",
+			"caption": "The Asset tab shows the header, the actions and the material section with the same rows as the Inspector.",
+			"alt": "The Asset tab of the material Planks: a header with its name and path, a button that imports it again, and a Material section with colors, numbers, check boxes and texture slots.",
+			"kind": "editor",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "AssetInspector",
+				"steps": [
+					{
+						"command": "selection.set",
+						"parameters": {
+							"asset": "Materials/Planks.stmat"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "asset-normal-map",
+			"shows": "The Asset tab of a normal map of planks: its import settings and its preview, purple and blue with light and dark lines along the boards",
+			"caption": "The preview rebuilds the third component of a normal map, so it looks as the material reads it: purple and blue, with the edges of the boards in light and dark lines.",
+			"alt": "The Asset tab of a normal map of planks, with Usage set to Normal Map. Under Preview, a square picture in purple and blue shows boards with light and dark lines along their edges. A line under it gives the size and the format.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/inspectors-asset.ini",
+				"windowSize": [
+					1280,
+					940
+				],
+				"panel": "AssetInspector",
+				"steps": [
+					{
+						"command": "selection.set",
+						"parameters": {
+							"asset": "Textures/weathered_brown_planks/weathered_brown_planks_nor_gl_1k.jpg"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "asset-audio",
+			"shows": "The Asset tab of the clip Clear: Load Mode under Import Settings, then the Play button, the length 0:00.4 at 22050 Hz and an orange waveform",
+			"caption": "The waveform draws the lowest and highest value of each column, and Play plays the clip outside any scene.",
+			"alt": "The Asset tab of the clip Clear. Under Preview stand a Play button, the length 0:00.4 with its rate of 22050 Hz, and an orange waveform of short bursts, one bar for each column.",
+			"kind": "editor",
+			"project": {
+				"sample": "Tetris"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-sound-short.ini",
+				"windowSize": [
+					1280,
+					540
+				],
+				"panel": "AssetInspector",
+				"steps": [
+					{
+						"command": "selection.set",
+						"parameters": {
+							"asset": "Sounds/Clear.wav"
+						}
+					}
+				]
+			}
+		}
+	]
+}

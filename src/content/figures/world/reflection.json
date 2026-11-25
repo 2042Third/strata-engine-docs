@@ -1,0 +1,73 @@
+{
+	"figures": [
+		{
+			"id": "directional-light-sections",
+			"shows": "The Inspector with the Showcase scene's Sun selected: the Directional Light component's properties under its two section headings, Light and Shadows, and below them the shadow-map line that the Inspector adds for this one component",
+			"caption": "The Inspector groups the sun's properties under the two headings its registration named, Light and Shadows. The shadow-map line and the Graphics Quality link below them are the Inspector's own code for the directional light.",
+			"alt": "The Inspector for an entity named Sun. Below its transform, the directional light component shows a heading named Light over the color, the intensity and the angular diameter. A heading named Shadows stands over seven shadow settings, from Cast Shadows to Cascade Distribution. Under the last field, a line reads Shadow maps: 5 x 4096 (Graphics Quality: High), above a link named Graphics Quality.",
+			"kind": "editor",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game-tall.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Sun"
+						},
+						"bind": {
+							"sun": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "sun"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 10
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "add-component-menu",
+			"shows": "The Add Component menu open in the inspector of the Showcase scene, with the addable components listed under category headings such as Core, Lighting and Rendering",
+			"caption": "The menu groups components by the category each registration gave, and hovering a name shows its description.",
+			"alt": "A pop-up list below the Add Component button. Bold headings separate groups of component names, and a small search field stands at the top of the list.",
+			"kind": "editor",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"steps": []
+			},
+			"waitsFor": "tier 3: the Add Component menu open in the Inspector; no command opens a popup menu (only a click of the Add Component button does)",
+			"standIn": "add-component-groups"
+		},
+		{
+			"id": "add-component-groups",
+			"kind": "diagram",
+			"shows": "A sketch of the list in the Add Component menu for every component users may add: the groups Animation, Audio, Core, Lighting, Physics, Rendering, Scripting, UI and World in name order, set in three columns, the components of each in registration order, Name and Transform set apart because every entity has them, and the Lighting group marked with the category call that puts a component there",
+			"caption": "The groups of the Add Component menu, drawn from Strata's own registrations: the groups in the order of their names, the components of each in registration order. The real menu is one scrolling list that omits what every selected entity already has, so Name and Transform, which every entity carries, never appear in it. Hovering a name shows its description.",
+			"alt": "A panel of component names under bold headings, set in three columns. The first column holds Animation, Audio, Core and Lighting, the second Physics, Rendering and Scripting, and the third UI and World. Under Core, Name and Transform are grey inside a dashed box beside a note: on every entity, so never listed. The Lighting group, from Directional Light to Sky Light, is highlighted. An arrow points at it from a note: each one registered with the category Lighting.",
+			"numbers": "Names, categories and order from component.list at the pin (reference/_dumps/319075e3f92b316db5cdd30560de08c1ffe0ae26/components.json), which lists ComponentRegistry::GetAll in registration order; Prefab Instance is left out because it is not addable. The grouping is InspectorPanel::DrawAddComponentPopup (StrataEditor/src/Panels/InspectorPanel.cpp): a std::map keyed by category, General for an empty one, the description as a hover tooltip."
+		}
+	]
+}

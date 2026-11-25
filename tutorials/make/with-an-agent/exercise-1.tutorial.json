@@ -1,0 +1,89 @@
+{
+	"page": "make/with-an-agent",
+	"startsFrom": {
+		"tutorial": "make/with-an-agent"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "scene.hierarchy",
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 8
+						}
+					]
+				},
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Prefabs/Crate.stprefab",
+						"point": [
+							-2,
+							0,
+							3
+						]
+					},
+					"expect": {
+						"/placedOn": {
+							"equals": "point"
+						}
+					}
+				},
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Prefabs/Barrel.stprefab",
+						"point": [
+							0,
+							0,
+							3
+						]
+					},
+					"expect": {
+						"/placedOn": {
+							"equals": "point"
+						}
+					}
+				},
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Prefabs/Lamp.stprefab",
+						"point": [
+							2,
+							0,
+							3
+						]
+					},
+					"expect": {
+						"/placedOn": {
+							"equals": "point"
+						}
+					}
+				},
+				{
+					"command": "edit.undo"
+				},
+				{
+					"command": "edit.undo"
+				},
+				{
+					"command": "edit.undo"
+				},
+				{
+					"command": "scene.hierarchy",
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 8
+						}
+					]
+				}
+			],
+			"endState": true
+		}
+	]
+}

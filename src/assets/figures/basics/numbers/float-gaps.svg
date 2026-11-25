@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 216">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: x(v) = 40 + (v − 1) × 688 / 7 for v from 1 to 8; axis y 100; 16 marks per range y 86..100; gaps g, 2g, 4g between marks 7 and 8 at y 70; an ink mark at 8 (first float of the next range); ranges y 138..144, labels y 164 and 182; note y 220; all moved up 24; H 216 -->
+<g transform="translate(0 -24)">
+<line class="line-ink" x1="40" y1="100" x2="728" y2="100"/>
+<line class="line-blue" x1="40" y1="86" x2="40" y2="100"/>
+<line class="line-blue" x1="46.14" y1="86" x2="46.14" y2="100"/>
+<line class="line-blue" x1="52.29" y1="86" x2="52.29" y2="100"/>
+<line class="line-blue" x1="58.43" y1="86" x2="58.43" y2="100"/>
+<line class="line-blue" x1="64.57" y1="86" x2="64.57" y2="100"/>
+<line class="line-blue" x1="70.71" y1="86" x2="70.71" y2="100"/>
+<line class="line-blue" x1="76.86" y1="86" x2="76.86" y2="100"/>
+<line class="line-blue" x1="83" y1="86" x2="83" y2="100"/>
+<line class="line-blue" x1="89.14" y1="86" x2="89.14" y2="100"/>
+<line class="line-blue" x1="95.29" y1="86" x2="95.29" y2="100"/>
+<line class="line-blue" x1="101.43" y1="86" x2="101.43" y2="100"/>
+<line class="line-blue" x1="107.57" y1="86" x2="107.57" y2="100"/>
+<line class="line-blue" x1="113.71" y1="86" x2="113.71" y2="100"/>
+<line class="line-blue" x1="119.86" y1="86" x2="119.86" y2="100"/>
+<line class="line-blue" x1="126" y1="86" x2="126" y2="100"/>
+<line class="line-blue" x1="132.14" y1="86" x2="132.14" y2="100"/>
+<line class="line-faint" stroke-width="1" x1="83" y1="74" x2="83" y2="84"/>
+<line class="line-faint" stroke-width="1" x1="89.14" y1="74" x2="89.14" y2="84"/>
+<path class="line-blue" fill="none" d="M83 66 V74 M83 70 H89.14 M89.14 66 V74"/>
+<text class="blue bold" x="86.07" y="58" text-anchor="middle">g</text>
+<path class="line-blue" fill="none" d="M40 138 V144 H138.29 V138"/>
+<text class="blue" x="89.14" y="164" text-anchor="middle">1 to 2</text>
+<text class="muted small" x="89.14" y="182" text-anchor="middle">16 marks</text>
+<line class="line-green" x1="138.29" y1="86" x2="138.29" y2="100"/>
+<line class="line-green" x1="150.57" y1="86" x2="150.57" y2="100"/>
+<line class="line-green" x1="162.86" y1="86" x2="162.86" y2="100"/>
+<line class="line-green" x1="175.14" y1="86" x2="175.14" y2="100"/>
+<line class="line-green" x1="187.43" y1="86" x2="187.43" y2="100"/>
+<line class="line-green" x1="199.71" y1="86" x2="199.71" y2="100"/>
+<line class="line-green" x1="212" y1="86" x2="212" y2="100"/>
+<line class="line-green" x1="224.29" y1="86" x2="224.29" y2="100"/>
+<line class="line-green" x1="236.57" y1="86" x2="236.57" y2="100"/>
+<line class="line-green" x1="248.86" y1="86" x2="248.86" y2="100"/>
+<line class="line-green" x1="261.14" y1="86" x2="261.14" y2="100"/>
+<line class="line-green" x1="273.43" y1="86" x2="273.43" y2="100"/>
+<line class="line-green" x1="285.71" y1="86" x2="285.71" y2="100"/>
+<line class="line-green" x1="298" y1="86" x2="298" y2="100"/>
+<line class="line-green" x1="310.29" y1="86" x2="310.29" y2="100"/>
+<line class="line-green" x1="322.57" y1="86" x2="322.57" y2="100"/>
+<line class="line-faint" stroke-width="1" x1="224.29" y1="74" x2="224.29" y2="84"/>
+<line class="line-faint" stroke-width="1" x1="236.57" y1="74" x2="236.57" y2="84"/>
+<path class="line-green" fill="none" d="M224.29 66 V74 M224.29 70 H236.57 M236.57 66 V74"/>
+<text class="green bold" x="230.43" y="58" text-anchor="middle">2g</text>
+<path class="line-green" fill="none" d="M138.29 138 V144 H334.86 V138"/>
+<text class="green" x="236.57" y="164" text-anchor="middle">2 to 4</text>
+<text class="muted small" x="236.57" y="182" text-anchor="middle">16 marks</text>
+<line class="line-purple" x1="334.86" y1="86" x2="334.86" y2="100"/>
+<line class="line-purple" x1="359.43" y1="86" x2="359.43" y2="100"/>
+<line class="line-purple" x1="384" y1="86" x2="384" y2="100"/>
+<line class="line-purple" x1="408.57" y1="86" x2="408.57" y2="100"/>
+<line class="line-purple" x1="433.14" y1="86" x2="433.14" y2="100"/>
+<line class="line-purple" x1="457.71" y1="86" x2="457.71" y2="100"/>
+<line class="line-purple" x1="482.29" y1="86" x2="482.29" y2="100"/>
+<line class="line-purple" x1="506.86" y1="86" x2="506.86" y2="100"/>
+<line class="line-purple" x1="531.43" y1="86" x2="531.43" y2="100"/>
+<line class="line-purple" x1="556" y1="86" x2="556" y2="100"/>
+<line class="line-purple" x1="580.57" y1="86" x2="580.57" y2="100"/>
+<line class="line-purple" x1="605.14" y1="86" x2="605.14" y2="100"/>
+<line class="line-purple" x1="629.71" y1="86" x2="629.71" y2="100"/>
+<line class="line-purple" x1="654.29" y1="86" x2="654.29" y2="100"/>
+<line class="line-purple" x1="678.86" y1="86" x2="678.86" y2="100"/>
+<line class="line-purple" x1="703.43" y1="86" x2="703.43" y2="100"/>
+<line class="line-faint" stroke-width="1" x1="506.86" y1="74" x2="506.86" y2="84"/>
+<line class="line-faint" stroke-width="1" x1="531.43" y1="74" x2="531.43" y2="84"/>
+<path class="line-purple" fill="none" d="M506.86 66 V74 M506.86 70 H531.43 M531.43 66 V74"/>
+<text class="purple bold" x="519.14" y="58" text-anchor="middle">4g</text>
+<path class="line-purple" fill="none" d="M334.86 138 V144 H728 V138"/>
+<text class="purple" x="531.43" y="164" text-anchor="middle">4 to 8</text>
+<text class="muted small" x="531.43" y="182" text-anchor="middle">16 marks</text>
+<line class="line-ink" x1="728" y1="86" x2="728" y2="100"/>
+<line class="line-ink" x1="40" y1="100" x2="40" y2="106"/>
+<text class="ink" x="40" y="124" text-anchor="middle">1</text>
+<line class="line-ink" x1="138.29" y1="100" x2="138.29" y2="106"/>
+<text class="ink" x="138.29" y="124" text-anchor="middle">2</text>
+<line class="line-ink" x1="236.57" y1="100" x2="236.57" y2="106"/>
+<text class="ink" x="236.57" y="124" text-anchor="middle">3</text>
+<line class="line-ink" x1="334.86" y1="100" x2="334.86" y2="106"/>
+<text class="ink" x="334.86" y="124" text-anchor="middle">4</text>
+<line class="line-ink" x1="433.14" y1="100" x2="433.14" y2="106"/>
+<text class="ink" x="433.14" y="124" text-anchor="middle">5</text>
+<line class="line-ink" x1="531.43" y1="100" x2="531.43" y2="106"/>
+<text class="ink" x="531.43" y="124" text-anchor="middle">6</text>
+<line class="line-ink" x1="629.71" y1="100" x2="629.71" y2="106"/>
+<text class="ink" x="629.71" y="124" text-anchor="middle">7</text>
+<line class="line-ink" x1="728" y1="100" x2="728" y2="106"/>
+<text class="ink" x="728" y="124" text-anchor="middle">8</text>
+<text class="muted" x="384" y="220" text-anchor="middle">16 marks stand for the 8,388,608 floats of each range</text>
+</g>
+</svg>

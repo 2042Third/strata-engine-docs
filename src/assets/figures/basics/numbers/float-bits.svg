@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 224">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: 32 boxes 20 wide (12 between groups) from x 52 to 716, y 62..94; group names y 32, bit counts y 50; brackets y 102..108 with labels y 130; value y 176; hex y 206; H 224 -->
+<rect class="blue-area line-blue" x="52" y="62" width="20" height="32"/>
+<text class="ink mono" x="62" y="83" text-anchor="middle">0</text>
+<text class="blue bold" x="62" y="32" text-anchor="middle">sign</text>
+<text class="muted small" x="62" y="50" text-anchor="middle">1 bit</text>
+<path class="line-blue" fill="none" d="M52 102 V108 H72 V102"/>
+<text class="blue" x="62" y="130" text-anchor="middle">positive</text>
+<rect class="green-area line-green" x="84" y="62" width="20" height="32"/>
+<text class="ink mono" x="94" y="83" text-anchor="middle">0</text>
+<rect class="green-area line-green" x="104" y="62" width="20" height="32"/>
+<text class="ink mono" x="114" y="83" text-anchor="middle">1</text>
+<rect class="green-area line-green" x="124" y="62" width="20" height="32"/>
+<text class="ink mono" x="134" y="83" text-anchor="middle">1</text>
+<rect class="green-area line-green" x="144" y="62" width="20" height="32"/>
+<text class="ink mono" x="154" y="83" text-anchor="middle">1</text>
+<rect class="green-area line-green" x="164" y="62" width="20" height="32"/>
+<text class="ink mono" x="174" y="83" text-anchor="middle">1</text>
+<rect class="green-area line-green" x="184" y="62" width="20" height="32"/>
+<text class="ink mono" x="194" y="83" text-anchor="middle">1</text>
+<rect class="green-area line-green" x="204" y="62" width="20" height="32"/>
+<text class="ink mono" x="214" y="83" text-anchor="middle">0</text>
+<rect class="green-area line-green" x="224" y="62" width="20" height="32"/>
+<text class="ink mono" x="234" y="83" text-anchor="middle">0</text>
+<text class="green bold" x="164" y="32" text-anchor="middle">exponent field</text>
+<text class="muted small" x="164" y="50" text-anchor="middle">8 bits</text>
+<path class="line-green" fill="none" d="M84 102 V108 H244 V102"/>
+<text class="green" x="164" y="130" text-anchor="middle">124 = −3 + 127</text>
+<rect class="purple-area line-purple" x="256" y="62" width="20" height="32"/>
+<text class="ink mono" x="266" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="276" y="62" width="20" height="32"/>
+<text class="ink mono" x="286" y="83" text-anchor="middle">1</text>
+<rect class="purple-area line-purple" x="296" y="62" width="20" height="32"/>
+<text class="ink mono" x="306" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="316" y="62" width="20" height="32"/>
+<text class="ink mono" x="326" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="336" y="62" width="20" height="32"/>
+<text class="ink mono" x="346" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="356" y="62" width="20" height="32"/>
+<text class="ink mono" x="366" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="376" y="62" width="20" height="32"/>
+<text class="ink mono" x="386" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="396" y="62" width="20" height="32"/>
+<text class="ink mono" x="406" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="416" y="62" width="20" height="32"/>
+<text class="ink mono" x="426" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="436" y="62" width="20" height="32"/>
+<text class="ink mono" x="446" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="456" y="62" width="20" height="32"/>
+<text class="ink mono" x="466" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="476" y="62" width="20" height="32"/>
+<text class="ink mono" x="486" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="496" y="62" width="20" height="32"/>
+<text class="ink mono" x="506" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="516" y="62" width="20" height="32"/>
+<text class="ink mono" x="526" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="536" y="62" width="20" height="32"/>
+<text class="ink mono" x="546" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="556" y="62" width="20" height="32"/>
+<text class="ink mono" x="566" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="576" y="62" width="20" height="32"/>
+<text class="ink mono" x="586" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="596" y="62" width="20" height="32"/>
+<text class="ink mono" x="606" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="616" y="62" width="20" height="32"/>
+<text class="ink mono" x="626" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="636" y="62" width="20" height="32"/>
+<text class="ink mono" x="646" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="656" y="62" width="20" height="32"/>
+<text class="ink mono" x="666" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="676" y="62" width="20" height="32"/>
+<text class="ink mono" x="686" y="83" text-anchor="middle">0</text>
+<rect class="purple-area line-purple" x="696" y="62" width="20" height="32"/>
+<text class="ink mono" x="706" y="83" text-anchor="middle">0</text>
+<text class="purple bold" x="486" y="32" text-anchor="middle">significand field</text>
+<text class="muted small" x="486" y="50" text-anchor="middle">23 bits</text>
+<path class="line-purple" fill="none" d="M256 102 V108 H716 V102"/>
+<text class="purple" x="486" y="130" text-anchor="middle">01, then 21 zeros</text>
+<text class="ink large" x="384" y="176" text-anchor="middle">1.<tspan class="purple">01</tspan> (binary) × 2<tspan class="small" dy="-7"><tspan class="green">−3</tspan></tspan><tspan dy="7"> = 1.25 × 0.125 = 0.15625</tspan></text>
+<text class="muted" x="384" y="206" text-anchor="middle">all 32 bits in hex: <tspan class="ink mono">0x3E200000</tspan></text>
+</svg>

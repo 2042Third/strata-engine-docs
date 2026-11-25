@@ -1,0 +1,536 @@
+[
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/MainMenu.stscene"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Menu"
+		},
+		"bind": {
+			"menu": "/entities/0"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "panel",
+			"name": "SettingsPanel",
+			"parent": {
+				"$ref": "menu"
+			},
+			"anchor": "middleRight",
+			"position": [
+				-40,
+				0
+			],
+			"size": [
+				560,
+				640
+			]
+		},
+		"bind": {
+			"settings": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "verticalLayout",
+			"name": "SettingsColumn",
+			"parent": {
+				"$ref": "settings"
+			},
+			"anchor": "stretch",
+			"size": [
+				0,
+				0
+			]
+		},
+		"bind": {
+			"column": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "slider",
+			"name": "Volume",
+			"parent": {
+				"$ref": "column"
+			},
+			"size": [
+				480,
+				40
+			]
+		},
+		"bind": {
+			"volume": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "toggle",
+			"name": "Windowed",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "Windowed",
+			"size": [
+				480,
+				50
+			]
+		},
+		"bind": {
+			"windowed": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "toggle",
+			"name": "Borderless",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "Borderless",
+			"size": [
+				480,
+				50
+			]
+		},
+		"bind": {
+			"borderless": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "toggle",
+			"name": "Fullscreen",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "Fullscreen",
+			"size": [
+				480,
+				50
+			]
+		},
+		"bind": {
+			"fullscreen": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "toggle",
+			"name": "VSync",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "VSync",
+			"size": [
+				480,
+				50
+			]
+		},
+		"bind": {
+			"vsync": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"name": "Size720",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "1280 x 720",
+			"size": [
+				480,
+				50
+			]
+		},
+		"bind": {
+			"size720": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"name": "Size1080",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "1920 x 1080",
+			"size": [
+				480,
+				50
+			]
+		},
+		"bind": {
+			"size1080": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"name": "Size1440",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "2560 x 1440",
+			"size": [
+				480,
+				50
+			]
+		},
+		"bind": {
+			"size1440": "/entity"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "windowed"
+			},
+			"component": "UIToggle",
+			"values": {
+				"Group": {
+					"$ref": "settings"
+				}
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "borderless"
+			},
+			"component": "UIToggle",
+			"values": {
+				"Group": {
+					"$ref": "settings"
+				}
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "fullscreen"
+			},
+			"component": "UIToggle",
+			"values": {
+				"Group": {
+					"$ref": "settings"
+				}
+			}
+		}
+	},
+	{
+		"command": "prefab.create",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "settings"
+				}
+			],
+			"path": "Prefabs/SettingsPanel.stprefab"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "settings"
+			},
+			"class": "SettingsMenu",
+			"fields": {
+				"VolumeSlider": {
+					"$ref": "volume"
+				}
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "volume"
+			},
+			"component": "UISlider",
+			"values": {
+				"EventTarget": {
+					"$ref": "settings"
+				},
+				"Value": 1
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "windowed"
+			},
+			"component": "UIToggle",
+			"values": {
+				"EventTarget": {
+					"$ref": "settings"
+				},
+				"IsOn": true
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "borderless"
+			},
+			"component": "UIToggle",
+			"values": {
+				"EventTarget": {
+					"$ref": "settings"
+				},
+				"IsOn": false
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "fullscreen"
+			},
+			"component": "UIToggle",
+			"values": {
+				"EventTarget": {
+					"$ref": "settings"
+				},
+				"IsOn": false
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "vsync"
+			},
+			"component": "UIToggle",
+			"values": {
+				"EventTarget": {
+					"$ref": "settings"
+				}
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "size720"
+			},
+			"component": "UIButton",
+			"values": {
+				"EventTarget": {
+					"$ref": "settings"
+				}
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "size1080"
+			},
+			"component": "UIButton",
+			"values": {
+				"EventTarget": {
+					"$ref": "settings"
+				}
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "size1440"
+			},
+			"component": "UIButton",
+			"values": {
+				"EventTarget": {
+					"$ref": "settings"
+				}
+			}
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"entity": {
+				"$ref": "settings"
+			}
+		}
+	},
+	{
+		"command": "prefab.apply",
+		"parameters": {
+			"entity": {
+				"$ref": "settings"
+			}
+		}
+	},
+	{
+		"command": "scene.save"
+	},
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/Main.stscene"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "PausePanel"
+		},
+		"bind": {
+			"pausePanel": "/entities/0"
+		}
+	},
+	{
+		"command": "prefab.instantiate",
+		"parameters": {
+			"prefab": "Prefabs/SettingsPanel.stprefab",
+			"parent": {
+				"$ref": "pausePanel"
+			}
+		},
+		"bind": {
+			"instance": "/id"
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"entity": {
+				"$ref": "instance"
+			},
+			"class": "SettingsMenu"
+		}
+	},
+	{
+		"command": "scene.save"
+	},
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/MainMenu.stscene"
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 2
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 2
+			}
+		}
+	},
+	{
+		"command": "input.click",
+		"parameters": {
+			"entity": {
+				"$ref": "fullscreen"
+			},
+			"wait": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 3
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "windowed"
+			},
+			"component": "UIToggle"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "fullscreen"
+			},
+			"component": "UIToggle"
+		}
+	},
+	{
+		"command": "input.click",
+		"parameters": {
+			"entity": {
+				"$ref": "volume"
+			},
+			"wait": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 3
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "volume"
+			},
+			"component": "UISlider"
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "scene.save"
+	}
+]

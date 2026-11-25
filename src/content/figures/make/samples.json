@@ -1,0 +1,167 @@
+{
+	"figures": [
+		{
+			"id": "pit",
+			"shows": "The Physics Playground's ball pit after a pour, beside the tool panel",
+			"caption": "The pit after a pour: hundreds of red, blue and dark balls lie in a box of glass walls, and the tool panel's buttons are on the left.",
+			"alt": "The editor's Game view shows a pit with glass walls, full of balls, on a tiled floor. A panel of buttons such as Pour 100 Balls is on the left, and counts of the bodies, the goal and the shots are at the top right.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"play": {
+				"steps": 180
+			},
+			"editorWindow": {
+				"layout": "layouts/make-samples-wide.ini",
+				"windowSize": [
+					1920,
+					1080
+				],
+				"panel": "Game",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Pour"
+						},
+						"bind": {
+							"pour": "/entities/0"
+						}
+					},
+					{
+						"command": "input.click",
+						"parameters": {
+							"entity": {
+								"$ref": "pour"
+							}
+						}
+					},
+					{
+						"command": "play.step",
+						"parameters": {
+							"steps": 300
+						}
+					},
+					{
+						"command": "input.key",
+						"parameters": {
+							"key": "D5"
+						}
+					},
+					{
+						"command": "play.step",
+						"parameters": {
+							"steps": 90
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "tour",
+			"shows": "The Open World's tour over the island's forest, with no fox in view",
+			"caption": "The tour flies over the island: a forest covers the hills, and the sea and sky fade into a pale haze far away.",
+			"alt": "The editor's Game view shows the camera above a thick forest of pointed trees, with a few palms on the shore at the left. The horizon is pale, and the words Tour, any key: take over, are at the top left.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"play": {
+				"steps": 660
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"windowSize": [
+					1280,
+					720
+				],
+				"panel": "Game",
+				"steps": [
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "outpost",
+			"shows": "The High Desert Outpost's photo mode panel over the bus and the oil tank at golden hour",
+			"caption": "The photo mode panel lies over the scene and sets the hour, the exposure and the focus.",
+			"alt": "The editor's Game view shows a rusty old bus and a tall oil tank lit by a low, warm sun. On the right, a panel sets the time of day, the exposure, the field of view and the focus.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "Showcase"
+			},
+			"play": {
+				"steps": 1
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"windowSize": [
+					1280,
+					720
+				],
+				"panel": "Game",
+				"steps": [
+					{
+						"command": "physics.stats",
+						"expect": {
+							"/waitingForMeshes": {
+								"equals": false
+							},
+							"/pendingOther": {
+								"equals": 0
+							}
+						},
+						"until": {
+							"seconds": 300
+						}
+					},
+					{
+						"command": "play.step",
+						"parameters": {
+							"steps": 240
+						}
+					},
+					{
+						"command": "input.key",
+						"parameters": {
+							"key": "D2"
+						}
+					},
+					{
+						"command": "play.step",
+						"parameters": {
+							"steps": 10
+						}
+					},
+					{
+						"command": "input.key",
+						"parameters": {
+							"key": "P"
+						}
+					},
+					{
+						"command": "play.step",
+						"parameters": {
+							"steps": 30
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					}
+				]
+			}
+		}
+	]
+}

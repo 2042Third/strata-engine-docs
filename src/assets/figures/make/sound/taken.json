@@ -1,0 +1,186 @@
+{
+	"files": {
+		"asset-preview.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				462
+			],
+			"figure": "asset-preview",
+			"variant": null,
+			"crop": null,
+			"original": "cbcca601302c91ab5f720bc31f46f60bc93021f30321508f5b0fbb2c4007141b",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "4ade87df70267c949a3e41535a13541e40d2eda0a7013c81fdf1bc2fad9ed2ba"
+		},
+		"coin-console-log.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				673,
+				108
+			],
+			"figure": "coin-console",
+			"variant": null,
+			"crop": "log",
+			"original": "36cb76d3a9ff1961a1e54ff97332e32bffda0631865cacfb0c2111b487c88582",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "ce1a7fdb2cbedf3b468daf568cf2dc18b646d0dd0d25469ca6d392c82ad9cdb6"
+		},
+		"impact-clip.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				462
+			],
+			"figure": "impact-clip",
+			"variant": null,
+			"crop": null,
+			"original": "e8daffe1fc49935c57cf7c2e4fc6595343d981aad37b093645feb3d6e33a0c2f",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "f66f747bbdff35153a96edd67ac45e352355c25bc6fffb734d254819488a8499"
+		},
+		"inspector-source.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				722
+			],
+			"figure": "inspector-source",
+			"variant": null,
+			"crop": null,
+			"original": "2a6cf4ba15958a73038782240506e16108da9b7542baf78161021532dc8f9ece",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "460d98803460a02504104a52bc300774a9a672e64984248e5ce02744c22dfdad"
+		},
+		"music-source.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				722
+			],
+			"figure": "music-source",
+			"variant": null,
+			"crop": null,
+			"original": "be7ac712d5291c9ba83a850c48f5f9c9cf722f82a72e9f79bf5a4626b0ef5c60",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "892fcebc1bc0d6b25605e0ecf7956c980a9e12f89e1a615936c490d8b8174443"
+		},
+		"result.avif": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1920,
+				1080
+			],
+			"figure": "result",
+			"variant": null,
+			"crop": null,
+			"original": "def22e610aaa76ab164f3428cd28d1d33d168e775bb6fdbfae97e7c658d52e87",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 80,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "7823cdaaf51cd6582edc49b7b1c89f7e0469e842fa3b119f20917051b4ee6491"
+		}
+	}
+}

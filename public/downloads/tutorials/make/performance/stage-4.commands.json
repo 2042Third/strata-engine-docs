@@ -1,0 +1,13 @@
+[
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"debugView": "streaming"
+		},
+		"expect": {
+			"/debugView": {
+				"equals": "streaming"
+			}
+		}
+	}
+]

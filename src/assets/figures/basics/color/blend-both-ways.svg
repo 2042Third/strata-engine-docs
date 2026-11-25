@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 320">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- blend-both-ways: three 200-unit patches at x 44, 284, 524, y 56..256: stored 0.5 (#808080), a checkerboard of 4-unit black and white cells (50 by 50, crisp edges: whole pixels at the scales 1, 1.25, 1.5 and 2), stored 0.7354 (#bcbcbc). Titles baseline 40, notes 282 and 304; H = 320. -->
+<text class="ink bold" x="144" y="40" text-anchor="middle">Blend of stored values</text>
+<rect class="swatch" x="44" y="56" width="200" height="200" fill="#808080"/>
+<rect class="line-ink" fill="none" x="44" y="56" width="200" height="200"/>
+<text class="ink" x="144" y="282" text-anchor="middle">stored 0.5, byte 128</text>
+<text class="ink" x="144" y="304" text-anchor="middle">light 0.214</text>
+<text class="ink bold" x="384" y="40" text-anchor="middle">Black and white squares</text>
+<rect class="swatch" x="284" y="56" width="200" height="200" fill="#ffffff" shape-rendering="crispEdges"/>
+<path class="swatch" fill="#000000" fill-rule="evenodd" shape-rendering="crispEdges" d="M288 56h4v200h-4zM284 60h200v4h-200zM296 56h4v200h-4zM284 68h200v4h-200zM304 56h4v200h-4zM284 76h200v4h-200zM312 56h4v200h-4zM284 84h200v4h-200zM320 56h4v200h-4zM284 92h200v4h-200zM328 56h4v200h-4zM284 100h200v4h-200zM336 56h4v200h-4zM284 108h200v4h-200zM344 56h4v200h-4zM284 116h200v4h-200zM352 56h4v200h-4zM284 124h200v4h-200zM360 56h4v200h-4zM284 132h200v4h-200zM368 56h4v200h-4zM284 140h200v4h-200zM376 56h4v200h-4zM284 148h200v4h-200zM384 56h4v200h-4zM284 156h200v4h-200zM392 56h4v200h-4zM284 164h200v4h-200zM400 56h4v200h-4zM284 172h200v4h-200zM408 56h4v200h-4zM284 180h200v4h-200zM416 56h4v200h-4zM284 188h200v4h-200zM424 56h4v200h-4zM284 196h200v4h-200zM432 56h4v200h-4zM284 204h200v4h-200zM440 56h4v200h-4zM284 212h200v4h-200zM448 56h4v200h-4zM284 220h200v4h-200zM456 56h4v200h-4zM284 228h200v4h-200zM464 56h4v200h-4zM284 236h200v4h-200zM472 56h4v200h-4zM284 244h200v4h-200zM480 56h4v200h-4zM284 252h200v4h-200z"/>
+<rect class="line-ink" fill="none" x="284" y="56" width="200" height="200"/>
+<text class="ink" x="384" y="282" text-anchor="middle">half the squares white</text>
+<text class="ink" x="384" y="304" text-anchor="middle">light 0.5 on average</text>
+<text class="ink bold" x="624" y="40" text-anchor="middle">Blend in linear light</text>
+<rect class="swatch" x="524" y="56" width="200" height="200" fill="#bcbcbc"/>
+<rect class="line-ink" fill="none" x="524" y="56" width="200" height="200"/>
+<text class="ink" x="624" y="282" text-anchor="middle">stored 0.7354, byte 188</text>
+<text class="ink" x="624" y="304" text-anchor="middle">light 0.5</text>
+</svg>

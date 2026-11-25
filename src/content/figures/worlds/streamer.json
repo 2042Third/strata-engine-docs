@@ -1,0 +1,41 @@
+{
+	"figures": [
+		{
+			"id": "island-cells",
+			"kind": "editor",
+			"shows": "The Streaming panel's cell map of the Open World island a few seconds into the game's tour: the loaded cells around the player's dot, the blue circle of the farthest streaming distance, and the legend that counts each state",
+			"caption": "Seconds into the tour, orange loaded cells gather around the player's white dot. The blue circle is the farthest reach, Landmarks' 320 m; Vegetation stays loaded within 224 m. The legend counts three layers sharing squares; the island's northern rows lie above the map.",
+			"alt": "Orange squares around a white dot inside a blue circle cut at top and bottom, the rest dark gray, and a legend below with zero loading.",
+			"numbers": "From the world document Worlds/Island.stworld: three layers of 64 m cells, Vegetation 192 m (81 cells), Wildlife 128 m (10 cells), Landmarks 320 m (6 cells); 97 cells in all on 81 squares. Keep radius 192 + 32 = 224 m (the page's example). Measured on the take: cell pitch 29.5 px, circle 296 px across (321 m radius), map 250 px tall showing 7 of Vegetation's 10 rows, the 3 missing ones above it; legend Loaded 45, Unloaded 52.",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"editorWindow": {
+				"layout": "layouts/streaming.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"panel": "Streaming",
+				"steps": [
+					{
+						"command": "play.start",
+						"parameters": {}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 240
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					}
+				]
+			}
+		}
+	]
+}

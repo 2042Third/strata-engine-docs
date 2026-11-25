@@ -1,0 +1,121 @@
+diff --git a/Strata/src/Strata/Physics/PhysicsComponents.cpp b/Strata/src/Strata/Physics/PhysicsComponents.cpp
+index 58945760..9a2cb7a2 100644
+--- a/Strata/src/Strata/Physics/PhysicsComponents.cpp
++++ b/Strata/src/Strata/Physics/PhysicsComponents.cpp
+@@ -183,7 +183,7 @@ namespace Strata
+ 			.Property("Enabled", &CharacterControllerComponent::Enabled, WithTooltip({}, "A disabled controller neither moves nor collides"))
+ 			.Gizmo(ComponentGizmoGroup::Collider, CharacterControllerGizmo);
+ 
+-		ComponentRegistry::Register<WindZoneComponent>("WindZone")
++		ComponentRegistry::Register<WindZoneComponent>("WindArea")
+ 			.DisplayName("Wind Zone")
+ 			.Category("Physics")
+ 			.Description("A region of wind that pushes rigid bodies: directional zones blow one way through their radius, "
+diff --git a/StrataTests/Architecture/ComponentSchema.json b/StrataTests/Architecture/ComponentSchema.json
+index 86863a58..a42b44e6 100644
+--- a/StrataTests/Architecture/ComponentSchema.json
++++ b/StrataTests/Architecture/ComponentSchema.json
+@@ -2609,7 +2609,7 @@
+ 			"DisplayName": "Wind Zone",
+ 			"Extra": false,
+ 			"Flags": 0,
+-			"Name": "WindZone",
++			"Name": "WindArea",
+ 			"Properties": [
+ 				{
+ 					"AssetFilter": 0,
+diff --git a/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene b/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
+index 5d4e7912..73c48a4d 100644
+--- a/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
++++ b/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
+@@ -5713,7 +5713,7 @@
+ 							-7
+ 						]
+ 					},
+-					"WindZone": {
++					"WindArea": {
+ 						"Mode": "Spherical",
+ 						"Radius": 8.5,
+ 						"Strength": 25
+diff --git a/StrataTests/src/Physics/WindZoneTests.cpp b/StrataTests/src/Physics/WindZoneTests.cpp
+index 20c7526e..19ed3579 100644
+--- a/StrataTests/src/Physics/WindZoneTests.cpp
++++ b/StrataTests/src/Physics/WindZoneTests.cpp
+@@ -2,6 +2,11 @@
+ 
+ #include "Physics/PhysicsTestUtils.h"
+ #include "Strata/Physics/WindZoneSystem.h"
++#include "Strata/Scene/SceneSerializer.h"
++#include "Strata/Scene/UnknownComponents.h"
++
++#include <string>
++#include <vector>
+ 
+ using namespace Strata;
+ using namespace Strata::Tests;
+@@ -55,4 +60,30 @@ TEST_SUITE("Physics.WindZone")
+ 		CHECK(system->GetZones().empty());
+ 		scene.OnRuntimeStop();
+ 	}
++
++	TEST_CASE("A scene saved under the old name keeps its zone as an unknown component and saves it back unchanged")
++	{
++		const nlohmann::json zone = { { "Strength", 25 }, { "Radius", 8.5 }, { "Mode", "Spherical" } };
++		const nlohmann::json document = {
++			{ "Strata", { { "Format", "Scene" }, { "Version", 1 } } },
++			{ "Scene", { { "Name", "Old" }, { "Entities", { { { "ID", "00000000000000AE" }, { "Components", {
++				{ "Name", { { "Name", "Gust" } } }, { "WindZone", zone } } } } } } } }
++		};
++		Scene scene;
++		std::string error;
++		std::vector<std::string> warnings;
++		REQUIRE_MESSAGE(SceneSerializer::Deserialize(scene, document, &error, &warnings), error);
++		REQUIRE(warnings.size() == 1);
++		CHECK(warnings[0].find("Unknown component 'WindZone' (1 entity) kept unchanged") != std::string::npos);
++
++		Entity gust = scene.GetEntityByUUID(UUID(0xAE));
++		CHECK_FALSE(gust.HasComponent<WindZoneComponent>());
++		REQUIRE(gust.HasComponent<UnknownComponentsComponent>());
++		CHECK(gust.GetComponent<UnknownComponentsComponent>().Components["WindZone"] == zone);
++		scene.OnRuntimeStart();
++		StepScene(scene, 1);
++		CHECK(scene.GetSystem<WindZoneSystem>()->GetZones().empty());
++		scene.OnRuntimeStop();
++		CHECK(SceneSerializer::Serialize(scene)["Scene"]["Entities"][0]["Components"]["WindZone"] == zone);
++	}
+ }
+diff --git a/StrataTests/src/Scene/ReflectionTests.cpp b/StrataTests/src/Scene/ReflectionTests.cpp
+index dbe15367..047e52b6 100644
+--- a/StrataTests/src/Scene/ReflectionTests.cpp
++++ b/StrataTests/src/Scene/ReflectionTests.cpp
+@@ -45,7 +45,7 @@ TEST_SUITE("Reflection")
+ 			"ID", "Name", "Transform", "Relationship", "Tag", "Inactive", "PrefabInstance", "Camera", "MeshRenderer",
+ 			"DirectionalLight", "PointLight", "SpotLight", "RectLight", "LightSurface", "SkyLight", "HeightFog", "ReflectionProbe", "PostProcess", "Text",
+ #if ST_WITH_PHYSICS
+-			"RigidBody", "BoxCollider", "SphereCollider", "CapsuleCollider", "MeshCollider", "CharacterController", "WindZone",
++			"RigidBody", "BoxCollider", "SphereCollider", "CapsuleCollider", "MeshCollider", "CharacterController", "WindArea",
+ #endif
+ #if ST_WITH_AUDIO
+ 			"AudioSource", "AudioListener",
+@@ -528,7 +528,7 @@ TEST_SUITE("Reflection")
+ 	{
+ 		const ComponentInfo* info = ComponentRegistry::Find<WindZoneComponent>();
+ 		REQUIRE(info);
+-		CHECK(info->Name == "WindZone");
++		CHECK(info->Name == "WindArea");
+ 		CHECK(info->DisplayName == "Wind Zone");
+ 		CHECK(info->Category == "Physics");
+ 		CHECK_FALSE(info->Description.empty());
+diff --git a/StrataTests/src/Scene/SerializationTests.cpp b/StrataTests/src/Scene/SerializationTests.cpp
+index 069965db..ca9deee4 100644
+--- a/StrataTests/src/Scene/SerializationTests.cpp
++++ b/StrataTests/src/Scene/SerializationTests.cpp
+@@ -896,7 +896,7 @@ TEST_SUITE("Scene.Serialization")
+ 			const nlohmann::json document = {
+ 				{ "Strata", { { "Format", "Scene" }, { "Version", 1 } } },
+ 				{ "Scene", { { "Name", "Windy" }, { "Entities", { { { "ID", "00000000000000AD" }, { "Components", {
+-					{ "Name", { { "Name", "Gust" } } }, { "WindZone", zone } } } } } } } }
++					{ "Name", { { "Name", "Gust" } } }, { "WindArea", zone } } } } } } } }
+ 			};
+ 			Scene scene;
+ 			std::string error;

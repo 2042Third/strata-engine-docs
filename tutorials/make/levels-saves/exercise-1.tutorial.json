@@ -1,0 +1,32 @@
+{
+	"page": "make/levels-saves",
+	"startsFrom": { "sample": "ThirdPerson" },
+	"stages": [
+		{
+			"step": 1,
+			"files": [ { "from": "book:tutorials/make/levels-saves/NextLevel.cpp", "to": "Scripts/NextLevel.cpp" } ],
+			"commands": [
+				{ "command": "scene.open", "parameters": { "scene": "Scenes/Course.stscene" } },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "scene.saveAs", "parameters": { "path": "Scenes/Level2.stscene" } },
+				{ "command": "script.add", "entityName": "Goal", "parameters": { "class": "NextLevel", "fields": { "Next": "Scenes/MainMenu.stscene" } } },
+				{ "command": "scene.save" },
+				{ "command": "scene.saveAs", "parameters": { "path": "Scenes/Level3.stscene" } },
+				{ "command": "scene.info", "checks": [ { "pointer": "/name", "equals": "Level3" } ] },
+				{ "command": "script.get", "entityName": "Goal", "parameters": { "class": "NextLevel" }, "bind": { "next3": "/scripts/0/fields/Next" } },
+				{ "command": "asset.info", "parameters": { "asset": { "$ref": "next3" } }, "checks": [ { "pointer": "/path", "equals": "Scenes/MainMenu.stscene" } ] },
+				{ "command": "scene.open", "parameters": { "scene": "Scenes/Level2.stscene" } },
+				{ "command": "script.setField", "entityName": "Goal", "parameters": { "class": "NextLevel", "field": "Next", "value": "Scenes/Level3.stscene" } },
+				{ "command": "scene.save" },
+				{ "command": "script.get", "entityName": "Goal", "parameters": { "class": "NextLevel" }, "bind": { "next2": "/scripts/0/fields/Next" } },
+				{ "command": "asset.info", "parameters": { "asset": { "$ref": "next2" } }, "checks": [ { "pointer": "/path", "equals": "Scenes/Level3.stscene" } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "component.set", "entityName": "Player", "parameters": { "component": "Transform", "values": { "Translation": [0, 11.5, -71.5] } } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "scene.info", "until": { "steps": 300 }, "expect": { "/running/name": { "equals": "Level3" } } },
+				{ "command": "play.stop" }
+			]
+		}
+	]
+}

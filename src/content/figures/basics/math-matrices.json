@@ -1,0 +1,36 @@
+{
+	"figures": [
+		{
+			"id": "axes-moved",
+			"shows": "A flat graph with the unit square drawn in grey and, beside it, the same square after a quarter turn and a stretch of the x direction by two, with the two columns of the matrix drawn as arrows from the origin to the new places of the axes",
+			"caption": "The two columns of a matrix are the new places of the two axis arrows; every other point follows them.",
+			"alt": "Two graphs side by side. On the left, a grey unit square with the x arrow pointing right and the y arrow pointing up. On the right, the square is turned and stretched into a tall rectangle, and the two arrows point to the new corners it was drawn from.",
+			"kind": "diagram",
+			"numbers": "Left: x arrow (1, 0) in red, y arrow (0, 1) in green, square from (0, 0) to (1, 1). Right: the matrix with columns (0, 2) and (-1, 0): the x arrow becomes (0, 2) and the y arrow (-1, 0); the image of the square has corners (0, 0), (0, 2), (-1, 2), (-1, 0). Grid from -2 to 3 on both axes."
+		},
+		{
+			"id": "turn-then-move",
+			"shows": "Two flat graphs of the same point (1, 0): in the first it is turned a quarter turn about the origin to (0, 1) and then moved by (3, 0) to (3, 1); in the second it is moved first to (4, 0) and then turned to (0, 4)",
+			"caption": "The same two steps in two orders end in two different places, because a turn always happens about the origin.",
+			"alt": "Two graphs. In the first, a point moves in two arrows: up to the top of the y axis, then along to the right. In the second, the point moves along the x axis to the right, then swings in a quarter circle up to the y axis far above.",
+			"kind": "diagram",
+			"numbers": "Left graph, turn then move: (1, 0) to (0, 1) with a quarter-circle arrow, then to (3, 1) with a straight arrow. Right graph, move then turn: (1, 0) to (4, 0) with a straight arrow, then to (0, 4) with a quarter-circle arrow about the origin. Grid from -1 to 5 on both axes; the origin marked."
+		},
+		{
+			"id": "parent-and-child",
+			"shows": "An oblique view of the floor plane with the parent's own axes drawn turned a quarter turn from the world's, the child at 3 along the parent's x axis, and two sets of numbers for the child: its local position (3, 0, 0) and its world position (0, 1, -3)",
+			"caption": "One place, two sets of numbers: measured along the parent's axes the child is three units out; measured along the world's axes it lies three units back and one up.",
+			"alt": "A drawing with two sets of axes. The world axes point right and back into the page. The parent sits at one unit up with its own axes turned a quarter turn, and a small circle for the child sits on the parent's x arrow, three steps out.",
+			"kind": "diagram",
+			"numbers": "World axes: +x right, -z up the page (top view looking down +y toward -y), origin marked. Parent at world (0, 1, 0), turned 90 degrees about y so that its x axis points along world -z. Child at local (3, 0, 0) = world (0, 1, -3). Draw the parent's x axis as a long arrow through the child, dimension line of length 3 along it, and a second dimension line from the world origin."
+		},
+		{
+			"id": "right-hand-axes",
+			"shows": "A right hand with the thumb along x, the first finger along y and the middle finger along z, next to Strata's axes drawn as three arrows: +x to the right, +y up and +z toward the viewer, with -z marked as the forward direction of a camera",
+			"caption": "Point the first finger up and the thumb right, and the middle finger points at you: that is +z, so a camera looks along minus z.",
+			"alt": "A drawing of a right hand with its thumb, first finger and middle finger spread at right angles. Beside it, three arrows labelled x, y and z share one corner; a fourth, dashed arrow opposite z is labelled forward.",
+			"kind": "diagram",
+			"numbers": "Axes: x red to the right, y green up, z blue toward the viewer (drawn down-left at an angle), dashed -z labelled \"forward (camera, GetForward)\", y labelled \"up\". Hand: thumb along x, first finger along y, middle finger along z. The labels name the cross product: x cross y = z."
+		}
+	]
+}

@@ -1,0 +1,753 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "The room seen from its southwest corner, once without and once with global illumination",
+			"caption": "The same room without and with global illumination. Without it the walls and the ceiling take only the sky's even light: blue-gray walls, a pale tan ceiling. With it the light the floor sends on reaches them, tinted red by the floor and brightest beside the band of sun.",
+			"alt": "The inside of a white room with a red floor, seen from a corner. A band of bright sunlight lies on the floor under a long slot in the far wall. In the first picture the walls are an even blue gray and the ceiling a pale tan. In the second the walls and the ceiling are pink and red, brightest near the band of sun, and the floor is a lighter red.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					-1.7,
+					1.5,
+					1.7
+				],
+				"target": [
+					1.0,
+					0.7,
+					-0.8
+				],
+				"fov": 70
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"variants": {
+				"off": {
+					"setup": [
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/result-off-Plaster.stmat",
+								"properties": {
+									"BaseColor": [
+										0.73,
+										0.73,
+										0.73,
+										1
+									],
+									"Roughness": 0.9
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/result-off-RedFloor.stmat",
+								"properties": {
+									"BaseColor": [
+										0.6,
+										0.05,
+										0.04,
+										1
+									],
+									"Roughness": 0.9
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Floor",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-off-RedFloor.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											0.15,
+											0
+										],
+										"Scale": [
+											4.6,
+											0.3,
+											4.6
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Ceiling",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-off-Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											2.95,
+											0
+										],
+										"Scale": [
+											4.6,
+											0.3,
+											4.6
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall North",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-off-Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											1.55,
+											-2.15
+										],
+										"Scale": [
+											4.6,
+											2.5,
+											0.3
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall South",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-off-Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											1.55,
+											2.15
+										],
+										"Scale": [
+											4.6,
+											2.5,
+											0.3
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall West",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-off-Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-2.15,
+											1.55,
+											0
+										],
+										"Scale": [
+											0.3,
+											2.5,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall East Low",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-off-Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											2.15,
+											0.65,
+											0
+										],
+										"Scale": [
+											0.3,
+											0.7,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall East High",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-off-Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											2.15,
+											2.4,
+											0
+										],
+										"Scale": [
+											0.3,
+											0.8,
+											4
+										]
+									}
+								}
+							}
+						}
+					],
+					"postProcess": {
+						"GlobalIllumination": false
+					}
+				},
+				"on": {
+					"setup": [
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/result-on-Plaster.stmat",
+								"properties": {
+									"BaseColor": [
+										0.73,
+										0.73,
+										0.73,
+										1
+									],
+									"Roughness": 0.9
+								}
+							}
+						},
+						{
+							"command": "material.create",
+							"parameters": {
+								"path": "Materials/result-on-RedFloor.stmat",
+								"properties": {
+									"BaseColor": [
+										0.6,
+										0.05,
+										0.04,
+										1
+									],
+									"Roughness": 0.9
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Floor",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-on-RedFloor.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											0.15,
+											0
+										],
+										"Scale": [
+											4.6,
+											0.3,
+											4.6
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Ceiling",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-on-Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											2.95,
+											0
+										],
+										"Scale": [
+											4.6,
+											0.3,
+											4.6
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall North",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-on-Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											1.55,
+											-2.15
+										],
+										"Scale": [
+											4.6,
+											2.5,
+											0.3
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall South",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-on-Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											0,
+											1.55,
+											2.15
+										],
+										"Scale": [
+											4.6,
+											2.5,
+											0.3
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall West",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-on-Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											-2.15,
+											1.55,
+											0
+										],
+										"Scale": [
+											0.3,
+											2.5,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall East Low",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-on-Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											2.15,
+											0.65,
+											0
+										],
+										"Scale": [
+											0.3,
+											0.7,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Wall East High",
+								"components": {
+									"MeshRenderer": {
+										"Mesh": "Builtin/Cube",
+										"Material": "Materials/result-on-Plaster.stmat"
+									},
+									"Transform": {
+										"Translation": [
+											2.15,
+											2.4,
+											0
+										],
+										"Scale": [
+											0.3,
+											0.8,
+											4
+										]
+									}
+								}
+							}
+						},
+						{
+							"command": "component.set",
+							"entityName": "Post Process",
+							"parameters": {
+								"component": "PostProcess",
+								"values": {
+									"GlobalIllumination": true
+								}
+							}
+						},
+						{
+							"command": "viewport.capture",
+							"parameters": {
+								"width": 1280,
+								"height": 720,
+								"position": [
+									-1.7,
+									1.5,
+									1.7
+								],
+								"target": [
+									1.0,
+									0.7,
+									-0.8
+								],
+								"fov": 70,
+								"quality": "high",
+								"overlays": false,
+								"debugView": "none"
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "thin-wall",
+			"shows": "The Voxels view of the room with its lower east wall made 6 cm thick",
+			"caption": "The Voxels view with the lower wall under the slot made thinner than one voxel. Notice that wall in a flat error color, the color of two-sided voxels that send no bounce light, while the thicker walls around it keep the shaded colors of their voxels.",
+			"alt": "The inside of the room drawn as small cubes, seen from the west wall toward the slot. The floor is dark red with a brighter red band of sun, and the walls and the ceiling are dark reddish gray. The low wall under the slot is a flat, bright coral red.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					-1.2,
+					1.5,
+					0.5
+				],
+				"target": [
+					2.0,
+					0.8,
+					0.0
+				],
+				"fov": 70
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"debugView": "voxels",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/thin-Plaster.stmat",
+						"properties": {
+							"BaseColor": [
+								0.73,
+								0.73,
+								0.73,
+								1
+							],
+							"Roughness": 0.9
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/thin-RedFloor.stmat",
+						"properties": {
+							"BaseColor": [
+								0.6,
+								0.05,
+								0.04,
+								1
+							],
+							"Roughness": 0.9
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Floor",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/thin-RedFloor.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.15,
+									0
+								],
+								"Scale": [
+									4.6,
+									0.3,
+									4.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ceiling",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/thin-Plaster.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2.95,
+									0
+								],
+								"Scale": [
+									4.6,
+									0.3,
+									4.6
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall North",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/thin-Plaster.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.55,
+									-2.15
+								],
+								"Scale": [
+									4.6,
+									2.5,
+									0.3
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall South",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/thin-Plaster.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.55,
+									2.15
+								],
+								"Scale": [
+									4.6,
+									2.5,
+									0.3
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall West",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/thin-Plaster.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-2.15,
+									1.55,
+									0
+								],
+								"Scale": [
+									0.3,
+									2.5,
+									4
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall East Low",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/thin-Plaster.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.15,
+									0.65,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.7,
+									4
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall East High",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/thin-Plaster.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.15,
+									2.4,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.8,
+									4
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Wall East Low",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								2.05,
+								0.65,
+								0
+							],
+							"Scale": [
+								0.06,
+								0.7,
+								4
+							]
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"GlobalIllumination": true
+						}
+					}
+				},
+				{
+					"command": "viewport.capture",
+					"parameters": {
+						"width": 1280,
+						"height": 720,
+						"position": [
+							-1.2,
+							1.5,
+							0.5
+						],
+						"target": [
+							2.0,
+							0.8,
+							0.0
+						],
+						"fov": 70,
+						"quality": "high",
+						"overlays": false,
+						"debugView": "voxels"
+					}
+				}
+			],
+			"expect": "complete"
+		}
+	]
+}

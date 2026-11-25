@@ -1,0 +1,348 @@
+id	type	heading	label
+audio-input:27	feature	1.1 Audio: the output engine (`AudioEngine`)	Engine initialization
+audio-input:28	feature	1.1 Audio: the output engine (`AudioEngine`)	Device fallback
+audio-input:29	feature	1.1 Audio: the output engine (`AudioEngine`)	Null device
+audio-input:30	feature	1.1 Audio: the output engine (`AudioEngine`)	Master volume
+audio-input:31	feature	1.1 Audio: the output engine (`AudioEngine`)	Engine pause
+audio-input:32	feature	1.1 Audio: the output engine (`AudioEngine`)	Settings before Init
+audio-input:33	feature	1.1 Audio: the output engine (`AudioEngine`)	Listener
+audio-input:34	feature	1.1 Audio: the output engine (`AudioEngine`)	Listener up hand-off
+audio-input:35	feature	1.1 Audio: the output engine (`AudioEngine`)	Engine one-shots
+audio-input:36	feature	1.1 Audio: the output engine (`AudioEngine`)	Source registry
+audio-input:37	feature	1.1 Audio: the output engine (`AudioEngine`)	Statistics
+audio-input:38	feature	1.1 Audio: the output engine (`AudioEngine`)	Engine module
+audio-input:39	feature	1.1 Audio: the output engine (`AudioEngine`)	Build option
+audio-input:45	feature	1.2 Audio: data (`AudioClip`, `AudioClipAsset`, importer)	Decoding
+audio-input:46	feature	1.2 Audio: data (`AudioClip`, `AudioClipAsset`, importer)	Load modes
+audio-input:47	feature	1.2 Audio: data (`AudioClip`, `AudioClipAsset`, importer)	Safe decoding
+audio-input:48	feature	1.2 Audio: data (`AudioClip`, `AudioClipAsset`, importer)	Thread safety
+audio-input:49	feature	1.2 Audio: data (`AudioClip`, `AudioClipAsset`, importer)	Memory accounting
+audio-input:50	feature	1.2 Audio: data (`AudioClip`, `AudioClipAsset`, importer)	Cooked format
+audio-input:51	feature	1.2 Audio: data (`AudioClip`, `AudioClipAsset`, importer)	Asset loader
+audio-input:52	feature	1.2 Audio: data (`AudioClip`, `AudioClipAsset`, importer)	Importer
+audio-input:58	feature	1.3 Audio: voices and sources (`AudioVoice`, `AudioSource`)	Custom data source
+audio-input:59	feature	1.3 Audio: voices and sources (`AudioVoice`, `AudioSource`)	End handling
+audio-input:60	feature	1.3 Audio: voices and sources (`AudioVoice`, `AudioSource`)	Voice object
+audio-input:61	feature	1.3 Audio: voices and sources (`AudioVoice`, `AudioSource`)	Lock-free parameters
+audio-input:62	feature	1.3 Audio: voices and sources (`AudioVoice`, `AudioSource`)	Attenuation models
+audio-input:63	feature	1.3 Audio: voices and sources (`AudioVoice`, `AudioSource`)	Source
+audio-input:64	feature	1.3 Audio: voices and sources (`AudioVoice`, `AudioSource`)	Play/Pause/Stop/Seek
+audio-input:65	feature	1.3 Audio: voices and sources (`AudioVoice`, `AudioSource`)	Finished-voice replacement
+audio-input:66	feature	1.3 Audio: voices and sources (`AudioVoice`, `AudioSource`)	Fresh voice after a stop
+audio-input:67	feature	1.3 Audio: voices and sources (`AudioVoice`, `AudioSource`)	Input validation
+audio-input:73	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Components
+audio-input:74	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	"Audio" scene system
+audio-input:75	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Source lifecycle
+audio-input:76	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Asynchronous clips
+audio-input:77	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Change detection without signals
+audio-input:78	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Spatial sources
+audio-input:79	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Doppler velocity
+audio-input:80	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Listener selection
+audio-input:81	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Listener up policy
+audio-input:82	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Scene pause
+audio-input:83	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Gameplay API
+audio-input:84	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Scene one-shots
+audio-input:85	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Inspection
+audio-input:86	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Scene service `IAudioPlayback`
+audio-input:87	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Engine service `IAudioOutput`
+audio-input:88	feature	1.4 Audio: the scene (`AudioSystem`, components, services)	Works without output
+audio-input:94	feature	1.5 Audio: scripting, editor, samples	SDK `AudioSource`
+audio-input:95	feature	1.5 Audio: scripting, editor, samples	SDK `Audio`
+audio-input:96	feature	1.5 Audio: scripting, editor, samples	Host functions
+audio-input:97	feature	1.5 Audio: scripting, editor, samples	Editor play mode
+audio-input:98	feature	1.5 Audio: scripting, editor, samples	`audio.state`
+audio-input:99	feature	1.5 Audio: scripting, editor, samples	Asset tab preview
+audio-input:100	feature	1.5 Audio: scripting, editor, samples	Samples
+audio-input:101	feature	1.5 Audio: scripting, editor, samples	Feature test
+audio-input:107	feature	1.6 Input: codes and names	Key codes
+audio-input:108	feature	1.6 Input: codes and names	Mouse codes
+audio-input:109	feature	1.6 Input: codes and names	Gamepad codes
+audio-input:110	feature	1.6 Input: codes and names	Input names
+audio-input:116	feature	1.7 Input: devices and the per-frame state (`Input`)	Polling API
+audio-input:117	feature	1.7 Input: devices and the per-frame state (`Input`)	Input frame
+audio-input:118	feature	1.7 Input: devices and the per-frame state (`Input`)	Suspension
+audio-input:119	feature	1.7 Input: devices and the per-frame state (`Input`)	Enabled flag
+audio-input:120	feature	1.7 Input: devices and the per-frame state (`Input`)	Input viewport
+audio-input:121	feature	1.7 Input: devices and the per-frame state (`Input`)	Window seam
+audio-input:122	feature	1.7 Input: devices and the per-frame state (`Input`)	Cursor modes
+audio-input:123	feature	1.7 Input: devices and the per-frame state (`Input`)	Typed text
+audio-input:124	feature	1.7 Input: devices and the per-frame state (`Input`)	Pointer capture
+audio-input:125	feature	1.7 Input: devices and the per-frame state (`Input`)	Keyboard capture
+audio-input:126	feature	1.7 Input: devices and the per-frame state (`Input`)	Raw queries
+audio-input:127	feature	1.7 Input: devices and the per-frame state (`Input`)	Reset
+audio-input:128	feature	1.7 Input: devices and the per-frame state (`Input`)	GLFW feed
+audio-input:129	feature	1.7 Input: devices and the per-frame state (`Input`)	Gamepad polling
+audio-input:130	feature	1.7 Input: devices and the per-frame state (`Input`)	Frame-loop placement
+audio-input:136	feature	1.8 Input: simulated device	Virtual keyboard, mouse, gamepads
+audio-input:137	feature	1.8 Input: simulated device	Merge rules
+audio-input:138	feature	1.8 Input: simulated device	Simulated pointer
+audio-input:139	feature	1.8 Input: simulated device	Simulated gamepads
+audio-input:140	feature	1.8 Input: simulated device	Release and clear
+audio-input:148	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Model
+audio-input:149	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Binding grammar
+audio-input:150	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Kind fitting
+audio-input:151	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Names
+audio-input:152	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Reserved UI map
+audio-input:153	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Settings section
+audio-input:154	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Evaluation
+audio-input:155	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Combining bindings
+audio-input:156	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Thresholds and hysteresis
+audio-input:157	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Radial dead zone
+audio-input:158	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Multiple gamepads
+audio-input:159	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Map enable
+audio-input:160	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Live edits
+audio-input:161	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Fast reads
+audio-input:162	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Players' bindings
+audio-input:163	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Sessions
+audio-input:164	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Simulated actions
+audio-input:165	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Binding capture
+audio-input:166	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	UI actions
+audio-input:167	feature	1.9 Input: actions (`InputActionSet`, `InputActions`)	Performance
+audio-input:173	feature	1.10 Input: scripting, editor, runtime	SDK `Input`
+audio-input:174	feature	1.10 Input: scripting, editor, runtime	SDK `KeyRepeat`
+audio-input:175	feature	1.10 Input: scripting, editor, runtime	ABI
+audio-input:176	feature	1.10 Input: scripting, editor, runtime	Host functions
+audio-input:177	feature	1.10 Input: scripting, editor, runtime	Game view focus
+audio-input:178	feature	1.10 Input: scripting, editor, runtime	Input suspension in the editor
+audio-input:179	feature	1.10 Input: scripting, editor, runtime	`input.*` commands
+audio-input:180	feature	1.10 Input: scripting, editor, runtime	`inputActions.*` commands
+audio-input:181	feature	1.10 Input: scripting, editor, runtime	Input Actions page
+audio-input:182	feature	1.10 Input: scripting, editor, runtime	Feature test
+audio-input:183	feature	1.10 Input: scripting, editor, runtime	Samples
+audio-input:187	feature	1.11 Boundary items (other areas teach them, this area depends on them)	`Strata/src/Strata/Events/` (`KeyEvent.h`, `MouseEvent.h`): the event classes GLFW callbacks emit…
+audio-input:190	feature	1.11 Boundary items (other areas teach them, this area depends on them)	The game UI's use of pointer/keyboard capture and `UIActionState` (`GameUI/`, DG "UI input"…
+audio-input:191	feature	1.11 Boundary items (other areas teach them, this area depends on them)	`ImGuiPlatform`'s own input (AR 550-554): the editor UI does not read `Input`.
+audio-input:215	concept	Part A: sound	A1. What digital sound is
+audio-input:222	concept	Part A: sound	A2. How audio hardware is fed: the pull model and its thread
+audio-input:229	concept	Part A: sound	A3. Real-time rules and lock-free hand-off
+audio-input:239	concept	Part A: sound	A4. Codecs, decoding and streaming
+audio-input:247	concept	Part A: sound	A5. Mixing: voices, gain, the node graph, voice limits
+audio-input:255	concept	Part A: sound	A6. Sources and their state machine
+audio-input:261	concept	Part A: sound	A7. 3D sound: listener, panning, attenuation
+audio-input:270	concept	Part A: sound	A8. The Doppler effect
+audio-input:278	concept	Part A: sound	A9. Audio in a scene/ECS
+audio-input:286	concept	Part A: sound	A10. Fire-and-forget sounds and latency budgets
+audio-input:290	concept	Part A: sound	A11. Testing sound without ears
+audio-input:296	concept	Part A: sound	A12. The audio landscape
+audio-input:302	concept	Part B: input	B1. Where input comes from
+audio-input:309	concept	Part B: input	B2. Polling and edges: down, pressed, released
+audio-input:315	concept	Part B: input	B3. Mouse spaces and cursor modes
+audio-input:321	concept	Part B: input	B4. Gamepads
+audio-input:329	concept	Part B: input	B5. Text input is not key input
+audio-input:333	concept	Part B: input	B6. Focus, enabling and capture: who gets the input
+audio-input:339	concept	Part B: input	B7. Actions instead of keys
+audio-input:347	concept	Part B: input	B8. Evaluating actions once per frame and staying correct under edits
+audio-input:352	concept	Part B: input	B9. "Press a key to bind"
+audio-input:357	concept	Part B: input	B10. Simulated input, determinism and fixed steps
+audio-input:365	concept	Part B: input	B11. Crossing the script ABI
+audio-input:376	code		1: `Strata/src/Strata/Input/Input.cpp:19-41`
+audio-input:377	code		2: `Strata/src/Strata/Input/Input.cpp:553-586`
+audio-input:378	code		3: `Strata/src/Strata/Input/Input.cpp:147-175`
+audio-input:379	code		4: `Strata/src/Platform/GLFW/GLFWWindow.cpp:286-319` and `:416-442`
+audio-input:380	code		5: `Strata/src/Strata/Core/Application.cpp:294-305`
+audio-input:381	code		6: `Strata/src/Strata/Input/Input.cpp:364-375, 137-145`
+audio-input:382	code		7: `Strata/src/Strata/Input/Input.cpp:182-215, 224-281`
+audio-input:383	code		8: `StrataScriptCore/Include/StrataScript/Input.h:326-353`
+audio-input:384	code		9: `Strata/src/Strata/Input/InputActionSet.h:63-95` with `InputActionSet.cpp:488-501`
+audio-input:385	code		10: `Strata/src/Strata/Input/InputActionSet.cpp:414-472`
+audio-input:386	code		11: `Strata/src/Strata/Input/InputActions.cpp:452-558`
+audio-input:387	code		12: `Strata/src/Strata/Input/InputActions.cpp:341-381`
+audio-input:388	code		13: `Strata/src/Strata/Input/InputActions.cpp:405-420`
+audio-input:389	code		14: `Strata/src/Strata/Input/InputActions.cpp:117-239`
+audio-input:390	code		15: `Strata/src/Strata/Input/InputActions.cpp:596-667`
+audio-input:391	code		16: `Strata/src/Strata/Input/UIActions.cpp:39-88`
+audio-input:392	code		17: `Strata/src/Strata/Audio/AudioVoice.cpp:20-77, 126-134`
+audio-input:393	code		18: `Strata/src/Strata/Audio/AudioVoice.cpp:138-164`
+audio-input:394	code		19: `Strata/src/Strata/Audio/AudioVoice.cpp:241-260` with `AudioSource.cpp:39-54`
+audio-input:395	code		20: `Strata/src/Strata/Audio/AudioSource.cpp:269-288`
+audio-input:396	code		21: `Strata/src/Strata/Core/SequenceLock.h:12-60` with `AudioEngine.cpp:62-71, 334-348`
+audio-input:397	code		22: `Strata/src/Strata/Audio/AudioEngine.cpp:162-223`
+audio-input:398	code		23: `Strata/src/Strata/Audio/AudioEngine.cpp:124-158`
+audio-input:399	code		24: `Strata/src/Strata/Audio/AudioClip.cpp:33-58`
+audio-input:400	code		25: `Strata/src/Strata/Audio/AudioVoice.cpp:338-361` with `AudioSource.h:15-24`
+audio-input:401	code		26: `Strata/src/Strata/Audio/AudioSystem.cpp:664-700` with `:45-65`
+audio-input:402	code		27: `Strata/src/Strata/Audio/AudioSystem.cpp:717-746` with `:510-536`
+audio-input:403	code		28: `Strata/src/Strata/Audio/AudioSystem.cpp:67-96, 834-864`
+audio-input:404	code		29: `Strata/src/Strata/Audio/AudioSystem.cpp:869-966`
+audio-input:405	code		30: `Strata/src/Strata/Audio/AudioRegistration.cpp:28-49`
+audio-input:406	code		31: `StrataTests/src/Audio/AudioTests.cpp:1095-1129` with `AudioTestUtils.h:56-81`
+audio-input:408	code		Shorter supporting snippets: `AudioComponents.cpp:11-30` (reflection registration with ranges),…
+audio-input:419	figure	Diagrams	Audio stack (data flow)
+audio-input:422	figure	Diagrams	Two threads (sequence/ownership)
+audio-input:424	figure	Diagrams	Clip memory layout
+audio-input:426	figure	Diagrams	Mixing period timeline
+audio-input:428	figure	Diagrams	AudioSource / voice state machine
+audio-input:430	figure	Diagrams	AudioSystem record state machine
+audio-input:432	figure	Diagrams	Attenuation curves (plot)
+audio-input:434	figure	Diagrams	Listener frame and panning (top view)
+audio-input:436	figure	Diagrams	Doppler velocity derivation (timeline)
+audio-input:438	figure	Diagrams	One-shot lifecycle
+audio-input:440	figure	Diagrams	Frame timeline with audio and input
+audio-input:443	figure	Diagrams	Input data flow
+audio-input:445	figure	Diagrams	Edge flags over frames (timeline)
+audio-input:447	figure	Diagrams	Merge truth table
+audio-input:448	figure	Diagrams	Suspension (timeline)
+audio-input:449	figure	Diagrams	Viewport coordinate mapping
+audio-input:451	figure	Diagrams	Gamepad conventions
+audio-input:452	figure	Diagrams	Dead zones (plots)
+audio-input:453	figure	Diagrams	Hysteresis (plot)
+audio-input:454	figure	Diagrams	Input action model (class diagram)
+audio-input:456	figure	Diagrams	Action evaluation per kind (flowchart)
+audio-input:458	figure	Diagrams	Binding capture (state machine)
+audio-input:460	figure	Diagrams	Players' bindings (data flow)
+audio-input:462	figure	Diagrams	Who sees what (table/diagram)
+audio-input:464	figure	Diagrams	Simulated holds in fixed steps (timeline)
+audio-input:469	figure	Screenshots (editor; none is a rendering feature)	Inspector of an entity with Audio Source (Clip, Volume slider, Pitch, Loop, PlayOnStart, Spatial,…
+audio-input:471	figure	Screenshots (editor; none is a rendering feature)	Asset tab audio preview
+audio-input:473	figure	Screenshots (editor; none is a rendering feature)	Import settings of an audio clip
+audio-input:474	figure	Screenshots (editor; none is a rendering feature)	Project Settings > Input Actions
+audio-input:476	figure	Screenshots (editor; none is a rendering feature)	Add binding popup
+audio-input:477	figure	Screenshots (editor; none is a rendering feature)	Binding capture
+audio-input:478	figure	Screenshots (editor; none is a rendering feature)	"In play" markers and Reset Player Bindings
+audio-input:479	figure	Screenshots (editor; none is a rendering feature)	Game view with a locked cursor
+audio-input:480	figure	Screenshots (editor; none is a rendering feature)	Status bar pill of simulated holds
+audio-input:481	figure	Screenshots (editor; none is a rendering feature)	Console warning of a dropped one-shot
+audio-input:483	figure	Screenshots (editor; none is a rendering feature)	Non-image figures: `audio.state` and `input.state` JSON answers from StrataCLI (code blocks), and…
+audio-input:490	rule		Game code plays sound through `AudioSystem` (scripts: the SDK), never `AudioEngine`
+audio-input:492	rule		The audio API is main-thread only; only the mixer runs on the audio thread
+audio-input:494	rule		Never write a value the audio thread reads without atomics
+audio-input:497	rule		Release the sound before what it reads
+audio-input:499	rule		Do not restart a finished voice; replace it
+audio-input:501	rule		A stopped or seeked voice that played is replaced
+audio-input:503	rule		Do not trust a file's declared length
+audio-input:505	rule		Request clips before you need them
+audio-input:507	rule		Limit Doppler speeds and treat jumps as teleports
+audio-input:509	rule		Derive velocity over the time since the last move, not the frame
+audio-input:511	rule		Zero vectors and NaNs are refused at the boundary
+audio-input:513	rule		Audio plays only in Play mode
+audio-input:515	rule		Assets by handle, never blocking
+audio-input:517	rule		Input is main-thread polling state, updated once per frame
+audio-input:519	rule		Simulated events apply at the next input frame
+audio-input:521	rule		Durations of simulated input count fixed steps, never frames
+audio-input:523	rule		Suspend input frames while the game does not update
+audio-input:525	rule		Gameplay reads rebindable controls as input actions
+audio-input:527	rule		Only `InputActions` touches the players' bindings file
+audio-input:529	rule		Disabling a map releases its held actions once
+audio-input:531	rule		An edit of the actions keeps the state of unchanged actions
+audio-input:533	rule		A capture's press triggers nothing
+audio-input:535	rule		Key codes are ABI and never renumbered
+audio-input:537	rule		The game's cursor mode applies only while it has the input
+audio-input:539	rule		Unscoped enums never use `None`; X11 defines it
+audio-input:541	rule		SDK helpers named like engine classes are tested only in script modules
+audio-input:543	rule		Host functions report misuse and return failure values
+audio-input:552	hands-on	For game developers	Your first sound
+audio-input:554	hands-on	For game developers	Hear space
+audio-input:556	hands-on	For game developers	Impact sounds
+audio-input:559	hands-on	For game developers	Footsteps from animation events
+audio-input:561	hands-on	For game developers	Music and a volume option
+audio-input:563	hands-on	For game developers	Read the keyboard and a gamepad
+audio-input:565	hands-on	For game developers	Mouse look
+audio-input:567	hands-on	For game developers	Convert to input actions
+audio-input:570	hands-on	For game developers	A rebinding menu
+audio-input:573	hands-on	For game developers	Let an agent play it
+audio-input:579	hands-on	For engine developers	Add an attenuation-model field to `AudioSourceComponent`
+audio-input:581	hands-on	For engine developers	Write the missing test
+audio-input:583	hands-on	For engine developers	Audio buses
+audio-input:585	hands-on	For engine developers	Distance culling / virtual voices
+audio-input:587	hands-on	For engine developers	Measure the hand-off
+audio-input:589	hands-on	For engine developers	Explain a race
+audio-input:591	hands-on	For engine developers	A new binding control
+audio-input:593	hands-on	For engine developers	Modifiers
+audio-input:595	hands-on	For engine developers	Trace a simulated tap
+audio-input:597	hands-on	For engine developers	Profile actions
+audio-input:599	hands-on	For engine developers	Second window backend thought experiment
+audio-input:606	term		Sample
+audio-input:607	term		Sample rate
+audio-input:608	term		Channel
+audio-input:609	term		Frame (audio)
+audio-input:610	term		Interleaved
+audio-input:611	term		PCM
+audio-input:612	term		Codec / decoder
+audio-input:613	term		WAV, FLAC, MP3, Ogg Vorbis
+audio-input:614	term		Resampling
+audio-input:615	term		Mixer
+audio-input:616	term		Voice
+audio-input:617	term		Source
+audio-input:618	term		One-shot
+audio-input:619	term		Voice stealing
+audio-input:620	term		Node graph
+audio-input:621	term		Bus / group
+audio-input:622	term		Gain
+audio-input:623	term		Decibel (dB)
+audio-input:624	term		RMS
+audio-input:625	term		Clipping
+audio-input:626	term		Output device
+audio-input:627	term		Null device
+audio-input:628	term		Mixing period
+audio-input:629	term		Underrun
+audio-input:630	term		Latency
+audio-input:631	term		Audio thread
+audio-input:632	term		Lock-free
+audio-input:633	term		Sequence lock
+audio-input:634	term		Atomic
+audio-input:635	term		Data source (miniaudio)
+audio-input:636	term		Cursor
+audio-input:637	term		Load mode (Decompressed / Streamed)
+audio-input:638	term		Cooked asset
+audio-input:639	term		Listener
+audio-input:640	term		Spatialization
+audio-input:641	term		Panning
+audio-input:642	term		HRTF
+audio-input:643	term		Attenuation; attenuation model
+audio-input:644	term		Min distance / max distance
+audio-input:645	term		Rolloff
+audio-input:646	term		Doppler effect
+audio-input:647	term		Pitch
+audio-input:648	term		Teleport (audio)
+audio-input:649	term		Exponential smoothing
+audio-input:650	term		Waveform (preview)
+audio-input:651	term		Scene system
+audio-input:652	term		Scene service / engine service
+audio-input:654	term		Play mode / Simulate mode
+audio-input:655	term		Polling
+audio-input:656	term		Event (input)
+audio-input:657	term		Down / Pressed / Released
+audio-input:658	term		Edge (transition)
+audio-input:659	term		Input frame
+audio-input:660	term		Suspended input frames
+audio-input:661	term		Key code
+audio-input:662	term		Scancode
+audio-input:663	term		Key repeat
+audio-input:664	term		Typed text / character event
+audio-input:665	term		IME
+audio-input:666	term		UTF-8
+audio-input:667	term		Code point; U+FFFD
+audio-input:668	term		Surrogate
+audio-input:669	term		Viewport (input)
+audio-input:670	term		Cursor mode
+audio-input:671	term		Mouse delta
+audio-input:672	term		Gamepad mapping
+audio-input:673	term		Axis; stick; trigger
+audio-input:674	term		Half axis
+audio-input:675	term		Dead zone; axial; radial
+audio-input:676	term		Rescaling
+audio-input:677	term		Hysteresis
+audio-input:678	term		Input action
+audio-input:679	term		Action kind
+audio-input:680	term		Binding
+audio-input:681	term		Composite (1D / 2D)
+audio-input:682	term		Action map
+audio-input:683	term		Qualified name; bare name
+audio-input:684	term		UI map
+audio-input:685	term		Players' bindings
+audio-input:686	term		Binding capture
+audio-input:687	term		Suppression (capture)
+audio-input:688	term		Simulated input / virtual device
+audio-input:689	term		Hold (editor)
+audio-input:690	term		Fixed step
+audio-input:691	term		Pointer capture / keyboard capture
+audio-input:692	term		Host function
+audio-input:693	term		Text buffer protocol
+audio-input:740	open		Bodies only skimmed or not read
+audio-input:746	open		miniaudio internals
+audio-input:748	open		Mixing period length
+audio-input:750	open		`AudioEngine::SetPaused`
+audio-input:753	open		Minimized or unfocused windows
+audio-input:755	open		Releases
+audio-input:759	open		Hardware behaviour
+audio-input:761	open		A cosmetic slip: `AudioSystem.cpp:867` has a section banner merged into the comment line ("//…

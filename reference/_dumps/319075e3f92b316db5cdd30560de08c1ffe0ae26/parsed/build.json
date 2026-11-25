@@ -1,0 +1,1392 @@
+{
+	"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+	"options": [
+		{
+			"name": "STRATA_BUILD_EDITOR",
+			"description": "Build the Strata editor",
+			"default": "ON",
+			"file": "CMakeLists.txt",
+			"line": 19
+		},
+		{
+			"name": "STRATA_BUILD_RUNTIME",
+			"description": "Build the Strata runtime (game player used for exported games)",
+			"default": "ON",
+			"file": "CMakeLists.txt",
+			"line": 20
+		},
+		{
+			"name": "STRATA_BUILD_CLI",
+			"description": "Build StrataCLI (editor automation client and MCP server)",
+			"default": "ON",
+			"file": "CMakeLists.txt",
+			"line": 21
+		},
+		{
+			"name": "STRATA_BUILD_TESTS",
+			"description": "Build the Strata test suites",
+			"default": "ON",
+			"file": "CMakeLists.txt",
+			"line": 22
+		},
+		{
+			"name": "STRATA_ENABLE_TRACY",
+			"description": "Instrument the engine for the Tracy profiler",
+			"default": "OFF",
+			"file": "CMakeLists.txt",
+			"line": 23
+		},
+		{
+			"name": "STRATA_WARNINGS_AS_ERRORS",
+			"description": "Treat compiler warnings as errors in first-party targets",
+			"default": "ON",
+			"file": "CMakeLists.txt",
+			"line": 24
+		},
+		{
+			"name": "STRATA_WITH_PHYSICS",
+			"description": "Build the physics module (box3d)",
+			"default": "ON",
+			"file": "CMakeLists.txt",
+			"line": 28
+		},
+		{
+			"name": "STRATA_WITH_AUDIO",
+			"description": "Build the audio module (miniaudio)",
+			"default": "ON",
+			"file": "CMakeLists.txt",
+			"line": 29
+		},
+		{
+			"name": "STRATA_WITH_ANIMATION",
+			"description": "Build the animation module",
+			"default": "ON",
+			"file": "CMakeLists.txt",
+			"line": 30
+		},
+		{
+			"name": "STRATA_WITH_GLFW",
+			"description": "Build the GLFW window backend",
+			"default": "ON",
+			"file": "CMakeLists.txt",
+			"line": 34
+		},
+		{
+			"name": "STRATA_COMPILER_CACHE",
+			"description": "Compile through ccache or sccache (STRATA_COMPILER_CACHE_PROGRAM)",
+			"default": "OFF",
+			"file": "CMakeLists.txt",
+			"line": 52
+		},
+		{
+			"name": "STRATA_PRECOMPILED_HEADERS",
+			"description": "Build the engine, editor and test targets with precompiled headers",
+			"default": "${strataPrecompiledHeadersDefault}",
+			"file": "CMakeLists.txt",
+			"line": 58
+		},
+		{
+			"name": "STRATA_USE_SSE4_1",
+			"description": "Compile the engine for SSE 4.1 (x86-64)",
+			"default": "ON",
+			"file": "CMake/StrataCompilerOptions.cmake",
+			"line": 27
+		},
+		{
+			"name": "STRATA_USE_SSE4_2",
+			"description": "Compile the engine for SSE 4.2 (x86-64)",
+			"default": "ON",
+			"file": "CMake/StrataCompilerOptions.cmake",
+			"line": 28
+		},
+		{
+			"name": "STRATA_USE_AVX",
+			"description": "Compile the engine for AVX (x86-64)",
+			"default": "ON",
+			"file": "CMake/StrataCompilerOptions.cmake",
+			"line": 29
+		},
+		{
+			"name": "STRATA_USE_AVX2",
+			"description": "Compile the engine for AVX2 (x86-64)",
+			"default": "ON",
+			"file": "CMake/StrataCompilerOptions.cmake",
+			"line": 30
+		},
+		{
+			"name": "STRATA_USE_AVX512",
+			"description": "Compile the engine for AVX-512 (x86-64)",
+			"default": "OFF",
+			"file": "CMake/StrataCompilerOptions.cmake",
+			"line": 31
+		},
+		{
+			"name": "STRATA_USE_LZCNT",
+			"description": "Compile the engine for LZCNT (x86-64)",
+			"default": "ON",
+			"file": "CMake/StrataCompilerOptions.cmake",
+			"line": 32
+		},
+		{
+			"name": "STRATA_USE_TZCNT",
+			"description": "Compile the engine for TZCNT (x86-64)",
+			"default": "ON",
+			"file": "CMake/StrataCompilerOptions.cmake",
+			"line": 33
+		},
+		{
+			"name": "STRATA_USE_F16C",
+			"description": "Compile the engine for F16C (x86-64)",
+			"default": "ON",
+			"file": "CMake/StrataCompilerOptions.cmake",
+			"line": 34
+		},
+		{
+			"name": "STRATA_USE_FMADD",
+			"description": "Compile the engine for fused multiply-adds (x86-64)",
+			"default": "ON",
+			"file": "CMake/StrataCompilerOptions.cmake",
+			"line": 35
+		},
+		{
+			"name": "STRATA_CROSS_PLATFORM_DETERMINISTIC",
+			"description": "Compile the engine without fused multiply-adds, for results that match across platforms",
+			"default": "OFF",
+			"file": "CMake/StrataCompilerOptions.cmake",
+			"line": 36
+		},
+		{
+			"name": "STRATA_CROSS_COMPILE_ARM",
+			"description": "Compile the engine for ARM64 from an x86-64 host",
+			"default": "OFF",
+			"file": "CMake/StrataCompilerOptions.cmake",
+			"line": 37
+		}
+	],
+	"presets": {
+		"configurePresets": [
+			{
+				"name": "base",
+				"hidden": true,
+				"binaryDir": "${sourceDir}/build/${presetName}"
+			},
+			{
+				"name": "windows",
+				"displayName": "Windows (Visual Studio 2026)",
+				"inherits": "base",
+				"generator": "Visual Studio 18 2026"
+			},
+			{
+				"name": "windows-vs2022",
+				"displayName": "Windows (Visual Studio 2022)",
+				"inherits": "windows",
+				"generator": "Visual Studio 17 2022"
+			},
+			{
+				"name": "windows-ninja",
+				"displayName": "Windows (Ninja Multi-Config, MSVC)",
+				"description": "Configure and build in a Visual Studio developer environment (vcvars64): CI's cached Windows builds (STRATA_COMPILER_CACHE)",
+				"inherits": "base",
+				"generator": "Ninja Multi-Config",
+				"cacheVariables": {
+					"CMAKE_C_COMPILER": "cl",
+					"CMAKE_CXX_COMPILER": "cl"
+				}
+			},
+			{
+				"name": "linux",
+				"displayName": "Linux (Ninja Multi-Config)",
+				"inherits": "base",
+				"generator": "Ninja Multi-Config"
+			},
+			{
+				"name": "macos",
+				"displayName": "macOS (Ninja Multi-Config)",
+				"description": "Binaries run on macOS 14 and later, whatever the SDK of the Xcode that builds them",
+				"inherits": "base",
+				"generator": "Ninja Multi-Config",
+				"cacheVariables": {
+					"CMAKE_OSX_DEPLOYMENT_TARGET": "14.0"
+				}
+			}
+		],
+		"buildPresets": [
+			{
+				"name": "windows-debug",
+				"configurePreset": "windows",
+				"configuration": "Debug"
+			},
+			{
+				"name": "windows-release",
+				"configurePreset": "windows",
+				"configuration": "Release"
+			},
+			{
+				"name": "windows-dist",
+				"configurePreset": "windows",
+				"configuration": "Dist"
+			},
+			{
+				"name": "windows-vs2022-debug",
+				"configurePreset": "windows-vs2022",
+				"configuration": "Debug"
+			},
+			{
+				"name": "windows-vs2022-release",
+				"configurePreset": "windows-vs2022",
+				"configuration": "Release"
+			},
+			{
+				"name": "windows-vs2022-dist",
+				"configurePreset": "windows-vs2022",
+				"configuration": "Dist"
+			},
+			{
+				"name": "windows-ninja-debug",
+				"configurePreset": "windows-ninja",
+				"configuration": "Debug"
+			},
+			{
+				"name": "windows-ninja-release",
+				"configurePreset": "windows-ninja",
+				"configuration": "Release"
+			},
+			{
+				"name": "windows-ninja-dist",
+				"configurePreset": "windows-ninja",
+				"configuration": "Dist"
+			},
+			{
+				"name": "linux-debug",
+				"configurePreset": "linux",
+				"configuration": "Debug"
+			},
+			{
+				"name": "linux-release",
+				"configurePreset": "linux",
+				"configuration": "Release"
+			},
+			{
+				"name": "linux-dist",
+				"configurePreset": "linux",
+				"configuration": "Dist"
+			},
+			{
+				"name": "macos-debug",
+				"configurePreset": "macos",
+				"configuration": "Debug"
+			},
+			{
+				"name": "macos-release",
+				"configurePreset": "macos",
+				"configuration": "Release"
+			},
+			{
+				"name": "macos-dist",
+				"configurePreset": "macos",
+				"configuration": "Dist"
+			}
+		],
+		"testPresets": [
+			{
+				"name": "test-base",
+				"hidden": true,
+				"output": {
+					"outputOnFailure": true
+				}
+			},
+			{
+				"name": "windows-debug",
+				"inherits": "test-base",
+				"configurePreset": "windows",
+				"configuration": "Debug"
+			},
+			{
+				"name": "windows-release",
+				"inherits": "test-base",
+				"configurePreset": "windows",
+				"configuration": "Release"
+			},
+			{
+				"name": "windows-dist",
+				"inherits": "test-base",
+				"configurePreset": "windows",
+				"configuration": "Dist"
+			},
+			{
+				"name": "windows-vs2022-debug",
+				"inherits": "test-base",
+				"configurePreset": "windows-vs2022",
+				"configuration": "Debug"
+			},
+			{
+				"name": "windows-vs2022-release",
+				"inherits": "test-base",
+				"configurePreset": "windows-vs2022",
+				"configuration": "Release"
+			},
+			{
+				"name": "windows-vs2022-dist",
+				"inherits": "test-base",
+				"configurePreset": "windows-vs2022",
+				"configuration": "Dist"
+			},
+			{
+				"name": "windows-ninja-debug",
+				"inherits": "test-base",
+				"configurePreset": "windows-ninja",
+				"configuration": "Debug"
+			},
+			{
+				"name": "windows-ninja-release",
+				"inherits": "test-base",
+				"configurePreset": "windows-ninja",
+				"configuration": "Release"
+			},
+			{
+				"name": "windows-ninja-dist",
+				"inherits": "test-base",
+				"configurePreset": "windows-ninja",
+				"configuration": "Dist"
+			},
+			{
+				"name": "linux-debug",
+				"inherits": "test-base",
+				"configurePreset": "linux",
+				"configuration": "Debug"
+			},
+			{
+				"name": "linux-release",
+				"inherits": "test-base",
+				"configurePreset": "linux",
+				"configuration": "Release"
+			},
+			{
+				"name": "linux-dist",
+				"inherits": "test-base",
+				"configurePreset": "linux",
+				"configuration": "Dist"
+			},
+			{
+				"name": "macos-debug",
+				"inherits": "test-base",
+				"configurePreset": "macos",
+				"configuration": "Debug"
+			},
+			{
+				"name": "macos-release",
+				"inherits": "test-base",
+				"configurePreset": "macos",
+				"configuration": "Release"
+			},
+			{
+				"name": "macos-dist",
+				"inherits": "test-base",
+				"configurePreset": "macos",
+				"configuration": "Dist"
+			}
+		]
+	},
+	"tests": [
+		{
+			"name": "StrataTests.Core.Core",
+			"labels": [
+				"core"
+			],
+			"line": 251
+		},
+		{
+			"name": "StrataTests.Core.Asset",
+			"labels": [
+				"core"
+			],
+			"line": 251
+		},
+		{
+			"name": "StrataTests.Core.Scene",
+			"labels": [
+				"core"
+			],
+			"line": 251
+		},
+		{
+			"name": "StrataTests.Core.SceneTiming",
+			"labels": [
+				"core"
+			],
+			"line": 251
+		},
+		{
+			"name": "StrataTests.Core.Systems",
+			"labels": [
+				"core"
+			],
+			"line": 251
+		},
+		{
+			"name": "StrataTests.Core.Settling",
+			"labels": [
+				"core"
+			],
+			"line": 251
+		},
+		{
+			"name": "StrataTests.Core.LoaderFaults",
+			"labels": [
+				"core"
+			],
+			"line": 251
+		},
+		{
+			"name": "StrataTests.Core.Renderer",
+			"labels": [
+				"core"
+			],
+			"line": 251
+		},
+		{
+			"name": "StrataTests.Core.Network",
+			"labels": [
+				"core"
+			],
+			"line": 251
+		},
+		{
+			"name": "StrataTests.Core.Samples",
+			"labels": [
+				"core"
+			],
+			"line": 251
+		},
+		{
+			"name": "StrataTests.Core.EditorUI",
+			"labels": [
+				"core"
+			],
+			"line": 251
+		},
+		{
+			"name": "StrataTests.Core.EditorData",
+			"labels": [
+				"core"
+			],
+			"line": 251
+		},
+		{
+			"name": "StrataTests.Core.Editor",
+			"labels": [
+				"core"
+			],
+			"line": 251
+		},
+		{
+			"name": "StrataTests.Fuzz",
+			"labels": [
+				"fuzz"
+			],
+			"line": 267
+		},
+		{
+			"name": "StrataTests.PerfResults.Clean",
+			"labels": [
+				"perf"
+			],
+			"line": 276
+		},
+		{
+			"name": "StrataTests.Perf",
+			"labels": [
+				"perf"
+			],
+			"line": 281
+		},
+		{
+			"name": "StrataTests.PerfGPU",
+			"labels": [
+				"perf",
+				"gpu"
+			],
+			"line": 298
+		},
+		{
+			"name": "StrataTests.Package",
+			"labels": [
+				"package"
+			],
+			"line": 311
+		},
+		{
+			"name": "StrataTests.FeatureTest",
+			"labels": [
+				"feature"
+			],
+			"line": 317
+		},
+		{
+			"name": "StrataTests.GPU",
+			"labels": [
+				"gpu"
+			],
+			"line": 323
+		},
+		{
+			"name": "StrataTests.DockIcon",
+			"labels": [
+				"gpu"
+			],
+			"line": 331
+		},
+		{
+			"name": "StrataPackaging.Version",
+			"labels": [],
+			"line": 339
+		},
+		{
+			"name": "StrataSlang.Fetch",
+			"labels": [],
+			"line": 343
+		},
+		{
+			"name": "StrataShaders.TargetHLSL",
+			"labels": [],
+			"line": 352
+		},
+		{
+			"name": "StrataTools.LookDevOffline",
+			"labels": [
+				"tools"
+			],
+			"line": 363
+		},
+		{
+			"name": "StrataTools.LTCTable",
+			"labels": [
+				"tools"
+			],
+			"line": 375
+		},
+		{
+			"name": "StrataRuntime.NoTooling",
+			"labels": [],
+			"line": 391
+		},
+		{
+			"name": "StrataScriptCore.Package",
+			"labels": [
+				"package"
+			],
+			"line": 399
+		},
+		{
+			"name": "StrataScriptCore.PackageDist",
+			"labels": [
+				"package"
+			],
+			"line": 416
+		},
+		{
+			"name": "StrataEditor.SmokeClean",
+			"labels": [],
+			"line": 439
+		},
+		{
+			"name": "StrataEditor.Smoke",
+			"labels": [
+				"gpu"
+			],
+			"line": 441
+		},
+		{
+			"name": "StrataEditor.SmokeCaptureCheck",
+			"labels": [
+				"gpu"
+			],
+			"line": 446
+		},
+		{
+			"name": "StrataEditor.QuitScreenshotClean",
+			"labels": [],
+			"line": 449
+		},
+		{
+			"name": "StrataEditor.QuitScreenshot",
+			"labels": [
+				"gpu"
+			],
+			"line": 451
+		},
+		{
+			"name": "StrataEditor.QuitScreenshotCheck",
+			"labels": [
+				"gpu"
+			],
+			"line": 457
+		},
+		{
+			"name": "StrataEditor.WindowSizeClean",
+			"labels": [],
+			"line": 461
+		},
+		{
+			"name": "StrataEditor.WindowSize",
+			"labels": [
+				"gpu"
+			],
+			"line": 463
+		},
+		{
+			"name": "StrataEditor.WindowSizeCheck",
+			"labels": [
+				"gpu"
+			],
+			"line": 468
+		},
+		{
+			"name": "StrataEditor.LauncherSmoke",
+			"labels": [
+				"gpu"
+			],
+			"line": 471
+		},
+		{
+			"name": "StrataEditor.Icon",
+			"labels": [],
+			"line": 478
+		},
+		{
+			"name": "StrataEditor.FailingScript",
+			"labels": [],
+			"line": 483
+		},
+		{
+			"name": "StrataEditor.WaitingScript",
+			"labels": [],
+			"line": 489
+		},
+		{
+			"name": "StrataEditor.UnfinishedScript",
+			"labels": [],
+			"line": 493
+		},
+		{
+			"name": "StrataEditor.CaptureWithoutGPU",
+			"labels": [],
+			"line": 499
+		},
+		{
+			"name": "StrataEditor.ScreenshotWithoutGPU",
+			"labels": [],
+			"line": 507
+		},
+		{
+			"name": "StrataEditor.QuitScript",
+			"labels": [],
+			"line": 515
+		},
+		{
+			"name": "StrataEditor.QuitBeforeScriptEnds",
+			"labels": [],
+			"line": 520
+		},
+		{
+			"name": "StrataEditor.Replay",
+			"labels": [],
+			"line": 527
+		},
+		{
+			"name": "StrataEditor.Automation",
+			"labels": [],
+			"line": 544
+		},
+		{
+			"name": "StrataTools.LookDev",
+			"labels": [
+				"gpu",
+				"tools"
+			],
+			"line": 553
+		},
+		{
+			"name": "StrataTools.ShowcaseTerrain",
+			"labels": [
+				"tools"
+			],
+			"line": 569
+		},
+		{
+			"name": "StrataTools.ShowcaseProps",
+			"labels": [
+				"tools"
+			],
+			"line": 584
+		},
+		{
+			"name": "StrataRuntime.Arguments.Help",
+			"labels": [],
+			"line": 598
+		},
+		{
+			"name": "StrataRuntime.Arguments.Unknown",
+			"labels": [],
+			"line": 601
+		},
+		{
+			"name": "StrataExport.Clean",
+			"labels": [],
+			"line": 612
+		},
+		{
+			"name": "StrataEditor.Export",
+			"labels": [],
+			"line": 617
+		},
+		{
+			"name": "StrataRuntime.Smoke",
+			"labels": [],
+			"line": 622
+		},
+		{
+			"name": "StrataRuntime.Identity",
+			"labels": [],
+			"line": 624
+		},
+		{
+			"name": "StrataRuntime.Icon",
+			"labels": [],
+			"line": 635
+		},
+		{
+			"name": "StrataRuntime.GameIcon",
+			"labels": [],
+			"line": 637
+		},
+		{
+			"name": "StrataRuntime.VersionInfo",
+			"labels": [],
+			"line": 639
+		},
+		{
+			"name": "StrataRuntime.HeadlessPacing",
+			"labels": [],
+			"line": 646
+		},
+		{
+			"name": "StrataRuntime.AssetBudget",
+			"labels": [],
+			"line": 652
+		},
+		{
+			"name": "StrataRuntime.InvalidAssetBudget",
+			"labels": [],
+			"line": 657
+		},
+		{
+			"name": "StrataRuntime.InvalidFrames.abc",
+			"labels": [],
+			"line": 665
+		},
+		{
+			"name": "StrataRuntime.InvalidFrames.0",
+			"labels": [],
+			"line": 665
+		},
+		{
+			"name": "StrataRuntime.InvalidFrames.-5",
+			"labels": [],
+			"line": 665
+		},
+		{
+			"name": "StrataRuntime.InvalidSeconds.abc",
+			"labels": [],
+			"line": 671
+		},
+		{
+			"name": "StrataRuntime.InvalidSeconds.0",
+			"labels": [],
+			"line": 671
+		},
+		{
+			"name": "StrataRuntime.InvalidSeconds.-5",
+			"labels": [],
+			"line": 671
+		},
+		{
+			"name": "StrataRuntime.InvalidScreenshot",
+			"labels": [],
+			"line": 679
+		},
+		{
+			"name": "StrataRuntime.Seconds",
+			"labels": [],
+			"line": 688
+		},
+		{
+			"name": "StrataRuntime.PerfLog",
+			"labels": [],
+			"line": 693
+		},
+		{
+			"name": "StrataRuntime.PerfLogCheck",
+			"labels": [],
+			"line": 696
+		},
+		{
+			"name": "StrataRuntime.InvalidPerfLog",
+			"labels": [],
+			"line": 701
+		},
+		{
+			"name": "StrataRuntime.InvalidSaveDirectory",
+			"labels": [],
+			"line": 707
+		},
+		{
+			"name": "StrataRuntime.WorldWrite",
+			"labels": [
+				"feature"
+			],
+			"line": 721
+		},
+		{
+			"name": "StrataRuntime.World",
+			"labels": [
+				"feature"
+			],
+			"line": 724
+		},
+		{
+			"name": "StrataRuntime.WorldPerfLog",
+			"labels": [
+				"feature"
+			],
+			"line": 729
+		},
+		{
+			"name": "StrataRuntime.Render",
+			"labels": [
+				"gpu"
+			],
+			"line": 738
+		},
+		{
+			"name": "StrataRuntime.RenderCheck",
+			"labels": [
+				"gpu"
+			],
+			"line": 741
+		},
+		{
+			"name": "StrataRuntime.Resolution",
+			"labels": [
+				"gpu"
+			],
+			"line": 746
+		},
+		{
+			"name": "StrataRuntime.ResolutionCheck",
+			"labels": [
+				"gpu"
+			],
+			"line": 749
+		},
+		{
+			"name": "StrataRuntime.InvalidResolution",
+			"labels": [],
+			"line": 752
+		},
+		{
+			"name": "StrataRuntime.InvalidQuality.extreme",
+			"labels": [],
+			"line": 761
+		},
+		{
+			"name": "StrataRuntime.InvalidQuality.custom",
+			"labels": [],
+			"line": 761
+		},
+		{
+			"name": "StrataRuntime.QualityHeadless",
+			"labels": [],
+			"line": 768
+		},
+		{
+			"name": "StrataRuntime.Quality",
+			"labels": [
+				"gpu"
+			],
+			"line": 774
+		},
+		{
+			"name": "StrataRuntime.PerfLogWindowed",
+			"labels": [
+				"gpu"
+			],
+			"line": 780
+		},
+		{
+			"name": "StrataRuntime.PerfLogWindowedCheck",
+			"labels": [
+				"gpu"
+			],
+			"line": 783
+		},
+		{
+			"name": "StrataRuntime.NoCameraScreenshot",
+			"labels": [
+				"gpu"
+			],
+			"line": 789
+		},
+		{
+			"name": "StrataFeatureTest.Clean",
+			"labels": [
+				"feature"
+			],
+			"line": 810
+		},
+		{
+			"name": "StrataFeatureTest.Copy",
+			"labels": [
+				"feature"
+			],
+			"line": 813
+		},
+		{
+			"name": "StrataEditor.FeatureTest",
+			"labels": [
+				"feature"
+			],
+			"line": 820
+		},
+		{
+			"name": "StrataEditor.RunAndExpectTimeout",
+			"labels": [
+				"feature"
+			],
+			"line": 826
+		},
+		{
+			"name": "StrataFeatureCaptures.Clean",
+			"labels": [
+				"feature",
+				"gpu"
+			],
+			"line": 837
+		},
+		{
+			"name": "StrataFeatureCaptures.Copy",
+			"labels": [
+				"feature",
+				"gpu"
+			],
+			"line": 839
+		},
+		{
+			"name": "StrataEditor.FeatureCaptures",
+			"labels": [
+				"feature",
+				"gpu"
+			],
+			"line": 842
+		},
+		{
+			"name": "StrataEditor.FeatureCapturesCheck",
+			"labels": [
+				"feature",
+				"gpu"
+			],
+			"line": 849
+		},
+		{
+			"name": "StrataEditor.FeatureCapturesPanelCheck",
+			"labels": [
+				"feature",
+				"gpu"
+			],
+			"line": 851
+		},
+		{
+			"name": "StrataRuntime.FeatureTest",
+			"labels": [
+				"feature"
+			],
+			"line": 858
+		},
+		{
+			"name": "StrataRuntime.FeatureTestQuality",
+			"labels": [
+				"feature",
+				"gpu"
+			],
+			"line": 867
+		},
+		{
+			"name": "StrataEditor.Scripts",
+			"labels": [
+				"package"
+			],
+			"line": 886
+		},
+		{
+			"name": "StrataEditor.Install",
+			"labels": [
+				"package"
+			],
+			"line": 901
+		},
+		{
+			"name": "StrataEditor.Tetris",
+			"labels": [
+				"package"
+			],
+			"line": 919
+		},
+		{
+			"name": "StrataEditor.PhysicsPlayground",
+			"labels": [
+				"package"
+			],
+			"line": 939
+		},
+		{
+			"name": "StrataRuntime.PhysicsPlaygroundWindowed",
+			"labels": [
+				"gpu"
+			],
+			"line": 963
+		},
+		{
+			"name": "StrataRuntime.PhysicsPlaygroundWindowedImage",
+			"labels": [
+				"gpu"
+			],
+			"line": 968
+		},
+		{
+			"name": "StrataRuntime.PhysicsPlaygroundWindowedPerf",
+			"labels": [
+				"gpu"
+			],
+			"line": 970
+		},
+		{
+			"name": "StrataEditor.OpenWorld",
+			"labels": [
+				"package"
+			],
+			"line": 978
+		},
+		{
+			"name": "StrataRuntime.OpenWorldWindowed",
+			"labels": [
+				"gpu"
+			],
+			"line": 1013
+		},
+		{
+			"name": "StrataRuntime.OpenWorldWindowedImage",
+			"labels": [
+				"gpu"
+			],
+			"line": 1019
+		},
+		{
+			"name": "StrataRuntime.OpenWorldWindowedPerf",
+			"labels": [
+				"gpu"
+			],
+			"line": 1022
+		},
+		{
+			"name": "StrataEditor.OpenWorldRender",
+			"labels": [
+				"gpu"
+			],
+			"line": 1028
+		},
+		{
+			"name": "StrataEditor.Showcase",
+			"labels": [
+				"package"
+			],
+			"line": 1039
+		},
+		{
+			"name": "StrataRuntime.ShowcaseWindowed",
+			"labels": [
+				"gpu"
+			],
+			"line": 1071
+		},
+		{
+			"name": "StrataRuntime.ShowcaseWindowedImage",
+			"labels": [
+				"gpu"
+			],
+			"line": 1077
+		},
+		{
+			"name": "StrataRuntime.ShowcaseWindowedPerf",
+			"labels": [
+				"gpu"
+			],
+			"line": 1080
+		},
+		{
+			"name": "StrataEditor.ShowcaseRender",
+			"labels": [
+				"gpu"
+			],
+			"line": 1089
+		},
+		{
+			"name": "StrataTests.PerfGPU.Samples",
+			"labels": [
+				"perf",
+				"gpu"
+			],
+			"line": 1097
+		},
+		{
+			"name": "StrataEditor.ThirdPerson",
+			"labels": [
+				"package"
+			],
+			"line": 1110
+		},
+		{
+			"name": "StrataRuntime.ThirdPersonWindowed",
+			"labels": [
+				"gpu"
+			],
+			"line": 1134
+		},
+		{
+			"name": "StrataRuntime.ThirdPersonWindowedImage",
+			"labels": [
+				"gpu"
+			],
+			"line": 1140
+		},
+		{
+			"name": "StrataRuntime.ThirdPersonWindowedPerf",
+			"labels": [
+				"gpu"
+			],
+			"line": 1143
+		},
+		{
+			"name": "StrataEditor.InputSequenceClean",
+			"labels": [
+				"feature"
+			],
+			"line": 1158
+		},
+		{
+			"name": "StrataEditor.InputSequenceCopy",
+			"labels": [
+				"feature"
+			],
+			"line": 1160
+		},
+		{
+			"name": "StrataEditor.InputSequence",
+			"labels": [
+				"feature"
+			],
+			"line": 1164
+		},
+		{
+			"name": "StrataEditor.InputSequenceWindowed",
+			"labels": [
+				"gpu"
+			],
+			"line": 1169
+		}
+	],
+	"shards": {
+		"Description": "How CTest runs the StrataTests suites: the suites of their own CTests (OwnTests, each running the suites its Suites filters match and its Exclude filters do not), then StrataTests.Core in shards, one CTest StrataTests.Core.<Name> (label core) per shard, running the suites its Suites filters match and its Exclude filters do not (doctest filters: * and ? wildcards, case-insensitive). Every suite runs in exactly one shard or own CTest; Testing.Shards fails naming the suites in none or in two, so a new suite prefix gets a shard here, and naming the test cases outside any TEST_SUITE, which no shard runs. Suites ending in .Sweep run a sample of their corruption sweep in their shard and the whole sweep again in StrataTests.Fuzz (FuzzSuites, Release and Dist). Keep each shard under about 60 s in Debug.",
+		"OwnTests": [
+			{
+				"Test": "StrataTests.GPU",
+				"Suites": [
+					"GPU*"
+				]
+			},
+			{
+				"Test": "StrataTests.DockIcon",
+				"Suites": [
+					"Platform.DockIcon"
+				]
+			},
+			{
+				"Test": "StrataEditor.Automation",
+				"Suites": [
+					"EndToEnd*"
+				]
+			},
+			{
+				"Test": "StrataTests.Package",
+				"Suites": [
+					"Package*"
+				]
+			},
+			{
+				"Test": "StrataTests.Perf",
+				"Suites": [
+					"Perf.*"
+				]
+			},
+			{
+				"Test": "StrataTests.PerfGPU",
+				"Suites": [
+					"PerfGPU.*"
+				],
+				"Exclude": [
+					"PerfGPU.Samples*"
+				]
+			},
+			{
+				"Test": "StrataTests.PerfGPU.Samples",
+				"Suites": [
+					"PerfGPU.Samples*"
+				]
+			},
+			{
+				"Test": "StrataTests.FeatureTest",
+				"Suites": [
+					"FeatureTest",
+					"Editor.FeatureTest"
+				]
+			}
+		],
+		"FuzzSuites": [
+			"*.Sweep"
+		],
+		"Shards": [
+			{
+				"Name": "Core",
+				"Suites": [
+					"Core*",
+					"Math*",
+					"Reflection*",
+					"Engine*",
+					"Architecture*",
+					"PerfLab*",
+					"TestHelpers*",
+					"Testing*",
+					"Docs*"
+				]
+			},
+			{
+				"Name": "Asset",
+				"Suites": [
+					"Asset*"
+				]
+			},
+			{
+				"Name": "Scene",
+				"Suites": [
+					"Scene*",
+					"Project*",
+					"Animation*"
+				],
+				"Exclude": [
+					"Scene.Timing*"
+				]
+			},
+			{
+				"Name": "SceneTiming",
+				"Suites": [
+					"Scene.Timing*"
+				]
+			},
+			{
+				"Name": "Systems",
+				"Suites": [
+					"Physics*",
+					"Audio*",
+					"Scripting*",
+					"World*"
+				],
+				"Exclude": [
+					"Scripting.LoaderFaults",
+					"Physics.Settling"
+				]
+			},
+			{
+				"Name": "Settling",
+				"Suites": [
+					"Physics.Settling"
+				]
+			},
+			{
+				"Name": "LoaderFaults",
+				"Suites": [
+					"Scripting.LoaderFaults"
+				]
+			},
+			{
+				"Name": "Renderer",
+				"Suites": [
+					"Renderer*",
+					"ImGui*",
+					"Runtime*",
+					"GameUI*"
+				]
+			},
+			{
+				"Name": "Network",
+				"Suites": [
+					"Network*",
+					"CLI*"
+				]
+			},
+			{
+				"Name": "Samples",
+				"Suites": [
+					"Samples*"
+				]
+			},
+			{
+				"Name": "EditorUI",
+				"Suites": [
+					"Editor.UI*",
+					"Editor.Theme*"
+				]
+			},
+			{
+				"Name": "EditorData",
+				"Suites": [
+					"Editor.Recovery*",
+					"Editor.Replay*",
+					"Editor.DataSafety*",
+					"Editor.Launcher*",
+					"Editor.Export*",
+					"Editor.Scripts*",
+					"Editor.ScriptWorkflow*",
+					"Editor.Automation*"
+				]
+			},
+			{
+				"Name": "Editor",
+				"Suites": [
+					"Editor*"
+				],
+				"Exclude": [
+					"Editor.UI*",
+					"Editor.Theme*",
+					"Editor.Recovery*",
+					"Editor.Replay*",
+					"Editor.DataSafety*",
+					"Editor.Launcher*",
+					"Editor.Export*",
+					"Editor.Scripts*",
+					"Editor.ScriptWorkflow*",
+					"Editor.Automation*",
+					"Editor.FeatureTest"
+				]
+			}
+		]
+	}
+}

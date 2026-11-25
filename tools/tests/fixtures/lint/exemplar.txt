@@ -1,0 +1,33 @@
+## Moving at the same speed on every computer
+
+Run a game on a fast computer and on a slow one. If the game ignores time, a ball rolls faster on the fast computer.
+The fast computer draws more pictures each second, and the game moves the ball a little in each picture.
+
+The engine draws one picture in each :term[frame]{id=frame}, one pass of its loop. The time from the start of one
+frame to the start of the next is the **delta time**. Strata measures it in seconds.
+
+To move at the same speed on every computer, the game multiplies the speed by the delta time.
+
+Here is an example with small numbers. The ball should move 2 metres each second. At 50 frames per second, the delta
+time is 1 ÷ 50 = 0.02 s. In each frame, the ball moves 2 × 0.02 = 0.04 m. After 50 frames, it has moved
+50 × 0.04 = 2 m.
+
+$$
+d = v \, \Delta t
+$$
+
+Read the formula as "d equals v times delta t". $d$ is the distance the ball moves in this frame, in metres. $v$ is
+its speed, in metres per second. $\Delta t$ is the delta time, in seconds.
+
+The code does the same multiplication once per frame. Look at the line that changes the position:
+
+```cpp pseudocode
+// Runs once in every frame.
+position = position + speed * deltaTime;
+```
+
+1. **Line 2:** a long frame has a large delta time, so the ball moves further in it. Over one second, the distances
+   add up to the speed.
+
+Check the formula at its limits. A frame that takes no time has $\Delta t = 0$, and the ball does not move. A frame
+that takes a whole second moves the ball the full 2 metres at once.

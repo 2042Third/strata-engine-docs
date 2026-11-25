@@ -1,0 +1,239 @@
+[
+	{
+		"command": "inputActions.setMap",
+		"parameters": {
+			"map": "Gameplay"
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Move",
+			"kind": "Vector2",
+			"bindings": [
+				"2D:Key/W,Key/S,Key/A,Key/D",
+				"2D:Key/Up,Key/Down,Key/Left,Key/Right",
+				"Gamepad/LeftStick"
+			]
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Look",
+			"kind": "Vector2",
+			"bindings": [
+				"Gamepad/RightStick"
+			]
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Jump",
+			"kind": "Button",
+			"bindings": [
+				"Key/Space",
+				"Gamepad/A"
+			]
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Run",
+			"kind": "Button",
+			"bindings": [
+				"Key/LeftShift",
+				"Gamepad/RightBumper"
+			]
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Respawn",
+			"kind": "Button",
+			"bindings": [
+				"Key/R"
+			]
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Pause",
+			"kind": "Button",
+			"bindings": [
+				"Key/Escape",
+				"Gamepad/Start"
+			]
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Player",
+			"components": {
+				"Transform": {
+					"Translation": [
+						2,
+						0.1,
+						-2
+					]
+				},
+				"CharacterController": {
+					"Height": 1.8,
+					"Radius": 0.4
+				},
+				"Tag": {
+					"Tag": "Player"
+				}
+			}
+		},
+		"bind": {
+			"player": "/id"
+		}
+	},
+	{
+		"command": "selection.set",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "player"
+				}
+			]
+		}
+	},
+	{
+		"command": "camera.focus",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "player"
+				}
+			]
+		}
+	},
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Models/Robot/RobotExpressive.glb",
+			"point": [
+				0,
+				0,
+				0
+			],
+			"rotation": [
+				0,
+				180,
+				0
+			],
+			"scale": 0.4
+		},
+		"bind": {
+			"robot": "/id"
+		}
+	},
+	{
+		"command": "entity.setParent",
+		"parameters": {
+			"entity": {
+				"$ref": "robot"
+			},
+			"parent": {
+				"$ref": "player"
+			},
+			"keepWorldTransform": false
+		}
+	},
+	{
+		"command": "entity.rename",
+		"parameters": {
+			"entity": {
+				"$ref": "robot"
+			},
+			"name": "Robot"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "robot"
+			},
+			"component": "Transform"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "player"
+			},
+			"class": "ThirdPersonPlayer",
+			"fields": {
+				"Robot": {
+					"$ref": "robot"
+				},
+				"JumpSound": "Sounds/Jump.ogg",
+				"LandSound": "Sounds/Land.ogg"
+			}
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"entity": {
+				"$ref": "player"
+			},
+			"class": "ThirdPersonPlayer"
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "physics.stats",
+		"expect": {
+			"/waitingForMeshes": {
+				"equals": false
+			}
+		},
+		"until": {
+			"seconds": 60
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "W",
+			"steps": 60
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "player"
+			},
+			"component": "Transform"
+		},
+		"expect": {
+			"/values/Translation/2": {
+				"max": -3.5
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

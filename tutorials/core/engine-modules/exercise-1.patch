@@ -1,0 +1,54 @@
+diff --git a/StrataTests/src/Core/EngineModuleTests.cpp b/StrataTests/src/Core/EngineModuleTests.cpp
+--- a/StrataTests/src/Core/EngineModuleTests.cpp
++++ b/StrataTests/src/Core/EngineModuleTests.cpp
+@@ -162,6 +162,27 @@
+ 		}
+ 	};
+ 
++	// Counts the frames whose update it sees and logs the total when the program stops.
++	class FrameCounterModule : public EngineModule
++	{
++	public:
++		static constexpr std::string_view c_Name = "FrameCounter";
++
++		static EngineModuleFactory Factory()
++		{
++			return []() -> Scope<EngineModule> { return CreateScope<FrameCounterModule>(); };
++		}
++
++		std::string_view GetName() const override { return c_Name; }
++		[[nodiscard]] bool OnInit(EngineContext&) override { return true; }
++		void OnUpdate(EngineFrame&) override { m_Frames++; }
++		void OnStop() override { ST_CORE_INFO("FrameCounter counted {} frames", m_Frames); }
++
++		uint64_t GetFrames() const { return m_Frames; }
++	private:
++		uint64_t m_Frames = 0;
++	};
++
+ 	// What a module released after the Project module (listed before it) finds when it is released.
+ 	struct ReleaseObservation
+ 	{
+@@ -535,4 +556,22 @@
+ 		CHECK(registry.GetCount() == 0);
+ 		CHECK(registry.Find<AlphaModule>() == nullptr);
+ 	}
++
++	TEST_CASE("A module found by its type counts the frames it updates and logs the total when the program stops")
++	{
++		Journal journal;
++		const Tests::ScopedLogLevel infoLog(LogLevel::Info);
++		const uint64_t logStart = Log::GetBuffer().GetLatestSequence();
++		{
++			JournalApplication application(MakeSpecification({ FrameCounterModule::Factory() }, 3), journal);
++			REQUIRE(application.IsRunning());
++			const FrameCounterModule* counter = application.GetModules().Find<FrameCounterModule>();
++			REQUIRE(counter);
++			CHECK(counter->GetFrames() == 0);
++			application.Run();
++			CHECK(application.GetFrameCount() == 3);
++			CHECK(counter->GetFrames() == 3);
++		}
++		CHECK(Tests::CountLogMessages(logStart, "FrameCounter counted 3 frames") == 1);
++	}
+ }

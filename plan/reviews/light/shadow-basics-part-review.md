@@ -1,0 +1,6 @@
+# Part review: light/shadow-basics (group 2 of 3)
+
+- order: the page spoke of a sun cascade (its example covers 20 m with one, pancaking fits each cascade's box) without saying what a cascade is; the paragraph on Strata's maps now says that each layer of the sun's array is a cascade, a map that covers one range of distances from the camera, and links `light/sun-shadows-1` (the paragraph split in two to stay within five sentences).
+- gap: the brief's acne figure comes "with a crop", the figure's caption speaks of an enlarged corner and the crops `fence-shadow` were taken, but the page placed neither (pagecheck failed on the unplaced crops); it now places both crops after the two pictures, with a sentence that introduces them.
+
+Checked at the pin and holding: the rasterizer bias (-16 and -1.5, `c_ShadowDepthBias` and `c_ShadowSlopeDepthBias`, on the sun's and the lamps' shadow passes), the comparison sampler with linear filters and clamped addresses, D32, `ShadowBias.x * cascadeData.x / depthRange`, the lamps' offset toward the light, `ReceiverDepthGradient` and its limit to the search distance, the pancaking line, `ShadowMask.frag.slang`'s alpha test and the vertex-only opaque pass, Blend and glass as transparent (`Strata/src/Strata/Renderer/MaterialData.cpp`), `ow.lowsun` at 10 degrees.

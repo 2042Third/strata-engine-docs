@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 420">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: squares 300 wide at x 56 and 412, y 52..352; left random.Random(5), right (i / 64, reversebits(i) / 2^32); largest empty circle inside the square and closest pair computed; random gap 0.177 pair 0.0229, Hammersley gap 0.097 pair 0.0663; H = 420 -->
+<rect class="line-muted" fill="none" x="56" y="52" width="300" height="300"/>
+<circle class="line-orange" fill="none" stroke-width="2" stroke-dasharray="4 3" cx="272.2" cy="251.9" r="53"/>
+<circle class="ink" cx="242.9" cy="129.5" r="4"/>
+<circle class="ink" cx="294.6" cy="69.3" r="4"/>
+<circle class="ink" cx="278" cy="75.3" r="4"/>
+<circle class="ink" cx="64.7" cy="212.3" r="4"/>
+<circle class="ink" cx="339" cy="157.3" r="4"/>
+<circle class="ink" cx="326.3" cy="318" r="4"/>
+<circle class="ink" cx="196.7" cy="278" r="4"/>
+<circle class="ink" cx="219.1" cy="179.8" r="4"/>
+<circle class="ink" cx="59.9" cy="287" r="4"/>
+<circle class="ink" cx="139.8" cy="77.1" r="4"/>
+<circle class="ink" cx="285.7" cy="304.1" r="4"/>
+<circle class="ink" cx="295.1" cy="310.4" r="4"/>
+<circle class="ink" cx="241.2" cy="314" r="4"/>
+<circle class="ink" cx="56.5" cy="90.6" r="4"/>
+<circle class="ink" cx="118.8" cy="287.4" r="4"/>
+<circle class="ink" cx="350.7" cy="90.3" r="4"/>
+<circle class="ink" cx="142.8" cy="63.6" r="4"/>
+<circle class="ink" cx="217.8" cy="148.7" r="4"/>
+<circle class="ink" cx="117.4" cy="69.7" r="4"/>
+<circle class="ink" cx="263.2" cy="62" r="4"/>
+<circle class="ink" cx="324.1" cy="262.4" r="4"/>
+<circle class="ink" cx="164.4" cy="302.2" r="4"/>
+<circle class="ink" cx="99.7" cy="332.5" r="4"/>
+<circle class="ink" cx="146.4" cy="171.1" r="4"/>
+<circle class="ink" cx="57" cy="148.6" r="4"/>
+<circle class="ink" cx="157.4" cy="259" r="4"/>
+<circle class="ink" cx="301.6" cy="207.8" r="4"/>
+<circle class="ink" cx="150.7" cy="207.6" r="4"/>
+<circle class="ink" cx="267.4" cy="334.9" r="4"/>
+<circle class="ink" cx="348.5" cy="345.1" r="4"/>
+<circle class="ink" cx="280.9" cy="98.5" r="4"/>
+<circle class="ink" cx="61.4" cy="115.7" r="4"/>
+<circle class="ink" cx="165.9" cy="178.4" r="4"/>
+<circle class="ink" cx="58.7" cy="338" r="4"/>
+<circle class="ink" cx="110.3" cy="65.4" r="4"/>
+<circle class="ink" cx="115" cy="125.3" r="4"/>
+<circle class="ink" cx="334.9" cy="69.4" r="4"/>
+<circle class="ink" cx="159.3" cy="245.6" r="4"/>
+<circle class="ink" cx="213.4" cy="119.3" r="4"/>
+<circle class="ink" cx="88.4" cy="127.5" r="4"/>
+<circle class="ink" cx="295.2" cy="94.1" r="4"/>
+<circle class="ink" cx="67" cy="68.3" r="4"/>
+<circle class="ink" cx="83.4" cy="249.8" r="4"/>
+<circle class="ink" cx="239.2" cy="76.6" r="4"/>
+<circle class="ink" cx="158" cy="74.7" r="4"/>
+<circle class="ink" cx="219.5" cy="258.3" r="4"/>
+<circle class="ink" cx="151" cy="298.8" r="4"/>
+<circle class="ink" cx="79.5" cy="307.3" r="4"/>
+<circle class="ink" cx="262.8" cy="53" r="4"/>
+<circle class="ink" cx="104.5" cy="337.4" r="4"/>
+<circle class="ink" cx="352" cy="191.9" r="4"/>
+<circle class="ink" cx="177.8" cy="280.8" r="4"/>
+<circle class="ink" cx="234.2" cy="104.1" r="4"/>
+<circle class="ink" cx="192.7" cy="225.5" r="4"/>
+<circle class="ink" cx="72.7" cy="77.2" r="4"/>
+<circle class="ink" cx="65.8" cy="203.9" r="4"/>
+<circle class="ink" cx="307.5" cy="312.8" r="4"/>
+<circle class="ink" cx="275.5" cy="67.1" r="4"/>
+<circle class="ink" cx="245.1" cy="115.6" r="4"/>
+<circle class="ink" cx="88" cy="221.6" r="4"/>
+<circle class="ink" cx="100.8" cy="98.6" r="4"/>
+<circle class="ink" cx="144.4" cy="216.1" r="4"/>
+<circle class="ink" cx="355.8" cy="96.3" r="4"/>
+<circle class="ink" cx="348.8" cy="215.9" r="4"/>
+<circle class="line-red" fill="none" stroke-width="2" cx="102.1" cy="334.9" r="11.4"/>
+<text class="ink" x="206" y="38" text-anchor="middle">64 random points</text>
+<text class="orange small" x="206" y="378" text-anchor="middle">dashed circle: largest gap, radius 0.18</text>
+<text class="red small" x="206" y="400" text-anchor="middle">red ring: closest pair, 0.023 apart</text>
+<rect class="line-muted" fill="none" x="412" y="52" width="300" height="300"/>
+<circle class="line-orange" fill="none" stroke-width="2" stroke-dasharray="4 3" cx="445.7" cy="211" r="29"/>
+<circle class="ink" cx="412" cy="352" r="4"/>
+<circle class="ink" cx="416.7" cy="202" r="4"/>
+<circle class="ink" cx="421.4" cy="277" r="4"/>
+<circle class="ink" cx="426.1" cy="127" r="4"/>
+<circle class="ink" cx="430.8" cy="314.5" r="4"/>
+<circle class="ink" cx="435.4" cy="164.5" r="4"/>
+<circle class="ink" cx="440.1" cy="239.5" r="4"/>
+<circle class="ink" cx="444.8" cy="89.5" r="4"/>
+<circle class="ink" cx="449.5" cy="333.2" r="4"/>
+<circle class="ink" cx="454.2" cy="183.2" r="4"/>
+<circle class="ink" cx="458.9" cy="258.2" r="4"/>
+<circle class="ink" cx="463.6" cy="108.2" r="4"/>
+<circle class="ink" cx="468.2" cy="295.8" r="4"/>
+<circle class="ink" cx="472.9" cy="145.8" r="4"/>
+<circle class="ink" cx="477.6" cy="220.8" r="4"/>
+<circle class="ink" cx="482.3" cy="70.8" r="4"/>
+<circle class="ink" cx="487" cy="342.6" r="4"/>
+<circle class="ink" cx="491.7" cy="192.6" r="4"/>
+<circle class="ink" cx="496.4" cy="267.6" r="4"/>
+<circle class="ink" cx="501.1" cy="117.6" r="4"/>
+<circle class="ink" cx="505.8" cy="305.1" r="4"/>
+<circle class="ink" cx="510.4" cy="155.1" r="4"/>
+<circle class="ink" cx="515.1" cy="230.1" r="4"/>
+<circle class="ink" cx="519.8" cy="80.1" r="4"/>
+<circle class="ink" cx="524.5" cy="323.9" r="4"/>
+<circle class="ink" cx="529.2" cy="173.9" r="4"/>
+<circle class="ink" cx="533.9" cy="248.9" r="4"/>
+<circle class="ink" cx="538.6" cy="98.9" r="4"/>
+<circle class="ink" cx="543.2" cy="286.4" r="4"/>
+<circle class="ink" cx="547.9" cy="136.4" r="4"/>
+<circle class="ink" cx="552.6" cy="211.4" r="4"/>
+<circle class="ink" cx="557.3" cy="61.4" r="4"/>
+<circle class="ink" cx="562" cy="347.3" r="4"/>
+<circle class="ink" cx="566.7" cy="197.3" r="4"/>
+<circle class="ink" cx="571.4" cy="272.3" r="4"/>
+<circle class="ink" cx="576.1" cy="122.3" r="4"/>
+<circle class="ink" cx="580.8" cy="309.8" r="4"/>
+<circle class="ink" cx="585.4" cy="159.8" r="4"/>
+<circle class="ink" cx="590.1" cy="234.8" r="4"/>
+<circle class="ink" cx="594.8" cy="84.8" r="4"/>
+<circle class="ink" cx="599.5" cy="328.6" r="4"/>
+<circle class="ink" cx="604.2" cy="178.6" r="4"/>
+<circle class="ink" cx="608.9" cy="253.6" r="4"/>
+<circle class="ink" cx="613.6" cy="103.6" r="4"/>
+<circle class="ink" cx="618.2" cy="291.1" r="4"/>
+<circle class="ink" cx="622.9" cy="141.1" r="4"/>
+<circle class="ink" cx="627.6" cy="216.1" r="4"/>
+<circle class="ink" cx="632.3" cy="66.1" r="4"/>
+<circle class="ink" cx="637" cy="337.9" r="4"/>
+<circle class="ink" cx="641.7" cy="187.9" r="4"/>
+<circle class="ink" cx="646.4" cy="262.9" r="4"/>
+<circle class="ink" cx="651.1" cy="112.9" r="4"/>
+<circle class="ink" cx="655.8" cy="300.4" r="4"/>
+<circle class="ink" cx="660.4" cy="150.4" r="4"/>
+<circle class="ink" cx="665.1" cy="225.4" r="4"/>
+<circle class="ink" cx="669.8" cy="75.4" r="4"/>
+<circle class="ink" cx="674.5" cy="319.2" r="4"/>
+<circle class="ink" cx="679.2" cy="169.2" r="4"/>
+<circle class="ink" cx="683.9" cy="244.2" r="4"/>
+<circle class="ink" cx="688.6" cy="94.2" r="4"/>
+<circle class="ink" cx="693.2" cy="281.7" r="4"/>
+<circle class="ink" cx="697.9" cy="131.7" r="4"/>
+<circle class="ink" cx="702.6" cy="206.7" r="4"/>
+<circle class="ink" cx="707.3" cy="56.7" r="4"/>
+<circle class="line-red" fill="none" stroke-width="2" cx="559.7" cy="204.3" r="17.9"/>
+<text class="ink" x="562" y="38" text-anchor="middle">64 points of the Hammersley set</text>
+<text class="orange small" x="562" y="378" text-anchor="middle">dashed circle: largest gap, radius 0.10</text>
+<text class="red small" x="562" y="400" text-anchor="middle">red ring: closest pair, 0.066 apart</text>
+</svg>

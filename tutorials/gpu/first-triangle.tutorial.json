@@ -1,0 +1,12 @@
+{
+	"page": "gpu/first-triangle",
+	"startsFrom": {
+		"pin": true
+	},
+	"patch": {
+		"file": "tutorials/gpu/first-triangle.patch",
+		"tests": [
+			"GPU.Renderer"
+		]
+	}
+}

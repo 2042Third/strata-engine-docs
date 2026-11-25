@@ -1,0 +1,106 @@
+{
+	"figures": [
+		{
+			"id": "project-settings",
+			"shows": "The Project Settings panel with its page list on the left and the Game page open",
+			"caption": "The page list on the left groups the project's settings pages under Project, Input, Physics and Rendering; the chosen page, Game, is open on the right.",
+			"alt": "The Project Settings panel: a list of pages on the left with Game highlighted, and on the right the Game page with the start scene Main, an empty title and the version 1.0.0.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"panel": "ProjectSettings",
+				"steps": [
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "ProjectSettings"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "edit-menu",
+			"shows": "The Edit menu open, with its first item naming the latest undo step",
+			"caption": "The Edit menu names the step that Undo would take back, here the move of an entity.",
+			"alt": "The Edit menu of the editor with the first item reading Undo Move Entity and the item below it greyed out.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"waitsFor": "tier 3: the Edit menu open; no editor command opens a menu or popup",
+			"standIn": "edit-menu-drawing",
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"steps": []
+			}
+		},
+		{
+			"id": "edit-menu-drawing",
+			"shows": "The Edit menu open after step 7's two changes, with the Sun selected: Undo Move Entity first, Redo and Paste grey, the selection's items and Select All below",
+			"caption": "The Edit menu after the two changes, with the Sun still selected. Its first item names the step that Undo would take back, the move of the Sun. Redo is grey because there is nothing to redo yet, and Paste because no entity was copied.",
+			"alt": "A drawing of the Edit menu open below the menu bar. Its first item, highlighted, reads Undo Move Entity with Ctrl+Z. Redo and Paste are grey, with notes beside them; Cut, Copy, Duplicate, Rename, Delete, Drop to Ground and Select All follow with their shortcuts.",
+			"kind": "diagram",
+			"numbers": "Items, order, shortcuts and grey states: StrataEditor/src/EditorLayer.cpp:1824-1853 at the pin (Undo and Redo carry the undo stack's step names; Paste needs copied entities, UI/EditorActions.cpp:226). The gizmo's step name Move Entity: StrataEditor/src/Editor/TransformEdit.cpp."
+		},
+		{
+			"id": "recovery-dialog",
+			"shows": "The Recover Unsaved Changes dialog with one entry for the scene Main and the buttons Recover, Discard and Later",
+			"caption": "The dialog lists the changes of the scene Main that were not saved, with Recover and Discard beside them, and Later closes it. This entry was discarded on purpose; after a crash, its line says that the editor closed unexpectedly.",
+			"alt": "A dialog named Recover Unsaved Changes over the editor. It lists the scene Main with its file, one entity, the time and discarded on purpose, then the buttons Recover and Discard, and a Later button at the bottom.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/dialogs.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "entity.rename",
+						"entityName": "Ground",
+						"parameters": {
+							"name": "Floor"
+						}
+					},
+					{
+						"command": "scene.open",
+						"parameters": {
+							"scene": "Scenes/Main.stscene",
+							"force": true
+						}
+					},
+					{
+						"command": "scene.loadStatus",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 60
+						}
+					},
+					{
+						"command": "scene.recoveryStatus",
+						"parameters": {}
+					},
+					{
+						"command": "editor.showDialog",
+						"parameters": {
+							"dialog": "recovery"
+						}
+					}
+				]
+			}
+		}
+	]
+}

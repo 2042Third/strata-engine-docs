@@ -1,0 +1,103 @@
+diff --git a/StrataEditor/src/Panels/SelectionSummaryPanel.cpp b/StrataEditor/src/Panels/SelectionSummaryPanel.cpp
+index 818d1435..df5731f6 100644
+--- a/StrataEditor/src/Panels/SelectionSummaryPanel.cpp
++++ b/StrataEditor/src/Panels/SelectionSummaryPanel.cpp
+@@ -22,10 +22,19 @@
+ namespace Strata
+ {
+ 
++	namespace
++	{
++
++		// Lines of the names' list that show at once; more scroll.
++		constexpr float c_VisibleNameLines = 8.0f;
++
++	}
++
+ 	void SelectionSummaryPanel::Rebuild(EditorContext& context)
+ 	{
+ 		m_SelectedCount = 0;
+ 		m_SharedComponents.clear();
++		m_Names.clear();
+ 		const Ref<Scene>& scene = context.GetActiveScene();
+ 		if (!scene)
+ 			return;
+@@ -36,7 +45,10 @@ namespace Strata
+ 		for (const UUID id : context.GetSelection())
+ 		{
+ 			if (Entity entity = scene->GetEntityByUUID(id))
++			{
+ 				entities.push_back(entity);
++				m_Names.push_back(entity.GetName());
++			}
+ 		}
+ 		m_SelectedCount = entities.size();
+ 		if (entities.empty())
+@@ -90,6 +102,22 @@ namespace Strata
+ 		for (const std::string& name : m_SharedComponents)
+ 			ImGui::BulletText("%s", name.c_str());
+ 
++		ImGui::Spacing();
++		ImGui::TextColored(colors.TextSecondary, "Selected");
++		// Only the rows in view are submitted: a selection of 100,000 entities costs the same as one of eight.
++		const float listHeight = ImGui::GetTextLineHeightWithSpacing() * c_VisibleNameLines;
++		if (ImGui::BeginChild("SelectionSummary.Names", ImVec2(0.0f, listHeight), ImGuiChildFlags_Borders))
++		{
++			ImGuiListClipper clipper;
++			clipper.Begin(static_cast<int>(m_Names.size()), ImGui::GetTextLineHeightWithSpacing());
++			while (clipper.Step())
++			{
++				for (int row = clipper.DisplayStart; row < clipper.DisplayEnd; row++)
++					ImGui::TextUnformatted(m_Names[static_cast<size_t>(row)].c_str());
++			}
++		}
++		ImGui::EndChild();
++
+ 		ImGui::Spacing();
+ 		UI::ButtonStyle style;
+ 		style.Primary = true;
+diff --git a/StrataEditor/src/Panels/SelectionSummaryPanel.h b/StrataEditor/src/Panels/SelectionSummaryPanel.h
+index 72524bb0..616855f7 100644
+--- a/StrataEditor/src/Panels/SelectionSummaryPanel.h
++++ b/StrataEditor/src/Panels/SelectionSummaryPanel.h
+@@ -22,12 +22,14 @@ namespace Strata
+ 		// What the last drawn frame showed (for tests).
+ 		size_t GetSelectedCount() const { return m_SelectedCount; }
+ 		const std::vector<std::string>& GetSharedComponents() const { return m_SharedComponents; }
++		const std::vector<std::string>& GetNames() const { return m_Names; }
+ 	private:
+ 		void Rebuild(EditorContext& context);
+ 		void FrameSelection(EditorPanelContext& panelContext) const;
+ 	private:
+ 		size_t m_SelectedCount = 0;
+ 		std::vector<std::string> m_SharedComponents; // Display names, in registration order
++		std::vector<std::string> m_Names;            // The selected entities' names, in selection order
+ 
+ 		// What the lines were built from.
+ 		const Scene* m_Scene = nullptr;
+diff --git a/StrataTests/src/Editor/SelectionSummaryUITests.cpp b/StrataTests/src/Editor/SelectionSummaryUITests.cpp
+index 14cdae50..8b3b440f 100644
+--- a/StrataTests/src/Editor/SelectionSummaryUITests.cpp
++++ b/StrataTests/src/Editor/SelectionSummaryUITests.cpp
+@@ -127,6 +127,21 @@ TEST_SUITE("Editor.UI.SelectionSummary")
+ 		CHECK(entry->Parameters["entities"].size() == 2);
+ 	}
+ 
++	TEST_CASE("The summary lists the names of the selection in selection order")
++	{
++		HarnessEditor editor({}, WithFeatureProject("SelectionSummaryNames"));
++		editor.Frames(2);
++		MakeEntities(editor);
++		editor.Run("editor.showPanel", { { "panel", "SelectionSummary" } });
++		Select(editor, { "SummaryTorch", "SummaryCrate", "SummaryLamp" });
++		const SelectionSummaryPanel* panel = editor.Layer->GetPanels().Get<SelectionSummaryPanel>(EditorPanels::c_SelectionSummary);
++		REQUIRE(panel);
++		REQUIRE(panel->GetNames().size() == 3);
++		CHECK(panel->GetNames()[0] == "SummaryTorch");
++		CHECK(panel->GetNames()[1] == "SummaryCrate");
++		CHECK(panel->GetNames()[2] == "SummaryLamp");
++	}
++
+ 	TEST_CASE("A layout saved before the panel gives way to the default layout, which docks it beside the Inspector")
+ 	{
+ 		std::string settings;

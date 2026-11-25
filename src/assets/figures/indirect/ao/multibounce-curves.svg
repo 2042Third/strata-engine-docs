@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 484">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: x at 100 + 560 x, y at 420 - 380 y. Curves: the fit of Strata/shaders/Include/AmbientOcclusionFit.slang, y = x / (1 - rho (1 - x) h), evaluated at 101 points. Dots: Tools/FitAOMultiBounce.py's reference (V-grooves and trenches) as conditional means in bins of 0.05, x of at least 0.25; the largest gap between a dot and its curve is 0.007. -->
+<line x1="100" y1="420" x2="660" y2="420" class="line-faint"/>
+<line x1="100" y1="420" x2="100" y2="40" class="line-faint"/>
+<text x="88" y="425" class="muted small" text-anchor="end">0.0</text>
+<text x="100" y="442" class="muted small" text-anchor="middle">0.0</text>
+<line x1="100" y1="344" x2="660" y2="344" class="line-faint"/>
+<line x1="212" y1="420" x2="212" y2="40" class="line-faint"/>
+<text x="88" y="349" class="muted small" text-anchor="end">0.2</text>
+<text x="212" y="442" class="muted small" text-anchor="middle">0.2</text>
+<line x1="100" y1="268" x2="660" y2="268" class="line-faint"/>
+<line x1="324" y1="420" x2="324" y2="40" class="line-faint"/>
+<text x="88" y="273" class="muted small" text-anchor="end">0.4</text>
+<text x="324" y="442" class="muted small" text-anchor="middle">0.4</text>
+<line x1="100" y1="192" x2="660" y2="192" class="line-faint"/>
+<line x1="436" y1="420" x2="436" y2="40" class="line-faint"/>
+<text x="88" y="197" class="muted small" text-anchor="end">0.6</text>
+<text x="436" y="442" class="muted small" text-anchor="middle">0.6</text>
+<line x1="100" y1="116" x2="660" y2="116" class="line-faint"/>
+<line x1="548" y1="420" x2="548" y2="40" class="line-faint"/>
+<text x="88" y="121" class="muted small" text-anchor="end">0.8</text>
+<text x="548" y="442" class="muted small" text-anchor="middle">0.8</text>
+<line x1="100" y1="40" x2="660" y2="40" class="line-faint"/>
+<line x1="660" y1="420" x2="660" y2="40" class="line-faint"/>
+<text x="88" y="45" class="muted small" text-anchor="end">1.0</text>
+<text x="660" y="442" class="muted small" text-anchor="middle">1.0</text>
+<line x1="100" y1="420" x2="660" y2="420" class="line-ink"/>
+<line x1="100" y1="420" x2="100" y2="40" class="line-ink"/>
+<text x="380" y="468" class="ink" text-anchor="middle">visibility x</text>
+<text x="40" y="230" class="ink" text-anchor="middle" transform="rotate(-90 40 230)">result y</text>
+<line x1="100" y1="420" x2="660" y2="40" class="line-muted" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="455.2" y="206.4" class="muted">AO alone</text>
+<polyline points="100,420 105.6,397.9 111.2,378 116.8,360 122.4,343.8 128,328.9 133.6,315.3 139.2,302.8 144.8,291.2 150.4,280.5 156,270.6 161.6,261.3 167.2,252.7 172.8,244.6 178.4,236.9 184,229.8 189.6,223 195.2,216.6 200.8,210.6 206.4,204.8 212,199.4 217.6,194.2 223.2,189.3 228.8,184.5 234.4,180 240,175.7 245.6,171.6 251.2,167.6 256.8,163.8 262.4,160.1 268,156.6 273.6,153.2 279.2,149.9 284.8,146.8 290.4,143.7 296,140.8 301.6,137.9 307.2,135.1 312.8,132.5 318.4,129.9 324,127.3 329.6,124.9 335.2,122.5 340.8,120.1 346.4,117.9 352,115.7 357.6,113.5 363.2,111.4 368.8,109.4 374.4,107.4 380,105.4 385.6,103.5 391.2,101.7 396.8,99.8 402.4,98.1 408,96.3 413.6,94.6 419.2,92.9 424.8,91.3 430.4,89.6 436,88.1 441.6,86.5 447.2,85 452.8,83.5 458.4,82 464,80.5 469.6,79.1 475.2,77.7 480.8,76.3 486.4,74.9 492,73.6 497.6,72.3 503.2,71 508.8,69.7 514.4,68.4 520,67.2 525.6,65.9 531.2,64.7 536.8,63.5 542.4,62.3 548,61.1 553.6,60 559.2,58.8 564.8,57.7 570.4,56.6 576,55.4 581.6,54.3 587.2,53.3 592.8,52.2 598.4,51.1 604,50.1 609.6,49 615.2,48 620.8,46.9 626.4,45.9 632,44.9 637.6,43.9 643.2,42.9 648.8,41.9 654.4,41 660,40" class="line-orange" fill="none" stroke-width="2.5"/>
+<circle cx="255.1" cy="163.1" r="4" class="orange"/>
+<circle cx="282.3" cy="146.3" r="4" class="orange"/>
+<circle cx="311.7" cy="134.2" r="4" class="orange"/>
+<circle cx="339" cy="121.9" r="4" class="orange"/>
+<circle cx="365.8" cy="109.6" r="4" class="orange"/>
+<circle cx="393.7" cy="103.5" r="4" class="orange"/>
+<circle cx="422.1" cy="94.3" r="4" class="orange"/>
+<circle cx="450" cy="85.4" r="4" class="orange"/>
+<circle cx="478.9" cy="77.6" r="4" class="orange"/>
+<circle cx="505.3" cy="69.8" r="4" class="orange"/>
+<circle cx="534.2" cy="62.2" r="4" class="orange"/>
+<circle cx="562.8" cy="56.4" r="4" class="orange"/>
+<circle cx="591.1" cy="51.3" r="4" class="orange"/>
+<circle cx="618.9" cy="46" r="4" class="orange"/>
+<circle cx="645.7" cy="42" r="4" class="orange"/>
+<text x="194.8" y="204.6" class="orange" text-anchor="end">albedo 0.8</text>
+<polyline points="100,420 105.6,412.8 111.2,405.8 116.8,399 122.4,392.3 128,385.8 133.6,379.4 139.2,373.1 144.8,367 150.4,361 156,355.1 161.6,349.4 167.2,343.7 172.8,338.2 178.4,332.7 184,327.4 189.6,322.1 195.2,317 200.8,311.9 206.4,306.9 212,302 217.6,297.2 223.2,292.5 228.8,287.8 234.4,283.2 240,278.7 245.6,274.2 251.2,269.8 256.8,265.5 262.4,261.2 268,257 273.6,252.9 279.2,248.8 284.8,244.7 290.4,240.7 296,236.8 301.6,232.9 307.2,229.1 312.8,225.3 318.4,221.5 324,217.8 329.6,214.1 335.2,210.5 340.8,206.9 346.4,203.3 352,199.8 357.6,196.3 363.2,192.9 368.8,189.5 374.4,186.1 380,182.7 385.6,179.4 391.2,176.1 396.8,172.9 402.4,169.6 408,166.4 413.6,163.2 419.2,160.1 424.8,156.9 430.4,153.8 436,150.7 441.6,147.7 447.2,144.6 452.8,141.6 458.4,138.6 464,135.6 469.6,132.7 475.2,129.7 480.8,126.8 486.4,123.9 492,121 497.6,118.2 503.2,115.3 508.8,112.5 514.4,109.6 520,106.8 525.6,104 531.2,101.2 536.8,98.5 542.4,95.7 548,93 553.6,90.2 559.2,87.5 564.8,84.8 570.4,82.1 576,79.4 581.6,76.7 587.2,74 592.8,71.4 598.4,68.7 604,66.1 609.6,63.4 615.2,60.8 620.8,58.2 626.4,55.6 632,53 637.6,50.4 643.2,47.8 648.8,45.2 654.4,42.6 660,40" class="line-blue" fill="none" stroke-width="2.5"/>
+<circle cx="255.1" cy="266.1" r="4" class="blue"/>
+<circle cx="282.3" cy="245" r="4" class="blue"/>
+<circle cx="311.7" cy="226.8" r="4" class="blue"/>
+<circle cx="339" cy="208.4" r="4" class="blue"/>
+<circle cx="365.8" cy="189.6" r="4" class="blue"/>
+<circle cx="393.7" cy="177" r="4" class="blue"/>
+<circle cx="422.1" cy="160.3" r="4" class="blue"/>
+<circle cx="450" cy="144.2" r="4" class="blue"/>
+<circle cx="478.9" cy="128.6" r="4" class="blue"/>
+<circle cx="505.3" cy="113.5" r="4" class="blue"/>
+<circle cx="534.2" cy="97.7" r="4" class="blue"/>
+<circle cx="562.8" cy="83.7" r="4" class="blue"/>
+<circle cx="591.1" cy="70.6" r="4" class="blue"/>
+<circle cx="618.9" cy="57.4" r="4" class="blue"/>
+<circle cx="645.7" cy="45.9" r="4" class="blue"/>
+<text x="306.8" y="219.3" class="blue" text-anchor="end">albedo 0.4</text>
+<polyline points="100,420 105.6,415.6 111.2,411.3 116.8,407 122.4,402.7 128,398.4 133.6,394.1 139.2,389.9 144.8,385.7 150.4,381.4 156,377.2 161.6,373.1 167.2,368.9 172.8,364.7 178.4,360.6 184,356.5 189.6,352.4 195.2,348.3 200.8,344.2 206.4,340.1 212,336.1 217.6,332.1 223.2,328 228.8,324 234.4,320 240,316 245.6,312.1 251.2,308.1 256.8,304.2 262.4,300.2 268,296.3 273.6,292.4 279.2,288.5 284.8,284.6 290.4,280.7 296,276.9 301.6,273 307.2,269.2 312.8,265.3 318.4,261.5 324,257.7 329.6,253.9 335.2,250.1 340.8,246.3 346.4,242.5 352,238.7 357.6,235 363.2,231.2 368.8,227.5 374.4,223.7 380,220 385.6,216.3 391.2,212.6 396.8,208.8 402.4,205.1 408,201.4 413.6,197.8 419.2,194.1 424.8,190.4 430.4,186.7 436,183.1 441.6,179.4 447.2,175.8 452.8,172.1 458.4,168.5 464,164.9 469.6,161.2 475.2,157.6 480.8,154 486.4,150.4 492,146.8 497.6,143.2 503.2,139.6 508.8,136 514.4,132.4 520,128.8 525.6,125.2 531.2,121.6 536.8,118 542.4,114.5 548,110.9 553.6,107.3 559.2,103.8 564.8,100.2 570.4,96.7 576,93.1 581.6,89.6 587.2,86 592.8,82.5 598.4,78.9 604,75.4 609.6,71.8 615.2,68.3 620.8,64.7 626.4,61.2 632,57.7 637.6,54.1 643.2,50.6 648.8,47.1 654.4,43.5 660,40" class="line-green" fill="none" stroke-width="2.5"/>
+<circle cx="255.1" cy="305.1" r="4" class="green"/>
+<circle cx="282.3" cy="285.8" r="4" class="green"/>
+<circle cx="311.7" cy="266.2" r="4" class="green"/>
+<circle cx="339" cy="247.4" r="4" class="green"/>
+<circle cx="365.8" cy="228.8" r="4" class="green"/>
+<circle cx="393.7" cy="211.5" r="4" class="green"/>
+<circle cx="422.1" cy="192.6" r="4" class="green"/>
+<circle cx="450" cy="174.2" r="4" class="green"/>
+<circle cx="478.9" cy="155.4" r="4" class="green"/>
+<circle cx="505.3" cy="137.9" r="4" class="green"/>
+<circle cx="534.2" cy="119" r="4" class="green"/>
+<circle cx="562.8" cy="100.8" r="4" class="green"/>
+<circle cx="591.1" cy="83" r="4" class="green"/>
+<circle cx="618.9" cy="65.3" r="4" class="green"/>
+<circle cx="645.7" cy="48.8" r="4" class="green"/>
+<line x1="343.9" y1="244.2" x2="380" y2="307" class="line-green"/>
+<text x="380" y="325" class="green" text-anchor="middle">albedo 0.1</text>
+<text x="652" y="384" class="muted small" text-anchor="end">dots: radiosity reference means</text>
+<text x="652" y="402" class="muted small" text-anchor="end">(fitted from visibility 0.25)</text>
+</svg>

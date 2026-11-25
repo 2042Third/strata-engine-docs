@@ -1,0 +1,65 @@
+[
+	{
+		"command": "scene.saveAs",
+		"parameters": {
+			"path": "Scenes/Course.stscene"
+		}
+	},
+	{
+		"command": "project.setStartScene",
+		"parameters": {
+			"scene": "Scenes/Course.stscene"
+		}
+	},
+	{
+		"command": "asset.import",
+		"parameters": {
+			"file": "<release folder>/Samples/ThirdPerson/Assets/Models/Robot/RobotExpressive.glb",
+			"directory": "Models/Robot"
+		}
+	},
+	{
+		"command": "asset.import",
+		"parameters": {
+			"files": [
+				"<release folder>/Samples/ThirdPerson/Assets/Models/Platformer/block-grass-large-tall.glb",
+				"<release folder>/Samples/ThirdPerson/Assets/Models/Platformer/coin-gold.glb",
+				"<release folder>/Samples/ThirdPerson/Assets/Models/Platformer/spring.glb",
+				"<release folder>/Samples/ThirdPerson/Assets/Models/Platformer/flag.glb",
+				"<release folder>/Samples/ThirdPerson/Assets/Models/Platformer/platform.glb"
+			],
+			"directory": "Models/Platformer"
+		}
+	},
+	{
+		"command": "asset.import",
+		"parameters": {
+			"files": [
+				"<release folder>/Samples/ThirdPerson/Assets/Sounds/Jump.ogg",
+				"<release folder>/Samples/ThirdPerson/Assets/Sounds/Land.ogg",
+				"<release folder>/Samples/ThirdPerson/Assets/Sounds/Coin.ogg",
+				"<release folder>/Samples/ThirdPerson/Assets/Sounds/Bounce.ogg",
+				"<release folder>/Samples/ThirdPerson/Assets/Sounds/Complete.ogg"
+			],
+			"directory": "Sounds"
+		}
+	},
+	{
+		"command": "asset.import",
+		"parameters": {
+			"files": [
+				"<release folder>/Samples/ThirdPerson/Assets/Sounds/Footsteps/Grass1.ogg",
+				"<release folder>/Samples/ThirdPerson/Assets/Sounds/Footsteps/Grass2.ogg",
+				"<release folder>/Samples/ThirdPerson/Assets/Sounds/Footsteps/Grass3.ogg",
+				"<release folder>/Samples/ThirdPerson/Assets/Sounds/Footsteps/Grass4.ogg"
+			],
+			"directory": "Sounds/Footsteps"
+		}
+	},
+	{
+		"command": "asset.info",
+		"parameters": {
+			"asset": "Models/Platformer/block-grass-large-tall/block-grass-large-tall.glb"
+		}
+	}
+]

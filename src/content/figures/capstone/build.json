@@ -1,0 +1,126 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "The Scene view while the checkpoint scene plays, with crates pushed along the directional zone's arrow and away from the spherical zone",
+			"caption": "Crates pushed from their rows by both zones, whose gizmos show.",
+			"alt": "The editor in play mode: crates out of their rows, a green sphere and a green arrow.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/capstone-build.ini",
+				"steps": [
+					{
+						"command": "play.start",
+						"parameters": {}
+					}
+				]
+			},
+			"blocked": "The pin has no wind zone: the component, its system and its gizmo exist only in an editor that the reader builds from the capstone chain's patches.",
+			"standIn": "wind-pushes"
+		},
+		{
+			"id": "both-zones",
+			"shows": "The Scene view with a spherical zone's sphere and a directional zone's arrow, both zones selected",
+			"caption": "The sphere of the spherical zone and the arrow of the directional one.",
+			"alt": "The Scene view with a green sphere around one zone and a green arrow at the other.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/capstone-build.ini",
+				"steps": [
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					}
+				]
+			},
+			"blocked": "The pin has no wind zone, so no editor of the pin draws its sphere or its arrow; only an editor built from the capstone chain's patches does.",
+			"standIn": "wind-gizmos"
+		},
+		{
+			"id": "radius-reason",
+			"shows": "The Inspector of a directional zone with the Radius row disabled",
+			"caption": "The dimmed Radius row of a directional zone.",
+			"alt": "The Inspector of a wind zone with the Radius row dimmed.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/capstone-build.ini",
+				"steps": [
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					}
+				]
+			},
+			"blocked": "The pin has no wind zone and so no reason for its Radius row; the reason's tooltip also needs the pointer, which a take cannot place.",
+			"standIn": "robot-clip"
+		},
+		{
+			"id": "wind-pushes",
+			"shows": "A top view of two zones with crates: a directional zone turned to blow along minus X pushes every crate the same way, and a spherical zone of radius 5 m pushes the crates inside it away from its center",
+			"caption": "Seen from above, the directional zone pushes every crate the same way, and the spherical zone pushes only the crates inside its radius, away from its center.",
+			"alt": "Left, a green arrow at a zone and eight crates, each with an equal orange arrow to the left. Right, a green circle around a zone, orange arrows pointing away from its center, and a crate outside with none.",
+			"kind": "diagram"
+		},
+		{
+			"id": "wind-gizmos",
+			"shows": "The two gizmo shapes of a wind zone: a wire sphere of Radius around a spherical zone, and an arrow 2 m long along a directional zone's minus Z, both in the collider color",
+			"caption": "The two gizmo shapes, both in the collider color: a sphere of the radius as typed, and an arrow 2 meters long where the wind blows.",
+			"alt": "Left, three green circles form a sphere around a dot, with a dashed line marked Radius. Right, a green arrow leaves a dot, marked 2 m along minus Z.",
+			"kind": "diagram",
+			"numbers": "The arrow's length is c_WindArrowLength, 2 m, which the patch writes in PhysicsComponents.cpp (the page's section Draw the arrow, step 3)."
+		},
+		{
+			"id": "robot-clip",
+			"shows": "The Inspector of the robot of the third-person sample in edit mode, its Animator's Controller set and the Clip row dimmed",
+			"caption": "The robot's Animator has a controller, so its Clip row is dimmed and cannot be changed.",
+			"alt": "The Inspector of the robot with a controller set and the Clip row below it dimmed.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Robot"
+						},
+						"bind": {
+							"robot": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "robot"
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+}

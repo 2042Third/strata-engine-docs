@@ -1,0 +1,369 @@
+diff --git a/StrataEditor/src/EditorLayer.cpp b/StrataEditor/src/EditorLayer.cpp
+index b4c22295..c80a5b65 100644
+--- a/StrataEditor/src/EditorLayer.cpp
++++ b/StrataEditor/src/EditorLayer.cpp
+@@ -19,6 +19,7 @@
+ #include "Panels/ProjectSettingsPanel.h"
+ #include "Panels/ProblemsPanel.h"
+ #include "Panels/SceneHierarchyPanel.h"
++#include "Panels/SelectionSummaryPanel.h"
+ #include "Panels/StreamingPanel.h"
+ #include "Panels/ViewportPanel.h"
+ #include "Panels/WelcomePanel.h"
+@@ -512,6 +513,9 @@ namespace Strata
+ 		add(EditorPanels::c_Hierarchy, "Hierarchy", Icons::ListTree, []() { return CreateScope<SceneHierarchyPanel>(); });
+ 		add(EditorPanels::c_Inspector, "Inspector", Icons::SlidersHorizontal, []() { return CreateScope<InspectorPanel>(); });
+ 		add(EditorPanels::c_AssetInspector, "Asset", Icons::FileBox, []() { return CreateScope<AssetInspectorPanel>(); });
++		// Open from the start, docked beside the Inspector by the default layout. Before the Console: the window drawn last on
++		// first run takes the focus and shows its tab, which stays the Content Browser's.
++		add(EditorPanels::c_SelectionSummary, "Selection Summary", Icons::Focus, []() { return CreateScope<SelectionSummaryPanel>(); });
+ 		add(EditorPanels::c_Console, "Console", Icons::Terminal, []() { return CreateScope<ConsolePanel>(); });
+ 		add(EditorPanels::c_Problems, "Problems", Icons::CircleAlert, []() { return CreateScope<ProblemsPanel>(); });
+ 		add(EditorPanels::c_ContentBrowser, "Content Browser", Icons::FolderOpen, []() { return CreateScope<ContentBrowserPanel>(); });
+@@ -1625,6 +1629,7 @@ namespace Strata
+ 		ImGui::DockBuilderDockWindow(m_Panels.GetWindowName(EditorPanels::c_Hierarchy).c_str(), left);
+ 		ImGui::DockBuilderDockWindow(m_Panels.GetWindowName(EditorPanels::c_Inspector).c_str(), right);
+ 		ImGui::DockBuilderDockWindow(m_Panels.GetWindowName(EditorPanels::c_AssetInspector).c_str(), right);
++		ImGui::DockBuilderDockWindow(m_Panels.GetWindowName(EditorPanels::c_SelectionSummary).c_str(), right);
+ 		ImGui::DockBuilderDockWindow(m_Panels.GetWindowName(EditorPanels::c_Console).c_str(), bottom);
+ 		ImGui::DockBuilderDockWindow(m_Panels.GetWindowName(EditorPanels::c_Problems).c_str(), bottom);
+ 		ImGui::DockBuilderDockWindow(m_Panels.GetWindowName(EditorPanels::c_ContentBrowser).c_str(), bottom);
+diff --git a/StrataEditor/src/EditorLayer.h b/StrataEditor/src/EditorLayer.h
+index de38633e..bb79d92f 100644
+--- a/StrataEditor/src/EditorLayer.h
++++ b/StrataEditor/src/EditorLayer.h
+@@ -104,6 +104,7 @@ namespace Strata
+ 		constexpr const char* c_Problems = "Problems";       // ProblemsPanel: script build diagnostics and crashes
+ 		constexpr const char* c_Activity = "Activity";       // ActivityPanel, opened from the viewport's agent chip or the View menu
+ 		constexpr const char* c_ProjectSettings = "ProjectSettings"; // ProjectSettingsPanel, opened from File > Project Settings...
++		constexpr const char* c_SelectionSummary = "SelectionSummary"; // SelectionSummaryPanel: the selection's count and shared components
+ 		constexpr const char* c_Welcome = "Welcome"; // The launcher (WelcomePanel)
+ 	}
+ 
+@@ -129,8 +130,9 @@ namespace Strata
+ 		static constexpr double c_AutomationActivitySeconds = 1.0;
+ 		// Version of the default layout: a saved layout of another version is replaced by the default one. Bump it when the
+ 		// default layout gains a docked panel that is open by default (4: the Problems panel, and Activity beside it; 5: the
+-		// Game view beside the Scene view, a wider Hierarchy), which an older layout would show floating over the viewport.
+-		static constexpr int c_LayoutVersion = 5;
++		// Game view beside the Scene view, a wider Hierarchy; 6: the Selection Summary beside the Inspector), which an older
++		// layout would show floating over the viewport.
++		static constexpr int c_LayoutVersion = 6;
+ 
+ 		EditorLayer(const EditorOptions& options, Scope<EditorHost> host);
+ 		~EditorLayer() override = default;
+diff --git a/StrataEditor/src/Panels/SelectionSummaryPanel.cpp b/StrataEditor/src/Panels/SelectionSummaryPanel.cpp
+new file mode 100644
+index 00000000..818d1435
+--- /dev/null
++++ b/StrataEditor/src/Panels/SelectionSummaryPanel.cpp
+@@ -0,0 +1,100 @@
++#include "Panels/SelectionSummaryPanel.h"
++
++#include "Editor/EditorContext.h"
++#include "Editor/UndoStack.h"
++#include "UI/EditorActions.h"
++#include "UI/Icons.h"
++#include "UI/Theme.h"
++#include "UI/Widgets.h"
++
++#include <Strata/Reflection/ComponentRegistry.h>
++#include <Strata/Reflection/PropertyJson.h>
++#include <Strata/Scene/Entity.h>
++#include <Strata/Scene/Scene.h>
++
++#include <imgui.h>
++#include <nlohmann/json.hpp>
++#include <spdlog/fmt/fmt.h>
++
++#include <algorithm>
++#include <utility>
++
++namespace Strata
++{
++
++	void SelectionSummaryPanel::Rebuild(EditorContext& context)
++	{
++		m_SelectedCount = 0;
++		m_SharedComponents.clear();
++		const Ref<Scene>& scene = context.GetActiveScene();
++		if (!scene)
++			return;
++
++		// Selected entities that no longer exist (deleted since) do not count.
++		std::vector<Entity> entities;
++		entities.reserve(context.GetSelection().size());
++		for (const UUID id : context.GetSelection())
++		{
++			if (Entity entity = scene->GetEntityByUUID(id))
++				entities.push_back(entity);
++		}
++		m_SelectedCount = entities.size();
++		if (entities.empty())
++			return;
++
++		const entt::registry& registry = scene->GetRegistry();
++		for (const ComponentInfo* info : ComponentRegistry::GetAll())
++		{
++			if (info->IsHidden())
++				continue;
++			const bool onAll = std::all_of(entities.begin(), entities.end(),
++				[&](const Entity& entity) { return info->Has(registry, entity.GetHandle()); });
++			if (onAll)
++				m_SharedComponents.push_back(info->DisplayName);
++		}
++	}
++
++	void SelectionSummaryPanel::FrameSelection(EditorPanelContext& panelContext) const
++	{
++		nlohmann::json entities = nlohmann::json::array();
++		for (const UUID id : panelContext.Context.GetSelection())
++			entities.push_back(UUIDToJson(id));
++		// RunEditorCommand runs the command as the person's: the activity journal records the UI as its source.
++		RunEditorCommand(panelContext.Context, panelContext.Commands, "camera.focus", { { "entities", std::move(entities) } });
++	}
++
++	void SelectionSummaryPanel::OnImGuiRender(EditorPanelContext& panelContext)
++	{
++		EditorContext& context = panelContext.Context;
++		const UI::ThemeColors& colors = UI::GetThemeColors();
++
++		const Scene* scene = context.GetActiveScene().get();
++		const uint64_t selectionVersion = context.GetSelectionVersion();
++		const uint64_t historyVersion = context.GetUndoStack().GetVersion();
++		if (scene != m_Scene || selectionVersion != m_SelectionVersion || historyVersion != m_HistoryVersion)
++		{
++			Rebuild(context);
++			m_Scene = scene;
++			m_SelectionVersion = selectionVersion;
++			m_HistoryVersion = historyVersion;
++		}
++
++		if (m_SelectedCount == 0)
++		{
++			UI::CenteredText("SelectionSummary.Empty", "Select entities in the Hierarchy or the Scene view to summarize them.", colors.TextSecondary);
++			return;
++		}
++
++		ImGui::TextUnformatted(fmt::format("{} {} selected", m_SelectedCount, m_SelectedCount == 1 ? "entity" : "entities").c_str());
++		ImGui::TextColored(colors.TextSecondary, "Components all of them have");
++		for (const std::string& name : m_SharedComponents)
++			ImGui::BulletText("%s", name.c_str());
++
++		ImGui::Spacing();
++		UI::ButtonStyle style;
++		style.Primary = true;
++		if (UI::ActionButton("SelectionSummary.Frame", Icons::Focus, "Frame selection", "Point the Scene view at the selected entities", style))
++			FrameSelection(panelContext);
++	}
++
++}
+diff --git a/StrataEditor/src/Panels/SelectionSummaryPanel.h b/StrataEditor/src/Panels/SelectionSummaryPanel.h
+new file mode 100644
+index 00000000..72524bb0
+--- /dev/null
++++ b/StrataEditor/src/Panels/SelectionSummaryPanel.h
+@@ -0,0 +1,38 @@
++#pragma once
++
++#include "UI/EditorPanelRegistry.h"
++
++#include <cstdint>
++#include <string>
++#include <vector>
++
++namespace Strata
++{
++
++	class Scene;
++
++	// The selected entities in one glance: how many there are, which components all of them have, and a button that
++	// frames them in the Scene view (camera.focus). The lines are rebuilt when the selection, the undo history or the
++	// scene changes; an idle frame compares three numbers.
++	class SelectionSummaryPanel : public EditorPanel
++	{
++	public:
++		void OnImGuiRender(EditorPanelContext& panelContext) override;
++
++		// What the last drawn frame showed (for tests).
++		size_t GetSelectedCount() const { return m_SelectedCount; }
++		const std::vector<std::string>& GetSharedComponents() const { return m_SharedComponents; }
++	private:
++		void Rebuild(EditorContext& context);
++		void FrameSelection(EditorPanelContext& panelContext) const;
++	private:
++		size_t m_SelectedCount = 0;
++		std::vector<std::string> m_SharedComponents; // Display names, in registration order
++
++		// What the lines were built from.
++		const Scene* m_Scene = nullptr;
++		uint64_t m_SelectionVersion = UINT64_MAX;
++		uint64_t m_HistoryVersion = UINT64_MAX;
++	};
++
++}
+diff --git a/StrataTests/src/Editor/SelectionSummaryUITests.cpp b/StrataTests/src/Editor/SelectionSummaryUITests.cpp
+new file mode 100644
+index 00000000..14cdae50
+--- /dev/null
++++ b/StrataTests/src/Editor/SelectionSummaryUITests.cpp
+@@ -0,0 +1,159 @@
++#include <doctest/doctest.h>
++
++#include "Editor/CommandJournal.h"
++#include "Editor/EditorContext.h"
++#include "Editor/HarnessEditor.h"
++#include "Panels/SelectionSummaryPanel.h"
++
++#include <Strata/Reflection/PropertyJson.h>
++#include <Strata/Scene/Scene.h>
++
++#include <nlohmann/json.hpp>
++
++#include <algorithm>
++#include <initializer_list>
++#include <string>
++#include <string_view>
++#include <vector>
++
++// The Selection Summary panel: what it counts and lists, its button, and its place in the default layout.
++
++using namespace Strata;
++using namespace Strata::Tests;
++
++namespace
++{
++
++	// Entities for the summary: two lamps (a Point Light each, the first also tagged) and a tagged crate.
++	void MakeEntities(HarnessEditor& editor)
++	{
++		editor.Run("entity.create", { { "name", "SummaryLamp" }, { "components", { { "PointLight", nlohmann::json::object() }, { "Tag", { { "Tag", "Prop" } } } } } });
++		editor.Run("entity.create", { { "name", "SummaryTorch" }, { "components", { { "PointLight", nlohmann::json::object() } } } });
++		editor.Run("entity.create", { { "name", "SummaryCrate" }, { "components", { { "Tag", { { "Tag", "Prop" } } } } } });
++	}
++
++	// Selects entities by name and draws the panel with them.
++	void Select(HarnessEditor& editor, std::initializer_list<const char*> names)
++	{
++		nlohmann::json ids = nlohmann::json::array();
++		for (const char* name : names)
++		{
++			const Entity entity = editor.Context().GetActiveScene()->FindEntityByName(name);
++			REQUIRE(entity);
++			ids.push_back(UUIDToJson(entity.GetUUID()));
++		}
++		editor.Run("selection.set", { { "entities", std::move(ids) } });
++		editor.Frames(2);
++	}
++
++	bool Has(const std::vector<std::string>& names, std::string_view name)
++	{
++		return std::find(names.begin(), names.end(), name) != names.end();
++	}
++
++	// imgui.ini text as an editor saved it before this panel: no window and no open state of it, and layout version 5.
++	std::string WithoutSummaryPanel(const std::string& settings)
++	{
++		std::string result;
++		std::string section;
++		size_t start = 0;
++		while (start < settings.size())
++		{
++			const size_t end = settings.find('\n', start);
++			const std::string line = settings.substr(start, end == std::string::npos ? std::string::npos : end - start);
++			start = end == std::string::npos ? settings.size() : end + 1;
++			if (line.starts_with("["))
++				section = line;
++			if (section == "[Window][SelectionSummary]" || (section == "[StrataPanels][Open]" && line.starts_with("SelectionSummary=")))
++				continue;
++			result += (section == "[StrataPanels][Layout]" && line.starts_with("Version=") ? "Version=5" : line) + "\n";
++		}
++		return result;
++	}
++
++}
++
++TEST_SUITE("Editor.UI.SelectionSummary")
++{
++	TEST_CASE("The summary counts the selection and lists the components all of it has")
++	{
++		HarnessEditor editor({}, WithFeatureProject("SelectionSummary"));
++		editor.Frames(2);
++		REQUIRE(editor.Context().HasProject());
++		MakeEntities(editor);
++		editor.Run("editor.showPanel", { { "panel", "SelectionSummary" } });
++		editor.Frames(2);
++		const SelectionSummaryPanel* panel = editor.Layer->GetPanels().Get<SelectionSummaryPanel>(EditorPanels::c_SelectionSummary);
++		REQUIRE(panel);
++
++		editor.Run("selection.set", { { "entities", nlohmann::json::array() } });
++		editor.Frames(2);
++		CHECK(panel->GetSelectedCount() == 0);
++
++		Select(editor, { "SummaryLamp", "SummaryTorch" });
++		CHECK(panel->GetSelectedCount() == 2);
++		CHECK(Has(panel->GetSharedComponents(), "Transform"));
++		CHECK(Has(panel->GetSharedComponents(), "Point Light"));
++		CHECK_FALSE(Has(panel->GetSharedComponents(), "Tag"));
++
++		Select(editor, { "SummaryLamp", "SummaryCrate" });
++		CHECK(panel->GetSelectedCount() == 2);
++		CHECK(Has(panel->GetSharedComponents(), "Tag"));
++		CHECK_FALSE(Has(panel->GetSharedComponents(), "Point Light"));
++
++		// A component added through a command changes the undo history, so the lines follow it.
++		editor.Run("component.add", { { "entity", UUIDToJson(editor.Context().GetActiveScene()->FindEntityByName("SummaryCrate").GetUUID()) }, { "component", "PointLight" } });
++		editor.Frames(2);
++		CHECK(Has(panel->GetSharedComponents(), "Point Light"));
++	}
++
++	TEST_CASE("The Frame button runs camera.focus as the person")
++	{
++		HarnessEditor editor({}, WithFeatureProject("SelectionSummaryButton"));
++		editor.Frames(2);
++		MakeEntities(editor);
++		editor.Run("editor.showPanel", { { "panel", "SelectionSummary" } });
++		Select(editor, { "SummaryLamp", "SummaryTorch" });
++
++		const CommandJournal& journal = editor.Context().GetJournal();
++		const uint64_t before = journal.GetLatestId();
++		REQUIRE(editor.Click("SelectionSummary.Frame"));
++		editor.Frames(1);
++
++		const auto entry = std::find_if(journal.GetEntries().begin(), journal.GetEntries().end(),
++			[before](const CommandJournalEntry& candidate) { return candidate.Id > before && candidate.Command == "camera.focus"; });
++		REQUIRE(entry != journal.GetEntries().end());
++		CHECK(entry->Source == CommandSource::UI);
++		CHECK(entry->Parameters["entities"].size() == 2);
++	}
++
++	TEST_CASE("A layout saved before the panel gives way to the default layout, which docks it beside the Inspector")
++	{
++		std::string settings;
++		{
++			HarnessEditor editor({}, WithFeatureProject("SelectionSummaryLayout"));
++			editor.Frames(3);
++			size_t size = 0;
++			settings = ImGui::SaveIniSettingsToMemory(&size);
++		}
++		REQUIRE(settings.find("[Window][SelectionSummary]") != std::string::npos);
++		const std::string older = WithoutSummaryPanel(settings);
++		REQUIRE(older.find("[Window][SelectionSummary]") == std::string::npos);
++		REQUIRE(older.find("SelectionSummary=") == std::string::npos);
++		REQUIRE(older.find("[StrataPanels][Layout]\nVersion=5\n") != std::string::npos);
++
++		HarnessEditor editor({}, WithFeatureProject("SelectionSummaryLayoutReopened"), older);
++		editor.Frames(3);
++		ImGuiWindow* summary = editor.FindPanelWindow(EditorPanels::c_SelectionSummary);
++		ImGuiWindow* inspector = editor.FindPanelWindow(EditorPanels::c_Inspector);
++		REQUIRE(summary);
++		REQUIRE(inspector);
++		REQUIRE(inspector->DockNode);
++		CHECK(editor.Layer->GetPanels().IsOpen(EditorPanels::c_SelectionSummary));
++		CHECK(summary->DockNode == inspector->DockNode);
++		// The current version is saved, so the default layout is built once.
++		size_t size = 0;
++		const std::string saved = ImGui::SaveIniSettingsToMemory(&size);
++		CHECK(saved.find("[StrataPanels][Layout]\nVersion=" + std::to_string(EditorLayer::c_LayoutVersion)) != std::string::npos);
++	}
++}

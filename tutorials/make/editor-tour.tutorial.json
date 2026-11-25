@@ -1,0 +1,182 @@
+{
+	"page": "make/editor-tour",
+	"startsFrom": {
+		"template": "basic3d",
+		"name": "CoinRun"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Main Camera"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Sun"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Sky"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Ground"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Post Process"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"commands": [
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Ground"
+					},
+					"bind": {
+						"ground": "/entities/0"
+					}
+				},
+				{
+					"command": "selection.set",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "ground"
+							}
+						]
+					}
+				},
+				{
+					"command": "camera.set",
+					"parameters": {
+						"yaw": 45,
+						"pitch": -30,
+						"distance": 10
+					},
+					"checks": [
+						{
+							"pointer": "/distance",
+							"approx": 10,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "camera.focus",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "ground"
+							}
+						]
+					},
+					"checks": [
+						{
+							"pointer": "/distance",
+							"approx": 31.11,
+							"tolerance": 0.05
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"commands": [
+				{
+					"command": "play.start",
+					"parameters": {
+						"paused": true,
+						"build": false
+					}
+				},
+				{
+					"command": "play.stop",
+					"parameters": {}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"Primary": false
+						}
+					},
+					"entityName": "Main Camera"
+				},
+				{
+					"command": "edit.undo",
+					"parameters": {}
+				},
+				{
+					"command": "editor.activity",
+					"parameters": {
+						"source": "Automation"
+					}
+				},
+				{
+					"command": "component.get",
+					"parameters": {
+						"component": "Camera"
+					},
+					"entityName": "Main Camera",
+					"checks": [
+						{
+							"pointer": "/values/Primary",
+							"equals": true
+						}
+					]
+				}
+			],
+			"endState": true
+		}
+	]
+}

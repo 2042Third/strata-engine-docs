@@ -1,0 +1,46 @@
+[
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"debugView": "luminance"
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Gold.stmat",
+			"properties": {
+				"EmissiveColor": [
+					1,
+					0.75,
+					0.3
+				],
+				"EmissiveIntensity": 200
+			}
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Gold.stmat",
+			"properties": {
+				"EmissiveIntensity": 1000
+			}
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Gold.stmat",
+			"properties": {
+				"EmissiveIntensity": 200
+			}
+		}
+	},
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"debugView": "none"
+		}
+	}
+]

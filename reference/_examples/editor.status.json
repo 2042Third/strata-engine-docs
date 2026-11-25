@@ -1,0 +1,54 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"command": "editor.status",
+	"parameters": {},
+	"result": {
+		"assets": {
+			"failed": 0,
+			"importing": 0,
+			"loading": 0,
+			"ready": 9,
+			"scanning": null
+		},
+		"editor": {
+			"launcher": false
+		},
+		"engineVersion": "0.7.0",
+		"errors": {
+			"importFailures": 0,
+			"scriptBuild": {
+				"errors": 0,
+				"failed": false
+			},
+			"scriptFault": null,
+			"unread": 0
+		},
+		"play": {
+			"paused": false,
+			"pendingSteps": 0,
+			"running": null,
+			"state": "Edit"
+		},
+		"project": {
+			"fileState": "written",
+			"name": "Spin",
+			"open": true,
+			"path": "…"
+		},
+		"saving": [],
+		"scene": {
+			"entityCount": 5,
+			"modified": false,
+			"name": "Main",
+			"scene": "…"
+		},
+		"selection": {
+			"count": 0,
+			"primary": null
+		},
+		"undo": {
+			"redo": "",
+			"undo": ""
+		}
+	}
+}

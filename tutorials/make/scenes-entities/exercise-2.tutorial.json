@@ -1,0 +1,25 @@
+{
+	"page": "make/scenes-entities",
+	"startsFrom": {
+		"tutorial": "make/scenes-entities"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "entity.find",
+					"parameters": {
+						"component": "BoxCollider"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 5
+						}
+					]
+				}
+			]
+		}
+	]
+}

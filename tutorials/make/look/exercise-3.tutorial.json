@@ -1,0 +1,44 @@
+{
+	"page": "make/look",
+	"startsFrom": {
+		"tutorial": "make/look"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "scene.open",
+					"parameters": {
+						"scene": "Scenes/Course.stscene"
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Height Fog",
+					"parameters": {
+						"component": "HeightFog",
+						"values": {
+							"BaseHeight": -2,
+							"HeightFalloff": 0.02,
+							"Density": 0.035
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/HeightFalloff",
+							"approx": 0.02,
+							"tolerance": 0.0001
+						},
+						{
+							"pointer": "/values/Density",
+							"approx": 0.035,
+							"tolerance": 0.0001
+						}
+					]
+				}
+			],
+			"endState": true
+		}
+	]
+}

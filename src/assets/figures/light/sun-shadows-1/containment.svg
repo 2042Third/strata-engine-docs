@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 368">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- the drawing: roles as classes (plan/card/drawing.md) -->
+<!-- Plan: overview 240 px for 2048 texels at (24, 64); a window on its right edge, 136 texels inside to 24 outside, 160 tall, enlarged 2.1 px per texel into x 416..752, y 16..352; held point 95 texels inside, band point 10 inside (v 112); filter reach 33 (blue square, labelled); strip beyond the edge labelled vertically; H 368. -->
+<rect class="plate" x="24" y="64" width="240" height="240"/>
+<path class="orange-area" fill-rule="evenodd" d="M24 64h240v240h-240z M27.9 67.9v232.3h232.3v-232.3z"/>
+<rect class="line-ink" fill="none" stroke-width="2" x="24" y="64" width="240" height="240"/>
+<rect class="line-ink" fill="none" stroke-dasharray="4 3" x="27.9" y="67.9" width="232.3" height="232.3"/>
+<rect class="line-muted" fill="none" x="248.1" y="174.6" width="18.8" height="18.8"/>
+<line class="line-muted" x1="266.8" y1="174.6" x2="416" y2="16"/>
+<line class="line-muted" x1="266.8" y1="193.4" x2="416" y2="352"/>
+<text class="ink" text-anchor="middle" x="144" y="330">One cascade’s square,</text>
+<text class="ink" text-anchor="middle" x="144" y="350">2048 texels wide</text>
+<rect class="plate" x="416" y="16" width="285.6" height="336"/>
+<rect class="orange-area" x="632.3" y="16" width="69.3" height="336"/>
+<line class="line-ink" stroke-width="2" x1="701.6" y1="16" x2="701.6" y2="352"/>
+<line class="line-ink" stroke-dasharray="4 3" x1="632.3" y1="16" x2="632.3" y2="352"/>
+<rect class="line-muted" fill="none" x="416" y="16" width="336" height="336"/>
+<text class="muted small" text-anchor="middle" transform="translate(732 100) rotate(-90)" x="0" y="0">Outside the map</text>
+<line class="line-ink" x1="642.3" y1="44" x2="691.6" y2="44"/>
+<polygon class="ink" points="632.3,44 642.3,40.5 642.3,47.5"/>
+<polygon class="ink" points="701.6,44 691.6,40.5 691.6,47.5"/>
+<text class="ink small" text-anchor="middle" x="667" y="35">33 texels</text>
+<rect class="line-blue" fill="none" stroke-width="2" x="432.8" y="41.2" width="138.6" height="138.6"/>
+<text class="blue small" text-anchor="middle" x="502.1" y="66">Filter’s reach,</text>
+<text class="blue small" text-anchor="middle" x="502.1" y="84">33 texels each way</text>
+<circle class="blue" cx="502.1" cy="110.5" r="5"/>
+<text class="blue" text-anchor="middle" x="502.1" y="201.8">Held by this cascade</text>
+<rect class="red-area" x="701.6" y="181.9" width="48.3" height="138.6"/>
+<rect class="line-red" fill="none" stroke-width="2" x="611.3" y="181.9" width="138.6" height="138.6"/>
+<circle class="red" cx="680.6" cy="251.2" r="5"/>
+<text class="red" text-anchor="end" x="601.3" y="253.9">In the band, so the</text>
+<text class="red" text-anchor="end" x="601.3" y="273.9">next cascade shades it:</text>
+<text class="red" text-anchor="end" x="601.3" y="293.9">its filter here would</text>
+<text class="red" text-anchor="end" x="601.3" y="313.9">read outside the</text>
+<text class="red" text-anchor="end" x="601.3" y="333.9">cascade’s square</text>
+</svg>

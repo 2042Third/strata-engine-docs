@@ -1,0 +1,74 @@
+diff --git a/Strata/src/Strata/Physics/PhysicsComponents.cpp b/Strata/src/Strata/Physics/PhysicsComponents.cpp
+index 5894576..83cff27 100644
+--- a/Strata/src/Strata/Physics/PhysicsComponents.cpp
++++ b/Strata/src/Strata/Physics/PhysicsComponents.cpp
+@@ -114,6 +114,18 @@ namespace Strata
+ 			return true;
+ 		}
+ 
++		// A wind zone shows its reach: a sphere of its radius around the entity's origin. Not scaled, like the zone itself.
++		bool WindZoneGizmo(const entt::registry&, entt::entity, const void* component, const glm::mat4& world, ComponentGizmoShape& outShape)
++		{
++			const WindZoneComponent& zone = *static_cast<const WindZoneComponent*>(component);
++			if (!std::isfinite(zone.Radius) || zone.Radius <= 0.0f)
++				return false;
++			outShape.Type = ComponentGizmoShape::Kind::Sphere;
++			outShape.Transform = glm::translate(glm::mat4(1.0f), glm::vec3(world[3]));
++			outShape.Radius = zone.Radius;
++			return true;
++		}
++
+ 	}
+ 
+ 	void RegisterPhysicsComponents()
+@@ -190,7 +202,8 @@ namespace Strata
+ 				"spherical zones blow outward from their center")
+ 			.Property("Strength", &WindZoneComponent::Strength, WithTooltip(Range(0.0f, 1000.0f, 0.1f), "Force of the wind on a body, in newtons; 0 is calm"))
+ 			.Property("Radius", &WindZoneComponent::Radius, WithTooltip(Range(0.01f, c_Unbounded, 0.05f), "How far the zone reaches from its center, in meters"))
+-			.EnumProperty("Mode", &WindZoneComponent::Mode, { { "Directional", 0 }, { "Spherical", 1 } });
++			.EnumProperty("Mode", &WindZoneComponent::Mode, { { "Directional", 0 }, { "Spherical", 1 } })
++			.Gizmo(ComponentGizmoGroup::Collider, WindZoneGizmo);
+ 	}
+ 
+ }
+diff --git a/StrataTests/src/Physics/WindZoneTests.cpp b/StrataTests/src/Physics/WindZoneTests.cpp
+index 20c7526..f562133 100644
+--- a/StrataTests/src/Physics/WindZoneTests.cpp
++++ b/StrataTests/src/Physics/WindZoneTests.cpp
+@@ -2,6 +2,7 @@
+ 
+ #include "Physics/PhysicsTestUtils.h"
+ #include "Strata/Physics/WindZoneSystem.h"
++#include "Strata/Renderer/SceneGizmos.h"
+ 
+ using namespace Strata;
+ using namespace Strata::Tests;
+@@ -55,4 +56,28 @@ TEST_SUITE("Physics.WindZone")
+ 		CHECK(system->GetZones().empty());
+ 		scene.OnRuntimeStop();
+ 	}
++
++	TEST_CASE("A wind zone shows a sphere of its radius around its origin, and none for a zone without reach")
++	{
++		Scene scene;
++		Entity gust = scene.CreateEntity("Gust");
++		gust.GetTransform().Translation = { 4.0f, 1.0f, -2.0f };
++		gust.MarkModified<TransformComponent>();
++		gust.AddComponent<WindZoneComponent>().Radius = 3.0f;
++		scene.UpdateWorldTransforms();
++
++		SceneGizmoSettings settings;
++		settings.Lights = false;
++		settings.Cameras = false;
++		DebugDraw debugDraw;
++		DrawSceneGizmos(debugDraw, scene, settings);
++		CHECK(debugDraw.GetLineCount() == 3 * 32); // Three great circles of 32 segments
++		for (const DebugLineVertex& vertex : debugDraw.GetLines(DebugDrawDepth::Tested))
++			CHECK(glm::distance(vertex.Position, glm::vec3(4.0f, 1.0f, -2.0f)) == doctest::Approx(3.0f));
++
++		gust.GetComponent<WindZoneComponent>().Radius = 0.0f;
++		debugDraw.Clear();
++		DrawSceneGizmos(debugDraw, scene, settings);
++		CHECK(debugDraw.IsEmpty());
++	}
+ }

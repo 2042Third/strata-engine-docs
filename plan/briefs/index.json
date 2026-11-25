@@ -1,0 +1,3352 @@
+[
+ {
+  "id": "start/welcome",
+  "title": "What Strata is and what this book teaches",
+  "kind": "C",
+  "size": "S",
+  "unit": "start",
+  "wave": 1,
+  "findings": 1,
+  "bytes": 7712
+ },
+ {
+  "id": "start/how-to-read",
+  "title": "How to read this book",
+  "kind": "H",
+  "size": "M",
+  "unit": "start",
+  "wave": 1,
+  "findings": 4,
+  "bytes": 14671
+ },
+ {
+  "id": "start/install",
+  "title": "Installing Strata and the C++ build tools",
+  "kind": "H",
+  "size": "M",
+  "unit": "start",
+  "wave": 1,
+  "findings": 4,
+  "bytes": 15939
+ },
+ {
+  "id": "start/first-game",
+  "title": "Your first game",
+  "kind": "T",
+  "size": "L",
+  "unit": "start",
+  "wave": 1,
+  "findings": 9,
+  "bytes": 22569
+ },
+ {
+  "id": "start/what-an-engine-is",
+  "title": "What a game engine is: one frame, start to finish",
+  "kind": "C",
+  "size": "L",
+  "unit": "start",
+  "wave": 1,
+  "findings": 3,
+  "bytes": 15441
+ },
+ {
+  "id": "start/coming-from",
+  "title": "Coming from Unity, Unreal or Godot",
+  "kind": "H",
+  "size": "M",
+  "unit": "start",
+  "wave": 1,
+  "findings": 5,
+  "bytes": 13260
+ },
+ {
+  "id": "make/editor-tour",
+  "title": "A tour of the editor",
+  "kind": "T",
+  "size": "M",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 1,
+  "bytes": 11981
+ },
+ {
+  "id": "make/project-files",
+  "title": "Projects, saving, undo and recovery",
+  "kind": "H",
+  "size": "M",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 3,
+  "bytes": 13830
+ },
+ {
+  "id": "make/scenes-entities",
+  "title": "Scenes, entities and components",
+  "kind": "T",
+  "size": "M",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 3,
+  "bytes": 13969
+ },
+ {
+  "id": "make/transforms-units",
+  "title": "Positions, rotations and units",
+  "kind": "C",
+  "size": "L",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 2,
+  "bytes": 9870
+ },
+ {
+  "id": "make/assets",
+  "title": "Bringing in assets",
+  "kind": "H",
+  "size": "M",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 1,
+  "bytes": 14028
+ },
+ {
+  "id": "make/materials",
+  "title": "Materials",
+  "kind": "T",
+  "size": "L",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 2,
+  "bytes": 10806
+ },
+ {
+  "id": "make/prefabs",
+  "title": "Prefabs",
+  "kind": "T",
+  "size": "M",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 2,
+  "bytes": 10767
+ },
+ {
+  "id": "make/lighting",
+  "title": "Lighting a scene: sun, sky and exposure",
+  "kind": "T",
+  "size": "L",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 2,
+  "bytes": 13482
+ },
+ {
+  "id": "make/first-script",
+  "title": "Your first script",
+  "kind": "T",
+  "size": "M",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 1,
+  "bytes": 13847
+ },
+ {
+  "id": "make/script-loop",
+  "title": "The game loop from a script's side",
+  "kind": "C",
+  "size": "M",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 2,
+  "bytes": 13431
+ },
+ {
+  "id": "make/scripting-scene",
+  "title": "Scripts and the scene: finding, spawning and changing entities",
+  "kind": "H",
+  "size": "L",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 8,
+  "bytes": 18452
+ },
+ {
+  "id": "make/input",
+  "title": "Input and input actions",
+  "kind": "T",
+  "size": "L",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 3,
+  "bytes": 16892
+ },
+ {
+  "id": "make/physics",
+  "title": "Physics for game makers",
+  "kind": "T",
+  "size": "L",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 5,
+  "bytes": 23195
+ },
+ {
+  "id": "make/sound",
+  "title": "Sound",
+  "kind": "T",
+  "size": "M",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 3,
+  "bytes": 11989
+ },
+ {
+  "id": "make/hud",
+  "title": "HUDs: text, score and bars",
+  "kind": "T",
+  "size": "M",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 6,
+  "bytes": 15507
+ },
+ {
+  "id": "make/play-test-debug",
+  "title": "Playing, testing and debugging",
+  "kind": "H",
+  "size": "M",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 1,
+  "bytes": 12537
+ },
+ {
+  "id": "make/export",
+  "title": "Exporting and shipping",
+  "kind": "T",
+  "size": "M",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 3,
+  "bytes": 16757
+ },
+ {
+  "id": "make/project-coin-run",
+  "title": "Project: Coin Run, a first finished game",
+  "kind": "T",
+  "size": "L",
+  "unit": "make-a",
+  "wave": 2,
+  "findings": 8,
+  "bytes": 15372
+ },
+ {
+  "id": "make/gameplay-math",
+  "title": "The math of moving things: vectors, directions, angles and smoothing",
+  "kind": "H",
+  "size": "L",
+  "unit": "make-b1",
+  "wave": 3,
+  "findings": 4,
+  "bytes": 14395
+ },
+ {
+  "id": "make/timers-events",
+  "title": "Timers, time scale and events between scripts",
+  "kind": "H",
+  "size": "M",
+  "unit": "make-b1",
+  "wave": 3,
+  "findings": 5,
+  "bytes": 14811
+ },
+ {
+  "id": "make/script-fields",
+  "title": "Tuning scripts from the editor: fields, references and prefabs",
+  "kind": "H",
+  "size": "M",
+  "unit": "make-b1",
+  "wave": 3,
+  "findings": 2,
+  "bytes": 11607
+ },
+ {
+  "id": "make/patterns",
+  "title": "Patterns for game code: state machines, managers and object pools",
+  "kind": "C",
+  "size": "L",
+  "unit": "make-b1",
+  "wave": 3,
+  "findings": 3,
+  "bytes": 12740
+ },
+ {
+  "id": "make/recipes",
+  "title": "Building blocks and recipes",
+  "kind": "H",
+  "size": "L",
+  "unit": "make-b1",
+  "wave": 3,
+  "findings": 5,
+  "bytes": 13652
+ },
+ {
+  "id": "make/script-builds",
+  "title": "Building and shipping script modules",
+  "kind": "H",
+  "size": "M",
+  "unit": "make-b1",
+  "wave": 3,
+  "findings": 3,
+  "bytes": 13484
+ },
+ {
+  "id": "make/characters-cameras",
+  "title": "Characters and cameras",
+  "kind": "T",
+  "size": "L",
+  "unit": "make-b1",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 14521
+ },
+ {
+  "id": "make/animation",
+  "title": "Animation for game makers",
+  "kind": "T",
+  "size": "L",
+  "unit": "make-b1",
+  "wave": 3,
+  "findings": 1,
+  "bytes": 20697
+ },
+ {
+  "id": "make/menus",
+  "title": "Menus: buttons, navigation, pause and settings screens",
+  "kind": "T",
+  "size": "L",
+  "unit": "make-b1",
+  "wave": 3,
+  "findings": 3,
+  "bytes": 23671
+ },
+ {
+  "id": "make/levels-saves",
+  "title": "Levels, loading screens and save files",
+  "kind": "H",
+  "size": "L",
+  "unit": "make-b1",
+  "wave": 3,
+  "findings": 6,
+  "bytes": 21182
+ },
+ {
+  "id": "make/lamps",
+  "title": "Lamps: point, spot and area lights and their shadows",
+  "kind": "T",
+  "size": "L",
+  "unit": "make-b2",
+  "wave": "B",
+  "findings": 3,
+  "bytes": 13002
+ },
+ {
+  "id": "make/reflections",
+  "title": "Sky light, ambient occlusion and reflections in your game",
+  "kind": "H",
+  "size": "L",
+  "unit": "make-b2",
+  "wave": 3,
+  "findings": 6,
+  "bytes": 18950
+ },
+ {
+  "id": "make/gi",
+  "title": "Trying global illumination",
+  "kind": "H",
+  "size": "M",
+  "unit": "make-b2",
+  "wave": "B",
+  "findings": 1,
+  "bytes": 9814
+ },
+ {
+  "id": "make/look",
+  "title": "The camera's image",
+  "kind": "T",
+  "size": "L",
+  "unit": "make-b2",
+  "wave": 3,
+  "findings": 1,
+  "bytes": 13097
+ },
+ {
+  "id": "make/quality",
+  "title": "Graphics quality and options for players",
+  "kind": "H",
+  "size": "M",
+  "unit": "make-b2",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 9917
+ },
+ {
+  "id": "make/large-worlds",
+  "title": "Large worlds",
+  "kind": "T",
+  "size": "L",
+  "unit": "make-b2",
+  "wave": 3,
+  "findings": 3,
+  "bytes": 19518
+ },
+ {
+  "id": "make/performance",
+  "title": "Making your game run fast",
+  "kind": "T",
+  "size": "M",
+  "unit": "make-b2",
+  "wave": 3,
+  "findings": 1,
+  "bytes": 12248
+ },
+ {
+  "id": "make/automated-playtests",
+  "title": "Automated play-tests",
+  "kind": "H",
+  "size": "L",
+  "unit": "make-b2",
+  "wave": 3,
+  "findings": 6,
+  "bytes": 20625
+ },
+ {
+  "id": "make/commands",
+  "title": "Driving the editor from outside: the CLI and command scripts",
+  "kind": "H",
+  "size": "M",
+  "unit": "make-b2",
+  "wave": 3,
+  "findings": 4,
+  "bytes": 14882
+ },
+ {
+  "id": "make/with-an-agent",
+  "title": "Making a game with an AI agent",
+  "kind": "T",
+  "size": "L",
+  "unit": "make-b2",
+  "wave": 3,
+  "findings": 4,
+  "bytes": 16072
+ },
+ {
+  "id": "make/samples",
+  "title": "Studying the samples",
+  "kind": "H",
+  "size": "M",
+  "unit": "make-b2",
+  "wave": 3,
+  "findings": 1,
+  "bytes": 8924
+ },
+ {
+  "id": "make/designing-a-game",
+  "title": "Planning a small game: the core loop, scope, prototype and playtest",
+  "kind": "C",
+  "size": "M",
+  "unit": "make-c",
+  "wave": 5,
+  "findings": 5,
+  "bytes": 14053
+ },
+ {
+  "id": "make/project-tetris",
+  "title": "Project: Tetris",
+  "kind": "T",
+  "size": "XL",
+  "unit": "make-c",
+  "wave": 5,
+  "findings": 7,
+  "bytes": 27765
+ },
+ {
+  "id": "make/project-platformer",
+  "title": "Project: a third-person platformer",
+  "kind": "T",
+  "size": "XL",
+  "unit": "make-c",
+  "wave": 5,
+  "findings": 7,
+  "bytes": 31976
+ },
+ {
+  "id": "basics/computer",
+  "title": "How a computer runs a program: CPU, memory, caches and processes",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 4,
+  "bytes": 13375
+ },
+ {
+  "id": "basics/tools",
+  "title": "The tools: the terminal, files and a code editor",
+  "kind": "P",
+  "size": "M",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 2,
+  "bytes": 11854
+ },
+ {
+  "id": "basics/programming-1",
+  "title": "Programming from zero I: values, variables, expressions and decisions",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 6,
+  "bytes": 18443
+ },
+ {
+  "id": "basics/programming-2",
+  "title": "Programming from zero II: loops, functions, lists and structs",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 4,
+  "bytes": 14045
+ },
+ {
+  "id": "basics/programming-3",
+  "title": "Programming from zero III: classes, references, files of code and reading errors",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 5,
+  "bytes": 16541
+ },
+ {
+  "id": "basics/debugging",
+  "title": "Finding bugs: a method, the log and the debugger",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 5,
+  "bytes": 15611
+ },
+ {
+  "id": "basics/git",
+  "title": "Version control with git",
+  "kind": "P",
+  "size": "M",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 2,
+  "bytes": 8263
+ },
+ {
+  "id": "basics/numbers",
+  "title": "Numbers in a computer: binary, integers, floating point and precision",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 7,
+  "bytes": 19297
+ },
+ {
+  "id": "basics/data-structures",
+  "title": "Data structures I: arrays, lists, hash maps and their cost",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 1,
+  "bytes": 9115
+ },
+ {
+  "id": "basics/trees-graphs",
+  "title": "Data structures II: trees, heaps, graphs and sorting",
+  "kind": "P",
+  "size": "M",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 1,
+  "bytes": 7561
+ },
+ {
+  "id": "basics/cpp-memory",
+  "title": "C++ memory: pointers, references, lifetimes, RAII and smart pointers",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 1,
+  "bytes": 10359
+ },
+ {
+  "id": "basics/cpp-classes",
+  "title": "C++ classes in depth: inheritance, virtual calls and interfaces",
+  "kind": "P",
+  "size": "M",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 1,
+  "bytes": 7094
+ },
+ {
+  "id": "basics/cpp-generic",
+  "title": "Generic C++: templates, lambdas and the standard containers",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 1,
+  "bytes": 9474
+ },
+ {
+  "id": "basics/cpp-modern",
+  "title": "Modern C++ as Strata uses it: move semantics, constexpr, optional, variant, span and concepts",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 2,
+  "bytes": 11242
+ },
+ {
+  "id": "basics/build",
+  "title": "How a C++ program is built: from two files by hand to CMake",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 5,
+  "bytes": 14369
+ },
+ {
+  "id": "basics/bytes",
+  "title": "Bytes in files and memory: layouts, byte order and text encodings",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 3,
+  "bytes": 9936
+ },
+ {
+  "id": "basics/data-formats",
+  "title": "JSON, Base64, hashes and UUIDs",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 3,
+  "bytes": 12685
+ },
+ {
+  "id": "basics/math-vectors",
+  "title": "Vectors: length, direction, dot and cross products",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-b",
+  "wave": 1,
+  "findings": 3,
+  "bytes": 12397
+ },
+ {
+  "id": "basics/math-matrices",
+  "title": "Matrices and transforms: TRS, hierarchies, spaces and conventions",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-b",
+  "wave": 1,
+  "findings": 6,
+  "bytes": 15233
+ },
+ {
+  "id": "basics/math-bases",
+  "title": "Bases, determinants and normals: orthonormal frames, tangent space, mirrors and the inverse transpose",
+  "kind": "P",
+  "size": "M",
+  "unit": "basics-b",
+  "wave": 1,
+  "findings": 2,
+  "bytes": 13424
+ },
+ {
+  "id": "basics/math-projection",
+  "title": "Cameras and projection: perspective, homogeneous coordinates and depth",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-b",
+  "wave": 1,
+  "findings": 3,
+  "bytes": 13968
+ },
+ {
+  "id": "basics/math-rotations",
+  "title": "Rotations and quaternions",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-b",
+  "wave": 1,
+  "findings": 3,
+  "bytes": 13838
+ },
+ {
+  "id": "basics/math-geometry",
+  "title": "Geometry for engines: rays, planes, boxes and intersection tests",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-b",
+  "wave": 1,
+  "findings": 1,
+  "bytes": 9951
+ },
+ {
+  "id": "basics/math-change",
+  "title": "Change over time: rates, accumulation, Euler steps and Newton's laws",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-b",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 8320
+ },
+ {
+  "id": "basics/math-interpolation",
+  "title": "Blending and smoothing: lerp, easing, curves and exponential smoothing",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-b",
+  "wave": 1,
+  "findings": 2,
+  "bytes": 11385
+ },
+ {
+  "id": "basics/color",
+  "title": "Color and light for programmers: linear, sRGB and HDR",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-b",
+  "wave": 1,
+  "findings": 2,
+  "bytes": 13858
+ },
+ {
+  "id": "basics/signals",
+  "title": "Sampling, aliasing and filtering",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-b",
+  "wave": 1,
+  "findings": 1,
+  "bytes": 10173
+ },
+ {
+  "id": "basics/math-probability",
+  "title": "Chance: probability, noise, integrals and Monte Carlo",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-b",
+  "wave": 1,
+  "findings": 4,
+  "bytes": 16023
+ },
+ {
+  "id": "basics/math-sphere",
+  "title": "Directions on a sphere: solid angles, spherical harmonics and octahedral maps",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-b",
+  "wave": 1,
+  "findings": 3,
+  "bytes": 12089
+ },
+ {
+  "id": "basics/threads",
+  "title": "Threads, atomics and races",
+  "kind": "P",
+  "size": "L",
+  "unit": "basics-a",
+  "wave": 1,
+  "findings": 3,
+  "bytes": 12711
+ },
+ {
+  "id": "core/map",
+  "title": "How Strata is put together: programs, libraries, modules and layers",
+  "kind": "C",
+  "size": "M",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 7199
+ },
+ {
+  "id": "core/first-change",
+  "title": "Your first engine change: build from source, change one thing, test it",
+  "kind": "T",
+  "size": "L",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 8943
+ },
+ {
+  "id": "core/conventions",
+  "title": "Ownership, errors and logging in Strata",
+  "kind": "I",
+  "size": "L",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 9732
+ },
+ {
+  "id": "core/reading-code",
+  "title": "Finding your way in a large codebase",
+  "kind": "H",
+  "size": "M",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 6013
+ },
+ {
+  "id": "core/first-frame",
+  "title": "From main to the first frame",
+  "kind": "I",
+  "size": "L",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 10702
+ },
+ {
+  "id": "core/frame-loop",
+  "title": "The frame loop",
+  "kind": "I",
+  "size": "L",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 9537
+ },
+ {
+  "id": "core/time",
+  "title": "Time: delta time, the fixed step and time scale",
+  "kind": "C",
+  "size": "L",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 10732
+ },
+ {
+  "id": "core/windows-events",
+  "title": "Windows, events and layers",
+  "kind": "I",
+  "size": "L",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 10778
+ },
+ {
+  "id": "core/engine-modules",
+  "title": "Engine modules",
+  "kind": "I",
+  "size": "L",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 9996
+ },
+ {
+  "id": "core/layers-registries",
+  "title": "Layers, registries and the composition root",
+  "kind": "I",
+  "size": "L",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 16958
+ },
+ {
+  "id": "core/jobs",
+  "title": "Threads and the job system",
+  "kind": "I",
+  "size": "L",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 12965
+ },
+ {
+  "id": "core/platform",
+  "title": "Talking to the operating system",
+  "kind": "I",
+  "size": "L",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 11769
+ },
+ {
+  "id": "core/files",
+  "title": "Files you can trust",
+  "kind": "I",
+  "size": "L",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 9860
+ },
+ {
+  "id": "core/profiling",
+  "title": "Measuring the frame: the frame profiler, Tracy and the method",
+  "kind": "I",
+  "size": "L",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 10932
+ },
+ {
+  "id": "core/debugging",
+  "title": "Debugging the engine: debuggers, asserts, the log and crash reports",
+  "kind": "I",
+  "size": "L",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 9792
+ },
+ {
+  "id": "core/math",
+  "title": "Strata's math toolkit",
+  "kind": "I",
+  "size": "M",
+  "unit": "core",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 8729
+ },
+ {
+  "id": "world/what-a-world-is",
+  "title": "What a game world is made of",
+  "kind": "C",
+  "size": "M",
+  "unit": "world",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 5557
+ },
+ {
+  "id": "world/ecs",
+  "title": "Entities and components, with EnTT inside",
+  "kind": "I",
+  "size": "L",
+  "unit": "world",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 10248
+ },
+ {
+  "id": "world/scene-graph",
+  "title": "The scene graph: hierarchy, transforms and the transform contract",
+  "kind": "I",
+  "size": "XL",
+  "unit": "world",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 15317
+ },
+ {
+  "id": "world/systems",
+  "title": "Systems, phases and fixed steps",
+  "kind": "I",
+  "size": "L",
+  "unit": "world",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 14642
+ },
+ {
+  "id": "world/interpolation",
+  "title": "Drawing between fixed steps",
+  "kind": "I",
+  "size": "L",
+  "unit": "world",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 10500
+ },
+ {
+  "id": "world/reflection",
+  "title": "Reflection: one registration, many uses",
+  "kind": "I",
+  "size": "XL",
+  "unit": "world",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 13770
+ },
+ {
+  "id": "world/serialization",
+  "title": "Scene documents: text, streams and the cooked form",
+  "kind": "I",
+  "size": "L",
+  "unit": "world",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 10874
+ },
+ {
+  "id": "world/prefabs",
+  "title": "Prefabs: the data model",
+  "kind": "I",
+  "size": "L",
+  "unit": "world",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 11346
+ },
+ {
+  "id": "world/sub-scenes",
+  "title": "Loading scenes: whole, additive and in slices",
+  "kind": "I",
+  "size": "L",
+  "unit": "world",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 10971
+ },
+ {
+  "id": "world/projects-settings",
+  "title": "Projects and settings",
+  "kind": "I",
+  "size": "L",
+  "unit": "world",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 11355
+ },
+ {
+  "id": "world/tutorial-component",
+  "title": "Tutorial: adding a component and a system",
+  "kind": "T",
+  "size": "L",
+  "unit": "world",
+  "wave": 1,
+  "findings": 0,
+  "bytes": 8687
+ },
+ {
+  "id": "gpu/how-a-gpu-frame-works",
+  "title": "How a GPU works and draws a frame",
+  "kind": "C",
+  "size": "L",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 8597
+ },
+ {
+  "id": "gpu/vulkan-nvrhi",
+  "title": "Vulkan, NVRHI, the graphics device and the Renderer's services",
+  "kind": "I",
+  "size": "XL",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 15724
+ },
+ {
+  "id": "gpu/shaders",
+  "title": "Shaders: Slang, the build and the dialect",
+  "kind": "I",
+  "size": "L",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 10029
+ },
+ {
+  "id": "gpu/compute",
+  "title": "Compute shaders: dispatches, thread groups, shared memory and atomics",
+  "kind": "C",
+  "size": "M",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 7167
+ },
+ {
+  "id": "gpu/coordinates",
+  "title": "Coordinate systems and the camera: clip space, reversed depth, UVs",
+  "kind": "C",
+  "size": "M",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 9758
+ },
+ {
+  "id": "gpu/first-triangle",
+  "title": "Tutorial: your first triangle in Strata",
+  "kind": "T",
+  "size": "L",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 7063
+ },
+ {
+  "id": "gpu/debugging",
+  "title": "Debugging the GPU: validation, frame captures, the error count and debug views",
+  "kind": "H",
+  "size": "M",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 7313
+ },
+ {
+  "id": "gpu/resources-lifetimes",
+  "title": "Resources and lifetimes",
+  "kind": "I",
+  "size": "L",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 6901
+ },
+ {
+  "id": "gpu/upload-queue",
+  "title": "Staging and the upload queue",
+  "kind": "I",
+  "size": "L",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 8879
+ },
+ {
+  "id": "gpu/binding",
+  "title": "Pipelines and binding: layouts, registers and bindless",
+  "kind": "I",
+  "size": "L",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 12539
+ },
+ {
+  "id": "gpu/geometry-pool",
+  "title": "Meshes on the GPU and the geometry pool",
+  "kind": "I",
+  "size": "M",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 9625
+ },
+ {
+  "id": "gpu/frame-tour",
+  "title": "A frame of the scene renderer, pass by pass",
+  "kind": "I",
+  "size": "XL",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 13016
+ },
+ {
+  "id": "gpu/readback-timing",
+  "title": "Readback and GPU timing",
+  "kind": "I",
+  "size": "L",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 8047
+ },
+ {
+  "id": "gpu/debug-drawing",
+  "title": "Overlays, debug drawing and gizmos",
+  "kind": "I",
+  "size": "L",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 8421
+ },
+ {
+  "id": "gpu/text",
+  "title": "Text: fonts, shaping and signed distance fields",
+  "kind": "I",
+  "size": "L",
+  "unit": "gpu",
+  "wave": 2,
+  "findings": 0,
+  "bytes": 8079
+ },
+ {
+  "id": "assets/what-is-an-asset",
+  "title": "What an asset is",
+  "kind": "C",
+  "size": "M",
+  "unit": "assets",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 7718
+ },
+ {
+  "id": "assets/handles-meta",
+  "title": "Handles, `.meta` files and sub-assets",
+  "kind": "I",
+  "size": "L",
+  "unit": "assets",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 7788
+ },
+ {
+  "id": "assets/importing",
+  "title": "Importing: from source files to engine data",
+  "kind": "I",
+  "size": "XL",
+  "unit": "assets",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 12393
+ },
+ {
+  "id": "assets/textures",
+  "title": "Textures for the GPU: mips, color spaces, block compression",
+  "kind": "C",
+  "size": "M",
+  "unit": "assets",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 6520
+ },
+ {
+  "id": "assets/texture-cooking",
+  "title": "Cooking textures: Strata's importer, mips and BC7 encoder",
+  "kind": "I",
+  "size": "L",
+  "unit": "assets",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 10199
+ },
+ {
+  "id": "assets/models-gltf",
+  "title": "Models and the glTF importer",
+  "kind": "I",
+  "size": "L",
+  "unit": "assets",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 10172
+ },
+ {
+  "id": "assets/loading",
+  "title": "Loading without stalling",
+  "kind": "I",
+  "size": "XL",
+  "unit": "assets",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 10537
+ },
+ {
+  "id": "assets/residency",
+  "title": "Residency, eviction and pins",
+  "kind": "I",
+  "size": "XL",
+  "unit": "assets",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 9698
+ },
+ {
+  "id": "assets/references",
+  "title": "References, closures, prefetch and loading screens",
+  "kind": "I",
+  "size": "L",
+  "unit": "assets",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 9012
+ },
+ {
+  "id": "assets/uploads",
+  "title": "Budgeted uploads",
+  "kind": "I",
+  "size": "L",
+  "unit": "assets",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 9269
+ },
+ {
+  "id": "assets/packs-export",
+  "title": "Asset packs, export and patches",
+  "kind": "I",
+  "size": "L",
+  "unit": "assets",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 9703
+ },
+ {
+  "id": "assets/robustness",
+  "title": "Corruption, crash safety and cancellation",
+  "kind": "C",
+  "size": "L",
+  "unit": "assets",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 5881
+ },
+ {
+  "id": "assets/extending",
+  "title": "Tutorial: adding an asset type",
+  "kind": "T",
+  "size": "L",
+  "unit": "assets",
+  "wave": 3,
+  "findings": 0,
+  "bytes": 5487
+ },
+ {
+  "id": "draw/entities-to-draws",
+  "title": "From entities to draw calls",
+  "kind": "C",
+  "size": "M",
+  "unit": "draw",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 6062
+ },
+ {
+  "id": "draw/render-scene",
+  "title": "The render scene: persistent proxies",
+  "kind": "I",
+  "size": "L",
+  "unit": "draw",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 11677
+ },
+ {
+  "id": "draw/bounds-culling",
+  "title": "Bounding volumes, frustums and the spatial index",
+  "kind": "I",
+  "size": "L",
+  "unit": "draw",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 9747
+ },
+ {
+  "id": "draw/asset-requests",
+  "title": "Asking for assets at draw time",
+  "kind": "I",
+  "size": "M",
+  "unit": "draw",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 7904
+ },
+ {
+  "id": "draw/batching",
+  "title": "Batching and instancing",
+  "kind": "I",
+  "size": "L",
+  "unit": "draw",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 11884
+ },
+ {
+  "id": "draw/lod",
+  "title": "Levels of detail",
+  "kind": "I",
+  "size": "M",
+  "unit": "draw",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8067
+ },
+ {
+  "id": "draw/mirrors-camera-relative",
+  "title": "Mirrors, normals and camera-relative positions",
+  "kind": "I",
+  "size": "M",
+  "unit": "draw",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 10913
+ },
+ {
+  "id": "draw/render-scene-gpu",
+  "title": "The render scene's GPU copy",
+  "kind": "I",
+  "size": "M",
+  "unit": "draw",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 9084
+ },
+ {
+  "id": "draw/gpu-driven",
+  "title": "GPU-driven culling and indirect drawing",
+  "kind": "I",
+  "size": "XL",
+  "unit": "draw",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 16909
+ },
+ {
+  "id": "draw/occlusion",
+  "title": "Occlusion culling",
+  "kind": "I",
+  "size": "L",
+  "unit": "draw",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8072
+ },
+ {
+  "id": "draw/mip-streaming",
+  "title": "Mip streaming",
+  "kind": "I",
+  "size": "L",
+  "unit": "draw",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 10480
+ },
+ {
+  "id": "draw/skinned",
+  "title": "Skinned meshes in the renderer",
+  "kind": "I",
+  "size": "M",
+  "unit": "draw",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 10042
+ },
+ {
+  "id": "draw/motion-vectors",
+  "title": "Motion vectors and motion history",
+  "kind": "I",
+  "size": "M",
+  "unit": "draw",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 7832
+ },
+ {
+  "id": "light/units-exposure",
+  "title": "Light by the numbers: radiometric and photometric units",
+  "kind": "C",
+  "size": "L",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8698
+ },
+ {
+  "id": "light/materials",
+  "title": "Strata's material model",
+  "kind": "C",
+  "size": "L",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 9479
+ },
+ {
+  "id": "light/reflectance",
+  "title": "How surfaces reflect light: the reflection equation and microfacets",
+  "kind": "C",
+  "size": "L",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 6936
+ },
+ {
+  "id": "light/material-data",
+  "title": "From a material file to the shader: the material record and its textures",
+  "kind": "I",
+  "size": "L",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8197
+ },
+ {
+  "id": "light/brdf",
+  "title": "The forward shader and the BRDF in code",
+  "kind": "I",
+  "size": "L",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 11550
+ },
+ {
+  "id": "light/energy",
+  "title": "Keeping the energy: directional albedo, the BRDF table and the white furnace",
+  "kind": "I",
+  "size": "M",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 7891
+ },
+ {
+  "id": "light/measuring-light",
+  "title": "Measuring light: the debug views and their statistics",
+  "kind": "I",
+  "size": "M",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8047
+ },
+ {
+  "id": "light/lights",
+  "title": "Lights: the sun, points and spots",
+  "kind": "I",
+  "size": "L",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 10095
+ },
+ {
+  "id": "light/many-lights",
+  "title": "Many lights: culling and clustered forward shading",
+  "kind": "I",
+  "size": "L",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 7983
+ },
+ {
+  "id": "light/area-lights",
+  "title": "Lights with size: sized highlights and area lights",
+  "kind": "I",
+  "size": "L",
+  "unit": "light",
+  "wave": "B",
+  "findings": 0,
+  "bytes": 7451
+ },
+ {
+  "id": "light/shadow-basics",
+  "title": "Shadow mapping from first principles",
+  "kind": "C",
+  "size": "L",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 6894
+ },
+ {
+  "id": "light/sun-shadows-1",
+  "title": "Sun shadows I: stable cascades",
+  "kind": "I",
+  "size": "XL",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 14340
+ },
+ {
+  "id": "light/sun-shadows-2",
+  "title": "Sun shadows II: the soft shadow of a real sun",
+  "kind": "I",
+  "size": "XL",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 9457
+ },
+ {
+  "id": "light/local-shadows",
+  "title": "Shadows of point and spot lights",
+  "kind": "I",
+  "size": "L",
+  "unit": "light",
+  "wave": "B",
+  "findings": 0,
+  "bytes": 9473
+ },
+ {
+  "id": "light/sky",
+  "title": "The sky as a light: sources, sun extraction and presets",
+  "kind": "I",
+  "size": "M",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8464
+ },
+ {
+  "id": "light/atmosphere",
+  "title": "Earth's atmosphere and aerial perspective",
+  "kind": "I",
+  "size": "L",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 10260
+ },
+ {
+  "id": "light/fog",
+  "title": "Height fog",
+  "kind": "I",
+  "size": "M",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 5968
+ },
+ {
+  "id": "light/clearcoat-transmission",
+  "title": "Transparency, clear coat and glass",
+  "kind": "I",
+  "size": "L",
+  "unit": "light",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8179
+ },
+ {
+  "id": "image/why-post",
+  "title": "Why images need post-processing, and Strata's post chain",
+  "kind": "C",
+  "size": "M",
+  "unit": "image",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 11975
+ },
+ {
+  "id": "image/exposure",
+  "title": "Exposure: camera, eye and meter",
+  "kind": "I",
+  "size": "L",
+  "unit": "image",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 11299
+ },
+ {
+  "id": "image/pre-exposure",
+  "title": "Pre-exposure",
+  "kind": "I",
+  "size": "M",
+  "unit": "image",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8539
+ },
+ {
+  "id": "image/tone-mapping",
+  "title": "Tone mapping and the Filmic curve",
+  "kind": "I",
+  "size": "L",
+  "unit": "image",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 9722
+ },
+ {
+  "id": "image/grading",
+  "title": "White balance, grading and lookup tables",
+  "kind": "I",
+  "size": "L",
+  "unit": "image",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 10198
+ },
+ {
+  "id": "image/encoding",
+  "title": "Encoding, dithering and grain",
+  "kind": "I",
+  "size": "L",
+  "unit": "image",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 10155
+ },
+ {
+  "id": "image/lens-effects",
+  "title": "Lens effects: bloom, vignette, flares and fringes",
+  "kind": "I",
+  "size": "L",
+  "unit": "image",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 9811
+ },
+ {
+  "id": "image/spatial-aa",
+  "title": "Anti-aliasing in one frame: FXAA and morphological AA",
+  "kind": "I",
+  "size": "L",
+  "unit": "image",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8573
+ },
+ {
+  "id": "image/taa",
+  "title": "Temporal anti-aliasing",
+  "kind": "I",
+  "size": "XL",
+  "unit": "image",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 14625
+ },
+ {
+  "id": "image/motion-blur",
+  "title": "Motion blur",
+  "kind": "I",
+  "size": "M",
+  "unit": "image",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8123
+ },
+ {
+  "id": "image/depth-of-field",
+  "title": "Depth of field",
+  "kind": "I",
+  "size": "L",
+  "unit": "image",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8469
+ },
+ {
+  "id": "image/quality-settings",
+  "title": "Quality settings and players' graphics options",
+  "kind": "I",
+  "size": "L",
+  "unit": "image",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 17264
+ },
+ {
+  "id": "image/tutorial-post-effect",
+  "title": "Tutorial: adding a post effect",
+  "kind": "T",
+  "size": "L",
+  "unit": "image",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8421
+ },
+ {
+  "id": "indirect/problem",
+  "title": "The indirect-light problem",
+  "kind": "C",
+  "size": "M",
+  "unit": "indirect",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 10259
+ },
+ {
+  "id": "indirect/ibl",
+  "title": "Image-based lighting and the split sum",
+  "kind": "I",
+  "size": "L",
+  "unit": "indirect",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 17245
+ },
+ {
+  "id": "indirect/seam",
+  "title": "Where indirect light meets the surface: inputs, gathers and fallbacks",
+  "kind": "I",
+  "size": "M",
+  "unit": "indirect",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 10539
+ },
+ {
+  "id": "indirect/ao",
+  "title": "Ambient occlusion without history",
+  "kind": "I",
+  "size": "L",
+  "unit": "indirect",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 13933
+ },
+ {
+  "id": "indirect/probes",
+  "title": "Reflection probes",
+  "kind": "I",
+  "size": "XL",
+  "unit": "indirect",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 18619
+ },
+ {
+  "id": "indirect/ssr",
+  "title": "Screen-space reflections",
+  "kind": "I",
+  "size": "XL",
+  "unit": "indirect",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 16598
+ },
+ {
+  "id": "indirect/gi-voxels",
+  "title": "Global illumination I: a voxel copy of the world",
+  "kind": "I",
+  "size": "L",
+  "unit": "indirect",
+  "wave": "B",
+  "findings": 0,
+  "bytes": 13723
+ },
+ {
+  "id": "indirect/gi-cascades",
+  "title": "Global illumination II: radiance cascades and the irradiance field",
+  "kind": "I",
+  "size": "XL",
+  "unit": "indirect",
+  "wave": "B",
+  "findings": 0,
+  "bytes": 18982
+ },
+ {
+  "id": "indirect/gi-limits",
+  "title": "Global illumination III: moving objects, limits and what comes next",
+  "kind": "C",
+  "size": "M",
+  "unit": "indirect",
+  "wave": "B",
+  "findings": 0,
+  "bytes": 11874
+ },
+ {
+  "id": "physics/why",
+  "title": "Why games need physics",
+  "kind": "C",
+  "size": "S",
+  "unit": "physics",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 5824
+ },
+ {
+  "id": "physics/bodies-colliders",
+  "title": "Rigid bodies and colliders",
+  "kind": "C",
+  "size": "M",
+  "unit": "physics",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 12812
+ },
+ {
+  "id": "physics/collision-detection",
+  "title": "Collision detection: shapes, broad phase and narrow phase",
+  "kind": "C",
+  "size": "L",
+  "unit": "physics",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 6393
+ },
+ {
+  "id": "physics/dynamics",
+  "title": "Rigid body dynamics: integration, contacts, solvers, sleep and continuous collision",
+  "kind": "C",
+  "size": "L",
+  "unit": "physics",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 9270
+ },
+ {
+  "id": "physics/building-bodies",
+  "title": "From entities to bodies: records, shapes, mesh colliders",
+  "kind": "I",
+  "size": "L",
+  "unit": "physics",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 13036
+ },
+ {
+  "id": "physics/world-step",
+  "title": "Inside `PhysicsWorld`: one step",
+  "kind": "I",
+  "size": "L",
+  "unit": "physics",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 11447
+ },
+ {
+  "id": "physics/collision-layers",
+  "title": "Collision layers",
+  "kind": "I",
+  "size": "M",
+  "unit": "physics",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 7983
+ },
+ {
+  "id": "physics/contacts-triggers",
+  "title": "Contacts and triggers",
+  "kind": "I",
+  "size": "L",
+  "unit": "physics",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8572
+ },
+ {
+  "id": "physics/queries",
+  "title": "Physics queries",
+  "kind": "I",
+  "size": "M",
+  "unit": "physics",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 6544
+ },
+ {
+  "id": "physics/character-controllers",
+  "title": "Character controllers",
+  "kind": "I",
+  "size": "L",
+  "unit": "physics",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 10275
+ },
+ {
+  "id": "physics/scale-streaming",
+  "title": "Physics at scale and in streaming worlds",
+  "kind": "I",
+  "size": "M",
+  "unit": "physics",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8992
+ },
+ {
+  "id": "physics/tuning",
+  "title": "Tuning and measuring",
+  "kind": "H",
+  "size": "M",
+  "unit": "physics",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 7747
+ },
+ {
+  "id": "animation/problem",
+  "title": "The animation problem",
+  "kind": "C",
+  "size": "S",
+  "unit": "animation",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 6228
+ },
+ {
+  "id": "animation/skeletons",
+  "title": "Skeletons and forward kinematics",
+  "kind": "I",
+  "size": "M",
+  "unit": "animation",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 8717
+ },
+ {
+  "id": "animation/clips",
+  "title": "Clips: sampling motion",
+  "kind": "I",
+  "size": "L",
+  "unit": "animation",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 8143
+ },
+ {
+  "id": "animation/skinning",
+  "title": "Skinning",
+  "kind": "C",
+  "size": "L",
+  "unit": "animation",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 9283
+ },
+ {
+  "id": "animation/importing",
+  "title": "Importing animated models",
+  "kind": "I",
+  "size": "M",
+  "unit": "animation",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 9117
+ },
+ {
+  "id": "animation/state-machines",
+  "title": "State machines",
+  "kind": "I",
+  "size": "L",
+  "unit": "animation",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 9519
+ },
+ {
+  "id": "animation/blending",
+  "title": "Blending and cross-fades",
+  "kind": "I",
+  "size": "M",
+  "unit": "animation",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 6254
+ },
+ {
+  "id": "animation/time-events",
+  "title": "Time, loops and events",
+  "kind": "I",
+  "size": "M",
+  "unit": "animation",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 6498
+ },
+ {
+  "id": "animation/root-motion",
+  "title": "Root motion",
+  "kind": "I",
+  "size": "M",
+  "unit": "animation",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 6850
+ },
+ {
+  "id": "animation/system",
+  "title": "The Animation system",
+  "kind": "I",
+  "size": "L",
+  "unit": "animation",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 14573
+ },
+ {
+  "id": "animation/culling",
+  "title": "Animating only what is seen",
+  "kind": "I",
+  "size": "M",
+  "unit": "animation",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 9610
+ },
+ {
+  "id": "animation/editor",
+  "title": "Edit-mode poses and previews",
+  "kind": "I",
+  "size": "M",
+  "unit": "animation",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 9493
+ },
+ {
+  "id": "animation/limits",
+  "title": "What Strata's animation does not do yet",
+  "kind": "C",
+  "size": "S",
+  "unit": "animation",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 7491
+ },
+ {
+  "id": "audio/sound-in-a-computer",
+  "title": "Sound inside a computer",
+  "kind": "C",
+  "size": "M",
+  "unit": "audio-input",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 6769
+ },
+ {
+  "id": "audio/engine",
+  "title": "The audio engine",
+  "kind": "I",
+  "size": "L",
+  "unit": "audio-input",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 13330
+ },
+ {
+  "id": "audio/clips-voices-sources",
+  "title": "Clips, voices and sources",
+  "kind": "I",
+  "size": "L",
+  "unit": "audio-input",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 9394
+ },
+ {
+  "id": "audio/spatial",
+  "title": "Sound in space",
+  "kind": "I",
+  "size": "M",
+  "unit": "audio-input",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 9014
+ },
+ {
+  "id": "audio/scene-system",
+  "title": "The Audio scene system",
+  "kind": "I",
+  "size": "L",
+  "unit": "audio-input",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 11675
+ },
+ {
+  "id": "audio/testing",
+  "title": "Testing sound without speakers",
+  "kind": "I",
+  "size": "S",
+  "unit": "audio-input",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 5328
+ },
+ {
+  "id": "input/how-input-works",
+  "title": "How input reaches a game: events, polling, edges and intents",
+  "kind": "C",
+  "size": "M",
+  "unit": "audio-input",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 7332
+ },
+ {
+  "id": "input/devices-state",
+  "title": "Input devices and per-frame state",
+  "kind": "I",
+  "size": "L",
+  "unit": "audio-input",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 10493
+ },
+ {
+  "id": "input/mouse-cursor",
+  "title": "The mouse, the cursor and the game view",
+  "kind": "I",
+  "size": "M",
+  "unit": "audio-input",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8709
+ },
+ {
+  "id": "input/gamepads",
+  "title": "Gamepads",
+  "kind": "I",
+  "size": "M",
+  "unit": "audio-input",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8226
+ },
+ {
+  "id": "input/actions",
+  "title": "Input actions",
+  "kind": "I",
+  "size": "XL",
+  "unit": "audio-input",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 14551
+ },
+ {
+  "id": "input/rebinding",
+  "title": "Players' bindings inside the engine: the bindings file and capture",
+  "kind": "I",
+  "size": "M",
+  "unit": "audio-input",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 8386
+ },
+ {
+  "id": "input/simulated",
+  "title": "Simulated input",
+  "kind": "I",
+  "size": "M",
+  "unit": "audio-input",
+  "wave": 4,
+  "findings": 0,
+  "bytes": 6995
+ },
+ {
+  "id": "scripting/why-scripts",
+  "title": "Why game code lives outside the engine",
+  "kind": "C",
+  "size": "M",
+  "unit": "scripting",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 6898
+ },
+ {
+  "id": "scripting/shared-libraries",
+  "title": "Shared libraries and binary interfaces",
+  "kind": "C",
+  "size": "L",
+  "unit": "scripting",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 8202
+ },
+ {
+  "id": "scripting/abi-sdk",
+  "title": "Inside the ABI and the SDK",
+  "kind": "I",
+  "size": "L",
+  "unit": "scripting",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 14237
+ },
+ {
+  "id": "scripting/loading",
+  "title": "Loading, calling and validating modules",
+  "kind": "I",
+  "size": "L",
+  "unit": "scripting",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 10629
+ },
+ {
+  "id": "scripting/crash-containment",
+  "title": "Crash containment",
+  "kind": "I",
+  "size": "L",
+  "unit": "scripting",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 11530
+ },
+ {
+  "id": "scripting/symbolization",
+  "title": "From an address to a file and line",
+  "kind": "I",
+  "size": "M",
+  "unit": "scripting",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 7709
+ },
+ {
+  "id": "scripting/script-system",
+  "title": "The script system",
+  "kind": "I",
+  "size": "L",
+  "unit": "scripting",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 12523
+ },
+ {
+  "id": "scripting/hot-reload",
+  "title": "Hot reload",
+  "kind": "I",
+  "size": "L",
+  "unit": "scripting",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 7164
+ },
+ {
+  "id": "scripting/host-api",
+  "title": "The host API: engine services behind a C table",
+  "kind": "I",
+  "size": "L",
+  "unit": "scripting",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 12072
+ },
+ {
+  "id": "scripting/tutorial-host-function",
+  "title": "Tutorial: adding a host function and a callback",
+  "kind": "T",
+  "size": "L",
+  "unit": "scripting",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 9561
+ },
+ {
+  "id": "ui/what-game-ui-does",
+  "title": "What a game UI must do",
+  "kind": "C",
+  "size": "M",
+  "unit": "ui",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 10526
+ },
+ {
+  "id": "ui/layout",
+  "title": "Rects, anchors and layout",
+  "kind": "I",
+  "size": "L",
+  "unit": "ui",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 13274
+ },
+ {
+  "id": "ui/contract",
+  "title": "The UI contract",
+  "kind": "I",
+  "size": "M",
+  "unit": "ui",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 10498
+ },
+ {
+  "id": "ui/input",
+  "title": "UI input",
+  "kind": "I",
+  "size": "XL",
+  "unit": "ui",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 20232
+ },
+ {
+  "id": "ui/text",
+  "title": "Text and text fields",
+  "kind": "I",
+  "size": "M",
+  "unit": "ui",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 12275
+ },
+ {
+  "id": "ui/drawing",
+  "title": "Drawing the UI",
+  "kind": "I",
+  "size": "XL",
+  "unit": "ui",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 18941
+ },
+ {
+  "id": "worlds/why-streaming",
+  "title": "Why levels must stream",
+  "kind": "C",
+  "size": "M",
+  "unit": "worlds",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 9887
+ },
+ {
+  "id": "worlds/grids",
+  "title": "Grids, keys and layers",
+  "kind": "I",
+  "size": "M",
+  "unit": "worlds",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 11294
+ },
+ {
+  "id": "worlds/streamer",
+  "title": "The streamer",
+  "kind": "I",
+  "size": "L",
+  "unit": "worlds",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 12206
+ },
+ {
+  "id": "worlds/physics-scripts",
+  "title": "Worlds meet physics and scripts",
+  "kind": "I",
+  "size": "L",
+  "unit": "worlds",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 19822
+ },
+ {
+  "id": "worlds/export",
+  "title": "Shipping a game: the export",
+  "kind": "I",
+  "size": "M",
+  "unit": "worlds",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 12468
+ },
+ {
+  "id": "worlds/game-identity",
+  "title": "A game's identity: the manifest, icons and platform files",
+  "kind": "I",
+  "size": "M",
+  "unit": "worlds",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 12167
+ },
+ {
+  "id": "worlds/runtime",
+  "title": "The runtime",
+  "kind": "I",
+  "size": "XL",
+  "unit": "worlds",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 20343
+ },
+ {
+  "id": "editor/program",
+  "title": "The editor is a program: core, UI and host",
+  "kind": "C",
+  "size": "M",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 8335
+ },
+ {
+  "id": "editor/commands",
+  "title": "Commands",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 12737
+ },
+ {
+  "id": "editor/deferred-commands",
+  "title": "Commands that take frames",
+  "kind": "I",
+  "size": "M",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 7845
+ },
+ {
+  "id": "editor/undo",
+  "title": "Undo and redo",
+  "kind": "I",
+  "size": "XL",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 10888
+ },
+ {
+  "id": "editor/saving",
+  "title": "Saving without stalling",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 8455
+ },
+ {
+  "id": "editor/recovery",
+  "title": "Autosave and crash recovery",
+  "kind": "I",
+  "size": "M",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 6878
+ },
+ {
+  "id": "editor/projects",
+  "title": "Opening projects and scenes: templates, background loads and migration",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 10483
+ },
+ {
+  "id": "editor/trash-references",
+  "title": "The trash and references",
+  "kind": "I",
+  "size": "M",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 5911
+ },
+ {
+  "id": "editor/prefab-instances",
+  "title": "How prefab instances stay linked",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 8229
+ },
+ {
+  "id": "editor/play-mode",
+  "title": "Play mode: the running copy",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 8942
+ },
+ {
+  "id": "editor/worlds",
+  "title": "Editing a streamed world",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 11225
+ },
+ {
+  "id": "editor/script-builds",
+  "title": "Building scripts from the editor: toolchains, CMake, diagnostics",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 14000
+ },
+ {
+  "id": "editor/stepping",
+  "title": "Pausing, stepping and exact tests",
+  "kind": "I",
+  "size": "M",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 9330
+ },
+ {
+  "id": "editor/command-scripts",
+  "title": "Command scripts and batches",
+  "kind": "I",
+  "size": "M",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 7236
+ },
+ {
+  "id": "editor/journal",
+  "title": "The activity journal and replays",
+  "kind": "I",
+  "size": "M",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 9020
+ },
+ {
+  "id": "editor/placement",
+  "title": "Placing content",
+  "kind": "I",
+  "size": "M",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 7235
+ },
+ {
+  "id": "editor/thumbnails",
+  "title": "Thumbnails",
+  "kind": "I",
+  "size": "M",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 5910
+ },
+ {
+  "id": "editor/camera-viewport",
+  "title": "The editor camera and viewport state",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 10127
+ },
+ {
+  "id": "editor/tutorial-command",
+  "title": "Tutorial: adding a command",
+  "kind": "T",
+  "size": "L",
+  "unit": "editor",
+  "wave": 5,
+  "findings": 0,
+  "bytes": 7221
+ },
+ {
+  "id": "editor-ui/immediate-mode",
+  "title": "Why immediate mode",
+  "kind": "C",
+  "size": "M",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 5882
+ },
+ {
+  "id": "editor-ui/imgui",
+  "title": "Dear ImGui from first principles",
+  "kind": "C",
+  "size": "L",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 7535
+ },
+ {
+  "id": "editor-ui/imgui-backends",
+  "title": "ImGui backends",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 11221
+ },
+ {
+  "id": "editor-ui/ui-scale",
+  "title": "Pixels, points and UI scale",
+  "kind": "I",
+  "size": "M",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 7066
+ },
+ {
+  "id": "editor-ui/design-system",
+  "title": "The design system: theme, fonts, icons",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 10418
+ },
+ {
+  "id": "editor-ui/widget-kit",
+  "title": "The widget kit",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 6933
+ },
+ {
+  "id": "editor-ui/shell",
+  "title": "The editor shell: host, layer, docking and panels",
+  "kind": "I",
+  "size": "XL",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 12306
+ },
+ {
+  "id": "editor-ui/lists",
+  "title": "Lists that scale",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 10059
+ },
+ {
+  "id": "editor-ui/inspectors",
+  "title": "Inspectors from reflection",
+  "kind": "I",
+  "size": "XL",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 11124
+ },
+ {
+  "id": "editor-ui/scene-view",
+  "title": "The Scene view",
+  "kind": "I",
+  "size": "XL",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 13263
+ },
+ {
+  "id": "editor-ui/game-view",
+  "title": "The Game view, shortcuts and who owns the keyboard",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 9393
+ },
+ {
+  "id": "editor-ui/status",
+  "title": "Status bar, toasts and idle throttling",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 9791
+ },
+ {
+  "id": "editor-ui/launcher-dialogs",
+  "title": "Launcher and dialogs",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 10045
+ },
+ {
+  "id": "editor-ui/settings-windows",
+  "title": "Settings windows from schemas",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 8481
+ },
+ {
+  "id": "editor-ui/instrument-panels",
+  "title": "Instrument panels",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 9273
+ },
+ {
+  "id": "editor-ui/ui-testing",
+  "title": "Testing a UI without a screen",
+  "kind": "I",
+  "size": "L",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 5683
+ },
+ {
+  "id": "editor-ui/tutorial-panel",
+  "title": "Tutorial: adding a panel",
+  "kind": "T",
+  "size": "L",
+  "unit": "editor-ui",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 5012
+ },
+ {
+  "id": "automation/agents",
+  "title": "How the editor makes games with agents",
+  "kind": "C",
+  "size": "M",
+  "unit": "automation",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 9874
+ },
+ {
+  "id": "automation/json-rpc",
+  "title": "Sockets, framing and JSON-RPC",
+  "kind": "C",
+  "size": "L",
+  "unit": "automation",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 10485
+ },
+ {
+  "id": "automation/rpc-server",
+  "title": "The editor's RPC server",
+  "kind": "I",
+  "size": "XL",
+  "unit": "automation",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 13801
+ },
+ {
+  "id": "automation/security",
+  "title": "The security model",
+  "kind": "I",
+  "size": "XL",
+  "unit": "automation",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 12476
+ },
+ {
+  "id": "automation/sessions",
+  "title": "Sessions, discovery and launching",
+  "kind": "I",
+  "size": "L",
+  "unit": "automation",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 10549
+ },
+ {
+  "id": "automation/mcp",
+  "title": "StrataCLI and its MCP server",
+  "kind": "I",
+  "size": "L",
+  "unit": "automation",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 15839
+ },
+ {
+  "id": "engineering/building",
+  "title": "Building Strata",
+  "kind": "H",
+  "size": "M",
+  "unit": "engineering",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 11271
+ },
+ {
+  "id": "engineering/cmake",
+  "title": "Inside Strata's CMake",
+  "kind": "I",
+  "size": "L",
+  "unit": "engineering",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 14156
+ },
+ {
+  "id": "engineering/flags-portability",
+  "title": "Compiler flags, compile time and portability",
+  "kind": "I",
+  "size": "L",
+  "unit": "engineering",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 16173
+ },
+ {
+  "id": "engineering/third-party",
+  "title": "Third-party code and pinned tools",
+  "kind": "I",
+  "size": "L",
+  "unit": "engineering",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 10234
+ },
+ {
+  "id": "engineering/generated-code",
+  "title": "Generated code: shaders, embedded files, version stamps and committed generators",
+  "kind": "I",
+  "size": "L",
+  "unit": "engineering",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 11439
+ },
+ {
+  "id": "engineering/testing",
+  "title": "Testing an engine",
+  "kind": "C",
+  "size": "M",
+  "unit": "engineering",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 8137
+ },
+ {
+  "id": "engineering/test-program",
+  "title": "Inside StrataTests",
+  "kind": "I",
+  "size": "L",
+  "unit": "engineering",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 13088
+ },
+ {
+  "id": "engineering/test-kinds",
+  "title": "GPU, end-to-end and package tests",
+  "kind": "I",
+  "size": "L",
+  "unit": "engineering",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 10245
+ },
+ {
+  "id": "engineering/feature-test",
+  "title": "The feature test",
+  "kind": "I",
+  "size": "M",
+  "unit": "engineering",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 8706
+ },
+ {
+  "id": "engineering/perf-lab",
+  "title": "Measuring performance honestly: noise, percentiles, budgets and the perf lab",
+  "kind": "I",
+  "size": "L",
+  "unit": "engineering",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 11009
+ },
+ {
+  "id": "engineering/look-dev",
+  "title": "The look-dev harness",
+  "kind": "I",
+  "size": "M",
+  "unit": "engineering",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 7456
+ },
+ {
+  "id": "engineering/ci",
+  "title": "Continuous integration",
+  "kind": "I",
+  "size": "L",
+  "unit": "engineering",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 9773
+ },
+ {
+  "id": "engineering/releasing",
+  "title": "Packaging and releasing",
+  "kind": "I",
+  "size": "L",
+  "unit": "engineering",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 9188
+ },
+ {
+  "id": "engineering/contributing",
+  "title": "The review checklist and the way a change lands",
+  "kind": "H",
+  "size": "M",
+  "unit": "engineering",
+  "wave": 6,
+  "findings": 0,
+  "bytes": 8222
+ },
+ {
+  "id": "capstone/plan",
+  "title": "Capstone I: designing a feature the way Strata does",
+  "kind": "T",
+  "size": "L",
+  "unit": "capstone",
+  "wave": 6,
+  "findings": 6,
+  "bytes": 25644
+ },
+ {
+  "id": "capstone/build",
+  "title": "Capstone II: from component to pixel",
+  "kind": "T",
+  "size": "L",
+  "unit": "capstone",
+  "wave": 6,
+  "findings": 5,
+  "bytes": 21110
+ },
+ {
+  "id": "capstone/land",
+  "title": "Capstone III: tests, the feature test, a budget, the review and CI",
+  "kind": "T",
+  "size": "L",
+  "unit": "capstone",
+  "wave": 6,
+  "findings": 10,
+  "bytes": 24951
+ },
+ {
+  "id": "reference/script-api",
+  "title": "The complete script API",
+  "kind": "R",
+  "size": "XL",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 2,
+  "bytes": 13173
+ },
+ {
+  "id": "reference/commands",
+  "title": "The command catalogue",
+  "kind": "R",
+  "size": "XL",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 2,
+  "bytes": 9907
+ },
+ {
+  "id": "reference/components",
+  "title": "Components and their properties",
+  "kind": "R",
+  "size": "XL",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 0,
+  "bytes": 7380
+ },
+ {
+  "id": "reference/settings",
+  "title": "Project settings and preferences",
+  "kind": "R",
+  "size": "L",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 3,
+  "bytes": 8853
+ },
+ {
+  "id": "reference/scene",
+  "title": "Scene, reflection and settings: types, flags, formats, limits",
+  "kind": "R",
+  "size": "M",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 4,
+  "bytes": 11138
+ },
+ {
+  "id": "reference/assets",
+  "title": "Asset types, file formats, importer versions, budgets and statistics",
+  "kind": "R",
+  "size": "M",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 4,
+  "bytes": 13812
+ },
+ {
+  "id": "reference/renderer",
+  "title": "Passes, bindings, switches, statistics, debug views, quality rows, device requirements",
+  "kind": "R",
+  "size": "L",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 2,
+  "bytes": 12551
+ },
+ {
+  "id": "reference/physics",
+  "title": "Physics reference",
+  "kind": "R",
+  "size": "M",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 4,
+  "bytes": 10789
+ },
+ {
+  "id": "reference/animation",
+  "title": "Animation reference",
+  "kind": "R",
+  "size": "M",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 2,
+  "bytes": 7528
+ },
+ {
+  "id": "reference/audio-input",
+  "title": "Audio and input reference",
+  "kind": "R",
+  "size": "M",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 4,
+  "bytes": 9124
+ },
+ {
+  "id": "reference/ui",
+  "title": "Game UI reference",
+  "kind": "R",
+  "size": "M",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 3,
+  "bytes": 8639
+ },
+ {
+  "id": "reference/worlds-runtime",
+  "title": "Worlds, export, runtime options, manifest",
+  "kind": "R",
+  "size": "M",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 5,
+  "bytes": 12887
+ },
+ {
+  "id": "reference/editor",
+  "title": "Editor reference: panels, shortcuts, arguments",
+  "kind": "R",
+  "size": "M",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 4,
+  "bytes": 10994
+ },
+ {
+  "id": "reference/automation",
+  "title": "Protocol, errors, CLI",
+  "kind": "R",
+  "size": "M",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 2,
+  "bytes": 7808
+ },
+ {
+  "id": "reference/core",
+  "title": "Core utilities",
+  "kind": "R",
+  "size": "M",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 2,
+  "bytes": 6871
+ },
+ {
+  "id": "reference/build",
+  "title": "CMake options, presets, test labels, tools",
+  "kind": "R",
+  "size": "S",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 4,
+  "bytes": 9079
+ },
+ {
+  "id": "reference/performance",
+  "title": "Measured costs and their budgets",
+  "kind": "R",
+  "size": "M",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 0,
+  "bytes": 5644
+ },
+ {
+  "id": "reference/game-makers",
+  "title": "Cheat sheet for game makers",
+  "kind": "R",
+  "size": "M",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 4,
+  "bytes": 10287
+ },
+ {
+  "id": "reference/notation",
+  "title": "Conventions and notation",
+  "kind": "R",
+  "size": "M",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 1,
+  "bytes": 6197
+ },
+ {
+  "id": "reference/glossary",
+  "title": "Glossary",
+  "kind": "R",
+  "size": "XL",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 0,
+  "bytes": 6428
+ },
+ {
+  "id": "reference/term-index",
+  "title": "Index of terms and engine identifiers",
+  "kind": "R",
+  "size": "XL",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 1,
+  "bytes": 8620
+ },
+ {
+  "id": "reference/figures",
+  "title": "Index of figures and their recipes",
+  "kind": "R",
+  "size": "L",
+  "unit": "reference",
+  "wave": "B",
+  "findings": 0,
+  "bytes": 5709
+ },
+ {
+  "id": "appendix/not-in-strata",
+  "title": "What Strata does not do, and how engines do it",
+  "kind": "C",
+  "size": "L",
+  "unit": "appendix",
+  "wave": "B",
+  "findings": 8,
+  "bytes": 56854
+ },
+ {
+  "id": "appendix/networking",
+  "title": "Networking for games, in general",
+  "kind": "C",
+  "size": "L",
+  "unit": "appendix",
+  "wave": "B",
+  "findings": 5,
+  "bytes": 16842
+ },
+ {
+  "id": "appendix/game-ai",
+  "title": "Game AI in general: steering, pathfinding, navigation meshes and behaviour trees",
+  "kind": "C",
+  "size": "L",
+  "unit": "appendix",
+  "wave": "B",
+  "findings": 6,
+  "bytes": 17165
+ },
+ {
+  "id": "appendix/math-cheatsheet",
+  "title": "Math cheat sheet",
+  "kind": "R",
+  "size": "M",
+  "unit": "appendix",
+  "wave": "B",
+  "findings": 1,
+  "bytes": 9284
+ },
+ {
+  "id": "appendix/history",
+  "title": "Which release brought what",
+  "kind": "R",
+  "size": "M",
+  "unit": "appendix",
+  "wave": "B",
+  "findings": 1,
+  "bytes": 10328
+ },
+ {
+  "id": "appendix/further-reading",
+  "title": "Further reading",
+  "kind": "R",
+  "size": "M",
+  "unit": "appendix",
+  "wave": "B",
+  "findings": 3,
+  "bytes": 7585
+ },
+ {
+  "id": "appendix/credits",
+  "title": "Credits and licenses",
+  "kind": "R",
+  "size": "S",
+  "unit": "appendix",
+  "wave": "B",
+  "findings": 1,
+  "bytes": 10813
+ }
+]

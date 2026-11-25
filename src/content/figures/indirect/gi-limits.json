@@ -1,0 +1,158 @@
+{
+	"figures": [
+		{
+			"id": "cornell-notches",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The foot of the white ball in the look-dev Cornell box, seen close and low, lit by global illumination at the High row",
+			"caption": "Under the ball's rim, a black band with stair-stepped edges lies on the floor. The gap between the ball and the floor is thinner than a voxel there, so no probe sees that part of the floor.",
+			"alt": "The lower half of a large white ball resting on a white floor, with the corner of a tall box on the left and a green wall on the right. Where the ball meets the floor, a black band with stair-stepped edges cuts into the soft shadow.",
+			"project": {
+				"lookdev": true
+			},
+			"scene": "Scenes/Cornell.stscene",
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "component.set",
+					"entityName": "Main Camera",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								1.15,
+								0.7,
+								2.4
+							],
+							"Rotation": [
+								-9.5,
+								0,
+								0
+							]
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Main Camera",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"PerspectiveFOV": 35
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "thin-wall-voxels",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "A free-standing wall 6 cm thick in the look-dev Cornell box, seen in the voxels debug view",
+			"caption": "The slab is white, but the voxels view paints its whole face in one flat salmon red. That red is the view's error color, not the slab's paint and not light from the red wall. The voxels are wider than the slab, so each holds both of its sides and gets no light from either.",
+			"alt": "A room seen in the voxels view: a red wall on the left, a green wall on the right and a grey floor. A flat slab stands in the middle of the floor, painted all over in one flat salmon red, while the ball behind it shows as grey blocks.",
+			"project": {
+				"lookdev": true
+			},
+			"scene": "Scenes/Cornell.stscene",
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"antiAliasing": "off",
+			"debugView": "voxels",
+			"setup": [
+				{
+					"command": "component.set",
+					"entityName": "Main Camera",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								1.6,
+								4.2
+							],
+							"Rotation": [
+								-7.1,
+								0,
+								0
+							]
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Main Camera",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"PerspectiveFOV": 60
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Thin Wall",
+						"components": {
+							"Transform": {
+								"Translation": [
+									0,
+									1.2,
+									1.05
+								],
+								"Scale": [
+									2,
+									2.4,
+									0.06
+								]
+							},
+							"MeshRenderer": {
+								"Mesh": "0000000000000001",
+								"Material": "Materials/CornellWhite.stmat"
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "yard-field-edge",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev yard lit by global illumination at the High row, with the edge of the probe field in the distance",
+			"caption": "A long shaded wall holds bounce light near the camera and turns darker beyond the field's edge.",
+			"alt": "A yard in the sun with a long shaded wall, lighter near the camera and darker farther away.",
+			"project": {
+				"lookdev": true
+			},
+			"shot": "lookdev.yard.lit.gi",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"expect": "complete",
+			"blocked": "No edge of the field shows in the look-dev yard at the pin: the shot lookdev.yard.lit.gi and a reframed camera toward the hut's shaded wall, in the lit and gi views, show none, because open ground gets about the same light from the field as beyond it and the 2 m fade spreads the change (2026-11-23, pin 319075e3). A picture would need a debug view of the field's weight, or a long shaded wall facing sunlit ground with nothing between it and the camera.",
+			"standIn": "field-edge-plan"
+		},
+		{
+			"id": "field-edge-plan",
+			"kind": "diagram",
+			"shows": "The probe field at the High row from above, to scale: full to 7.5 m, a 2 m fade, a shaded wall crossing the edge beside ground in the sun, and a graph of the field's weight",
+			"caption": "The field at the High row, seen from above: full within 7.5 m of the camera, gone 2 m farther. Open ground looks alike on both sides, but a shaded wall that faces ground in the sun gets bounce light only inside, so its face steps down in the fade.",
+			"alt": "A camera at the center of a square reaching 7.5 m each way, inside a band 2 m wide. A long wall beside ground in the sun crosses the band. Its shaded face, light inside, darkens across the band to dark grey beyond. A graph shows the weight falling from 1 at 7.5 m to 0 at 9.5 m.",
+			"numbers": "FieldFullExtent (7.5, 5.5) at High and FieldFade 2.0: Strata/src/Strata/Renderer/GlobalIlluminationLayout.cpp:196-197. The weight falls in a straight line over the fade: GetFieldWeight, Strata/shaders/Include/GIField.slang:41-44. Beyond the field the join keeps today's diffuse light: Strata/shaders/Scene/Forward.frag.slang:432-443. The plan is drawn at 18 px per metre; the wall and the sunlit ground are an example, not a scene of the pin."
+		}
+	]
+}

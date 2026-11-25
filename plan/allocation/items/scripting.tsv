@@ -1,0 +1,320 @@
+id	type	heading	label
+scripting:38	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Module entry points
+scripting:39	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	ABI version
+scripting:40	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Export/extern macros
+scripting:41	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Layout static asserts
+scripting:42	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Size-prefixed extensibility
+scripting:43	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Opaque handles
+scripting:44	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Strings
+scripting:45	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Results
+scripting:46	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Tagged-union value
+scripting:47	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Transforms
+scripting:48	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Frozen data structs
+scripting:49	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Engine-filled extensible struct
+scripting:50	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Module-filled-by-engine extensible struct
+scripting:51	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Enums for the API
+scripting:52	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Abort exception code
+scripting:53	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Host API table
+scripting:54	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Buffer protocol
+scripting:55	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Field descriptor
+scripting:56	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Class descriptor
+scripting:57	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Module description
+scripting:63	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Diagnostics
+scripting:64	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Time
+scripting:65	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Entities
+scripting:66	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Components (by registered name)
+scripting:67	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Transform fast paths
+scripting:68	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Scene
+scripting:69	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Assets
+scripting:70	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Scripts
+scripting:71	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Input devices
+scripting:72	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Physics bodies
+scripting:73	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Physics queries
+scripting:74	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Audio
+scripting:75	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Game flow
+scripting:76	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Residency
+scripting:77	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Scene streaming
+scripting:78	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Animators
+scripting:79	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Character controllers
+scripting:80	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Gamepads
+scripting:81	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Cursor
+scripting:82	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Window
+scripting:83	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Save files
+scripting:84	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Collision layers
+scripting:85	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Game UI + unscaled time + typed text
+scripting:86	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	World streaming
+scripting:87	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Input actions
+scripting:88	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Binding capture
+scripting:89	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Graphics options
+scripting:90	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Interpolation
+scripting:92	feature	1.1 The C ABI (`StrataScriptCore/Include/StrataScript/ScriptABI.h`, 858 lines, pure C)	Class callbacks (15, `StrataScriptClassDesc` and engine enum `ScriptCallback`,…
+scripting:102	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	Umbrella header
+scripting:103	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	SDK plumbing
+scripting:104	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	Graceful degradation
+scripting:105	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`Script` base class
+scripting:106	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	Exception firewall
+scripting:107	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	Thunks
+scripting:108	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	Override detection
+scripting:109	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	Static self-registration
+scripting:110	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	Class records
+scripting:111	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	Version-safe module description write
+scripting:112	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`Detail::LoadModule`
+scripting:113	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`ScriptClassBuilder<T>::Field<&T::M>`
+scripting:114	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`ST_SCRIPT_CLASS` / `ST_SCRIPT_FIELD`
+scripting:115	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	Field types
+scripting:116	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	Value traits
+scripting:117	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`AssetHandle`
+scripting:118	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`Entity`
+scripting:119	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`Component` proxy
+scripting:120	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`TransformComponent`
+scripting:121	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`Scene`, `Assets`, `SubScene`
+scripting:122	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`Input`
+scripting:123	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`Time`
+scripting:124	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`Log`
+scripting:125	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`RigidBody`, `Physics`, `RaycastHit`, `Collision`
+scripting:126	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`CharacterController`, `GroundState`
+scripting:127	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`AudioSource`, `Audio`
+scripting:128	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`Animator`, `JointTransform`
+scripting:129	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`Game`, `WindowMode`
+scripting:130	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`Graphics`, `GraphicsOption`, `QualityPreset`
+scripting:131	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`UIElement`, `UI`, `UIAction`
+scripting:132	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`World`, `WorldCellRequest`
+scripting:133	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`Random`
+scripting:134	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`Timer`
+scripting:135	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`KeyRepeat`
+scripting:136	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	`Motion`
+scripting:137	feature	1.2 The C++ SDK (`StrataScriptCore/Include/StrataScript/*.h`, header-only)	Module entry source
+scripting:143	feature	1.3 Building a module (`StrataScriptCore/CMake/`, `StrataScriptCore/CMakeLists.txt`)	`StrataScriptCore` INTERFACE target (headers + glm, C++20)
+scripting:144	feature	1.3 Building a module (`StrataScriptCore/CMake/`, `StrataScriptCore/CMakeLists.txt`)	`strata_add_script_module(<target> [SOURCE_DIR] [SOURCES] [OUTPUT_NAME] [OUTPUT_DIRECTORY]…
+scripting:145	feature	1.3 Building a module (`StrataScriptCore/CMake/`, `StrataScriptCore/CMakeLists.txt`)	Package for game projects: `find_package(StrataScriptCore CONFIG ... PATHS…
+scripting:146	feature	1.3 Building a module (`StrataScriptCore/CMake/`, `StrataScriptCore/CMakeLists.txt`)	Engine test modules (Dependent, API, ReloadV1/V2, Faults, LoadFault, ABIMismatch, Malformed,…
+scripting:147	feature	1.3 Building a module (`StrataScriptCore/CMake/`, `StrataScriptCore/CMakeLists.txt`)	Editor build pipeline (`ScriptBuilder`, toolchain detection, `CMakePresets.json`, diagnostics…
+scripting:153	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Registration
+scripting:154	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Script component
+scripting:155	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	`ScriptModule`
+scripting:156	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Load modes
+scripting:157	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Private copy directory
+scripting:158	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Library registry
+scripting:159	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Call results
+scripting:160	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Call sites
+scripting:161	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Description validation
+scripting:162	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	`ScriptEngine`
+scripting:163	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Containment contract
+scripting:164	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	`ScriptSystem`
+scripting:165	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Update order
+scripting:166	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Dispatch lists
+scripting:167	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Sync points
+scripting:168	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Field values
+scripting:169	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Asset requests
+scripting:170	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	`ReportProblem`
+scripting:171	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Host API implementation
+scripting:172	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Context registry
+scripting:173	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Host call counts
+scripting:174	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Value conversion
+scripting:175	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Types
+scripting:176	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Watchdog
+scripting:177	feature	1.4 The engine side (`Strata/src/Strata/Scripting/`)	Problems the host reports
+scripting:183	feature	1.5 Crash containment and crash locations (Core and Platform)	`CrashGuard::Invoke(function, userData, outInfo)` and `CrashInfo` (description, code, address,…
+scripting:184	feature	1.5 Crash containment and crash locations (Core and Platform)	Windows: SEH `__try/__except`, filter choosing 18 exception codes, x64 stack unwind with…
+scripting:185	feature	1.5 Crash containment and crash locations (Core and Platform)	POSIX: SIGSEGV/SIGBUS/SIGFPE/SIGILL/SIGTRAP handlers on an alternate stack,…
+scripting:186	feature	1.5 Crash containment and crash locations (Core and Platform)	Abort containment in modules (Windows, static CRT only)
+scripting:187	feature	1.5 Crash containment and crash locations (Core and Platform)	`DynamicLibrary` (load with dependency directory, never CWD or PATH; truncated files refused)
+scripting:188	feature	1.5 Crash containment and crash locations (Core and Platform)	`Symbolizer::Describe` (cheap, at fault time) and `Resolve` (job; DbgHelp PDB with inline frames…
+scripting:189	feature	1.5 Crash containment and crash locations (Core and Platform)	Fault location choice (first module frame with a source that is not CRT or the entry file)
+scripting:190	feature	1.5 Crash containment and crash locations (Core and Platform)	Exception vs crash policy: exception disables one instance, crash faults the module
+scripting:196	feature	1.6 Hosts of the script engine	Active engine (`ScriptEngine::SetActive/GetActive`): scenes use the engine active when they start
+scripting:197	feature	1.6 Hosts of the script engine	Editor: one engine per project, hot reload on, `Update()` per frame, Play builds first, crash…
+scripting:198	feature	1.6 Hosts of the script engine	Exported game: `GameRuntime` loads the module in place, crash disables scripts, headless exit code 2
+scripting:199	feature	1.6 Hosts of the script engine	Engine services a host must provide (`IGameSaves`, `IGameWindow`, `IGameGraphics`, `IAudioOutput`,…
+scripting:200	feature	1.6 Hosts of the script engine	Scene services the host API goes through (`IBodyControl`, `IBodyMotionQuery`, `IPhysicsQueries`,…
+scripting:201	feature	1.6 Hosts of the script engine	Layering: Scripting may include only Core, Input, Asset, Reflection, Scene
+scripting:205	feature	1.7 Editor workflow around scripts (editor area; listed for completeness)	Commands (13): `script.status`, `script.list`, `script.get`, `script.build`, `script.reload`,…
+scripting:208	feature	1.7 Editor workflow around scripts (editor area; listed for completeness)	UI: Scripts menu (New Script..., Build Scripts Ctrl+B, External Editor..., Open Scripts Folder,…
+scripting:212	feature	1.7 Editor workflow around scripts (editor area; listed for completeness)	Export: the module and its PDB next to the game, named in the `.stgame` manifest v2 (DG 2105-2112).
+scripting:216	feature	1.8 Tests that define the behavior	`StrataTests/src/Scripting/` suites and counts: API 17, Animation 4, Audio 3, Collisions 7, Faults…
+scripting:243	concept		Why games need "scripts" at all: engine code vs game code
+scripting:252	concept		Shared libraries and dynamic loading
+scripting:258	concept		ABI vs API
+scripting:265	concept		Versioning a binary interface
+scripting:273	concept		The host API / service table pattern
+scripting:278	concept		A C++ SDK over a C ABI
+scripting:285	concept		Component-based game objects and where scripts attach
+scripting:289	concept		The script lifecycle
+scripting:294	concept		Deferred mutation and safe points
+scripting:299	concept		Update order and its cost
+scripting:303	concept		Crash containment of native code
+scripting:311	concept		Exceptions vs crashes
+scripting:315	concept		Symbolization: from an address to a file and line
+scripting:319	concept		Hot reload
+scripting:326	concept		Serialized fields and the editor
+scripting:330	concept		The gameplay API as a facade over engine services
+scripting:334	concept		Asynchronous assets from game code
+scripting:338	concept		Player-facing systems: saves, rebindable input, graphics options, window
+scripting:341	concept		Interpolation of fixed-step motion
+scripting:343	concept		Determinism helpers
+scripting:345	concept		Testing game code and the API
+scripting:354	code		1: `StrataScriptCore/Include/StrataScript/ScriptABI.h` 3-27
+scripting:355	code		2: ScriptABI.h 67-69 and 304-320
+scripting:356	code		3: ScriptABI.h 111-140
+scripting:357	code		4: ScriptABI.h 159-192
+scripting:358	code		5: ScriptABI.h 758-851
+scripting:359	code		6: `StrataScriptCore/Source/ScriptModuleEntry.cpp` 1-81
+scripting:360	code		7: `StrataScriptCore/Include/StrataScript/Host.h` 36-55, 69-85, 106-111
+scripting:361	code		8: `StrataScriptCore/Include/StrataScript/Script.h` 70-108
+scripting:362	code		9: Script.h 184-203 and 246-250
+scripting:363	code		10: Script.h 371-378, 506-541
+scripting:364	code		11: Script.h 543-617 and 852-865
+scripting:365	code		12: Script.h 638-690
+scripting:366	code		13: Script.h 692-762
+scripting:367	code		14: `Strata/src/Strata/Scripting/ScriptModule.cpp` 301-344
+scripting:368	code		15: ScriptModule.cpp 377-515
+scripting:369	code		16: `Strata/src/Strata/Core/CrashGuard.h` 35-68
+scripting:370	code		17: `Strata/src/Platform/Windows/WindowsCrashGuard.cpp` 96-159, 196-212
+scripting:371	code		18: WindowsCrashGuard.cpp 43-94
+scripting:372	code		19: `Strata/src/Platform/Posix/PosixCrashGuard.cpp` 28-40, 239-260, 348-402
+scripting:373	code		20: ScriptModule.cpp 942-1094
+scripting:374	code		21: ScriptModule.cpp 622-720 and 580-605
+scripting:375	code		22: `Strata/src/Strata/Scripting/ScriptHostAPI.cpp` 67-116
+scripting:376	code		23: ScriptHostAPI.cpp 356-370 and 830-897
+scripting:377	code		24: ScriptHostAPI.cpp 3427-3437 (head of the X-macro), 3598-3622, 3641-3669
+scripting:378	code		25: `Strata/src/Strata/Scripting/ScriptEngine.cpp` 65-124 and 196-229
+scripting:379	code		26: `Strata/src/Strata/Scripting/ScriptSystem.cpp` 195-221 and 482-505
+scripting:380	code		27: ScriptSystem.cpp 241-287
+scripting:381	code		28: ScriptSystem.cpp 1221-1348
+scripting:382	code		29: ScriptSystem.cpp 340-383
+scripting:383	code		30: `StrataScriptCore/Include/StrataScript/Gameplay.h` 19-110
+scripting:384	code		31: `StrataScriptCore/CMake/StrataScriptModule.cmake` 85-133
+scripting:385	code		32: `Samples/ThirdPerson/Scripts/Coin.cpp` 1-59
+scripting:386	code		33: `Samples/ThirdPerson/Scripts/FollowCamera.cpp` 43-100
+scripting:387	code		34: `Docs/Manual/Scripting.md` 13-38
+scripting:398	figure		The layers
+scripting:401	figure		Who owns what in memory
+scripting:403	figure		Loading a module (sequence diagram)
+scripting:406	figure		Struct versioning
+scripting:408	figure		A host call round trip
+scripting:411	figure		Instance lifecycle state machine
+scripting:414	figure		A frame timeline for scripts
+scripting:417	figure		Crash containment flow (Windows and POSIX side by side)
+scripting:419	figure		Hot reload timeline
+scripting:422	figure		Update order maintenance
+scripting:424	figure		Symbolization
+scripting:426	figure		The editor workflow loop
+scripting:431	figure		Scripts > New Script... dialog, and the file it opened in an external editor (MAN 9-44).
+scripting:432	figure		Inspector with a Script component: class picker, fields of every type with defaults and reset…
+scripting:433	figure		Content Browser's Scripts root listing files with the classes they register (MAN 46-49).
+scripting:434	figure		Status bar pills: "Building", "Building to play", "Build failed · 2 errors", "Scripts crashed",…
+scripting:435	figure		Problems panel with a compiler error (file, line) and with a crash and its stack frames, one…
+scripting:437	figure		Console showing the crash message and the location line, and a toast with Show Problems.
+scripting:438	figure		Hot reload in action: two screenshots of a playing sample (ThirdPerson's Coin spin speed changed…
+scripting:440	figure		External Editor preferences page listing found editors (MAN 74-92).
+scripting:441	figure		`script.status` output in a terminal (StrataCLI) showing classes, fields, callbacks and a fault…
+scripting:442	figure		A game's options menu driving `Graphics::` (ThirdPerson's SettingsMenu) and a rebinding row using…
+scripting:448	rule		Only plain C data crosses the ABI
+scripting:450	rule		Append, never insert, reorder or remove
+scripting:452	rule		Check `ST_SCRIPT_HAS_MEMBER` before using a function appended after the initial set
+scripting:454	rule		Frozen structs stay frozen
+scripting:456	rule		Every module call goes through `ScriptModule` (CrashGuard), including load and unload; read module…
+scripting:459	rule		Host functions wrap their body in `HostCall`, start with `ResolveContext`, report misuse, return…
+scripting:462	rule		Engine is single-threaded towards scripts; call it only from callbacks, never from your threads
+scripting:464	rule		Script code never runs while engine state it could invalidate is in use: destroy through…
+scripting:467	rule		Classes are default-constructible and constructors have no side effects; initialize in OnCreate
+scripting:470	rule		One `ST_SCRIPT_CLASS` per class, in a .cpp, never in a header
+scripting:472	rule		Only fields survive hot reload; re-acquire everything else in OnReload
+scripting:474	rule		Never keep `T*` from `GetScript<T>()` across frames; store `Entity`
+scripting:476	rule		Exceptions disable an instance; crashes fault the module
+scripting:479	rule		Never block in a script
+scripting:481	rule		Request assets early; `Instantiate` never waits
+scripting:483	rule		Read press/release edges in OnUpdate, held state anywhere
+scripting:485	rule		Read the drawn pose in OnLateUpdate for cameras; move ridden platforms in OnFixedUpdate
+scripting:487	rule		Use input actions for anything a player might rebind; only `InputActions` touches the bindings…
+scripting:490	rule		SDK helpers named like engine classes (`Random`, `Timer`) are tested only inside a module; no…
+scripting:492	rule		Windows modules must use the static C runtime and the SDK's entry points to contain `abort()`
+scripting:494	rule		Hot reload runs a copy; `$ORIGIN`/`@loader_path` RUNPATH points at the copy's directory
+scripting:496	rule		Every new host function, SDK function, callback and field type must be exercised by the feature test
+scripting:498	rule		Field values convert exactly, component properties leniently
+scripting:500	rule		A crash inside the loader (static init/teardown) poisons that file for the process
+scripting:509	hands-on		Hello script
+scripting:511	hands-on		Hot reload a running game
+scripting:513	hands-on		Pickup and score
+scripting:515	hands-on		Spawner
+scripting:517	hands-on		Character and camera
+scripting:520	hands-on		Pause and settings menu
+scripting:523	hands-on		Save and load
+scripting:525	hands-on		Crash on purpose
+scripting:527	hands-on		Deterministic replay
+scripting:532	hands-on		Trace one host call
+scripting:534	hands-on		Add a host function end to end
+scripting:538	hands-on		Add a callback
+scripting:540	hands-on		Simulate an old module
+scripting:542	hands-on		Break the ABI and watch it refused
+scripting:544	hands-on		Crash guard lab
+scripting:546	hands-on		Measure dispatch
+scripting:548	hands-on		Exercise: why copy the list
+scripting:550	hands-on		Exercise: design review
+scripting:557	term		ABI (application binary interface)
+scripting:559	term		ABI version
+scripting:560	term		Append-only
+scripting:561	term		Abandoned library/file
+scripting:563	term		Active engine
+scripting:564	term		Alternate signal stack
+scripting:565	term		AssetPin
+scripting:566	term		Binding capture
+scripting:567	term		Buffer protocol
+scripting:569	term		Call site
+scripting:570	term		Callback
+scripting:571	term		Class descriptor
+scripting:572	term		Context
+scripting:573	term		CrashGuard
+scripting:574	term		CRT (C runtime)
+scripting:575	term		DbgHelp
+scripting:576	term		Debounce
+scripting:577	term		Dispatch list
+scripting:578	term		Dist
+scripting:579	term		Drawn transform
+scripting:580	term		Engine service
+scripting:581	term		Entry point
+scripting:582	term		Fault
+scripting:583	term		Feature test
+scripting:584	term		Field
+scripting:586	term		Field override
+scripting:587	term		Fixed update
+scripting:588	term		Frozen struct
+scripting:589	term		Host
+scripting:590	term		Host function
+scripting:591	term		Hot reload
+scripting:592	term		Inlining / inline frame
+scripting:594	term		Instance
+scripting:595	term		Interposition
+scripting:596	term		Module (script module)
+scripting:597	term		Module description
+scripting:598	term		ODR (one-definition rule)
+scripting:600	term		PCG32
+scripting:601	term		PDB
+scripting:602	term		Prefetch
+scripting:603	term		Private copy
+scripting:604	term		ReportProblem
+scripting:605	term		RUNPATH / `$ORIGIN`
+scripting:606	term		Scene service
+scripting:607	term		SDK
+scripting:608	term		SEH (structured exception handling)
+scripting:609	term		Signal
+scripting:610	term		`sigsetjmp`/`siglongjmp`
+scripting:611	term		Stack guarantee
+scripting:612	term		`StructSize`
+scripting:613	term		Symbolization
+scripting:614	term		Sync point
+scripting:616	term		Thunk
+scripting:617	term		Time scale
+scripting:618	term		Trigger
+scripting:619	term		Update order
+scripting:620	term		Watchdog
+scripting:621	term		X-macro
+scripting:673	open		Not read line by line: most of the 165 host function bodies (about 3,000 lines of…
+scripting:679	open		The SDK headers Input.h, Entity.h, Scene.h, Physics.h, CharacterController.h, Audio.h, Animator.h,…
+scripting:682	open		The editor side (ScriptBuild, ScriptToolchain, ScriptProject, ScriptSources, ScriptEdit,…
+scripting:685	open		GameRuntime's script handling was located (GameRuntime.cpp 100-170) but not read.
+scripting:686	open		The tests were read by name (TEST_CASE titles), not by body; test script modules only by their…
+scripting:687	open		The exact wave in which physics bodies, queries, audio and game flow were appended (before wave…
+scripting:691	open		The feature test's runner (`StrataTests/src/FeatureTest/FeatureTestUtils.cpp`, `SDKReader.cpp`)…
+scripting:693	open		Whether a build without the scripting module is possible: Roadmap 710-711 says it is not offered…
+scripting:694	open		Small doc inconsistency to resolve: `Core/Symbolizer.h` 9-12 says POSIX uses dladdr only, but…

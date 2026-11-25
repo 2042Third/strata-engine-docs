@@ -1,0 +1,48 @@
+{
+	"figures": [
+		{
+			"id": "scene-toolbar",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The Scene view's row of chips with labels when the view is wide, and the same chips as icons on two rows when it is narrow",
+			"caption": "A wide Scene view shows every chip with its label in one row. A narrow one draws every chip as an icon and starts a second row when the icons alone do not fit.",
+			"alt": "Two pictures of the editor's Scene view toolbar. The first shows eleven chips in one row, each with an icon and a label, from Camera to Game camera. The second shows the same chips as icons only, seven on the first row and four on a second.",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-toolbar-wide.ini",
+				"windowSize": [
+					1280,
+					720
+				],
+				"panel": "Viewport",
+				"steps": []
+			},
+			"variants": {
+				"wide": {
+					"editorWindow": {
+						"layout": "layouts/scene-toolbar-wide.ini",
+						"windowSize": [
+							1280,
+							720
+						],
+						"panel": "Viewport",
+						"steps": []
+					}
+				},
+				"narrow": {
+					"editorWindow": {
+						"layout": "layouts/scene-toolbar-narrow.ini",
+						"windowSize": [
+							1280,
+							720
+						],
+						"panel": "Viewport",
+						"steps": []
+					}
+				}
+			}
+		}
+	]
+}

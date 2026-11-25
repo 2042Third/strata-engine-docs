@@ -1,0 +1,39 @@
+{
+	"page": "image/why-post",
+	"startsFrom": { "template": "basic3d" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "entity.find", "parameters": { "name": "Post Process" }, "bind": { "post": "/entities/0" } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "post" }, "component": "PostProcess" },
+					"checks": [
+						{ "pointer": "/values/Bloom", "equals": true },
+						{ "pointer": "/values/AntiAliasing", "equals": true },
+						{ "pointer": "/values/AntiAliasingMethod", "equals": "TAA" },
+						{ "pointer": "/values/AutoExposure", "equals": true }
+					] },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "post" }, "component": "PostProcess", "values": { "Bloom": false } } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "post" }, "component": "PostProcess" },
+					"checks": [ { "pointer": "/values/Bloom", "equals": false } ] },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "post" }, "component": "PostProcess", "values": { "AntiAliasing": false } } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "post" }, "component": "PostProcess" },
+					"checks": [ { "pointer": "/values/AntiAliasing", "equals": false } ] },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "post" }, "component": "PostProcess", "values": { "AutoExposure": false, "Exposure": 0 } } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "post" }, "component": "PostProcess" },
+					"checks": [
+						{ "pointer": "/values/AutoExposure", "equals": false },
+						{ "pointer": "/values/Exposure", "equals": 0 }
+					] },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "post" }, "component": "PostProcess", "values": { "Tonemapper": "None" } } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "post" }, "component": "PostProcess" },
+					"checks": [
+						{ "pointer": "/values/Tonemapper", "equals": "None" },
+						{ "pointer": "/values/Bloom", "equals": false },
+						{ "pointer": "/values/AntiAliasing", "equals": false },
+						{ "pointer": "/values/AutoExposure", "equals": false }
+					] }
+			]
+		}
+	]
+}

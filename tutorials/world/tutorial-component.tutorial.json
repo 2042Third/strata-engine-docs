@@ -1,0 +1,8 @@
+{
+	"page": "world/tutorial-component",
+	"startsFrom": { "pin": true },
+	"patch": {
+		"file": "tutorials/world/tutorial-component.patch",
+		"tests": [ "Physics.WindZone", "Reflection", "Scene.Serialization", "Scene.Systems", "Engine.Modules", "Reflection.ComponentSchema" ]
+	}
+}

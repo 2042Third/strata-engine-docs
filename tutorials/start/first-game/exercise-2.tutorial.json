@@ -1,0 +1,20 @@
+{
+	"page": "start/first-game",
+	"startsFrom": { "tutorial": "start/first-game" },
+	"stages": [
+		{
+			"step": 1,
+			"files": [ { "from": "book:tutorials/start/first-game/exercise-2/Spinner.cpp", "to": "Scripts/Spinner.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 60 }, "expect": { "/stepsRun": { "equals": 60 } } },
+				{ "command": "component.get", "entityName": "Top", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Rotation/1", "approx": -0.7071, "tolerance": 0.01 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		}
+	]
+}

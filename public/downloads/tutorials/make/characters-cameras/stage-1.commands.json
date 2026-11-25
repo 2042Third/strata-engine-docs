@@ -1,0 +1,489 @@
+[
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Step03",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						-5,
+						0.15,
+						-2
+					],
+					"Scale": [
+						2,
+						0.3,
+						1
+					],
+					"Rotation": [
+						0,
+						0,
+						0
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Step05",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						-2,
+						0.25,
+						-2
+					],
+					"Scale": [
+						2,
+						0.5,
+						1
+					],
+					"Rotation": [
+						0,
+						0,
+						0
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Ramp40",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						2,
+						1.4,
+						-4
+					],
+					"Scale": [
+						2,
+						0.2,
+						4
+					],
+					"Rotation": [
+						40,
+						0,
+						0
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Ramp50",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						6,
+						1.6,
+						-4
+					],
+					"Scale": [
+						2,
+						0.2,
+						4
+					],
+					"Rotation": [
+						50,
+						0,
+						0
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Wall",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						2,
+						7
+					],
+					"Scale": [
+						6,
+						4,
+						0.5
+					],
+					"Rotation": [
+						0,
+						0,
+						0
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Ledge",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						7,
+						0.5,
+						6
+					],
+					"Scale": [
+						3,
+						1,
+						3
+					],
+					"Rotation": [
+						0,
+						0,
+						0
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Crate",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						-6,
+						0.5,
+						3
+					],
+					"Scale": [
+						1,
+						1,
+						1
+					],
+					"Rotation": [
+						0,
+						0,
+						0
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Crate"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.add",
+		"parameters": {
+			"component": "RigidBody",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Platform",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						-5,
+						0.15,
+						-7.5
+					],
+					"Scale": [
+						3,
+						0.3,
+						3
+					],
+					"Rotation": [
+						0,
+						0,
+						0
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Platform"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.add",
+		"parameters": {
+			"component": "RigidBody",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Platform"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "RigidBody",
+			"values": {
+				"Type": "Kinematic"
+			},
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "inputActions.setMap",
+		"parameters": {
+			"map": "Gameplay"
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Move",
+			"kind": "Vector2",
+			"bindings": [
+				"2D:Key/W,Key/S,Key/A,Key/D",
+				"2D:Key/Up,Key/Down,Key/Left,Key/Right",
+				"Gamepad/LeftStick"
+			]
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Look",
+			"kind": "Vector2",
+			"bindings": [
+				"Gamepad/RightStick"
+			]
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Jump",
+			"kind": "Button",
+			"bindings": [
+				"Key/Space",
+				"Gamepad/A"
+			]
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Player",
+			"components": {
+				"Transform": {
+					"Translation": [
+						0,
+						0,
+						2
+					]
+				},
+				"CharacterController": {
+					"Height": 1.8,
+					"Radius": 0.3
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Player"
+		},
+		"bind": {
+			"player": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Player"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "CharacterController",
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Body",
+			"parent": {
+				"$ref": "player"
+			},
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Capsule"
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						0.9,
+						0
+					],
+					"Scale": [
+						0.6,
+						0.9,
+						0.6
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 60
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 60
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Player"
+		},
+		"bind": {
+			"entityName.5": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.5"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

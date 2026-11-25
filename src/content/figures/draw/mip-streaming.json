@@ -1,0 +1,79 @@
+{
+	"figures": [
+		{
+			"id": "mip-view-flying",
+			"kind": "scene",
+			"shows": "The Showcase in the Mip debug view while the camera flies toward a new area",
+			"caption": "While the camera flies, many surfaces are tinted: their textures miss levels, and the streamer is still reading them.",
+			"alt": "The Showcase scene tinted by the Mip debug view. Surfaces near the camera show blue, amber and red tints, and surfaces that have their levels show green.",
+			"project": { "sample": "Showcase" },
+			"camera": "scene",
+			"size": [1280, 720],
+			"quality": "high",
+			"debugView": "mip",
+			"waitsFor": "tier 3: capture while the camera flies; no debug view shows a camera in motion",
+			"noStandIn": "The paragraph names the tints of a flight, and the settled picture below it shows the Mip view itself."
+		},
+		{
+			"id": "mip-view-settled",
+			"kind": "scene",
+			"shows": "The Showcase in the Mip debug view after the camera stopped and the streaming settled",
+			"caption": "After the camera stops, the surfaces turn green: every texture has the level its view needs. The brown bottom and wheel hubs of the bus are separate parts without textures, which the Mip view does not tint; they are not short of levels. The sky has no mesh either and keeps its own slate blue: the view tints only textured meshes.",
+			"alt": "A rusted bus and a round tank in the Showcase, seen in the Mip debug view. The bus, the tank and the ground are all tinted green, since every texture has the levels its view needs. Only the sky and the parts of the bus without textures, its bottom and wheel hubs, keep their own colors.",
+			"project": { "sample": "Showcase" },
+			"camera": "scene",
+			"size": [1280, 720],
+			"quality": "high",
+			"debugView": "mip",
+			"expect": "complete"
+		},
+		{
+			"id": "tail-and-level-zero",
+			"kind": "scene",
+			"shows": "One textured surface drawn from the resident tail, then at its finest level",
+			"caption": "The same surface twice. From the resident tail the texture is coarse but present; from its finest level its detail appears.",
+			"alt": "Two pictures of one surface. The first is coarse, with large soft texels. The second shows sharp fine detail.",
+			"project": { "sample": "Showcase" },
+			"camera": { "position": [-13.4, 1.5, -12.4], "target": [-15.0, 0.25, -14.0], "fov": 30 },
+			"size": [1280, 720],
+			"quality": "high",
+			"antiAliasing": "fxaa",
+			"variants": {
+				"tail": {},
+				"level-zero": { "expect": "complete" }
+			},
+			"waitsFor": "tier 3: a capture that draws textures from their resident tails; the pin's renderer switches cannot hold a texture at its tail",
+			"standIn": "tail-levels"
+		},
+		{
+			"id": "fade-in-frames",
+			"kind": "scene",
+			"shows": "A surface in the frame a raise starts and in the frame after, while the fade-in runs",
+			"caption": "During the fade-in the surface sharpens a little in each frame, from the level it showed before to its new finest level, over 0.25 s.",
+			"numbers": "0.25 s is c_FadeInSeconds (Strata/src/Strata/Renderer/TextureTable.h:39); UpdateFades lowers the minimum level of detail linearly with the clock (TextureTable.cpp:143-145).",
+			"alt": "Two pictures of one surface in successive frames. The second is a little sharper than the first, but not yet at full detail.",
+			"project": { "sample": "Showcase" },
+			"camera": "scene",
+			"size": [1280, 720],
+			"quality": "high",
+			"waitsFor": "tier 3: two frames of a running fade; no debug view shows a fade in progress",
+			"standIn": "fade-in-lod"
+		},
+		{
+			"id": "tail-levels",
+			"kind": "diagram",
+			"shows": "The 12 levels of a 2048 by 2048 texture from the finest to the smallest: levels 0 to 5, which the streamer raises and drops, and the mip tail of levels 6 to 11, which stays resident, with level 6 marked as the level a first load draws from",
+			"caption": "A first load reads only the mip tail, so the surface draws from level 6 at 32 by 32 texels until a view asks for more. Level 0, 2048 by 2048, arrives only when a view needs it.",
+			"alt": "A row of 12 squares, not to scale, shrinks from level 0, 2048 texels on a side, to level 11, 1 texel. A bracket over levels 0 to 5 names them the levels the streamer raises and drops, and one over levels 6 to 11 names the mip tail, always resident. Level 6, 32 texels on a side, is outlined, with a note that after a first load the surface draws from it.",
+			"numbers": "Texture::c_ResidentTailDimension is 32: the tail starts at the first level at most 32 texels on a side (Texture::GetTailLevel, CookedTextureLayout::GetMipTailByteRange), level 6 of a 2048 texture, whose chain has 12 levels (2048 to 1), as the page works out."
+		},
+		{
+			"id": "fade-in-lod",
+			"kind": "diagram",
+			"shows": "The finest level sampled against time for a texture raised from level 4 to level 2: level 4 before the raise, then a straight fall to level 2 over 0.25 s, one dot per frame at 60 frames per second",
+			"caption": "A raise from level 4 to level 2, at 60 frames per second. The finest level sampled falls in a straight line over 0.25 s, a little in each of 15 frames, so new detail never appears all at once.",
+			"alt": "A graph of the finest level sampled against time. The line stays at level 4 before the raise and falls in a straight line to level 2 between 0 and 0.25 s, with one dot per frame. After that it stays at level 2, the new finest level.",
+			"numbers": "0.25 s is TextureTable::c_FadeInSeconds; SetFadeIn starts the minimum level of detail at the levels gained (2 here, so level 4 of the original chain) and UpdateFades lowers it linearly to 0 over the fade (TextureTable.cpp:99-101, 143-145). 60 frames per second is the example rate: 0.25 s holds 15 frames."
+		}
+	]
+}

@@ -1,0 +1,459 @@
+{
+	"page": "make/first-script",
+	"startsFrom": {
+		"tutorial": "make/lighting"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "script.create",
+					"parameters": {
+						"class": "Coin"
+					}
+				},
+				{
+					"command": "script.build",
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/diagnostics",
+							"length": 0
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"files": [
+				{
+					"from": "book:tutorials/make/first-script/Coin.cpp",
+					"to": "Scripts/Coin.cpp"
+				}
+			],
+			"commands": [
+				{
+					"command": "script.build",
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/diagnostics",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "script.add",
+					"entityName": "Coin",
+					"parameters": {
+						"class": "Coin"
+					}
+				},
+				{
+					"command": "prefab.apply",
+					"entityName": "Coin"
+				},
+				{
+					"command": "script.setField",
+					"entityName": "Coin",
+					"parameters": {
+						"class": "Coin",
+						"field": "DegreesPerSecond",
+						"value": 180
+					}
+				},
+				{
+					"command": "play.start",
+					"parameters": {
+						"paused": true,
+						"build": false
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 60
+					},
+					"expect": {
+						"/stepsRun": {
+							"equals": 60
+						}
+					}
+				},
+				{
+					"command": "component.get",
+					"entityName": "Coin (2)",
+					"parameters": {
+						"component": "Transform"
+					},
+					"checks": [
+						{
+							"pointer": "/values/Rotation/1",
+							"approx": 0.7071,
+							"tolerance": 0.02
+						}
+					]
+				},
+				{
+					"command": "component.get",
+					"entityName": "Coin",
+					"parameters": {
+						"component": "Transform"
+					},
+					"checks": [
+						{
+							"pointer": "/values/Rotation/1",
+							"approx": 1,
+							"tolerance": 0.02
+						}
+					]
+				},
+				{
+					"command": "play.stop"
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"files": [
+				{
+					"from": "book:tutorials/make/first-script/CoinLog.cpp",
+					"to": "Scripts/Coin.cpp"
+				}
+			],
+			"commands": [
+				{
+					"command": "script.build",
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/diagnostics",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "play.start",
+					"parameters": {
+						"paused": true,
+						"build": false
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 1
+					},
+					"expect": {
+						"/stepsRun": {
+							"equals": 1
+						}
+					}
+				},
+				{
+					"command": "log.read",
+					"parameters": {
+						"newest": true,
+						"limit": 50
+					},
+					"checks": [
+						{
+							"pointer": "/messages",
+							"contains": "Coin starts with 90 degrees per second"
+						},
+						{
+							"pointer": "/messages",
+							"contains": "Coin starts with 180 degrees per second"
+						}
+					]
+				},
+				{
+					"command": "play.stop"
+				},
+				{
+					"command": "script.build",
+					"parameters": {
+						"wait": false
+					},
+					"files": [
+						{
+							"from": "book:tutorials/make/first-script/CoinNoSemicolon.cpp",
+							"to": "Scripts/Coin.cpp"
+						}
+					]
+				},
+				{
+					"command": "script.status",
+					"until": {
+						"seconds": 300
+					},
+					"expect": {
+						"/build/running": {
+							"equals": false
+						},
+						"/build/last/success": {
+							"equals": false
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/build/last/errorCount",
+							"equals": 1
+						},
+						{
+							"pointer": "/build/last/diagnostics",
+							"contains": "Coin.cpp"
+						}
+					]
+				},
+				{
+					"command": "script.build",
+					"files": [
+						{
+							"from": "book:tutorials/make/first-script/CoinLog.cpp",
+							"to": "Scripts/Coin.cpp"
+						}
+					],
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/diagnostics",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "script.status",
+					"checks": [
+						{
+							"pointer": "/build/last/errorCount",
+							"equals": 0
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"commands": [
+				{
+					"command": "play.start",
+					"parameters": {
+						"paused": true,
+						"build": false
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 30
+					},
+					"expect": {
+						"/stepsRun": {
+							"equals": 30
+						}
+					}
+				},
+				{
+					"command": "script.build",
+					"files": [
+						{
+							"from": "book:tutorials/make/first-script/CoinTumble.cpp",
+							"to": "Scripts/Coin.cpp"
+						}
+					],
+					"checks": [
+						{
+							"pointer": "/diagnostics",
+							"length": 0
+						},
+						{
+							"pointer": "/reloaded",
+							"equals": true
+						}
+					],
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					}
+				},
+				{
+					"command": "play.state",
+					"checks": [
+						{
+							"pointer": "/state",
+							"equals": "Play"
+						}
+					]
+				},
+				{
+					"command": "script.get",
+					"entityName": "Coin",
+					"parameters": {
+						"class": "Coin"
+					},
+					"checks": [
+						{
+							"pointer": "/scripts/0/live",
+							"equals": true
+						},
+						{
+							"pointer": "/scripts/0/fields/DegreesPerSecond",
+							"equals": 180
+						}
+					]
+				},
+				{
+					"command": "script.get",
+					"entityName": "Coin (2)",
+					"parameters": {
+						"class": "Coin"
+					},
+					"checks": [
+						{
+							"pointer": "/scripts/0/fields/DegreesPerSecond",
+							"equals": 90
+						}
+					]
+				},
+				{
+					"command": "play.stop"
+				},
+				{
+					"command": "script.build",
+					"files": [
+						{
+							"from": "book:tutorials/make/first-script/CoinLog.cpp",
+							"to": "Scripts/Coin.cpp"
+						}
+					],
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/diagnostics",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "script.build",
+					"files": [
+						{
+							"from": "book:tutorials/make/first-script/CoinCrash.cpp",
+							"to": "Scripts/Coin.cpp"
+						}
+					],
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/diagnostics",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "play.start",
+					"parameters": {
+						"build": false
+					}
+				},
+				{
+					"command": "play.state",
+					"until": {
+						"seconds": 60
+					},
+					"expect": {
+						"/state": {
+							"equals": "Edit"
+						}
+					}
+				},
+				{
+					"command": "script.status",
+					"checks": [
+						{
+							"pointer": "/lastFault/class",
+							"equals": "Coin"
+						},
+						{
+							"pointer": "/lastFault/method",
+							"contains": "OnUpdate"
+						}
+					]
+				},
+				{
+					"command": "script.build",
+					"files": [
+						{
+							"from": "book:tutorials/make/first-script/CoinLog.cpp",
+							"to": "Scripts/Coin.cpp"
+						}
+					],
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/diagnostics",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "play.start",
+					"parameters": {
+						"paused": true,
+						"build": false
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 30
+					},
+					"expect": {
+						"/stepsRun": {
+							"equals": 30
+						}
+					}
+				},
+				{
+					"command": "play.stop"
+				}
+			],
+			"endState": true
+		}
+	]
+}

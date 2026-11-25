@@ -1,0 +1,32 @@
+[
+	{
+		"command": "editor.activity",
+		"parameters": {
+			"source": "Automation"
+		}
+	},
+	{
+		"command": "editor.activity",
+		"parameters": {
+			"command": "asset.place",
+			"limit": 1
+		}
+	},
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Prefabs/Lamp.stprefab",
+			"point": [
+				2,
+				0,
+				3
+			]
+		}
+	},
+	{
+		"command": "edit.undo"
+	},
+	{
+		"command": "scene.hierarchy"
+	}
+]

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 380">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Graph: t from 0 to 4 s at 125 units a second from x 96; height 0 at y 340, 200 units per unit; y = 1 + 0.25 sin(2 pi t / 2). -->
+<path class="line-muted" d="M96 140H624M408.5 90H624M158.5 90V60M408.5 90V60" fill="none" stroke-width="1" stroke-dasharray="4 3"/>
+<line class="line-ink" x1="96" y1="340" x2="623.5" y2="340" stroke-width="1.5"/>
+<polygon class="ink" points="633.5,340 623.5,343.5 623.5,336.5"/>
+<line class="line-ink" x1="96" y1="340" x2="96" y2="30" stroke-width="1.5"/>
+<polygon class="ink" points="96,20 99.5,30 92.5,30"/>
+<text class="bold" x="641.5" y="345">t</text>
+<text class="bold" x="106" y="32">height y</text>
+<text class="small muted" x="96" y="362" text-anchor="middle">0 s</text>
+<text class="small muted" x="221" y="362" text-anchor="middle">1 s</text>
+<line class="line-ink" x1="221" y1="340" x2="221" y2="345"/>
+<text class="small muted" x="346" y="362" text-anchor="middle">2 s</text>
+<line class="line-ink" x1="346" y1="340" x2="346" y2="345"/>
+<text class="small muted" x="471" y="362" text-anchor="middle">3 s</text>
+<line class="line-ink" x1="471" y1="340" x2="471" y2="345"/>
+<text class="small muted" x="596" y="362" text-anchor="middle">4 s</text>
+<line class="line-ink" x1="596" y1="340" x2="596" y2="345"/>
+<line class="line-ink" x1="91" y1="190" x2="96" y2="190"/>
+<text class="small muted" x="87" y="195" text-anchor="end">0.75</text>
+<line class="line-ink" x1="91" y1="140" x2="96" y2="140"/>
+<text class="small muted" x="87" y="145" text-anchor="end">1</text>
+<line class="line-ink" x1="91" y1="90" x2="96" y2="90"/>
+<text class="small muted" x="87" y="95" text-anchor="end">1.25</text>
+<text class="small muted" x="87" y="345" text-anchor="end">0</text>
+<polyline class="line-blue" points="96,140 97.2,138.4 98.5,136.9 99.8,135.3 101,133.7 102.2,132.2 103.5,130.6 104.8,129.1 106,127.6 107.2,126.1 108.5,124.5 109.8,123.1 111,121.6 112.2,120.1 113.5,118.7 114.8,117.3 116,115.9 117.2,114.5 118.5,113.2 119.8,111.9 121,110.6 122.2,109.4 123.5,108.1 124.8,106.9 126,105.8 127.2,104.6 128.5,103.6 129.8,102.5 131,101.5 132.2,100.5 133.5,99.5 134.8,98.6 136,97.8 137.2,97 138.5,96.2 139.8,95.4 141,94.8 142.2,94.1 143.5,93.5 144.8,93 146,92.4 147.2,92 148.5,91.6 149.8,91.2 151,90.9 152.2,90.6 153.5,90.4 154.8,90.2 156,90.1 157.2,90 158.5,90 159.8,90 161,90.1 162.2,90.2 163.5,90.4 164.8,90.6 166,90.9 167.2,91.2 168.5,91.6 169.8,92 171,92.4 172.2,93 173.5,93.5 174.8,94.1 176,94.8 177.2,95.4 178.5,96.2 179.8,97 181,97.8 182.2,98.6 183.5,99.5 184.8,100.5 186,101.5 187.2,102.5 188.5,103.6 189.8,104.6 191,105.8 192.2,106.9 193.5,108.1 194.8,109.4 196,110.6 197.2,111.9 198.5,113.2 199.8,114.5 201,115.9 202.2,117.3 203.5,118.7 204.8,120.1 206,121.6 207.2,123.1 208.5,124.5 209.8,126.1 211,127.6 212.2,129.1 213.5,130.6 214.8,132.2 216,133.7 217.2,135.3 218.5,136.9 219.8,138.4 221,140 222.2,141.6 223.5,143.1 224.8,144.7 226,146.3 227.2,147.8 228.5,149.4 229.8,150.9 231,152.4 232.2,153.9 233.5,155.5 234.8,156.9 236,158.4 237.2,159.9 238.5,161.3 239.8,162.7 241,164.1 242.2,165.5 243.5,166.8 244.8,168.1 246,169.4 247.2,170.6 248.5,171.9 249.8,173.1 251,174.2 252.2,175.4 253.5,176.4 254.8,177.5 256,178.5 257.2,179.5 258.5,180.5 259.8,181.4 261,182.2 262.2,183 263.5,183.8 264.8,184.6 266,185.2 267.2,185.9 268.5,186.5 269.8,187 271,187.6 272.2,188 273.5,188.4 274.8,188.8 276,189.1 277.2,189.4 278.5,189.6 279.8,189.8 281,189.9 282.2,190 283.5,190 284.8,190 286,189.9 287.2,189.8 288.5,189.6 289.8,189.4 291,189.1 292.2,188.8 293.5,188.4 294.8,188 296,187.6 297.2,187 298.5,186.5 299.8,185.9 301,185.2 302.2,184.6 303.5,183.8 304.8,183 306,182.2 307.2,181.4 308.5,180.5 309.8,179.5 311,178.5 312.2,177.5 313.5,176.4 314.8,175.4 316,174.2 317.2,173.1 318.5,171.9 319.8,170.6 321,169.4 322.2,168.1 323.5,166.8 324.8,165.5 326,164.1 327.2,162.7 328.5,161.3 329.8,159.9 331,158.4 332.2,156.9 333.5,155.5 334.8,153.9 336,152.4 337.2,150.9 338.5,149.4 339.8,147.8 341,146.3 342.2,144.7 343.5,143.1 344.8,141.6 346,140 347.2,138.4 348.5,136.9 349.8,135.3 351,133.7 352.2,132.2 353.5,130.6 354.8,129.1 356,127.6 357.2,126.1 358.5,124.5 359.8,123.1 361,121.6 362.2,120.1 363.5,118.7 364.8,117.3 366,115.9 367.2,114.5 368.5,113.2 369.8,111.9 371,110.6 372.2,109.4 373.5,108.1 374.8,106.9 376,105.8 377.2,104.6 378.5,103.6 379.8,102.5 381,101.5 382.2,100.5 383.5,99.5 384.8,98.6 386,97.8 387.2,97 388.5,96.2 389.8,95.4 391,94.8 392.2,94.1 393.5,93.5 394.8,93 396,92.4 397.2,92 398.5,91.6 399.8,91.2 401,90.9 402.2,90.6 403.5,90.4 404.8,90.2 406,90.1 407.2,90 408.5,90 409.8,90 411,90.1 412.2,90.2 413.5,90.4 414.8,90.6 416,90.9 417.2,91.2 418.5,91.6 419.8,92 421,92.4 422.2,93 423.5,93.5 424.8,94.1 426,94.8 427.2,95.4 428.5,96.2 429.8,97 431,97.8 432.2,98.6 433.5,99.5 434.8,100.5 436,101.5 437.2,102.5 438.5,103.6 439.8,104.6 441,105.8 442.2,106.9 443.5,108.1 444.8,109.4 446,110.6 447.2,111.9 448.5,113.2 449.8,114.5 451,115.9 452.2,117.3 453.5,118.7 454.8,120.1 456,121.6 457.2,123.1 458.5,124.5 459.8,126.1 461,127.6 462.2,129.1 463.5,130.6 464.8,132.2 466,133.7 467.2,135.3 468.5,136.9 469.8,138.4 471,140 472.2,141.6 473.5,143.1 474.8,144.7 476,146.3 477.2,147.8 478.5,149.4 479.8,150.9 481,152.4 482.2,153.9 483.5,155.5 484.8,156.9 486,158.4 487.2,159.9 488.5,161.3 489.8,162.7 491,164.1 492.2,165.5 493.5,166.8 494.8,168.1 496,169.4 497.2,170.6 498.5,171.9 499.8,173.1 501,174.2 502.2,175.4 503.5,176.4 504.8,177.5 506,178.5 507.2,179.5 508.5,180.5 509.8,181.4 511,182.2 512.2,183 513.5,183.8 514.8,184.6 516,185.2 517.2,185.9 518.5,186.5 519.8,187 521,187.6 522.2,188 523.5,188.4 524.8,188.8 526,189.1 527.2,189.4 528.5,189.6 529.8,189.8 531,189.9 532.2,190 533.5,190 534.8,190 536,189.9 537.2,189.8 538.5,189.6 539.8,189.4 541,189.1 542.2,188.8 543.5,188.4 544.8,188 546,187.6 547.2,187 548.5,186.5 549.8,185.9 551,185.2 552.2,184.6 553.5,183.8 554.8,183 556,182.2 557.2,181.4 558.5,180.5 559.8,179.5 561,178.5 562.2,177.5 563.5,176.4 564.8,175.4 566,174.2 567.2,173.1 568.5,171.9 569.8,170.6 571,169.4 572.2,168.1 573.5,166.8 574.8,165.5 576,164.1 577.2,162.7 578.5,161.3 579.8,159.9 581,158.4 582.2,156.9 583.5,155.5 584.8,153.9 586,152.4 587.2,150.9 588.5,149.4 589.8,147.8 591,146.3 592.2,144.7 593.5,143.1 594.8,141.6 596,140" fill="none" stroke-width="2.5"/>
+<line class="line-orange" x1="616" y1="115" x2="616" y2="100" stroke-width="1.5"/>
+<polygon class="orange" points="616,90 619.5,100 612.5,100"/>
+<line class="line-orange" x1="616" y1="115" x2="616" y2="130" stroke-width="1.5"/>
+<polygon class="orange" points="616,140 612.5,130 619.5,130"/>
+<text class="small orange bold" x="626" y="120">amplitude 0.25</text>
+<text class="small muted" x="626" y="160">middle line</text>
+<line class="line-orange" x1="283.5" y1="66" x2="398.5" y2="66" stroke-width="1.5"/>
+<polygon class="orange" points="408.5,66 398.5,69.5 398.5,62.5"/>
+<line class="line-orange" x1="283.5" y1="66" x2="168.5" y2="66" stroke-width="1.5"/>
+<polygon class="orange" points="158.5,66 168.5,62.5 168.5,69.5"/>
+<text class="small orange bold" x="283.5" y="56" text-anchor="middle">period 2 s</text>
+<circle class="blue" cx="158.5" cy="90" r="4.5"/>
+<circle class="blue" cx="408.5" cy="90" r="4.5"/>
+</svg>

@@ -1,0 +1,443 @@
+[
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Hut"
+		},
+		"bind": {
+			"hut": "/id"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Back Wall",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						1.25,
+						-4.9
+					],
+					"Scale": [
+						4,
+						2.5,
+						0.2
+					]
+				}
+			},
+			"parent": {
+				"$ref": "hut"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Left Wall",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"Transform": {
+					"Translation": [
+						-1.9,
+						1.25,
+						-3.5
+					],
+					"Scale": [
+						0.2,
+						2.5,
+						3
+					]
+				}
+			},
+			"parent": {
+				"$ref": "hut"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Right Wall",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"Transform": {
+					"Translation": [
+						1.9,
+						1.25,
+						-3.5
+					],
+					"Scale": [
+						0.2,
+						2.5,
+						3
+					]
+				}
+			},
+			"parent": {
+				"$ref": "hut"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Front Left Wall",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"Transform": {
+					"Translation": [
+						-1.25,
+						1.25,
+						-2.1
+					],
+					"Scale": [
+						1.5,
+						2.5,
+						0.2
+					]
+				}
+			},
+			"parent": {
+				"$ref": "hut"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Front Right Wall",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"Transform": {
+					"Translation": [
+						1.25,
+						1.25,
+						-2.1
+					],
+					"Scale": [
+						1.5,
+						2.5,
+						0.2
+					]
+				}
+			},
+			"parent": {
+				"$ref": "hut"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Roof",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						2.6,
+						-3.5
+					],
+					"Scale": [
+						4.4,
+						0.2,
+						3.4
+					]
+				}
+			},
+			"parent": {
+				"$ref": "hut"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Sign"
+		},
+		"bind": {
+			"sign": "/id"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Sign Post",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cylinder"
+				},
+				"Transform": {
+					"Translation": [
+						-1.8,
+						0.75,
+						2.5
+					],
+					"Scale": [
+						0.1,
+						1.5,
+						0.1
+					]
+				}
+			},
+			"parent": {
+				"$ref": "sign"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Sign Board",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"Transform": {
+					"Translation": [
+						-1.8,
+						1.6,
+						2.5
+					],
+					"Scale": [
+						1.6,
+						0.8,
+						0.08
+					]
+				}
+			},
+			"parent": {
+				"$ref": "sign"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Posts"
+		},
+		"bind": {
+			"posts": "/id"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Post 1",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cylinder"
+				},
+				"Transform": {
+					"Translation": [
+						-4,
+						1.5,
+						1
+					],
+					"Scale": [
+						0.14,
+						3,
+						0.14
+					]
+				}
+			},
+			"parent": {
+				"$ref": "posts"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Post 2",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cylinder"
+				},
+				"Transform": {
+					"Translation": [
+						4,
+						1.5,
+						1
+					],
+					"Scale": [
+						0.14,
+						3,
+						0.14
+					]
+				}
+			},
+			"parent": {
+				"$ref": "posts"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Post 3",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cylinder"
+				},
+				"Transform": {
+					"Translation": [
+						-4,
+						1.5,
+						-5
+					],
+					"Scale": [
+						0.14,
+						3,
+						0.14
+					]
+				}
+			},
+			"parent": {
+				"$ref": "posts"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Post 4",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cylinder"
+				},
+				"Transform": {
+					"Translation": [
+						4,
+						1.5,
+						-5
+					],
+					"Scale": [
+						0.14,
+						3,
+						0.14
+					]
+				}
+			},
+			"parent": {
+				"$ref": "posts"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Arm",
+			"components": {
+				"Transform": {
+					"Translation": [
+						4,
+						3,
+						1
+					]
+				}
+			}
+		},
+		"bind": {
+			"arm": "/id"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Arm Bar",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"Transform": {
+					"Translation": [
+						0.6,
+						0,
+						0
+					],
+					"Scale": [
+						1.2,
+						0.08,
+						0.08
+					]
+				}
+			},
+			"parent": {
+				"$ref": "arm"
+			}
+		}
+	},
+	{
+		"command": "scene.saveAs",
+		"parameters": {
+			"path": "Scenes/Yard.stscene"
+		}
+	},
+	{
+		"command": "project.setStartScene",
+		"parameters": {
+			"scene": "Scenes/Yard.stscene"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Sun"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "DirectionalLight",
+			"values": {
+				"Intensity": 0.2
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Post Process"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "PostProcess",
+			"values": {
+				"AutoExposure": false,
+				"Exposure": 4
+			},
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "scene.save"
+	}
+]

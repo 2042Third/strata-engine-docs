@@ -1,0 +1,27 @@
+{
+	"page": "make/first-script",
+	"startsFrom": { "tutorial": "make/first-script" },
+	"stages": [
+		{
+			"step": 1,
+			"files": [ { "from": "book:tutorials/make/first-script/exercise-1/Coin.cpp", "to": "Scripts/Coin.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 50 },
+					"checks": [
+						{ "pointer": "/messages", "contains": "Coin starts with -180 degrees per second" },
+						{ "pointer": "/messages", "contains": "Coin starts with 180 degrees per second" }
+					] },
+				{ "command": "component.get", "entityName": "Coin (2)", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Rotation/1", "approx": -0.7071, "tolerance": 0.02 } ] },
+				{ "command": "component.get", "entityName": "Coin", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Rotation/1", "approx": 0.7071, "tolerance": 0.02 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		}
+	]
+}

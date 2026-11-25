@@ -1,0 +1,11 @@
+{
+	"figures": [
+		{
+			"id": "extraction",
+			"shows": "A top view of a root joint's path in the clip, from a start facing plus Z to a later place and heading, and the same travel in the world applied to an entity that faces plus X, turning the travel with the entity",
+			"caption": "The clip measures the travel in the frame the root faced at the start, and the entity turns that travel into its own frame before it moves.",
+			"alt": "Two panels seen from above. In the left panel a curved path starts at a dot facing down the page and ends at a second dot with its arrow turned to the right; a dashed arrow joins the two dots. In the right panel an entity faces right, and a dashed arrow of the same length points up and to the right, ending at a dot with a turned arrow.",
+			"kind": "diagram"
+		}
+	]
+}

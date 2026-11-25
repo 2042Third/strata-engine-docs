@@ -1,0 +1,110 @@
+{
+	"addedLastFrame": 0,
+	"bodies": {
+		"active": 653,
+		"characters": 0,
+		"dynamic": 723,
+		"kinematic": 0,
+		"parked": 0,
+		"slotsUsed": 750,
+		"static": 27,
+		"total": 750
+	},
+	"capacity": {
+		"growthLimit": 2097152,
+		"maxBodies": 2048,
+		"maxContactConstraints": 2048,
+		"reservedMB": 5.066183090209961
+	},
+	"changeMsLastFrame": 0.0005000000237487257,
+	"contacts": {
+		"awake": 3575,
+		"capacity": 2048,
+		"detailed": true,
+		"lastGrowthStepMs": 1.44350004196167,
+		"peak": 3751,
+		"recycled": 3563,
+		"recycledShare": 0.9966433566433567,
+		"roomGrowths": 1,
+		"total": 3682,
+		"tracked": 2222
+	},
+	"demand": {
+		"bodies": 0,
+		"contactConstraints": 4096
+	},
+	"growths": {
+		"count": 0,
+		"from": 0,
+		"lastMs": 0.0,
+		"to": 0
+	},
+	"heldSteps": 0,
+	"interpolation": {
+		"blended": 0,
+		"composed": 0,
+		"enabled": true,
+		"entities": 0,
+		"exact": 0,
+		"stepAlpha": 1.0
+	},
+	"lastStepMs": 0.8112999796867371,
+	"pendingOther": 0,
+	"preparedSlices": 0,
+	"removedLastFrame": 0,
+	"running": true,
+	"settings": {
+		"contactDampingRatio": 10.0,
+		"contactHertz": 30.0,
+		"contactPushSpeed": 3.0,
+		"contactRecycleDistance": 0.05000000074505806,
+		"effectiveContactHertz": 29.999998092651367,
+		"sleepThreshold": 0.07999999821186066,
+		"source": "defaults"
+	},
+	"settling": {
+		"maxSpeed": 1.1975626945495605,
+		"restingJitterMm": 0.04501130059361458,
+		"settling": 16
+	},
+	"simulating": true,
+	"sleep": {
+		"awake": 653,
+		"islands": 48,
+		"moving": 723,
+		"sleeping": 70
+	},
+	"step": {
+		"library": {
+			"collide": 0.08590000122785568,
+			"constraints": 0.35749998688697815,
+			"continuous": 0.0,
+			"islands": 0.00019999999494757503,
+			"pairs": 0.01810000091791153,
+			"refit": 0.00139999995008111,
+			"sensors": 0.00860000029206276,
+			"solve": 0.4178999960422516,
+			"splitIslands": 0.0,
+			"transforms": 0.05609999969601631
+		},
+		"libraryMs": 0.5311999917030334,
+		"ms": 0.8112999796867371,
+		"parts": {
+			"apply": 9.999999747378752e-05,
+			"characters": 0.0,
+			"checkedPairs": 0.05689999833703041,
+			"events": 0.0020000000949949026,
+			"instruments": 0.00279999990016222,
+			"pairs": 0.1607000082731247,
+			"sync": 0.02410000190138817,
+			"writeBack": 0.03350000083446503
+		},
+		"strataMs": 0.2800999879837036,
+		"totalLibraryMs": 301.5653997659683,
+		"totalMs": 468.24849981069565,
+		"workers": 24
+	},
+	"steps": 604,
+	"waitingForMeshes": false,
+	"waitingForSlot": 0
+}

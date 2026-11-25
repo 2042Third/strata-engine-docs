@@ -1,0 +1,159 @@
+[
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Cube",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						-0.5,
+						0.5,
+						0
+					]
+				}
+			}
+		},
+		"bind": {
+			"cube": "/id"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Cube"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.get",
+		"parameters": {
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Cube"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "Transform",
+			"values": {
+				"Translation": [
+					-0.5,
+					3,
+					0
+				],
+				"Rotation": [
+					0,
+					30,
+					0
+				],
+				"Scale": [
+					1,
+					2,
+					1
+				]
+			},
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Cube"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "Transform",
+			"values": {
+				"Translation": [
+					-0.5,
+					3,
+					0
+				],
+				"Rotation": [
+					0,
+					0,
+					0
+				],
+				"Scale": [
+					1,
+					1,
+					1
+				]
+			},
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 30
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 30
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Cube"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "scene.save"
+	}
+]

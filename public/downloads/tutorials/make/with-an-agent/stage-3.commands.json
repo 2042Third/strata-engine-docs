@@ -1,0 +1,65 @@
+[
+	{
+		"command": "editor.activity",
+		"parameters": {
+			"newest": true,
+			"limit": 1
+		},
+		"expect": {
+			"/journal/latest": {
+				"min": 0
+			}
+		}
+	},
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Prefabs/Crate.stprefab",
+			"point": [
+				-2,
+				0,
+				3
+			]
+		},
+		"expect": {
+			"/placedOn": {
+				"equals": "point"
+			}
+		}
+	},
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Prefabs/Barrel.stprefab",
+			"point": [
+				0,
+				0,
+				3
+			]
+		},
+		"expect": {
+			"/placedOn": {
+				"equals": "point"
+			}
+		}
+	},
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Prefabs/Lamp.stprefab",
+			"point": [
+				2,
+				0,
+				3
+			]
+		},
+		"expect": {
+			"/placedOn": {
+				"equals": "point"
+			}
+		}
+	},
+	{
+		"command": "scene.hierarchy"
+	}
+]

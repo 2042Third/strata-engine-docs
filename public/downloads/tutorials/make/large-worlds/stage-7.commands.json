@@ -1,0 +1,18 @@
+[
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Worlds/Meadow.stscene"
+		}
+	},
+	{
+		"command": "project.setStartScene",
+		"parameters": {
+			"scene": "Worlds/Meadow.stscene"
+		}
+	},
+	{
+		"command": "scene.save",
+		"parameters": {}
+	}
+]

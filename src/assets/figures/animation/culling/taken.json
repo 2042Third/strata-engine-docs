@@ -1,0 +1,36 @@
+{
+	"files": {
+		"foxes-afar.avif": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				797,
+				499
+			],
+			"figure": "foxes-afar",
+			"variant": null,
+			"crop": null,
+			"original": "ecdb6611a0df3bb833f8b8249085a5b649919bd2fda8e5d6f0bbdc03958414b4",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 90,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "d0b3d85a3838c27ce733771286e751b7b124f25f84455e99c7491d4db0571d75"
+		}
+	}
+}

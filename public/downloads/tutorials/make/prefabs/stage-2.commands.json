@@ -1,0 +1,87 @@
+[
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Prefabs/Coin.stprefab",
+			"ray": {
+				"origin": [
+					-2,
+					10,
+					0
+				],
+				"direction": [
+					0,
+					-1,
+					0
+				]
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin (1)"
+		}
+	},
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Prefabs/Coin.stprefab",
+			"ray": {
+				"origin": [
+					2.3,
+					10,
+					0.2
+				],
+				"direction": [
+					0,
+					-1,
+					0
+				]
+			},
+			"snap": 1
+		}
+	},
+	{
+		"command": "prefab.instantiate",
+		"parameters": {
+			"prefab": "Prefabs/Coin.stprefab",
+			"instances": [
+				{
+					"components": {
+						"Transform": {
+							"Translation": [
+								3,
+								1,
+								0
+							]
+						}
+					}
+				},
+				{
+					"components": {
+						"Transform": {
+							"Translation": [
+								-3,
+								1,
+								0
+							]
+						}
+					}
+				}
+			]
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"tag": "Coin"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin (4)"
+		}
+	}
+]

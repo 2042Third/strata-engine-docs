@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 384">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- top view, two panels; right panel 24 units per meter, zone at (572, 170); crates 22 units; forces orange, gizmos green; the axis key, for both panels, sits centred under the divider, which stops above it -->
+<text class="ink bold" x="196" y="32" text-anchor="middle">Directional zone, turned 90° around Y</text>
+<text class="ink bold" x="572" y="32" text-anchor="middle">Spherical zone, radius 5 m</text>
+<line class="line-faint" x1="384" y1="16" x2="384" y2="304"/>
+<circle class="ink" cx="250" cy="80" r="5"/>
+<line class="line-green" stroke-width="2.5" x1="250.0" y1="80.0" x2="206.0" y2="80.0"/>
+<polygon class="green" points="194.0,80.0 206.0,75.5 206.0,84.5"/>
+<text class="muted small" x="222" y="108" text-anchor="middle">the zone and its arrow</text>
+<rect class="plate line-ink" x="99" y="159" width="22" height="22"/>
+<line class="line-orange" stroke-width="2" x1="97.0" y1="170.0" x2="77.0" y2="170.0"/>
+<polygon class="orange" points="67.0,170.0 77.0,166.5 77.0,173.5"/>
+<rect class="plate line-ink" x="159" y="159" width="22" height="22"/>
+<line class="line-orange" stroke-width="2" x1="157.0" y1="170.0" x2="137.0" y2="170.0"/>
+<polygon class="orange" points="127.0,170.0 137.0,166.5 137.0,173.5"/>
+<rect class="plate line-ink" x="219" y="159" width="22" height="22"/>
+<line class="line-orange" stroke-width="2" x1="217.0" y1="170.0" x2="197.0" y2="170.0"/>
+<polygon class="orange" points="187.0,170.0 197.0,166.5 197.0,173.5"/>
+<rect class="plate line-ink" x="279" y="159" width="22" height="22"/>
+<line class="line-orange" stroke-width="2" x1="277.0" y1="170.0" x2="257.0" y2="170.0"/>
+<polygon class="orange" points="247.0,170.0 257.0,166.5 257.0,173.5"/>
+<rect class="plate line-ink" x="99" y="229" width="22" height="22"/>
+<line class="line-orange" stroke-width="2" x1="97.0" y1="240.0" x2="77.0" y2="240.0"/>
+<polygon class="orange" points="67.0,240.0 77.0,236.5 77.0,243.5"/>
+<rect class="plate line-ink" x="159" y="229" width="22" height="22"/>
+<line class="line-orange" stroke-width="2" x1="157.0" y1="240.0" x2="137.0" y2="240.0"/>
+<polygon class="orange" points="127.0,240.0 137.0,236.5 137.0,243.5"/>
+<rect class="plate line-ink" x="219" y="229" width="22" height="22"/>
+<line class="line-orange" stroke-width="2" x1="217.0" y1="240.0" x2="197.0" y2="240.0"/>
+<polygon class="orange" points="187.0,240.0 197.0,236.5 197.0,243.5"/>
+<rect class="plate line-ink" x="279" y="229" width="22" height="22"/>
+<line class="line-orange" stroke-width="2" x1="277.0" y1="240.0" x2="257.0" y2="240.0"/>
+<polygon class="orange" points="247.0,240.0 257.0,236.5 257.0,243.5"/>
+<text class="orange" x="196" y="298" text-anchor="middle">every crate: (−20, 0, 0) N</text>
+<circle class="muted" cx="362" cy="324" r="3"/>
+<line class="line-muted" stroke-width="1.5" x1="362.0" y1="324.0" x2="390.0" y2="324.0"/>
+<polygon class="muted" points="400.0,324.0 390.0,327.5 390.0,320.5"/>
+<line class="line-muted" stroke-width="1.5" x1="362.0" y1="324.0" x2="362.0" y2="352.0"/>
+<polygon class="muted" points="362.0,362.0 358.5,352.0 365.5,352.0"/>
+<text class="muted small" x="406" y="329" text-anchor="start">+X</text>
+<text class="muted small" x="370" y="362" text-anchor="start">+Z</text>
+<circle class="line-green" fill="none" stroke-width="2.5" cx="572" cy="170" r="120"/>
+<circle class="ink" cx="572" cy="170" r="5"/>
+<text class="muted small" x="572" y="196" text-anchor="middle">zone</text>
+<rect class="plate line-ink" x="633" y="255" width="22" height="22"/>
+<line class="line-orange" stroke-width="2" x1="653.6" y1="278.8" x2="665.6" y2="294.8"/>
+<polygon class="orange" points="671.6,302.8 662.8,296.9 668.4,292.7"/>
+<rect class="plate line-ink" x="513" y="183" width="22" height="22"/>
+<line class="line-orange" stroke-width="2" x1="509.7" y1="201.2" x2="491.8" y2="210.1"/>
+<polygon class="orange" points="482.9,214.6 490.2,207.0 493.4,213.2"/>
+<rect class="plate line-ink" x="585" y="99.0" width="22" height="22"/>
+<line class="line-orange" stroke-width="2" x1="601.9" y1="95.1" x2="609.4" y2="76.6"/>
+<polygon class="orange" points="613.1,67.3 612.6,77.9 606.1,75.3"/>
+<rect class="plate line-ink" x="525.0" y="111" width="22" height="22"/>
+<line class="line-orange" stroke-width="2" x1="526.4" y1="109.2" x2="514.4" y2="93.2"/>
+<polygon class="orange" points="508.4,85.2 517.2,91.1 511.6,95.3"/>
+<text class="orange small" x="640" y="328" text-anchor="middle">(12, 0, 16) N</text>
+<rect class="plate line-ink" x="405.0" y="243.0" width="22" height="22"/>
+<text class="muted small" x="404.0" y="284.0" text-anchor="start">no force</text>
+</svg>

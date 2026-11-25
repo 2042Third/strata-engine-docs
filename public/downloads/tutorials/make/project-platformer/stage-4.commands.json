@@ -1,0 +1,91 @@
+[
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Player"
+		},
+		"bind": {
+			"player": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Main Camera"
+		},
+		"bind": {
+			"camera": "/entities/0"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "camera"
+			},
+			"class": "FollowCamera",
+			"fields": {
+				"Target": {
+					"$ref": "player"
+				}
+			}
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "physics.stats",
+		"expect": {
+			"/waitingForMeshes": {
+				"equals": false
+			}
+		},
+		"until": {
+			"seconds": 60
+		}
+	},
+	{
+		"command": "script.setField",
+		"parameters": {
+			"entity": {
+				"$ref": "camera"
+			},
+			"class": "FollowCamera",
+			"field": "Yaw",
+			"value": 90
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "W",
+			"steps": 60
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "player"
+			},
+			"component": "Transform"
+		},
+		"expect": {
+			"/values/Translation/0": {
+				"max": 0.5
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

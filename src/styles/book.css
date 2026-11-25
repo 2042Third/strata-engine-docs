@@ -1,0 +1,840 @@
+/* The book's look on top of Starlight: long-form typography, the strips, quotes, figures, diagrams, sliders, tabs,
+   answers, asides, glossary terms and track navigation. Colors come from Starlight's variables, so the light and
+   dark themes both work; nothing here carries meaning by color alone (labels say it in words). */
+
+:root {
+	--sl-font: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--sl-font-mono: 'JetBrains Mono Variable', ui-monospace, 'Cascadia Mono', Menlo, Consolas, monospace;
+	--book-font-prose: 'Source Serif 4 Variable', 'Iowan Old Style', Georgia, serif;
+	--sl-content-width: 48rem;
+	--book-why: var(--sl-color-purple);
+	--book-question: var(--sl-color-blue);
+	--book-history: var(--sl-color-orange);
+	--book-elsewhere: var(--sl-color-green);
+	--book-rule: var(--sl-color-red);
+	--book-simplified: var(--sl-color-gray-3);
+	--book-analogy: var(--sl-color-accent);
+	--book-example: var(--sl-color-blue);
+}
+
+/* Prose reads in a serif at a comfortable size and measure; headings, code and the interface stay in Inter. */
+.sl-markdown-content {
+	font-family: var(--book-font-prose);
+	font-size: 1.125rem;
+	line-height: 1.65;
+}
+
+.sl-markdown-content :is(h1, h2, h3, h4, h5, h6, figcaption, table, .book-top-strip, .book-badges, .starlight-aside__title, summary, .book-tabs__list) {
+	font-family: var(--sl-font);
+}
+
+/* A table fits the page: a long engine name in a cell breaks where it must, as Starlight lets a list item's words break.
+   Starlight's table scrolls when it is wider than the page, and a region that scrolls needs keyboard access of its own
+   (axe: scrollable-region-focusable); a page of the generated reference holds hundreds of tables, which would each be
+   a stop of the Tab key. Inline code sets its own overflow-wrap (break-word, which does not let a column shrink), so it
+   is named too. */
+.sl-markdown-content :is(th, td):not(:where(.not-content *)),
+.sl-markdown-content :is(th, td) code:not(:where(.not-content *)) {
+	overflow-wrap: anywhere;
+}
+
+/* Code shows the characters that are there: no ligatures that draw ">=" as one sign. */
+.expressive-code pre,
+.sl-markdown-content code {
+	font-variant-ligatures: none;
+	font-feature-settings: 'liga' 0, 'calt' 0;
+}
+
+/* Tabs are 4 columns wide, as the engine's .editorconfig sets (tab_width = 4): quotes keep the engine's indentation.
+   Expressive Code's blocks would show the browser's 8, and Starlight sets 2 for other preformatted text. */
+.expressive-code pre,
+.sl-markdown-content pre {
+	tab-size: 4;
+}
+
+/* Breadcrumbs and the top strip. */
+.book-breadcrumbs ol {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem 0.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-3);
+}
+.book-breadcrumbs li + li::before {
+	content: '›';
+	margin-inline-end: 0.5rem;
+	color: var(--sl-color-gray-4);
+}
+.book-breadcrumbs a {
+	color: var(--sl-color-gray-2);
+}
+
+.book-top-strip {
+	margin-top: 1rem;
+	padding: 1rem 1.25rem;
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 0.5rem;
+	background: var(--sl-color-gray-7, var(--sl-color-black));
+	font-size: var(--sl-text-sm);
+}
+.book-top-strip__columns {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+	gap: 0.5rem 2rem;
+}
+.book-top-strip__heading {
+	margin: 0.75rem 0 0.25rem;
+	font-weight: 600;
+	color: var(--sl-color-white);
+}
+.book-top-strip ul {
+	margin: 0;
+	padding-inline-start: 1.25rem;
+}
+.book-top-strip__print {
+	margin: 0.75rem 0 0;
+}
+.book-badges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.375rem;
+	margin: 0;
+}
+.book-badge {
+	display: inline-block;
+	padding: 0.125rem 0.5rem;
+	border: 1px solid var(--sl-color-gray-4);
+	border-radius: 999px;
+	font-size: var(--sl-text-xs);
+	font-weight: 600;
+	color: var(--sl-color-white);
+}
+.book-badge--kind {
+	border-color: var(--sl-color-accent);
+}
+.book-badge--draft {
+	border-style: dashed;
+}
+/* A track badge shows its letter; its name ("Game maker") is visually hidden text beside it, read by screen readers. */
+.book-badge--track {
+	min-width: 1.75rem;
+	text-align: center;
+}
+.book-badge--new {
+	border-color: var(--sl-color-green);
+}
+.book-top-strip__level,
+.book-top-strip__engine {
+	margin: 0.5rem 0 0;
+	color: var(--sl-color-gray-2);
+}
+/* A Need whose page is not written yet is named without a link. */
+.book-top-strip__unwritten {
+	color: var(--sl-color-gray-2);
+	font-style: italic;
+}
+
+/* Quotes of the engine and the book's own code: a line naming the source above the frame. */
+.book-excerpt {
+	margin-top: 1.5rem;
+}
+.book-excerpt__source {
+	margin: 0 0 0.375rem;
+	font-family: var(--sl-font);
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-3);
+}
+.sl-markdown-content .book-excerpt__source + * {
+	margin-top: 0;
+}
+.book-code__label {
+	font-weight: 600;
+	color: var(--sl-color-white);
+}
+/* A sketch's file name is text on the inline-code background, where the header's gray-3 falls below 4.5:1 in the dark
+   theme; gray-2 keeps it readable in both. */
+.book-code__header > code,
+.book-excerpt__source > code {
+	color: var(--sl-color-gray-2);
+}
+/* Starlight colors a link in an aside with the aside's accent, but its own rule for links in Markdown content is more
+   specific and wins: in the light theme the accent on a note's light blue measures 3.95:1. The aside's text accent
+   (its title's color) keeps 4.5:1 on every aside in both themes. */
+.sl-markdown-content .starlight-aside__content a:not(:where(.not-content *)) {
+	color: var(--sl-color-asides-text-accent);
+}
+
+/* Figures and placeholders. */
+.book-figure {
+	margin: 2rem 0;
+}
+.book-figure img,
+.book-figure__drawing svg {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 0.25rem;
+}
+.book-figure__zoom {
+	display: block;
+}
+/* A drawing's viewBox is 768 units wide and its smallest text 14 units (plan/card/drawing.md): stretched to a phone's
+   column of about 340 pixels that text would be 6 pixels high. Below 40rem the drawing stops shrinking, which keeps
+   14 units at 11.7 pixels or more, and scrolls sideways instead; its box takes the keyboard's focus so that the
+   scrolled part can be reached, as a code block's does. Paper is wide enough: print.css lets it shrink there. */
+.book-figure__drawing {
+	overflow-x: auto;
+}
+.book-figure__drawing svg {
+	min-width: 40rem;
+}
+/* A crop keeps its pixels (plan/site.md "Pictures"): it is shown at the largest whole factor up to its recipe's scale
+   that fits the column, and never smoothed. The figure is a container, so that the factor follows the column, not
+   the viewport: round() takes the largest multiple of the crop's width that the column holds, clamp() keeps it between
+   the crop's own width and its scale. Where round() is unknown the crop shows at its own size (the first width). A
+   crop wider than the column scrolls; its link keeps the scrolled box reachable from the keyboard. */
+.book-figure--crop {
+	container-type: inline-size;
+}
+.book-crop {
+	overflow-x: auto;
+}
+.book-figure .book-crop__img {
+	width: var(--book-crop-width);
+	width: clamp(var(--book-crop-width), round(down, 100cqi, var(--book-crop-width)), calc(var(--book-crop-width) * var(--book-crop-scale)));
+	max-width: none;
+	height: auto;
+	image-rendering: pixelated;
+}
+.sl-markdown-content figcaption {
+	margin-top: 0.5rem;
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-2);
+}
+.book-draft-label {
+	display: inline-block;
+	padding: 0 0.375rem;
+	border: 1px dashed var(--sl-color-gray-3);
+	border-radius: 0.25rem;
+	font-weight: 600;
+}
+.book-placeholder {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 1.5rem;
+	border: 2px dashed var(--sl-color-gray-4);
+	border-radius: 0.25rem;
+	text-align: center;
+	font-family: var(--sl-font);
+	color: var(--sl-color-gray-2);
+}
+.book-placeholder__title {
+	color: var(--sl-color-white);
+}
+.book-placeholder__recipe {
+	font-family: var(--sl-font-mono);
+	font-size: var(--sl-text-xs);
+}
+
+/* Before/after: side by side without scripts, stacked with a slider when the script runs. */
+.book-compare__pair {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+	gap: 0.75rem;
+}
+.book-compare__item {
+	position: relative;
+	margin: 0;
+}
+.book-compare__label {
+	position: absolute;
+	inset-block-start: 0.5rem;
+	inset-inline-start: 0.5rem;
+	padding: 0.125rem 0.5rem;
+	border-radius: 0.25rem;
+	background: rgb(0 0 0 / 0.7);
+	color: #fff;
+	font-family: var(--sl-font);
+	font-size: var(--sl-text-xs);
+	font-weight: 600;
+}
+book-compare[data-enhanced] .book-compare__pair {
+	grid-template-columns: 1fr;
+	gap: 0;
+}
+book-compare[data-enhanced] .book-compare__item {
+	grid-area: 1 / 1;
+}
+book-compare[data-enhanced] .book-compare__item:last-child {
+	clip-path: inset(0 0 0 var(--book-compare-position, 50%));
+}
+book-compare[data-enhanced] .book-compare__item:last-child .book-compare__label {
+	inset-inline-start: auto;
+	inset-inline-end: 0.5rem;
+}
+book-compare[data-enhanced] .book-compare__item:last-child::before {
+	content: '';
+	position: absolute;
+	z-index: 1;
+	inset-block: 0;
+	inset-inline-start: var(--book-compare-position, 50%);
+	width: 2px;
+	background: #fff;
+	box-shadow: 0 0 0 1px rgb(0 0 0 / 0.5);
+}
+.book-compare__range {
+	display: block;
+	width: 100%;
+	margin-top: 0.5rem;
+	accent-color: var(--sl-color-accent);
+}
+
+/* Diagrams: the page's theme shows its own drawing. */
+.book-diagram {
+	margin: 2rem 0;
+}
+.book-diagram__svg svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin-inline: auto;
+}
+:root[data-theme='dark'] .book-diagram__svg--light,
+:root:not([data-theme='dark']) .book-diagram__svg--dark {
+	display: none;
+}
+
+/* Tabs: without scripts every panel shows under its label. */
+book-tabs {
+	display: block;
+	margin-top: 1.5rem;
+}
+.book-tabs__label {
+	margin-bottom: 0.25rem;
+	font-family: var(--sl-font);
+	font-weight: 600;
+	font-size: var(--sl-text-sm);
+}
+book-tabs[data-enhanced] .book-tabs__label {
+	display: none;
+}
+.book-tabs__list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem;
+	border-bottom: 1px solid var(--sl-color-gray-5);
+}
+.book-tabs__list [role='tab'] {
+	padding: 0.375rem 0.875rem;
+	border: 0;
+	border-bottom: 2px solid transparent;
+	background: none;
+	color: var(--sl-color-gray-2);
+	font: inherit;
+	font-size: var(--sl-text-sm);
+	cursor: pointer;
+}
+.book-tabs__list [role='tab'][aria-selected='true'] {
+	border-bottom-color: var(--sl-color-accent);
+	color: var(--sl-color-white);
+	font-weight: 600;
+}
+.book-tabs__panel {
+	padding-top: 0.75rem;
+}
+
+/* Hidden answers. */
+.book-answer {
+	margin-top: 0.75rem;
+	padding: 0.5rem 1rem;
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 0.375rem;
+}
+.book-answer summary {
+	cursor: pointer;
+	font-weight: 600;
+	font-size: var(--sl-text-sm);
+}
+.book-answer[open] summary {
+	margin-bottom: 0.5rem;
+}
+/* The download of a worked solution, at the end of its answer. */
+.book-answer__download,
+.book-answer__pending {
+	font-family: var(--sl-font);
+	font-size: var(--sl-text-sm);
+}
+
+/* The book's asides use Starlight's aside markup with colors of their own. */
+.book-aside {
+	--sl-color-asides-text-accent: var(--sl-color-white);
+	border-inline-start: 0.25rem solid var(--book-aside-color);
+	background-color: color-mix(in srgb, var(--book-aside-color) 12%, transparent);
+}
+.book-aside--why { --book-aside-color: var(--book-why); }
+.book-aside--question { --book-aside-color: var(--book-question); }
+.book-aside--history { --book-aside-color: var(--book-history); }
+.book-aside--elsewhere { --book-aside-color: var(--book-elsewhere); }
+.book-aside--rule { --book-aside-color: var(--book-rule); }
+.book-aside--simplified { --book-aside-color: var(--book-simplified); }
+.book-aside--analogy { --book-aside-color: var(--book-analogy); }
+.book-aside--example { --book-aside-color: var(--book-example); }
+/* An analogy's last paragraph says where it breaks: set apart from the analogy itself. */
+.book-aside__limit {
+	margin-top: 0.75rem;
+	padding-top: 0.5rem;
+	border-top: 1px dashed var(--sl-color-gray-4);
+}
+
+/* A derivation the reader may skip: closed like an answer, with the plugin's first line in the interface's font. */
+.book-derivation {
+	margin-top: 1rem;
+	padding: 0.5rem 1rem;
+	border: 1px solid var(--sl-color-gray-5);
+	border-inline-start: 0.25rem solid var(--sl-color-gray-4);
+	border-radius: 0.375rem;
+}
+.book-derivation summary {
+	cursor: pointer;
+	font-weight: 600;
+	font-size: var(--sl-text-sm);
+}
+.book-derivation__skip {
+	font-family: var(--sl-font);
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-2);
+}
+
+/* A primer's Test out box. */
+.book-test-out {
+	margin-top: 1rem;
+	padding: 1rem 1.25rem;
+	border: 2px solid var(--sl-color-accent);
+	border-radius: 0.5rem;
+}
+.book-test-out__title {
+	margin: 0;
+	font-family: var(--sl-font);
+	font-weight: 700;
+	color: var(--sl-color-white);
+}
+.book-test-out__instruction,
+.book-test-out__next {
+	font-family: var(--sl-font);
+	font-size: var(--sl-text-sm);
+}
+.book-test-out__next {
+	padding-inline-start: 1.25rem;
+}
+
+/* A tutorial's checkpoint: the downloads of the project after a step, and the picture of what the reader should have. */
+.book-checkpoint {
+	margin-top: 1.5rem;
+	padding: 0.75rem 1.25rem;
+	border: 1px solid var(--sl-color-gray-5);
+	border-inline-start: 0.25rem solid var(--sl-color-green);
+	border-radius: 0.375rem;
+	font-family: var(--sl-font);
+	font-size: var(--sl-text-sm);
+}
+.book-checkpoint__title {
+	margin: 0;
+	font-weight: 700;
+	color: var(--sl-color-white);
+}
+.book-checkpoint ul {
+	padding-inline-start: 1.25rem;
+}
+.book-checkpoint__have {
+	margin: 1rem 0 0;
+	font-weight: 700;
+	color: var(--sl-color-white);
+}
+.sl-markdown-content .book-checkpoint__picture .book-figure {
+	margin-top: 0.5rem;
+}
+
+/* A file tree: names in the code font, folders with what they hold below them, comments after the names. */
+.book-files {
+	margin: 1.5rem 0;
+	padding: 0.75rem 1rem;
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 0.375rem;
+	background-color: var(--sl-color-gray-6);
+	font-family: var(--sl-font-mono);
+	font-size: var(--sl-text-sm);
+	overflow-x: auto;
+}
+.sl-markdown-content .book-files__caption {
+	margin: 0 0 0.5rem;
+	font-family: var(--sl-font);
+	color: var(--sl-color-gray-2);
+}
+.sl-markdown-content .book-files ul {
+	margin: 0;
+	padding-inline-start: 1.25rem;
+	border-inline-start: 1px solid var(--sl-color-gray-5);
+	list-style: none;
+}
+.sl-markdown-content .book-files > .book-files__tree {
+	padding-inline-start: 0;
+	border: 0;
+}
+.sl-markdown-content .book-files li {
+	margin: 0.125rem 0;
+}
+.book-files__entry {
+	display: inline-flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: 0 0.5rem;
+}
+.book-files__icon {
+	flex-shrink: 0;
+	align-self: center;
+	width: 0.875rem;
+	height: 0.875rem;
+	fill: none;
+	stroke: var(--sl-color-gray-2);
+	stroke-width: 1.25;
+}
+.book-files__name {
+	color: var(--sl-color-white);
+}
+.book-files__name--highlight strong {
+	padding: 0 0.25rem;
+	border-radius: 0.25rem;
+	background-color: var(--sl-color-accent-low);
+}
+.book-files__comment {
+	font-family: var(--sl-font);
+	color: var(--sl-color-gray-2);
+}
+
+/* Glossary terms: a dotted underline says "defined in the glossary". A marked term's button opens its definition in a
+   popover; a browser without popovers shows the link alone (the button and the popover stay hidden there). */
+.sl-markdown-content a.book-term {
+	color: inherit;
+	text-decoration: underline dotted;
+	text-underline-offset: 0.2em;
+}
+.book-term__button,
+.book-term__popover {
+	display: none;
+}
+@supports selector(:popover-open) {
+	.book-term__button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.125rem;
+		height: 1.125rem;
+		margin-inline-start: 0.125rem;
+		padding: 0;
+		border: 1px solid var(--sl-color-gray-4);
+		border-radius: 999px;
+		background: none;
+		color: var(--sl-color-gray-2);
+		font-family: var(--sl-font);
+		font-size: 0.75rem;
+		font-weight: 700;
+		line-height: 1;
+		vertical-align: 0.1em;
+		cursor: pointer;
+	}
+	.book-term__button:hover,
+	.book-term__button:focus-visible {
+		border-color: var(--sl-color-accent);
+		color: var(--sl-color-white);
+	}
+	/* Centered on the screen, as a popover is by default: Starlight's reset takes the browser's margin: auto away. */
+	.book-term__popover:popover-open {
+		display: block;
+		margin: auto;
+		max-width: min(24rem, calc(100vw - 2rem));
+		padding: 0.75rem 1rem;
+		border: 1px solid var(--sl-color-gray-4);
+		border-radius: 0.5rem;
+		background-color: var(--sl-color-black);
+		color: var(--sl-color-white);
+		font-family: var(--sl-font);
+		font-size: var(--sl-text-sm);
+		line-height: 1.5;
+		box-shadow: var(--sl-shadow-lg);
+	}
+}
+
+/* "New in 0.8.0" at the start of a section's first paragraph. */
+.book-since {
+	margin-inline-end: 0.375rem;
+	vertical-align: 0.1em;
+}
+.book-glossary dt {
+	margin-top: 1rem;
+	font-family: var(--sl-font);
+	font-weight: 600;
+}
+.book-glossary dd {
+	margin-inline-start: 1.5rem;
+}
+.book-glossary__aliases {
+	color: var(--sl-color-gray-3);
+}
+
+/* The bottom strip starts with a rule. */
+.book-bottom-strip {
+	margin-top: 3rem;
+	padding-top: 0.5rem;
+	border-top: 2px solid var(--sl-color-gray-5);
+}
+
+/* Tracks. */
+.book-track-chooser ul {
+	padding-inline-start: 1.25rem;
+}
+.book-track {
+	margin-bottom: 0.75rem;
+}
+.book-track__choose {
+	margin-inline-start: 0.5rem;
+	padding: 0.125rem 0.75rem;
+	border: 1px solid var(--sl-color-accent);
+	border-radius: 999px;
+	background: none;
+	color: var(--sl-color-white);
+	font-family: var(--sl-font);
+	font-size: var(--sl-text-sm);
+	cursor: pointer;
+}
+.book-track__choose[aria-pressed='true'] {
+	background: var(--sl-color-accent-low);
+}
+.book-pagination__track {
+	margin-top: 0.75rem;
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-3);
+}
+/* Links swapped in for a track have no Starlight scoped class: give them the look of Starlight's own. */
+.book-pagination .pagination-links a {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	width: 100%;
+	flex-grow: 1;
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 0.5rem;
+	padding: 1rem;
+	text-decoration: none;
+	color: var(--sl-color-gray-2);
+	box-shadow: var(--sl-shadow-md);
+	overflow-wrap: anywhere;
+}
+.book-pagination .pagination-links a[rel='next'] {
+	justify-content: end;
+	text-align: end;
+}
+.book-pagination .pagination-links .link-title {
+	color: var(--sl-color-white);
+	font-size: var(--sl-text-2xl);
+	line-height: var(--sl-line-height-headings);
+}
+
+/* KaTeX display math scrolls instead of overflowing on small screens. */
+.katex-display {
+	overflow-x: auto;
+	overflow-y: hidden;
+	padding-block: 0.25rem;
+}
+
+/* Steps (:::steps): Starlight's markup for its <Steps> component, whose styles a page without the component does not
+   load. The rules below are those of Starlight 0.42.10 (src/user-components/Steps.astro), in Starlight's own layers.
+   Starlight is under the MIT License:
+
+   Copyright (c) 2023 [Astro contributors](https://github.com/withastro/starlight/graphs/contributors)
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+   documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+   rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+   permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all copies or substantial portions of
+   the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+   WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+   COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
+@layer starlight.components {
+	.sl-steps {
+		--bullet-size: calc(var(--sl-line-height) * 1rem);
+		--bullet-margin: 0.375rem;
+
+		list-style: none;
+		counter-reset: steps-counter var(--sl-steps-start, 0);
+		padding-inline-start: 0;
+	}
+
+	.sl-steps > li {
+		counter-increment: steps-counter;
+		position: relative;
+		padding-inline-start: calc(var(--bullet-size) + 1rem);
+		/* Keeps any margin-bottom inside the <li>'s padding box, so that the hairline border has no gaps. */
+		padding-bottom: 1px;
+		/* Bullets of short items do not touch. */
+		min-height: calc(var(--bullet-size) + var(--bullet-margin));
+	}
+	.sl-steps > li + li {
+		margin-top: 0;
+	}
+
+	/* The step's number. */
+	.sl-steps > li::before {
+		content: counter(steps-counter);
+		position: absolute;
+		top: 0;
+		inset-inline-start: 0;
+		width: var(--bullet-size);
+		height: var(--bullet-size);
+		line-height: var(--bullet-size);
+
+		font-size: var(--sl-text-xs);
+		font-weight: 600;
+		text-align: center;
+		color: var(--sl-color-white);
+		background-color: var(--sl-color-gray-6);
+		border-radius: 99rem;
+		box-shadow: inset 0 0 0 1px var(--sl-color-gray-5);
+	}
+
+	/* The line that joins the numbers. */
+	.sl-steps > li::after {
+		--guide-width: 1px;
+		content: '';
+		position: absolute;
+		top: calc(var(--bullet-size) + var(--bullet-margin));
+		bottom: var(--bullet-margin);
+		inset-inline-start: calc((var(--bullet-size) - var(--guide-width)) / 2);
+		width: var(--guide-width);
+		background-color: var(--sl-color-hairline-light);
+	}
+}
+
+@layer starlight.content {
+	/* The first thing inside a step lines up with its number, even in a larger font (a heading). */
+	.sl-steps > li > :first-child {
+		--lh: calc(1em * var(--sl-line-height));
+		--shift-y: calc(0.5 * (var(--bullet-size) - var(--lh)));
+		transform: translateY(var(--shift-y));
+		margin-bottom: var(--shift-y);
+	}
+	.sl-steps > li > :first-child:where(h1, h2, h3, h4, h5, h6) {
+		--lh: calc(1em * var(--sl-line-height-headings));
+	}
+	@supports (--prop: 1lh) {
+		.sl-steps > li > :first-child {
+			--lh: 1lh;
+		}
+	}
+}
+
+/* The sidebar (src/components/SidebarList.astro): the rules of Starlight 0.42.10's SidebarSublist.astro, in its layer,
+   under the MIT License quoted above for the steps, written for one class on the list (.book-sidebar) instead of a
+   scoped class on every element. The caret of a group is the icon "right-caret" of Starlight's set, drawn as a mask in
+   the summary's color instead of an inline SVG in every group. */
+@layer starlight.core {
+	.book-sidebar,
+	.book-sidebar ul {
+		--sl-sidebar-item-padding-inline: 0.5rem;
+		list-style: none;
+		padding: 0;
+	}
+
+	.book-sidebar li {
+		overflow-wrap: anywhere;
+	}
+
+	.book-sidebar ul li {
+		margin-inline-start: var(--sl-sidebar-item-padding-inline);
+		border-inline-start: 1px solid var(--sl-color-hairline-light);
+		padding-inline-start: var(--sl-sidebar-item-padding-inline);
+	}
+
+	.book-sidebar .large {
+		font-size: var(--sl-text-lg);
+		font-weight: 600;
+		color: var(--sl-color-white);
+	}
+
+	.book-sidebar > li + li {
+		margin-top: 0.75rem;
+	}
+
+	.book-sidebar summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.2em var(--sl-sidebar-item-padding-inline);
+		line-height: 1.4;
+		cursor: pointer;
+		user-select: none;
+	}
+	.book-sidebar summary::marker,
+	.book-sidebar summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.book-sidebar summary::after {
+		content: '';
+		width: 1.25rem;
+		height: 1.25rem;
+		background-color: currentColor;
+		mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z'/%3E%3C/svg%3E") center / contain no-repeat;
+		transition: transform 0.2s ease-in-out;
+		flex-shrink: 0;
+	}
+	[dir='rtl'] .book-sidebar summary::after {
+		transform: rotateZ(180deg);
+	}
+	.book-sidebar [open] > summary::after {
+		transform: rotateZ(90deg);
+	}
+
+	.book-sidebar a {
+		display: block;
+		border-radius: 0.25rem;
+		text-decoration: none;
+		color: var(--sl-color-gray-2);
+		padding: 0.3em var(--sl-sidebar-item-padding-inline);
+		line-height: 1.4;
+	}
+
+	.book-sidebar a:hover,
+	.book-sidebar a:focus {
+		color: var(--sl-color-white);
+	}
+
+	.book-sidebar [aria-current='page'],
+	.book-sidebar [aria-current='page']:hover,
+	.book-sidebar [aria-current='page']:focus {
+		font-weight: 600;
+		color: var(--sl-color-text-invert);
+		background-color: var(--sl-color-text-accent);
+	}
+
+	@media (min-width: 50rem) {
+		.book-sidebar > li + li {
+			margin-top: 0.5rem;
+		}
+		.book-sidebar .large {
+			font-size: var(--sl-text-base);
+		}
+		.book-sidebar a {
+			font-size: var(--sl-text-sm);
+		}
+	}
+}

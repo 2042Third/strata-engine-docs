@@ -1,0 +1,28 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"command": "component.get",
+	"parameters": {
+		"component": "Transform",
+		"entity": "…"
+	},
+	"result": {
+		"values": {
+			"Rotation": [
+				0,
+				0.3826836,
+				0,
+				0.9238795
+			],
+			"Scale": [
+				1,
+				1,
+				1
+			],
+			"Translation": [
+				0,
+				0.5,
+				0
+			]
+		}
+	}
+}

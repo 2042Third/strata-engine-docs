@@ -1,0 +1,18 @@
+{
+	"page": "make/sound",
+	"startsFrom": { "tutorial": "make/sound" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "entity.create", "bind": { "fire": "/id" },
+					"parameters": { "name": "Campfire", "components": { "Transform": { "Translation": [6, 0.5, 0] },
+						"AudioSource": { "Loop": true, "Spatial": true, "MinDistance": 2, "MaxDistance": 15, "Rolloff": 2 } } } },
+				{ "command": "component.get", "entityName": "Campfire", "parameters": { "component": "AudioSource" },
+					"checks": [ { "pointer": "/values/MaxDistance", "approx": 15, "tolerance": 0.001 },
+						{ "pointer": "/values/Rolloff", "approx": 2, "tolerance": 0.001 } ] }
+			],
+			"endState": true
+		}
+	]
+}

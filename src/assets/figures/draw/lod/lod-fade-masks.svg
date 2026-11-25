@@ -1,0 +1,295 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 350">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- the drawing: roles as classes (plan/card/drawing.md) -->
+<!-- Plan: three panels of 8x8 pixels (2x2 tiles of the 4x4 ordered dither), cell 24, grid 192 wide; panels at x 48, 288, 528 (gap 48), grid y 48 to 240. Filled (blue) pixels: threshold below the step, the new level; open (plate): the old level. Arrows below the step 8 panel name one of each. Counts per tile in two lines at y 312 and 330; H 350. -->
+<text class="ink bold" x="144" y="34" text-anchor="middle">Step 1</text>
+<rect class="blue" x="48" y="48" width="24" height="24"/>
+<rect class="plate" x="72" y="48" width="24" height="24"/>
+<rect class="plate" x="96" y="48" width="24" height="24"/>
+<rect class="plate" x="120" y="48" width="24" height="24"/>
+<rect class="blue" x="144" y="48" width="24" height="24"/>
+<rect class="plate" x="168" y="48" width="24" height="24"/>
+<rect class="plate" x="192" y="48" width="24" height="24"/>
+<rect class="plate" x="216" y="48" width="24" height="24"/>
+<rect class="plate" x="48" y="72" width="24" height="24"/>
+<rect class="plate" x="72" y="72" width="24" height="24"/>
+<rect class="plate" x="96" y="72" width="24" height="24"/>
+<rect class="plate" x="120" y="72" width="24" height="24"/>
+<rect class="plate" x="144" y="72" width="24" height="24"/>
+<rect class="plate" x="168" y="72" width="24" height="24"/>
+<rect class="plate" x="192" y="72" width="24" height="24"/>
+<rect class="plate" x="216" y="72" width="24" height="24"/>
+<rect class="plate" x="48" y="96" width="24" height="24"/>
+<rect class="plate" x="72" y="96" width="24" height="24"/>
+<rect class="plate" x="96" y="96" width="24" height="24"/>
+<rect class="plate" x="120" y="96" width="24" height="24"/>
+<rect class="plate" x="144" y="96" width="24" height="24"/>
+<rect class="plate" x="168" y="96" width="24" height="24"/>
+<rect class="plate" x="192" y="96" width="24" height="24"/>
+<rect class="plate" x="216" y="96" width="24" height="24"/>
+<rect class="plate" x="48" y="120" width="24" height="24"/>
+<rect class="plate" x="72" y="120" width="24" height="24"/>
+<rect class="plate" x="96" y="120" width="24" height="24"/>
+<rect class="plate" x="120" y="120" width="24" height="24"/>
+<rect class="plate" x="144" y="120" width="24" height="24"/>
+<rect class="plate" x="168" y="120" width="24" height="24"/>
+<rect class="plate" x="192" y="120" width="24" height="24"/>
+<rect class="plate" x="216" y="120" width="24" height="24"/>
+<rect class="blue" x="48" y="144" width="24" height="24"/>
+<rect class="plate" x="72" y="144" width="24" height="24"/>
+<rect class="plate" x="96" y="144" width="24" height="24"/>
+<rect class="plate" x="120" y="144" width="24" height="24"/>
+<rect class="blue" x="144" y="144" width="24" height="24"/>
+<rect class="plate" x="168" y="144" width="24" height="24"/>
+<rect class="plate" x="192" y="144" width="24" height="24"/>
+<rect class="plate" x="216" y="144" width="24" height="24"/>
+<rect class="plate" x="48" y="168" width="24" height="24"/>
+<rect class="plate" x="72" y="168" width="24" height="24"/>
+<rect class="plate" x="96" y="168" width="24" height="24"/>
+<rect class="plate" x="120" y="168" width="24" height="24"/>
+<rect class="plate" x="144" y="168" width="24" height="24"/>
+<rect class="plate" x="168" y="168" width="24" height="24"/>
+<rect class="plate" x="192" y="168" width="24" height="24"/>
+<rect class="plate" x="216" y="168" width="24" height="24"/>
+<rect class="plate" x="48" y="192" width="24" height="24"/>
+<rect class="plate" x="72" y="192" width="24" height="24"/>
+<rect class="plate" x="96" y="192" width="24" height="24"/>
+<rect class="plate" x="120" y="192" width="24" height="24"/>
+<rect class="plate" x="144" y="192" width="24" height="24"/>
+<rect class="plate" x="168" y="192" width="24" height="24"/>
+<rect class="plate" x="192" y="192" width="24" height="24"/>
+<rect class="plate" x="216" y="192" width="24" height="24"/>
+<rect class="plate" x="48" y="216" width="24" height="24"/>
+<rect class="plate" x="72" y="216" width="24" height="24"/>
+<rect class="plate" x="96" y="216" width="24" height="24"/>
+<rect class="plate" x="120" y="216" width="24" height="24"/>
+<rect class="plate" x="144" y="216" width="24" height="24"/>
+<rect class="plate" x="168" y="216" width="24" height="24"/>
+<rect class="plate" x="192" y="216" width="24" height="24"/>
+<rect class="plate" x="216" y="216" width="24" height="24"/>
+<line class="line-faint" stroke-width="1" x1="72" y1="48" x2="72" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="48" y1="72" x2="240" y2="72"/>
+<line class="line-faint" stroke-width="1" x1="96" y1="48" x2="96" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="48" y1="96" x2="240" y2="96"/>
+<line class="line-faint" stroke-width="1" x1="120" y1="48" x2="120" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="48" y1="120" x2="240" y2="120"/>
+<line class="line-faint" stroke-width="1" x1="168" y1="48" x2="168" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="48" y1="168" x2="240" y2="168"/>
+<line class="line-faint" stroke-width="1" x1="192" y1="48" x2="192" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="48" y1="192" x2="240" y2="192"/>
+<line class="line-faint" stroke-width="1" x1="216" y1="48" x2="216" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="48" y1="216" x2="240" y2="216"/>
+<line class="line-ink" stroke-width="2" x1="144" y1="48" x2="144" y2="240"/>
+<line class="line-ink" stroke-width="2" x1="48" y1="144" x2="240" y2="144"/>
+<rect class="line-ink" fill="none" stroke-width="2" x="48" y="48" width="192" height="192"/>
+<text class="muted small" x="144" y="312" text-anchor="middle">New level on 1 of 16 pixels</text>
+<text class="muted small" x="144" y="330" text-anchor="middle">of every tile</text>
+<text class="ink bold" x="384" y="34" text-anchor="middle">Step 8</text>
+<rect class="blue" x="288" y="48" width="24" height="24"/>
+<rect class="plate" x="312" y="48" width="24" height="24"/>
+<rect class="blue" x="336" y="48" width="24" height="24"/>
+<rect class="plate" x="360" y="48" width="24" height="24"/>
+<rect class="blue" x="384" y="48" width="24" height="24"/>
+<rect class="plate" x="408" y="48" width="24" height="24"/>
+<rect class="blue" x="432" y="48" width="24" height="24"/>
+<rect class="plate" x="456" y="48" width="24" height="24"/>
+<rect class="plate" x="288" y="72" width="24" height="24"/>
+<rect class="blue" x="312" y="72" width="24" height="24"/>
+<rect class="plate" x="336" y="72" width="24" height="24"/>
+<rect class="blue" x="360" y="72" width="24" height="24"/>
+<rect class="plate" x="384" y="72" width="24" height="24"/>
+<rect class="blue" x="408" y="72" width="24" height="24"/>
+<rect class="plate" x="432" y="72" width="24" height="24"/>
+<rect class="blue" x="456" y="72" width="24" height="24"/>
+<rect class="blue" x="288" y="96" width="24" height="24"/>
+<rect class="plate" x="312" y="96" width="24" height="24"/>
+<rect class="blue" x="336" y="96" width="24" height="24"/>
+<rect class="plate" x="360" y="96" width="24" height="24"/>
+<rect class="blue" x="384" y="96" width="24" height="24"/>
+<rect class="plate" x="408" y="96" width="24" height="24"/>
+<rect class="blue" x="432" y="96" width="24" height="24"/>
+<rect class="plate" x="456" y="96" width="24" height="24"/>
+<rect class="plate" x="288" y="120" width="24" height="24"/>
+<rect class="blue" x="312" y="120" width="24" height="24"/>
+<rect class="plate" x="336" y="120" width="24" height="24"/>
+<rect class="blue" x="360" y="120" width="24" height="24"/>
+<rect class="plate" x="384" y="120" width="24" height="24"/>
+<rect class="blue" x="408" y="120" width="24" height="24"/>
+<rect class="plate" x="432" y="120" width="24" height="24"/>
+<rect class="blue" x="456" y="120" width="24" height="24"/>
+<rect class="blue" x="288" y="144" width="24" height="24"/>
+<rect class="plate" x="312" y="144" width="24" height="24"/>
+<rect class="blue" x="336" y="144" width="24" height="24"/>
+<rect class="plate" x="360" y="144" width="24" height="24"/>
+<rect class="blue" x="384" y="144" width="24" height="24"/>
+<rect class="plate" x="408" y="144" width="24" height="24"/>
+<rect class="blue" x="432" y="144" width="24" height="24"/>
+<rect class="plate" x="456" y="144" width="24" height="24"/>
+<rect class="plate" x="288" y="168" width="24" height="24"/>
+<rect class="blue" x="312" y="168" width="24" height="24"/>
+<rect class="plate" x="336" y="168" width="24" height="24"/>
+<rect class="blue" x="360" y="168" width="24" height="24"/>
+<rect class="plate" x="384" y="168" width="24" height="24"/>
+<rect class="blue" x="408" y="168" width="24" height="24"/>
+<rect class="plate" x="432" y="168" width="24" height="24"/>
+<rect class="blue" x="456" y="168" width="24" height="24"/>
+<rect class="blue" x="288" y="192" width="24" height="24"/>
+<rect class="plate" x="312" y="192" width="24" height="24"/>
+<rect class="blue" x="336" y="192" width="24" height="24"/>
+<rect class="plate" x="360" y="192" width="24" height="24"/>
+<rect class="blue" x="384" y="192" width="24" height="24"/>
+<rect class="plate" x="408" y="192" width="24" height="24"/>
+<rect class="blue" x="432" y="192" width="24" height="24"/>
+<rect class="plate" x="456" y="192" width="24" height="24"/>
+<rect class="plate" x="288" y="216" width="24" height="24"/>
+<rect class="blue" x="312" y="216" width="24" height="24"/>
+<rect class="plate" x="336" y="216" width="24" height="24"/>
+<rect class="blue" x="360" y="216" width="24" height="24"/>
+<rect class="plate" x="384" y="216" width="24" height="24"/>
+<rect class="blue" x="408" y="216" width="24" height="24"/>
+<rect class="plate" x="432" y="216" width="24" height="24"/>
+<rect class="blue" x="456" y="216" width="24" height="24"/>
+<line class="line-faint" stroke-width="1" x1="312" y1="48" x2="312" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="288" y1="72" x2="480" y2="72"/>
+<line class="line-faint" stroke-width="1" x1="336" y1="48" x2="336" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="288" y1="96" x2="480" y2="96"/>
+<line class="line-faint" stroke-width="1" x1="360" y1="48" x2="360" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="288" y1="120" x2="480" y2="120"/>
+<line class="line-faint" stroke-width="1" x1="408" y1="48" x2="408" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="288" y1="168" x2="480" y2="168"/>
+<line class="line-faint" stroke-width="1" x1="432" y1="48" x2="432" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="288" y1="192" x2="480" y2="192"/>
+<line class="line-faint" stroke-width="1" x1="456" y1="48" x2="456" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="288" y1="216" x2="480" y2="216"/>
+<line class="line-ink" stroke-width="2" x1="384" y1="48" x2="384" y2="240"/>
+<line class="line-ink" stroke-width="2" x1="288" y1="144" x2="480" y2="144"/>
+<rect class="line-ink" fill="none" stroke-width="2" x="288" y="48" width="192" height="192"/>
+<text class="muted small" x="384" y="312" text-anchor="middle">New level on 8 of 16 pixels</text>
+<text class="muted small" x="384" y="330" text-anchor="middle">of every tile</text>
+<text class="ink bold" x="624" y="34" text-anchor="middle">Step 15</text>
+<rect class="blue" x="528" y="48" width="24" height="24"/>
+<rect class="blue" x="552" y="48" width="24" height="24"/>
+<rect class="blue" x="576" y="48" width="24" height="24"/>
+<rect class="blue" x="600" y="48" width="24" height="24"/>
+<rect class="blue" x="624" y="48" width="24" height="24"/>
+<rect class="blue" x="648" y="48" width="24" height="24"/>
+<rect class="blue" x="672" y="48" width="24" height="24"/>
+<rect class="blue" x="696" y="48" width="24" height="24"/>
+<rect class="blue" x="528" y="72" width="24" height="24"/>
+<rect class="blue" x="552" y="72" width="24" height="24"/>
+<rect class="blue" x="576" y="72" width="24" height="24"/>
+<rect class="blue" x="600" y="72" width="24" height="24"/>
+<rect class="blue" x="624" y="72" width="24" height="24"/>
+<rect class="blue" x="648" y="72" width="24" height="24"/>
+<rect class="blue" x="672" y="72" width="24" height="24"/>
+<rect class="blue" x="696" y="72" width="24" height="24"/>
+<rect class="blue" x="528" y="96" width="24" height="24"/>
+<rect class="blue" x="552" y="96" width="24" height="24"/>
+<rect class="blue" x="576" y="96" width="24" height="24"/>
+<rect class="blue" x="600" y="96" width="24" height="24"/>
+<rect class="blue" x="624" y="96" width="24" height="24"/>
+<rect class="blue" x="648" y="96" width="24" height="24"/>
+<rect class="blue" x="672" y="96" width="24" height="24"/>
+<rect class="blue" x="696" y="96" width="24" height="24"/>
+<rect class="plate" x="528" y="120" width="24" height="24"/>
+<rect class="blue" x="552" y="120" width="24" height="24"/>
+<rect class="blue" x="576" y="120" width="24" height="24"/>
+<rect class="blue" x="600" y="120" width="24" height="24"/>
+<rect class="plate" x="624" y="120" width="24" height="24"/>
+<rect class="blue" x="648" y="120" width="24" height="24"/>
+<rect class="blue" x="672" y="120" width="24" height="24"/>
+<rect class="blue" x="696" y="120" width="24" height="24"/>
+<rect class="blue" x="528" y="144" width="24" height="24"/>
+<rect class="blue" x="552" y="144" width="24" height="24"/>
+<rect class="blue" x="576" y="144" width="24" height="24"/>
+<rect class="blue" x="600" y="144" width="24" height="24"/>
+<rect class="blue" x="624" y="144" width="24" height="24"/>
+<rect class="blue" x="648" y="144" width="24" height="24"/>
+<rect class="blue" x="672" y="144" width="24" height="24"/>
+<rect class="blue" x="696" y="144" width="24" height="24"/>
+<rect class="blue" x="528" y="168" width="24" height="24"/>
+<rect class="blue" x="552" y="168" width="24" height="24"/>
+<rect class="blue" x="576" y="168" width="24" height="24"/>
+<rect class="blue" x="600" y="168" width="24" height="24"/>
+<rect class="blue" x="624" y="168" width="24" height="24"/>
+<rect class="blue" x="648" y="168" width="24" height="24"/>
+<rect class="blue" x="672" y="168" width="24" height="24"/>
+<rect class="blue" x="696" y="168" width="24" height="24"/>
+<rect class="blue" x="528" y="192" width="24" height="24"/>
+<rect class="blue" x="552" y="192" width="24" height="24"/>
+<rect class="blue" x="576" y="192" width="24" height="24"/>
+<rect class="blue" x="600" y="192" width="24" height="24"/>
+<rect class="blue" x="624" y="192" width="24" height="24"/>
+<rect class="blue" x="648" y="192" width="24" height="24"/>
+<rect class="blue" x="672" y="192" width="24" height="24"/>
+<rect class="blue" x="696" y="192" width="24" height="24"/>
+<rect class="plate" x="528" y="216" width="24" height="24"/>
+<rect class="blue" x="552" y="216" width="24" height="24"/>
+<rect class="blue" x="576" y="216" width="24" height="24"/>
+<rect class="blue" x="600" y="216" width="24" height="24"/>
+<rect class="plate" x="624" y="216" width="24" height="24"/>
+<rect class="blue" x="648" y="216" width="24" height="24"/>
+<rect class="blue" x="672" y="216" width="24" height="24"/>
+<rect class="blue" x="696" y="216" width="24" height="24"/>
+<line class="line-faint" stroke-width="1" x1="552" y1="48" x2="552" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="528" y1="72" x2="720" y2="72"/>
+<line class="line-faint" stroke-width="1" x1="576" y1="48" x2="576" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="528" y1="96" x2="720" y2="96"/>
+<line class="line-faint" stroke-width="1" x1="600" y1="48" x2="600" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="528" y1="120" x2="720" y2="120"/>
+<line class="line-faint" stroke-width="1" x1="648" y1="48" x2="648" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="528" y1="168" x2="720" y2="168"/>
+<line class="line-faint" stroke-width="1" x1="672" y1="48" x2="672" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="528" y1="192" x2="720" y2="192"/>
+<line class="line-faint" stroke-width="1" x1="696" y1="48" x2="696" y2="240"/>
+<line class="line-faint" stroke-width="1" x1="528" y1="216" x2="720" y2="216"/>
+<line class="line-ink" stroke-width="2" x1="624" y1="48" x2="624" y2="240"/>
+<line class="line-ink" stroke-width="2" x1="528" y1="144" x2="720" y2="144"/>
+<rect class="line-ink" fill="none" stroke-width="2" x="528" y="48" width="192" height="192"/>
+<text class="muted small" x="624" y="312" text-anchor="middle">New level on 15 of 16 pixels</text>
+<text class="muted small" x="624" y="330" text-anchor="middle">of every tile</text>
+<line class="line-ink" x1="324" y1="270" x2="324" y2="252"/>
+<polygon class="ink" points="324,242 320.5,252 327.5,252"/>
+<text class="ink" x="324" y="288" text-anchor="middle">new level</text>
+<line class="line-ink" x1="444" y1="270" x2="444" y2="252"/>
+<polygon class="ink" points="444,242 440.5,252 447.5,252"/>
+<text class="ink" x="444" y="288" text-anchor="middle">old level</text>
+</svg>

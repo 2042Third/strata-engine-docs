@@ -1,0 +1,36 @@
+{
+	"page": "ui/what-game-ui-does",
+	"startsFrom": { "template": "basic3d" },
+	"stages": [
+		{
+			"step": 1,
+			"files": [ { "from": "book:tutorials/ui/what-game-ui-does/ProbeButton.cpp", "to": "Scripts/ProbeButton.cpp" } ],
+			"commands": [
+				{ "command": "ui.create", "parameters": { "type": "canvas", "name": "Probe" }, "bind": { "canvas": "/entity" } },
+				{ "command": "ui.create", "parameters": { "type": "button", "name": "ProbeButton", "parent": { "$ref": "canvas" }, "text": "Probe", "size": [ 400, 70 ] }, "bind": { "button": "/entity" } },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "button" }, "class": "ProbeButton" } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 5 }, "expect": { "/stepsRun": { "equals": 5 } } },
+				{ "command": "log.read", "parameters": { "logger": "Script" },
+					"checks": [ { "pointer": "/messages", "contains": "ProbeButton over UI: " } ] },
+				{ "command": "input.click", "parameters": { "entity": { "$ref": "button" }, "wait": false } },
+				{ "command": "play.step", "parameters": { "steps": 3 }, "expect": { "/stepsRun": { "equals": 3 } } },
+				{ "command": "ui.layout", "parameters": { "entity": { "$ref": "button" } },
+					"checks": [ { "pointer": "/elements/0/state", "equals": "hover" } ] },
+				{ "command": "log.read", "parameters": { "logger": "Script" },
+					"checks": [
+						{ "pointer": "/messages", "contains": "ProbeButton clicked" },
+						{ "pointer": "/messages", "contains": "ProbeButton over UI: true, left press: false" }
+					] },
+				{ "command": "input.mouseMove", "parameters": { "position": [ 5, 5 ], "wait": false } },
+				{ "command": "input.mouseButton", "parameters": { "button": "Left", "wait": false } },
+				{ "command": "play.step", "parameters": { "steps": 3 }, "expect": { "/stepsRun": { "equals": 3 } } },
+				{ "command": "log.read", "parameters": { "logger": "Script" },
+					"checks": [ { "pointer": "/messages", "contains": "ProbeButton over UI: false, left press: true" } ] },
+				{ "command": "play.stop" }
+			]
+		}
+	]
+}

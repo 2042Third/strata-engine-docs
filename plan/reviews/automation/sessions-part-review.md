@@ -1,0 +1,3 @@
+# Part review: automation/sessions
+
+No correction. Checked at the pin (319075e3): the discovery order and ports of `Endpoints are discovered in precedence order` (40103, 40102, 40101, 40104; the pointer's 40104 first for `P`; host `10.1.2.3`), the pin's disconnect message, `--host` requiring `--port`, the 50 ms session poll, 1 s connect, 60,000 ms wait and stall defaults, the 250 ms project poll, `STRATA_TEST_FAKE_EDITOR` and the 7,000 ms fake scan against a 5,000 ms wait, the `--window-size` minimum and refusals, the idle timeout (seconds, at most a week, 600 s from the MCP server), `Start`'s order, `UpdateSession`, `Stop`'s order with its 2 s grace, `OnDetach`, exit codes 130 and 1.

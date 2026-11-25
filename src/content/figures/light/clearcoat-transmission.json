@@ -1,0 +1,235 @@
+{
+	"figures": [
+		{
+			"id": "coat-roughness",
+			"kind": "scene",
+			"shows": "A coated blue ball in the Physics Playground's ball pit, close up on its sun highlight, with its coat roughness at 0, then at 0.5",
+			"caption": "With a smooth coat the sun is a small sharp point on the blue ball. The soft halo around it is the blue base's own highlight, the same in both pictures: the coat adds only the point. With a half-rough coat that point spreads into a wider, dimmer glow over the halo. The red, wooden and metal balls at the edges do not change.",
+			"alt": "A blue ball filling most of the frame in sunlight, with red, wooden and dark metal balls at its edges. In the first picture a tiny bright point sits in the middle of a soft white halo; in the second the highlight is one larger soft glow.",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"camera": {
+				"position": [
+					11.2,
+					1.5,
+					-9.4
+				],
+				"target": [
+					8.73,
+					0.52,
+					-10.91
+				],
+				"fov": 7
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"publish": "lossless",
+			"variants": {
+				"coat-0": {
+					"setup": [
+						{
+							"command": "material.set",
+							"parameters": {
+								"material": "Materials/PlasticBlue.stmat",
+								"properties": {
+									"ClearcoatRoughness": 0.0
+								},
+								"save": false
+							}
+						}
+					]
+				},
+				"coat-05": {
+					"setup": [
+						{
+							"command": "material.set",
+							"parameters": {
+								"material": "Materials/PlasticBlue.stmat",
+								"properties": {
+									"ClearcoatRoughness": 0.5
+								},
+								"save": false
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "coat-normal-map",
+			"kind": "scene",
+			"shows": "The same blue ball, at a wider view, with a concrete normal map on its coat only and no normal map on its base",
+			"caption": "A concrete normal map on the coat alone (none on the base) bends only the coat: the shine around the sun's highlight breaks into small spots. The blue base color beneath stays smooth and even.",
+			"alt": "A blue ball filling the frame. Its soft sun highlight is surrounded by a shine broken into small white spots; the blue under it is smooth.",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"camera": {
+				"position": [
+					11.2,
+					1.5,
+					-9.4
+				],
+				"target": [
+					8.73,
+					0.52,
+					-10.91
+				],
+				"fov": 10
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"publish": "lossless",
+			"expect": "complete",
+			"setup": [
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/PlasticBlue.stmat",
+						"properties": {
+							"ClearcoatNormalMap": "Textures/Concrete/Concrete034_NormalGL.jpg",
+							"NormalMap": null
+						},
+						"save": false
+					}
+				}
+			]
+		},
+		{
+			"id": "glass-index",
+			"kind": "scene",
+			"shows": "The ball pit seen from above its south glass wall, with the wall's index at 1.0, then 1.5; Thickness 1, the wall's whole 0.3 m",
+			"caption": "The upper half is seen over the wall, the band below the middle through the wall's top edge, the bottom through its face. With an index of one the rows run on through the glass without a break. With the index of glass the band shows enlarged balls cut off at its edges, and the rows behind the face sit lower.",
+			"alt": "Rows of blue, red, wooden and metal balls seen over and through a glass wall. In the first picture the rows continue evenly. In the second a horizontal band shows large blurred balls and the rows below it are displaced.",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"camera": {
+				"position": [
+					10.0,
+					4.5,
+					-3.5
+				],
+				"target": [
+					10.0,
+					0.26,
+					-8.0
+				],
+				"fov": 35
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"publish": "lossless",
+			"variants": {
+				"ior-10": {
+					"setup": [
+						{
+							"command": "material.set",
+							"parameters": {
+								"material": "Materials/Glass.stmat",
+								"properties": {
+									"IOR": 1.0,
+									"Thickness": 1.0
+								},
+								"save": false
+							}
+						}
+					]
+				},
+				"ior-15": {
+					"setup": [
+						{
+							"command": "material.set",
+							"parameters": {
+								"material": "Materials/Glass.stmat",
+								"properties": {
+									"IOR": 1.5,
+									"Thickness": 1.0
+								},
+								"save": false
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "glass-thickness",
+			"kind": "scene",
+			"shows": "The same view with the wall's Thickness at 0, then at 1 with a green attenuation color (0.3, 0.8, 0.4) over 0.3",
+			"caption": "Without thickness the wall bends and tints nothing, though its index is that of glass. With a thickness and a green attenuation color the view through the glass shifts and turns green; the band through the wall's top edge, where the path is longest, is dark green.",
+			"alt": "Rows of colored balls seen over and through a glass wall. In the first picture the glass is invisible. In the second the balls behind the glass are shifted and tinted green, and a dark green band runs across the middle.",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"camera": {
+				"position": [
+					10.0,
+					4.5,
+					-3.5
+				],
+				"target": [
+					10.0,
+					0.26,
+					-8.0
+				],
+				"fov": 35
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"publish": "lossless",
+			"variants": {
+				"thin": {
+					"setup": [
+						{
+							"command": "material.set",
+							"parameters": {
+								"material": "Materials/Glass.stmat",
+								"properties": {
+									"Thickness": 0.0
+								},
+								"save": false
+							}
+						}
+					]
+				},
+				"thick-green": {
+					"setup": [
+						{
+							"command": "material.set",
+							"parameters": {
+								"material": "Materials/Glass.stmat",
+								"properties": {
+									"Thickness": 1.0,
+									"AttenuationColor": [
+										0.3,
+										0.8,
+										0.4
+									],
+									"AttenuationDistance": 0.3
+								},
+								"save": false
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		}
+	]
+}

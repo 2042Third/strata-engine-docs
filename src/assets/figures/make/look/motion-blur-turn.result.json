@@ -1,0 +1,34 @@
+{
+	"camera": "scene",
+	"images": [
+		{
+			"fixedSteps": 30,
+			"height": 720,
+			"path": "G:/GameEngineAI/.worktrees/docs-work/photo/last-make-look/live/make.look.motion-blur-turn/take-1/frame-1.png",
+			"temporalFrames": 1978,
+			"width": 1280
+		},
+		{
+			"fixedSteps": 31,
+			"height": 720,
+			"path": "G:/GameEngineAI/.worktrees/docs-work/photo/last-make-look/live/make.look.motion-blur-turn/take-1/frame-2.png",
+			"temporalFrames": 1979,
+			"width": 1280
+		},
+		{
+			"fixedSteps": 32,
+			"height": 720,
+			"path": "G:/GameEngineAI/.worktrees/docs-work/photo/last-make-look/live/make.look.motion-blur-turn/take-1/frame-3.png",
+			"temporalFrames": 1980,
+			"width": 1280
+		},
+		{
+			"fixedSteps": 33,
+			"height": 720,
+			"path": "G:/GameEngineAI/.worktrees/docs-work/photo/last-make-look/live/make.look.motion-blur-turn/take-1/frame-4.png",
+			"temporalFrames": 1981,
+			"width": 1280
+		}
+	],
+	"live": true
+}

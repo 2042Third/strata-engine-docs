@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 272">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: three columns. Headings baseline 30. Files x 16..256: header y 48..140, test file y 164..256.
+     Test program x 304..496, y 92..212 (center 152). Result x 544..752, y 66..238 (center 152), each count over the suite's share plus yours. Arrows stop 2 short of boxes.
+     H = 256 + 16 = 272. -->
+<text x="136" y="30" text-anchor="middle" class="muted small">Your change: two files</text>
+<text x="400" y="30" text-anchor="middle" class="muted small">Build and run</text>
+<text x="648" y="30" text-anchor="middle" class="muted small">What it reports</text>
+<rect class="blue-area line-ink" x="16" y="48" width="240" height="92" rx="6"/>
+<text x="32" y="76" class="ink mono bold">StringUtils.h</text>
+<text x="32" y="104" class="blue mono">+ ToUpper</text>
+<text x="32" y="128" class="ink small">9 lines added</text>
+<rect class="blue-area line-ink" x="16" y="164" width="240" height="92" rx="6"/>
+<text x="32" y="192" class="ink mono bold">StringUtilsTests.cpp</text>
+<text x="32" y="220" class="blue mono">+ 1 test case</text>
+<text x="32" y="244" class="ink small">4 checks, 8 lines added</text>
+<line class="line-ink" stroke-width="2" x1="256" y1="94" x2="294.1" y2="123.8"/>
+<polygon class="ink" points="292.0,126.6 302,130 296.3,121.1"/>
+<line class="line-ink" stroke-width="2" x1="256" y1="210" x2="294.1" y2="180.2"/>
+<polygon class="ink" points="296.3,182.9 302,174 292.0,177.4"/>
+<rect class="plate line-ink" x="304" y="92" width="192" height="120" rx="6"/>
+<text x="400" y="122" text-anchor="middle" class="ink mono bold">StrataTests</text>
+<text x="400" y="144" text-anchor="middle" class="ink small">the test program, run with</text>
+<text x="400" y="172" text-anchor="middle" class="ink mono small">--test-suite=</text>
+<text x="400" y="192" text-anchor="middle" class="ink mono small">Core.StringUtils</text>
+<line class="line-ink" stroke-width="2" x1="496" y1="152" x2="532.0" y2="152.0"/>
+<polygon class="ink" points="532.0,155.5 542,152 532.0,148.5"/>
+<rect class="green-area line-ink" x="544" y="66" width="208" height="172" rx="6"/>
+<text x="560" y="94" class="ink bold">Test cases</text>
+<text x="560" y="118" class="green">3 passed, 0 failed</text>
+<text x="560" y="140" class="ink small">the suite's 2 + yours</text>
+<text x="560" y="174" class="ink bold">Checks</text>
+<text x="560" y="198" class="green">21 passed, 0 failed</text>
+<text x="560" y="220" class="ink small">the suite's 17 + your 4</text>
+</svg>

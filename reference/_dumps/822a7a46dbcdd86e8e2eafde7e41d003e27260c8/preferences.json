@@ -1,0 +1,126 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"engineCommit": "822a7a46dbcd",
+	"command": "preferences.get",
+	"result": {
+		"sections": [
+			{
+				"id": "Editor.ExternalEditor",
+				"title": "External Editor",
+				"category": "Scripts",
+				"description": "The person's code editor, which opens script sources at a line (script.open, the Problems panel, crash reports, New Script): Command is a template such as \"code -g {file}:{line}:{column}\" in which whitespace separates arguments, double quotes group them and {file}, {line}, {column} and {directory} are filled in (without {file}, the file goes last); the program is started directly, never through a shell, so batch files cannot be one. Empty: the system's default application. STRATA_EXTERNAL_EDITOR wins over it.",
+				"version": 1,
+				"schema": {
+					"additionalProperties": false,
+					"properties": {
+						"Command": {
+							"description": "The command template, or \"\" for the system's default application",
+							"maxLength": 4096,
+							"type": "string"
+						}
+					},
+					"required": [
+						"Command"
+					],
+					"type": "object"
+				}
+			},
+			{
+				"id": "Editor.Interface",
+				"title": "Interface",
+				"category": "Editor",
+				"description": "How the editor's interface looks to the person: its scale.",
+				"version": 1,
+				"schema": {
+					"additionalProperties": false,
+					"description": "How the editor's interface looks to the person: its scale.",
+					"properties": {
+						"Scale": {
+							"default": "Automatic",
+							"description": "The size of the editor's interface as a percentage of the automatic scale, which follows the display's scaling (Automatic: 100%). It applies at once and on every display; the --ui-scale command-line option wins over it for its session.",
+							"enum": [
+								"Automatic",
+								"75%",
+								"90%",
+								"110%",
+								"125%",
+								"150%",
+								"175%",
+								"200%"
+							],
+							"title": "Scale",
+							"type": "string"
+						}
+					},
+					"title": "Interface",
+					"type": "object"
+				}
+			},
+			{
+				"id": "Editor.FrameRate",
+				"title": "Frame Rate",
+				"category": "Editor",
+				"description": "How fast the editor redraws: as fast as allowed while anything happens, slower while idle. Applies at once to editors with a window; headless, --frames and command-script runs ignore it.",
+				"version": 1,
+				"schema": {
+					"additionalProperties": false,
+					"description": "How fast the editor redraws: as fast as allowed while anything happens, slower while idle. Applies at once to editors with a window; headless, --frames and command-script runs ignore it.",
+					"properties": {
+						"ActiveFrameRate": {
+							"default": "Unlimited",
+							"description": "The most frames per second while anything happens (input, a running game, loading, an animation). Unlimited leaves the pace to the display's vertical sync where the graphics device paces frames, otherwise as fast as frames go. play.step's steps and commands that wait for frames always run uncapped. A cap above the display's refresh rate shows nothing more.",
+							"enum": [
+								"Unlimited",
+								"240",
+								"165",
+								"144",
+								"120",
+								"90",
+								"60"
+							],
+							"title": "Active frame rate",
+							"type": "string"
+						},
+						"IdleAfterSeconds": {
+							"default": 0.5,
+							"description": "How long after the last input (and after the last automation request, at least 1 s) the editor counts as idle and redraws at the idle frame rate. 0 never counts as idle: the editor redraws at the active frame rate all the time, also behind other windows, which with an unlimited active rate is hundreds of frames per second on a fast machine. Not the --idle-timeout option, which closes a headless editor without clients.",
+							"maximum": 3600.0,
+							"minimum": 0.0,
+							"title": "Idle after (seconds)",
+							"type": "number"
+						},
+						"IdleFrameRate": {
+							"default": "30",
+							"description": "Frames per second while idle with the editor's window focused. No effect while Idle after is 0.",
+							"enum": [
+								"60",
+								"30",
+								"20",
+								"15",
+								"10",
+								"5"
+							],
+							"title": "Idle frame rate",
+							"type": "string"
+						},
+						"UnfocusedIdleFrameRate": {
+							"default": "10",
+							"description": "Frames per second while idle and another window has the focus. No effect while Idle after is 0.",
+							"enum": [
+								"60",
+								"30",
+								"15",
+								"10",
+								"5"
+							],
+							"title": "Idle frame rate in the background",
+							"type": "string"
+						}
+					},
+					"title": "Frame Rate",
+					"type": "object"
+				}
+			}
+		]
+	}
+}

@@ -1,0 +1,80 @@
+[
+	{
+		"command": "project.setSettings",
+		"parameters": {
+			"section": "Scene.Timing",
+			"value": {
+				"FixedRate": "120",
+				"Interpolation": false
+			}
+		},
+		"expect": {
+			"/value/FixedRate": {
+				"equals": "120"
+			},
+			"/value/Interpolation": {
+				"equals": false
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 120
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 120
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "project.setSettings",
+		"parameters": {
+			"section": "Scene.Timing",
+			"reset": true
+		},
+		"expect": {
+			"/isDefault": {
+				"equals": true
+			},
+			"/value/FixedRate": {
+				"equals": "Scene"
+			},
+			"/value/Interpolation": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 60
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 60
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

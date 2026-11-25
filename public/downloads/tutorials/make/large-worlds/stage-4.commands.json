@@ -1,0 +1,83 @@
+[
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Worlds/Meadow.stscene"
+		}
+	},
+	{
+		"command": "world.edit",
+		"parameters": {
+			"editLayer": "Persistent"
+		}
+	},
+	{
+		"command": "prefab.instantiate",
+		"parameters": {
+			"prefab": "Prefabs/Ball.stprefab",
+			"instances": [
+				{
+					"components": {
+						"Transform": {
+							"Translation": [
+								0,
+								1,
+								0
+							]
+						}
+					}
+				}
+			]
+		},
+		"bind": {
+			"ball": "/instances/0/id"
+		}
+	},
+	{
+		"command": "component.add",
+		"parameters": {
+			"entity": {
+				"$ref": "ball"
+			},
+			"component": "StreamingSource"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "ball"
+			},
+			"component": "StreamingSource"
+		}
+	},
+	{
+		"command": "scene.save",
+		"parameters": {}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 60
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 60
+			}
+		}
+	},
+	{
+		"command": "world.status",
+		"parameters": {}
+	},
+	{
+		"command": "play.stop"
+	}
+]

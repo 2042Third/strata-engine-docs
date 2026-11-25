@@ -1,0 +1,10 @@
+# The engine commit this book is checked against (plan/pipelines.md §1.1). The tools read the engine's files at this
+# commit through git, so for quotes and parsing the clone's working tree does not matter; the working tree must be at
+# the pin and clean for pictures, tutorials and the reference dump (plan/pipelines.md §1).
+# release: the engine release the book describes; prerelease: yes while the commit is not that release's tag.
+# Only tools/pin.py move writes this file: python -I tools/pin.py move --engine <clone> <commit> [--release <x.y.z>]
+# [--prerelease yes|no].
+commit 319075e3f92b316db5cdd30560de08c1ffe0ae26
+release 0.8.0
+prerelease no
+repository https://github.com/2042Third/GameEngine

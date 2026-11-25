@@ -1,0 +1,127 @@
+{
+	"page": "make/input",
+	"startsFrom": { "tutorial": "make/scripting-scene" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "script.create", "parameters": { "class": "BallControl", "fields": { "Speed": "float" } } },
+				{ "command": "script.build",
+					"files": [ { "from": "book:tutorials/make/input/BallControl-1.cpp", "to": "Scripts/BallControl.cpp" } ],
+					"expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "entity.find", "parameters": { "name": "Ball" }, "bind": { "ball": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "ball" }, "class": "BallControl", "fields": { "Speed": 4 } } },
+				{ "command": "script.get", "entityName": "Ball", "parameters": { "class": "BallControl" },
+					"checks": [ { "pointer": "/scripts/0/fields/Speed", "equals": 4 } ] },
+				{ "command": "play.start" },
+				{ "command": "input.key", "parameters": { "key": "W", "steps": 60 } },
+				{ "command": "component.get", "entityName": "Ball", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": 0, "tolerance": 0.001 },
+						{ "pointer": "/values/Translation/2", "approx": 2, "tolerance": 0.3 }
+					] },
+				{ "command": "input.key", "parameters": { "key": "Space" } },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 50 },
+					"checks": [
+						{ "pointer": "/messages", "contains": "Space went down" },
+						{ "pointer": "/messages", "contains": "Space came up" }
+					] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"files": [ { "from": "book:tutorials/make/input/BallControl-2.cpp", "to": "Scripts/BallControl.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.get", "entityName": "Ball", "parameters": { "class": "BallControl" },
+					"checks": [ { "pointer": "/scripts/0/fields/Speed", "equals": 4 } ] },
+				{ "command": "play.start" },
+				{ "command": "input.gamepadAxis", "parameters": { "axis": "LeftY", "value": 0.6, "steps": 60, "wait": false } },
+				{ "command": "input.gamepadAxis", "parameters": { "axis": "LeftX", "value": 0.3, "steps": 60 } },
+				{ "command": "component.get", "entityName": "Ball", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": 1.09, "tolerance": 0.2 },
+						{ "pointer": "/values/Translation/2", "approx": 3.82, "tolerance": 0.3 }
+					] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"files": [ { "from": "book:tutorials/make/input/BallControl-3.cpp", "to": "Scripts/BallControl.cpp" } ],
+			"commands": [
+				{ "command": "inputActions.setMap", "parameters": { "map": "Gameplay" }, "expect": { "/created": { "equals": true } },
+					"checks": [ { "pointer": "/map/enabled", "equals": true } ] },
+				{ "command": "inputActions.setAction", "parameters": { "action": "Gameplay/Move", "kind": "Vector2" },
+					"expect": { "/created": { "equals": true } },
+					"checks": [ { "pointer": "/action/kind", "equals": "Vector2" }, { "pointer": "/action/deadZone", "approx": 0.15, "tolerance": 0.0001 } ] },
+				{ "command": "inputActions.setAction", "parameters": { "action": "Gameplay/Move", "bindings": [ "2D:Key/W,Key/S,Key/A,Key/D" ] },
+					"checks": [ { "pointer": "/action/bindings", "length": 1 }, { "pointer": "/action/bindings/0", "equals": "2D:Key/W,Key/S,Key/A,Key/D" } ] },
+				{ "command": "inputActions.setAction", "parameters": { "action": "Gameplay/Move", "bindings": [
+					"2D:Key/W,Key/S,Key/A,Key/D", "2D:Key/Up,Key/Down,Key/Left,Key/Right", "Gamepad/LeftStick" ] },
+					"checks": [ { "pointer": "/action/bindings", "length": 3 } ] },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "play.start" },
+				{ "command": "input.action", "parameters": { "action": "Gameplay/Move", "value": [0.0, 1.0], "steps": 60 } },
+				{ "command": "component.get", "entityName": "Ball", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": 0, "tolerance": 0.001 },
+						{ "pointer": "/values/Translation/2", "approx": 2, "tolerance": 0.3 }
+					] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"files": [ { "from": "book:tutorials/make/input/BallControl-4.cpp", "to": "Scripts/BallControl.cpp" } ],
+			"commands": [
+				{ "command": "inputActions.setAction", "parameters": { "action": "Gameplay/Jump", "kind": "Button", "bindings": [ "Key/Space", "Gamepad/A" ] },
+					"expect": { "/created": { "equals": true } },
+					"checks": [ { "pointer": "/action/kind", "equals": "Button" }, { "pointer": "/action/bindings", "length": 2 } ] },
+				{ "command": "inputActions.setAction", "parameters": { "action": "Gameplay/Boost", "kind": "Button", "bindings": [ "Key/LeftShift" ] },
+					"expect": { "/created": { "equals": true } },
+					"checks": [ { "pointer": "/action/kind", "equals": "Button" }, { "pointer": "/action/bindings", "length": 1 } ] },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.get", "entityName": "Ball", "parameters": { "class": "BallControl" },
+					"checks": [ { "pointer": "/scripts/0/fields/BoostFactor", "equals": 2 } ] },
+				{ "command": "entity.find", "parameters": { "name": "Ball" }, "bind": { "ball": "/entities/0" } },
+				{ "command": "play.start" },
+				{ "command": "input.key", "parameters": { "key": "LeftShift", "action": "press" } },
+				{ "command": "input.key", "parameters": { "key": "W", "steps": 60 } },
+				{ "command": "input.key", "parameters": { "key": "LeftShift", "action": "release" } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "ball" }, "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": 0, "tolerance": 0.001 },
+						{ "pointer": "/values/Translation/2", "approx": -2, "tolerance": 0.6 }
+					] },
+				{ "command": "input.key", "parameters": { "key": "Space" } },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 50 },
+					"checks": [ { "pointer": "/messages", "contains": "Jump pressed" } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 5,
+			"commands": [
+				{ "command": "inputActions.setAction", "parameters": { "action": "Gameplay/Look", "kind": "Vector2", "bindings": [ "Gamepad/RightStick" ] },
+					"expect": { "/created": { "equals": true } },
+					"checks": [ { "pointer": "/action/kind", "equals": "Vector2" }, { "pointer": "/action/bindings", "length": 1 } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 6,
+			"endState": true
+		}
+	]
+}

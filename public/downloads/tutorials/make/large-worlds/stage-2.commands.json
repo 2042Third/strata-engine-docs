@@ -1,0 +1,246 @@
+[
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Worlds/Meadow.stscene"
+		}
+	},
+	{
+		"command": "world.edit",
+		"parameters": {
+			"editLayer": "Terrain"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Tile",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						32,
+						-0.5,
+						32
+					],
+					"Scale": [
+						64,
+						1,
+						64
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Tile",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						-32,
+						-0.5,
+						32
+					],
+					"Scale": [
+						64,
+						1,
+						64
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Tile",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						32,
+						-0.5,
+						-32
+					],
+					"Scale": [
+						64,
+						1,
+						64
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Tile",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						-32,
+						-0.5,
+						-32
+					],
+					"Scale": [
+						64,
+						1,
+						64
+					]
+				}
+			}
+		},
+		"bind": {
+			"lastTile": "/id"
+		}
+	},
+	{
+		"command": "world.status",
+		"parameters": {
+			"cells": true
+		}
+	},
+	{
+		"command": "entity.get",
+		"parameters": {
+			"entity": {
+				"$ref": "lastTile"
+			},
+			"world": true
+		}
+	},
+	{
+		"command": "world.edit",
+		"parameters": {
+			"editLayer": "Props"
+		}
+	},
+	{
+		"command": "prefab.instantiate",
+		"parameters": {
+			"prefab": "Prefabs/Pine.stprefab",
+			"instances": [
+				{
+					"components": {
+						"Transform": {
+							"Translation": [
+								10,
+								0,
+								-20
+							]
+						}
+					}
+				}
+			]
+		}
+	},
+	{
+		"command": "prefab.instantiate",
+		"parameters": {
+			"prefab": "Prefabs/Rock.stprefab",
+			"instances": [
+				{
+					"components": {
+						"Transform": {
+							"Translation": [
+								60,
+								0,
+								-20
+							]
+						}
+					}
+				}
+			]
+		},
+		"bind": {
+			"rock": "/instances/0/id"
+		}
+	},
+	{
+		"command": "prefab.instantiate",
+		"parameters": {
+			"prefab": "Prefabs/Stump.stprefab",
+			"instances": [
+				{
+					"components": {
+						"Transform": {
+							"Translation": [
+								-20,
+								0,
+								10
+							]
+						}
+					}
+				}
+			]
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "rock"
+			},
+			"component": "Transform",
+			"values": {
+				"Translation": [
+					70,
+					0,
+					-20
+				]
+			}
+		}
+	},
+	{
+		"command": "world.status",
+		"parameters": {
+			"cells": true
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Rock"
+		}
+	}
+]

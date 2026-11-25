@@ -1,0 +1,6 @@
+{
+	"terms": [
+		{"id": "delta-time", "term": "delta time", "definition": "The time in seconds between the start of the previous frame and the start of this one.", "home": "core/time"},
+		{"id": "frame", "term": "frame", "definition": "One pass of the engine's loop.", "home": "core/map"}
+	]
+}

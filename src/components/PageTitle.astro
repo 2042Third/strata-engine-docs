@@ -1,0 +1,118 @@
+---
+// The top of every page: breadcrumbs, the title, and the top strip drawn from the front matter and the outline's data
+// (src/lib/strip.mjs; plan/style.md §6.2): the kind and track badges, the level, the time, "New in", the objectives,
+// the Needs, "Before this part", the engine release and commit of the pin, and the part's print view. It also tells
+// search the page's title with its part and kind, its kind and part as metadata, and its filters (src/lib/search.mjs),
+// and loads the book's small client script (tabs, sliders, tracks).
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+import { getCollection } from 'astro:content';
+import outlineData from '../generated/outline.json';
+import pinText from '../../engine.pin?raw';
+import { indexOutline } from '../lib/outline.mjs';
+import { writtenPages } from '../lib/pagination.mjs';
+import { searchFacts, titleMeta } from '../lib/search.mjs';
+import { parsePin } from '../lib/settings.mjs';
+import { topStrip } from '../lib/strip.mjs';
+
+const { entry } = Astro.locals.starlightRoute;
+const data = entry.data;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const outline = indexOutline(outlineData);
+const pages = writtenPages(await getCollection('docs'));
+const strip = topStrip({ data, outline, pages, base, pin: parsePin(pinText) });
+const search = searchFacts({ data, outline });
+---
+
+{strip && (
+	<nav class="book-breadcrumbs" aria-label="Breadcrumbs" data-pagefind-ignore>
+		<ol>
+			{strip.breadcrumbs.map((crumb) => (
+				<li aria-current={crumb.href ? undefined : 'page'}>{crumb.href ? <a href={crumb.href}>{crumb.label}</a> : crumb.label}</li>
+			))}
+		</ol>
+	</nav>
+)}
+<Default />
+{strip && (
+	<div class="book-top-strip" data-pagefind-ignore>
+		<p class="book-badges">
+			{strip.kind && <span class={`book-badge book-badge--kind book-badge--${strip.kind.word}`}>{strip.kind.label}</span>}
+			{strip.tracks.map((track) => (
+				<span class={`book-badge book-badge--track book-badge--${track.key}`}><span aria-hidden="true">{track.letter}</span><span class="sr-only">{track.name}</span></span>
+			))}
+			{strip.minutes !== null && <span class="book-badge book-badge--time">About {strip.minutes} minutes</span>}
+			{strip.newIn && <span class="book-badge book-badge--new">New in {strip.newIn}</span>}
+			{strip.draft && <span class="book-badge book-badge--draft">Draft</span>}
+		</p>
+		{strip.level && <p class="book-top-strip__level">{strip.level.text}</p>}
+		<div class="book-top-strip__columns">
+			{strip.learn.length > 0 && (
+				<div>
+					<p class="book-top-strip__heading">After this page you can</p>
+					<ul>{strip.learn.map((line) => <li>{line}</li>)}</ul>
+				</div>
+			)}
+			{strip.needs && (
+				<div>
+					<p class="book-top-strip__heading">Before you start</p>
+					{strip.needs.length ? (
+						<ul>
+							{strip.needs.map((need) => (
+								<li>
+									{need.alternatives.map((ref, position) => (
+										<Fragment>
+											{position > 0 && ' or '}
+											{ref.href ? <a href={ref.href}>{ref.title}</a> : <span class="book-top-strip__unwritten">{ref.title} (not written yet)</span>}{strip.needsFirstPage && ', the first page of this part'}
+										</Fragment>
+									))}
+								</li>
+							))}
+						</ul>
+					) : (
+						<p>Nothing: this page is the first of its part.</p>
+					)}
+				</div>
+			)}
+			{strip.beforePart && (
+				<div>
+					<p class="book-top-strip__heading">Before this part</p>
+					<ul>
+						{strip.beforePart.map((need) => (
+							<li>
+								{need.alternatives.map((ref, position) => (
+									<Fragment>
+										{position > 0 && ' or '}
+										{ref.href ? <a href={ref.href}>{ref.title}</a> : <span class="book-top-strip__unwritten">{ref.title} (not written yet)</span>}
+									</Fragment>
+								))}
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
+		</div>
+		<p class="book-top-strip__engine">
+			Checked against Strata {strip.engine.release}{strip.engine.prerelease ? ' (pre-release)' : ''} at commit <a href={strip.engine.href}><code>{strip.engine.short}</code></a>.
+		</p>
+		<p class="book-top-strip__print"><a href={strip.print.href}>Print view of “{strip.print.label}”</a></p>
+	</div>
+)}
+{search && (
+	<Fragment>
+		<span hidden data-pagefind-meta={titleMeta(search)}></span>
+		{/* Search reads these as metadata and filters, not as words of the page: indexed, the part's and the kind's names
+		    would count on every page of the part (site.md, "Search"). Pagefind still reads filters and metadata inside an
+		    ignored element. */}
+		<span hidden data-pagefind-ignore>
+			<span hidden data-pagefind-meta="kind">{search.kind}</span>
+			<span hidden data-pagefind-meta="part">{search.part}</span>
+			<span hidden data-pagefind-filter="part">{search.part}</span>
+			<span hidden data-pagefind-filter="kind">{search.kind}</span>
+			{search.tracks.map((track) => <span hidden data-pagefind-filter="track">{track}</span>)}
+		</span>
+	</Fragment>
+)}
+
+<script>
+	import './client/book.js';
+</script>

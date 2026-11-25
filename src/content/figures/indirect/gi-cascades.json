@@ -1,0 +1,177 @@
+{
+	"figures": [
+		{
+			"id": "cornell-off-on",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev project's Cornell box with a rectangle light in its ceiling, at High and one manual exposure, with global illumination off, then on and settled",
+			"caption": "The same room without and with global illumination, at one exposure. Without it, only what the lamp reaches is lit, and the ceiling is black. With it, the light that the floor and walls send back lights the ceiling, the box and the sphere, and the red and green walls glow in their colors. The floor takes only a faint tint of them.",
+			"alt": "Two pictures of a room with a red left wall, a green right wall, a tall box, a sphere and a lamp in the ceiling. In the first the ceiling is black, the walls are dark and the floor is a dim gray with the sphere's shadow. In the second the ceiling is gray, the red and green walls are bright, and the box, the sphere and the back wall are two to three times as bright.",
+			"project": {
+				"lookdev": true
+			},
+			"scene": "Scenes/CornellRect.stscene",
+			"camera": {
+				"position": [0, 2.75, 4.6],
+				"target": [0, 2.4, 0],
+				"fov": 70
+			},
+			"size": [1280, 720],
+			"quality": "high",
+			"antiAliasing": "off",
+			"variants": {
+				"off": {
+					"postProcess": {
+						"GlobalIllumination": false,
+						"AutoExposure": false,
+						"Exposure": -9.7
+					}
+				},
+				"on": {
+					"postProcess": {
+						"GlobalIllumination": true,
+						"AutoExposure": false,
+						"Exposure": -9.7
+					}
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "gi-views",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev sun room at one manual exposure in the four debug views of global illumination: gi, open, voxels and probes",
+			"caption": "The same view of the sun room in the gi view and the open view, at one exposure. The gi view shows only the bounce light on white surfaces, brightest around the window. The open view shows the share of the sky each surface sees, which is small inside the room.",
+			"alt": "Two pictures of a room with a window, seen from its back wall. The first shows gray walls, floor and ceiling, brightest around the black window. The second is nearly black inside, with gray sky and white ground in the window.",
+			"project": {
+				"lookdev": true
+			},
+			"scene": "Scenes/SunRoom.stscene",
+			"camera": {
+				"position": [-9, 1.5, -4.5],
+				"target": [-10, 1.2, 1.1],
+				"fov": 70
+			},
+			"size": [1280, 720],
+			"quality": "high",
+			"antiAliasing": "off",
+			"variants": {
+				"gi": {
+					"debugView": "gi",
+					"postProcess": {
+						"AutoExposure": false,
+						"Exposure": -11.5
+					}
+				},
+				"open": {
+					"debugView": "open",
+					"postProcess": {
+						"AutoExposure": false,
+						"Exposure": -11.5
+					}
+				},
+				"voxels": {
+					"debugView": "voxels",
+					"postProcess": {
+						"AutoExposure": false,
+						"Exposure": -11.5
+					}
+				},
+				"probes": {
+					"debugView": "probes",
+					"postProcess": {
+						"AutoExposure": false,
+						"Exposure": -11.5
+					}
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "intensity-sweep",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev sun room at one manual exposure with global illumination on, at an intensity of zero, one and two",
+			"caption": "The same view at one exposure. At zero the indirect diffuse light inside the field is dark, so only the sun's patch and the bottom of the window are lit. At one the walls and ceiling take the bounce light as traced, and at two that light doubles.",
+			"alt": "Three pictures of a room with sun on its floor. In the first all is black but the sun's patch on the floor and the bottom of the window. In the second the walls, floor and ceiling show soft gray bounce light. In the third the same surfaces are brighter still.",
+			"project": {
+				"lookdev": true
+			},
+			"scene": "Scenes/SunRoom.stscene",
+			"camera": {
+				"position": [-9, 1.5, -4.5],
+				"target": [-10, 1.2, 1.1],
+				"fov": 70
+			},
+			"size": [1280, 720],
+			"quality": "high",
+			"antiAliasing": "off",
+			"variants": {
+				"zero": {
+					"postProcess": {
+						"GlobalIllumination": true,
+						"GlobalIlluminationIntensity": 0,
+						"AutoExposure": false,
+						"Exposure": -10.75
+					}
+				},
+				"one": {
+					"postProcess": {
+						"GlobalIllumination": true,
+						"GlobalIlluminationIntensity": 1,
+						"AutoExposure": false,
+						"Exposure": -10.75
+					}
+				},
+				"two": {
+					"postProcess": {
+						"GlobalIllumination": true,
+						"GlobalIlluminationIntensity": 2,
+						"AutoExposure": false,
+						"Exposure": -10.75
+					}
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "sealed-open",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The gi view of the look-dev sun room with its window open, then of the same room with a wall where the window was, from one camera at one manual exposure",
+			"caption": "The gi view at one exposure. The room with a window glows with the sun's bounce light on its walls, floor and ceiling. The same room with a wall where the window was is black in every pixel, so not even its walls show: no surface in it takes enough bounce light to show at this exposure.",
+			"alt": "Two pictures of the same room in the gi view. The first shows soft gray light on the walls, floor and ceiling, brightest around a black window. The second is black in every pixel.",
+			"project": {
+				"lookdev": true
+			},
+			"scene": "Scenes/SunRoom.stscene",
+			"camera": {
+				"position": [-9, 1.5, -4.5],
+				"target": [-10, 1.2, 1.1],
+				"fov": 70
+			},
+			"size": [1280, 720],
+			"quality": "high",
+			"antiAliasing": "off",
+			"debugView": "gi",
+			"variants": {
+				"open": {
+					"scene": "Scenes/SunRoom.stscene",
+					"postProcess": {
+						"AutoExposure": false,
+						"Exposure": -11.5
+					}
+				},
+				"sealed": {
+					"scene": "Scenes/SealedRoom.stscene",
+					"postProcess": {
+						"AutoExposure": false,
+						"Exposure": -11.5
+					}
+				}
+			},
+			"expect": "complete"
+		}
+	]
+}

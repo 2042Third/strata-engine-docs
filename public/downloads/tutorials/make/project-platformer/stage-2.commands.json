@@ -1,0 +1,304 @@
+[
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ground"
+		},
+		"bind": {
+			"ground": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.delete",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "ground"
+				}
+			]
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ground"
+		}
+	},
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Models/Platformer/block-grass-large-tall/block-grass-large-tall.glb",
+			"point": [
+				0,
+				0,
+				0
+			],
+			"scale": 2
+		},
+		"bind": {
+			"block": "/id"
+		}
+	},
+	{
+		"command": "entity.rename",
+		"parameters": {
+			"entity": {
+				"$ref": "block"
+			},
+			"name": "BlockTall"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "block-grass-large-tall"
+		},
+		"bind": {
+			"blockMesh": "/entities/0"
+		}
+	},
+	{
+		"command": "component.add",
+		"parameters": {
+			"entity": {
+				"$ref": "blockMesh"
+			},
+			"component": "RigidBody",
+			"values": {
+				"Type": "Static"
+			}
+		}
+	},
+	{
+		"command": "component.add",
+		"parameters": {
+			"entity": {
+				"$ref": "blockMesh"
+			},
+			"component": "MeshCollider",
+			"values": {
+				"Convex": false
+			}
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "blockMesh"
+			},
+			"component": "MeshCollider"
+		}
+	},
+	{
+		"command": "selection.set",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "blockMesh"
+				}
+			]
+		}
+	},
+	{
+		"command": "prefab.create",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "block"
+				}
+			],
+			"path": "Prefabs/Course/BlockTall.stprefab"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Course"
+		},
+		"bind": {
+			"course": "/id"
+		}
+	},
+	{
+		"command": "entity.delete",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "block"
+				}
+			]
+		}
+	},
+	{
+		"command": "prefab.instantiate",
+		"parameters": {
+			"prefab": "Prefabs/Course/BlockTall.stprefab",
+			"instances": [
+				{
+					"parent": {
+						"$ref": "course"
+					},
+					"components": {
+						"Transform": {
+							"Translation": [
+								0,
+								-4,
+								0
+							]
+						}
+					}
+				},
+				{
+					"parent": {
+						"$ref": "course"
+					},
+					"components": {
+						"Transform": {
+							"Translation": [
+								4,
+								-4,
+								0
+							]
+						}
+					}
+				},
+				{
+					"parent": {
+						"$ref": "course"
+					},
+					"components": {
+						"Transform": {
+							"Translation": [
+								0,
+								-4,
+								-4
+							]
+						}
+					}
+				},
+				{
+					"parent": {
+						"$ref": "course"
+					},
+					"components": {
+						"Transform": {
+							"Translation": [
+								4,
+								-4,
+								-4
+							]
+						}
+					}
+				},
+				{
+					"parent": {
+						"$ref": "course"
+					},
+					"components": {
+						"Transform": {
+							"Translation": [
+								0,
+								-4,
+								-12
+							]
+						}
+					}
+				},
+				{
+					"parent": {
+						"$ref": "course"
+					},
+					"components": {
+						"Transform": {
+							"Translation": [
+								4,
+								-4,
+								-12
+							]
+						}
+					}
+				},
+				{
+					"parent": {
+						"$ref": "course"
+					},
+					"components": {
+						"Transform": {
+							"Translation": [
+								0,
+								-4,
+								-28
+							]
+						}
+					}
+				},
+				{
+					"parent": {
+						"$ref": "course"
+					},
+					"components": {
+						"Transform": {
+							"Translation": [
+								4,
+								-4,
+								-28
+							]
+						}
+					}
+				},
+				{
+					"parent": {
+						"$ref": "course"
+					},
+					"components": {
+						"Transform": {
+							"Translation": [
+								0,
+								2,
+								-40
+							]
+						}
+					}
+				},
+				{
+					"parent": {
+						"$ref": "course"
+					},
+					"components": {
+						"Transform": {
+							"Translation": [
+								4,
+								2,
+								-40
+							]
+						}
+					}
+				}
+			]
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"component": "MeshCollider"
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "physics.stats",
+		"expect": {
+			"/waitingForMeshes": {
+				"equals": false
+			}
+		},
+		"until": {
+			"seconds": 60
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

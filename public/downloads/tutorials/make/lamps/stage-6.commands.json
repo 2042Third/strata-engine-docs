@@ -1,0 +1,113 @@
+[
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Lantern",
+			"box": {
+				"min": [
+					-4.2,
+					3,
+					0.8
+				],
+				"max": [
+					-3.8,
+					3.5,
+					1.2
+				]
+			}
+		},
+		"bind": {
+			"firstLantern": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Light",
+			"component": "PointLight",
+			"box": {
+				"min": [
+					-4.2,
+					3,
+					0.8
+				],
+				"max": [
+					-3.8,
+					3.5,
+					1.2
+				]
+			}
+		},
+		"bind": {
+			"lanternLight": "/entities/0"
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Ground.stmat",
+			"properties": {
+				"Roughness": 0.1
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "lanternLight"
+			},
+			"component": "PointLight",
+			"values": {
+				"SourceRadius": 0.04
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "lanternLight"
+			},
+			"component": "PointLight",
+			"values": {
+				"SourceRadius": 0
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "lanternLight"
+			},
+			"component": "PointLight",
+			"values": {
+				"SourceRadius": 0.3
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "lanternLight"
+			},
+			"component": "PointLight",
+			"values": {
+				"SourceRadius": 0.04
+			}
+		}
+	},
+	{
+		"command": "prefab.apply",
+		"parameters": {
+			"entity": {
+				"$ref": "firstLantern"
+			}
+		}
+	},
+	{
+		"command": "scene.save"
+	}
+]

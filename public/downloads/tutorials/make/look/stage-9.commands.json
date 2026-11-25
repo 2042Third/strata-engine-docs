@@ -1,0 +1,81 @@
+[
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Sun"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "DirectionalLight",
+			"values": {
+				"Intensity": 0.2
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Sky"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "SkyLight",
+			"values": {
+				"Intensity": 0.001
+			},
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Post Process"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "PostProcess",
+			"values": {
+				"Exposure": -1.5,
+				"AutoExposureMinEV": -2.5,
+				"WhiteBalanceTemperature": 4500,
+				"Toe": 0.6,
+				"BloomIntensity": 0.06
+			},
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"debugView": "luminance"
+		}
+	},
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"debugView": "none"
+		}
+	}
+]

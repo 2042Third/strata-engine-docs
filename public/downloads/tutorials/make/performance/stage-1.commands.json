@@ -1,0 +1,153 @@
+[
+	{
+		"command": "asset.info",
+		"parameters": {
+			"asset": "Models/rock_largeA.glb",
+			"bounds": false
+		},
+		"expect": {
+			"/imported": {
+				"equals": true
+			}
+		},
+		"until": {
+			"seconds": 120
+		}
+	},
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Models/rock_largeA.glb",
+			"point": [
+				0,
+				0,
+				0
+			]
+		},
+		"bind": {
+			"rock": "/id"
+		}
+	},
+	{
+		"command": "prefab.create",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "rock"
+				}
+			],
+			"path": "Prefabs/Rock.stprefab",
+			"link": false
+		}
+	},
+	{
+		"command": "entity.delete",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "rock"
+				}
+			]
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Hut",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"Transform": {
+					"Translation": [
+						148,
+						1.5,
+						-14
+					],
+					"Scale": [
+						10,
+						3,
+						4
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Field"
+		},
+		"bind": {
+			"field": "/id"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "field"
+			},
+			"class": "FieldSpawner"
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"entity": {
+				"$ref": "field"
+			}
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "play.state",
+		"expect": {
+			"/running/entityCount": {
+				"min": 15000
+			}
+		},
+		"until": {
+			"seconds": 60
+		}
+	},
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"stats": true
+		},
+		"expect": {
+			"/stats": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "camera.set",
+		"parameters": {
+			"position": [
+				148,
+				1.6,
+				-24
+			],
+			"target": [
+				148,
+				1.2,
+				60
+			]
+		}
+	},
+	{
+		"command": "editor.perf"
+	}
+]

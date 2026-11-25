@@ -1,0 +1,5 @@
+# Part review: `animation/root-motion`
+
+- wrong: "`RootMotionSetup` is made once per skeleton": at the pin `AnimationSystem::ResolveSet` makes it for each asset set whenever the set's skeleton object changes (a load or a reload; `AnimationSystem.cpp`, `set.RootMotion = RootMotionSetup::Create(...)`), and the preview makes its own; the sentence now says it is made for a skeleton each time the skeleton loads.
+- unclear: the ancestors' rest transform was "the model-space matrix and the rotation of every joint above the root motion joint", which reads as one matrix per joint; `RootMotionSetup` holds one `AncestorModel` and one `AncestorRotation`, the product over the chain of ancestors; the sentence now says one matrix and one rotation that all those joints form together.
+- step: the trace exercise said to step into `AddCharacterMotion` "and see `CharacterControllerSet::AddMotion`"; at the pin the call passes through `PhysicsSystem::AddCharacterMotion` and `PhysicsWorld::AddCharacterMotion` first; the answer now names both on the way.

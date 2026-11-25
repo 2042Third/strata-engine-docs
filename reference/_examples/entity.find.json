@@ -1,0 +1,12 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"command": "entity.find",
+	"parameters": {
+		"name": "Ground"
+	},
+	"result": {
+		"entities": [
+			"…"
+		]
+	}
+}

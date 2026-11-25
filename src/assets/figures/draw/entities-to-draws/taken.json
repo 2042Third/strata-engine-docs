@@ -1,0 +1,36 @@
+{
+	"files": {
+		"stats-overlay.avif": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				797,
+				499
+			],
+			"figure": "stats-overlay",
+			"variant": null,
+			"crop": null,
+			"original": "8a2805813244ca40d831ee35b7d0b6fcd9b2bfec32875779fd5544488af086e1",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 90,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "064f1685fecb26dfca9d6b00f62dd3ac343c3328810ce2efa77da75e2e06e7d4"
+		}
+	}
+}

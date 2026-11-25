@@ -1,0 +1,20 @@
+{
+	"figures": [
+		{
+			"id": "step-timeline",
+			"shows": "A time axis with steps at 0, 16.7 and 33.3 ms, a frame at 37.5 ms, the drawn time at 20.8 ms, and three lanes: a body blended between 0.100 m and 0.200 m and drawn at 0.125 m, its child light composed at 0.625 m, and a teleported crate drawn exactly at its world pose",
+			"caption": "The frame is drawn one step behind the clock, a quarter of the way between the two poses.",
+			"alt": "A horizontal time axis with three step marks and two dashed vertical lines, one for the clock and one for the drawn time, which lies a quarter of the way between the last two steps. Below it, three lanes show a body drawn between its two poses, its child light drawn from its parent, and a teleported crate drawn where it is.",
+			"kind": "diagram",
+			"numbers": "t from 0 to 50 ms; steps at 0, 16.7 and 33.3 ms (T = 33.3); clock 37.5 ms; accumulator 4.2 ms; drawn time 20.8 ms; alpha 0.25; body poses 0.100 m (from, 16.7 ms) and 0.200 m (to, 33.3 ms), drawn 0.125 m; light local offset 0.5 m, drawn 0.625 m; crate teleported at step 2 to 5.0 m, drawn there."
+		},
+		{
+			"id": "drawn-trace",
+			"shows": "The position of the toy's body at the 12 frames of the toy program, as a staircase without interpolation and as a straight climb with it, over 120 ms with one slow frame of 40 ms",
+			"caption": "Without interpolation the position is a staircase; with it the climb is straight and one step behind.",
+			"alt": "A graph of position in metres against time in milliseconds. A red line climbs in stairs of 0.1 metres with flat parts between, and one stair of 0.2 metres at the slow frame. A blue line climbs steadily slightly below the stairs, with one long straight stretch where a slow frame was drawn.",
+			"kind": "diagram",
+			"numbers": "t from 0 to 120 ms across, x from 0 to 0.65 m up; frame times 6.94, 13.89, 20.83, 27.78, 34.72, 41.67, 81.67, 88.61, 95.56, 102.50, 109.44, 116.39 ms; plain 0, 0, 0.1, 0.1, 0.2, 0.2, 0.4, 0.5, 0.5, 0.6, 0.6, 0.6 m; blended 0, 0, 0.025, 0.067, 0.108, 0.150, 0.390, 0.432, 0.473, 0.515, 0.557, 0.598 m (the toy's output)."
+		}
+	]
+}

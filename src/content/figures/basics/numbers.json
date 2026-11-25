@@ -1,0 +1,20 @@
+{
+	"figures": [
+		{
+			"id": "float-bits",
+			"shows": "The 32 bits of a float as three boxes in a row, the sign of 1 bit, the exponent of 8 bits and the significand of 23 bits, filled in for 0.15625, with the value written below as 1.01 times 2 to the power of minus 3",
+			"caption": "A float is three groups of bits: the sign, the exponent that moves the point, and the digits behind the leading one.",
+			"alt": "A row of 32 small boxes in three groups. The first group has 1 box holding 0. The second has 8 boxes holding 01111100, marked as 124. The third has 23 boxes starting with 01 and ending in zeros. Below, the value 1.01 times 2 to the power of minus 3 is 0.15625.",
+			"kind": "diagram",
+			"numbers": "Groups of 1, 8 and 23 boxes, each group in its own colour; bits 0 | 01111100 | 01000000000000000000000; labels sign, exponent field 124 = -3 + 127, significand field; below: 1.01 (binary) x 2^-3 = 1.25 x 0.125 = 0.15625; hex 0x3E200000."
+		},
+		{
+			"id": "float-gaps",
+			"shows": "A number line with tick marks for the floats of three ranges, 1 to 2, 2 to 4 and 4 to 8, each range holding the same number of marks, so the marks lie twice as far apart in each next range",
+			"caption": "Each doubling holds the same number of floats, so the gaps between neighbours double too.",
+			"alt": "A horizontal line from 1 to 8 with tick marks. The range from 1 to 2 has closely spaced marks. The range from 2 to 4 has the same number of marks, twice as far apart. The range from 4 to 8 has the same number again, four times as far apart as the first.",
+			"kind": "diagram",
+			"numbers": "Axis from 1 to 8 with ranges [1,2), [2,4), [4,8) in three colours; 16 marks in each range drawn as a simplified picture of the 8,388,608 real ones; gap labels g, 2g and 4g."
+		}
+	]
+}

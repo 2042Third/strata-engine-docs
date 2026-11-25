@@ -1,0 +1,152 @@
+[
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "canvas",
+			"name": "HUD"
+		},
+		"bind": {
+			"hud": "/entity"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "hud"
+			},
+			"component": "UICanvas"
+		}
+	},
+	{
+		"command": "selection.set",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "hud"
+				}
+			]
+		}
+	},
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"canvasMode": true,
+			"gameUI": true
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "text",
+			"name": "CoinText",
+			"parent": {
+				"$ref": "hud"
+			},
+			"text": "Coins left: 5",
+			"anchor": "topLeft",
+			"position": [
+				24,
+				24
+			],
+			"size": [
+				360,
+				48
+			]
+		},
+		"bind": {
+			"cointext": "/entity"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "cointext"
+			},
+			"component": "UIText",
+			"values": {
+				"FontSize": 36,
+				"Alignment": "Left"
+			}
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "text",
+			"name": "TimerText",
+			"parent": {
+				"$ref": "hud"
+			},
+			"text": "Time: 60",
+			"anchor": "topRight",
+			"position": [
+				-24,
+				24
+			],
+			"size": [
+				360,
+				48
+			]
+		},
+		"bind": {
+			"timertext": "/entity"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "timertext"
+			},
+			"component": "UIText",
+			"values": {
+				"FontSize": 36,
+				"Alignment": "Right"
+			}
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "cointext"
+			},
+			"component": "UIRect"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "cointext"
+			},
+			"component": "UIText"
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"entity": {
+				"$ref": "cointext"
+			},
+			"screen": [
+				1280,
+				720
+			]
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"entity": {
+				"$ref": "timertext"
+			},
+			"screen": [
+				1280,
+				720
+			]
+		}
+	}
+]

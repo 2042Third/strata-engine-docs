@@ -1,0 +1,2616 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "The reader's cube obstacle course in play mode with the robot in place of the capsule, walking with a flag gripped in its right hand",
+			"caption": "The result: the robot walks your course in place of the capsule and holds a flag in its right hand, at the left of the picture.",
+			"alt": "A yellow robot with a round helmet-like head and big round eyes walks toward the viewer across flat grey-brown ground among plain white blocks of the obstacle course, under a clear sky. Its right fist, at the left of the picture, grips a dark blue pole with a small red flag at the top; the pole rises behind the forearm.",
+			"kind": "scene",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"camera": {
+				"position": [
+					-4,
+					1.7,
+					-3.4
+				],
+				"target": [
+					0,
+					0.85,
+					-0.2
+				],
+				"fov": 30
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "scene.open",
+					"parameters": {
+						"scene": "Scenes/Course.stscene"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "FlagHolder",
+						"components": {
+							"AttachToJoint": {
+								"Animator": "A94EC4E371BEB484",
+								"Joint": "Palm2.R"
+							}
+						}
+					},
+					"bind": {
+						"holder": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "HeldFlag",
+						"parent": {
+							"$ref": "holder"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									0,
+									0.008,
+									0
+								],
+								"Rotation": [
+									180,
+									0,
+									0
+								],
+								"Scale": [
+									0.035,
+									0.035,
+									0.035
+								]
+							},
+							"MeshRenderer": {
+								"Mesh": "DA1E93DF1EBBC158"
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.copy",
+					"parameters": {
+						"entities": [
+							"AAE2EAF90F8A1799",
+							"350D7DDD7ED21DD5",
+							{
+								"$ref": "holder"
+							}
+						]
+					},
+					"bind": {
+						"player": "/data"
+					}
+				},
+				{
+					"command": "scene.new",
+					"parameters": {
+						"template": "basic3d",
+						"name": "Course",
+						"force": true
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Step03",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-5,
+									0.15,
+									-2
+								],
+								"Scale": [
+									2,
+									0.3,
+									1
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Step05",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-2,
+									0.25,
+									-2
+								],
+								"Scale": [
+									2,
+									0.5,
+									1
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ramp40",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									2,
+									1.4,
+									-4
+								],
+								"Scale": [
+									2,
+									0.2,
+									4
+								],
+								"Rotation": [
+									40,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ramp50",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									6,
+									1.6,
+									-4
+								],
+								"Scale": [
+									2,
+									0.2,
+									4
+								],
+								"Rotation": [
+									50,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2,
+									7
+								],
+								"Scale": [
+									6,
+									4,
+									0.5
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ledge",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									7,
+									0.5,
+									6
+								],
+								"Scale": [
+									3,
+									1,
+									3
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Crate",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-6,
+									0.5,
+									3
+								],
+								"Scale": [
+									1,
+									1,
+									1
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							},
+							"RigidBody": {}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Platform",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-5,
+									0.15,
+									-7.5
+								],
+								"Scale": [
+									3,
+									0.3,
+									3
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							},
+							"RigidBody": {
+								"Type": "Kinematic"
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.paste",
+					"parameters": {
+						"data": {
+							"$ref": "player"
+						}
+					}
+				}
+			],
+			"play": {
+				"steps": 60,
+				"input": [
+					{
+						"step": 0,
+						"action": "Gameplay/Move",
+						"mode": "press",
+						"value": [
+							0,
+							1
+						]
+					}
+				]
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "robot-placed",
+			"shows": "The whole editor after the robot was placed below the player: the robot in the Scene view, Robot below Player in the Hierarchy, and its Animator in the Inspector",
+			"caption": "The robot stands below the player; its Animator holds the skeleton and the first clip of the model, and no controller yet.",
+			"alt": "The editor with the robot among the white blocks of the course in the Scene view and Robot below Player in the Hierarchy. The Inspector shows the Animator with Skeleton and Clip filled and Controller empty.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "entity.copy",
+					"parameters": {
+						"entities": [
+							"AAE2EAF90F8A1799",
+							"350D7DDD7ED21DD5"
+						]
+					},
+					"bind": {
+						"player": "/data"
+					}
+				},
+				{
+					"command": "scene.new",
+					"parameters": {
+						"template": "basic3d",
+						"name": "Course",
+						"force": true
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Step03",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-5,
+									0.15,
+									-2
+								],
+								"Scale": [
+									2,
+									0.3,
+									1
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Step05",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-2,
+									0.25,
+									-2
+								],
+								"Scale": [
+									2,
+									0.5,
+									1
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ramp40",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									2,
+									1.4,
+									-4
+								],
+								"Scale": [
+									2,
+									0.2,
+									4
+								],
+								"Rotation": [
+									40,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ramp50",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									6,
+									1.6,
+									-4
+								],
+								"Scale": [
+									2,
+									0.2,
+									4
+								],
+								"Rotation": [
+									50,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2,
+									7
+								],
+								"Scale": [
+									6,
+									4,
+									0.5
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ledge",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									7,
+									0.5,
+									6
+								],
+								"Scale": [
+									3,
+									1,
+									3
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Crate",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-6,
+									0.5,
+									3
+								],
+								"Scale": [
+									1,
+									1,
+									1
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							},
+							"RigidBody": {}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Platform",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-5,
+									0.15,
+									-7.5
+								],
+								"Scale": [
+									3,
+									0.3,
+									3
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							},
+							"RigidBody": {
+								"Type": "Kinematic"
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.paste",
+					"parameters": {
+						"data": {
+							"$ref": "player"
+						}
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Robot"
+					},
+					"bind": {
+						"pasted": "/entities/0"
+					}
+				},
+				{
+					"command": "entity.delete",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "pasted"
+							}
+						]
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Player"
+					},
+					"bind": {
+						"player": "/entities/0"
+					}
+				},
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Models/Robot/RobotExpressive.glb",
+						"point": [
+							0,
+							0,
+							0
+						],
+						"rotation": [
+							0,
+							180,
+							0
+						],
+						"scale": 0.4
+					},
+					"bind": {
+						"robot": "/id"
+					}
+				},
+				{
+					"command": "entity.setParent",
+					"parameters": {
+						"entity": {
+							"$ref": "robot"
+						},
+						"parent": {
+							"$ref": "player"
+						},
+						"keepWorldTransform": false
+					}
+				},
+				{
+					"command": "entity.rename",
+					"parameters": {
+						"entity": {
+							"$ref": "robot"
+						},
+						"name": "Robot"
+					}
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/make-scenes-entities.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "robot"
+								}
+							]
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-3.2,
+								1.6,
+								0.4
+							],
+							"target": [
+								0,
+								0.75,
+								3
+							],
+							"fov": 35
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "controller-live",
+			"shows": "The Inspector of the robot in Play mode with the controller set, and the live state below the Animator's fields",
+			"caption": "In Play mode the Inspector draws the live state below the Animator's fields: the state Idle and the time, which counts one for each loop.",
+			"alt": "The Inspector of the robot in Play mode: the Animator's Controller field reads Player, and below the fields a State row reads Idle and a Time row shows a number above 1.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "animation.createController",
+					"parameters": {
+						"path": "Animations/Player.stanimator",
+						"states": [
+							{
+								"Name": "Idle",
+								"Clip": "E9C1D4AC112447DE"
+							}
+						]
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Robot",
+					"parameters": {
+						"component": "Animator",
+						"values": {
+							"Controller": "Animations/Player.stanimator"
+						}
+					}
+				},
+				{
+					"command": "component.remove",
+					"entityName": "Robot",
+					"parameters": {
+						"component": "Script"
+					}
+				}
+			],
+			"play": {
+				"steps": 360
+			},
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Robot"
+						},
+						"bind": {
+							"robot": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "robot"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "tables-walk-run",
+			"shows": "The Asset tab of the controller with its Parameters, States and Transitions tables after the fourth transition",
+			"caption": "The three tables hold the parameter Speed, the states Idle, Walk and Run, and the four transitions with their conditions and fades.",
+			"alt": "The Asset tab of the controller: a parameters table with Speed, a states table with Idle, Walk and Run and their clips, and a transitions table with four rows and their condition text.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"setup": [
+				{
+					"command": "animation.createController",
+					"parameters": {
+						"path": "Animations/Player.stanimator",
+						"parameters": [
+							{
+								"Name": "Speed",
+								"Type": "Float",
+								"Default": 0
+							}
+						],
+						"states": [
+							{
+								"Name": "Idle",
+								"Clip": "E9C1D4AC112447DE"
+							},
+							{
+								"Name": "Walk",
+								"Clip": "57D5825B3AB8DCFD"
+							},
+							{
+								"Name": "Run",
+								"Clip": "76CC7E24795F51DA"
+							}
+						],
+						"transitions": [
+							{
+								"From": "Idle",
+								"To": "Walk",
+								"Duration": 0.15,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Greater",
+										"Threshold": 0.1
+									}
+								]
+							},
+							{
+								"From": "Walk",
+								"To": "Idle",
+								"Duration": 0.2,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Less",
+										"Threshold": 0.1
+									}
+								]
+							},
+							{
+								"From": "Walk",
+								"To": "Run",
+								"Duration": 0.2,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Greater",
+										"Threshold": 4.5
+									}
+								]
+							},
+							{
+								"From": "Run",
+								"To": "Walk",
+								"Duration": 0.2,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Less",
+										"Threshold": 4.5
+									}
+								]
+							}
+						]
+					}
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/make-animation-tables.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "AssetInspector",
+				"steps": [
+					{
+						"command": "selection.set",
+						"parameters": {
+							"asset": "Animations/Player.stanimator"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "speed-live",
+			"shows": "The Inspector of the robot while the player walks, with the State row and Speed and Grounded in the parameters list",
+			"caption": "While the player moves, the live state reads Walk, and Speed shows the player's speed, above the threshold of the walk.",
+			"alt": "The Inspector of the robot in Play mode with a State row reading Walk and a Parameters list with Speed at 3.000 and Grounded reading true.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "animation.createController",
+					"parameters": {
+						"path": "Animations/Player.stanimator",
+						"parameters": [
+							{
+								"Name": "Speed",
+								"Type": "Float",
+								"Default": 0
+							},
+							{
+								"Name": "Grounded",
+								"Type": "Bool",
+								"Default": true
+							}
+						],
+						"states": [
+							{
+								"Name": "Idle",
+								"Clip": "E9C1D4AC112447DE"
+							},
+							{
+								"Name": "Walk",
+								"Clip": "57D5825B3AB8DCFD"
+							},
+							{
+								"Name": "Run",
+								"Clip": "76CC7E24795F51DA"
+							}
+						],
+						"transitions": [
+							{
+								"From": "Idle",
+								"To": "Walk",
+								"Duration": 0.15,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Greater",
+										"Threshold": 0.1
+									}
+								]
+							},
+							{
+								"From": "Walk",
+								"To": "Idle",
+								"Duration": 0.2,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Less",
+										"Threshold": 0.1
+									}
+								]
+							},
+							{
+								"From": "Walk",
+								"To": "Run",
+								"Duration": 0.2,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Greater",
+										"Threshold": 4.5
+									}
+								]
+							},
+							{
+								"From": "Run",
+								"To": "Walk",
+								"Duration": 0.2,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Less",
+										"Threshold": 4.5
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Robot",
+					"parameters": {
+						"component": "Animator",
+						"values": {
+							"Controller": "Animations/Player.stanimator"
+						}
+					}
+				},
+				{
+					"command": "component.remove",
+					"entityName": "Robot",
+					"parameters": {
+						"component": "Script"
+					}
+				}
+			],
+			"play": {
+				"steps": 60,
+				"input": [
+					{
+						"step": 0,
+						"action": "Gameplay/Move",
+						"mode": "press",
+						"value": [
+							0,
+							1
+						]
+					}
+				]
+			},
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Robot"
+						},
+						"bind": {
+							"robot": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "robot"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "jump-live",
+			"shows": "The Inspector of the robot during the cross-fade from Idle to Jump",
+			"caption": "During a fade the state reads the old state, an arrow and the new one.",
+			"alt": "The Inspector of the robot in Play mode with a State row that reads Idle, an arrow and Jump.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "animation.createController",
+					"parameters": {
+						"path": "Animations/Player.stanimator",
+						"parameters": [
+							{
+								"Name": "Speed",
+								"Type": "Float",
+								"Default": 0
+							},
+							{
+								"Name": "Grounded",
+								"Type": "Bool",
+								"Default": true
+							},
+							{
+								"Name": "Jump",
+								"Type": "Trigger"
+							}
+						],
+						"states": [
+							{
+								"Name": "Idle",
+								"Clip": "E9C1D4AC112447DE"
+							},
+							{
+								"Name": "Walk",
+								"Clip": "57D5825B3AB8DCFD"
+							},
+							{
+								"Name": "Run",
+								"Clip": "76CC7E24795F51DA"
+							},
+							{
+								"Name": "Jump",
+								"Clip": "5C84360EC5B352B3",
+								"Loop": false
+							}
+						],
+						"transitions": [
+							{
+								"From": "Idle",
+								"To": "Walk",
+								"Duration": 0.15,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Greater",
+										"Threshold": 0.1
+									}
+								]
+							},
+							{
+								"From": "Walk",
+								"To": "Idle",
+								"Duration": 0.2,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Less",
+										"Threshold": 0.1
+									}
+								]
+							},
+							{
+								"From": "Walk",
+								"To": "Run",
+								"Duration": 0.2,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Greater",
+										"Threshold": 4.5
+									}
+								]
+							},
+							{
+								"From": "Run",
+								"To": "Walk",
+								"Duration": 0.2,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Less",
+										"Threshold": 4.5
+									}
+								]
+							},
+							{
+								"AnyState": true,
+								"To": "Jump",
+								"Duration": 0.1,
+								"Conditions": [
+									{
+										"Parameter": "Jump",
+										"Mode": "Set"
+									}
+								]
+							},
+							{
+								"From": "Jump",
+								"To": "Idle",
+								"ExitTime": 0.4,
+								"Duration": 0.15,
+								"Conditions": [
+									{
+										"Parameter": "Grounded",
+										"Mode": "True"
+									},
+									{
+										"Parameter": "Speed",
+										"Mode": "Less",
+										"Threshold": 0.1
+									}
+								]
+							},
+							{
+								"From": "Jump",
+								"To": "Walk",
+								"ExitTime": 0.4,
+								"Duration": 0.15,
+								"Conditions": [
+									{
+										"Parameter": "Grounded",
+										"Mode": "True"
+									},
+									{
+										"Parameter": "Speed",
+										"Mode": "Greater",
+										"Threshold": 0.1
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Robot",
+					"parameters": {
+						"component": "Animator",
+						"values": {
+							"Controller": "Animations/Player.stanimator"
+						}
+					}
+				},
+				{
+					"command": "component.remove",
+					"entityName": "Robot",
+					"parameters": {
+						"component": "Script"
+					}
+				}
+			],
+			"play": {
+				"steps": 23,
+				"input": [
+					{
+						"step": 20,
+						"action": "Gameplay/Jump",
+						"mode": "tap",
+						"steps": 2
+					}
+				]
+			},
+			"editorWindow": {
+				"layout": "layouts/materials.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Robot"
+						},
+						"bind": {
+							"robot": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "robot"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "footsteps-script",
+			"shows": "The Inspector of the Robot entity with the Footsteps script and its four sound fields",
+			"caption": "The script sits on the robot, the entity with the Animator, and holds four step sounds.",
+			"alt": "The Inspector of the robot with the Animator component and below it a Script component with the class Footsteps and its four fields Step1 to Step4 filled with step sounds.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "animation.createController",
+					"parameters": {
+						"path": "Animations/Player.stanimator",
+						"parameters": [
+							{
+								"Name": "Speed",
+								"Type": "Float",
+								"Default": 0
+							},
+							{
+								"Name": "Grounded",
+								"Type": "Bool",
+								"Default": true
+							},
+							{
+								"Name": "Jump",
+								"Type": "Trigger"
+							}
+						],
+						"states": [
+							{
+								"Name": "Idle",
+								"Clip": "E9C1D4AC112447DE"
+							},
+							{
+								"Name": "Walk",
+								"Clip": "57D5825B3AB8DCFD",
+								"Events": [
+									{
+										"Name": "Footstep",
+										"Time": 0.02
+									},
+									{
+										"Name": "Footstep",
+										"Time": 0.5
+									}
+								]
+							},
+							{
+								"Name": "Run",
+								"Clip": "76CC7E24795F51DA",
+								"Events": [
+									{
+										"Name": "Footstep",
+										"Time": 0.28
+									},
+									{
+										"Name": "Footstep",
+										"Time": 0.76
+									}
+								]
+							},
+							{
+								"Name": "Jump",
+								"Clip": "5C84360EC5B352B3",
+								"Loop": false
+							}
+						],
+						"transitions": [
+							{
+								"From": "Idle",
+								"To": "Walk",
+								"Duration": 0.15,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Greater",
+										"Threshold": 0.1
+									}
+								]
+							},
+							{
+								"From": "Walk",
+								"To": "Idle",
+								"Duration": 0.2,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Less",
+										"Threshold": 0.1
+									}
+								]
+							},
+							{
+								"From": "Walk",
+								"To": "Run",
+								"Duration": 0.2,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Greater",
+										"Threshold": 4.5
+									}
+								]
+							},
+							{
+								"From": "Run",
+								"To": "Walk",
+								"Duration": 0.2,
+								"Conditions": [
+									{
+										"Parameter": "Speed",
+										"Mode": "Less",
+										"Threshold": 4.5
+									}
+								]
+							},
+							{
+								"AnyState": true,
+								"To": "Jump",
+								"Duration": 0.1,
+								"Conditions": [
+									{
+										"Parameter": "Jump",
+										"Mode": "Set"
+									}
+								]
+							},
+							{
+								"From": "Jump",
+								"To": "Idle",
+								"ExitTime": 0.4,
+								"Duration": 0.15,
+								"Conditions": [
+									{
+										"Parameter": "Grounded",
+										"Mode": "True"
+									},
+									{
+										"Parameter": "Speed",
+										"Mode": "Less",
+										"Threshold": 0.1
+									}
+								]
+							},
+							{
+								"From": "Jump",
+								"To": "Walk",
+								"ExitTime": 0.4,
+								"Duration": 0.15,
+								"Conditions": [
+									{
+										"Parameter": "Grounded",
+										"Mode": "True"
+									},
+									{
+										"Parameter": "Speed",
+										"Mode": "Greater",
+										"Threshold": 0.1
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Robot",
+					"parameters": {
+						"component": "Animator",
+						"values": {
+							"Controller": "Animations/Player.stanimator"
+						}
+					}
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/make-animation-tall.ini",
+				"windowSize": [
+					1280,
+					960
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Robot"
+						},
+						"bind": {
+							"robot": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "robot"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "flag-hand",
+			"shows": "The Scene view in Play mode with the robot holding the flag in its right hand",
+			"caption": "The flag follows the hand because its holder is attached to the hand joint and the flag is the holder's child.",
+			"alt": "The Scene view in Play mode with the robot standing on the gray floor of the course, holding a small red flag in its right hand.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "FlagHolder",
+						"components": {
+							"AttachToJoint": {
+								"Animator": "A94EC4E371BEB484",
+								"Joint": "Palm2.R"
+							}
+						}
+					},
+					"bind": {
+						"holder": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "flag",
+						"parent": {
+							"$ref": "holder"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									0,
+									0.008,
+									0
+								],
+								"Rotation": [
+									180,
+									0,
+									0
+								],
+								"Scale": [
+									0.035,
+									0.035,
+									0.035
+								]
+							},
+							"MeshRenderer": {
+								"Mesh": "DA1E93DF1EBBC158"
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.copy",
+					"parameters": {
+						"entities": [
+							"AAE2EAF90F8A1799",
+							"350D7DDD7ED21DD5",
+							{
+								"$ref": "holder"
+							}
+						]
+					},
+					"bind": {
+						"player": "/data"
+					}
+				},
+				{
+					"command": "scene.new",
+					"parameters": {
+						"template": "basic3d",
+						"name": "Course",
+						"force": true
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Step03",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-5,
+									0.15,
+									-2
+								],
+								"Scale": [
+									2,
+									0.3,
+									1
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Step05",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-2,
+									0.25,
+									-2
+								],
+								"Scale": [
+									2,
+									0.5,
+									1
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ramp40",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									2,
+									1.4,
+									-4
+								],
+								"Scale": [
+									2,
+									0.2,
+									4
+								],
+								"Rotation": [
+									40,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ramp50",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									6,
+									1.6,
+									-4
+								],
+								"Scale": [
+									2,
+									0.2,
+									4
+								],
+								"Rotation": [
+									50,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2,
+									7
+								],
+								"Scale": [
+									6,
+									4,
+									0.5
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ledge",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									7,
+									0.5,
+									6
+								],
+								"Scale": [
+									3,
+									1,
+									3
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Crate",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-6,
+									0.5,
+									3
+								],
+								"Scale": [
+									1,
+									1,
+									1
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							},
+							"RigidBody": {}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Platform",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-5,
+									0.15,
+									-7.5
+								],
+								"Scale": [
+									3,
+									0.3,
+									3
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							},
+							"RigidBody": {
+								"Type": "Kinematic"
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.paste",
+					"parameters": {
+						"data": {
+							"$ref": "player"
+						}
+					}
+				}
+			],
+			"play": {
+				"steps": 30
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"windowSize": [
+					1280,
+					720
+				],
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "flag"
+						},
+						"bind": {
+							"flag": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "flag"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 10
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-3.6,
+								1.6,
+								-0.1
+							],
+							"target": [
+								0,
+								0.85,
+								3
+							],
+							"fov": 30
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "second-robot",
+			"shows": "The whole editor with the second robot selected: the green lines of its capsule in the Scene view, Robot (1) at the top level of the Hierarchy and its Transform and Character Controller in the Inspector",
+			"caption": "The second robot stands at the top level with its own character controller; the green lines around it draw the controller's capsule.",
+			"alt": "The editor with the second robot selected beside the end of the wall in the Scene view. Thin green lines of a capsule run from above its head down to its feet, with a ring at its feet. The Hierarchy lists Robot (1) at the top level, and the Inspector shows its Translation -3, 0, 5 and its Character Controller with Radius 0.3.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "entity.copy",
+					"parameters": {
+						"entities": [
+							"AAE2EAF90F8A1799",
+							"350D7DDD7ED21DD5"
+						]
+					},
+					"bind": {
+						"player": "/data"
+					}
+				},
+				{
+					"command": "scene.new",
+					"parameters": {
+						"template": "basic3d",
+						"name": "Course",
+						"force": true
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Step03",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-5,
+									0.15,
+									-2
+								],
+								"Scale": [
+									2,
+									0.3,
+									1
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Step05",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-2,
+									0.25,
+									-2
+								],
+								"Scale": [
+									2,
+									0.5,
+									1
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ramp40",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									2,
+									1.4,
+									-4
+								],
+								"Scale": [
+									2,
+									0.2,
+									4
+								],
+								"Rotation": [
+									40,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ramp50",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									6,
+									1.6,
+									-4
+								],
+								"Scale": [
+									2,
+									0.2,
+									4
+								],
+								"Rotation": [
+									50,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2,
+									7
+								],
+								"Scale": [
+									6,
+									4,
+									0.5
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ledge",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									7,
+									0.5,
+									6
+								],
+								"Scale": [
+									3,
+									1,
+									3
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Crate",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-6,
+									0.5,
+									3
+								],
+								"Scale": [
+									1,
+									1,
+									1
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							},
+							"RigidBody": {}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Platform",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-5,
+									0.15,
+									-7.5
+								],
+								"Scale": [
+									3,
+									0.3,
+									3
+								],
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							},
+							"RigidBody": {
+								"Type": "Kinematic"
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.paste",
+					"parameters": {
+						"data": {
+							"$ref": "player"
+						}
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Robot"
+					},
+					"bind": {
+						"robot": "/entities/0"
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "robot"
+						}
+					},
+					"bind": {
+						"second": "/id"
+					}
+				},
+				{
+					"command": "entity.setParent",
+					"parameters": {
+						"entity": {
+							"$ref": "second"
+						},
+						"parent": null
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "second"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								-3,
+								0,
+								5
+							],
+							"Rotation": [
+								0,
+								0,
+								0
+							]
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"parameters": {
+						"entity": {
+							"$ref": "second"
+						},
+						"component": "CharacterController",
+						"values": {
+							"Height": 1.8,
+							"Radius": 0.3,
+							"StepHeight": 0.35
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "second"
+						},
+						"component": "Animator",
+						"values": {
+							"Controller": "0000000000000000",
+							"Clip": "57D5825B3AB8DCFD",
+							"ApplyRootMotion": true
+						}
+					}
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/make-scenes-entities.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"selectionOutline": false,
+							"gizmo": "None"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "second"
+								}
+							]
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-0.7,
+								1.3,
+								2.2
+							],
+							"target": [
+								-3,
+								0.75,
+								5
+							],
+							"fov": 35
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "culling",
+			"shows": "The Inspector of the second robot with its Culling Mode set to When Visible",
+			"caption": "The culling mode is the last field of the second robot's Animator, below Apply Root Motion.",
+			"alt": "The Inspector of the second robot with the Animator component, Apply Root Motion ticked and a Culling Mode field reading When Visible.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"setup": [
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Robot"
+					},
+					"bind": {
+						"robot": "/entities/0"
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "robot"
+						}
+					},
+					"bind": {
+						"second": "/id"
+					}
+				},
+				{
+					"command": "entity.setParent",
+					"parameters": {
+						"entity": {
+							"$ref": "second"
+						},
+						"parent": null
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "second"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								-3,
+								0,
+								5
+							],
+							"Rotation": [
+								0,
+								0,
+								0
+							]
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"parameters": {
+						"entity": {
+							"$ref": "second"
+						},
+						"component": "CharacterController",
+						"values": {
+							"Height": 1.8,
+							"Radius": 0.3,
+							"StepHeight": 0.35
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "second"
+						},
+						"component": "Animator",
+						"values": {
+							"Controller": "0000000000000000",
+							"Clip": "57D5825B3AB8DCFD",
+							"ApplyRootMotion": true
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "second"
+						},
+						"component": "Animator",
+						"values": {
+							"CullingMode": "WhenVisible"
+						}
+					}
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/make-animation-tall.ini",
+				"windowSize": [
+					1280,
+					960
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "second"
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,47 @@
+{
+	"figures": [
+		{
+			"id": "aliasing-floor",
+			"kind": "scene",
+			"shows": "A crop of the Physics Playground where the ramp's dark rail crosses the tiled floor, enlarged four times, with no anti-aliasing, with FXAA, with the morphological anti-aliasing and with TAA",
+			"caption": "The same crop of the ramp's rail over the tiled floor, drawn four ways across the two settings: no anti-aliasing against FXAA, then the morphological anti-aliasing against TAA. Only the version without anti-aliasing has staircases of whole pixels, on the rail's slanted edges; the other three turn those steps into soft gradients. The tiles' pattern, filtered by the texture's smaller levels, looks almost the same in all four.",
+			"alt": "Four enlarged crops of a dark ramp rail against a blue and white tiled floor. In the first, the rail's slanted top edge and the line where it meets the wooden ramp are hard pixel staircases. In the second, third and fourth, the same edges are smooth gradients.",
+			"project": { "sample": "PhysicsPlayground" },
+			"scene": "Scenes/Main.stscene",
+			"camera": "scene",
+			"size": [3840, 2160],
+			"quality": "high",
+			"publish": "lossless",
+			"crops": [
+				{ "name": "floor", "rect": [0.4375, 0.7315, 0.4896, 0.8009], "scale": 4 }
+			],
+			"variants": {
+				"off": { "antiAliasing": "off" },
+				"fxaa": { "antiAliasing": "fxaa" },
+				"morph": { "antiAliasing": "morph" },
+				"taa": { "antiAliasing": "taa" }
+			}
+		},
+		{
+			"id": "subpixel-pair",
+			"kind": "scene",
+			"shows": "A crop of four tiles of the Physics Playground's floor drawn with FXAA, enlarged four times, with the subpixel blend at 0.25 and at 0.75",
+			"caption": "The same crop of four floor tiles drawn with FXAA, with the subpixel blend at the engine's value and at the older, larger value. At the engine's value the outlines of the blue motifs are dotted lines of single pixels. At the larger value the same dots blend into their neighbors, and the outlines blur. The change is small, and it is the same all over the pattern, in the motifs and in the bands between the tiles.",
+			"alt": "Two enlarged crops of four blue and white floor tiles. In the first, the outlines of the blue motifs are dotted lines of distinct single pixels. In the second, the same outlines are slightly blurred, their pixels blended with their neighbors.",
+			"project": { "sample": "PhysicsPlayground" },
+			"scene": "Scenes/Main.stscene",
+			"camera": "scene",
+			"size": [3840, 2160],
+			"quality": "high",
+			"publish": "lossless",
+			"antiAliasing": "fxaa",
+			"crops": [
+				{ "name": "floor", "rect": [0.4870, 0.5880, 0.5183, 0.6436], "scale": 4 }
+			],
+			"variants": {
+				"low": { "renderer": { "FXAASubpixel": 0.25 } },
+				"high": { "renderer": { "FXAASubpixel": 0.75 } }
+			}
+		}
+	]
+}

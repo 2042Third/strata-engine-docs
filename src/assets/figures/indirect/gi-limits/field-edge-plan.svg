@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 506">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: the field seen from above at the High row, 18 px per metre, camera at (200, 300).
+Full field: half 7.5 m = 135 px (x 65..335, y 165..435); fade to 9.5 m = 171 px (x 29..371, y 129..471).
+A long wall east of the camera: body x 256..264, a 4 px gap, its shaded east face x 268..282 (swatches: light inside,
+a gradient over the fade, dark beyond), ground in the sun x 284..329, y 70..350. Sun arrow from the west over the wall's top.
+Right column x 400..752: labels with leaders ending on dots on the face; graph of the field weight, 28 px per metre
+from x 420, weight 1 at y 380, 0 at y 450. H = 506. -->
+<defs>
+<linearGradient id="field-edge-plan-fade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#4d4f57"/>
+<stop offset="1" stop-color="#f0cc8f"/>
+</linearGradient>
+</defs>
+<text x="29" y="34" class="ink bold">Seen from above, High row</text>
+<rect x="29" y="129" width="342" height="342" class="plate line-muted" stroke-dasharray="4 3"/>
+<rect x="65" y="165" width="270" height="270" class="blue-area line-blue"/>
+<text x="150" y="195" class="blue bold" text-anchor="middle">Full field</text>
+<text x="200" y="458" class="small ink" text-anchor="middle">Fade, 2 m</text>
+<rect x="284" y="70" width="45" height="280" class="orange-area"/>
+<rect x="256" y="70" width="8" height="280" class="ink"/>
+<text x="248" y="104" class="small ink" text-anchor="end">Long wall</text>
+<rect x="268" y="70" width="14" height="59" class="swatch" fill="#4d4f57"/>
+<rect x="268" y="129" width="14" height="36" class="swatch" fill="url(#field-edge-plan-fade)"/>
+<rect x="268" y="165" width="14" height="185" class="swatch" fill="#f0cc8f"/>
+<rect x="268" y="70" width="14" height="280" fill="none" class="line-ink"/>
+<line x1="200" y1="58" x2="302.19" y2="78.07" class="line-orange" stroke-width="2"/>
+<polygon points="312,80 301.51,81.51 302.86,74.64" class="orange"/>
+<text x="192" y="63" class="small orange" text-anchor="end">Sun</text>
+<circle cx="200" cy="300" r="5" class="ink"/>
+<text x="200" y="324" class="ink" text-anchor="middle">camera</text>
+<line x1="194" y1="300" x2="75" y2="300" class="line-muted"/>
+<polygon points="65,300 75,296.5 75,303.5" class="muted"/>
+<text x="130" y="292" class="ink" text-anchor="middle">7.5 m</text>
+<line x1="63" y1="300" x2="39" y2="300" class="line-muted"/>
+<polygon points="29,300 39,296.5 39,303.5" class="muted"/>
+<text x="47" y="292" class="small ink" text-anchor="middle">2 m</text>
+<text x="80" y="390" class="small ink">Open ground: about the same</text>
+<text x="80" y="408" class="small ink">light inside the field and beyond</text>
+<line x1="392" y1="95" x2="279" y2="95" class="line-muted"/>
+<circle cx="275" cy="95" r="3.5" class="ink line-ground"/>
+<text x="400" y="89" class="small ink">Beyond 9.5 m: light without GI only,</text>
+<text x="400" y="107" class="small ink">so the shaded face is darker</text>
+<line x1="392" y1="147" x2="279" y2="147" class="line-muted"/>
+<circle cx="275" cy="147" r="3.5" class="ink line-ground"/>
+<text x="400" y="144" class="small orange">Over the 2 m fade the shaded face</text>
+<text x="400" y="162" class="small orange">steps down: here the edge shows</text>
+<line x1="392" y1="231" x2="279" y2="231" class="line-muted"/>
+<circle cx="275" cy="231" r="3.5" class="ink line-ground"/>
+<text x="400" y="228" class="small orange">Inside 7.5 m the shaded face gets</text>
+<text x="400" y="246" class="small orange">bounce light from the ground in the sun</text>
+<line x1="392" y1="302" x2="311" y2="302" class="line-muted"/>
+<circle cx="307" cy="302" r="3.5" class="ink"/>
+<text x="400" y="307" class="small ink">Ground in the sun</text>
+<line x1="630" y1="380" x2="630" y2="450" class="line-faint" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="686" y1="380" x2="686" y2="450" class="line-faint" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="420" y1="374" x2="420" y2="450" class="line-ink"/>
+<line x1="420" y1="450" x2="740" y2="450" class="line-ink"/>
+<polyline points="420,380 630,380 686,450 740,450" fill="none" class="line-blue" stroke-width="2.5"/>
+<text x="428" y="372" class="small blue">Field weight</text>
+<text x="412" y="385" class="small ink" text-anchor="end">1</text>
+<text x="412" y="455" class="small ink" text-anchor="end">0</text>
+<text x="630" y="470" class="small ink" text-anchor="middle">7.5 m</text>
+<text x="686" y="470" class="small ink" text-anchor="middle">9.5 m</text>
+<text x="580" y="490" class="small muted" text-anchor="middle">distance from the camera, sideways</text>
+</svg>

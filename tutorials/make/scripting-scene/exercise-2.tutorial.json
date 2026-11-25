@@ -1,0 +1,33 @@
+{
+	"page": "make/scripting-scene",
+	"startsFrom": { "tutorial": "make/scripting-scene" },
+	"stages": [
+		{
+			"step": 1,
+			"files": [ { "from": "book:tutorials/make/scripting-scene/exercise-2/CoinPlacer.cpp", "to": "Scripts/CoinPlacer.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "entity.find", "parameters": { "name": "Coins" }, "checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 270 }, "expect": { "/stepsRun": { "equals": 270 } } },
+				{ "command": "entity.find", "parameters": { "tag": "Coin" }, "bind": { "coin": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 5 } ] },
+				{ "command": "entity.get", "parameters": { "entity": { "$ref": "coin" } },
+					"checks": [ { "pointer": "/active", "equals": true } ] },
+				{ "command": "play.step", "parameters": { "steps": 60 }, "expect": { "/stepsRun": { "equals": 60 } } },
+				{ "command": "entity.get", "parameters": { "entity": { "$ref": "coin" } },
+					"checks": [ { "pointer": "/active", "equals": false } ] },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "coin" }, "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/1", "approx": 0.74, "tolerance": 0.01 } ] },
+				{ "command": "play.step", "parameters": { "steps": 47 }, "expect": { "/stepsRun": { "equals": 47 } } },
+				{ "command": "entity.get", "parameters": { "entity": { "$ref": "coin" } },
+					"checks": [ { "pointer": "/active", "equals": false }, { "pointer": "/components/Transform/Translation/1", "approx": 0.74, "tolerance": 0.01 } ] },
+				{ "command": "play.step", "parameters": { "steps": 163 }, "expect": { "/stepsRun": { "equals": 163 } } },
+				{ "command": "entity.get", "parameters": { "entity": { "$ref": "coin" } },
+					"checks": [ { "pointer": "/active", "equals": true } ] },
+				{ "command": "play.stop" }
+			]
+		}
+	]
+}

@@ -1,0 +1,2680 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "The editor with the world Meadow open: the ball and a pine on the ground tiles with orange cell outlines in the Scene view, and the Streaming panel with its map of loaded cells inside the camera's circle",
+			"caption": "The finished world: the ball and a pine on ground with cell outlines in the Scene view, and the cell map in the Streaming panel.",
+			"alt": "The editor window. In the Scene view a white ball hangs over grey ground crossed by orange cell outlines, with a small pine farther back. On the right, a map of orange squares, one with a pin, sits inside a blue circle.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-large-worlds.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "world.create",
+						"parameters": {
+							"path": "Worlds/Meadow"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Main Camera"
+						},
+						"bind": {
+							"cam": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Ground"
+						},
+						"bind": {
+							"ground": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "cam"
+								},
+								{
+									"$ref": "ground"
+								}
+							]
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Terrain"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										32,
+										-0.5,
+										32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						},
+						"bind": {
+							"tile": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-32,
+										-0.5,
+										32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										32,
+										-0.5,
+										-32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-32,
+										-0.5,
+										-32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Props"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Nature/PineDefault.stprefab",
+							"components": {
+								"Transform": {
+									"Translation": [
+										10,
+										0,
+										-20
+									]
+								}
+							}
+						},
+						"bind": {
+							"pine": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "pine"
+							},
+							"name": "Pine"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Nature/RockLargeA.stprefab",
+							"components": {
+								"Transform": {
+									"Translation": [
+										70,
+										0,
+										-20
+									]
+								}
+							}
+						},
+						"bind": {
+							"rock": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "rock"
+							},
+							"name": "Rock"
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"cellBounds": true
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 120
+						}
+					},
+					{
+						"command": "world.status",
+						"parameters": {
+							"cells": true
+						}
+					},
+					{
+						"command": "world.loadCells",
+						"parameters": {
+							"cells": [
+								{
+									"layer": "Terrain",
+									"x": 0,
+									"z": 0
+								}
+							]
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Persistent"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Ball",
+							"components": {
+								"Transform": {
+									"Translation": [
+										0,
+										1,
+										0
+									]
+								},
+								"MeshRenderer": {
+									"Mesh": "Builtin/Sphere"
+								},
+								"RigidBody": {
+									"Type": "Dynamic"
+								},
+								"SphereCollider": {
+									"Radius": 0.5
+								},
+								"StreamingSource": {}
+							}
+						},
+						"bind": {
+							"ball": "/id"
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "world.cook",
+						"parameters": {
+							"world": "Worlds/Meadow.stworld"
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Terrain"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										608,
+										-0.5,
+										608
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Props"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Nature/RockLargeA.stprefab",
+							"components": {
+								"Transform": {
+									"Translation": [
+										608,
+										0,
+										600
+									]
+								}
+							}
+						},
+						"bind": {
+							"farRock": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "farRock"
+							},
+							"name": "Rock"
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Persistent"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "FarMarker",
+							"components": {
+								"Transform": {
+									"Translation": [
+										608,
+										0,
+										608
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-1.4,
+								2.5,
+								6
+							],
+							"target": [
+								4,
+								0.8,
+								-9
+							],
+							"fov": 32
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 10
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Streaming"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "world-created",
+			"shows": "The Asset panel of the new world Meadow: four layers of 64 m cells that stream within 256 m, Terrain loaded at the start",
+			"caption": "A new world lists four layers of square cells in the Asset panel; only Terrain loads before the start.",
+			"alt": "The Asset panel of the world Meadow with a table of four layers, Terrain, Buildings, Props and Gameplay, each with 64 m cells streamed within 256 m. Terrain reads Loaded at start, the others Streams.",
+			"kind": "editor",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-large-worlds.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"panel": "AssetInspector",
+				"steps": [
+					{
+						"command": "world.create",
+						"parameters": {
+							"path": "Worlds/Meadow"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Main Camera"
+						},
+						"bind": {
+							"cam": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Ground"
+						},
+						"bind": {
+							"ground": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "cam"
+								},
+								{
+									"$ref": "ground"
+								}
+							]
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"asset": "Worlds/Meadow.stworld"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "cells-filled",
+			"shows": "The strip at the top of the Hierarchy with the unsaved cells and the edit layer Props, and the Inspector of a selected tile with the line Cell: Terrain (0, 0)",
+			"caption": "The strip at the top of the Hierarchy counts the unsaved cells and shows the edit layer, and the Inspector names the cell of the selected tile.",
+			"alt": "The editor with the world Meadow. The strip at the top of the Hierarchy reads 0 cells loaded and 6 unsaved, its Edit layer list is set to Props, and the Inspector of a selected tile reads Cell: Terrain (0, 0).",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-large-worlds-wide.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "world.create",
+						"parameters": {
+							"path": "Worlds/Meadow"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Main Camera"
+						},
+						"bind": {
+							"cam": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Ground"
+						},
+						"bind": {
+							"ground": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "cam"
+								},
+								{
+									"$ref": "ground"
+								}
+							]
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Terrain"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										32,
+										-0.5,
+										32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						},
+						"bind": {
+							"tile": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-32,
+										-0.5,
+										32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										32,
+										-0.5,
+										-32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-32,
+										-0.5,
+										-32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Props"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Nature/PineDefault.stprefab",
+							"components": {
+								"Transform": {
+									"Translation": [
+										10,
+										0,
+										-20
+									]
+								}
+							}
+						},
+						"bind": {
+							"pine": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "pine"
+							},
+							"name": "Pine"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Nature/RockLargeA.stprefab",
+							"components": {
+								"Transform": {
+									"Translation": [
+										70,
+										0,
+										-20
+									]
+								}
+							}
+						},
+						"bind": {
+							"rock": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "rock"
+							},
+							"name": "Rock"
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								70,
+								48,
+								96
+							],
+							"target": [
+								0,
+								0,
+								0
+							],
+							"fov": 50
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "tile"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "cell-map",
+			"shows": "The Streaming panel's map with six loaded cells (five squares, since a Props cell lies on a Terrain cell), a pin on one of them and the camera's circle, beside the Scene view with cell outlines",
+			"caption": "The map colors the loaded cells orange and marks the pinned cell; the blue circle is how far the camera streams.",
+			"alt": "The Streaming panel on the right with five orange squares, one with a pin, inside a blue circle, beside a Scene view with orange cell outlines on the ground.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-large-worlds.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "world.create",
+						"parameters": {
+							"path": "Worlds/Meadow"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Main Camera"
+						},
+						"bind": {
+							"cam": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Ground"
+						},
+						"bind": {
+							"ground": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "cam"
+								},
+								{
+									"$ref": "ground"
+								}
+							]
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Terrain"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										32,
+										-0.5,
+										32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						},
+						"bind": {
+							"tile": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-32,
+										-0.5,
+										32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										32,
+										-0.5,
+										-32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-32,
+										-0.5,
+										-32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Props"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Nature/PineDefault.stprefab",
+							"components": {
+								"Transform": {
+									"Translation": [
+										10,
+										0,
+										-20
+									]
+								}
+							}
+						},
+						"bind": {
+							"pine": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "pine"
+							},
+							"name": "Pine"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Nature/RockLargeA.stprefab",
+							"components": {
+								"Transform": {
+									"Translation": [
+										70,
+										0,
+										-20
+									]
+								}
+							}
+						},
+						"bind": {
+							"rock": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "rock"
+							},
+							"name": "Rock"
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"cellBounds": true
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 120
+						}
+					},
+					{
+						"command": "world.status",
+						"parameters": {
+							"cells": true
+						}
+					},
+					{
+						"command": "world.loadCells",
+						"parameters": {
+							"cells": [
+								{
+									"layer": "Terrain",
+									"x": 0,
+									"z": 0
+								}
+							]
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								70,
+								48,
+								96
+							],
+							"target": [
+								0,
+								0,
+								0
+							],
+							"fov": 50
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 10
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Streaming"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "player-source",
+			"shows": "The editor while the game is paused: the ball in the Scene view, and the map with the source's dot and circle on the ball",
+			"caption": "While the game plays, the map puts the streaming source's circle on the ball.",
+			"alt": "The editor with the game paused: the ball on the grey ground in the Scene view, and the Streaming panel's map with a dot at the center of a blue circle among orange loaded squares.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-large-worlds.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "world.create",
+						"parameters": {
+							"path": "Worlds/Meadow"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Main Camera"
+						},
+						"bind": {
+							"cam": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Ground"
+						},
+						"bind": {
+							"ground": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "cam"
+								},
+								{
+									"$ref": "ground"
+								}
+							]
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Terrain"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										32,
+										-0.5,
+										32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						},
+						"bind": {
+							"tile": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-32,
+										-0.5,
+										32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										32,
+										-0.5,
+										-32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-32,
+										-0.5,
+										-32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Props"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Nature/PineDefault.stprefab",
+							"components": {
+								"Transform": {
+									"Translation": [
+										10,
+										0,
+										-20
+									]
+								}
+							}
+						},
+						"bind": {
+							"pine": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "pine"
+							},
+							"name": "Pine"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Nature/RockLargeA.stprefab",
+							"components": {
+								"Transform": {
+									"Translation": [
+										70,
+										0,
+										-20
+									]
+								}
+							}
+						},
+						"bind": {
+							"rock": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "rock"
+							},
+							"name": "Rock"
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"cellBounds": true
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 120
+						}
+					},
+					{
+						"command": "world.status",
+						"parameters": {
+							"cells": true
+						}
+					},
+					{
+						"command": "world.loadCells",
+						"parameters": {
+							"cells": [
+								{
+									"layer": "Terrain",
+									"x": 0,
+									"z": 0
+								}
+							]
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Persistent"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Ball",
+							"components": {
+								"Transform": {
+									"Translation": [
+										0,
+										1,
+										0
+									]
+								},
+								"MeshRenderer": {
+									"Mesh": "Builtin/Sphere"
+								},
+								"RigidBody": {
+									"Type": "Dynamic"
+								},
+								"SphereCollider": {
+									"Radius": 0.5
+								},
+								"StreamingSource": {}
+							}
+						},
+						"bind": {
+							"ball": "/id"
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "play.start",
+						"parameters": {
+							"paused": true,
+							"build": false
+						}
+					},
+					{
+						"command": "play.step",
+						"parameters": {
+							"steps": 60
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								3,
+								2,
+								4
+							],
+							"target": [
+								0,
+								0.5,
+								0
+							],
+							"fov": 40
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Viewport"
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Streaming"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "cooked",
+			"shows": "The Asset panel of the world after a cook, with the stored line under the table of layers: the cells measured, the most bodies in reach and the capacity",
+			"caption": "Under the table of layers, the Asset panel keeps what the last cook measured: the cells, the most bodies one source can reach and the capacity it recommends.",
+			"alt": "The Asset panel of the world Meadow, with a line under the table of layers. It reads: Cooked: 6 cells measured, at most 7 bodies within any source's reach, a physics capacity of 9 recommended.",
+			"kind": "editor",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-large-worlds.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"panel": "AssetInspector",
+				"steps": [
+					{
+						"command": "world.create",
+						"parameters": {
+							"path": "Worlds/Meadow"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Main Camera"
+						},
+						"bind": {
+							"cam": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Ground"
+						},
+						"bind": {
+							"ground": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "cam"
+								},
+								{
+									"$ref": "ground"
+								}
+							]
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Terrain"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										32,
+										-0.5,
+										32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						},
+						"bind": {
+							"tile": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-32,
+										-0.5,
+										32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										32,
+										-0.5,
+										-32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-32,
+										-0.5,
+										-32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Props"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Nature/PineDefault.stprefab",
+							"components": {
+								"Transform": {
+									"Translation": [
+										10,
+										0,
+										-20
+									]
+								}
+							}
+						},
+						"bind": {
+							"pine": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "pine"
+							},
+							"name": "Pine"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Nature/RockLargeA.stprefab",
+							"components": {
+								"Transform": {
+									"Translation": [
+										70,
+										0,
+										-20
+									]
+								}
+							}
+						},
+						"bind": {
+							"rock": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "rock"
+							},
+							"name": "Rock"
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"cellBounds": true
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 120
+						}
+					},
+					{
+						"command": "world.status",
+						"parameters": {
+							"cells": true
+						}
+					},
+					{
+						"command": "world.loadCells",
+						"parameters": {
+							"cells": [
+								{
+									"layer": "Terrain",
+									"x": 0,
+									"z": 0
+								}
+							]
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Persistent"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Ball",
+							"components": {
+								"Transform": {
+									"Translation": [
+										0,
+										1,
+										0
+									]
+								},
+								"MeshRenderer": {
+									"Mesh": "Builtin/Sphere"
+								},
+								"RigidBody": {
+									"Type": "Dynamic"
+								},
+								"SphereCollider": {
+									"Radius": 0.5
+								},
+								"StreamingSource": {}
+							}
+						},
+						"bind": {
+							"ball": "/id"
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "world.cook",
+						"parameters": {
+							"world": "Worlds/Meadow.stworld"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"asset": "Worlds/Meadow.stworld"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "teleport-done",
+			"shows": "The ball standing on the far tile after the teleport, and the map with the far cell loaded around the ball",
+			"caption": "After the teleport the ball stands on the far tile, and the map shows the cell there loaded.",
+			"alt": "The editor with the game paused. In the Scene view the ball sits on a large grey tile with a small rock behind it, and the Streaming panel's map has one orange square in a blue circle.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-large-worlds.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "world.create",
+						"parameters": {
+							"path": "Worlds/Meadow"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Main Camera"
+						},
+						"bind": {
+							"cam": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Ground"
+						},
+						"bind": {
+							"ground": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "cam"
+								},
+								{
+									"$ref": "ground"
+								}
+							]
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Terrain"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										32,
+										-0.5,
+										32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						},
+						"bind": {
+							"tile": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-32,
+										-0.5,
+										32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										32,
+										-0.5,
+										-32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										-32,
+										-0.5,
+										-32
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Props"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Nature/PineDefault.stprefab",
+							"components": {
+								"Transform": {
+									"Translation": [
+										10,
+										0,
+										-20
+									]
+								}
+							}
+						},
+						"bind": {
+							"pine": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "pine"
+							},
+							"name": "Pine"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Nature/RockLargeA.stprefab",
+							"components": {
+								"Transform": {
+									"Translation": [
+										70,
+										0,
+										-20
+									]
+								}
+							}
+						},
+						"bind": {
+							"rock": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "rock"
+							},
+							"name": "Rock"
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"cellBounds": true
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 120
+						}
+					},
+					{
+						"command": "world.status",
+						"parameters": {
+							"cells": true
+						}
+					},
+					{
+						"command": "world.loadCells",
+						"parameters": {
+							"cells": [
+								{
+									"layer": "Terrain",
+									"x": 0,
+									"z": 0
+								}
+							]
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Persistent"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Ball",
+							"components": {
+								"Transform": {
+									"Translation": [
+										0,
+										1,
+										0
+									]
+								},
+								"MeshRenderer": {
+									"Mesh": "Builtin/Sphere"
+								},
+								"RigidBody": {
+									"Type": "Dynamic"
+								},
+								"SphereCollider": {
+									"Radius": 0.5
+								},
+								"StreamingSource": {}
+							}
+						},
+						"bind": {
+							"ball": "/id"
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "world.cook",
+						"parameters": {
+							"world": "Worlds/Meadow.stworld"
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Terrain"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Tile",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"BoxCollider": {
+									"HalfExtents": [
+										0.5,
+										0.5,
+										0.5
+									]
+								},
+								"Transform": {
+									"Translation": [
+										608,
+										-0.5,
+										608
+									],
+									"Scale": [
+										64,
+										1,
+										64
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Props"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Nature/RockLargeA.stprefab",
+							"components": {
+								"Transform": {
+									"Translation": [
+										608,
+										0,
+										600
+									]
+								}
+							}
+						},
+						"bind": {
+							"farRock": "/id"
+						}
+					},
+					{
+						"command": "entity.rename",
+						"parameters": {
+							"entity": {
+								"$ref": "farRock"
+							},
+							"name": "Rock"
+						}
+					},
+					{
+						"command": "world.edit",
+						"parameters": {
+							"editLayer": "Persistent"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "FarMarker",
+							"components": {
+								"Transform": {
+									"Translation": [
+										608,
+										0,
+										608
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "inputActions.setMap",
+						"parameters": {
+							"map": "Gameplay"
+						}
+					},
+					{
+						"command": "inputActions.setAction",
+						"parameters": {
+							"action": "Gameplay/Teleport",
+							"kind": "Button",
+							"bindings": [
+								"Key/T"
+							]
+						}
+					},
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "ball"
+							},
+							"class": "Teleport"
+						}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								7,
+								5,
+								10
+							],
+							"target": [
+								0,
+								0.5,
+								0
+							],
+							"fov": 50
+						}
+					},
+					{
+						"command": "play.start",
+						"parameters": {
+							"paused": true
+						}
+					},
+					{
+						"command": "input.action",
+						"parameters": {
+							"action": "Gameplay/Teleport",
+							"steps": 1
+						}
+					},
+					{
+						"command": "play.step",
+						"parameters": {
+							"steps": 300
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								605,
+								3,
+								615
+							],
+							"target": [
+								608,
+								0.5,
+								604
+							],
+							"fov": 40
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Viewport"
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Streaming"
+						}
+					}
+				]
+			},
+			"files": [
+				{
+					"from": "book:tutorials/make/large-worlds/Teleport.cpp",
+					"to": "Scripts/Teleport.cpp"
+				}
+			]
+		},
+		{
+			"id": "exported",
+			"shows": "The tutorial's world exported without a loading scene, seen by a fixed camera in place of one that follows the ball, after four seconds of game time: the ball resting on the Terrain tiles, the pine a few meters behind it",
+			"caption": "The exported world after four seconds of game time: the ball rests on the ground of the Terrain cells, which loaded before the game started. This export has no loading scene, a fixed camera stands in for one that follows the ball, and the pine stands nearer the ball than in the steps.",
+			"alt": "A game window filled with flat grey ground: a white ball and its shadow in front, and a small pine tree a few meters behind it.",
+			"kind": "runtime",
+			"project": {
+				"sample": "OpenWorld"
+			},
+			"runtime": {
+				"resolution": [
+					1280,
+					720
+				],
+				"seconds": 4,
+				"quality": "high"
+			},
+			"expect": "complete",
+			"setup": [
+				{
+					"command": "world.create",
+					"parameters": {
+						"path": "Worlds/Meadow"
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Main Camera"
+					},
+					"bind": {
+						"cam": "/entities/0"
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Ground"
+					},
+					"bind": {
+						"ground": "/entities/0"
+					}
+				},
+				{
+					"command": "entity.delete",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "cam"
+							},
+							{
+								"$ref": "ground"
+							}
+						]
+					}
+				},
+				{
+					"command": "world.edit",
+					"parameters": {
+						"editLayer": "Terrain"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Tile",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									32,
+									-0.5,
+									32
+								],
+								"Scale": [
+									64,
+									1,
+									64
+								]
+							}
+						}
+					},
+					"bind": {
+						"tile": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Tile",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-32,
+									-0.5,
+									32
+								],
+								"Scale": [
+									64,
+									1,
+									64
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Tile",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									32,
+									-0.5,
+									-32
+								],
+								"Scale": [
+									64,
+									1,
+									64
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Tile",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-32,
+									-0.5,
+									-32
+								],
+								"Scale": [
+									64,
+									1,
+									64
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "world.edit",
+					"parameters": {
+						"editLayer": "Props"
+					}
+				},
+				{
+					"command": "prefab.instantiate",
+					"parameters": {
+						"prefab": "Prefabs/Nature/PineDefault.stprefab",
+						"components": {
+							"Transform": {
+								"Translation": [
+									1.5,
+									0,
+									-6
+								]
+							}
+						}
+					},
+					"bind": {
+						"pine": "/id"
+					}
+				},
+				{
+					"command": "entity.rename",
+					"parameters": {
+						"entity": {
+							"$ref": "pine"
+						},
+						"name": "Pine"
+					}
+				},
+				{
+					"command": "prefab.instantiate",
+					"parameters": {
+						"prefab": "Prefabs/Nature/RockLargeA.stprefab",
+						"components": {
+							"Transform": {
+								"Translation": [
+									70,
+									0,
+									-20
+								]
+							}
+						}
+					},
+					"bind": {
+						"rock": "/id"
+					}
+				},
+				{
+					"command": "entity.rename",
+					"parameters": {
+						"entity": {
+							"$ref": "rock"
+						},
+						"name": "Rock"
+					}
+				},
+				{
+					"command": "scene.save",
+					"parameters": {}
+				},
+				{
+					"command": "world.edit",
+					"parameters": {
+						"editLayer": "Persistent"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"Transform": {
+								"Translation": [
+									0,
+									1,
+									0
+								]
+							},
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere"
+							},
+							"RigidBody": {
+								"Type": "Dynamic"
+							},
+							"SphereCollider": {
+								"Radius": 0.5
+							},
+							"StreamingSource": {}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Camera",
+						"components": {
+							"Transform": {
+								"Translation": [
+									-0.5,
+									5,
+									9
+								],
+								"Rotation": [
+									-0.19081,
+									0,
+									0,
+									0.98163
+								]
+							},
+							"Camera": {
+								"Primary": true,
+								"PerspectiveFOV": 25
+							}
+						}
+					}
+				},
+				{
+					"command": "scene.save",
+					"parameters": {}
+				},
+				{
+					"command": "world.cook",
+					"parameters": {
+						"world": "Worlds/Meadow.stworld"
+					}
+				},
+				{
+					"command": "scene.save",
+					"parameters": {}
+				},
+				{
+					"command": "project.setStartScene",
+					"parameters": {
+						"scene": "Worlds/Meadow.stscene"
+					}
+				},
+				{
+					"command": "project.save"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,55 @@
+# The pages' external links, weekly and by hand (plan/site.md, "CI"). lychee 0.24.2 (tools/toolchain.json) checks the
+# web links of src/content/docs/**/*.md online and only reports them, in the job summary, because other sites fail now
+# and then; links into the engine are tools/excerpts.py check's (git cat-file -e at the pin), never over HTTP. The
+# repository's size fails the job above 1 GB.
+name: Links
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Toolchain (lychee; tools/toolchain.json)
+        run: python -I tools/bootstrap.py
+      # lychee exits 2 when links fail, which this job reports and does not fail on, and 1 when it cannot run.
+      - name: The pages' external links (reported, not judged)
+        run: |
+          . .tools/env.sh
+          repository=$(awk '$1 == "repository" { print $2 }' engine.pin)
+          status=0
+          lychee --no-progress --scheme https --scheme http --exclude "^${repository}" --format markdown --output lychee.md \
+            'src/content/docs/**/*.md' || status=$?
+          {
+            echo "## External links of the pages"
+            echo
+            cat lychee.md
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$status" -ne 0 ] && [ "$status" -ne 2 ]; then
+            echo "::error title=lychee::lychee could not check the links (exit $status)"
+            exit 1
+          fi
+      - name: The repository's size (at most 1 GB)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          . .tools/env.sh
+          size=$(gh api "repos/$GITHUB_REPOSITORY" --jq .size)
+          echo "The repository holds $size KB." >> "$GITHUB_STEP_SUMMARY"
+          if [ "$size" -gt 1048576 ]; then
+            echo "::error title=The repository's size::the repository holds $size KB, more than 1 GB (1,048,576 KB)"
+            exit 1
+          fi

@@ -1,0 +1,1513 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "The game's 1280 by 720 screen over a grey metal ball and three gold coins standing on the floor (a ball and coins placed for the picture, not the Coin Run stage), with the coin count at the top left and the timer at the top right, white on a dark blue gray sliced band (button_square_flat, Color 0.1, 0.12, 0.18 at alpha 0.85) across the top, and a yellow bar along the bottom filled to 70 % (42 of 60 seconds left)",
+			"caption": "The finished HUD over a ball and the three coins left: two corner texts on a sliced band across the top and a yellow bar that shrinks as the time runs out.",
+			"alt": "A game screen over a grey floor with a grey metal ball in front and three gold coins standing further back. Coins left: 3 is at the top left and Time: 42 at the top right, white on a dark blue gray band across the top. A yellow bar runs from the bottom left edge to about two thirds of the width.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "asset.import",
+					"parameters": {
+						"file": "G:/GameEngineAI/.worktrees/docs-pin/Samples/ThirdPerson/Assets/UI/button_square_flat.png",
+						"directory": "UI"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "HUD"
+					},
+					"bind": {
+						"hud": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "CoinText",
+						"parent": {
+							"$ref": "hud"
+						},
+						"text": "Coins left: 3",
+						"anchor": "topLeft",
+						"position": [
+							24,
+							24
+						],
+						"size": [
+							360,
+							48
+						]
+					},
+					"bind": {
+						"cointext": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "cointext"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 36,
+							"Alignment": "Left"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "TimerText",
+						"parent": {
+							"$ref": "hud"
+						},
+						"text": "Time: 42",
+						"anchor": "topRight",
+						"position": [
+							-24,
+							24
+						],
+						"size": [
+							360,
+							48
+						]
+					},
+					"bind": {
+						"timertext": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "timertext"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 36,
+							"Alignment": "Right"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "panel",
+						"name": "Backdrop",
+						"parent": {
+							"$ref": "hud"
+						},
+						"anchor": "topStretch",
+						"size": [
+							0,
+							90
+						]
+					},
+					"bind": {
+						"backdrop": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "backdrop"
+						},
+						"component": "UIImage",
+						"values": {
+							"Type": "Sliced",
+							"Texture": "UI/button_square_flat.png",
+							"SliceBorders": [
+								12,
+								12,
+								12,
+								12
+							],
+							"Color": [
+								0.1,
+								0.12,
+								0.18,
+								0.85
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.setParent",
+					"parameters": {
+						"entity": {
+							"$ref": "backdrop"
+						},
+						"parent": {
+							"$ref": "hud"
+						},
+						"index": 0
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "hud"
+						},
+						"component": "UICanvas",
+						"values": {
+							"ReceivesInput": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "TimeBar",
+						"parent": {
+							"$ref": "hud"
+						},
+						"anchor": "bottomStretch",
+						"position": [
+							0,
+							-20
+						],
+						"size": [
+							-80,
+							24
+						]
+					},
+					"bind": {
+						"timebar": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "timebar"
+						},
+						"component": "UIImage",
+						"values": {
+							"Type": "Filled",
+							"FillAmount": 0.7,
+							"Color": [
+								0.95,
+								0.75,
+								0.2,
+								1
+							]
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Gold.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Ball.stmat",
+						"properties": {
+							"BaseColor": [
+								0.6,
+								0.6,
+								0.62,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.35
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Ball.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-1.2,
+									0.5,
+									1.5
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "CoinA",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									1.0,
+									0.5,
+									0.5
+								],
+								"Rotation": [
+									90.0,
+									25.0,
+									0.0
+								],
+								"Scale": [
+									0.8,
+									0.08,
+									0.8
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "CoinB",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-0.4,
+									0.5,
+									-2.0
+								],
+								"Rotation": [
+									90.0,
+									25.0,
+									0.0
+								],
+								"Scale": [
+									0.8,
+									0.08,
+									0.8
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "CoinC",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									2.2,
+									0.5,
+									-3.5
+								],
+								"Rotation": [
+									90.0,
+									25.0,
+									0.0
+								],
+								"Scale": [
+									0.8,
+									0.08,
+									0.8
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "canvas-2d",
+			"shows": "The Scene view with HUD selected and the 2D and Game UI chips on: the canvas at its 16:9 reference shape between two dark bands, showing the camera's view, with no element on it yet",
+			"caption": "With the canvas selected and the 2D chip on, the view shows the canvas at its reference shape of 16:9, still without elements.",
+			"numbers": "16:9 is the canvas reference resolution of 1920 by 1080 units that the page states; the picture shows the canvas 797 by 448 pixels between dark bands.",
+			"alt": "The Scene view with the 2D and Game UI chips lit orange. Between a dark band above and one below, a wide rectangle shows the sky and a grey floor through the camera, with nothing drawn on it.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/hud.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Scene",
+				"steps": [
+					{
+						"command": "ui.create",
+						"parameters": {
+							"type": "canvas",
+							"name": "HUD"
+						},
+						"bind": {
+							"hud": "/entity"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "hud"
+								}
+							]
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"canvasMode": true,
+							"gameUI": true
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "corner-texts",
+			"shows": "The Scene view in 2D mode with CoinText selected: Coins left: 5 at the top left inside its outlined rect with handles, Time: 60 at the top right inside a thin outline, both at the same distance from their edges",
+			"caption": "The coin count sits at the top left and the timer at the top right, each at the same distance from its edge. The selected count shows its rect and handles.",
+			"alt": "The flat canvas in the Scene view. Coins left: 5 is in the top left corner inside an orange outline with small square handles, and Time: 60 is in the top right corner inside a thin grey outline.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/hud.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Scene",
+				"steps": [
+					{
+						"command": "ui.create",
+						"parameters": {
+							"type": "canvas",
+							"name": "HUD"
+						},
+						"bind": {
+							"hud": "/entity"
+						}
+					},
+					{
+						"command": "ui.create",
+						"parameters": {
+							"type": "text",
+							"name": "CoinText",
+							"parent": {
+								"$ref": "hud"
+							},
+							"text": "Coins left: 5",
+							"anchor": "topLeft",
+							"position": [
+								24,
+								24
+							],
+							"size": [
+								360,
+								48
+							]
+						},
+						"bind": {
+							"cointext": "/entity"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "cointext"
+							},
+							"component": "UIText",
+							"values": {
+								"FontSize": 36,
+								"Alignment": "Left"
+							}
+						}
+					},
+					{
+						"command": "ui.create",
+						"parameters": {
+							"type": "text",
+							"name": "TimerText",
+							"parent": {
+								"$ref": "hud"
+							},
+							"text": "Time: 60",
+							"anchor": "topRight",
+							"position": [
+								-24,
+								24
+							],
+							"size": [
+								360,
+								48
+							]
+						},
+						"bind": {
+							"timertext": "/entity"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "timertext"
+							},
+							"component": "UIText",
+							"values": {
+								"FontSize": 36,
+								"Alignment": "Right"
+							}
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "cointext"
+								}
+							]
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"canvasMode": true,
+							"gameUI": true
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "panel-and-bar",
+			"shows": "The Scene view in 2D mode with TimeBar selected: the dark blue gray sliced band across the whole top behind the two white texts, and the yellow bar along the bottom, 40 units in from each side and filled to three fifths",
+			"caption": "The band stretches across the whole top. The bar runs along the bottom with a margin at each side and is filled to three fifths.",
+			"alt": "The flat canvas. A dark blue gray band spans the top edge, and the white texts Coins left: 5 and Time: 60 stand out on it. Along the bottom, the orange outline of the selected bar runs from near the left edge to near the right edge, and its yellow fill stops at three fifths.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/hud.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Scene",
+				"steps": [
+					{
+						"command": "asset.import",
+						"parameters": {
+							"file": "G:/GameEngineAI/.worktrees/docs-pin/Samples/ThirdPerson/Assets/UI/button_square_flat.png",
+							"directory": "UI"
+						}
+					},
+					{
+						"command": "ui.create",
+						"parameters": {
+							"type": "canvas",
+							"name": "HUD"
+						},
+						"bind": {
+							"hud": "/entity"
+						}
+					},
+					{
+						"command": "ui.create",
+						"parameters": {
+							"type": "text",
+							"name": "CoinText",
+							"parent": {
+								"$ref": "hud"
+							},
+							"text": "Coins left: 5",
+							"anchor": "topLeft",
+							"position": [
+								24,
+								24
+							],
+							"size": [
+								360,
+								48
+							]
+						},
+						"bind": {
+							"cointext": "/entity"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "cointext"
+							},
+							"component": "UIText",
+							"values": {
+								"FontSize": 36,
+								"Alignment": "Left"
+							}
+						}
+					},
+					{
+						"command": "ui.create",
+						"parameters": {
+							"type": "text",
+							"name": "TimerText",
+							"parent": {
+								"$ref": "hud"
+							},
+							"text": "Time: 60",
+							"anchor": "topRight",
+							"position": [
+								-24,
+								24
+							],
+							"size": [
+								360,
+								48
+							]
+						},
+						"bind": {
+							"timertext": "/entity"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "timertext"
+							},
+							"component": "UIText",
+							"values": {
+								"FontSize": 36,
+								"Alignment": "Right"
+							}
+						}
+					},
+					{
+						"command": "ui.create",
+						"parameters": {
+							"type": "panel",
+							"name": "Backdrop",
+							"parent": {
+								"$ref": "hud"
+							},
+							"anchor": "topStretch",
+							"size": [
+								0,
+								90
+							]
+						},
+						"bind": {
+							"backdrop": "/entity"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "backdrop"
+							},
+							"component": "UIImage",
+							"values": {
+								"Type": "Sliced",
+								"Texture": "UI/button_square_flat.png",
+								"SliceBorders": [
+									12,
+									12,
+									12,
+									12
+								],
+								"Color": [
+									0.1,
+									0.12,
+									0.18,
+									0.85
+								]
+							}
+						}
+					},
+					{
+						"command": "entity.setParent",
+						"parameters": {
+							"entity": {
+								"$ref": "backdrop"
+							},
+							"parent": {
+								"$ref": "hud"
+							},
+							"index": 0
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "hud"
+							},
+							"component": "UICanvas",
+							"values": {
+								"ReceivesInput": false
+							}
+						}
+					},
+					{
+						"command": "ui.create",
+						"parameters": {
+							"type": "image",
+							"name": "TimeBar",
+							"parent": {
+								"$ref": "hud"
+							},
+							"anchor": "bottomStretch",
+							"position": [
+								0,
+								-20
+							],
+							"size": [
+								-80,
+								24
+							]
+						},
+						"bind": {
+							"timebar": "/entity"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "timebar"
+							},
+							"component": "UIImage",
+							"values": {
+								"Type": "Filled",
+								"FillAmount": 0.6,
+								"Color": [
+									0.95,
+									0.75,
+									0.2,
+									1
+								]
+							}
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "timebar"
+								}
+							]
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"canvasMode": true,
+							"gameUI": true
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "hud-playing",
+			"shows": "The Game view during play with CoinHud on HUD, in the bare scene of the basic3d template (no ball; five entities with only the tag Coin stand in for the coins): Coins left: 5 at the top left and Time: 43 at the top right on the dark band, and the yellow bar along the bottom at about seven tenths of its length",
+			"caption": "While the game plays, the script writes the texts and the bar: 43 seconds are left, and the bar has shrunk to about seven tenths. The picture is taken in a bare scene, where five entities tagged Coin stand in for the coins.",
+			"numbers": "43 is the Time text the picture shows after play.step of 1080 fixed steps: CoinHud writes the seconds left of TimeLimit 60, rounded up. Seven tenths is the bar measured in that picture (533 of 762 pixels).",
+			"alt": "The Game view during play, over an empty grey floor with no ball and no coins in sight. A dark blue gray band across the top holds Coins left: 5 on the left and Time: 43 on the right, in white. A yellow bar along the bottom reaches about seven tenths of the width.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/hud.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Game",
+				"steps": [
+					{
+						"command": "asset.import",
+						"parameters": {
+							"file": "G:/GameEngineAI/.worktrees/docs-pin/Samples/ThirdPerson/Assets/UI/button_square_flat.png",
+							"directory": "UI"
+						}
+					},
+					{
+						"command": "ui.create",
+						"parameters": {
+							"type": "canvas",
+							"name": "HUD"
+						},
+						"bind": {
+							"hud": "/entity"
+						}
+					},
+					{
+						"command": "ui.create",
+						"parameters": {
+							"type": "text",
+							"name": "CoinText",
+							"parent": {
+								"$ref": "hud"
+							},
+							"text": "Coins left: 5",
+							"anchor": "topLeft",
+							"position": [
+								24,
+								24
+							],
+							"size": [
+								360,
+								48
+							]
+						},
+						"bind": {
+							"cointext": "/entity"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "cointext"
+							},
+							"component": "UIText",
+							"values": {
+								"FontSize": 36,
+								"Alignment": "Left"
+							}
+						}
+					},
+					{
+						"command": "ui.create",
+						"parameters": {
+							"type": "text",
+							"name": "TimerText",
+							"parent": {
+								"$ref": "hud"
+							},
+							"text": "Time: 60",
+							"anchor": "topRight",
+							"position": [
+								-24,
+								24
+							],
+							"size": [
+								360,
+								48
+							]
+						},
+						"bind": {
+							"timertext": "/entity"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "timertext"
+							},
+							"component": "UIText",
+							"values": {
+								"FontSize": 36,
+								"Alignment": "Right"
+							}
+						}
+					},
+					{
+						"command": "ui.create",
+						"parameters": {
+							"type": "panel",
+							"name": "Backdrop",
+							"parent": {
+								"$ref": "hud"
+							},
+							"anchor": "topStretch",
+							"size": [
+								0,
+								90
+							]
+						},
+						"bind": {
+							"backdrop": "/entity"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "backdrop"
+							},
+							"component": "UIImage",
+							"values": {
+								"Type": "Sliced",
+								"Texture": "UI/button_square_flat.png",
+								"SliceBorders": [
+									12,
+									12,
+									12,
+									12
+								],
+								"Color": [
+									0.1,
+									0.12,
+									0.18,
+									0.85
+								]
+							}
+						}
+					},
+					{
+						"command": "entity.setParent",
+						"parameters": {
+							"entity": {
+								"$ref": "backdrop"
+							},
+							"parent": {
+								"$ref": "hud"
+							},
+							"index": 0
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "hud"
+							},
+							"component": "UICanvas",
+							"values": {
+								"ReceivesInput": false
+							}
+						}
+					},
+					{
+						"command": "ui.create",
+						"parameters": {
+							"type": "image",
+							"name": "TimeBar",
+							"parent": {
+								"$ref": "hud"
+							},
+							"anchor": "bottomStretch",
+							"position": [
+								0,
+								-20
+							],
+							"size": [
+								-80,
+								24
+							]
+						},
+						"bind": {
+							"timebar": "/entity"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "timebar"
+							},
+							"component": "UIImage",
+							"values": {
+								"Type": "Filled",
+								"FillAmount": 0.6,
+								"Color": [
+									0.95,
+									0.75,
+									0.2,
+									1
+								]
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"Tag": {
+									"Tag": "Coin"
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"Tag": {
+									"Tag": "Coin"
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"Tag": {
+									"Tag": "Coin"
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"Tag": {
+									"Tag": "Coin"
+								}
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"Tag": {
+									"Tag": "Coin"
+								}
+							}
+						}
+					},
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "hud"
+							},
+							"class": "CoinHud",
+							"fields": {
+								"TimeLimit": 60
+							}
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					},
+					{
+						"command": "play.start",
+						"parameters": {
+							"paused": true,
+							"build": false
+						}
+					},
+					{
+						"command": "play.step",
+						"parameters": {
+							"steps": 1080
+						}
+					}
+				]
+			},
+			"files": [
+				{
+					"from": "book:tutorials/make/hud/CoinHud.cpp",
+					"to": "Scripts/CoinHud.cpp"
+				}
+			]
+		},
+		{
+			"id": "screen-4x3",
+			"shows": "The same HUD on a 4:3 screen of 1440 by 1080 pixels (canvas 1663 by 1247 units): texts in the top corners, the dark band across the top, the bar starting 40 units (35 px) from the left edge with its 60 % fill (36 of 60 seconds left)",
+			"caption": "At 4:3 the canvas is 1663 units wide: the texts stay 24 units from their corners, the band spans the top and the bar starts 40 units from the left edge.",
+			"numbers": "The page's table, row 1440 by 1080: scale 0.866, canvas 1663 by 1247 units. CoinText and TimerText are placed 24 units from their corners, TimeBar has Size -80 on a stretched axis (40 units each side, 35 px at 0.866, measured: the bar starts at x = 35).",
+			"alt": "A squarish game screen. Coins left: 3 is at the top left and Time: 36 at the top right, white on a dark blue gray band across the top. A yellow bar runs from near the bottom left edge to about three fifths of the width.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				1440,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "asset.import",
+					"parameters": {
+						"file": "G:/GameEngineAI/.worktrees/docs-pin/Samples/ThirdPerson/Assets/UI/button_square_flat.png",
+						"directory": "UI"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "HUD"
+					},
+					"bind": {
+						"hud": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "CoinText",
+						"parent": {
+							"$ref": "hud"
+						},
+						"text": "Coins left: 3",
+						"anchor": "topLeft",
+						"position": [
+							24,
+							24
+						],
+						"size": [
+							360,
+							48
+						]
+					},
+					"bind": {
+						"cointext": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "cointext"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 36,
+							"Alignment": "Left"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "TimerText",
+						"parent": {
+							"$ref": "hud"
+						},
+						"text": "Time: 36",
+						"anchor": "topRight",
+						"position": [
+							-24,
+							24
+						],
+						"size": [
+							360,
+							48
+						]
+					},
+					"bind": {
+						"timertext": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "timertext"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 36,
+							"Alignment": "Right"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "panel",
+						"name": "Backdrop",
+						"parent": {
+							"$ref": "hud"
+						},
+						"anchor": "topStretch",
+						"size": [
+							0,
+							90
+						]
+					},
+					"bind": {
+						"backdrop": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "backdrop"
+						},
+						"component": "UIImage",
+						"values": {
+							"Type": "Sliced",
+							"Texture": "UI/button_square_flat.png",
+							"SliceBorders": [
+								12,
+								12,
+								12,
+								12
+							],
+							"Color": [
+								0.1,
+								0.12,
+								0.18,
+								0.85
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.setParent",
+					"parameters": {
+						"entity": {
+							"$ref": "backdrop"
+						},
+						"parent": {
+							"$ref": "hud"
+						},
+						"index": 0
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "hud"
+						},
+						"component": "UICanvas",
+						"values": {
+							"ReceivesInput": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "TimeBar",
+						"parent": {
+							"$ref": "hud"
+						},
+						"anchor": "bottomStretch",
+						"position": [
+							0,
+							-20
+						],
+						"size": [
+							-80,
+							24
+						]
+					},
+					"bind": {
+						"timebar": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "timebar"
+						},
+						"component": "UIImage",
+						"values": {
+							"Type": "Filled",
+							"FillAmount": 0.6,
+							"Color": [
+								0.95,
+								0.75,
+								0.2,
+								1
+							]
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "screen-21x9",
+			"shows": "The same HUD on a 21:9 screen of 2520 by 1080 pixels (canvas 2200 by 943 units): the dark band across the whole top, the texts 24 units (27 pixels) from their edges, the bar starting 40 units (46 pixels) from the left edge with its 60 % fill (36 of 60 seconds left)",
+			"caption": "At 21:9 the canvas grows to 2200 units wide: the band spans the top, the texts stay 24 units (27 pixels) from their edges and the bar keeps its 40-unit (46 pixels) margin.",
+			"numbers": "The page's table, row 2520 by 1080: scale 1.146, canvas 2200 by 943 units. CoinText and TimerText are placed 24 units from their corners (27.5 px), TimeBar has Size -80 on a stretched axis (40 units each side, 46 px at 1.146, measured: the bar starts at x = 46).",
+			"alt": "A very wide game screen. Coins left: 3 is far left and Time: 36 far right, white on a dark blue gray band across the whole top. A yellow bar runs from near the bottom left edge to about three fifths of the width.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": "scene",
+			"size": [
+				2520,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "asset.import",
+					"parameters": {
+						"file": "G:/GameEngineAI/.worktrees/docs-pin/Samples/ThirdPerson/Assets/UI/button_square_flat.png",
+						"directory": "UI"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "canvas",
+						"name": "HUD"
+					},
+					"bind": {
+						"hud": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "CoinText",
+						"parent": {
+							"$ref": "hud"
+						},
+						"text": "Coins left: 3",
+						"anchor": "topLeft",
+						"position": [
+							24,
+							24
+						],
+						"size": [
+							360,
+							48
+						]
+					},
+					"bind": {
+						"cointext": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "cointext"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 36,
+							"Alignment": "Left"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "text",
+						"name": "TimerText",
+						"parent": {
+							"$ref": "hud"
+						},
+						"text": "Time: 36",
+						"anchor": "topRight",
+						"position": [
+							-24,
+							24
+						],
+						"size": [
+							360,
+							48
+						]
+					},
+					"bind": {
+						"timertext": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "timertext"
+						},
+						"component": "UIText",
+						"values": {
+							"FontSize": 36,
+							"Alignment": "Right"
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "panel",
+						"name": "Backdrop",
+						"parent": {
+							"$ref": "hud"
+						},
+						"anchor": "topStretch",
+						"size": [
+							0,
+							90
+						]
+					},
+					"bind": {
+						"backdrop": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "backdrop"
+						},
+						"component": "UIImage",
+						"values": {
+							"Type": "Sliced",
+							"Texture": "UI/button_square_flat.png",
+							"SliceBorders": [
+								12,
+								12,
+								12,
+								12
+							],
+							"Color": [
+								0.1,
+								0.12,
+								0.18,
+								0.85
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.setParent",
+					"parameters": {
+						"entity": {
+							"$ref": "backdrop"
+						},
+						"parent": {
+							"$ref": "hud"
+						},
+						"index": 0
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "hud"
+						},
+						"component": "UICanvas",
+						"values": {
+							"ReceivesInput": false
+						}
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "image",
+						"name": "TimeBar",
+						"parent": {
+							"$ref": "hud"
+						},
+						"anchor": "bottomStretch",
+						"position": [
+							0,
+							-20
+						],
+						"size": [
+							-80,
+							24
+						]
+					},
+					"bind": {
+						"timebar": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "timebar"
+						},
+						"component": "UIImage",
+						"values": {
+							"Type": "Filled",
+							"FillAmount": 0.6,
+							"Color": [
+								0.95,
+								0.75,
+								0.2,
+								1
+							]
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		}
+	]
+}

@@ -1,0 +1,50 @@
+{
+	"page": "assets/extending",
+	"runs": [
+		{
+			"build": {
+				"kind": "patch-build",
+				"configuration": "Release",
+				"buildDirectory": "build/docs-patch"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": null,
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"tutorials/assets/extending.patch": "49d68aae6a4cdcfe824ae44de40c16efa647576fd634cbfd8e84e80e1d7143f0",
+				"tutorials/assets/extending.tutorial.json": "f5acfc7f25706bcfcd7c0567723c9cb737b5ec724e2a33bd88a8a16f110d74e0",
+				"tutorials/assets/extending/exercise-1.patch": "872f8cddbc091cef24bcaa5c52da5713ecf3c96c9b1a9f9c5134e522c5c580e3"
+			},
+			"stages": [],
+			"tests": [
+				{
+					"suite": "Architecture.Layering",
+					"testCases": 18,
+					"passed": true
+				},
+				{
+					"suite": "Scene.TextAsset",
+					"testCases": 4,
+					"passed": true
+				},
+				{
+					"suite": "Asset",
+					"testCases": 14,
+					"passed": true
+				},
+				{
+					"suite": "Editor.AssetOperations",
+					"testCases": 12,
+					"passed": true
+				}
+			],
+			"ctest": {
+				"test": "StrataTests.FeatureTest",
+				"passed": true
+			},
+			"readerCopies": false,
+			"passed": true
+		}
+	]
+}

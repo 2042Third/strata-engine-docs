@@ -1,0 +1,43 @@
+{
+	"figures": [
+		{
+			"id": "fields",
+			"shows": "The Inspector with the Script section of the spawner: the class header and one row for each of the ten fields, with their defaults and reset buttons",
+			"caption": "The Script section lists the ten fields in the order of the registration; the reset buttons at the right are dim until a value is set.",
+			"alt": "The Inspector with a Script section named Spawner and ten rows from Enabled to Crate Prefab, each with a value and a small reset button.",
+			"kind": "editor",
+			"project": { "template": "basic3d" },
+			"files": [ { "from": "book:tutorials/make/script-fields/Spawner.cpp", "to": "Scripts/Spawner.cpp" } ],
+			"editorWindow": { "layout": "layouts/make-sound.ini", "windowSize": [1280, 800], "panel": "Inspector", "steps": [
+				{ "command": "script.build", "parameters": { "wait": true }, "expect": { "/success": { "equals": true } } },
+				{ "command": "entity.create", "parameters": { "name": "Spawner" }, "bind": { "spawner": "/id" } },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "spawner" }, "class": "Spawner" } },
+				{ "command": "selection.set", "parameters": { "entities": [ { "$ref": "spawner" } ] } }
+			] }
+		},
+		{
+			"id": "result",
+			"shows": "The editor paused in play after 480 fixed steps: three crates on the ground below the spawn point, none resting on another, three Crate rows in the Hierarchy, and the selected spawner's Script section with Max Crates 3",
+			"caption": "The result: three crates lie below the spawn point, and the Inspector shows the Max Crates value you set. Tilt, further down the Inspector, is set too, so the crates land on an edge instead of in one stack.",
+			"alt": "The editor paused in play: three white crates lie on the ground near the middle of the Scene view. The Hierarchy lists three Crate rows, and the Inspector shows the spawner's fields with Max Crates 3 and Interval 2.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": { "template": "basic3d" },
+			"files": [ { "from": "book:tutorials/make/script-fields/Spawner.cpp", "to": "Scripts/Spawner.cpp" } ],
+			"editorWindow": { "layout": "layouts/make-prefabs.ini", "windowSize": [960, 540], "steps": [
+				{ "command": "script.build", "parameters": { "wait": true }, "expect": { "/success": { "equals": true } } },
+				{ "command": "entity.create", "parameters": { "name": "Crate", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "RigidBody": { "Type": "Dynamic" }, "BoxCollider": {} } }, "bind": { "crate": "/id" } },
+				{ "command": "prefab.create", "parameters": { "entities": [ { "$ref": "crate" } ], "path": "Prefabs/Crate.stprefab", "link": false } },
+				{ "command": "entity.delete", "parameters": { "entities": [ { "$ref": "crate" } ] } },
+				{ "command": "entity.create", "parameters": { "name": "Spawn Point", "components": { "Transform": { "Translation": [0, 3, 0] } } }, "bind": { "point": "/id" } },
+				{ "command": "entity.create", "parameters": { "name": "Spawner", "components": { "Transform": { "Translation": [0, 0, 6] } } }, "bind": { "spawner": "/id" } },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "spawner" }, "class": "Spawner", "fields": { "SpawnPoint": { "$ref": "point" }, "CratePrefab": "Prefabs/Crate.stprefab", "MaxCrates": 3, "Tilt": [0.479, 0, 0.1437, 0.866] } } },
+				{ "command": "camera.set", "parameters": { "target": [0, 1.2, 0], "distance": 7, "yaw": 35, "pitch": -18 } },
+				{ "command": "selection.set", "parameters": { "entities": [ { "$ref": "spawner" } ] } },
+				{ "command": "editor.wait", "parameters": { "frames": 600 } },
+				{ "command": "play.start", "parameters": { "build": false, "paused": true } },
+				{ "command": "play.step", "parameters": { "steps": 480 } }
+			] }
+		}
+	]
+}

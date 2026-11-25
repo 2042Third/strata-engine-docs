@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 322">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- left: sphere of radius 100 at (196, 150); right: arrow of 170 units from (470, 190) toward (0.871, -0.49); gizmos green -->
+<circle class="line-green" fill="none" stroke-width="2.5" cx="196" cy="150" r="100"/>
+<ellipse class="line-green" fill="none" cx="196" cy="150" rx="100" ry="28"/>
+<ellipse class="line-green" fill="none" cx="196" cy="150" rx="28" ry="100"/>
+<line class="line-muted" stroke-dasharray="4 3" x1="196" y1="150" x2="296" y2="150"/>
+<circle class="ink" cx="196" cy="150" r="5"/>
+<text class="muted mono" x="306" y="155" text-anchor="start">Radius</text>
+<text class="ink" x="196" y="284" text-anchor="middle">Spherical: a sphere of the radius</text>
+<text class="ink" x="196" y="306" text-anchor="middle">as typed, never scaled</text>
+<line class="line-muted" stroke-dasharray="4 3" x1="470" y1="190" x2="417.7" y2="219.4"/>
+<text class="muted small" x="393.74" y="237.4" text-anchor="start">+Z</text>
+<line class="line-green" stroke-width="2.5" x1="470.0" y1="190.0" x2="607.6" y2="112.6"/>
+<polygon class="green" points="618.1,106.7 609.8,116.5 605.4,108.7"/>
+<circle class="ink" cx="470" cy="190" r="5"/>
+<text class="green" x="548" y="178" text-anchor="start">2 m along −Z</text>
+<text class="ink" x="572" y="284" text-anchor="middle">Directional: an arrow that shows</text>
+<text class="ink" x="572" y="306" text-anchor="middle">the direction, not the strength</text>
+</svg>

@@ -1,0 +1,20 @@
+{
+	"figures": [
+		{
+			"id": "import-settings",
+			"kind": "editor",
+			"shows": "The Asset tab of the impact sound Wood of the Physics Playground: Load Mode under Import Settings set to the mode that decodes the whole file on load, then the Play button, the length 0:00.3 at 44100 Hz in stereo and an orange waveform that dies away",
+			"caption": "The Asset tab of a small impact sound. Load Mode is the clip's only import setting, and a file this small starts in the mode that decodes it whole on load.",
+			"alt": "The Asset tab of the audio clip Wood. Under Import Settings stands one row, Load Mode, whose list shows the mode that decodes the whole file on load, with Revert and Apply buttons below it. Under Preview stand a Play button, the length 0:00.3 with its rate of 44100 Hz, and an orange waveform: one sharp knock that dies away.",
+			"project": { "sample": "PhysicsPlayground" },
+			"editorWindow": {
+				"layout": "layouts/make-sound-short.ini",
+				"windowSize": [1280, 540],
+				"panel": "AssetInspector",
+				"steps": [
+					{ "command": "selection.set", "parameters": { "asset": "Sounds/Impacts/Wood.ogg" } }
+				]
+			}
+		}
+	]
+}

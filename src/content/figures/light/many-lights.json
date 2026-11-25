@@ -1,0 +1,1612 @@
+{
+	"figures": [
+		{
+			"id": "thousand-lights",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "All thousand point lights, 40 by 25 on a 2 m grid, 0.4 m above a floor with the sun and sky off, in the Lighting view (every surface white, so only the light reaching it shows): the grid's four edges in the frame, each light's range of 1.2 m ending its round pool, which meets its row and column neighbours and leaves dark grey gaps only at the diagonals",
+			"caption": "A thousand point lights, 40 by 25 and 2 m apart, 0.4 m above a floor, all in view and none dropped, with the sun and sky off. The Lighting debug view draws every surface plain white, so the brightness is the light reaching it alone (Measuring light teaches the views). The range is 1.2 m, shorter than the example's 1.5 m, so each pool ends about 1.1 m out on the floor. It meets its neighbours in its row and column and leaves dark gaps only between diagonal neighbours, so a pixel is reached by only the few lights above it. No point light reaches the grey gaps and margin: without a sky the renderer adds a faint constant ambient light to every surface, and the bloom spreads a glow from the pools.",
+			"numbers": "The setup's steps: 40 lights per row (LightRow and 24 duplicates, 25 rows), x and z 2 m apart, y 0.4 m, PointLight Range 1.2 and Intensity 20; the Ground scaled to 84 by 54 m. Taken 2026-11-18: the capture's renderStats read lights 1000 (in view) and droppedLights 0 on the GPU-driven path; camera at (0, 69.3, 40) looking at the origin, fov 40, so the whole grid is in frame.",
+			"alt": "A white floor seen at a slant from high above, on a black background. A regular grid of round, bright pools of light, 40 across and 25 deep, covers its whole rectangle. Each pool fades at its rim and touches the pools beside, before and behind it, leaving small dark grey gaps only between diagonal ones. A dark grey margin of bare floor, a little brighter near the pools, surrounds the grid, and the pools shrink toward the far edge.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					69.3,
+					40.0
+				],
+				"target": [
+					0,
+					0,
+					0
+				],
+				"fov": 40
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"entityName": "Sun",
+					"parameters": {
+						"active": false
+					}
+				},
+				{
+					"command": "entity.setActive",
+					"entityName": "Sky",
+					"parameters": {
+						"active": false
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Ground",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Scale": [
+								84.0,
+								1,
+								54.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "LightRow",
+						"components": {
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									-24.0
+								]
+							}
+						}
+					},
+					"bind": {
+						"row": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 0",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-39.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 1",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-37.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 2",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-35.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 3",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-33.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 4",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-31.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 5",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-29.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 6",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-27.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 7",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-25.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 8",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-23.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 9",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-21.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 10",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-19.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 11",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-17.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 12",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-15.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 13",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-13.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 14",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-11.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 15",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-9.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 16",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-7.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 17",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-5.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 18",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-3.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 19",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									-1.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 20",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									1.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 21",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									3.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 22",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									5.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 23",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									7.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 24",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									9.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 25",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									11.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 26",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									13.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 27",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									15.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 28",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									17.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 29",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									19.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 30",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									21.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 31",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									23.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 32",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									25.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 33",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									27.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 34",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									29.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 35",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									31.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 36",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									33.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 37",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									35.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 38",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									37.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 39",
+						"parent": {
+							"$ref": "row"
+						},
+						"components": {
+							"Transform": {
+								"Translation": [
+									39.0,
+									0.4,
+									0
+								]
+							},
+							"PointLight": {
+								"Intensity": 20.0,
+								"Range": 1.2
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy1": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy1"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								-22.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy2": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy2"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								-20.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy3": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy3"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								-18.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy4": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy4"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								-16.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy5": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy5"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								-14.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy6": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy6"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								-12.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy7": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy7"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								-10.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy8": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy8"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								-8.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy9": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy9"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								-6.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy10": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy10"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								-4.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy11": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy11"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								-2.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy12": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy12"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								0.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy13": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy13"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								2.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy14": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy14"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								4.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy15": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy15"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								6.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy16": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy16"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								8.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy17": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy17"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								10.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy18": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy18"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								12.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy19": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy19"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								14.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy20": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy20"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								16.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy21": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy21"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								18.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy22": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy22"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								20.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy23": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy23"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								22.0
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.duplicate",
+					"parameters": {
+						"entity": {
+							"$ref": "row"
+						}
+					},
+					"bind": {
+						"copy24": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "copy24"
+						},
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0,
+								24.0
+							]
+						}
+					}
+				}
+			],
+			"expect": "complete",
+			"debugView": "lighting"
+		}
+	]
+}

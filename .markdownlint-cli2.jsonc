@@ -1,0 +1,29 @@
+// Markdown lint of the book's pages (markdownlint-cli2, pinned in package.json). The book's own rules that markdownlint
+// cannot express are in tools/lint.py.
+{
+	"globs": ["src/content/docs/**/*.md"],
+	"config": {
+		"default": true,
+		// Lines are not wrapped at a fixed width: one sentence or one thought per line keeps diffs readable.
+		"MD013": false,
+		// Raw HTML is not used in pages; tools/lint.py says why for each case.
+		"MD033": false,
+		// The first heading is the front matter's title (Starlight draws it).
+		"MD041": false,
+		"MD025": false,
+		// Repeated headings are expected across sections ("Summary" exists once, but steps may share names).
+		"MD024": { "siblings_only": true },
+		"MD046": { "style": "fenced" },
+		// Ordered lists number 1, 2, 3 so that the source reads like the page.
+		"MD029": { "style": "ordered" },
+		// Directives (:::why) end with ::: lines that markdownlint takes for text; emphasis styles are free.
+		"MD049": false,
+		"MD050": false,
+		// The bottom strip and the tabs indent fences inside list items by three spaces.
+		"MD007": { "indent": 2 },
+		// Quotes keep the engine's tabs exactly.
+		"MD010": { "code_blocks": false },
+		"MD031": true,
+		"MD040": true
+	}
+}

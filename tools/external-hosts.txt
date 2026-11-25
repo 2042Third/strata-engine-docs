@@ -1,0 +1,114 @@
+# The hosts a page of the book may link to (plan/site.md, gate (a)): tools/crawl.py fails on a link to any other.
+# One host per line, lowercase, without scheme or path; "#" starts a comment. Add a host in the commit of the page
+# that first links it, so that a reviewer sees it; a vendored library's repository host comes with the first page
+# that quotes the library (src/generated/vendor.json).
+
+# The engine's repository (engine.pin's "repository"), its releases and its files at the pin.
+github.com
+
+# The sources the sample pages cite.
+cmake.org
+docs.unity3d.com
+en.cppreference.com
+gafferongames.com
+git-scm.com
+learn.microsoft.com
+number-none.com
+starlight.astro.build
+
+# Hosts the pages' notes asked for (plan/notes/README.md), each checked by one fetch of its front page.
+docs.godotengine.org
+gameprogrammingpatterns.com
+learncpp.com
+www.learncpp.com
+skypjack.github.io
+developer.mozilla.org
+visualstudio.microsoft.com
+code.visualstudio.com
+vulkan.lunarg.com
+algs4.cs.princeton.edu
+www.3blue1brown.com
+registry.khronos.org
+eater.net
+iquilezles.org
+webstore.iec.ch
+ccrma.stanford.edu
+pbr-book.org
+www.pcg-random.org
+preshing.com
+www.glfw.org
+man7.org
+sqlite.org
+danluu.com
+sourceware.org
+lldb.llvm.org
+chromium.googlesource.com
+www.flecs.dev
+bevy.org
+doc.qt.io
+www.rttr.org
+ecma-international.org
+protobuf.dev
+flatbuffers.dev
+msgpack.org
+vulkan-tutorial.com
+fgiesen.wordpress.com
+shader-slang.org
+specifications.freedesktop.org
+renderdoc.org
+pcg-random.org
+json.org
+martinfowler.com
+code.claude.com
+modelcontextprotocol.io
+miniaud.io
+box2d.org
+gdcvault.com
+theasc.com
+www.lua.org
+
+# Hosts the wave 6 pages (editor-ui, automation, engineering) cite; each front page fetched once.
+abseil.io
+ccache.dev
+cheatsheetseries.owasp.org
+docs.github.com
+microsoft.github.io
+semver.org
+www.jsonrpc.org
+www.khronos.org
+www.rfc-editor.org
+redblobgames.com
+ciechanow.ski
+gabrielgambetta.com
+vkguide.dev
+scratchapixel.com
+handmadehero.org
+google.github.io
+red3d.com
+ggpo.net
+
+# Hosts that pages asked for and whose front page refuses an automated fetch (a bot check, a redirect notice) or
+# moved: admitted by the planner on 2026-11-18 as the sites of the publisher, standard body or project they name.
+bgfx.github.io
+chromedevtools.github.io
+clangd.llvm.org
+creativecommons.org
+csrc.nist.gov
+dev.epicgames.com
+developer.valvesoftware.com
+docs.blender.org
+docs.unrealengine.com
+docs.vulkan.org
+gamemath.com
+helpx.adobe.com
+kenney.nl
+learnopengl.com
+realtimerendering.com
+regexone.com
+unicode.org
+www.audiokinetic.com
+www.fmod.com
+www.json.org
+www.realtimerendering.com
+www.rossbencina.com
+www.unicode.org

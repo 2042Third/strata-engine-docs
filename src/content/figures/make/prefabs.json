@@ -1,0 +1,1315 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "Five coins from one prefab standing on the ground, four gold and the one at the left silver",
+			"caption": "Five coins from one prefab, and one silver coin that keeps its own material until you revert it.",
+			"alt": "Five round coins stand upright on a flat grey ground plane, each casting a shadow to the left. Four are gold, and the one at the front left is silver, a pale disc with a blue glint along its rim.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					-3.0,
+					4.4,
+					4.2
+				],
+				"target": [
+					-0.4,
+					0.2,
+					0.1
+				],
+				"fov": 34
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Ground.stmat",
+						"properties": {
+							"BaseColor": [
+								0.06,
+								0.055,
+								0.05,
+								1.0
+							]
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Gold.stmat",
+						"properties": {
+							"BaseColor": [
+								1.0,
+								0.77,
+								0.34,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.3
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Silver.stmat",
+						"properties": {
+							"BaseColor": [
+								0.95,
+								0.95,
+								0.97,
+								1.0
+							],
+							"Metallic": 1.0,
+							"Roughness": 0.1
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"Material": "Materials/Gold.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.35,
+									0
+								],
+								"Rotation": [
+									90,
+									0,
+									0
+								],
+								"Scale": [
+									0.7,
+									0.07,
+									0.7
+								]
+							}
+						}
+					},
+					"bind": {
+						"coin": "/id"
+					}
+				},
+				{
+					"command": "prefab.create",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "coin"
+							}
+						],
+						"path": "Prefabs/Coin.stprefab"
+					}
+				},
+				{
+					"command": "prefab.instantiate",
+					"parameters": {
+						"prefab": "Prefabs/Coin.stprefab",
+						"instances": [
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-2,
+											0.35,
+											0
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											2,
+											0.35,
+											0
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											0,
+											0.35,
+											2
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											0,
+											0.35,
+											-2
+										]
+									}
+								}
+							}
+						]
+					},
+					"bind": {
+						"silver": "/instances/0/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "silver"
+						},
+						"component": "MeshRenderer",
+						"values": {
+							"Material": "Materials/Silver.stmat"
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "made",
+			"shows": "The whole editor after Create Prefab: the Coin row with its package badge and the Inspector starting with the prefab bar",
+			"caption": "The coin is now an instance of its prefab. Its Hierarchy row ends in the package badge, and the Inspector starts with the prefab bar.",
+			"alt": "The editor with the Coin row selected in the Hierarchy and a small package icon at its right end. The Inspector starts with the prefab bar: the prefab name Coin, Select, Open and a chip that reads Overrides (0). Below it is the Transform section. The Scene view shows one gold coin standing upright above the ground.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-prefabs.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "material.create",
+						"parameters": {
+							"path": "Materials/Gold.stmat",
+							"properties": {
+								"BaseColor": [
+									1.0,
+									0.77,
+									0.34,
+									1.0
+								],
+								"Metallic": 1.0,
+								"Roughness": 0.3
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"Transform": {
+									"Translation": [
+										0,
+										0.6,
+										0
+									],
+									"Rotation": [
+										90,
+										0,
+										0
+									],
+									"Scale": [
+										0.7,
+										0.07,
+										0.7
+									]
+								}
+							}
+						},
+						"bind": {
+							"coin": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Visual",
+							"parent": {
+								"$ref": "coin"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder",
+									"Material": "Materials/Gold.stmat"
+								}
+							}
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "coin"
+								}
+							],
+							"path": "Prefabs/Coin.stprefab"
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								0.4,
+								2.5,
+								5.3
+							],
+							"target": [
+								0,
+								0.45,
+								0
+							],
+							"fov": 46
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "coin"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Inspector"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "placed",
+			"shows": "The whole editor with five coin rows in the Hierarchy, each with the badge, and five gold coins in the Scene view",
+			"caption": "Five instances of one prefab: each row has the badge, and the copies get numbered names.",
+			"alt": "The Hierarchy lists Coin and Coin (1) to Coin (4) below the camera, sun, sky, ground and post process, each coin row with a blue package icon. The Scene view shows five gold coins standing upright in a cross above the ground.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-prefabs.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "material.create",
+						"parameters": {
+							"path": "Materials/Gold.stmat",
+							"properties": {
+								"BaseColor": [
+									1.0,
+									0.77,
+									0.34,
+									1.0
+								],
+								"Metallic": 1.0,
+								"Roughness": 0.3
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"Transform": {
+									"Translation": [
+										0,
+										0.6,
+										0
+									],
+									"Rotation": [
+										90,
+										0,
+										0
+									],
+									"Scale": [
+										0.7,
+										0.07,
+										0.7
+									]
+								}
+							}
+						},
+						"bind": {
+							"coin": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Visual",
+							"parent": {
+								"$ref": "coin"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder",
+									"Material": "Materials/Gold.stmat"
+								}
+							}
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "coin"
+								}
+							],
+							"path": "Prefabs/Coin.stprefab"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Coin.stprefab",
+							"instances": [
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												-2,
+												0.6,
+												0
+											]
+										}
+									}
+								},
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												2,
+												0.6,
+												0
+											]
+										}
+									}
+								},
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												0.6,
+												2
+											]
+										}
+									}
+								},
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												0.6,
+												-2
+											]
+										}
+									}
+								}
+							]
+						},
+						"bind": {
+							"coin4": "/instances/3/id"
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								0.4,
+								2.5,
+								5.3
+							],
+							"target": [
+								0,
+								0.45,
+								0
+							],
+							"fov": 46
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Hierarchy"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "overridden",
+			"shows": "The whole editor with the mesh child of Coin (1) selected: its Material label bold with an accent bar, the chip Overrides (1) and a yellow badge on the Coin (1) row",
+			"caption": "The overridden property: the Material label is bold with an orange bar, the chip counts one override, and the badge of the silver coin turns yellow.",
+			"alt": "The Hierarchy with Coin (1) expanded and its child selected; the package icon of Coin (1) is yellow, the others blue. The Inspector of the child starts with the prefab bar and a chip that reads Overrides (1). In its Mesh Renderer section the Material label, set to Silver, is bold with an orange bar at its left. In the Scene view the selected coin at the left is a pale silver disc with an orange outline and the move handles at its centre, and two gold coins stand at the right.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-prefabs.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "material.set",
+						"parameters": {
+							"material": "Materials/Ground.stmat",
+							"properties": {
+								"BaseColor": [
+									0.06,
+									0.055,
+									0.05,
+									1.0
+								]
+							}
+						}
+					},
+					{
+						"command": "material.create",
+						"parameters": {
+							"path": "Materials/Gold.stmat",
+							"properties": {
+								"BaseColor": [
+									1.0,
+									0.77,
+									0.34,
+									1.0
+								],
+								"Metallic": 1.0,
+								"Roughness": 0.3
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"Transform": {
+									"Translation": [
+										0,
+										0.6,
+										0
+									],
+									"Rotation": [
+										90,
+										0,
+										0
+									],
+									"Scale": [
+										0.7,
+										0.07,
+										0.7
+									]
+								}
+							}
+						},
+						"bind": {
+							"coin": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Visual",
+							"parent": {
+								"$ref": "coin"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder",
+									"Material": "Materials/Gold.stmat"
+								}
+							}
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "coin"
+								}
+							],
+							"path": "Prefabs/Coin.stprefab"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Coin.stprefab",
+							"instances": [
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												-2,
+												0.6,
+												0
+											]
+										}
+									}
+								},
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												2,
+												0.6,
+												0
+											]
+										}
+									}
+								},
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												0.6,
+												2
+											]
+										}
+									}
+								},
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												0.6,
+												-2
+											]
+										}
+									}
+								}
+							]
+						},
+						"bind": {
+							"coin4": "/instances/3/id"
+						}
+					},
+					{
+						"command": "material.create",
+						"parameters": {
+							"path": "Materials/Silver.stmat",
+							"properties": {
+								"BaseColor": [
+									0.8,
+									0.8,
+									0.82,
+									1
+								],
+								"Metallic": 1,
+								"Roughness": 0.25
+							}
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Visual",
+							"component": "MeshRenderer",
+							"box": {
+								"min": [
+									-2.1,
+									0.5,
+									-0.1
+								],
+								"max": [
+									-1.9,
+									0.7,
+									0.1
+								]
+							}
+						},
+						"bind": {
+							"mesh1": "/entities/0"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "mesh1"
+							},
+							"component": "MeshRenderer",
+							"values": {
+								"Material": "Materials/Silver.stmat"
+							}
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-1.0,
+								1.3,
+								2.6
+							],
+							"target": [
+								-1.0,
+								0.6,
+								0.0
+							],
+							"fov": 44
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "mesh1"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Inspector"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "applied",
+			"shows": "The whole editor after the apply: five larger coins, the left one still silver, and the child of Coin (2) with Scale 1.5 and the chip Overrides (0)",
+			"caption": "After the apply every coin is larger, the silver coin keeps its material, and the coin you scaled agrees with its prefab again.",
+			"alt": "The Scene view shows five coins, larger than before; the one at the left is silver, the others gold. The Inspector shows the child of Coin (2) with Scale 1.5 in each field, no bold label and a chip that reads Overrides (0). The badge of Coin (1) is still yellow.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-prefabs.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "material.set",
+						"parameters": {
+							"material": "Materials/Ground.stmat",
+							"properties": {
+								"BaseColor": [
+									0.06,
+									0.055,
+									0.05,
+									1.0
+								]
+							}
+						}
+					},
+					{
+						"command": "material.create",
+						"parameters": {
+							"path": "Materials/Gold.stmat",
+							"properties": {
+								"BaseColor": [
+									1.0,
+									0.77,
+									0.34,
+									1.0
+								],
+								"Metallic": 1.0,
+								"Roughness": 0.3
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"Transform": {
+									"Translation": [
+										0,
+										0.6,
+										0
+									],
+									"Rotation": [
+										90,
+										0,
+										0
+									],
+									"Scale": [
+										0.7,
+										0.07,
+										0.7
+									]
+								}
+							}
+						},
+						"bind": {
+							"coin": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Visual",
+							"parent": {
+								"$ref": "coin"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder",
+									"Material": "Materials/Gold.stmat"
+								}
+							}
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "coin"
+								}
+							],
+							"path": "Prefabs/Coin.stprefab"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Coin.stprefab",
+							"instances": [
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												-2,
+												0.6,
+												0
+											]
+										}
+									}
+								},
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												2,
+												0.6,
+												0
+											]
+										}
+									}
+								},
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												0.6,
+												2
+											]
+										}
+									}
+								},
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												0.6,
+												-2
+											]
+										}
+									}
+								}
+							]
+						},
+						"bind": {
+							"coin4": "/instances/3/id"
+						}
+					},
+					{
+						"command": "material.create",
+						"parameters": {
+							"path": "Materials/Silver.stmat",
+							"properties": {
+								"BaseColor": [
+									0.8,
+									0.8,
+									0.82,
+									1
+								],
+								"Metallic": 1,
+								"Roughness": 0.25
+							}
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Visual",
+							"component": "MeshRenderer",
+							"box": {
+								"min": [
+									-2.1,
+									0.5,
+									-0.1
+								],
+								"max": [
+									-1.9,
+									0.7,
+									0.1
+								]
+							}
+						},
+						"bind": {
+							"mesh1": "/entities/0"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "mesh1"
+							},
+							"component": "MeshRenderer",
+							"values": {
+								"Material": "Materials/Silver.stmat"
+							}
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Visual",
+							"component": "MeshRenderer",
+							"box": {
+								"min": [
+									1.9,
+									0.5,
+									-0.1
+								],
+								"max": [
+									2.1,
+									0.7,
+									0.1
+								]
+							}
+						},
+						"bind": {
+							"mesh2": "/entities/0"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "mesh2"
+							},
+							"component": "Transform",
+							"values": {
+								"Scale": [
+									1.5,
+									1.5,
+									1.5
+								]
+							}
+						}
+					},
+					{
+						"command": "prefab.apply",
+						"parameters": {
+							"entity": {
+								"$ref": "mesh2"
+							}
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								0.4,
+								2.5,
+								5.3
+							],
+							"target": [
+								0,
+								0.45,
+								0
+							],
+							"fov": 46
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "mesh2"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Inspector"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "finished",
+			"shows": "The whole editor at the end of the page: five larger gold coins, each row with the badge, and Coin (4) selected with its prefab bar back",
+			"caption": "The end state: all five coins are gold instances again, and the unpacked coin has its badge and prefab bar back after the undo.",
+			"alt": "The Hierarchy lists Coin and Coin (1) to Coin (4), each with a blue package icon, and Coin (4) is selected. The Inspector starts with its prefab bar and a chip that reads Overrides (0). The Scene view shows five larger gold coins.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-prefabs.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "material.create",
+						"parameters": {
+							"path": "Materials/Gold.stmat",
+							"properties": {
+								"BaseColor": [
+									1.0,
+									0.77,
+									0.34,
+									1.0
+								],
+								"Metallic": 1.0,
+								"Roughness": 0.3
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"Transform": {
+									"Translation": [
+										0,
+										0.6,
+										0
+									],
+									"Rotation": [
+										90,
+										0,
+										0
+									],
+									"Scale": [
+										0.7,
+										0.07,
+										0.7
+									]
+								}
+							}
+						},
+						"bind": {
+							"coin": "/id"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Visual",
+							"parent": {
+								"$ref": "coin"
+							},
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder",
+									"Material": "Materials/Gold.stmat"
+								}
+							}
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "coin"
+								}
+							],
+							"path": "Prefabs/Coin.stprefab"
+						}
+					},
+					{
+						"command": "prefab.instantiate",
+						"parameters": {
+							"prefab": "Prefabs/Coin.stprefab",
+							"instances": [
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												-2,
+												0.6,
+												0
+											]
+										}
+									}
+								},
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												2,
+												0.6,
+												0
+											]
+										}
+									}
+								},
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												0.6,
+												2
+											]
+										}
+									}
+								},
+								{
+									"components": {
+										"Transform": {
+											"Translation": [
+												0,
+												0.6,
+												-2
+											]
+										}
+									}
+								}
+							]
+						},
+						"bind": {
+							"coin4": "/instances/3/id"
+						}
+					},
+					{
+						"command": "material.create",
+						"parameters": {
+							"path": "Materials/Silver.stmat",
+							"properties": {
+								"BaseColor": [
+									0.8,
+									0.8,
+									0.82,
+									1
+								],
+								"Metallic": 1,
+								"Roughness": 0.25
+							}
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Visual",
+							"component": "MeshRenderer",
+							"box": {
+								"min": [
+									-2.1,
+									0.5,
+									-0.1
+								],
+								"max": [
+									-1.9,
+									0.7,
+									0.1
+								]
+							}
+						},
+						"bind": {
+							"mesh1": "/entities/0"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "mesh1"
+							},
+							"component": "MeshRenderer",
+							"values": {
+								"Material": "Materials/Silver.stmat"
+							}
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Visual",
+							"component": "MeshRenderer",
+							"box": {
+								"min": [
+									1.9,
+									0.5,
+									-0.1
+								],
+								"max": [
+									2.1,
+									0.7,
+									0.1
+								]
+							}
+						},
+						"bind": {
+							"mesh2": "/entities/0"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "mesh2"
+							},
+							"component": "Transform",
+							"values": {
+								"Scale": [
+									1.5,
+									1.5,
+									1.5
+								]
+							}
+						}
+					},
+					{
+						"command": "prefab.apply",
+						"parameters": {
+							"entity": {
+								"$ref": "mesh2"
+							}
+						}
+					},
+					{
+						"command": "prefab.revert",
+						"parameters": {
+							"entity": {
+								"$ref": "mesh1"
+							},
+							"component": "MeshRenderer",
+							"property": "Material"
+						}
+					},
+					{
+						"command": "prefab.unpack",
+						"parameters": {
+							"entity": {
+								"$ref": "coin4"
+							}
+						}
+					},
+					{
+						"command": "edit.undo",
+						"parameters": {}
+					},
+					{
+						"command": "scene.save",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								0.4,
+								2.5,
+								5.3
+							],
+							"target": [
+								0,
+								0.45,
+								0
+							],
+							"fov": 46
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "coin4"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Inspector"
+						}
+					}
+				]
+			}
+		}
+	]
+}

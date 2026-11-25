@@ -1,0 +1,8 @@
+{
+	"page": "capstone/land",
+	"startsFrom": { "tutorial": "capstone/build" },
+	"patch": {
+		"file": "tutorials/capstone/land.patch",
+		"tests": [ "Testing.Shards", "Reflection.ComponentSchema", "CLI.McpToolsets" ]
+	}
+}

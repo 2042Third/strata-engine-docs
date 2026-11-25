@@ -1,0 +1,14 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"command": "scene.loadStatus",
+	"parameters": {
+		"wait": true
+	},
+	"result": {
+		"lastOpen": null,
+		"open": null,
+		"play": null,
+		"subScenes": [],
+		"world": null
+	}
+}

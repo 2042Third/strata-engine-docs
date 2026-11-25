@@ -1,0 +1,10 @@
+{
+	"comment": "The limits of the pretend engine (tools/tests/test_reference.py), in the form of tools/reference-limits.json.",
+	"limits": [
+		{ "file": "Strata/src/Strata/Scene/Scene.h", "name": "Scene::c_MaxEntities",
+			"substitute": { "entt::entt_traits<entt::entity>::entity_mask": { "file": "Strata/vendor/entt/src/entt/entity/entity.hpp", "line": 4, "name": "entity_mask" } } },
+		{ "file": "Strata/src/Strata/Scene/Scene.h", "name": "Scene::c_MaxMoves" },
+		{ "file": "Strata/src/Strata/Scene/Scene.h", "name": "Scene::c_Budget" },
+		{ "file": "Strata/src/Strata/Scene/Scene.h", "name": "SceneSettings::c_MaxBodiesLimit" }
+	]
+}

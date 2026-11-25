@@ -1,0 +1,228 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "A tutorial of the book: tutorials/<part>/<chapter>.tutorial.json or an exercise's solution (plan/pipelines.md §6.2, §6.6)",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["page", "startsFrom"],
+	"properties": {
+		"page": { "$ref": "#/$defs/pageId", "description": "The page's id; an exercise's solution names its page" },
+		"startsFrom": {
+			"description": "Where the project comes from",
+			"oneOf": [
+				{
+					"title": "a template",
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["template"],
+					"properties": {
+						"template": { "enum": ["empty", "basic3d"] },
+						"name": {
+							"description": "The project's name, as the page asks the reader to type it (default: the chapter's words joined, such as FirstScript)",
+							"type": "string",
+							"pattern": "^[A-Za-z][A-Za-z0-9]{0,31}$"
+						}
+					}
+				},
+				{
+					"title": "a sample",
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["sample"],
+					"properties": { "sample": { "type": "string", "minLength": 1 } }
+				},
+				{
+					"title": "an earlier tutorial, or the worked solution of one of its page's engine exercises",
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["tutorial"],
+					"properties": {
+						"tutorial": { "$ref": "#/$defs/pageId" },
+						"exercise": {
+							"description": "The exercise whose solution, tutorials/<page id>/exercise-<n>.patch, applies after that tutorial's chain (rulings-9.md, R41)",
+							"type": "integer",
+							"minimum": 1
+						}
+					}
+				},
+				{
+					"title": "the pin (a tutorial that changes the engine)",
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["pin"],
+					"properties": { "pin": { "const": true } }
+				}
+			]
+		},
+		"stages": {
+			"description": "One stage per step section of the page, in page order",
+			"type": "array",
+			"minItems": 1,
+			"items": { "$ref": "#/$defs/stage" }
+		},
+		"automation": {
+			"description": "true: the reader's copies run in an editor that serves automation on the free loopback port it picks itself, for pages that teach what an agent sees of the automation server; absent or false: --no-automation (plan/pipelines.md §6.2)",
+			"type": "boolean"
+		},
+		"exercises": {
+			"description": "The page's engine exercises, by number: the doctest suites each one's worked solution, tutorials/<page id>/exercise-<n>.patch, names; tutorials.py patch runs them with the page's patch.tests (plan/pipelines.md §6.6)",
+			"type": "object",
+			"propertyNames": { "pattern": "^[1-9][0-9]*$" },
+			"additionalProperties": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["tests"],
+				"properties": {
+					"tests": {
+						"description": "The doctest suites the exercise names",
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]*(?:\\.[A-Za-z][A-Za-z0-9_]*)*$" }
+					}
+				}
+			}
+		},
+		"patch": {
+			"description": "A tutorial that changes the engine (plan/pipelines.md §6.6)",
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["file", "tests"],
+			"properties": {
+				"file": { "type": "string", "pattern": "^tutorials/[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*\\.patch$" },
+				"tests": {
+					"description": "The doctest suites the page names",
+					"type": "array",
+					"uniqueItems": true,
+					"items": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]*(?:\\.[A-Za-z][A-Za-z0-9_]*)*$" }
+				}
+			}
+		}
+	},
+	"$defs": {
+		"pageId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*$" },
+		"stage": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["step"],
+			"properties": {
+				"step": { "type": "integer", "minimum": 1, "description": "1, 2, 3 in page order: the stage of the section's ::checkpoint" },
+				"files": { "$ref": "#/$defs/files", "description": "Copied into the project before the stage's setup and commands" },
+				"setup": { "type": "array", "items": { "$ref": "#/$defs/step" } },
+				"commands": { "type": "array", "items": { "$ref": "#/$defs/command" } },
+				"endState": { "const": true }
+			}
+		},
+		"files": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["from", "to"],
+				"properties": {
+					"from": { "type": "string", "minLength": 1, "description": "book:tutorials/... or an engine path under Samples/*/Assets/" },
+					"to": { "type": "string", "minLength": 1, "description": "A path in the project" }
+				}
+			}
+		},
+		"step": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["command"],
+			"properties": {
+				"command": { "type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9]*(?:\\.[a-zA-Z][a-zA-Z0-9]*)+$" },
+				"parameters": { "type": "object" },
+				"expect": { "$ref": "#/$defs/expect" },
+				"bind": {
+					"type": "object",
+					"propertyNames": { "pattern": "^[A-Za-z0-9_.-]{1,64}$" },
+					"additionalProperties": { "type": "string" }
+				},
+				"until": {
+					"type": "object",
+					"additionalProperties": false,
+					"minProperties": 1,
+					"properties": {
+						"steps": { "type": "integer", "minimum": 1, "maximum": 10000000 },
+						"seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 86400 }
+					}
+				},
+				"entityName": { "type": "string", "minLength": 1 }
+			}
+		},
+		"command": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["command"],
+			"properties": {
+				"command": { "type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9]*(?:\\.[a-zA-Z][a-zA-Z0-9]*)+$" },
+				"parameters": { "type": "object" },
+				"expect": { "$ref": "#/$defs/expect" },
+				"bind": {
+					"type": "object",
+					"propertyNames": { "pattern": "^[A-Za-z0-9_.-]{1,64}$" },
+					"additionalProperties": { "type": "string" }
+				},
+				"until": {
+					"type": "object",
+					"additionalProperties": false,
+					"minProperties": 1,
+					"properties": {
+						"steps": { "type": "integer", "minimum": 1, "maximum": 10000000 },
+						"seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 86400 }
+					}
+				},
+				"entityName": { "type": "string", "minLength": 1 },
+				"files": {
+					"$ref": "#/$defs/files",
+					"description": "Copied just before this command, once the outputs of the commands before it are older: a code change inside a stage (a build error and its fix, a hot reload, a crash)"
+				},
+				"checks":{ "type": "array", "items": { "$ref": "#/$defs/check" } }
+			}
+		},
+		"expect": {
+			"type": "object",
+			"additionalProperties": {
+				"type": "object",
+				"additionalProperties": false,
+				"minProperties": 1,
+				"properties": {
+					"equals": true,
+					"min": { "type": "number" },
+					"max": { "type": "number" }
+				}
+			}
+		},
+		"check": {
+			"oneOf": [
+				{
+					"title": "contains",
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["pointer", "contains"],
+					"properties": { "pointer": { "type": "string" }, "contains": { "type": "string", "minLength": 1 } }
+				},
+				{
+					"title": "approx",
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["pointer", "approx", "tolerance"],
+					"properties": { "pointer": { "type": "string" }, "approx": { "type": "number" }, "tolerance": { "type": "number", "minimum": 0 } }
+				},
+				{
+					"title": "length",
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["pointer", "length"],
+					"properties": { "pointer": { "type": "string" }, "length": { "type": "integer", "minimum": 0 } }
+				},
+				{
+					"title": "equals",
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["pointer", "equals"],
+					"properties": { "pointer": { "type": "string" }, "equals": true }
+				}
+			]
+		}
+	}
+}

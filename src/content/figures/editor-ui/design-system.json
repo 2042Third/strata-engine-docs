@@ -1,0 +1,65 @@
+{
+	"figures": [
+		{
+			"id": "default-and-bedrock",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The editor's panels in the Bedrock theme, its only theme, with the Showcase open",
+			"caption": "The editor in Bedrock, its only theme. Notice the dark stone surfaces, the pale text and the flat, square panels.",
+			"alt": "The editor with a scene open, drawn with dark stone surfaces, pale text, square panels and an orange accent.",
+			"project": { "sample": "Showcase" },
+			"editorWindow": {
+				"layout": "layouts/editor-shell-default.ini",
+				"windowSize": [960, 540],
+				"steps": [
+					{ "command": "editor.showPanel", "parameters": { "panel": "Hierarchy" } },
+					{ "command": "entity.find", "parameters": { "name": "Sun" }, "bind": { "sun": "/entities/0" } },
+					{ "command": "selection.set", "parameters": { "entities": [ { "$ref": "sun" } ] } }
+				]
+			},
+			"variants": {
+				"hierarchy": {
+					"shows": "The Hierarchy panel of the Showcase in the Bedrock theme, at its own pixels",
+					"alt": "The Hierarchy panel of the editor, drawn with dark stone surfaces and pale text, with one row selected.",
+					"editorWindow": {
+						"layout": "layouts/editor-shell-default.ini",
+						"windowSize": [960, 540],
+						"panel": "Hierarchy",
+						"steps": [
+							{ "command": "entity.find", "parameters": { "name": "Sun" }, "bind": { "sun": "/entities/0" } },
+							{ "command": "selection.set", "parameters": { "entities": [ { "$ref": "sun" } ] } }
+						]
+					}
+				},
+				"bedrock": {
+					"editorWindow": {
+						"layout": "layouts/editor-shell-default.ini",
+						"windowSize": [960, 540],
+						"steps": [
+							{ "command": "editor.showPanel", "parameters": { "panel": "Hierarchy" } },
+							{ "command": "entity.find", "parameters": { "name": "Sun" }, "bind": { "sun": "/entities/0" } },
+							{ "command": "selection.set", "parameters": { "entities": [ { "$ref": "sun" } ] } }
+						]
+					}
+				}
+			}
+		},
+		{
+			"id": "cjk-name",
+			"kind": "editor",
+			"shows": "The Hierarchy panel with an entity named in Japanese, drawn through the merged system font",
+			"caption": "A Japanese name in the Hierarchy, drawn by the fallback font, below five Latin names.",
+			"alt": "The Hierarchy panel of the editor with six entity rows. The last row holds four Japanese characters in the same size and color as the five Latin names above it.",
+			"project": { "template": "basic3d" },
+			"editorWindow": {
+				"layout": "layouts/design-system-cjk.ini",
+				"windowSize": [960, 360],
+				"panel": "Hierarchy",
+				"steps": [
+					{ "command": "entity.create", "parameters": { "name": "敵の城門" } },
+					{ "command": "editor.wait", "parameters": { "frames": 120 } }
+				]
+			}
+		}
+	]
+}

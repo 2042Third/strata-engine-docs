@@ -1,0 +1,21 @@
+{
+	"page": "make/script-loop",
+	"startsFrom": { "template": "basic3d", "name": "Loop" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "project.setSettings", "parameters": { "section": "Scene.Timing", "value": { "FixedRate": "120" } },
+					"expect": { "/value/FixedRate": { "equals": "120" } } },
+				{ "command": "scene.info",
+					"expect": { "/settings/fixedRate/source": { "equals": "project" }, "/settings/fixedRate/stepsPerSecond": { "equals": 120 },
+						"/settings/fixedRate/fixedTimestep": { "min": 0.00833, "max": 0.00834 }, "/settings/fixedRate/maxFixedSteps": { "equals": 16 } } },
+				{ "command": "project.setSettings", "parameters": { "section": "Scene.Timing", "reset": true },
+					"expect": { "/isDefault": { "equals": true } } },
+				{ "command": "scene.info",
+					"expect": { "/settings/fixedRate/source": { "equals": "scene" }, "/settings/fixedRate/stepsPerSecond": { "equals": 60 },
+						"/settings/fixedRate/maxFixedSteps": { "equals": 8 } } }
+			]
+		}
+	]
+}

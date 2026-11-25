@@ -1,0 +1,230 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"limits": [
+		{
+			"name": "Scene::c_MaxEntities",
+			"key": "limits.Scene.c_MaxEntities",
+			"file": "Strata/src/Strata/Scene/Scene.h",
+			"line": 140,
+			"expression": "static_cast<size_t>(entt::entt_traits<entt::entity>::entity_mask)",
+			"value": 1048575,
+			"comment": "EnTT identifiers have a 20-bit index, so a registry holds at most this many live entities."
+		},
+		{
+			"name": "Scene::c_MaxHierarchyMoves",
+			"key": "limits.Scene.c_MaxHierarchyMoves",
+			"file": "Strata/src/Strata/Scene/Scene.h",
+			"line": 301,
+			"expression": "4096",
+			"value": 4096,
+			"comment": ""
+		},
+		{
+			"name": "Scene::c_MaxTransformChanges",
+			"key": "limits.Scene.c_MaxTransformChanges",
+			"file": "Strata/src/Strata/Scene/Scene.h",
+			"line": 384,
+			"expression": "16384",
+			"value": 16384,
+			"comment": ""
+		},
+		{
+			"name": "Scene::c_MaxSubSceneMillisecondsPerFrame",
+			"key": "limits.Scene.c_MaxSubSceneMillisecondsPerFrame",
+			"file": "Strata/src/Strata/Scene/Scene.h",
+			"line": 195,
+			"expression": "2.0",
+			"value": 2.0,
+			"comment": "How long an update of a scene may spend creating and destroying the entities of sub-scenes at most, together (besides SceneSettings::MaxEntitiesInstantiatedPerFrame and MaxEntitiesDestroyedPerFrame, and within the frame's SceneWorkBudget): they create and destroy them in chunks and stop once this much time went by."
+		},
+		{
+			"name": "Scene::c_MaxInterpolatedSpeed",
+			"key": "limits.Scene.c_MaxInterpolatedSpeed",
+			"file": "Strata/src/Strata/Scene/Scene.h",
+			"line": 528,
+			"expression": "400.0f",
+			"value": 400.0,
+			"comment": "A step longer than this speed times the time it simulated is a teleport, never blended: box3d's maximum linear speed (b3WorldDef::maximumLinearSpeed, 400 m/s; PhysicsWorld keeps box3d's default, which Physics.Settings checks)."
+		},
+		{
+			"name": "PhysicsCapacitySettings::c_MaxBodiesLimit",
+			"key": "limits.PhysicsCapacitySettings.c_MaxBodiesLimit",
+			"file": "Strata/src/Strata/Scene/Scene.h",
+			"line": 55,
+			"expression": "1u << 21",
+			"value": 2097152,
+			"comment": "The largest values a scene may ask for, whether its file or a command sets them. A world's room is bounded by MaxBodies (its bodies wait beyond it); a scene holds at most Scene::c_MaxEntities (2^20 - 1) entities, so 2^21 bodies have room for all of them, with the automatic sizing's headroom. box3d reserves the room at once up to PhysicsWorld::c_MaxBodiesReservedAtCreation and grows its storage beyond it while bodies come."
+		},
+		{
+			"name": "PhysicsCapacitySettings::c_MaxContactConstraintsLimit",
+			"key": "limits.PhysicsCapacitySettings.c_MaxContactConstraintsLimit",
+			"file": "Strata/src/Strata/Scene/Scene.h",
+			"line": 56,
+			"expression": "1u << 19",
+			"value": 524288,
+			"comment": ""
+		},
+		{
+			"name": "SceneSettings::c_MaxEntitiesInstantiatedLimit",
+			"key": "limits.SceneSettings.c_MaxEntitiesInstantiatedLimit",
+			"file": "Strata/src/Strata/Scene/Scene.h",
+			"line": 71,
+			"expression": "1u << 20",
+			"value": 1048576,
+			"comment": ""
+		},
+		{
+			"name": "SceneSettings::c_MaxEntitiesDestroyedLimit",
+			"key": "limits.SceneSettings.c_MaxEntitiesDestroyedLimit",
+			"file": "Strata/src/Strata/Scene/Scene.h",
+			"line": 76,
+			"expression": "1u << 20",
+			"value": 1048576,
+			"comment": ""
+		},
+		{
+			"name": "ProjectSceneTiming::c_MaxStepsLimit",
+			"key": "limits.ProjectSceneTiming.c_MaxStepsLimit",
+			"file": "Strata/src/Strata/Scene/ProjectSceneTiming.h",
+			"line": 28,
+			"expression": "64",
+			"value": 64,
+			"comment": "The most steps an update runs at a project rate is the steps of 2/15 s at that rate (GetMaxSteps), the time SceneSettings::MaxFixedStepsPerFrame's default of 8 covers at 60; never more than this."
+		},
+		{
+			"name": "PhysicsLayerSettings::c_MaxNameLength",
+			"key": "limits.PhysicsLayerSettings.c_MaxNameLength",
+			"file": "Strata/src/Strata/Scene/PhysicsLayerSettings.h",
+			"line": 26,
+			"expression": "64",
+			"value": 64,
+			"comment": ""
+		},
+		{
+			"name": "WorldData::c_MaxLayers",
+			"key": "limits.WorldData.c_MaxLayers",
+			"file": "Strata/src/Strata/World/WorldAsset.h",
+			"line": 79,
+			"expression": "32",
+			"value": 32,
+			"comment": ""
+		},
+		{
+			"name": "WorldData::c_MaxCells",
+			"key": "limits.WorldData.c_MaxCells",
+			"file": "Strata/src/Strata/World/WorldAsset.h",
+			"line": 80,
+			"expression": "1u << 20",
+			"value": 1048576,
+			"comment": ""
+		},
+		{
+			"name": "WorldData::c_MinCellSize",
+			"key": "limits.WorldData.c_MinCellSize",
+			"file": "Strata/src/Strata/World/WorldAsset.h",
+			"line": 82,
+			"expression": "1.0f",
+			"value": 1.0,
+			"comment": ""
+		},
+		{
+			"name": "WorldData::c_MaxCellSize",
+			"key": "limits.WorldData.c_MaxCellSize",
+			"file": "Strata/src/Strata/World/WorldAsset.h",
+			"line": 83,
+			"expression": "65536.0f",
+			"value": 65536.0,
+			"comment": ""
+		},
+		{
+			"name": "WorldData::c_MaxStreamingDistance",
+			"key": "limits.WorldData.c_MaxStreamingDistance",
+			"file": "Strata/src/Strata/World/WorldAsset.h",
+			"line": 84,
+			"expression": "1'000'000.0f",
+			"value": 1000000.0,
+			"comment": ""
+		},
+		{
+			"name": "WorldData::c_MaxExtent",
+			"key": "limits.WorldData.c_MaxExtent",
+			"file": "Strata/src/Strata/World/WorldAsset.h",
+			"line": 86,
+			"expression": "1'000'000.0",
+			"value": 1000000.0,
+			"comment": "Every cell lies within this distance of the origin, in X and in Z (1,000 km)."
+		},
+		{
+			"name": "WorldData::c_SupportedExtent",
+			"key": "limits.WorldData.c_SupportedExtent",
+			"file": "Strata/src/Strata/World/WorldAsset.h",
+			"line": 89,
+			"expression": "20'000.0",
+			"value": 20000.0,
+			"comment": "What float32 positions support at 2-4 mm precision: worlds are supported within 20 km of the origin (world.cook warns about cells beyond it). Origin rebasing is later work."
+		},
+		{
+			"name": "WorldCellKey::c_MaxCoordinate",
+			"key": "limits.WorldCellKey.c_MaxCoordinate",
+			"file": "Strata/src/Strata/World/WorldGrid.h",
+			"line": 17,
+			"expression": "(1 << 27) - 1",
+			"value": 134217727,
+			"comment": "Cell coordinates a key can pack: every cell of a valid world fits (WorldData::c_MaxExtent with the smallest cells)."
+		},
+		{
+			"name": "WorldStreamer::c_MaxConcurrentCellLoads",
+			"key": "limits.WorldStreamer.c_MaxConcurrentCellLoads",
+			"file": "Strata/src/Strata/World/WorldStreamer.h",
+			"line": 100,
+			"expression": "4",
+			"value": 4,
+			"comment": ""
+		},
+		{
+			"name": "c_MaxBodyCoordinate",
+			"key": "limits.c_MaxBodyCoordinate",
+			"file": "Strata/src/Strata/Physics/PhysicsWorld.cpp",
+			"line": 73,
+			"expression": "1.0e5f",
+			"value": 100000.0,
+			"comment": "box3d computes in single precision and asserts on coordinates beyond B3_HUGE (1e5 m at one unit per meter): bodies whose world position is farther from the origin wait like bodies with a degenerate transform."
+		},
+		{
+			"name": "c_MaxRaycastDistance",
+			"key": "limits.c_MaxRaycastDistance",
+			"file": "Strata/src/Strata/Physics/PhysicsWorld.cpp",
+			"line": 56,
+			"expression": "1.0e5f",
+			"value": 100000.0,
+			"comment": ""
+		},
+		{
+			"name": "PhysicsWorld::c_MaxBodiesReservedAtCreation",
+			"key": "limits.PhysicsWorld.c_MaxBodiesReservedAtCreation",
+			"file": "Strata/src/Strata/Physics/PhysicsWorld.h",
+			"line": 117,
+			"expression": "1u << 17",
+			"value": 131072,
+			"comment": "The most room box3d reserves when a world is created, unless the automatic room of the scene's bodies is larger (about 280 MB of bodies and 65 MB of contacts by EstimateReservedBytes): a room given beyond it counts for growth only, and box3d grows its storage as the bodies come, so that the largest room a scene may ask for does not reserve gigabytes up front."
+		},
+		{
+			"name": "SettingsSection::c_MaxValueBytes",
+			"key": "limits.SettingsSection.c_MaxValueBytes",
+			"file": "Strata/src/Strata/Core/SettingsRegistry.h",
+			"line": 102,
+			"expression": "512 * 1024",
+			"value": 524288,
+			"comment": ""
+		},
+		{
+			"name": "ProjectSettingsValues::c_MaxStoredBytes",
+			"key": "limits.ProjectSettingsValues.c_MaxStoredBytes",
+			"file": "Strata/src/Strata/Core/ProjectSettings.h",
+			"line": 52,
+			"expression": "1024 * 1024",
+			"value": 1048576,
+			"comment": "The bound of the stored form (compact JSON): the project file and the manifest's settings hold at most this."
+		}
+	]
+}

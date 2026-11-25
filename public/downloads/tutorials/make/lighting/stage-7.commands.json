@@ -1,0 +1,33 @@
+[
+	{
+		"command": "lighting.applySkyPreset",
+		"parameters": {
+			"preset": "Clear",
+			"sunElevation": 35,
+			"sunAzimuth": 20
+		},
+		"expect": {
+			"/preset": {
+				"equals": "Clear"
+			}
+		}
+	},
+	{
+		"command": "scene.save"
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 60
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

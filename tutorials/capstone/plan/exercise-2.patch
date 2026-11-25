@@ -1,0 +1,14 @@
+diff --git a/Docs/Plans/Wave8/specs/wind-zone.md b/Docs/Plans/Wave8/specs/wind-zone.md
+index 6672328..a8ff7a0 100644
+--- a/Docs/Plans/Wave8/specs/wind-zone.md
++++ b/Docs/Plans/Wave8/specs/wind-zone.md
+@@ -115,6 +115,9 @@ or sound. Each of them can add a property or a service later without changing a
+ 
+ - A Directional zone pushes every dynamic body: a large scene may want a mask. Recommended: ship without, measure.
+ - Strength is a force, not an acceleration: heavy bodies hardly move. Recommended: say so in the tooltip.
++- The wind's sound. Audio may not include Physics, so `AudioSystem` reads the wind through the service `IWindZones`,
++  which lives in the Scene layer, and gets null (silence) when no Physics system runs. Cost: the sound follows the
++  service's interface, and Simulate mode has no audio, so there is no wind sound while simulating.
+ 
+ ## 11. Deliver in this order
+ 

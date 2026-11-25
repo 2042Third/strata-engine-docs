@@ -1,0 +1,36 @@
+{
+	"figures": [
+		{
+			"id": "similar-triangles",
+			"shows": "A side view of a camera at the left with a vertical image plane one unit in front of it and a point at distance 4 and height 1, with the line from the camera to the point crossing the plane at height 0.25, and the two similar triangles drawn in two colours",
+			"caption": "The small triangle and the large one have the same shape, so the height on the plane is the height of the point divided by its distance.",
+			"alt": "A side view. The camera is a dot at the left. A vertical line one unit to its right is the image plane. A second point lies four units from the camera and one unit up. A straight line from the camera to it crosses the plane a quarter of a unit up, and the two triangles share the camera corner.",
+			"kind": "diagram",
+			"numbers": "Camera at (0, 0); image plane at distance 1 with the crossing at height 0.25; point at distance 4 and height 1; small triangle legs 1 and 0.25, large triangle legs 4 and 1; labels d = 4, y = 1, y' = y / d = 0.25; the half angle fov / 2 at the camera between the axis and the line to the top edge of the plane."
+		},
+		{
+			"id": "view-frustum",
+			"shows": "A view frustum in perspective: a pyramid with its top cut off, the camera at the tip, the near plane as a small rectangle, the far plane as a large rectangle and the four side planes between them, with the six sides labelled",
+			"caption": "The frustum has six sides: four from the field of view and the aspect ratio, and the near and far planes that cut the pyramid.",
+			"alt": "A pyramid with its top cut off, lying on its side. The camera sits at the cut-off tip. A small rectangle near the camera is the near plane and a large rectangle far from it is the far plane. Four sloped sides, left, right, top and bottom, join their edges. A line along the middle shows the view direction.",
+			"kind": "diagram",
+			"numbers": "Camera at the tip; near plane at distance 0.1 and far plane at distance 1000 drawn out of scale; field of view 60 degrees marked on a side view of the top side; labels near, far, left, right, top, bottom; the view direction along minus Z."
+		},
+		{
+			"id": "depth-curve",
+			"shows": "A graph of the stored depth against the distance from the camera for a near plane of 1 and a far plane of 100: a falling curve for reversed Z and a rising curve for the standard mapping, both steep near the camera and flat far away, crossing at depth 0.5 at a distance of about 2",
+			"caption": "Depth is not a straight line of the distance: most of its range is spent within the first few units.",
+			"alt": "A graph with distance from 0 to 100 along the bottom and depth from 0 to 1 up the side. A rising curve starts at 0 at distance 1 and bends flat near 1. A falling curve starts at 1 at distance 1 and bends flat near 0. They cross at depth one half, a little under distance 2.",
+			"kind": "diagram",
+			"numbers": "Standard depth f(d - n) / (d (f - n)) with n = 1, f = 100: points (1, 0), (2, 0.5051), (5, 0.8081), (10, 0.9091), (50, 0.9899), (100, 1); reversed is one minus that: (1, 1), (2, 0.4949), (5, 0.1919), (10, 0.0909), (50, 0.0101), (100, 0); mark where depth is one half, at d = 1.98."
+		},
+		{
+			"id": "ndc-to-pixels",
+			"shows": "The square of normalized device coordinates from -1 to 1 with +Y up, next to a window of 800 by 400 pixels with row 0 at the top, and arrows that carry the corners and the point (0.375, 0.25) to the pixel (550, 150)",
+			"caption": "The square from minus one to one is stretched over the window, and its up direction is turned into the rows that count downward.",
+			"alt": "Two rectangles side by side. The left one is a square with corners marked minus one and one, and a dot at 0.375, 0.25. The right one is a wide window with its top left corner marked 0, 0 and its bottom right corner 800, 400. A dot at 550, 150 sits above the middle. Arrows join the corners and the dots.",
+			"kind": "diagram",
+			"numbers": "NDC square with corners (-1, 1), (1, 1), (-1, -1), (1, -1) and the point (0.375, 0.25); window 800 by 400 with corners (0, 0), (800, 0), (0, 400), (800, 400) and the pixel (550, 150); formulas pixel x = (x * 0.5 + 0.5) * 800 and pixel y = (0.5 - y * 0.5) * 400."
+		}
+	]
+}

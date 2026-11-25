@@ -1,0 +1,509 @@
+{
+	"page": "make/quality",
+	"startsFrom": {
+		"tutorial": "make/menus"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"files": [
+				{
+					"from": "book:tutorials/make/quality/SettingsMenu.cpp",
+					"to": "Scripts/SettingsMenu.cpp"
+				}
+			],
+			"commands": [
+				{
+					"command": "scene.open",
+					"parameters": {
+						"scene": "Scenes/Main.stscene"
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AntiAliasing": true,
+							"AntiAliasingMethod": "Morphological"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/AntiAliasingMethod",
+							"equals": "Morphological"
+						}
+					]
+				},
+				{
+					"command": "component.set",
+					"entityName": "Post Process",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AntiAliasingMethod": "TAA",
+							"TAAPreset": "Original"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/values/AntiAliasingMethod",
+							"equals": "TAA"
+						},
+						{
+							"pointer": "/values/TAAPreset",
+							"equals": "Original"
+						}
+					]
+				},
+				{
+					"command": "project.settings",
+					"parameters": {
+						"section": "Renderer.Quality"
+					},
+					"checks": [
+						{
+							"pointer": "/sections",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "project.setSettings",
+					"parameters": {
+						"section": "Renderer.Quality",
+						"value": {
+							"Preset": "Low"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/value/Preset",
+							"equals": "Low"
+						}
+					]
+				},
+				{
+					"command": "project.setSettings",
+					"parameters": {
+						"section": "Renderer.Quality",
+						"value": {
+							"Preset": "High"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/value/Preset",
+							"equals": "High"
+						}
+					]
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"quality": "ultra"
+					}
+				},
+				{
+					"command": "viewport.setSettings",
+					"parameters": {
+						"quality": "project"
+					}
+				},
+				{
+					"command": "scene.save"
+				},
+				{
+					"command": "scene.open",
+					"parameters": {
+						"scene": "Scenes/MainMenu.stscene"
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "SettingsPanel"
+					},
+					"bind": {
+						"panel": "/entities/0"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "SettingsColumn"
+					},
+					"bind": {
+						"column": "/entities/0"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "horizontalLayout",
+						"name": "GraphicsRow",
+						"parent": {
+							"$ref": "column"
+						},
+						"size": [
+							480,
+							50
+						]
+					},
+					"bind": {
+						"row": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "toggle",
+						"name": "GraphicsLow",
+						"parent": {
+							"$ref": "row"
+						},
+						"text": "Low",
+						"size": [
+							115,
+							50
+						]
+					},
+					"bind": {
+						"GraphicsLow": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "toggle",
+						"name": "GraphicsMedium",
+						"parent": {
+							"$ref": "row"
+						},
+						"text": "Medium",
+						"size": [
+							115,
+							50
+						]
+					},
+					"bind": {
+						"GraphicsMedium": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "toggle",
+						"name": "GraphicsHigh",
+						"parent": {
+							"$ref": "row"
+						},
+						"text": "High",
+						"size": [
+							115,
+							50
+						]
+					},
+					"bind": {
+						"GraphicsHigh": "/entity"
+					}
+				},
+				{
+					"command": "ui.create",
+					"parameters": {
+						"type": "toggle",
+						"name": "GraphicsUltra",
+						"parent": {
+							"$ref": "row"
+						},
+						"text": "Ultra",
+						"size": [
+							115,
+							50
+						]
+					},
+					"bind": {
+						"GraphicsUltra": "/entity"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "GraphicsLow"
+						},
+						"component": "UIToggle",
+						"values": {
+							"Group": {
+								"$ref": "row"
+							},
+							"EventTarget": {
+								"$ref": "panel"
+							},
+							"IsOn": false
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "GraphicsMedium"
+						},
+						"component": "UIToggle",
+						"values": {
+							"Group": {
+								"$ref": "row"
+							},
+							"EventTarget": {
+								"$ref": "panel"
+							},
+							"IsOn": false
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "GraphicsHigh"
+						},
+						"component": "UIToggle",
+						"values": {
+							"Group": {
+								"$ref": "row"
+							},
+							"EventTarget": {
+								"$ref": "panel"
+							},
+							"IsOn": false
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": {
+							"$ref": "GraphicsUltra"
+						},
+						"component": "UIToggle",
+						"values": {
+							"Group": {
+								"$ref": "row"
+							},
+							"EventTarget": {
+								"$ref": "panel"
+							},
+							"IsOn": false
+						}
+					}
+				},
+				{
+					"command": "script.build",
+					"expect": {
+						"/success": {
+							"equals": true
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/diagnostics",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "script.setField",
+					"parameters": {
+						"entity": {
+							"$ref": "panel"
+						},
+						"class": "SettingsMenu",
+						"field": "GraphicsLow",
+						"value": {
+							"$ref": "GraphicsLow"
+						}
+					}
+				},
+				{
+					"command": "script.setField",
+					"parameters": {
+						"entity": {
+							"$ref": "panel"
+						},
+						"class": "SettingsMenu",
+						"field": "GraphicsMedium",
+						"value": {
+							"$ref": "GraphicsMedium"
+						}
+					}
+				},
+				{
+					"command": "script.setField",
+					"parameters": {
+						"entity": {
+							"$ref": "panel"
+						},
+						"class": "SettingsMenu",
+						"field": "GraphicsHigh",
+						"value": {
+							"$ref": "GraphicsHigh"
+						}
+					}
+				},
+				{
+					"command": "script.setField",
+					"parameters": {
+						"entity": {
+							"$ref": "panel"
+						},
+						"class": "SettingsMenu",
+						"field": "GraphicsUltra",
+						"value": {
+							"$ref": "GraphicsUltra"
+						}
+					}
+				},
+				{
+					"command": "prefab.apply",
+					"parameters": {
+						"entity": {
+							"$ref": "panel"
+						}
+					}
+				},
+				{
+					"command": "scene.save"
+				},
+				{
+					"command": "play.start",
+					"parameters": {
+						"paused": true,
+						"build": false
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 2
+					},
+					"expect": {
+						"/stepsRun": {
+							"equals": 2
+						}
+					}
+				},
+				{
+					"command": "component.get",
+					"parameters": {
+						"entity": {
+							"$ref": "GraphicsHigh"
+						},
+						"component": "UIToggle"
+					},
+					"checks": [
+						{
+							"pointer": "/values/IsOn",
+							"equals": true
+						}
+					]
+				},
+				{
+					"command": "component.get",
+					"parameters": {
+						"entity": {
+							"$ref": "GraphicsLow"
+						},
+						"component": "UIToggle"
+					},
+					"checks": [
+						{
+							"pointer": "/values/IsOn",
+							"equals": false
+						}
+					]
+				},
+				{
+					"command": "input.click",
+					"parameters": {
+						"entity": {
+							"$ref": "GraphicsLow"
+						},
+						"wait": false
+					}
+				},
+				{
+					"command": "play.step",
+					"parameters": {
+						"steps": 3
+					}
+				},
+				{
+					"command": "component.get",
+					"parameters": {
+						"entity": {
+							"$ref": "GraphicsLow"
+						},
+						"component": "UIToggle"
+					},
+					"checks": [
+						{
+							"pointer": "/values/IsOn",
+							"equals": true
+						}
+					]
+				},
+				{
+					"command": "component.get",
+					"parameters": {
+						"entity": {
+							"$ref": "GraphicsHigh"
+						},
+						"component": "UIToggle"
+					},
+					"checks": [
+						{
+							"pointer": "/values/IsOn",
+							"equals": false
+						}
+					]
+				},
+				{
+					"command": "play.stop"
+				},
+				{
+					"command": "graphics.resetPlayerOptions",
+					"checks": [
+						{
+							"pointer": "/reset",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "graphics.resetPlayerOptions",
+					"checks": [
+						{
+							"pointer": "/reset",
+							"length": 0
+						}
+					]
+				}
+			],
+			"endState": true
+		}
+	]
+}

@@ -1,0 +1,3 @@
+# Part review: `editor-ui/settings-windows`
+
+No corrections. Checked at the pin: `CreatePage`, `Register`'s refusals, the four registrations, the browser's Game and Export pages, its search and its two captions, the generic page's `Draw`, `Refresh` and `Apply`, the `Scene.Timing` fields and the undo step "Set Timing", the Graphics Quality page (five columns, default High, memory at 1920 x 1080 and 3840 x 2160, the Player pill and `graphics.resetPlayerOptions`), the collision layer names applied on Enter or on leaving the field, the Input Actions page ("In play", `inputActions.resetPlayerBindings`, `setMap`, `setAction`), `BindingCapture` and its 10 second timeout, the External Editor page, the Preferences dialog and the menus, and the test suites.

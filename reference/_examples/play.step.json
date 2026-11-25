@@ -1,0 +1,15 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"command": "play.step",
+	"parameters": {
+		"steps": 60
+	},
+	"result": {
+		"fixedSteps": 60,
+		"frameIndex": 60,
+		"paused": true,
+		"state": "Play",
+		"stepsRun": 60,
+		"time": 1.0000000521540642
+	}
+}

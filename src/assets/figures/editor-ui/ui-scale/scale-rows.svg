@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 372">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: 1 unit = 1 pixel of the editor. Two panels of 304 by 248 at y 52, x 16 and 400.
+     Scale 1: padding 8, frame 22 (text 14 + 4 + 4), row pitch 28: 8 rows. Scale 2: every size doubled: 4 rows.
+     The row pitch is marked in orange beside each panel; two lines of numbers below. H = 350 + 6 + 16. -->
+<rect class="plate line-muted" x="16" y="52" width="304" height="248"/>
+<rect class="ground line-muted" x="112" y="60" width="200" height="22" rx="4"/>
+<text class="small ink" x="24" y="76">Field 1</text>
+<text class="small ink" x="120" y="76">1.0</text>
+<rect class="ground line-muted" x="112" y="88" width="200" height="22" rx="4"/>
+<text class="small ink" x="24" y="104">Field 2</text>
+<text class="small ink" x="120" y="104">10.0</text>
+<rect class="ground line-muted" x="112" y="116" width="200" height="22" rx="4"/>
+<text class="small ink" x="24" y="132">Field 3</text>
+<text class="small ink" x="120" y="132">0.1</text>
+<rect class="ground line-muted" x="112" y="144" width="200" height="22" rx="4"/>
+<text class="small ink" x="24" y="160">Field 4</text>
+<text class="small ink" x="120" y="160">1.0</text>
+<rect class="ground line-muted" x="112" y="172" width="200" height="22" rx="4"/>
+<text class="small ink" x="24" y="188">Field 5</text>
+<text class="small ink" x="120" y="188">0.05</text>
+<rect class="ground line-muted" x="112" y="200" width="200" height="22" rx="4"/>
+<text class="small ink" x="24" y="216">Field 6</text>
+<text class="small ink" x="120" y="216">0.5</text>
+<rect class="ground line-muted" x="112" y="228" width="200" height="22" rx="4"/>
+<text class="small ink" x="24" y="244">Field 7</text>
+<text class="small ink" x="120" y="244">40.0</text>
+<rect class="ground line-muted" x="112" y="256" width="200" height="22" rx="4"/>
+<text class="small ink" x="24" y="272">Field 8</text>
+<text class="small ink" x="120" y="272">50.0</text>
+<line class="line-orange" x1="330" y1="60" x2="330" y2="88"/>
+<line class="line-orange" x1="326" y1="60" x2="334" y2="60"/>
+<line class="line-orange" x1="326" y1="88" x2="334" y2="88"/>
+<text class="orange bold" x="338" y="80">28</text>
+<text class="ink bold large" x="168" y="36" text-anchor="middle">UI scale 1</text>
+<text class="ink" x="168" y="326" text-anchor="middle">Text 14, frame padding 8 and 4, row 28</text>
+<text class="ink bold" x="168" y="350" text-anchor="middle">8 rows fit in 304 × 248</text>
+<rect class="plate line-muted" x="400" y="52" width="304" height="248"/>
+<rect class="ground line-muted" x="592" y="68" width="96" height="44" rx="8"/>
+<text class="small ink" transform="translate(416 100) scale(2)">Field 1</text>
+<text class="small ink" transform="translate(608 100) scale(2)">1.0</text>
+<rect class="ground line-muted" x="592" y="124" width="96" height="44" rx="8"/>
+<text class="small ink" transform="translate(416 156) scale(2)">Field 2</text>
+<text class="small ink" transform="translate(608 156) scale(2)">10.0</text>
+<rect class="ground line-muted" x="592" y="180" width="96" height="44" rx="8"/>
+<text class="small ink" transform="translate(416 212) scale(2)">Field 3</text>
+<text class="small ink" transform="translate(608 212) scale(2)">0.1</text>
+<rect class="ground line-muted" x="592" y="236" width="96" height="44" rx="8"/>
+<text class="small ink" transform="translate(416 268) scale(2)">Field 4</text>
+<text class="small ink" transform="translate(608 268) scale(2)">1.0</text>
+<line class="line-orange" x1="714" y1="68" x2="714" y2="124"/>
+<line class="line-orange" x1="710" y1="68" x2="718" y2="68"/>
+<line class="line-orange" x1="710" y1="124" x2="718" y2="124"/>
+<text class="orange bold" x="722" y="102">56</text>
+<text class="ink bold large" x="552" y="36" text-anchor="middle">UI scale 2</text>
+<text class="ink" x="552" y="326" text-anchor="middle">Text 28, frame padding 16 and 8, row 56</text>
+<text class="ink bold" x="552" y="350" text-anchor="middle">4 rows fit in 304 × 248</text>
+</svg>

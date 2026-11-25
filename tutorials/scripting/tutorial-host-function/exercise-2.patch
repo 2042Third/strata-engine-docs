@@ -1,0 +1,33 @@
+diff --git a/StrataTests/src/Physics/WindZoneTests.cpp b/StrataTests/src/Physics/WindZoneTests.cpp
+index edaa7d82..b21003bd 100644
+--- a/StrataTests/src/Physics/WindZoneTests.cpp
++++ b/StrataTests/src/Physics/WindZoneTests.cpp
+@@ -87,4 +87,28 @@ TEST_SUITE("Physics.WindZone")
+ 	}
+ 
++	TEST_CASE("Inactive zones and zones that lost their component add nothing")
++	{
++		Scene scene;
++		Entity calm = scene.CreateEntity("Calm");
++		calm.AddComponent<WindZoneComponent>().Strength = 12.0f;
++		Entity gust = scene.CreateEntity("Gust");
++		gust.AddComponent<WindZoneComponent>().Strength = 30.0f;
++
++		scene.OnRuntimeStart();
++		const IWindZones* wind = scene.GetService<IWindZones>();
++		REQUIRE(wind != nullptr);
++		StepScene(scene, 1);
++		CHECK(wind->GetStrengthAt(glm::vec3(0.0f)) == doctest::Approx(42.0f));
++
++		calm.SetActive(false);
++		StepScene(scene, 1);
++		CHECK(wind->GetStrengthAt(glm::vec3(0.0f)) == doctest::Approx(30.0f));
++
++		gust.RemoveComponent<WindZoneComponent>();
++		StepScene(scene, 1);
++		CHECK(wind->GetStrengthAt(glm::vec3(0.0f)) == doctest::Approx(0.0f));
++		scene.OnRuntimeStop();
++	}
++
+ 	TEST_CASE("A wind zone shows a sphere of its radius around its origin, and none for a zone without reach")
+ 	{

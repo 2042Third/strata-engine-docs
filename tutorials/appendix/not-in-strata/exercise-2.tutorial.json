@@ -1,0 +1,15 @@
+{
+	"page": "appendix/not-in-strata",
+	"startsFrom": { "template": "empty" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "component.list",
+					"checks": [ { "pointer": "/components/0/name", "contains": "e" } ] },
+				{ "command": "editor.commands",
+					"checks": [ { "pointer": "/commands/0/name", "contains": "." } ] }
+			]
+		}
+	]
+}

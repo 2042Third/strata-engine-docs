@@ -1,0 +1,17 @@
+{
+	"page": "make/play-test-debug",
+	"startsFrom": { "tutorial": "make/play-test-debug" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "play.simulate", "checks": [ { "pointer": "/state", "contains": "Simulate" } ] },
+				{ "command": "play.state", "checks": [ { "pointer": "/state", "contains": "Simulate" } ] },
+				{ "command": "component.get", "entityName": "Ball", "parameters": { "component": "Transform" },
+					"until": { "seconds": 20 }, "expect": { "/values/Translation/1": { "max": 0.6 } } },
+				{ "command": "entity.find", "parameters": { "tag": "Coin" }, "checks": [ { "pointer": "/entities", "length": 0 } ] },
+				{ "command": "play.stop" }
+			]
+		}
+	]
+}

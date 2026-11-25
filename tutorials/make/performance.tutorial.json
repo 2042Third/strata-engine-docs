@@ -1,0 +1,76 @@
+{
+	"page": "make/performance",
+	"startsFrom": { "template": "basic3d", "name": "FieldTest" },
+	"stages": [
+		{
+			"step": 1,
+			"files": [
+				{ "from": "book:tutorials/make/performance/FieldSpawner.cpp", "to": "Scripts/FieldSpawner.cpp" },
+				{ "from": "Samples/OpenWorld/Assets/Models/Nature/rock_largeA.glb", "to": "Assets/Models/rock_largeA.glb" }
+			],
+			"commands": [
+				{ "command": "asset.info", "parameters": { "asset": "Models/rock_largeA.glb", "bounds": false },
+					"until": { "seconds": 120 }, "expect": { "/imported": { "equals": true } } },
+				{ "command": "asset.place", "parameters": { "asset": "Models/rock_largeA.glb", "point": [0, 0, 0] }, "bind": { "rock": "/id" } },
+				{ "command": "prefab.create", "parameters": { "entities": [ { "$ref": "rock" } ], "path": "Prefabs/Rock.stprefab", "link": false } },
+				{ "command": "entity.delete", "parameters": { "entities": [ { "$ref": "rock" } ] } },
+				{ "command": "entity.create", "parameters": { "name": "Hut", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" },
+					"Transform": { "Translation": [148, 1.5, -14], "Scale": [10, 3, 4] } } } },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "entity.create", "parameters": { "name": "Field" }, "bind": { "field": "/id" } },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "field" }, "class": "FieldSpawner" } },
+				{ "command": "script.get", "parameters": { "entity": { "$ref": "field" } },
+					"checks": [ { "pointer": "/scripts/0/class", "equals": "FieldSpawner" }, { "pointer": "/scripts/0/fields/Spacing", "equals": 3 } ] },
+				{ "command": "play.start" },
+				{ "command": "play.state", "until": { "seconds": 60 }, "expect": { "/running/entityCount": { "min": 15000 } } },
+				{ "command": "viewport.setSettings", "parameters": { "stats": true }, "expect": { "/stats": { "equals": true } } },
+				{ "command": "camera.set", "parameters": { "position": [148, 1.6, -24], "target": [148, 1.2, 60] } },
+				{ "command": "editor.perf" }
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"commands": [
+				{ "command": "editor.perf", "until": { "seconds": 10 }, "expect": { "/frames": { "min": 1 } } }
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"commands": [
+				{ "command": "viewport.setSettings", "parameters": { "debugView": "lod" }, "expect": { "/debugView": { "equals": "lod" } } },
+				{ "command": "project.setSettings", "parameters": { "section": "Renderer.Quality", "value": { "Preset": "Low" } },
+					"expect": { "/value/Preset": { "equals": "Low" } } },
+				{ "command": "project.setSettings", "parameters": { "section": "Renderer.Quality", "value": { "Preset": "Ultra" } },
+					"expect": { "/value/Preset": { "equals": "Ultra" } } },
+				{ "command": "play.stop", "checks": [ { "pointer": "/state", "equals": "Edit" } ] },
+				{ "command": "prefab.instantiate", "parameters": { "prefab": "Prefabs/Rock.stprefab" }, "bind": { "copy": "/id" } },
+				{ "command": "entity.find", "parameters": { "name": "rock_largeA", "component": "MeshRenderer" }, "bind": { "mesh": "/entities/0" },
+					"checks": [ { "pointer": "/entities", "length": 1 } ] },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "mesh" }, "component": "MeshRenderer", "values": { "CastShadows": false } } },
+				{ "command": "prefab.apply", "parameters": { "entity": { "$ref": "mesh" }, "component": "MeshRenderer" } },
+				{ "command": "entity.delete", "parameters": { "entities": [ { "$ref": "copy" } ] } },
+				{ "command": "play.start" },
+				{ "command": "play.state", "until": { "seconds": 60 }, "expect": { "/running/entityCount": { "min": 15000 } } },
+				{ "command": "entity.find", "parameters": { "name": "rock_largeA", "component": "MeshRenderer", "limit": 1 }, "bind": { "spawned": "/entities/0" } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "spawned" }, "component": "MeshRenderer" },
+					"checks": [ { "pointer": "/values/CastShadows", "equals": false } ] }
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"commands": [
+				{ "command": "viewport.setSettings", "parameters": { "debugView": "streaming" }, "expect": { "/debugView": { "equals": "streaming" } } }
+			],
+			"endState": true
+		},
+		{
+			"step": 5,
+			"commands": [],
+			"endState": true
+		}
+	]
+}

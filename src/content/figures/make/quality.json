@@ -1,0 +1,62 @@
+{
+	"figures": [
+		{
+			"id": "aa-compare",
+			"shows": "The Physics Playground's crate pyramid and crate tower, still, under FXAA and under TAA with the Sharp preset, with the thin seams between the pyramid's crates cut out and enlarged",
+			"caption": "The same still view under FXAA (first) and TAA (second): look at the thin vertical seams between the crates of the pyramid's middle tiers. Under FXAA they are crisp dark and light lines, with light dots along the tiers' edges; under TAA they fade to faint lines and the dots are nearly gone. The outlines against the sky look the same. In a still frame the difference is about a pixel wide; in motion it grows.",
+			"alt": "Two pictures of a stepped pyramid of wooden crates and a crate tower on a tiled floor under a blue sky. In the first the thin vertical seams between the crates are crisp dark and light lines with light dots along the tiers' edges; in the second the seams are faint and the dots nearly gone. The outlines against the sky look the same in both.",
+			"kind": "scene",
+			"project": { "sample": "PhysicsPlayground" },
+			"camera": { "position": [-1, 3, -3], "target": [-9, 2, -12], "fov": 35 },
+			"size": [960, 540],
+			"quality": "high",
+			"crops": [
+				{ "name": "seams", "rect": [0.396, 0.352, 0.729, 0.778], "scale": 3 }
+			],
+			"variants": {
+				"fxaa": { "antiAliasing": "fxaa" },
+				"taa": { "antiAliasing": "taa" }
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "quality-compare",
+			"shows": "Rocks on a sand slope beyond the Showcase's asphalt with puddles in the low evening sun, at the Low preset and at the High preset: the rock's shadow, the near asphalt's shadow and the puddles' reflections",
+			"caption": "The same view at Low (first) and High (second). The long shadow of the large rock is blurred with a rounded tip at Low and crisp with a sharp tip at High. The shadow on the near asphalt changes too: at Low a dark band crosses the whole bottom of the picture, and at High it covers only the lower left. Only High has reflections: the two left puddles turn pale and the near one mirrors the sand slope. The right puddle in the sun stays orange in both.",
+			"alt": "Two pictures of rocks on a sand slope casting long shadows to the right, with puddles on asphalt in front. In the first, the large rock's shadow has soft edges and a rounded end. A dark shadow band crosses the whole near asphalt and the puddles are flat orange. In the second, the rock's shadow is sharp-edged with a pointed end and the near shadow covers only the lower left. The two left puddles are pale and mirror the sand slope, and the right puddle in the sun stays orange.",
+			"kind": "scene",
+			"project": { "sample": "Showcase" },
+			"camera": { "position": [14.5, 1.6, -12.5], "target": [-34, 1.75, 12.7], "fov": 14 },
+			"size": [1280, 720],
+			"variants": {
+				"low": { "quality": "low" },
+				"high": { "quality": "high" }
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "graphics-page",
+			"shows": "The Graphics Quality page of the project settings with the preset chips and the table of settings",
+			"caption": "The page: the four presets and Custom as chips, and a table that shows each setting under each preset.",
+			"alt": "The editor's project settings window on the Graphics Quality page, with five preset chips above a table of settings and their values.",
+			"kind": "editor",
+			"project": { "sample": "PhysicsPlayground" },
+			"editorWindow": {
+				"layout": "layouts/make-quality.ini",
+				"steps": [
+					{ "command": "editor.showPanel", "parameters": { "panel": "ProjectSettings" } }
+				]
+			},
+			"blocked": "No command opens Project Settings at a page: editor.showPanel takes only panel, scripts and search (StrataEditor/src/EditorLayer.cpp:288-292), EditorLayer::ShowProjectSettings(page) is reached only by clicks (InspectorPanel.cpp:1528, ViewportPanel.cpp:752), and the layout keeps no page, so a take shows the Game page (2026-11-24, pin 319075e3). A picture would need a command or an editor.showPanel parameter that selects the page Renderer.Quality, then a layout layouts/make-quality.ini of about 800 x 700 for the panel.",
+			"standIn": "graphics-page-drawing"
+		},
+		{
+			"id": "graphics-page-drawing",
+			"kind": "diagram",
+			"shows": "A drawing of the Graphics Quality page of Project Settings: the five preset chips with High chosen, and five of the table's rows with a column per preset, the High column marked and the Custom column's cells drawn as fields",
+			"caption": "A drawing of the Graphics Quality page with five of its sixteen settings; a line under the table names the omitted rows. High, the default, is chosen: its chip and its column are blue. The Custom column holds fields that start from High's values; edit one and the page switches to Custom.",
+			"alt": "A row of five rounded chips named Low, Medium, High, Ultra and Custom, with High in blue. Below them a table lists settings such as shadow cascades, shadowed point and spot lights, ambient occlusion, reflections and global illumination, with a column for each preset. The High column is blue, and the Custom column shows its values in boxes. A line under the table says that 11 more settings and two rows of memory are not drawn. An arrow points at the Custom column from a note that editing a cell there switches the page to Custom.",
+			"numbers": "Rows and values at the pin: Shadow cascades 3, 4, 5, 5; Shadowed point and spot lights 4, 16, 64, 256; Ambient occlusion quality Low, Medium, High, Ultra; Screen-space reflections Off, Checkerboard, Spatial, SpatialHigh; Global illumination Off, Off, High, High (Strata/src/Strata/Renderer/RendererQuality.cpp:40-57). Titles from the section's fields (:743-806); the default preset is High and the Custom fields default to High's values (:739-742). Chips and the table's columns Low, Medium, High, Ultra, Custom, the chosen one tinted, Custom's cells drawn as property widgets in secondary text under a named preset (StrataEditor/src/UI/GraphicsQualityPage.cpp:44, :364-386, :389-476). The table has sixteen cost rows (RendererQuality.cpp:164-179); the drawing shows five, in their order, and a line in secondary text under them names the 11 settings and the two memory rows (1920 x 1080 and 3840 x 2160) it omits (GraphicsQualityPage.cpp:478-500)."
+		}
+	]
+}

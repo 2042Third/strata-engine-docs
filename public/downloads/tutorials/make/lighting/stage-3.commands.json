@@ -1,0 +1,109 @@
+[
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Sky"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "SkyLight",
+			"values": {
+				"Source": "Procedural"
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "asset.import",
+		"parameters": {
+			"file": "<release folder>/Samples/ThirdPerson/Assets/Environment/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
+			"directory": "Environment"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Sky"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "SkyLight",
+			"values": {
+				"Source": "EnvironmentMap",
+				"EnvironmentMap": "Environment/kloofendal_48d_partly_cloudy_puresky_1k.hdr"
+			},
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "lighting.extractSun"
+	},
+	{
+		"command": "asset.setImportSettings",
+		"parameters": {
+			"asset": "Environment/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
+			"settings": {
+				"RemoveSun": true
+			}
+		}
+	},
+	{
+		"command": "lighting.applySkyPreset",
+		"parameters": {
+			"preset": "Clear"
+		},
+		"expect": {
+			"/sunIntensity": {
+				"equals": 120000
+			}
+		}
+	},
+	{
+		"command": "lighting.applySkyPreset",
+		"parameters": {
+			"preset": "Hazy"
+		},
+		"expect": {
+			"/preset": {
+				"equals": "Hazy"
+			}
+		}
+	},
+	{
+		"command": "lighting.applySkyPreset",
+		"parameters": {
+			"preset": "Overcast"
+		}
+	},
+	{
+		"command": "lighting.applySkyPreset",
+		"parameters": {
+			"preset": "GoldenHour"
+		}
+	},
+	{
+		"command": "lighting.applySkyPreset",
+		"parameters": {
+			"preset": "Clear"
+		},
+		"expect": {
+			"/sunIntensity": {
+				"equals": 120000
+			}
+		}
+	}
+]

@@ -1,0 +1,26 @@
+[
+	{
+		"command": "scene.save"
+	},
+	{
+		"command": "scene.new"
+	},
+	{
+		"command": "scene.saveAs",
+		"parameters": {
+			"path": "Scenes/Test.stscene"
+		}
+	},
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/Main.stscene"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ball"
+		}
+	}
+]

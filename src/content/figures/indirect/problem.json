@@ -1,0 +1,32 @@
+{
+	"figures": [
+		{
+			"id": "cornell-gi-off",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev project's Cornell box seen whole from in front of its open side, lit only by its glowing panel, drawn with global illumination and bloom off",
+			"caption": "The panel under the ceiling glows, but nothing receives its light. The back wall, the floor, the ceiling and the objects show the same dim gray, and the side walls the same dim red and green, darker only in the corners and under the sphere. The tall box, left of centre, and the sphere, right of centre, are nearly invisible against the back wall: that sameness is the point. Notice that the red and green walls tint nothing.",
+			"alt": "A room seen through its open front: a dark red wall on the left, a dark green wall on the right, and a gray floor, ceiling and back wall. A bright white panel hangs under the ceiling. A tall box and a sphere stand on the floor, barely visible, the same dim gray as the back wall. Only the sphere's faint rim and the dark patch under it stand out.",
+			"project": { "lookdev": true },
+			"scene": "Scenes/Cornell.stscene",
+			"camera": { "position": [0, 2.75, 8.5], "target": [0, 2.75, 0], "fov": 55 },
+			"size": [1280, 720],
+			"quality": "high",
+			"setup": [
+				{ "command": "component.set", "entityName": "Post Process", "parameters": { "component": "PostProcess", "values": { "GlobalIllumination": false, "Bloom": false } } }
+			],
+			"play": { "steps": 2 },
+			"expect": "complete"
+		},
+		{
+			"id": "cornell-reference",
+			"kind": "reference",
+			"publish": "lossless",
+			"shows": "An empty Cornell box computed by the page's path tracing with 4,096 samples per pixel and up to 8 bounces",
+			"caption": "The slow exact method's answer for a simpler room; the fine grain is noise. Notice the faint red floor near the left wall, the green floor near the right and the lit ceiling.",
+			"alt": "A slightly noisy room: a red left wall, a green right wall, a gray floor and back wall, a bright ceiling patch. The floor is faintly pink near the red wall and faintly green near the green wall; the ceiling is dimly lit.",
+			"reference": { "sketch": "indirect-problem-pathtracer.cpp", "arguments": ["picture"] },
+			"size": [320, 320]
+		}
+	]
+}

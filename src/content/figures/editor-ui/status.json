@@ -1,0 +1,507 @@
+{
+	"figures": [
+		{
+			"id": "status-bar",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The status bar along the window's bottom edge, after a script crashed: the assets pill yellow at its texture budget, the scripts and errors pills red; a crop enlarges the bar alone",
+			"caption": "Along the bottom edge, the status bar after a script crashed: the assets pill is yellow because its texture pool is full, and the scripts pill and the errors pill are red. The card over the Scene view is the crash's toast.",
+			"alt": "The editor window with a toast over the Scene view and the status bar along its bottom edge. From the left, the pills read Editing, the frame time with the frames per second and the jobs, and the ready and streaming assets with the texture memory in yellow. Then come Automation off, Scripts crashed in red, and the count of errors in red.",
+			"crops": [
+				{
+					"name": "bar",
+					"rect": [
+						0,
+						0.944,
+						1,
+						1
+					],
+					"scale": 2
+				}
+			],
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/status.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "asset.setBudget",
+						"parameters": {
+							"gpuTexturesMB": 56
+						}
+					},
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						},
+						"expect": {
+							"/success": {
+								"equals": true
+							}
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Coin",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cylinder"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.8,
+										-4
+									],
+									"Rotation": [
+										0.7071,
+										0,
+										0,
+										0.7071
+									],
+									"Scale": [
+										0.8,
+										0.1,
+										0.8
+									]
+								}
+							}
+						},
+						"bind": {
+							"c1": "/id"
+						}
+					},
+					{
+						"command": "script.add",
+						"parameters": {
+							"entity": {
+								"$ref": "c1"
+							},
+							"class": "Coin",
+							"fields": {
+								"DegreesPerSecond": 90
+							}
+						}
+					},
+					{
+						"command": "play.start",
+						"parameters": {
+							"build": false
+						}
+					},
+					{
+						"command": "script.status",
+						"until": {
+							"seconds": 60
+						},
+						"expect": {
+							"/lastFault/class": {
+								"equals": "Coin"
+							}
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					}
+				]
+			},
+			"variants": {
+				"full": {
+					"editorWindow": {
+						"layout": "layouts/status.ini",
+						"windowSize": [
+							960,
+							540
+						],
+						"steps": [
+							{
+								"command": "asset.setBudget",
+								"parameters": {
+									"gpuTexturesMB": 56
+								}
+							},
+							{
+								"command": "script.build",
+								"parameters": {
+									"wait": true
+								},
+								"expect": {
+									"/success": {
+										"equals": true
+									}
+								}
+							},
+							{
+								"command": "editor.wait",
+								"parameters": {
+									"frames": 600
+								}
+							},
+							{
+								"command": "entity.create",
+								"parameters": {
+									"name": "Coin",
+									"components": {
+										"MeshRenderer": {
+											"Mesh": "Builtin/Cylinder"
+										},
+										"Transform": {
+											"Translation": [
+												0,
+												0.8,
+												-4
+											],
+											"Rotation": [
+												0.7071,
+												0,
+												0,
+												0.7071
+											],
+											"Scale": [
+												0.8,
+												0.1,
+												0.8
+											]
+										}
+									}
+								},
+								"bind": {
+									"c1": "/id"
+								}
+							},
+							{
+								"command": "script.add",
+								"parameters": {
+									"entity": {
+										"$ref": "c1"
+									},
+									"class": "Coin",
+									"fields": {
+										"DegreesPerSecond": 90
+									}
+								}
+							},
+							{
+								"command": "play.start",
+								"parameters": {
+									"build": false
+								}
+							},
+							{
+								"command": "script.status",
+								"until": {
+									"seconds": 60
+								},
+								"expect": {
+									"/lastFault/class": {
+										"equals": "Coin"
+									}
+								}
+							},
+							{
+								"command": "editor.wait",
+								"parameters": {
+									"frames": 300
+								}
+							}
+						]
+					}
+				},
+				"compact": {
+					"editorWindow": {
+						"layout": "layouts/status-640.ini",
+						"windowSize": [
+							640,
+							360
+						],
+						"steps": [
+							{
+								"command": "asset.setBudget",
+								"parameters": {
+									"gpuTexturesMB": 44
+								}
+							},
+							{
+								"command": "script.build",
+								"parameters": {
+									"wait": true
+								},
+								"expect": {
+									"/success": {
+										"equals": true
+									}
+								}
+							},
+							{
+								"command": "editor.wait",
+								"parameters": {
+									"frames": 600
+								}
+							},
+							{
+								"command": "entity.create",
+								"parameters": {
+									"name": "Coin",
+									"components": {
+										"MeshRenderer": {
+											"Mesh": "Builtin/Cylinder"
+										},
+										"Transform": {
+											"Translation": [
+												0,
+												0.8,
+												-4
+											],
+											"Rotation": [
+												0.7071,
+												0,
+												0,
+												0.7071
+											],
+											"Scale": [
+												0.8,
+												0.1,
+												0.8
+											]
+										}
+									}
+								},
+								"bind": {
+									"c1": "/id"
+								}
+							},
+							{
+								"command": "script.add",
+								"parameters": {
+									"entity": {
+										"$ref": "c1"
+									},
+									"class": "Coin",
+									"fields": {
+										"DegreesPerSecond": 90
+									}
+								}
+							},
+							{
+								"command": "play.start",
+								"parameters": {
+									"build": false
+								}
+							},
+							{
+								"command": "script.status",
+								"until": {
+									"seconds": 60
+								},
+								"expect": {
+									"/lastFault/class": {
+										"equals": "Coin"
+									}
+								}
+							},
+							{
+								"command": "editor.wait",
+								"parameters": {
+									"frames": 300
+								}
+							}
+						]
+					},
+					"caption": "The same status bar in a narrow window: the pills show their compact texts, without the jobs and the texture memory.",
+					"alt": "The editor in a small window. Its status bar shows shorter pills: Editing, the frame time with the frames per second, the ready and streaming assets in yellow, Automation off, Scripts crashed and the count of errors, the last two in red."
+				}
+			},
+			"files": [
+				{
+					"from": "book:tutorials/make/first-script/CoinCrash.cpp",
+					"to": "Scripts/Coin.cpp"
+				}
+			]
+		},
+		{
+			"id": "automation-pill",
+			"kind": "editor",
+			"shows": "The automation pill in the status bar in two states: automation on with no client connected, and one client connected that sent its name",
+			"caption": "With one client connected, the pill turns blue and gives the name that the client sent.",
+			"alt": "The automation pill in the status bar, blue, reading Agent connected and the name of the agent.",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/status.ini",
+				"steps": [
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 120
+						}
+					}
+				],
+				"windowSize": [
+					960,
+					540
+				]
+			},
+			"variants": {
+				"no-agent": {
+					"editorWindow": {
+						"layout": "layouts/status.ini",
+						"steps": [
+							{
+								"command": "editor.wait",
+								"parameters": {
+									"frames": 120
+								}
+							}
+						],
+						"windowSize": [
+							960,
+							540
+						]
+					},
+					"automation": true,
+					"caption": "With automation on and no client connected, the pill is grey and gives the port the server listens on.",
+					"alt": "The automation pill in the status bar, grey, reading port, a port number, and no agent."
+				},
+				"named-agent": {
+					"editorWindow": {
+						"layout": "layouts/status.ini",
+						"steps": [
+							{
+								"command": "editor.wait",
+								"parameters": {
+									"frames": 120
+								}
+							}
+						],
+						"windowSize": [
+							960,
+							540
+						]
+					},
+					"automation": {
+						"client": "claude-code"
+					},
+					"caption": "With one client connected, the pill turns blue and gives the name that the client sent.",
+					"alt": "The automation pill in the status bar, blue, reading Agent connected and the name of the agent."
+				}
+			},
+			"crops": [
+				{
+					"name": "pill",
+					"rect": [
+						0.509,
+						0.963,
+						0.705,
+						1
+					],
+					"scale": 4
+				},
+				{
+					"name": "pill-short",
+					"rect": [
+						0.509,
+						0.963,
+						0.658,
+						1
+					],
+					"scale": 5
+				}
+			]
+		},
+		{
+			"id": "toasts",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "Three toasts stacked at the right of the Scene view: a failed script build, changes a command script discarded, and an asset it deleted, each with its links",
+			"caption": "Each toast has a thin bar in its level's color at its left edge: red on the top card for an error, yellow on the two below for warnings. Then come a title, a message and links to the Problems panel, the Console or the Activity panel.",
+			"alt": "The editor's Scene view with three toast cards stacked at its right. The first has a red bar and says that the script build failed, with the links Show Problems and Show in Console. The other two have yellow bars: a command script discarded unsaved changes, with Show in Activity and Recover, and a command script deleted an asset, with Show in Activity.",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/status-toasts.ini",
+				"windowSize": [
+					960,
+					600
+				],
+				"steps": [
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": false
+						}
+					},
+					{
+						"command": "script.status",
+						"until": {
+							"seconds": 300
+						},
+						"expect": {
+							"/build/running": {
+								"equals": false
+							},
+							"/build/last/errorCount": {
+								"min": 1
+							}
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Crate",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.5,
+										-6
+									]
+								}
+							}
+						}
+					},
+					{
+						"command": "scene.new",
+						"parameters": {
+							"force": true,
+							"template": "basic3d"
+						}
+					},
+					{
+						"command": "asset.delete",
+						"parameters": {
+							"asset": "Materials/Ground.stmat",
+							"force": true
+						}
+					}
+				]
+			},
+			"files": [
+				{
+					"from": "book:tutorials/make/first-script/CoinNoSemicolon.cpp",
+					"to": "Scripts/Coin.cpp"
+				}
+			]
+		}
+	]
+}

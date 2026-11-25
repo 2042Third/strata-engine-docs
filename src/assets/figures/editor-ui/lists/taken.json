@@ -1,0 +1,94 @@
+{
+	"files": {
+		"content-grid.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				797,
+				380
+			],
+			"figure": "content-grid",
+			"variant": null,
+			"crop": null,
+			"original": "74685b2e1c25c37e5cefcabdcce0878e0791fff790291e8fcbdd65c38f1181b6",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "ebb92913e07ff0e2b7b4356d6c85c6c11880cfff50c842f1790739e4b8f0e2aa"
+		},
+		"hierarchy-expanded.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				300,
+				642
+			],
+			"figure": "hierarchy-expanded",
+			"variant": null,
+			"crop": null,
+			"original": "10ef712e556d31731af1a35b3b9f5bf0795c116b31a200e3a3e6c741a5bcf9b6",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "76dc91901afb13adb5b57698a79d9537033436b77628021bf9ff85ecbec625d4"
+		},
+		"hierarchy-searched.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				300,
+				362
+			],
+			"figure": "hierarchy-searched",
+			"variant": null,
+			"crop": null,
+			"original": "d059551ba2362abebe1a2e849d49d231084ec4237e92ae60cccbb1b6a6b5d97e",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "6643c608a8cf8f209eaa4eb6209a794772a03b9012f3de1824c56cbae665272e"
+		}
+	}
+}

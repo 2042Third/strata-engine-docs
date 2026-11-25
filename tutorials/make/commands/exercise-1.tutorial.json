@@ -1,0 +1,2377 @@
+{
+	"page": "make/commands",
+	"startsFrom": {
+		"tutorial": "make/project-coin-run"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"files": [
+				{
+					"from": "book:tutorials/make/commands/scatter.json",
+					"to": "scatter.json"
+				}
+			],
+			"commands": [
+				{
+					"command": "prefab.instantiate",
+					"parameters": {
+						"prefab": "Prefabs/Coin.stprefab",
+						"instances": [
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-19,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-17,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-15,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-13,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-11,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-9,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-7,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-5,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-3,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-1,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											1,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											3,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											5,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											7,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											9,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											11,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											13,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											15,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											17,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											19,
+											0.8,
+											-9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-19,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-17,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-15,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-13,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-11,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-9,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-7,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-5,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-3,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-1,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											1,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											3,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											5,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											7,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											9,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											11,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											13,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											15,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											17,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											19,
+											0.8,
+											-7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-19,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-17,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-15,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-13,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-11,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-9,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-7,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-5,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-3,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-1,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											1,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											3,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											5,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											7,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											9,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											11,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											13,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											15,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											17,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											19,
+											0.8,
+											-5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-19,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-17,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-15,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-13,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-11,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-9,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-7,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-5,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-3,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-1,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											1,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											3,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											5,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											7,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											9,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											11,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											13,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											15,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											17,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											19,
+											0.8,
+											-3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-19,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-17,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-15,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-13,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-11,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-9,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-7,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-5,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-3,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-1,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											1,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											3,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											5,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											7,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											9,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											11,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											13,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											15,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											17,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											19,
+											0.8,
+											-1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-19,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-17,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-15,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-13,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-11,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-9,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-7,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-5,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-3,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-1,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											1,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											3,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											5,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											7,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											9,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											11,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											13,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											15,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											17,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											19,
+											0.8,
+											1
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-19,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-17,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-15,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-13,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-11,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-9,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-7,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-5,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-3,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-1,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											1,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											3,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											5,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											7,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											9,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											11,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											13,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											15,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											17,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											19,
+											0.8,
+											3
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-19,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-17,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-15,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-13,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-11,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-9,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-7,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-5,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-3,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-1,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											1,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											3,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											5,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											7,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											9,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											11,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											13,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											15,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											17,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											19,
+											0.8,
+											5
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-19,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-17,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-15,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-13,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-11,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-9,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-7,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-5,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-3,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-1,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											1,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											3,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											5,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											7,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											9,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											11,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											13,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											15,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											17,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											19,
+											0.8,
+											7
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-19,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-17,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-15,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-13,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-11,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-9,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-7,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-5,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-3,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											-1,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											1,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											3,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											5,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											7,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											9,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											11,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											13,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											15,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											17,
+											0.8,
+											9
+										]
+									}
+								}
+							},
+							{
+								"components": {
+									"Transform": {
+										"Translation": [
+											19,
+											0.8,
+											9
+										]
+									}
+								}
+							}
+						]
+					},
+					"bind": {
+						"first": "/instances/0/id",
+						"second": "/instances/1/id",
+						"last": "/instances/199/id"
+					},
+					"checks": [
+						{
+							"pointer": "/instances",
+							"length": 200
+						}
+					]
+				},
+				{
+					"command": "entity.get",
+					"parameters": {
+						"entity": {
+							"$ref": "first"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/name",
+							"equals": "Coin (1)"
+						},
+						{
+							"pointer": "/components/Transform/Translation/0",
+							"approx": -19,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/components/Transform/Translation/1",
+							"approx": 0.8,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/components/Transform/Translation/2",
+							"approx": -9,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "entity.get",
+					"parameters": {
+						"entity": {
+							"$ref": "second"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/name",
+							"equals": "Coin (2)"
+						},
+						{
+							"pointer": "/components/Transform/Translation/0",
+							"approx": -17,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/components/Transform/Translation/1",
+							"approx": 0.8,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/components/Transform/Translation/2",
+							"approx": -9,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "entity.get",
+					"parameters": {
+						"entity": {
+							"$ref": "last"
+						}
+					},
+					"checks": [
+						{
+							"pointer": "/name",
+							"equals": "Coin"
+						},
+						{
+							"pointer": "/components/Transform/Translation/0",
+							"approx": 19,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/components/Transform/Translation/1",
+							"approx": 0.8,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/components/Transform/Translation/2",
+							"approx": 9,
+							"tolerance": 0.001
+						}
+					]
+				},
+				{
+					"command": "editor.status",
+					"parameters": {},
+					"checks": [
+						{
+							"pointer": "/undo/redo",
+							"equals": ""
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"tag": "Coin"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 200
+						}
+					]
+				},
+				{
+					"command": "edit.undo"
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"tag": "Coin"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 0
+						}
+					]
+				},
+				{
+					"command": "edit.redo"
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"tag": "Coin"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 200
+						}
+					]
+				}
+			]
+		}
+	]
+}

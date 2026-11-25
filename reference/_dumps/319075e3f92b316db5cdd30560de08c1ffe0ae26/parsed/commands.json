@@ -1,0 +1,1634 @@
+{
+	"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+	"registrations": [
+		{
+			"name": "animation.createController",
+			"file": "StrataEditor/src/Editor/EditorAnimationCommands.cpp",
+			"line": 153,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "animation.info",
+			"file": "StrataEditor/src/Editor/EditorAnimationCommands.cpp",
+			"line": 218,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": true,
+			"mayDefer": false
+		},
+		{
+			"name": "animation.preview",
+			"file": "StrataEditor/src/Editor/EditorAnimationCommands.cpp",
+			"line": 286,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "animation.setController",
+			"file": "StrataEditor/src/Editor/EditorAnimationCommands.cpp",
+			"line": 187,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "asset.createFolder",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 972,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "asset.delete",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 930,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "asset.deleteFolder",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 1019,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "asset.findReferences",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 907,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": true,
+			"mayDefer": false
+		},
+		{
+			"name": "asset.import",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 788,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "asset.info",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 703,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": true,
+			"mayDefer": true
+		},
+		{
+			"name": "asset.list",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 637,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": true,
+			"mayDefer": false
+		},
+		{
+			"name": "asset.move",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 878,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "asset.moveFolder",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 992,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "asset.place",
+			"file": "StrataEditor/src/Editor/Commands/PlacementCommands.cpp",
+			"line": 463,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "asset.reimport",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 1061,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "asset.setBudget",
+			"file": "StrataEditor/src/Editor/EditorStreamingCommands.cpp",
+			"line": 218,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "asset.setImportSettings",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 1084,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "asset.stats",
+			"file": "StrataEditor/src/Editor/EditorStreamingCommands.cpp",
+			"line": 164,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "asset.types",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 672,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "audio.state",
+			"file": "StrataEditor/src/Editor/Commands/AudioCommands.cpp",
+			"line": 36,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "camera.focus",
+			"file": "StrataEditor/src/Editor/EditorViewportCommands.cpp",
+			"line": 1081,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "camera.get",
+			"file": "StrataEditor/src/Editor/EditorViewportCommands.cpp",
+			"line": 1008,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "camera.set",
+			"file": "StrataEditor/src/Editor/EditorViewportCommands.cpp",
+			"line": 1016,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "component.add",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 639,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "component.get",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 700,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "component.list",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 613,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "component.remove",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 668,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "component.set",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 721,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "edit.history",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 402,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "edit.redo",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 391,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "edit.undo",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 379,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "editor.activity",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 412,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "editor.activity.export",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 504,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "editor.batch",
+			"file": "StrataEditor/src/Editor/Commands/BatchCommands.cpp",
+			"line": 34,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "editor.commands",
+			"file": "StrataEditor/src/Editor/EditorCommands.cpp",
+			"line": 66,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "editor.perf",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 927,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "editor.quit",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 871,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "editor.recentProjects",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 838,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "editor.removeRecentProject",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 857,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "editor.screenshot",
+			"file": "StrataEditor/src/EditorLayer.cpp",
+			"line": 332,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "editor.showDialog",
+			"file": "StrataEditor/src/EditorLayer.cpp",
+			"line": 389,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "editor.showPanel",
+			"file": "StrataEditor/src/EditorLayer.cpp",
+			"line": 276,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "editor.status",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 748,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "editor.wait",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 898,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "entity.copy",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 288,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "entity.create",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 170,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "entity.delete",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 196,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "entity.dropToGround",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 554,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "entity.duplicate",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 220,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "entity.find",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 401,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "entity.get",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 363,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "entity.paste",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 305,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "entity.rename",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 514,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "entity.setActive",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 530,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "entity.setParent",
+			"file": "StrataEditor/src/Editor/Commands/EntityCommands.cpp",
+			"line": 459,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "graphics.resetPlayerOptions",
+			"file": "StrataEditor/src/Editor/EditorGraphicsCommands.cpp",
+			"line": 16,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "input.action",
+			"file": "StrataEditor/src/Editor/EditorInputCommands.cpp",
+			"line": 761,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "input.click",
+			"file": "StrataEditor/src/Editor/EditorInputCommands.cpp",
+			"line": 1210,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "input.gamepadAxis",
+			"file": "StrataEditor/src/Editor/EditorInputCommands.cpp",
+			"line": 960,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "input.gamepadButton",
+			"file": "StrataEditor/src/Editor/EditorInputCommands.cpp",
+			"line": 925,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "input.key",
+			"file": "StrataEditor/src/Editor/EditorInputCommands.cpp",
+			"line": 826,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "input.mouseButton",
+			"file": "StrataEditor/src/Editor/EditorInputCommands.cpp",
+			"line": 860,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "input.mouseMove",
+			"file": "StrataEditor/src/Editor/EditorInputCommands.cpp",
+			"line": 890,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "input.releaseAll",
+			"file": "StrataEditor/src/Editor/EditorInputCommands.cpp",
+			"line": 1035,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "input.scroll",
+			"file": "StrataEditor/src/Editor/EditorInputCommands.cpp",
+			"line": 908,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "input.sequence",
+			"file": "StrataEditor/src/Editor/EditorInputCommands.cpp",
+			"line": 679,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "input.state",
+			"file": "StrataEditor/src/Editor/EditorInputCommands.cpp",
+			"line": 1060,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "input.type",
+			"file": "StrataEditor/src/Editor/EditorInputCommands.cpp",
+			"line": 1343,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "inputActions.resetPlayerBindings",
+			"file": "StrataEditor/src/Editor/EditorInputActionsCommands.cpp",
+			"line": 461,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "inputActions.setAction",
+			"file": "StrataEditor/src/Editor/EditorInputActionsCommands.cpp",
+			"line": 256,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "inputActions.setMap",
+			"file": "StrataEditor/src/Editor/EditorInputActionsCommands.cpp",
+			"line": 171,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "lighting.applySkyPreset",
+			"file": "StrataEditor/src/Editor/EditorLightingCommands.cpp",
+			"line": 1180,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "lighting.bakeProbes",
+			"file": "StrataEditor/src/Editor/EditorLightingCommands.cpp",
+			"line": 1099,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "lighting.extractSun",
+			"file": "StrataEditor/src/Editor/EditorLightingCommands.cpp",
+			"line": 1204,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "lighting.makeAreaLight",
+			"file": "StrataEditor/src/Editor/EditorLightingCommands.cpp",
+			"line": 1283,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "log.read",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 999,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "material.create",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 1146,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "material.get",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 1120,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": true,
+			"mayDefer": false
+		},
+		{
+			"name": "material.set",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 1178,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "physics.setDetailedStats",
+			"file": "StrataEditor/src/Editor/EditorWorldCommands.cpp",
+			"line": 1076,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "physics.stats",
+			"file": "StrataEditor/src/Editor/EditorWorldCommands.cpp",
+			"line": 1036,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "play.pause",
+			"file": "StrataEditor/src/Editor/Commands/PlayCommands.cpp",
+			"line": 175,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "play.simulate",
+			"file": "StrataEditor/src/Editor/Commands/PlayCommands.cpp",
+			"line": 159,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "play.start",
+			"file": "StrataEditor/src/Editor/Commands/PlayCommands.cpp",
+			"line": 131,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "play.state",
+			"file": "StrataEditor/src/Editor/Commands/PlayCommands.cpp",
+			"line": 258,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "play.step",
+			"file": "StrataEditor/src/Editor/Commands/PlayCommands.cpp",
+			"line": 191,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "play.stop",
+			"file": "StrataEditor/src/Editor/Commands/PlayCommands.cpp",
+			"line": 168,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "prefab.apply",
+			"file": "StrataEditor/src/Editor/EditorPrefabCommands.cpp",
+			"line": 436,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "prefab.create",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 1213,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "prefab.instantiate",
+			"file": "StrataEditor/src/Editor/EditorPrefabCommands.cpp",
+			"line": 341,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "prefab.revert",
+			"file": "StrataEditor/src/Editor/EditorPrefabCommands.cpp",
+			"line": 585,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "prefab.select",
+			"file": "StrataEditor/src/Editor/EditorPrefabCommands.cpp",
+			"line": 676,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "prefab.status",
+			"file": "StrataEditor/src/Editor/EditorPrefabCommands.cpp",
+			"line": 395,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": true,
+			"mayDefer": false
+		},
+		{
+			"name": "prefab.unpack",
+			"file": "StrataEditor/src/Editor/EditorPrefabCommands.cpp",
+			"line": 647,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "preferences.get",
+			"file": "StrataEditor/src/Editor/EditorPreferencesCommands.cpp",
+			"line": 77,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "preferences.save",
+			"file": "StrataEditor/src/Editor/EditorPreferencesCommands.cpp",
+			"line": 158,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "preferences.set",
+			"file": "StrataEditor/src/Editor/EditorPreferencesCommands.cpp",
+			"line": 121,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "project.cancelExport",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 555,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "project.close",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 346,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "project.create",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 272,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "project.export",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 457,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": true,
+			"mayDefer": true
+		},
+		{
+			"name": "project.exportStatus",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 538,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "project.info",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 246,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "project.open",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 314,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "project.openSample",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 388,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "project.samples",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 369,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "project.save",
+			"file": "StrataEditor/src/Editor/EditorProjectSettingsCommands.cpp",
+			"line": 444,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "project.setCollisionLayers",
+			"file": "StrataEditor/src/Editor/EditorProjectSettingsCommands.cpp",
+			"line": 323,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "project.setExportSettings",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 567,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "project.setGameInfo",
+			"file": "StrataEditor/src/Editor/EditorProjectSettingsCommands.cpp",
+			"line": 379,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "project.setSettings",
+			"file": "StrataEditor/src/Editor/EditorProjectSettingsCommands.cpp",
+			"line": 259,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "project.setStartScene",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 431,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "project.settings",
+			"file": "StrataEditor/src/Editor/EditorProjectSettingsCommands.cpp",
+			"line": 207,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "project.templates",
+			"file": "StrataEditor/src/Editor/EditorAssetCommands.cpp",
+			"line": 254,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "scene.hierarchy",
+			"file": "StrataEditor/src/Editor/EditorSceneCommands.cpp",
+			"line": 341,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "scene.info",
+			"file": "StrataEditor/src/Editor/EditorSceneCommands.cpp",
+			"line": 322,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "scene.loadAdditive",
+			"file": "StrataEditor/src/Editor/EditorSceneCommands.cpp",
+			"line": 458,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "scene.loadStatus",
+			"file": "StrataEditor/src/Editor/EditorSceneCommands.cpp",
+			"line": 429,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "scene.new",
+			"file": "StrataEditor/src/Editor/EditorSceneCommands.cpp",
+			"line": 379,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "scene.open",
+			"file": "StrataEditor/src/Editor/EditorSceneCommands.cpp",
+			"line": 408,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "scene.raycast",
+			"file": "StrataEditor/src/Editor/Commands/PlacementCommands.cpp",
+			"line": 392,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "scene.recover",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 604,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": true,
+			"mayDefer": true
+		},
+		{
+			"name": "scene.recoveryStatus",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 574,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": true,
+			"mayDefer": true
+		},
+		{
+			"name": "scene.save",
+			"file": "StrataEditor/src/Editor/EditorSceneCommands.cpp",
+			"line": 509,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "scene.saveAs",
+			"file": "StrataEditor/src/Editor/EditorSceneCommands.cpp",
+			"line": 537,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "scene.setSettings",
+			"file": "StrataEditor/src/Editor/EditorSceneCommands.cpp",
+			"line": 569,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "scene.unloadAdditive",
+			"file": "StrataEditor/src/Editor/EditorSceneCommands.cpp",
+			"line": 477,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "script.add",
+			"file": "StrataEditor/src/Editor/EditorScriptCommands.cpp",
+			"line": 572,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "script.build",
+			"file": "StrataEditor/src/Editor/EditorScriptCommands.cpp",
+			"line": 314,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "script.create",
+			"file": "StrataEditor/src/Editor/EditorScriptCommands.cpp",
+			"line": 417,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "script.get",
+			"file": "StrataEditor/src/Editor/EditorScriptCommands.cpp",
+			"line": 283,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "script.init",
+			"file": "StrataEditor/src/Editor/EditorScriptCommands.cpp",
+			"line": 394,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "script.list",
+			"file": "StrataEditor/src/Editor/EditorScriptCommands.cpp",
+			"line": 258,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "script.load",
+			"file": "StrataEditor/src/Editor/EditorScriptCommands.cpp",
+			"line": 369,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "script.open",
+			"file": "StrataEditor/src/Editor/EditorScriptCommands.cpp",
+			"line": 514,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "script.reload",
+			"file": "StrataEditor/src/Editor/EditorScriptCommands.cpp",
+			"line": 355,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "script.remove",
+			"file": "StrataEditor/src/Editor/EditorScriptCommands.cpp",
+			"line": 614,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "script.setExternalEditor",
+			"file": "StrataEditor/src/Editor/EditorScriptCommands.cpp",
+			"line": 540,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "script.setField",
+			"file": "StrataEditor/src/Editor/EditorScriptCommands.cpp",
+			"line": 635,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "script.status",
+			"file": "StrataEditor/src/Editor/EditorScriptCommands.cpp",
+			"line": 247,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "selection.get",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 319,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "selection.set",
+			"file": "StrataEditor/src/Editor/EditorStateCommands.cpp",
+			"line": 333,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "ui.create",
+			"file": "StrataEditor/src/Editor/EditorUICommands.cpp",
+			"line": 224,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "ui.hitTest",
+			"file": "StrataEditor/src/Editor/EditorUICommands.cpp",
+			"line": 414,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "ui.layout",
+			"file": "StrataEditor/src/Editor/EditorUICommands.cpp",
+			"line": 333,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "viewport.capture",
+			"file": "StrataEditor/src/Editor/EditorViewportCommands.cpp",
+			"line": 1226,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "viewport.getSettings",
+			"file": "StrataEditor/src/Editor/EditorViewportCommands.cpp",
+			"line": 1101,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "viewport.setSettings",
+			"file": "StrataEditor/src/Editor/EditorViewportCommands.cpp",
+			"line": 1118,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "world.cook",
+			"file": "StrataEditor/src/Editor/EditorWorldCommands.cpp",
+			"line": 445,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "world.create",
+			"file": "StrataEditor/src/Editor/EditorWorldCommands.cpp",
+			"line": 577,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "world.edit",
+			"file": "StrataEditor/src/Editor/EditorWorldCommands.cpp",
+			"line": 830,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "world.info",
+			"file": "StrataEditor/src/Editor/EditorWorldCommands.cpp",
+			"line": 988,
+			"kind": "Query",
+			"results": "Content",
+			"waitsForAssets": true,
+			"mayDefer": false
+		},
+		{
+			"name": "world.loadCells",
+			"file": "StrataEditor/src/Editor/EditorWorldCommands.cpp",
+			"line": 888,
+			"kind": "Session",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "world.moveEntities",
+			"file": "StrataEditor/src/Editor/EditorWorldCommands.cpp",
+			"line": 951,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": false
+		},
+		{
+			"name": "world.setLayers",
+			"file": "StrataEditor/src/Editor/EditorWorldCommands.cpp",
+			"line": 670,
+			"kind": "Edit",
+			"results": "Content",
+			"waitsForAssets": false,
+			"mayDefer": true
+		},
+		{
+			"name": "world.status",
+			"file": "StrataEditor/src/Editor/EditorWorldCommands.cpp",
+			"line": 814,
+			"kind": "Query",
+			"results": "Session",
+			"waitsForAssets": false,
+			"mayDefer": false
+		}
+	],
+	"toolsets": {
+		"core": [
+			"editor.status",
+			"editor.batch",
+			"log.read",
+			"project.create",
+			"project.open",
+			"scene.open",
+			"scene.save",
+			"scene.info",
+			"scene.hierarchy",
+			"entity.create",
+			"entity.get",
+			"entity.find",
+			"entity.delete",
+			"component.add",
+			"component.set",
+			"prefab.instantiate",
+			"asset.list",
+			"asset.info",
+			"asset.import",
+			"material.create",
+			"script.build",
+			"script.status",
+			"play.start",
+			"play.stop",
+			"play.step",
+			"input.sequence",
+			"viewport.capture"
+		],
+		"exact": [
+			[
+				"asset.stats",
+				"streaming"
+			],
+			[
+				"asset.setBudget",
+				"streaming"
+			],
+			[
+				"asset.place",
+				"scene"
+			],
+			[
+				"editor.perf",
+				"perf"
+			],
+			[
+				"project.settings",
+				"settings"
+			],
+			[
+				"project.setSettings",
+				"settings"
+			],
+			[
+				"project.setCollisionLayers",
+				"settings"
+			],
+			[
+				"project.setGameInfo",
+				"settings"
+			],
+			[
+				"project.save",
+				"settings"
+			]
+		],
+		"prefixes": [
+			[
+				"scene.",
+				"scene"
+			],
+			[
+				"entity.",
+				"scene"
+			],
+			[
+				"component.",
+				"scene"
+			],
+			[
+				"prefab.",
+				"scene"
+			],
+			[
+				"selection.",
+				"scene"
+			],
+			[
+				"edit.",
+				"scene"
+			],
+			[
+				"lighting.",
+				"scene"
+			],
+			[
+				"asset.",
+				"assets"
+			],
+			[
+				"material.",
+				"assets"
+			],
+			[
+				"project.",
+				"assets"
+			],
+			[
+				"play.",
+				"play"
+			],
+			[
+				"input.",
+				"play"
+			],
+			[
+				"audio.",
+				"play"
+			],
+			[
+				"script.",
+				"scripts"
+			],
+			[
+				"animation.",
+				"animation"
+			],
+			[
+				"viewport.",
+				"viewport"
+			],
+			[
+				"camera.",
+				"viewport"
+			],
+			[
+				"editor.",
+				"editor"
+			],
+			[
+				"log.",
+				"editor"
+			],
+			[
+				"ui.",
+				"ui"
+			],
+			[
+				"world.",
+				"world"
+			],
+			[
+				"physics.",
+				"world"
+			],
+			[
+				"preferences.",
+				"settings"
+			],
+			[
+				"inputActions.",
+				"settings"
+			],
+			[
+				"graphics.",
+				"settings"
+			]
+		],
+		"known": [
+			{
+				"name": "core",
+				"description": "Making and testing a game: project, scene, entities, components, prefabs, assets, scripts, play, input sequences, captures"
+			},
+			{
+				"name": "scene",
+				"description": "Scenes, entities, components, prefabs, baked lighting, the selection and undo"
+			},
+			{
+				"name": "assets",
+				"description": "Assets, materials, imports, projects and exports"
+			},
+			{
+				"name": "play",
+				"description": "Play mode, stepping, simulated input and sound"
+			},
+			{
+				"name": "scripts",
+				"description": "Script classes, builds, fields and the external code editor"
+			},
+			{
+				"name": "animation",
+				"description": "Animation controllers and previews"
+			},
+			{
+				"name": "viewport",
+				"description": "The editor camera, view settings and captures"
+			},
+			{
+				"name": "streaming",
+				"description": "Asset residency statistics and budgets"
+			},
+			{
+				"name": "perf",
+				"description": "Where frames go: the frame profiler"
+			},
+			{
+				"name": "editor",
+				"description": "The editor itself: status, activity, panels, dialogs, logs"
+			},
+			{
+				"name": "ui",
+				"description": "Game UI: canvases and widgets"
+			},
+			{
+				"name": "world",
+				"description": "Worlds, their cells, and physics statistics"
+			},
+			{
+				"name": "settings",
+				"description": "Project settings, graphics quality, collision layers, input actions, the game's identity and the editor's preferences"
+			}
+		]
+	}
+}

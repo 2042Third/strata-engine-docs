@@ -1,0 +1,3 @@
+# Part review: `worlds/streamer`
+
+No corrections. Checked at the pin: `WorldStreamingSource` and its defaults, `SetSources` dropping sources that are no number, the distance scale's range 0.1 to 10, `SourcesMoved` and `c_SourceEpsilon`, the keep radius, the grid map and the four first loads in both facings, `AdoptLoadedCells` and `AdoptCells` skipping unloading and failed sub-scenes, `WorldStreamingStats`, the test cases of both World.Streaming files (0.005 m and 0.02 m, 30 frames before the retry, the swing between x = 6 and 16 and the one unload at x = -20), Perf.World, the toy's and the exercise's outputs, and every callout against the quoted lines.

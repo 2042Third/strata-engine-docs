@@ -1,0 +1,31 @@
+{
+	"page": "make/patterns",
+	"startsFrom": { "tutorial": "make/first-script" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "script.create", "parameters": { "class": "BulletPool" } },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] }
+			]
+		},
+		{
+			"step": 2,
+			"files": [ { "from": "book:tutorials/make/patterns/exercise-2/BulletPool.cpp", "to": "Scripts/BulletPool.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "entity.create", "bind": { "gun": "/id" }, "parameters": { "name": "Gun" } },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "gun" }, "class": "BulletPool" } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 60 }, "expect": { "/stepsRun": { "equals": 60 } } },
+				{ "command": "entity.find", "parameters": { "name": "Bullet" },
+					"checks": [ { "pointer": "/entities", "length": 20 } ] },
+				{ "command": "play.stop" },
+				{ "command": "entity.find", "parameters": { "name": "Bullet" },
+					"checks": [ { "pointer": "/entities", "length": 0 } ] }
+			]
+		}
+	]
+}

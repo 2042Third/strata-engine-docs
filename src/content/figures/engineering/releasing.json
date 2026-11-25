@@ -1,0 +1,14 @@
+{
+	"figures": [
+		{
+			"id": "archive-folder",
+			"kind": "tool",
+			"shows": "The folder of a release archive, unpacked, in the system's file browser",
+			"caption": "The three programs, the marker and the guides lie side by side at the top of one folder, as the install test expects.",
+			"alt": "A file browser window that shows the unpacked folder of a release. Its entries are three programs, a marker file, two text files and the folders for samples, script kit, manual and skills.",
+			"takenBy": "owner",
+			"waitsFor": "tier 3: the unpacked release folder in a file browser; no debug view shows a folder of the operating system",
+			"noStandIn": "The file tree just above the paragraph lists every entry at the top of the unpacked folder, taken from the layout comment of the packaging file, so a picture would add no fact."
+		}
+	]
+}

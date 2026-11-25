@@ -1,0 +1,589 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"engineCommit": "822a7a46dbcd",
+	"command": "project.settings",
+	"result": {
+		"project": {
+			"alwaysInclude": [],
+			"game": {
+				"company": "",
+				"copyright": "",
+				"icon": null,
+				"title": "",
+				"version": "1.0.0"
+			},
+			"loadingScene": null,
+			"name": "Empty",
+			"startScene": null
+		},
+		"sections": [
+			{
+				"category": "Input",
+				"description": "The game's input actions: maps of named actions (Button, Axis or Vector2), each with the keys, mouse buttons and gamepad controls bound to it. Scripts read actions by name and players can rebind them; the map UI holds the actions the game UI navigates with. Edit them with inputActions.setMap and inputActions.setAction.",
+				"id": "Input.Actions",
+				"isDefault": true,
+				"problem": null,
+				"schema": {
+					"additionalProperties": false,
+					"properties": {
+						"Maps": {
+							"description": "The game's action maps; at most 256 actions in all (the UI map's six included)",
+							"items": {
+								"additionalProperties": false,
+								"properties": {
+									"Actions": {
+										"items": {
+											"additionalProperties": false,
+											"properties": {
+												"Bindings": {
+													"description": "The controls that drive the action: Key/<key>, Mouse/<button>, Gamepad/<button> (InputNames' names, any gamepad); Gamepad/<axis> (whole axis), Gamepad/<axis>+ or - (half axis; triggers only +), Gamepad/LeftStick or RightStick; 1D:<negative>,<positive> and 2D:<up>,<down>,<left>,<right> of button-like controls (keys, mouse and gamepad buttons, half axes). Button takes button-like controls; Axis those, whole axes and 1D composites; Vector2 sticks and 2D composites",
+													"items": {
+														"maxLength": 96,
+														"type": "string"
+													},
+													"maxItems": 8,
+													"type": "array"
+												},
+												"DeadZone": {
+													"description": "Axis and Vector2: values within it read 0, the rest is rescaled to reach 1 (round for sticks). Default 0.15",
+													"maximum": 0.9,
+													"minimum": 0,
+													"type": "number"
+												},
+												"Kind": {
+													"description": "Button: down or up. Axis: one value from -1 to 1. Vector2: two values (+X right, +Y up). Default Button",
+													"enum": [
+														"Button",
+														"Axis",
+														"Vector2"
+													]
+												},
+												"Name": {
+													"description": "Unique in its map, ignoring case. Scripts name the action \"<Map>/<Action>\", or by this name alone when no other map has an action of that name",
+													"maxLength": 64,
+													"minLength": 1,
+													"pattern": "^[A-Za-z0-9_.-]([A-Za-z0-9 _.-]*[A-Za-z0-9_.-])?$",
+													"type": "string"
+												}
+											},
+											"required": [
+												"Name"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"Enabled": {
+										"description": "Whether its actions work when the game starts (default true)",
+										"type": "boolean"
+									},
+									"Name": {
+										"description": "Unique in the set, ignoring case. The map UI is reserved: the game UI navigates with its actions Submit, Cancel, Up, Down, Left and Right (Buttons that cannot be renamed or removed; their bindings can change)",
+										"maxLength": 64,
+										"minLength": 1,
+										"pattern": "^[A-Za-z0-9_.-]([A-Za-z0-9 _.-]*[A-Za-z0-9_.-])?$",
+										"type": "string"
+									}
+								},
+								"required": [
+									"Name"
+								],
+								"type": "object"
+							},
+							"maxItems": 32,
+							"type": "array"
+						}
+					},
+					"required": [
+						"Maps"
+					],
+					"type": "object"
+				},
+				"title": "Input Actions",
+				"value": {
+					"Maps": [
+						{
+							"Actions": [
+								{
+									"Bindings": [
+										"Key/Enter",
+										"Key/KPEnter",
+										"Key/Space",
+										"Gamepad/A"
+									],
+									"DeadZone": 0.15,
+									"Kind": "Button",
+									"Name": "Submit"
+								},
+								{
+									"Bindings": [
+										"Key/Escape",
+										"Gamepad/B"
+									],
+									"DeadZone": 0.15,
+									"Kind": "Button",
+									"Name": "Cancel"
+								},
+								{
+									"Bindings": [
+										"Key/Up",
+										"Gamepad/DPadUp",
+										"Gamepad/LeftY+"
+									],
+									"DeadZone": 0.15,
+									"Kind": "Button",
+									"Name": "Up"
+								},
+								{
+									"Bindings": [
+										"Key/Down",
+										"Gamepad/DPadDown",
+										"Gamepad/LeftY-"
+									],
+									"DeadZone": 0.15,
+									"Kind": "Button",
+									"Name": "Down"
+								},
+								{
+									"Bindings": [
+										"Key/Left",
+										"Gamepad/DPadLeft",
+										"Gamepad/LeftX-"
+									],
+									"DeadZone": 0.15,
+									"Kind": "Button",
+									"Name": "Left"
+								},
+								{
+									"Bindings": [
+										"Key/Right",
+										"Gamepad/DPadRight",
+										"Gamepad/LeftX+"
+									],
+									"DeadZone": 0.15,
+									"Kind": "Button",
+									"Name": "Right"
+								}
+							],
+							"Enabled": true,
+							"Name": "UI"
+						}
+					]
+				},
+				"version": 1
+			},
+			{
+				"category": "Physics",
+				"description": "The project's collision layers: names for the 32 layers rigid bodies and character controllers are on (their Layer property and scripts' Physics::GetLayerIndex accept them) and the pairs of layers that do not collide. Every scene and prefab uses this table; set it with project.setCollisionLayers.",
+				"id": "Scene.CollisionLayers",
+				"isDefault": true,
+				"problem": null,
+				"schema": {
+					"additionalProperties": false,
+					"properties": {
+						"Names": {
+							"additionalProperties": {
+								"maxLength": 64,
+								"type": "string"
+							},
+							"description": "Names of layers by index (\"0\" to \"31\", no leading zeros), e.g. {\"1\": \"Player\"}: unique ignoring case, at most 64 characters, no control characters, no leading or trailing space, and not another layer's \"Layer <index>\"",
+							"propertyNames": {
+								"pattern": "^([0-9]|[1-2][0-9]|3[0-1])$"
+							},
+							"type": "object"
+						},
+						"NoCollisions": {
+							"description": "The pairs of layers that do not collide, as two layer indices; every other pair collides",
+							"items": {
+								"items": {
+									"maximum": 31,
+									"minimum": 0,
+									"type": "integer"
+								},
+								"maxItems": 2,
+								"minItems": 2,
+								"type": "array"
+							},
+							"type": "array"
+						}
+					},
+					"type": "object"
+				},
+				"title": "Collision Layers",
+				"value": {
+					"Names": {},
+					"NoCollisions": []
+				},
+				"version": 1
+			},
+			{
+				"category": "Physics",
+				"description": "How often the simulation steps (Physics > Timing): the project's fixed rate overrides each scene's Fixed Timestep unless it is Scene; Interpolation draws motion between the steps. Set them with project.setSettings.",
+				"id": "Scene.Timing",
+				"isDefault": true,
+				"problem": null,
+				"schema": {
+					"additionalProperties": false,
+					"description": "How often the simulation steps (Physics > Timing): the project's fixed rate overrides each scene's Fixed Timestep unless it is Scene; Interpolation draws motion between the steps. Set them with project.setSettings.",
+					"properties": {
+						"FixedRate": {
+							"default": "Scene",
+							"description": "Fixed steps per second of every scene: physics, character controllers, scripts' OnFixedUpdate and root motion run at it whatever the frame rate. Scene (the default) keeps each scene's own Fixed Timestep (the Inspector's scene settings, scene.setSettings; 60 unless changed). A rate here overrides it in every scene and in the exported game, and an update then runs at most 2/15 s of steps (4, 8, 16 or 32), dropping a longer backlog. Physics costs at least grow with the rate: 240 runs four times the steps of 60. 30 makes contacts soft: box3d stiffens contacts at most to an eighth of its substep rate, 15 Hz at 30 steps/s against 30 Hz at 60, so stacks sag and settle more slowly. With Interpolation on (the default) motion is smooth at any rate, and a higher rate halves the half step of latency interpolation adds; with it off, a higher rate halves the step-to-step motion a moving character shows above the step rate, but does not remove it.",
+							"enum": [
+								"Scene",
+								"30",
+								"60",
+								"120",
+								"240"
+							],
+							"title": "Fixed Rate",
+							"type": "string"
+						},
+						"Interpolation": {
+							"default": true,
+							"description": "Draw what the fixed steps move (physics bodies, character controllers, entities scripts move in OnFixedUpdate, and what rides on them: children, lights, cameras) between its last two fixed poses, so that motion is smooth at any frame rate; the simulation itself is unchanged. What is drawn is then a constant fixed step behind the game's clock instead of between none and one step: half a step more on average (about 8 ms at 60 steps per second; FixedRate 120 halves it), the same at worst. Off draws each fixed step's pose as it is, which judders whenever the frame rate is above the step rate. Applies to exported games and the editor's Play and Simulate from the next frame; scripted runs (--frames, --seconds, --commands) and tests never interpolate.",
+							"title": "Interpolation",
+							"type": "boolean"
+						}
+					},
+					"title": "Timing",
+					"type": "object"
+				},
+				"title": "Timing",
+				"value": {
+					"FixedRate": "Scene",
+					"Interpolation": true
+				},
+				"version": 1
+			},
+			{
+				"category": "Rendering",
+				"description": "The rendering quality of the project's games and of the editor's views and captures: the costly knobs every renderer draws with, as a preset or as Custom values. Medium keeps Strata 0.6.0's costs (its sample counts and resolutions); High, the default, adds more sun shadow filter taps, finer ambient occlusion, sharper sky reflections and full-resolution screen-space reflections at every size and draws 4096-texel sun shadow cascades from 1440 output rows. Scenes keep their look on lights, Post Process and the sky; no setting renders below the output's resolution. Set it with project.setSettings; players may change it in games that offer graphics options, and StrataRuntime --quality for one run.",
+				"id": "Renderer.Quality",
+				"isDefault": true,
+				"problem": null,
+				"schema": {
+					"additionalProperties": false,
+					"description": "The rendering quality of the project's games and of the editor's views and captures: the costly knobs every renderer draws with, as a preset or as Custom values. Medium keeps Strata 0.6.0's costs (its sample counts and resolutions); High, the default, adds more sun shadow filter taps, finer ambient occlusion, sharper sky reflections and full-resolution screen-space reflections at every size and draws 4096-texel sun shadow cascades from 1440 output rows. Scenes keep their look on lights, Post Process and the sky; no setting renders below the output's resolution. Set it with project.setSettings; players may change it in games that offer graphics options, and StrataRuntime --quality for one run.",
+					"properties": {
+						"AmbientOcclusionQuality": {
+							"default": "High",
+							"description": "Samples of the ambient occlusion that darkens creases and contacts, in scenes that use it: Low 1x4, Medium 2x6, High 3x8, Ultra 4x12 (slices x steps each side); more samples give smoother, truer occlusion for GPU time that grows about with their product.",
+							"enum": [
+								"Low",
+								"Medium",
+								"High",
+								"Ultra"
+							],
+							"title": "Ambient occlusion quality",
+							"type": "string"
+						},
+						"AntiAliasing": {
+							"default": "Scene",
+							"description": "How jagged edges are smoothed: Scene uses the game's own method; Off is the sharpest and costs nothing; FXAA and Morphological smooth each frame on its own (Morphological keeps more texture detail); TAA also calms shimmer by blending earlier frames. Each costs a little GPU time.",
+							"enum": [
+								"Scene",
+								"Off",
+								"FXAA",
+								"TAA",
+								"Morphological"
+							],
+							"title": "Anti-aliasing",
+							"type": "string"
+						},
+						"ChromaticAberration": {
+							"default": "Scene",
+							"description": "Scene shows the color fringes toward the image's corners where the game uses them; Off never.",
+							"enum": [
+								"Scene",
+								"Off"
+							],
+							"title": "Chromatic aberration",
+							"type": "string"
+						},
+						"ContactShadows": {
+							"default": 0,
+							"description": "Steps of the sun's contact shadows, which ground small objects below the shadow map's detail: more steps find thinner contacts for more GPU time, but they can shimmer in motion, so no preset turns them on (0: off; 1 to 3 count as 4).",
+							"maximum": 32,
+							"minimum": 0,
+							"title": "Contact shadows",
+							"type": "integer"
+						},
+						"DepthOfField": {
+							"default": "Scene",
+							"description": "Scene shows the depth of field of the game's cameras that use it; Off keeps every distance in focus and saves its GPU time.",
+							"enum": [
+								"Scene",
+								"Off"
+							],
+							"title": "Depth of field",
+							"type": "string"
+						},
+						"EnvironmentResolution": {
+							"default": "512",
+							"description": "Texels each way of each face of the sky's reflection map: 512 keeps mirror-like reflections of the sky sharp at high resolutions, for 12 MiB more GPU memory per view than 256 (24 MiB under the physical atmosphere).",
+							"enum": [
+								"256",
+								"512"
+							],
+							"title": "Sky reflection resolution",
+							"type": "string"
+						},
+						"FilmGrain": {
+							"default": "Scene",
+							"description": "Scene shows the game's film grain where it uses it; Off never adds grain.",
+							"enum": [
+								"Scene",
+								"Off"
+							],
+							"title": "Film grain",
+							"type": "string"
+						},
+						"GlobalIllumination": {
+							"default": "High",
+							"description": "Experimental. Bounce light and sky occlusion traced in the world around the camera, for scenes that turn it on: sunlit floors light the walls and colored surfaces tint their neighbors. Low traces a coarser, shorter field for about 18 MiB of GPU memory per view, High a finer one for about 111 MiB and several milliseconds of GPU time at 3840x2160; Off draws none.",
+							"enum": [
+								"Off",
+								"Low",
+								"High"
+							],
+							"title": "Global illumination",
+							"type": "string"
+						},
+						"LODErrorPixels": {
+							"default": 1.0,
+							"description": "Levels of detail are chosen so that their error spans at most this many pixels on screen: lower draws more triangles (0: full detail).",
+							"maximum": 8.0,
+							"minimum": 0.0,
+							"title": "Level of detail error (pixels)",
+							"type": "number"
+						},
+						"LocalShadowAtlasSize": {
+							"default": "4096",
+							"description": "Texels each way of the shadow atlas point and spot lights share: sharper shadows of those lights for more GPU memory (4096: 64 MiB per view).",
+							"enum": [
+								"1024",
+								"2048",
+								"4096",
+								"8192"
+							],
+							"title": "Point and spot shadow atlas",
+							"type": "string"
+						},
+						"LocalShadowMaxTile": {
+							"default": "1024",
+							"description": "The largest tile of the atlas a point or spot light's shadow gets (at most the atlas): tiles follow how large the light looks on screen, and larger ones are sharper.",
+							"enum": [
+								"256",
+								"512",
+								"1024",
+								"2048"
+							],
+							"title": "Largest point and spot shadow tile",
+							"type": "string"
+						},
+						"MaxShadowedLocalLights": {
+							"default": 16,
+							"description": "Point and spot lights that cast shadows in a view, the most relevant first: more cost more GPU time.",
+							"maximum": 16,
+							"minimum": 0,
+							"title": "Shadowed point and spot lights",
+							"type": "integer"
+						},
+						"MinProjectedPixels": {
+							"default": 0.5,
+							"description": "Meshes smaller on screen than this many pixels are not drawn: higher draws fewer (0: all).",
+							"maximum": 8.0,
+							"minimum": 0.0,
+							"title": "Smallest drawn size (pixels)",
+							"type": "number"
+						},
+						"MotionBlur": {
+							"default": "Scene",
+							"description": "Scene shows the game's motion blur where it uses it; Off never blurs what moves and saves its GPU time.",
+							"enum": [
+								"Scene",
+								"Off"
+							],
+							"title": "Motion blur",
+							"type": "string"
+						},
+						"MotionBlurQuality": {
+							"default": "Samples12",
+							"description": "Samples per pixel of the motion blur, in scenes that use it: more samples show less streak noise where things move fast, for more GPU time (Off: no motion blur).",
+							"enum": [
+								"Off",
+								"Samples8",
+								"Samples12",
+								"Samples16"
+							],
+							"title": "Motion blur samples",
+							"type": "string"
+						},
+						"Preset": {
+							"default": "High",
+							"description": "The quality preset: Low, Medium, High or Ultra sets every other option to its value; Custom uses the values chosen for them.",
+							"enum": [
+								"Low",
+								"Medium",
+								"High",
+								"Ultra",
+								"Custom"
+							],
+							"title": "Preset",
+							"type": "string"
+						},
+						"ReflectionProbeResolution": {
+							"default": "256",
+							"description": "Texels each way of each face of the reflection probes' pictures: 256 keeps polished metal's reflections of nearby things sharp, for about 51 MiB more GPU memory per view that shows a probe (17 MiB at 128, 68 MiB at 256 for 16 probes) and more GPU time when a probe's picture is prepared.",
+							"enum": [
+								"128",
+								"256"
+							],
+							"title": "Reflection probe resolution",
+							"type": "string"
+						},
+						"Reflections": {
+							"default": "Spatial",
+							"description": "How the screen-space reflections of scenes that use them are traced: Off draws none; Checkerboard traces at half resolution and needs TAA; Spatial and SpatialHigh trace every pixel at full resolution with or without TAA (32 and 48 steps), for more GPU time and about 150 MiB more GPU memory per view at 3840x2160.",
+							"enum": [
+								"Off",
+								"Checkerboard",
+								"Spatial",
+								"SpatialHigh"
+							],
+							"title": "Screen-space reflections",
+							"type": "string"
+						},
+						"ShadowCascades": {
+							"default": 5,
+							"description": "Sun shadow cascades: fewer cost less GPU time and memory but spread the same texels over the shadow distance; a fifth one sharpens the shadows within about 1.5 m of the camera.",
+							"maximum": 5,
+							"minimum": 1,
+							"title": "Shadow cascades",
+							"type": "integer"
+						},
+						"ShadowFilterQuality": {
+							"default": "24",
+							"description": "Taps of the sun's shadow edges where they are wider than a shadow texel: more taps leave less grain in soft shadows for more GPU time (8, 16, 24 or 32).",
+							"enum": [
+								"8",
+								"16",
+								"24",
+								"32"
+							],
+							"title": "Shadow filter quality",
+							"type": "string"
+						},
+						"ShadowResolution": {
+							"default": "AutoFine",
+							"description": "Texels each way of every sun shadow cascade: sharper sun shadows for more GPU memory and time. Auto: 2048 below 1440 output rows, 4096 from 1440 (about one texel per screen pixel at each cascade's far end); AutoFine: 4096 and 8192. Memory per view: cascades x size x size x 4 bytes (4 x 4096: 256 MiB).",
+							"enum": [
+								"Auto",
+								"AutoFine",
+								"1024",
+								"2048",
+								"4096",
+								"8192"
+							],
+							"title": "Shadow resolution",
+							"type": "string"
+						}
+					},
+					"title": "Graphics Quality",
+					"type": "object"
+				},
+				"title": "Graphics Quality",
+				"value": {
+					"AmbientOcclusionQuality": "High",
+					"AntiAliasing": "Scene",
+					"ChromaticAberration": "Scene",
+					"ContactShadows": 0,
+					"DepthOfField": "Scene",
+					"EnvironmentResolution": "512",
+					"FilmGrain": "Scene",
+					"GlobalIllumination": "High",
+					"LODErrorPixels": 1.0,
+					"LocalShadowAtlasSize": "4096",
+					"LocalShadowMaxTile": "1024",
+					"MaxShadowedLocalLights": 16,
+					"MinProjectedPixels": 0.5,
+					"MotionBlur": "Scene",
+					"MotionBlurQuality": "Samples12",
+					"Preset": "High",
+					"ReflectionProbeResolution": "256",
+					"Reflections": "Spatial",
+					"ShadowCascades": 5,
+					"ShadowFilterQuality": "24",
+					"ShadowResolution": "AutoFine"
+				},
+				"version": 6
+			},
+			{
+				"category": "Physics",
+				"description": "How the physics simulation (box3d) settles bodies: how far resting contacts are reused without new collision work, and how slow a body must be to fall asleep. Applies to the running game at its next fixed step.",
+				"id": "Physics.Simulation",
+				"isDefault": true,
+				"problem": null,
+				"schema": {
+					"additionalProperties": false,
+					"description": "How the physics simulation (box3d) settles bodies: how far resting contacts are reused without new collision work, and how slow a body must be to fall asleep. Applies to the running game at its next fixed step.",
+					"properties": {
+						"ContactDampingRatio": {
+							"default": 10.0,
+							"description": "0 to 100 (10 by default, box3d's): how much contacts damp the bounce of their push-out. Lower values let piles jiggle longer (at 5 the 2,000-ball pit did not sleep within 30 s); higher ones make contacts sluggish (at 20 towers lean more).",
+							"maximum": 100.0,
+							"minimum": 0.0,
+							"title": "Contact damping",
+							"type": "number"
+						},
+						"ContactHertz": {
+							"default": 30.0,
+							"description": "Cycles per second, 1 to 240 (30 by default, box3d's): how stiffly contacts push overlapping bodies apart. box3d uses at most an eighth of its substep rate, 30 at 60 fixed steps per second (60 at 120), so higher values act as that ceiling (physics.stats settings.effectiveContactHertz shows what applies). Lower values are softer (stacks sag and towers can topple: at 20 a tower of 20 crates leaned 88 mm instead of 9).",
+							"maximum": 240.0,
+							"minimum": 1.0,
+							"title": "Contact stiffness (Hz)",
+							"type": "number"
+						},
+						"ContactPushSpeed": {
+							"default": 3.0,
+							"description": "Meters per second, 0.01 to 100 (3 by default, box3d's): the fastest that overlapping bodies are pushed apart. Lower values separate spawned or teleported overlaps gently but leave piles settling longer (at 1 the ball pit slept 7 s later).",
+							"maximum": 100.0,
+							"minimum": 0.01,
+							"title": "Overlap push speed (m/s)",
+							"type": "number"
+						},
+						"ContactRecycleDistance": {
+							"default": 0.05,
+							"description": "A distance in meters, 0 to 1 (0.05 by default: 5 cm, box3d's; not a fraction); 0 turns contact recycling off. While two touching bodies have moved less than this relative to each other since their contact was computed (and turned less than 10 degrees), box3d reuses the contact instead of computing it again: less narrow-phase work and steadier resting contacts. A recycled contact keeps its old points and normal, so a body can seem supported a little past an edge (up to 1.7 cm further at the default) or keep its old contact when moved or teleported by up to this distance, and it adds a few millimeters to the bumps at the seams of tiled floors. Lower it when bodies hang past edges. Bumps you can see at tile seams come from the tiles' edges with or without recycling (44 mm for boxes sliding at 2 m/s): make such a floor one collider or a mesh collider instead of lowering this, which removes at most the 5 mm recycling adds, while 0 lets stacks topple and costs more. The distance does not change how soon piles fall asleep (the sleep threshold does). Character controllers and kinematic bodies never recycle contacts, so contacts with them never do.",
+							"maximum": 1.0,
+							"minimum": 0.0,
+							"title": "Contact recycle distance (m)",
+							"type": "number"
+						},
+						"SleepThreshold": {
+							"default": 0.08,
+							"description": "Speed in m/s, 0 to 1 (0.08 by default; box3d's own is 0.05, at which pits of balls took about a third longer to fall asleep): a body slower than this for half a second, with every body it touches, falls asleep and costs nothing until something wakes it. Larger values put piles to sleep sooner but stop slow bodies (a ball rolling to a halt, a slowly sliding crate) early; 0 keeps every body awake.",
+							"maximum": 1.0,
+							"minimum": 0.0,
+							"title": "Sleep threshold (m/s)",
+							"type": "number"
+						}
+					},
+					"title": "Simulation",
+					"type": "object"
+				},
+				"title": "Simulation",
+				"value": {
+					"ContactDampingRatio": 10.0,
+					"ContactHertz": 30.0,
+					"ContactPushSpeed": 3.0,
+					"ContactRecycleDistance": 0.05,
+					"SleepThreshold": 0.08
+				},
+				"version": 1
+			}
+		],
+		"unclaimed": []
+	}
+}

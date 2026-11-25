@@ -1,0 +1,17 @@
+diff --git a/StrataTests/src/Core/StringUtilsTests.cpp b/StrataTests/src/Core/StringUtilsTests.cpp
+--- a/StrataTests/src/Core/StringUtilsTests.cpp
++++ b/StrataTests/src/Core/StringUtilsTests.cpp
+@@ -40,4 +40,13 @@
+ 		const std::string repaired = StringUtils::MakeValidUTF8("\xE6\x97 \x8F\xFF ok");
+ 		CHECK(StringUtils::MakeValidUTF8(repaired) == repaired);
+ 	}
++
++	TEST_CASE("Prefixes and suffixes are found, and one longer than the text never matches")
++	{
++		CHECK(StringUtils::StartsWith("file.png", "file"));
++		CHECK_FALSE(StringUtils::StartsWith("file.png", "png"));
++		CHECK(StringUtils::EndsWith("file.png", ".png"));
++		CHECK_FALSE(StringUtils::EndsWith("png", "file.png"));
++		CHECK(StringUtils::StartsWith("", ""));
++	}
+ }

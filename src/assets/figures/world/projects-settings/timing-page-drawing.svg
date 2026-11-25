@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 456">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- the drawing: roles as classes (plan/card/drawing.md)
+Plan: window 16..752 x 16..440 (H 456), title bar 16..52; list column x 32..216 (11 font sizes at the pin,
+StrataEditor/src/UI/SettingsPages.cpp:41), separator x 224; page x 240..736. List order: Game and Export under
+Project, then the project sections by category in registration order (settings dump): Input Actions; Collision
+Layers, Timing, Simulation; Graphics Quality. Page (SettingsBrowser::DrawPage, GenericSettingsPage::Draw): heading,
+the section's description, a property table (Fixed Rate as a list, Interpolation as a check box), Reset to Defaults
+(enabled only when the project stores the section); a field's description is its label's tooltip
+(SettingsFieldProperty.cpp:23, PropertyWidgets.cpp:1130). Annotations in orange. -->
+<rect x="16" y="16" width="736" height="424" rx="6" class="ground"/>
+<rect x="16" y="16" width="736" height="36" rx="6" class="plate"/>
+<rect x="16" y="34" width="736" height="18" class="plate"/>
+<line x1="16" y1="52" x2="752" y2="52" class="line-muted" fill="none"/>
+<rect x="16" y="16" width="736" height="424" rx="6" class="line-muted" fill="none"/>
+<text x="32" y="40" class="ink bold">Project Settings</text>
+<line x1="224" y1="52" x2="224" y2="440" class="line-faint" fill="none"/>
+<rect x="32" y="64" width="176" height="28" rx="4" class="ground line-muted"/>
+<text x="42" y="83" class="muted small">Search</text>
+<text x="32" y="120" class="muted small">Project</text>
+<text x="40" y="144" class="ink">Game</text>
+<text x="40" y="168" class="ink">Export</text>
+<text x="32" y="200" class="muted small">Input</text>
+<text x="40" y="224" class="ink">Input Actions</text>
+<text x="32" y="256" class="muted small">Physics</text>
+<text x="40" y="280" class="ink">Collision Layers</text>
+<rect x="32" y="288" width="184" height="24" rx="3" class="blue-area"/>
+<text x="40" y="305" class="blue bold">Timing</text>
+<text x="40" y="332" class="ink">Simulation</text>
+<text x="32" y="364" class="muted small">Rendering</text>
+<text x="40" y="388" class="ink">Graphics Quality</text>
+<text x="240" y="86" class="ink large bold">Timing</text>
+<text x="240" y="114" class="muted small">How often the simulation steps (Physics &gt; Timing): the project's</text>
+<text x="240" y="132" class="muted small">fixed rate overrides each scene's Fixed Timestep unless it is Scene;</text>
+<text x="240" y="150" class="muted small">Interpolation draws motion between the steps. Set them with</text>
+<text x="240" y="168" class="muted small">project.setSettings.</text>
+<text x="240" y="207" class="muted">Fixed Rate</text>
+<rect x="392" y="188" width="136" height="28" rx="3" class="plate line-muted"/>
+<text x="402" y="207" class="ink">Scene</text>
+<polyline points="508,199 513,204 518,199" class="line-ink" fill="none"/>
+<text x="540" y="207" class="orange small">Scene, 30, 60, 120 or 240</text>
+<text x="240" y="247" class="muted">Interpolation</text>
+<rect x="392" y="230" width="22" height="22" rx="3" class="plate line-muted"/>
+<polyline points="397,241 402,246 410,236" class="line-ink" fill="none" stroke-width="2"/>
+<text x="428" y="247" class="orange small">on: the default</text>
+<rect x="240" y="270" width="152" height="30" rx="3" class="ground line-muted"/>
+<text x="252" y="290" class="muted small">Reset to Defaults</text>
+<text x="408" y="290" class="orange small">dimmed until the project stores the section</text>
+<text x="240" y="334" class="orange small">With the pointer on Fixed Rate, a tooltip shows its description:</text>
+<rect x="240" y="344" width="496" height="84" rx="4" class="plate line-ink"/>
+<text x="252" y="364" class="ink small">Fixed steps per second of every scene: physics, character</text>
+<text x="252" y="382" class="ink small">controllers, scripts' OnFixedUpdate and root motion run at it</text>
+<text x="252" y="400" class="ink small">whatever the frame rate. Scene (the default) keeps each scene's</text>
+<text x="252" y="418" class="ink small">own Fixed Timestep (…). A rate here overrides it in every scene …</text>
+</svg>

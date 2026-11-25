@@ -1,0 +1,3 @@
+# Part review: `worlds/grids`
+
+No corrections. Checked at the pin: the `WorldData` limits (32 layers, 2^20 cells, names of 64, cell sizes 1 to 65,536 m, distances to 1,000,000 m, `c_MaxExtent`, `c_SupportedExtent`), `c_MaxCoordinate`, the header check, the `Reader` helper, the cell path and `Cell/<layer>/<x>/<z>` in `EditorWorld.cpp`, `EditorWorld::GetCellAt`, the feature world's origin (200, 200), the World.Asset cases, `world.create` (path, cellSize, default layers) and `world.setLayers` with `deleteCells`, the hand computations of the toy, the 45 cells and the check-yourself keys, and every callout.

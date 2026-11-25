@@ -1,0 +1,59 @@
+{
+	"page": "image/tutorial-post-effect",
+	"runs": [
+		{
+			"build": {
+				"kind": "patch-build",
+				"configuration": "Release",
+				"buildDirectory": "build/docs-patch"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": null,
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"tutorials/image/tutorial-post-effect.patch": "e94f891ad1540f0c75baa1c58a370ca8260afb8dc9b2907677b9b648a546e68a",
+				"tutorials/image/tutorial-post-effect.tutorial.json": "ea8a3889c2848be9cde3a83b0151171ba9383a48f63ec9a212c26fd3e85cf7d4"
+			},
+			"stages": [],
+			"tests": [
+				{
+					"suite": "Architecture.Layering",
+					"testCases": 18,
+					"passed": true
+				},
+				{
+					"suite": "Renderer.PostProcessMath",
+					"testCases": 11,
+					"passed": true
+				},
+				{
+					"suite": "GPU.SceneRenderer.Letterbox",
+					"testCases": 2,
+					"passed": true
+				},
+				{
+					"suite": "Editor.Commands",
+					"testCases": 51,
+					"passed": true
+				},
+				{
+					"suite": "Renderer.Components",
+					"testCases": 6,
+					"passed": true
+				},
+				{
+					"suite": "Scene.InactiveProperties",
+					"testCases": 2,
+					"passed": true
+				}
+			],
+			"ctest": {
+				"test": "StrataTests.FeatureTest",
+				"passed": true
+			},
+			"readerCopies": false,
+			"passed": true
+		}
+	]
+}

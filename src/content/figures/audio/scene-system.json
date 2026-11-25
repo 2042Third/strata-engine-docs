@@ -1,0 +1,92 @@
+{
+	"figures": [
+		{
+			"id": "inspector-audio",
+			"kind": "editor",
+			"shows": "The Inspector of an entity named Speaker, made in the Physics Playground for the picture: its Transform, an Audio Source with the clip Metal and its properties, and an Audio Listener with its Active switch",
+			"caption": "The Audio Source shows its clip, a volume slider control, its pitch and its distance settings; the Audio Listener shows only its Active switch. The entity Speaker carries both only for the picture.",
+			"alt": "The Inspector of the entity Speaker. Its Audio Source has the clip Metal, a Volume slider control at 1 and Pitch 1. Then come the switches Loop, Play On Start and Spatial, and the fields Min Distance 1, Max Distance 50 and Rolloff 1. Below it, the Audio Listener has one switch, Active, ticked.",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-sound.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Speaker",
+							"components": {
+								"AudioSource": {
+									"Clip": "Sounds/Impacts/Metal.ogg"
+								},
+								"AudioListener": {
+									"Active": true
+								}
+							}
+						},
+						"bind": {
+							"speaker": "/id"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "speaker"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Inspector"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "console-dropped-warning",
+			"kind": "editor",
+			"shows": "The editor's Console after 16 s of the Physics Playground's demo, cut below the last warning: goal lines and yellow Audio warnings that one-shots of the impact clips were dropped because more than 64 played at once, the clip Wood named at 15.29 s and again at 17.10 s",
+			"caption": "The Physics Playground pours bodies into goals, and their impacts start more one-shots than may play at once, so the oldest are cut off. Each warning names the clip and the reason. The bracketed number at the left is the time in seconds: Wood warns at 15.29 and again at 17.10, 1.8 s later, since a clip warns again only after a second.",
+			"numbers": "Read from the published picture: the bracketed times at the left of the Console's lines, Wood's warnings at 15.29 and 17.10 (17.10 - 15.29 = 1.81 s); the one-second wait is the rate limit of the code above the figure.",
+			"alt": "The Console panel of the editor. Each line starts with a time in seconds in brackets. Lines say that goals were scored. Yellow warning lines start with the word Audio and say that a one-shot of an impact clip was dropped because more than 64 one-shots played at once, so the oldest was cut off. The clip Wood is named at 15.29 seconds and again at 17.10 seconds.",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"play": {
+				"steps": 960
+			},
+			"editorWindow": {
+				"layout": "layouts/console-audio.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Console",
+				"steps": []
+			},
+			"crops": [
+				{
+					"name": "log",
+					"rect": [
+						0,
+						0,
+						1,
+						0.7767
+					],
+					"scale": 1
+				}
+			]
+		}
+	]
+}

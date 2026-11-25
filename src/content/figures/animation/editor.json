@@ -1,0 +1,176 @@
+{
+	"figures": [
+		{
+			"id": "edit-poses",
+			"shows": "Two copies of the Course scene's robot in the Scene view: one in the rest pose, one in the first frame of a default clip that starts crouched",
+			"caption": "Two copies of the robot in the edited scene: the rest pose on the left, and on the right the first frame of a default animation that begins crouched.",
+			"alt": "Two robots side by side in the Scene view. The robot on the left stands straight with its arms at its sides. The robot on the right stands lower, crouched at the knees, its head lower than the left robot's.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "entity.duplicate",
+						"parameters": {
+							"entity": "A94EC4E371BEB484"
+						},
+						"bind": {
+							"second": "/id"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "second"
+							},
+							"component": "Transform",
+							"values": {
+								"Translation": [
+									-1.4,
+									0,
+									0
+								]
+							}
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "second"
+							},
+							"component": "Animator",
+							"values": {
+								"Controller": "0000000000000000",
+								"Clip": "9EBF72F09E01CD81"
+							}
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-0.7,
+								1.2,
+								-0.7
+							],
+							"target": [
+								-0.7,
+								0.7,
+								3
+							],
+							"fov": 34
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"editPose": "rest",
+							"grid": false,
+							"sceneGizmos": false
+						}
+					},
+					{
+						"command": "animation.preview",
+						"parameters": {
+							"entity": {
+								"$ref": "second"
+							},
+							"time": 0
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 30
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "preview-chip",
+			"shows": "The Scene view while animation.preview poses the robot in its Run state, with the chip that names the preview at the end of the toolbar, enlarged below",
+			"caption": "The chip names the previewed state and time, so the pose is never taken for scene data.",
+			"alt": "The Scene view with the robot seen from its side, posed in a running stride. At the end of the toolbar a chip reads Previewing Run at 0.30 s and names the robot; the enlarged cut below shows the chip alone.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"editorWindow": {
+				"layout": "layouts/animation-editor-wide.ini",
+				"windowSize": [
+					1440,
+					810
+				],
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-5.2,
+								1.3,
+								2.2
+							],
+							"target": [
+								0,
+								1.0,
+								3.0
+							],
+							"fov": 30
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"grid": false,
+							"sceneGizmos": false
+						}
+					},
+					{
+						"command": "animation.preview",
+						"parameters": {
+							"entity": "A94EC4E371BEB484",
+							"state": "Run",
+							"time": 0.3
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 30
+						}
+					}
+				]
+			},
+			"crops": [
+				{
+					"name": "chip",
+					"rect": [
+						0.7056,
+						0.0374,
+						0.8816,
+						0.0883
+					],
+					"scale": 2
+				}
+			]
+		}
+	]
+}

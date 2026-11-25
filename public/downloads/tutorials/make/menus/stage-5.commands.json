@@ -1,0 +1,325 @@
+[
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/MainMenu.stscene"
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Boost",
+			"kind": "Button",
+			"bindings": [
+				"Key/LeftShift"
+			]
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Menu"
+		},
+		"bind": {
+			"menu": "/entities/0"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "panel",
+			"name": "RebindPanel",
+			"parent": {
+				"$ref": "menu"
+			},
+			"anchor": "middleLeft",
+			"position": [
+				40,
+				0
+			],
+			"size": [
+				520,
+				420
+			]
+		},
+		"bind": {
+			"panel": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "verticalLayout",
+			"name": "RebindColumn",
+			"parent": {
+				"$ref": "panel"
+			},
+			"anchor": "stretch",
+			"size": [
+				0,
+				0
+			]
+		},
+		"bind": {
+			"column": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"name": "JumpRow",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "Jump",
+			"size": [
+				440,
+				70
+			]
+		},
+		"bind": {
+			"jumpRow": "/entity",
+			"jumpText": "/parts/label"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"name": "BoostRow",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "Boost",
+			"size": [
+				440,
+				70
+			]
+		},
+		"bind": {
+			"boostRow": "/entity",
+			"boostText": "/parts/label"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"name": "Reset",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "Reset",
+			"size": [
+				440,
+				70
+			]
+		},
+		"bind": {
+			"reset": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"name": "Back",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "Back",
+			"size": [
+				440,
+				70
+			]
+		},
+		"bind": {
+			"back": "/entity"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "panel"
+			},
+			"class": "RebindMenu",
+			"fields": {
+				"Panel": {
+					"$ref": "panel"
+				},
+				"JumpButton": {
+					"$ref": "jumpRow"
+				},
+				"JumpText": {
+					"$ref": "jumpText"
+				},
+				"BoostButton": {
+					"$ref": "boostRow"
+				},
+				"BoostText": {
+					"$ref": "boostText"
+				},
+				"ResetButton": {
+					"$ref": "reset"
+				},
+				"BackButton": {
+					"$ref": "back"
+				}
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "jumpRow"
+			},
+			"component": "UIButton",
+			"values": {
+				"EventTarget": {
+					"$ref": "panel"
+				}
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "boostRow"
+			},
+			"component": "UIButton",
+			"values": {
+				"EventTarget": {
+					"$ref": "panel"
+				}
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "reset"
+			},
+			"component": "UIButton",
+			"values": {
+				"EventTarget": {
+					"$ref": "panel"
+				}
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "back"
+			},
+			"component": "UIButton",
+			"values": {
+				"EventTarget": {
+					"$ref": "panel"
+				}
+			}
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"entity": {
+				"$ref": "panel"
+			},
+			"class": "RebindMenu"
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 2
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 2
+			}
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "jumpText"
+			},
+			"component": "UIText"
+		}
+	},
+	{
+		"command": "input.click",
+		"parameters": {
+			"entity": {
+				"$ref": "jumpRow"
+			},
+			"wait": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 3
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "jumpText"
+			},
+			"component": "UIText"
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "K",
+			"wait": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 3
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "jumpText"
+			},
+			"component": "UIText"
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "scene.save"
+	}
+]

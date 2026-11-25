@@ -1,0 +1,40 @@
+{
+	"page": "gpu/first-triangle",
+	"runs": [
+		{
+			"build": {
+				"kind": "patch-build",
+				"configuration": "Release",
+				"buildDirectory": "build/docs-patch"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": null,
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"tutorials/gpu/first-triangle.patch": "7e4652acf00647114d4f7952eeeefa3467025745e6560cc6433dab70a726b82a",
+				"tutorials/gpu/first-triangle.tutorial.json": "be533123a266ac065a107bfb1198bd851e97bed4854749ff62a775583d21fb85",
+				"tutorials/gpu/first-triangle/exercise-2.patch": "742d3b671b96d03980ac3f1797c2a4c8e16603a5803040949e0a0c98d331a183"
+			},
+			"stages": [],
+			"tests": [
+				{
+					"suite": "Architecture.Layering",
+					"testCases": 18,
+					"passed": true
+				},
+				{
+					"suite": "GPU.Renderer",
+					"testCases": 13,
+					"passed": true
+				}
+			],
+			"ctest": {
+				"test": "StrataTests.FeatureTest",
+				"passed": true
+			},
+			"readerCopies": false,
+			"passed": true
+		}
+	]
+}

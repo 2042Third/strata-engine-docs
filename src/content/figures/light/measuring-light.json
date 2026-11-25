@@ -1,0 +1,638 @@
+{
+	"figures": [
+		{
+			"id": "views-lit",
+			"kind": "scene",
+			"shows": "A sunlit scene of a cube and a sphere on a floor, lit as a game shows it, the reference for the four views",
+			"caption": "The scene as a game draws it, seen through four views next.",
+			"alt": "A light gray cube and a red sphere on a gray floor under a blue sky, with shadows falling left.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.7,
+					4.2
+				],
+				"target": [
+					0,
+					0.5,
+					0
+				]
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Chalk.stmat",
+						"properties": {
+							"BaseColor": [
+								0.7,
+								0.7,
+								0.68,
+								1.0
+							],
+							"Roughness": 0.8
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Clay.stmat",
+						"properties": {
+							"BaseColor": [
+								0.55,
+								0.12,
+								0.08,
+								1.0
+							],
+							"Roughness": 0.5
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Cube",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/Chalk.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-1.2,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Clay.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									1.2,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete",
+			"publish": "lossless"
+		},
+		{
+			"id": "views-lighting",
+			"kind": "scene",
+			"shows": "The same scene in the Lighting view: every surface white, lit by the same sun and sky",
+			"caption": "Every surface is white, so only the light shows. The sky and the brown band beyond the floor are background, darker because the exposure follows the white surfaces.",
+			"alt": "A pale gray cube and sphere on a pale floor with the lit picture's shadows, under a dark sky and a brown band.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.7,
+					4.2
+				],
+				"target": [
+					0,
+					0.5,
+					0
+				]
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"debugView": "lighting",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/ChalkLighting.stmat",
+						"properties": {
+							"BaseColor": [
+								0.7,
+								0.7,
+								0.68,
+								1.0
+							],
+							"Roughness": 0.8
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/ClayLighting.stmat",
+						"properties": {
+							"BaseColor": [
+								0.55,
+								0.12,
+								0.08,
+								1.0
+							],
+							"Roughness": 0.5
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Cube",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/ChalkLighting.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-1.2,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/ClayLighting.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									1.2,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete",
+			"publish": "lossless"
+		},
+		{
+			"id": "views-indirect",
+			"kind": "scene",
+			"shows": "The same scene in the Indirect view: only the sky, probe and reflected light, with the sun's direct light removed",
+			"caption": "The sun's light is gone: the floor turns dark blue under the sky alone, and sharp shadows vanish. The sphere glows orange below, lit by the pale band beyond the floor, part of the sky; its top stays dull purple.",
+			"alt": "A dark blue-gray floor with no sharp shadows, a pale cube with a blue top, and a red sphere, orange below and dull purple on top.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.7,
+					4.2
+				],
+				"target": [
+					0,
+					0.5,
+					0
+				]
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"debugView": "indirect",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/ChalkIndirect.stmat",
+						"properties": {
+							"BaseColor": [
+								0.7,
+								0.7,
+								0.68,
+								1.0
+							],
+							"Roughness": 0.8
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/ClayIndirect.stmat",
+						"properties": {
+							"BaseColor": [
+								0.55,
+								0.12,
+								0.08,
+								1.0
+							],
+							"Roughness": 0.5
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Cube",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/ChalkIndirect.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-1.2,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/ClayIndirect.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									1.2,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete",
+			"publish": "lossless"
+		},
+		{
+			"id": "views-luminance",
+			"kind": "scene",
+			"shows": "The same scene in the Luminance view: each pixel painted with the color of its EV100 band",
+			"caption": "Most of the floor falls in one yellow band, EV100 14 to 15. The cube reaches the top band, 16 and above. The shadows drop to green, 11 to 12: three steps, 8 times darker than the floor. Equal colors mean equal luminance.",
+			"numbers": "Bands one EV wide from EV100 5 (SceneRenderer.h, LuminanceFirstEV100), twelve colors, the last from 16 on. The capture's lighting statistics: surfaces' EV100 p05 14.75, p50 14.88, p95 16.03, background median 15.63, so the floor (most surface pixels) is band 9 (14 to 15), the ground and sky beyond band 10, the cube band 11. The picture has seven flat colors; on the smoothly shaded sphere they touch in the order yellow-green, yellow, floor yellow, pale, white, so they are consecutive bands 5 to 11: teal 10 to 11, green 11 to 12. Floor to shadow: 3 bands, 2^3 = 8.",
+			"alt": "The scene in flat color bands: a yellow floor, a near-white cube, green shadows with a blue-green core under the sphere, and bands of yellow and pale across the sphere and the sky.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.7,
+					4.2
+				],
+				"target": [
+					0,
+					0.5,
+					0
+				]
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"debugView": "luminance",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/ChalkLuminance.stmat",
+						"properties": {
+							"BaseColor": [
+								0.7,
+								0.7,
+								0.68,
+								1.0
+							],
+							"Roughness": 0.8
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/ClayLuminance.stmat",
+						"properties": {
+							"BaseColor": [
+								0.55,
+								0.12,
+								0.08,
+								1.0
+							],
+							"Roughness": 0.5
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Cube",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/ChalkLuminance.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-1.2,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/ClayLuminance.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									1.2,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete",
+			"publish": "lossless"
+		},
+		{
+			"id": "views-albedo",
+			"kind": "scene",
+			"shows": "The same scene in the Albedo view: the base colors, unlit, with no mark because both materials lie in range",
+			"caption": "The base colors alone, without light or shadow. Neither material is marked: the blue-gray above the floor is background, where nothing is drawn.",
+			"alt": "A light gray cube and a brick-red sphere on a gray floor, flat, with no blue or red marks.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.7,
+					4.2
+				],
+				"target": [
+					0,
+					0.5,
+					0
+				]
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"debugView": "albedo",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/ChalkAlbedo.stmat",
+						"properties": {
+							"BaseColor": [
+								0.7,
+								0.7,
+								0.68,
+								1.0
+							],
+							"Roughness": 0.8
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/ClayAlbedo.stmat",
+						"properties": {
+							"BaseColor": [
+								0.55,
+								0.12,
+								0.08,
+								1.0
+							],
+							"Roughness": 0.5
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Cube",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/ChalkAlbedo.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-1.2,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/ClayAlbedo.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									1.2,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete",
+			"publish": "lossless"
+		},
+		{
+			"id": "albedo-cubes",
+			"kind": "scene",
+			"shows": "The Albedo view of two cubes, one of black paint and one of white paint, beside a cube of mid gray",
+			"caption": "The black cube takes the blue mark and the white cube takes red stripes.",
+			"alt": "Three cubes on a gray floor: the left tinted blue, the middle plain gray, the right crossed by red diagonal stripes.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.8,
+					5
+				],
+				"target": [
+					0,
+					0.5,
+					0
+				]
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"debugView": "albedo",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Black.stmat",
+						"properties": {
+							"BaseColor": [
+								0.01,
+								0.01,
+								0.01,
+								1.0
+							],
+							"Roughness": 0.6
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Gray.stmat",
+						"properties": {
+							"BaseColor": [
+								0.3,
+								0.3,
+								0.3,
+								1.0
+							],
+							"Roughness": 0.6
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/White.stmat",
+						"properties": {
+							"BaseColor": [
+								0.95,
+								0.95,
+								0.95,
+								1.0
+							],
+							"Roughness": 0.6
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "BlackCube",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/Black.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-1.6,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "GrayCube",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/Gray.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "WhiteCube",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/White.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									1.6,
+									0.5,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete",
+			"publish": "lossless"
+		}
+	]
+}

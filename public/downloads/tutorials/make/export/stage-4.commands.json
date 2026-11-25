@@ -1,0 +1,12 @@
+[
+	{
+		"command": "project.setExportSettings",
+		"parameters": {
+			"alwaysInclude": [
+				"Prefabs/Coin.stprefab",
+				"Materials/GoldGlow.stmat",
+				"Sounds"
+			]
+		}
+	}
+]

@@ -1,0 +1,20 @@
+[
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Worlds/Meadow.stscene"
+		}
+	},
+	{
+		"command": "world.cook",
+		"parameters": {
+			"world": "Worlds/Meadow.stworld"
+		}
+	},
+	{
+		"command": "world.info",
+		"parameters": {
+			"world": "Worlds/Meadow.stworld"
+		}
+	}
+]

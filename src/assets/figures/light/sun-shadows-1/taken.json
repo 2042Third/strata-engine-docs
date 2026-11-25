@@ -1,0 +1,128 @@
+{
+	"files": {
+		"cascade-distribution-sweep.avif": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				797,
+				499
+			],
+			"figure": "cascade-distribution-sweep",
+			"variant": null,
+			"crop": null,
+			"original": "5916b492b74457b0f4a0b50c750a8ac31c6220c4b391597ab66d58bab88c6ee1",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 90,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "966ec32e5d1e7a03dafbd6f19f5b1d8cc0f5ccb66e934f59b60d3e67edb76e4c"
+		},
+		"shadows-view-medium-high-high-legend.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				285,
+				177
+			],
+			"figure": "shadows-view-medium-high",
+			"variant": "high",
+			"crop": "legend",
+			"original": "0d8428c1ed32eadf3f3725caea2837bb9b857dd9b4a8beff3dc4eeb6faea9ca4",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "ea3bc06419bc3645b59cf87d89dd8eca9dfbdf86e271faef8c760deeecaf1df4"
+		},
+		"shadows-view-medium-high-medium-legend.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				285,
+				177
+			],
+			"figure": "shadows-view-medium-high",
+			"variant": "medium",
+			"crop": "legend",
+			"original": "a9d17fc99add9c6eaf28f632404d19564284ec181c5bbaa4036f66e884dd6abe",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "9199698ca5681f9c8aaf4ff348d4f5377238be8bc91e091c2ea7e5cf0b00cfb7"
+		},
+		"shadows-view-medium-high-medium.avif": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				797,
+				499
+			],
+			"figure": "shadows-view-medium-high",
+			"variant": "medium",
+			"crop": null,
+			"original": "51fdb33fdf4ca0d02870af71632c8aac65fcccea67a36ccdc3098cf49780eed1",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 90,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "db532bbac5718fae34fa873c03cfc54d00f686b37bfac1bf0b260529e6931488"
+		}
+	}
+}

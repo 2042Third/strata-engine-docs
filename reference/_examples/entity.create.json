@@ -1,0 +1,22 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"command": "entity.create",
+	"parameters": {
+		"name": "Cube",
+		"components": {
+			"MeshRenderer": {
+				"Mesh": "Builtin/Cube"
+			},
+			"Transform": {
+				"Translation": [
+					0,
+					0.5,
+					0
+				]
+			}
+		}
+	},
+	"result": {
+		"id": "…"
+	}
+}

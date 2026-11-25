@@ -1,0 +1,498 @@
+{
+	"figures": [
+		{
+			"id": "scene-view-layers",
+			"shows": "The Scene view of the Showcase with its strip of chips above the image, and over the image the move gizmo on a selected drum, the statistics at the top left and the streaming view's legend at the bottom left",
+			"caption": "The strip holds the chips above the image, so none of them covers the scene. The gizmo, the statistics and the legend are drawn over the image.",
+			"alt": "The Scene view of the editor. A row of chips stands above a rendered outpost with a drum beside an old bus. A move gizmo is drawn on the selected drum, a box of numbers stands at the top left of the image and a small key with two counts at its bottom left.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"windowSize": [
+					1280,
+					720
+				],
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Drum12"
+						},
+						"bind": {
+							"drum": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "drum"
+								}
+							]
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"stats": true,
+							"debugView": "streaming",
+							"gizmo": "Translate",
+							"space": "World"
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								5.5,
+								2.0,
+								3.0
+							],
+							"target": [
+								9.32,
+								0.6,
+								-1.4
+							],
+							"fov": 40
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "scene-view-gizmos",
+			"shows": "The move gizmo in Local space on a drum of the Showcase tilted to one side: its green arrow leans along the drum's axis",
+			"caption": "In Local mode the handles of the gizmo follow the drum's own axes, so on the tilted drum the green arrow leans along it instead of pointing straight up.",
+			"alt": "A drum tilted to one side beside an old bus in the Scene view. The move gizmo stands at the drum's base, and its green arrow leans with the drum.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"windowSize": [
+					1280,
+					720
+				],
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Drum12"
+						},
+						"bind": {
+							"drum": "/entities/0"
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entity": {
+								"$ref": "drum"
+							},
+							"component": "Transform",
+							"values": {
+								"Rotation": [
+									0,
+									30,
+									25
+								]
+							}
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "drum"
+								}
+							]
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"gizmo": "Translate",
+							"space": "Local"
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								7.0,
+								1.2,
+								1.6
+							],
+							"target": [
+								9.85,
+								0.55,
+								-0.8
+							],
+							"fov": 35
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					}
+				]
+			},
+			"crops": [
+				{
+					"name": "gizmo",
+					"rect": [
+						0.3137,
+						0.3407,
+						0.6023,
+						0.8016
+					],
+					"scale": 3
+				}
+			]
+		},
+		{
+			"id": "scene-view-lod-legend",
+			"shows": "The level of detail debug view over the Showcase's yard, with its legend of four colors and counts at the bottom left and the statistics at the top left",
+			"caption": "Each color of the legend names a level of detail and counts the entities drawn at it, not the area they cover. The ground is a single entity at the first level and colors most of the image green, while the red line, the last level, counts the most entities.",
+			"alt": "The Scene view colors every object by its level of detail: the ground green, a large tank red, smaller things blue and yellow. A key at the bottom left lists each color with a count, and a box of frame statistics stands at the top left.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"windowSize": [
+					1280,
+					720
+				],
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"debugView": "lod",
+							"stats": true
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-10,
+								3,
+								-10
+							],
+							"target": [
+								12.98,
+								0.5,
+								9.28
+							],
+							"fov": 55
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "scene-view-agent-flash",
+			"shows": "The Scene view of the Showcase, looking down on five drums right after an agent set their rotation: the agent chip at the right end of the strip, naming the command and reading now, and a separate accent rectangle around each drum",
+			"caption": "An agent turned five drums a moment ago. The chip at the right end of the strip names its command and reads now, and an accent rectangle outlines each drum it changed until the flash fades out.",
+			"alt": "The Scene view looks straight down on five oil drums standing apart on the ground beside the rim of a large rusty tank: two pale, two red and one dark blue. Each drum stands in its own thin orange rectangle, and the last chip at the right of the row reads Agent, then the name of the command and the word now.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "Showcase"
+			},
+			"automation": {
+				"client": "claude-code"
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"windowSize": [
+					1280,
+					720
+				],
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Drum0"
+						},
+						"bind": {
+							"d0": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Drum1"
+						},
+						"bind": {
+							"d1": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Drum2"
+						},
+						"bind": {
+							"d2": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Drum3"
+						},
+						"bind": {
+							"d3": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Drum4"
+						},
+						"bind": {
+							"d4": "/entities/0"
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								-2.16,
+								8.5,
+								20.17
+							],
+							"target": [
+								-2.16,
+								0.5,
+								19.89
+							],
+							"fov": 25
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					},
+					{
+						"command": "component.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "d0"
+								},
+								{
+									"$ref": "d1"
+								},
+								{
+									"$ref": "d2"
+								},
+								{
+									"$ref": "d3"
+								},
+								{
+									"$ref": "d4"
+								}
+							],
+							"component": "Transform",
+							"values": {
+								"Rotation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "scene-view-canvas-mode",
+			"shows": "Canvas mode on the Showcase's photo panel, a screen-space canvas, with dark bars above and below the canvas and the exposure control selected: its outline with handles, thin outlines on the other elements",
+			"caption": "The canvas keeps its own aspect ratio inside the view, and the handles of the selected element show where it can change in size. The Grid, Outline, Gizmos and Game UI chips keep their stored settings, and canvas mode overrides them while the 2D chip is lit.",
+			"alt": "The Scene view in canvas mode. The game's screen fills the view between dark bars above and below it, with a dark panel of labels and controls at its right. The selected control has an outline with small square handles, and the other elements have thin outlines.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-view-canvas.ini",
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "PhotoPanel"
+						},
+						"bind": {
+							"panel": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.setActive",
+						"parameters": {
+							"entity": {
+								"$ref": "panel"
+							},
+							"active": true
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "ExposureSlider"
+						},
+						"bind": {
+							"slider": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "slider"
+								}
+							]
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"canvasMode": true
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					}
+				]
+			},
+			"crops": [
+				{
+					"name": "slider",
+					"rect": [
+						0.7465,
+						0.2333,
+						0.9975,
+						0.3667
+					],
+					"scale": 3
+				}
+			]
+		},
+		{
+			"id": "scene-view-game-ui-chip",
+			"shows": "The Scene view with the Game UI chip on: the Showcase's photo panel, a screen-space canvas, drawn over the scene at the right",
+			"caption": "With the Game UI chip on, the game's screen-space canvases are drawn over the scene in the editor's view: here the photo panel at the right.",
+			"alt": "The Scene view of an outpost with the Game UI chip lit in the strip. A dark panel of labels and controls stands over the scene at the right of the image.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "Showcase"
+			},
+			"editorWindow": {
+				"layout": "layouts/scene-view.ini",
+				"windowSize": [
+					1280,
+					720
+				],
+				"panel": "Viewport",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "PhotoPanel"
+						},
+						"bind": {
+							"panel": "/entities/0"
+						}
+					},
+					{
+						"command": "entity.setActive",
+						"parameters": {
+							"entity": {
+								"$ref": "panel"
+							},
+							"active": true
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": []
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"gameUI": true
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								5.5,
+								2.0,
+								3.0
+							],
+							"target": [
+								9.85,
+								0.6,
+								-0.8
+							],
+							"fov": 40
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 300
+						}
+					}
+				]
+			}
+		}
+	]
+}

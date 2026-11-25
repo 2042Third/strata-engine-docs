@@ -1,0 +1,3 @@
+# Part review: `worlds/game-identity`
+
+No corrections. Checked at the pin: the manifest versions 1 to 5 and what each lacks, `IsPlainFileName` and its four uses, 256 patch packs, the identity read, `GamePresentation::Make`, `MakeGameDirectoryName`, the save and log folders, the ten icon sizes, `stbir_resize_uint8_srgb`, `PEResources` (the version's internal name, `GLFW_ICON`), the desktop entry's text and quoting, the Dock icon's 1,024 pixels, the suites `Project.GameManifest`, `Editor.Export.GameIcon`, `Editor.Export.ExecutableResources` (and `.Sweep`), `Editor.Export.DesktopEntry`, the CTests `StrataRuntime.Identity`, `.Icon`, `.GameIcon` and `.VersionInfo`, the "No game to run:" report, the sketches' outputs and every callout.

@@ -1,0 +1,17 @@
+[
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Look",
+			"kind": "Vector2",
+			"bindings": [
+				"Gamepad/RightStick"
+			]
+		},
+		"expect": {
+			"/created": {
+				"equals": true
+			}
+		}
+	}
+]

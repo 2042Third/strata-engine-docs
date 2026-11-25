@@ -1,0 +1,414 @@
+[
+	{
+		"command": "animation.info",
+		"parameters": {
+			"asset": "Models/Robot/RobotExpressive.glb"
+		},
+		"bind": {
+			"idle": "/clips/2/asset",
+			"jump": "/clips/3/asset",
+			"running": "/clips/6/asset",
+			"walking": "/clips/11/asset"
+		}
+	},
+	{
+		"command": "animation.createController",
+		"parameters": {
+			"path": "Animations/Robot.stanimator",
+			"parameters": [
+				{
+					"Name": "Speed",
+					"Type": "Float",
+					"Default": 0
+				},
+				{
+					"Name": "Grounded",
+					"Type": "Bool",
+					"Default": true
+				},
+				{
+					"Name": "Jump",
+					"Type": "Trigger"
+				}
+			],
+			"states": [
+				{
+					"Name": "Idle",
+					"Clip": {
+						"$ref": "idle"
+					}
+				},
+				{
+					"Name": "Walk",
+					"Clip": {
+						"$ref": "walking"
+					},
+					"Events": [
+						{
+							"Name": "Footstep",
+							"Time": 0.02
+						},
+						{
+							"Name": "Footstep",
+							"Time": 0.5
+						}
+					]
+				},
+				{
+					"Name": "Run",
+					"Clip": {
+						"$ref": "running"
+					},
+					"Events": [
+						{
+							"Name": "Footstep",
+							"Time": 0.28
+						},
+						{
+							"Name": "Footstep",
+							"Time": 0.76
+						}
+					]
+				},
+				{
+					"Name": "Jump",
+					"Clip": {
+						"$ref": "jump"
+					},
+					"Loop": false
+				}
+			],
+			"transitions": [
+				{
+					"AnyState": true,
+					"CanTransitionToSelf": true,
+					"To": "Jump",
+					"Duration": 0.1,
+					"Conditions": [
+						{
+							"Parameter": "Jump",
+							"Mode": "Set"
+						}
+					]
+				},
+				{
+					"From": "Idle",
+					"To": "Walk",
+					"Duration": 0.15,
+					"Conditions": [
+						{
+							"Parameter": "Speed",
+							"Mode": "Greater",
+							"Threshold": 0.1
+						}
+					]
+				},
+				{
+					"From": "Walk",
+					"To": "Idle",
+					"Duration": 0.2,
+					"Conditions": [
+						{
+							"Parameter": "Speed",
+							"Mode": "Less",
+							"Threshold": 0.1
+						}
+					]
+				},
+				{
+					"From": "Walk",
+					"To": "Run",
+					"Duration": 0.2,
+					"Conditions": [
+						{
+							"Parameter": "Speed",
+							"Mode": "Greater",
+							"Threshold": 4.5
+						}
+					]
+				},
+				{
+					"From": "Run",
+					"To": "Walk",
+					"Duration": 0.2,
+					"Conditions": [
+						{
+							"Parameter": "Speed",
+							"Mode": "Less",
+							"Threshold": 4.5
+						}
+					]
+				},
+				{
+					"From": "Jump",
+					"To": "Walk",
+					"Duration": 0.15,
+					"ExitTime": 0.4,
+					"Conditions": [
+						{
+							"Parameter": "Grounded",
+							"Mode": "True"
+						},
+						{
+							"Parameter": "Speed",
+							"Mode": "Greater",
+							"Threshold": 0.1
+						}
+					]
+				},
+				{
+					"From": "Jump",
+					"To": "Idle",
+					"Duration": 0.2,
+					"ExitTime": 0.4,
+					"Conditions": [
+						{
+							"Parameter": "Grounded",
+							"Mode": "True"
+						},
+						{
+							"Parameter": "Speed",
+							"Mode": "Less",
+							"Threshold": 0.1
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"command": "animation.info",
+		"parameters": {
+			"asset": "Animations/Robot.stanimator"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "Animator",
+			"values": {
+				"Controller": "Animations/Robot.stanimator"
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"class": "Footsteps",
+			"fields": {
+				"Step1": "Sounds/Footsteps/Grass1.ogg",
+				"Step2": "Sounds/Footsteps/Grass2.ogg",
+				"Step3": "Sounds/Footsteps/Grass3.ogg",
+				"Step4": "Sounds/Footsteps/Grass4.ogg"
+			},
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "physics.stats",
+		"expect": {
+			"/waitingForMeshes": {
+				"equals": false
+			}
+		},
+		"until": {
+			"seconds": 60
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "animation.info",
+		"parameters": {
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "play.pause",
+		"parameters": {
+			"paused": true
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "Space"
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 10
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "animation.info",
+		"parameters": {
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	},
+	{
+		"command": "play.pause",
+		"parameters": {
+			"paused": false
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "W",
+			"action": "press"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.5": "/entities/0"
+		}
+	},
+	{
+		"command": "animation.info",
+		"parameters": {
+			"entity": {
+				"$ref": "entityName.5"
+			}
+		},
+		"expect": {
+			"/state": {
+				"equals": "Walk"
+			}
+		},
+		"until": {
+			"seconds": 5
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.6": "/entities/0"
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"class": "Footsteps",
+			"entity": {
+				"$ref": "entityName.6"
+			}
+		},
+		"expect": {
+			"/scripts/0/fields/Steps": {
+				"min": 1
+			}
+		},
+		"until": {
+			"seconds": 5
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "LeftShift",
+			"action": "press"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.7": "/entities/0"
+		}
+	},
+	{
+		"command": "animation.info",
+		"parameters": {
+			"entity": {
+				"$ref": "entityName.7"
+			}
+		},
+		"expect": {
+			"/state": {
+				"equals": "Run"
+			}
+		},
+		"until": {
+			"seconds": 5
+		}
+	},
+	{
+		"command": "input.releaseAll"
+	},
+	{
+		"command": "play.stop"
+	}
+]

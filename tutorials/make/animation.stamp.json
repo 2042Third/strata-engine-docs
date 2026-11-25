@@ -1,0 +1,161 @@
+{
+	"page": "make/animation",
+	"runs": [
+		{
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/tutorials/make/animation/stage-1.commands.json": "5b0f680f24545d0c237514de8188ca3964ea5785e300f9ea7c58944e7b8b1361",
+				"public/downloads/tutorials/make/animation/stage-2.commands.json": "c636a96eab1104867a865251598e0b530ad8ffb2b75cf9cfc5f39cbc80c4635b",
+				"public/downloads/tutorials/make/animation/stage-3.commands.json": "a3db412d697e64a9fa039fe4a9ed38550de6032cb7863cb527abf0257f2e80f4",
+				"public/downloads/tutorials/make/animation/stage-4.commands.json": "28cbb592e4391e6d219612a1f6eea437825207c689e0d5aceee067fe4e5abea1",
+				"public/downloads/tutorials/make/animation/stage-5.commands.json": "62322a6257863788585aa337ec2b50aa4cb1e52b5ed9d542ee8d501fdda97dee",
+				"public/downloads/tutorials/make/animation/stage-6.commands.json": "6a756e267b564c4a483c46ded65f978066fc373780774400e24b953ced22d81f",
+				"public/downloads/tutorials/make/animation/stage-7.commands.json": "d7eedfa82b25c12ade7692c2e4298415696c44f2a53119aac833803baa608056",
+				"public/downloads/tutorials/make/animation/stage-8.commands.json": "f4ad6a2eaad786e0a9a8d58e6ac82f0954d337f6c22da4426fc0689c2cdf3af4",
+				"public/downloads/tutorials/make/animation/stage-9.commands.json": "48a61a97e2c5c002cc2f2347b1fa4447744ac5c211169fe6953a6957f38fbd2e",
+				"tutorials/make/animation.tutorial.json": "097b1b5bdd303170be0cd1ff794f34852ec770fb40e815f816154f7fb2e3f16e",
+				"tutorials/make/animation/Footsteps.cpp": "8099b089a2694b52eead197018ba81df076a03734c90a9332b882c6afea0514c",
+				"tutorials/make/animation/Player.stanimator": "b49c7911db9dbe571949a45f2068a2b6a17dd40932b6e0927b2bbceffd51470c",
+				"tutorials/make/animation/PlayerAnimation.cpp": "34bf3430d5b1ae19f24aa659305a641e1afee4351ed78a013361d1136ff70e62",
+				"tutorials/make/animation/PlayerAnimationJump.cpp": "e73b55b62306a8bb8a72b476ac0d5cd01860675ff08af2e1cb090e561c75958e",
+				"tutorials/make/characters-cameras.tutorial.json": "5627962421c1bbf293b6f5f3af25dd1f9f931e4ec89ed36740823b500667bfa7",
+				"tutorials/make/characters-cameras/step10/CameraSwitch.cpp": "61b641036383350082bc5fc20ce219f8702ce3d4e0b3e0d8e93ce24bf84ad272",
+				"tutorials/make/characters-cameras/step2/PlayerController.cpp": "5a0de9c34d1f8f9410bd3571cfcb8b7a3934d2b1965e0eaa9e9c0e58928a460b",
+				"tutorials/make/characters-cameras/step3/PlayerController.cpp": "860219da1723bba48a134b44148280446e128b663a921ff9a9be117607d3e481",
+				"tutorials/make/characters-cameras/step5/FollowCamera.cpp": "52094211a31f5535844359ba85d106561edaa309ae9d5e3001c03404bae897ef",
+				"tutorials/make/characters-cameras/step5b/FollowCamera.cpp": "4d8f4a087fe33bd2e4e538e4082b1b1d883d7c3049e6bb9a505444064ce89d68",
+				"tutorials/make/characters-cameras/step7/FollowCamera.cpp": "c3e46373ba99b32aef00b52f1c47625e99da7bac3d1aaf5c63b846c07cbe39bb",
+				"tutorials/make/characters-cameras/step8/MovingPlatform.cpp": "2c5c0457cb9c5b60df628644b0586cf77943043bf312afda49c7d6dc738ab947",
+				"tutorials/make/characters-cameras/step9/MovingPlatform.cpp": "e15fc02367535dfa9d355acce88c3a4b2ba554201efafebf29a1b52c7ee77947",
+				"tutorials/make/characters-cameras/step9/PlayerController.cpp": "eb98746d64e11364ee0e4910f28c922f17580fc8a53104761d394a91f5003dcf"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				},
+				{
+					"step": 2,
+					"passed": true
+				},
+				{
+					"step": 3,
+					"passed": true
+				},
+				{
+					"step": 4,
+					"passed": true
+				},
+				{
+					"step": 5,
+					"passed": true
+				},
+				{
+					"step": 6,
+					"passed": true
+				},
+				{
+					"step": 7,
+					"passed": true
+				},
+				{
+					"step": 8,
+					"passed": true
+				},
+				{
+					"step": 9,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		},
+		{
+			"build": {
+				"kind": "package",
+				"configuration": "Strata-0.8.0-windows-x64",
+				"editorSha256": "bcff21bcd56e8f51003861fc7aafb4b8ab638ad7cc521c8c0c7829c4361673be",
+				"package": "Strata-0.8.0-windows-x64.zip",
+				"packageSha256": "47a151b64d0d6bb6f2c77147ca4b477b5eaa479b7dfeafee07ccec3911a00d11"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/tutorials/make/animation/stage-1.commands.json": "5b0f680f24545d0c237514de8188ca3964ea5785e300f9ea7c58944e7b8b1361",
+				"public/downloads/tutorials/make/animation/stage-2.commands.json": "c636a96eab1104867a865251598e0b530ad8ffb2b75cf9cfc5f39cbc80c4635b",
+				"public/downloads/tutorials/make/animation/stage-3.commands.json": "a3db412d697e64a9fa039fe4a9ed38550de6032cb7863cb527abf0257f2e80f4",
+				"public/downloads/tutorials/make/animation/stage-4.commands.json": "28cbb592e4391e6d219612a1f6eea437825207c689e0d5aceee067fe4e5abea1",
+				"public/downloads/tutorials/make/animation/stage-5.commands.json": "62322a6257863788585aa337ec2b50aa4cb1e52b5ed9d542ee8d501fdda97dee",
+				"public/downloads/tutorials/make/animation/stage-6.commands.json": "6a756e267b564c4a483c46ded65f978066fc373780774400e24b953ced22d81f",
+				"public/downloads/tutorials/make/animation/stage-7.commands.json": "d7eedfa82b25c12ade7692c2e4298415696c44f2a53119aac833803baa608056",
+				"public/downloads/tutorials/make/animation/stage-8.commands.json": "f4ad6a2eaad786e0a9a8d58e6ac82f0954d337f6c22da4426fc0689c2cdf3af4",
+				"public/downloads/tutorials/make/animation/stage-9.commands.json": "48a61a97e2c5c002cc2f2347b1fa4447744ac5c211169fe6953a6957f38fbd2e",
+				"tutorials/make/animation.tutorial.json": "097b1b5bdd303170be0cd1ff794f34852ec770fb40e815f816154f7fb2e3f16e",
+				"tutorials/make/animation/Footsteps.cpp": "8099b089a2694b52eead197018ba81df076a03734c90a9332b882c6afea0514c",
+				"tutorials/make/animation/Player.stanimator": "b49c7911db9dbe571949a45f2068a2b6a17dd40932b6e0927b2bbceffd51470c",
+				"tutorials/make/animation/PlayerAnimation.cpp": "34bf3430d5b1ae19f24aa659305a641e1afee4351ed78a013361d1136ff70e62",
+				"tutorials/make/animation/PlayerAnimationJump.cpp": "e73b55b62306a8bb8a72b476ac0d5cd01860675ff08af2e1cb090e561c75958e",
+				"tutorials/make/characters-cameras.tutorial.json": "5627962421c1bbf293b6f5f3af25dd1f9f931e4ec89ed36740823b500667bfa7",
+				"tutorials/make/characters-cameras/step10/CameraSwitch.cpp": "61b641036383350082bc5fc20ce219f8702ce3d4e0b3e0d8e93ce24bf84ad272",
+				"tutorials/make/characters-cameras/step2/PlayerController.cpp": "5a0de9c34d1f8f9410bd3571cfcb8b7a3934d2b1965e0eaa9e9c0e58928a460b",
+				"tutorials/make/characters-cameras/step3/PlayerController.cpp": "860219da1723bba48a134b44148280446e128b663a921ff9a9be117607d3e481",
+				"tutorials/make/characters-cameras/step5/FollowCamera.cpp": "52094211a31f5535844359ba85d106561edaa309ae9d5e3001c03404bae897ef",
+				"tutorials/make/characters-cameras/step5b/FollowCamera.cpp": "4d8f4a087fe33bd2e4e538e4082b1b1d883d7c3049e6bb9a505444064ce89d68",
+				"tutorials/make/characters-cameras/step7/FollowCamera.cpp": "c3e46373ba99b32aef00b52f1c47625e99da7bac3d1aaf5c63b846c07cbe39bb",
+				"tutorials/make/characters-cameras/step8/MovingPlatform.cpp": "2c5c0457cb9c5b60df628644b0586cf77943043bf312afda49c7d6dc738ab947",
+				"tutorials/make/characters-cameras/step9/MovingPlatform.cpp": "e15fc02367535dfa9d355acce88c3a4b2ba554201efafebf29a1b52c7ee77947",
+				"tutorials/make/characters-cameras/step9/PlayerController.cpp": "eb98746d64e11364ee0e4910f28c922f17580fc8a53104761d394a91f5003dcf"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				},
+				{
+					"step": 2,
+					"passed": true
+				},
+				{
+					"step": 3,
+					"passed": true
+				},
+				{
+					"step": 4,
+					"passed": true
+				},
+				{
+					"step": 5,
+					"passed": true
+				},
+				{
+					"step": 6,
+					"passed": true
+				},
+				{
+					"step": 7,
+					"passed": true
+				},
+				{
+					"step": 8,
+					"passed": true
+				},
+				{
+					"step": 9,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		}
+	]
+}

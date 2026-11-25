@@ -1,0 +1,421 @@
+{
+	"figures": [
+		{
+			"id": "density-sweep",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "Three 3 m cubes 12, 32 and 62 m from the camera on a widened stone ground under the basic3d sun, with height fog of density 0.01 and then 0.04 (falloff 0.2)",
+			"caption": "With four times the density the far cube is almost gone, the middle one pale and the near one a little grey.",
+			"alt": "Two pictures of three grey cubes in a row going away from the camera on dark ground under a blue sky. With thin fog the far cube is slightly paler. With thick fog the far cube has nearly vanished into a blue-grey haze, the middle cube is pale and the horizon is lost.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.6,
+					2
+				],
+				"target": [
+					0,
+					1.4,
+					-60
+				],
+				"fov": 30
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "component.set",
+					"entityName": "Ground",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Scale": [
+								1000,
+								1,
+								1000
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Near",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-3,
+									1.5,
+									-10
+								],
+								"Scale": [
+									3,
+									3,
+									3
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Middle",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.5,
+									-30
+								],
+								"Scale": [
+									3,
+									3,
+									3
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Far",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									5,
+									1.5,
+									-60
+								],
+								"Scale": [
+									3,
+									3,
+									3
+								]
+							}
+						}
+					}
+				}
+			],
+			"variants": {
+				"thin": {
+					"setup": [
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Fog",
+								"components": {
+									"HeightFog": {
+										"Density": 0.01,
+										"HeightFalloff": 0.2
+									}
+								}
+							}
+						}
+					]
+				},
+				"thick": {
+					"setup": [
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Fog",
+								"components": {
+									"HeightFog": {
+										"Density": 0.04,
+										"HeightFalloff": 0.2
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "sun-scattering",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "Two 3 m cubes in height fog of density 0.03, looking toward a sun 8 degrees above the horizon, with SunScattering 0 and then 1, at one fixed exposure",
+			"caption": "At full scattering the fog gathers the sun's light into a white glow that washes the near cube pale. At none the sun's light scatters evenly, so the haze is brighter toward the sun only because it takes the sky's horizon color.",
+			"alt": "Two pictures at the same exposure of two cubes against the light in warm fog, with a low sun above the near cube. With scattering 0 the haze is warm and brightest around the sun, fading to grey on the right. With scattering 1 a large white glow surrounds the sun and washes the near cube pale.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.6,
+					2
+				],
+				"target": [
+					0,
+					3.5,
+					-60
+				],
+				"fov": 40
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"postProcess": {
+				"AutoExposure": false,
+				"Exposure": -15.0
+			},
+			"setup": [
+				{
+					"command": "lighting.applySkyPreset",
+					"parameters": {
+						"preset": "Clear",
+						"sunElevation": 8,
+						"sunAzimuth": -100
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Ground",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Scale": [
+								1000,
+								1,
+								1000
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Near",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-3,
+									1.5,
+									-10
+								],
+								"Scale": [
+									3,
+									3,
+									3
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Far",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									-40
+								],
+								"Scale": [
+									3,
+									3,
+									3
+								]
+							}
+						}
+					}
+				}
+			],
+			"variants": {
+				"scatter-0": {
+					"setup": [
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Fog",
+								"components": {
+									"HeightFog": {
+										"Density": 0.03,
+										"SunScattering": 0
+									}
+								}
+							}
+						}
+					]
+				},
+				"scatter-1": {
+					"setup": [
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Fog",
+								"components": {
+									"HeightFog": {
+										"Density": 0.03,
+										"SunScattering": 1
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "color-from-sky",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "Two 3 m cubes in height fog of density 0.03 under the basic3d sky, looking at the horizon, with ColorFromSky on and then off, at one fixed exposure",
+			"caption": "With the sky lighting the fog, the haze meets the sky at the horizon without a seam. Off, the fog's Color is its own radiance, far dimmer than daylight, so a dark grey band with an edge lies against the sky.",
+			"alt": "Two pictures at the same exposure of two grey cubes on ground under a blue sky. With the sky lighting the fog the ground fades into a pale blue haze that blends into the sky. Without it a dark grey band with a visible edge lies along the horizon, the sky is a deeper blue and the ground a darker brown.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.6,
+					2
+				],
+				"target": [
+					0,
+					3.5,
+					-60
+				],
+				"fov": 40
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"postProcess": {
+				"AutoExposure": false,
+				"Exposure": -15.05
+			},
+			"setup": [
+				{
+					"command": "component.set",
+					"entityName": "Ground",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Scale": [
+								1000,
+								1,
+								1000
+							]
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Near",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-3,
+									1.5,
+									-10
+								],
+								"Scale": [
+									3,
+									3,
+									3
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Far",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									-40
+								],
+								"Scale": [
+									3,
+									3,
+									3
+								]
+							}
+						}
+					}
+				}
+			],
+			"variants": {
+				"sky-on": {
+					"setup": [
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Fog",
+								"components": {
+									"HeightFog": {
+										"Density": 0.03,
+										"ColorFromSky": true
+									}
+								}
+							}
+						}
+					]
+				},
+				"sky-off": {
+					"setup": [
+						{
+							"command": "entity.create",
+							"parameters": {
+								"name": "Fog",
+								"components": {
+									"HeightFog": {
+										"Density": 0.03,
+										"ColorFromSky": false
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		}
+	]
+}

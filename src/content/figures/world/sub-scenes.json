@@ -1,0 +1,20 @@
+{
+	"figures": [
+		{
+			"id": "load-status",
+			"kind": "text",
+			"shows": "The sub-scenes part of the result of scene.loadStatus in a running game, after scene.loadAdditive loaded a small scene into it",
+			"caption": "The sub-scene entry of the status: its number, the asset handle of the scene it loaded, its state, its progress, the entities created and skipped, and the number of slices that created them.",
+			"alt": "A block of JSON text with one entry for a sub-scene. It shows sub-scene number 1, the scene's asset handle, state Loaded, progress 1.0, 7 of 7 entities created and none skipped, 1 slice, and an error that is null.",
+			"project": { "sample": "ThirdPerson" },
+			"setup": [
+				{ "command": "play.start" },
+				{ "command": "scene.loadAdditive", "parameters": { "scene": "Scenes/Loading.stscene" } }
+			],
+			"text": {
+				"command": { "command": "scene.loadStatus" },
+				"keep": ["/subScenes"]
+			}
+		}
+	]
+}

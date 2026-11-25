@@ -1,0 +1,30 @@
+{
+	"figures": [
+		{
+			"id": "menu-robot",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The main menu of the third-person sample, paused during the robot's wave, with the flag holder selected: its attachment to the robot's right palm in the Inspector and the flag outlined in the raised hand",
+			"caption": "The flag holder is selected while the game is paused. Its attachment names the robot and the joint of the right palm, and the flag, the holder's child with its own offset, is outlined in orange in the raised hand.",
+			"alt": "The editor while the game is paused. The Scene view shows the robot from its right side and a little behind, with its right arm raised. The flag in that hand, a dark pole with a red cloth, is outlined in orange. The Hierarchy lists the flag holder, selected, with the flag as its child. The Inspector shows the holder's transform, scaled 40, and its joint attachment, whose animator is the robot and whose joint is the right palm.",
+			"project": { "sample": "ThirdPerson" },
+			"scene": "Scenes/MainMenu.stscene",
+			"play": { "steps": 450 },
+			"editorWindow": {
+				"layout": "layouts/scene-hierarchy.ini",
+				"windowSize": [960, 540],
+				"steps": [
+					{ "command": "editor.wait", "parameters": { "frames": 600 } },
+					{ "command": "entity.find", "parameters": { "name": "FlagHolder" }, "bind": { "holder": "/entities/0" } },
+					{ "command": "entity.find", "parameters": { "name": "Flag" }, "bind": { "flag": "/entities/0" } },
+					{ "command": "viewport.setSettings", "parameters": { "gizmo": "None", "sceneGizmos": false, "grid": false } },
+					{ "command": "camera.set", "parameters": { "position": [-2.0, 1.8, -1.0], "target": [1.0, 1.25, -0.25], "fov": 32 } },
+					{ "command": "selection.set", "parameters": { "entities": [{ "$ref": "flag" }] } },
+					{ "command": "editor.wait", "parameters": { "frames": 10 } },
+					{ "command": "selection.set", "parameters": { "entities": [{ "$ref": "holder" }] } },
+					{ "command": "editor.showPanel", "parameters": { "panel": "Viewport" } }
+				]
+			}
+		}
+	]
+}

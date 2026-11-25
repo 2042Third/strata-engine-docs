@@ -1,0 +1,267 @@
+{
+	"figures": [
+		{
+			"id": "ssr-ray-line",
+			"kind": "diagram",
+			"shows": "A reflected ray in a side view and on the screen: the world-space points at equal steps of the ray, and the same points as a straight line in row and 1 over distance, ending at the far plane, with steps closer together near the start and a bisection inside the hit step",
+			"caption": "Equal steps of the ray in the world are not equal on the screen. On the screen the ray is a straight line, so the march steps along that line and refines the hit by halving.",
+			"alt": "Two panels. The left panel shows a floor, a wall and a ray rising from the floor to the wall. The right panel shows the same ray as a straight line from row 625 to row 375, with marks that crowd near the start and a hit step that is halved six times.",
+			"numbers": "Left panel, side view, camera at the origin looking along +z, floor at height -1, wall at z = 8 from height -1 to 3: ray from (z 4, height -1) along (4, 1) per unit; points at t = 0, 0.5, 1 marked, (4,-1), (6,-0.5), (8,0). Right panel, screen: x axis row 625 down to 375 (500 minus 500 times height over z), y axis 1/z from 0.25 down to 0; the line from (625, 0.25) to (375, 0); marks at rows 625, 541.7, 500 with 1/z 0.25, 0.167, 0.125, labelled t = 0, 0.5, 1; the row 500 hit between marks at 527.3 and 499.6 with six halvings drawn."
+		},
+		{
+			"id": "ssr-modes-sweep",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev mirror scene with TAA and the reflections row at Off, then Checkerboard, Spatial and SpatialHigh",
+			"caption": "Off leaves only the sky's light in the floors. Checkerboard adds the wall, the balls and the box, with a fringe of noise along their edges. Spatial traces every pixel, and only a fine fringe stays at the top of the left ball's reflection, far smaller than Checkerboard's. SpatialHigh, with more steps for thin things and long rays, changes little in this scene.",
+			"alt": "Four pictures of three dark floors before a wall with two red balls and a blue box. The first shows no reflection of them. The others show their reflection in the floors. In the second a fringe of noise runs along the edges, and in the third and fourth only a fine fringe of dark spikes stays at the top of the left ball's reflection.",
+			"project": {
+				"lookdev": true
+			},
+			"shot": "lookdev.mirror",
+			"size": [
+				1280,
+				720
+			],
+			"variants": {
+				"off": {
+					"quality": {
+						"custom": {
+							"Reflections": "Off"
+						}
+					}
+				},
+				"checkerboard": {
+					"quality": {
+						"custom": {
+							"Reflections": "Checkerboard"
+						}
+					}
+				},
+				"spatial": {
+					"quality": {
+						"custom": {
+							"Reflections": "Spatial"
+						}
+					}
+				},
+				"spatialhigh": {
+					"quality": {
+						"custom": {
+							"Reflections": "SpatialHigh"
+						}
+					}
+				}
+			},
+			"antiAliasing": "taa"
+		},
+		{
+			"id": "ssr-roughness-sweep",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev mirror scene's three floors, polished (roughness 0.02), satin (0.1) and glossy (0.3), with the maximum roughness of the reflections at 0.2, then at 0.5",
+			"caption": "At a maximum of 0.2 the glossy floor at right keeps the sky's light, and the right ball's reflection stops where the satin floor ends. At 0.5 the glossy floor reflects the ball and the wall too.",
+			"alt": "Two pictures of three dark floors side by side before a wall with two red balls and a blue box. In the first, the right floor shows no reflection, and the reflection of the right ball is cut by a slanted line where the middle floor ends. In the second, the right floor reflects the ball and the wall.",
+			"project": {
+				"lookdev": true
+			},
+			"shot": "lookdev.mirror",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"variants": {
+				"max-roughness-02": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Post Process",
+							"parameters": {
+								"component": "PostProcess",
+								"values": {
+									"ScreenSpaceReflectionsMaxRoughness": 0.2
+								}
+							}
+						}
+					]
+				},
+				"max-roughness-05": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Post Process",
+							"parameters": {
+								"component": "PostProcess",
+								"values": {
+									"ScreenSpaceReflectionsMaxRoughness": 0.5
+								}
+							}
+						}
+					]
+				}
+			},
+			"numbers": "ScreenSpaceReflectionsMaxRoughness 0.2 and 0.5, set on the scene's Post Process entity by the variants; the floors' roughness 0.02 (polished), 0.1 (satin) and 0.3 (glossy) from the materials MirrorPolished, MirrorSatin and MirrorGlossy of Tools/LookDev/LookDevScene.json"
+		},
+		{
+			"id": "ssr-edge-fade-diagram",
+			"kind": "diagram",
+			"shows": "Two rays over the same screen, one that leaves through the top edge and one that ends at a far wall near the left edge, with the fade drawn only on the first",
+			"caption": "The fade belongs to the edge a ray leaves through. A hit near the exit of the first ray fades, while a hit near the left edge, which its ray never crosses, keeps full confidence.",
+			"alt": "A rectangle for the screen. One ray runs up and leaves through the top edge, and a band at that exit is shaded. A second ray runs toward the left side and ends before it, and no band is drawn there.",
+			"numbers": "Screen 1920 by 1080 pixels; fade width 0.1 of the smaller side, 108 pixels. Ray A from (960, 900) up to the top edge at (1000, 0) with LeavesScreen true; shaded band from y = 0 to y = 108 along the ray, a hit at y = 54 labelled 0.5. Ray B from (700, 800) to a hit at (60, 500), ending at a surface, LeavesScreen false; a hit 60 pixels from the left edge labelled 1.0 with no band."
+		},
+		{
+			"id": "ssr-edge-fade-crop",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev specular lab's wet ground, looking toward a low sun: the reflections of the far wall and the posts reach nearly to both sides of the picture",
+			"caption": "The wet ground reflects the far wall and the posts out to both sides of the picture. Only a narrow strip of sky stays at each edge: the camera looks slightly down, so the rays there leave through the side of the screen and fade, as the rule asks.",
+			"alt": "A wet ground under a low sun ahead of the camera, with thin posts standing on it and a long brown wall far beyond. Their reflections in the ground run straight out nearly to the left and right edges of the picture, with only a narrow strip of sky at either side.",
+			"project": {
+				"lookdev": true
+			},
+			"shot": "lookdev.wet.sunward",
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high"
+		},
+		{
+			"id": "ssr-post-ghost",
+			"kind": "diagram",
+			"shows": "Two panels of a ray that passes behind a thin post on its way to a wall: the 0.7.0 test that takes any point behind a surface, with a ghost of the post, and the validated crossing, which refuses it and goes on to the wall; and the plane crossing at a wall's top edge",
+			"caption": "A ray behind a thin post sits behind its pixels, but the two ends of its step lie on the post and on the far wall. Validation sees the jump in distance and keeps marching.",
+			"alt": "Two panels drawn in the plane through the camera and the ray. In the first a ray passes behind a thin post and a hit is marked on the post. In the second the same ray is marked as a rejected candidate at the post and a hit is marked on the wall beyond it.",
+			"numbers": "In the plane through the camera and the ray, units in meters: post 0.2 wide at z = 1; wall at z = 8; ray passing behind the post at z = 1.2 and meeting the wall at z = 8. Panel 1 label ghost: hit on the post. Panel 2 labels: candidate rejected, ends at 1.0 m and 8.0 m with the tolerance 0.05 m plus the interval; hit on the wall. A third inset: a wall seen from below its top edge, with the plane crossing found where the ray passes the wall's plane just above the top row."
+		},
+		{
+			"id": "ssr-posts-crop",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "Wet ground in the look-dev specular lab at the Spatial row, with thin posts, a crate and the top edge of a white wall reflected in it",
+			"caption": "Each post reflects once, with no ghost column beside it, and the reflection of the white wall's top edge is straight and whole.",
+			"alt": "Wet ground with a red post, a white post, crates and a long white wall behind them. Each post has one clean reflection below it, and the top edge of the wall's reflection is one straight line with no break.",
+			"project": {
+				"lookdev": true
+			},
+			"scene": "Scenes/Specular.stscene",
+			"camera": {
+				"position": [
+					-14,
+					1.3,
+					25
+				],
+				"target": [
+					-11,
+					0.5,
+					9
+				],
+				"fov": 32
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high"
+		},
+		{
+			"id": "ssr-crescent-diagram",
+			"kind": "diagram",
+			"shows": "A ball on a floor between a raised camera and a mirror wall, with the camera's ray reflected from the wall back onto the ball's far side, where the depth buffer holds only the front surface",
+			"caption": "The depth buffer holds the ball's front, so a ray that would meet its back stops at a front pixel seen from behind. Confidence there is zero, and the reflection keeps a crescent of the ball.",
+			"alt": "A circle for a ball on a floor, with the camera at upper left and a mirror wall at right. The camera's ray reflects from the wall back onto the ball's back. A marked front pixel on the same sight line shows a normal whose dot product with the ray's direction is positive. The lit part of the reflection behind the wall is a thin crescent along its top.",
+			"numbers": "Side view: ball of radius 1 at (0, 1), floor at height 0, mirror wall at x = 2, camera at (-3.5, 3). The camera's ray meets the wall at (2, 1.68) and reflects along (-0.97, -0.23) to the ball's back at (0.91, 1.42), hidden from the camera. The sight line through that point meets the front at (-0.43, 1.90), normal (-0.43, 0.90); the dot of normal and ray direction is 0.21, so the facing term clamp(-4 times 0.21) is 0. Shaded crescent along the top of the reflection behind the wall: the ball's top, the only part that both the camera and its mirror image see."
+		},
+		{
+			"id": "ssr-crescent-crop",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "A white ball set in front of the polished sheet of the look-dev specular lab, seen from above at the Spatial row, and its reflection in the sheet",
+			"caption": "The reflected ball keeps only the lit crescent along its top that the screen can give. Where the ray would meet the ball's back, the sheet shows its fallback, the same gray-brown as its upper part. Below the crescent that tone fills the rest of the reflected ball, a pale oval cut into the dark reflection of the ball's shadow. The dark slanted line is the sheet's foot.",
+			"alt": "A white ball on the ground in front of a polished metal sheet that fills the background, with the sheet's foot as a dark slanted line across the frame. In the sheet, the ball's reflection is only a thin bright crescent along its upper edge. The rest of the reflected ball shows the same gray-brown as the upper sheet, a pale oval cut into the dark reflection of the ball's shadow, with no front-lit rim on the far side.",
+			"project": {
+				"lookdev": true
+			},
+			"scene": "Scenes/Specular.stscene",
+			"camera": {
+				"position": [
+					5,
+					3.6,
+					1.5
+				],
+				"target": [
+					6.8,
+					0.8,
+					-4.3
+				],
+				"fov": 24
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Crescent Ball",
+						"components": {
+							"Transform": {
+								"Translation": [
+									7,
+									0.5,
+									-3.5
+								]
+							},
+							"MeshRenderer": {
+								"Mesh": "0000000000000002",
+								"Material": "Materials/SpecPostWhite.stmat"
+							}
+						}
+					}
+				}
+			]
+		},
+		{
+			"id": "ssr-screen-door",
+			"kind": "diagram",
+			"shows": "A rough sheet's reflection before the resolve, as single samples with the 4 by 4 pattern of offsets showing, and after the resolve has averaged them",
+			"caption": "Before the resolve each pixel holds one ray, and the pattern of offsets shows as a screen door. After the 5 by 5 kernel every offset has the same weight and the pattern is gone.",
+			"alt": "Two squares of dots. The first has a regular grid of bright and dark dots in blocks of four by four. The second is a flat gray of the same average brightness.",
+			"numbers": "Two 16 by 16 grids. Left: pixel (x, y) has brightness 0.2 plus 0.6 times the pattern order of (x mod 4, y mod 4) over 15 using the order 0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5. Right: every pixel 0.5, the mean of the left grid. Below, the kernel 0.5, 1, 1, 1, 0.5 drawn over five pixels with the two outer pixels at the same offset phase."
+		},
+		{
+			"id": "ssr-ao-wet",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "A crate standing on wet ground in the look-dev specular lab at the Spatial row, with its reflection meeting it at the contact line",
+			"caption": "The crate's reflection keeps an even tone right down to the line where the crate stands. Ambient occlusion darkens only the sky's light, which the reflection replaces there.",
+			"alt": "A crate on wet ground, close up, with its reflection below it. The reflection is a darker copy of the crate's face, even in tone up to the line where crate and ground meet, with no dark band along that line.",
+			"project": {
+				"lookdev": true
+			},
+			"scene": "Scenes/Specular.stscene",
+			"camera": {
+				"position": [
+					-11.5,
+					1.0,
+					17
+				],
+				"target": [
+					-11,
+					0.3,
+					11
+				],
+				"fov": 35
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high"
+		}
+	]
+}

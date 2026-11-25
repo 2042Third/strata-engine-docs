@@ -1,0 +1,130 @@
+[
+	{
+		"command": "asset.import",
+		"parameters": {
+			"file": "<release folder>/Samples/ThirdPerson/Assets/Sounds/Complete.ogg",
+			"directory": "Sounds/Music"
+		}
+	},
+	{
+		"command": "asset.info",
+		"parameters": {
+			"asset": "Sounds/Music/Complete.ogg"
+		},
+		"expect": {
+			"/importing": {
+				"equals": false
+			}
+		},
+		"until": {
+			"seconds": 120
+		}
+	},
+	{
+		"command": "asset.setImportSettings",
+		"parameters": {
+			"asset": "Sounds/Music/Complete.ogg",
+			"settings": {
+				"LoadMode": "Streamed"
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Music",
+			"components": {
+				"AudioSource": {
+					"Clip": "Sounds/Music/Complete.ogg",
+					"Loop": true,
+					"Spatial": false
+				}
+			}
+		}
+	},
+	{
+		"command": "script.create",
+		"parameters": {
+			"class": "VolumeKeys"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Game"
+		},
+		"bind": {
+			"game": "/id"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "game"
+			},
+			"class": "VolumeKeys"
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "audio.state",
+		"expect": {
+			"/voices/0/playing": {
+				"equals": true
+			}
+		},
+		"until": {
+			"seconds": 60
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "Minus"
+		}
+	},
+	{
+		"command": "audio.state"
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "Equal"
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "Equal"
+		}
+	},
+	{
+		"command": "audio.state"
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"build": false
+		}
+	},
+	{
+		"command": "audio.state"
+	},
+	{
+		"command": "play.stop"
+	}
+]

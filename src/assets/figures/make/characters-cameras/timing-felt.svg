@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 312">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: rows 52 high centred at y 92, 144, 196, 248; delay bars from x 330 at 4 px per ms (33.3 ms = 133 px); frame line at 16.7 ms; value labels in one column at x 471.2, right of the longest bar; H = 296 + 16 -->
+<text x="24" y="44" class="muted small bold">Fixed Rate</text>
+<text x="128" y="44" class="muted small bold">Interpolation</text>
+<text x="250" y="44" class="muted small bold">step</text>
+<text x="330" y="44" class="muted small bold">delay of the picture</text>
+<text x="600" y="44" class="muted small bold">motion</text>
+<line x1="24" y1="66" x2="744" y2="66" class="line-faint" fill="none" stroke-width="1"/>
+<line x1="24" y1="118" x2="744" y2="118" class="line-faint" fill="none" stroke-width="1"/>
+<line x1="24" y1="170" x2="744" y2="170" class="line-faint" fill="none" stroke-width="1"/>
+<line x1="24" y1="222" x2="744" y2="222" class="line-faint" fill="none" stroke-width="1"/>
+<line x1="24" y1="274" x2="744" y2="274" class="line-faint" fill="none" stroke-width="1"/>
+<text x="24" y="99" class="ink large bold">30</text>
+<text x="128" y="98" class="ink">on</text>
+<text x="250" y="98" class="ink">33.3 ms</text>
+<rect x="330" y="81" width="133.2" height="22" class="blue-area line-blue"/>
+<text x="471.2" y="97" class="blue small halo">33.3 ms, 200 %</text>
+<text x="600" y="98" class="green">smooth</text>
+<text x="24" y="151" class="ink large bold">60</text>
+<text x="128" y="150" class="ink">on</text>
+<text x="250" y="150" class="ink">16.7 ms</text>
+<rect x="330" y="133" width="66.8" height="22" class="blue-area line-blue"/>
+<text x="471.2" y="149" class="blue small halo">16.7 ms, 100 %</text>
+<text x="600" y="150" class="green">smooth</text>
+<text x="24" y="203" class="ink large bold">120</text>
+<text x="128" y="202" class="ink">on</text>
+<text x="250" y="202" class="ink">8.3 ms</text>
+<rect x="330" y="185" width="33.2" height="22" class="blue-area line-blue"/>
+<text x="471.2" y="201" class="blue small halo">8.3 ms, 50 %</text>
+<text x="600" y="202" class="green">smooth</text>
+<text x="24" y="255" class="ink large bold">120</text>
+<text x="128" y="254" class="ink bold">off</text>
+<text x="250" y="254" class="ink">8.3 ms</text>
+<rect x="330" y="237" width="33.2" height="22" class="ground line-blue" stroke-dasharray="4 3"/>
+<text x="471.2" y="253" class="blue small halo">0 to 8.3 ms</text>
+<text x="600" y="254" class="red bold">jerks of 0.042 m</text>
+<line x1="396.8" y1="70" x2="396.8" y2="270" class="line-muted" fill="none" stroke-dasharray="4 3"/>
+<text x="396.8" y="292" class="muted small" text-anchor="middle">one frame at 60 frames a second, 16.7 ms</text>
+</svg>

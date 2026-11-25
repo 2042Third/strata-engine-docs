@@ -1,0 +1,6117 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "The yard at night: four shadowed lanterns, the sign lit by a spot light, one lantern swung out on its arm and the hut lit through its door by a ceiling panel",
+			"caption": "The finished yard. Each lantern has a pool of warm light and throws shadows away from itself, and the hut glows inside.",
+			"alt": "A night yard seen from the front. Warm pools of light lie on shiny ground under four lanterns, and one lantern hangs out on a bar from the front right post. The sign board on the left shines white in a patch of light. Dark shadows of the posts and the sign stretch away from the lamps, and a bright floor shows through the gap in the hut and is mirrored in the ground.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					3,
+					9
+				],
+				"target": [
+					0,
+					1.2,
+					-1
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Hut"
+					},
+					"bind": {
+						"hut": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Back Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.25,
+									-4.9
+								],
+								"Scale": [
+									4,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Roof",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2.6,
+									-3.5
+								],
+								"Scale": [
+									4.4,
+									0.2,
+									3.4
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign"
+					},
+					"bind": {
+						"sign": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Post",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									0.75,
+									2.5
+								],
+								"Scale": [
+									0.1,
+									1.5,
+									0.1
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Board",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									1.6,
+									2.5
+								],
+								"Scale": [
+									1.6,
+									0.8,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Posts"
+					},
+					"bind": {
+						"posts": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm",
+						"components": {
+							"Transform": {
+								"Translation": [
+									4,
+									3,
+									1
+								]
+							}
+						}
+					},
+					"bind": {
+						"arm": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm Bar",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0.6,
+									0,
+									0
+								],
+								"Scale": [
+									1.2,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "arm"
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "DirectionalLight",
+						"values": {
+							"Intensity": 0.2
+						}
+					},
+					"entityName": "Sun"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposure": false,
+							"Exposure": 1
+						}
+					},
+					"entityName": "Post Process"
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Bulb-result.stmat"
+					}
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Bulb-result.stmat",
+						"properties": {
+							"EmissiveColor": [
+								1,
+								0.8,
+								0.5
+							],
+							"EmissiveIntensity": 2000
+						}
+					}
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Ground.stmat",
+						"properties": {
+							"Roughness": 0.1
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 1",
+						"components": {
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									1
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern1": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern1"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-result.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern1"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 1",
+						"parent": {
+							"$ref": "lantern1"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 2",
+						"components": {
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									-5
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern2": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern2"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-result.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern2"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 2",
+						"parent": {
+							"$ref": "lantern2"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 3",
+						"components": {
+							"Transform": {
+								"Translation": [
+									4,
+									3.34,
+									-5
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern3": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern3"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-result.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern3"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 3",
+						"parent": {
+							"$ref": "lantern3"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 4",
+						"components": {
+							"Transform": {
+								"Translation": [
+									1.2,
+									0.38,
+									0
+								]
+							}
+						},
+						"parent": {
+							"$ref": "arm"
+						}
+					},
+					"bind": {
+						"lantern4": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern4"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-result.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern4"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 4",
+						"parent": {
+							"$ref": "lantern4"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Spot",
+						"components": {
+							"SpotLight": {
+								"Intensity": 60,
+								"InnerConeAngle": 8,
+								"OuterConeAngle": 12
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									3,
+									5
+								],
+								"Rotation": [
+									-29,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Panel.stmat"
+					}
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Panel.stmat",
+						"properties": {
+							"EmissiveColor": [
+								1,
+								0.95,
+								0.85
+							],
+							"EmissiveIntensity": 796
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ceiling Panel",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube",
+								"Material": "Materials/Panel.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2.48,
+									-3.5
+								],
+								"Scale": [
+									0.8,
+									0.04,
+									0.4
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "lighting.makeAreaLight",
+					"parameters": {},
+					"entityName": "Ceiling Panel"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Rotation": [
+								0,
+								110,
+								0
+							]
+						}
+					},
+					"entityName": "Arm"
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "night-yard",
+			"shows": "The yard under a 0.2 lux moon with the exposure set to +4 and no lamp",
+			"caption": "The moon alone, with the exposure raised by hand: the yard looks like a dull day, not a dark night, and nothing glows.",
+			"alt": "The yard under the moon at an Exposure of +4. The sky shows blue and the ground gray, as on a dull day. A box-shaped hut with a gap in its front wall, a sign board on a post, four thin posts and a bar on one post throw long, sharp shadows.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					3,
+					9
+				],
+				"target": [
+					0,
+					1.2,
+					-1
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Hut"
+					},
+					"bind": {
+						"hut": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Back Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.25,
+									-4.9
+								],
+								"Scale": [
+									4,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Roof",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2.6,
+									-3.5
+								],
+								"Scale": [
+									4.4,
+									0.2,
+									3.4
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign"
+					},
+					"bind": {
+						"sign": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Post",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									0.75,
+									2.5
+								],
+								"Scale": [
+									0.1,
+									1.5,
+									0.1
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Board",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									1.6,
+									2.5
+								],
+								"Scale": [
+									1.6,
+									0.8,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Posts"
+					},
+					"bind": {
+						"posts": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm",
+						"components": {
+							"Transform": {
+								"Translation": [
+									4,
+									3,
+									1
+								]
+							}
+						}
+					},
+					"bind": {
+						"arm": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm Bar",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0.6,
+									0,
+									0
+								],
+								"Scale": [
+									1.2,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "arm"
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "DirectionalLight",
+						"values": {
+							"Intensity": 0.2
+						}
+					},
+					"entityName": "Sun"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposure": false,
+							"Exposure": 4
+						}
+					},
+					"entityName": "Post Process"
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Ground.stmat",
+						"properties": {
+							"Roughness": 0.9
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "one-lamp",
+			"shows": "The yard with one 64 cd point light and a bulb above the first post, exposure +1",
+			"caption": "One lamp: a warm pool lies on the ground beneath it, and the yard beyond stays dark.",
+			"alt": "The dark yard with one small glowing ball above the front left post. A warm pool of light lies on the ground around the post and fades to dark at the edge of the lamp's range.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					3,
+					9
+				],
+				"target": [
+					0,
+					1.2,
+					-1
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Hut"
+					},
+					"bind": {
+						"hut": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Back Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.25,
+									-4.9
+								],
+								"Scale": [
+									4,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Roof",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2.6,
+									-3.5
+								],
+								"Scale": [
+									4.4,
+									0.2,
+									3.4
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign"
+					},
+					"bind": {
+						"sign": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Post",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									0.75,
+									2.5
+								],
+								"Scale": [
+									0.1,
+									1.5,
+									0.1
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Board",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									1.6,
+									2.5
+								],
+								"Scale": [
+									1.6,
+									0.8,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Posts"
+					},
+					"bind": {
+						"posts": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm",
+						"components": {
+							"Transform": {
+								"Translation": [
+									4,
+									3,
+									1
+								]
+							}
+						}
+					},
+					"bind": {
+						"arm": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm Bar",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0.6,
+									0,
+									0
+								],
+								"Scale": [
+									1.2,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "arm"
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "DirectionalLight",
+						"values": {
+							"Intensity": 0.2
+						}
+					},
+					"entityName": "Sun"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposure": false,
+							"Exposure": 1
+						}
+					},
+					"entityName": "Post Process"
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Ground.stmat",
+						"properties": {
+							"Roughness": 0.9
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Bulb-one-lamp.stmat"
+					}
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Bulb-one-lamp.stmat",
+						"properties": {
+							"EmissiveColor": [
+								1,
+								0.8,
+								0.5
+							],
+							"EmissiveIntensity": 2000
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lamp",
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									1
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-one-lamp.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									1
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "sign-spot",
+			"shows": "The yard with the lamp of the last section and the spot light on the sign board, its cone narrowed to 8 and 12 degrees",
+			"caption": "The narrowed spot light on the sign: a round patch, full in the middle and fading at its rim.",
+			"alt": "The night yard with one lamp above the front left post. A spot light makes a round white patch on the sign board, fading at its rim.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					3,
+					9
+				],
+				"target": [
+					0,
+					1.2,
+					-1
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Hut"
+					},
+					"bind": {
+						"hut": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Back Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.25,
+									-4.9
+								],
+								"Scale": [
+									4,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Roof",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2.6,
+									-3.5
+								],
+								"Scale": [
+									4.4,
+									0.2,
+									3.4
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign"
+					},
+					"bind": {
+						"sign": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Post",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									0.75,
+									2.5
+								],
+								"Scale": [
+									0.1,
+									1.5,
+									0.1
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Board",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									1.6,
+									2.5
+								],
+								"Scale": [
+									1.6,
+									0.8,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Posts"
+					},
+					"bind": {
+						"posts": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm",
+						"components": {
+							"Transform": {
+								"Translation": [
+									4,
+									3,
+									1
+								]
+							}
+						}
+					},
+					"bind": {
+						"arm": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm Bar",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0.6,
+									0,
+									0
+								],
+								"Scale": [
+									1.2,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "arm"
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "DirectionalLight",
+						"values": {
+							"Intensity": 0.2
+						}
+					},
+					"entityName": "Sun"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposure": false,
+							"Exposure": 1
+						}
+					},
+					"entityName": "Post Process"
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Ground.stmat",
+						"properties": {
+							"Roughness": 0.9
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Bulb-sign-spot.stmat"
+					}
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Bulb-sign-spot.stmat",
+						"properties": {
+							"EmissiveColor": [
+								1,
+								0.8,
+								0.5
+							],
+							"EmissiveIntensity": 2000
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lamp",
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									1
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-sign-spot.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									1
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Spot",
+						"components": {
+							"SpotLight": {
+								"Intensity": 60,
+								"InnerConeAngle": 8,
+								"OuterConeAngle": 12
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									3,
+									5
+								],
+								"Rotation": [
+									-29,
+									0,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "four-lanterns",
+			"shows": "The four lanterns lit, each with a housing, a bulb and a point light, no shadows",
+			"caption": "Four lanterns from one design: one on each of three posts, one at the end of the arm.",
+			"alt": "The night yard with four lanterns, each a short gray cylinder with a glowing bulb on top and a warm pool of light under it. Three stand on posts and one hangs at the end of the bar on the front right post. The sign board shows its spot's white patch.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					3,
+					9
+				],
+				"target": [
+					0,
+					1.2,
+					-1
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Hut"
+					},
+					"bind": {
+						"hut": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Back Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.25,
+									-4.9
+								],
+								"Scale": [
+									4,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Roof",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2.6,
+									-3.5
+								],
+								"Scale": [
+									4.4,
+									0.2,
+									3.4
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign"
+					},
+					"bind": {
+						"sign": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Post",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									0.75,
+									2.5
+								],
+								"Scale": [
+									0.1,
+									1.5,
+									0.1
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Board",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									1.6,
+									2.5
+								],
+								"Scale": [
+									1.6,
+									0.8,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Posts"
+					},
+					"bind": {
+						"posts": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm",
+						"components": {
+							"Transform": {
+								"Translation": [
+									4,
+									3,
+									1
+								]
+							}
+						}
+					},
+					"bind": {
+						"arm": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm Bar",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0.6,
+									0,
+									0
+								],
+								"Scale": [
+									1.2,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "arm"
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "DirectionalLight",
+						"values": {
+							"Intensity": 0.2
+						}
+					},
+					"entityName": "Sun"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposure": false,
+							"Exposure": 1
+						}
+					},
+					"entityName": "Post Process"
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Ground.stmat",
+						"properties": {
+							"Roughness": 0.9
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Spot",
+						"components": {
+							"SpotLight": {
+								"Intensity": 60,
+								"InnerConeAngle": 8,
+								"OuterConeAngle": 12
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									3,
+									5
+								],
+								"Rotation": [
+									-29,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Bulb-four-lanterns.stmat"
+					}
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Bulb-four-lanterns.stmat",
+						"properties": {
+							"EmissiveColor": [
+								1,
+								0.8,
+								0.5
+							],
+							"EmissiveIntensity": 2000
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 1",
+						"components": {
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									1
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern1": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern1"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-four-lanterns.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern1"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 1",
+						"parent": {
+							"$ref": "lantern1"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 2",
+						"components": {
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									-5
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern2": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern2"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-four-lanterns.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern2"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 2",
+						"parent": {
+							"$ref": "lantern2"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 3",
+						"components": {
+							"Transform": {
+								"Translation": [
+									4,
+									3.34,
+									-5
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern3": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern3"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-four-lanterns.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern3"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 3",
+						"parent": {
+							"$ref": "lantern3"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 4",
+						"components": {
+							"Transform": {
+								"Translation": [
+									1.2,
+									0.38,
+									0
+								]
+							}
+						},
+						"parent": {
+							"$ref": "arm"
+						}
+					},
+					"bind": {
+						"lantern4": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern4"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-four-lanterns.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern4"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 4",
+						"parent": {
+							"$ref": "lantern4"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "lantern-shadows",
+			"shows": "The four lanterns with shadows on and the housings out of the shadows",
+			"caption": "With shadows on, the hut, the sign and the posts throw shadows away from each lantern. The dark disc at a post's foot is its own shadow, cast by its top close under the bulb.",
+			"alt": "The night yard with four lanterns. The hut, the sign and the posts throw dark shadows away from the lanterns, and a dark disc lies at the foot of each lantern's post. The sign board shows its spot's white patch.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					3,
+					9
+				],
+				"target": [
+					0,
+					1.2,
+					-1
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Hut"
+					},
+					"bind": {
+						"hut": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Back Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.25,
+									-4.9
+								],
+								"Scale": [
+									4,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Roof",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2.6,
+									-3.5
+								],
+								"Scale": [
+									4.4,
+									0.2,
+									3.4
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign"
+					},
+					"bind": {
+						"sign": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Post",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									0.75,
+									2.5
+								],
+								"Scale": [
+									0.1,
+									1.5,
+									0.1
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Board",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									1.6,
+									2.5
+								],
+								"Scale": [
+									1.6,
+									0.8,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Posts"
+					},
+					"bind": {
+						"posts": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm",
+						"components": {
+							"Transform": {
+								"Translation": [
+									4,
+									3,
+									1
+								]
+							}
+						}
+					},
+					"bind": {
+						"arm": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm Bar",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0.6,
+									0,
+									0
+								],
+								"Scale": [
+									1.2,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "arm"
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "DirectionalLight",
+						"values": {
+							"Intensity": 0.2
+						}
+					},
+					"entityName": "Sun"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposure": false,
+							"Exposure": 1
+						}
+					},
+					"entityName": "Post Process"
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Ground.stmat",
+						"properties": {
+							"Roughness": 0.9
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Spot",
+						"components": {
+							"SpotLight": {
+								"Intensity": 60,
+								"InnerConeAngle": 8,
+								"OuterConeAngle": 12
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									3,
+									5
+								],
+								"Rotation": [
+									-29,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Bulb-lantern-shadows.stmat"
+					}
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Bulb-lantern-shadows.stmat",
+						"properties": {
+							"EmissiveColor": [
+								1,
+								0.8,
+								0.5
+							],
+							"EmissiveIntensity": 2000
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 1",
+						"components": {
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									1
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern1": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern1"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-lantern-shadows.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern1"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 1",
+						"parent": {
+							"$ref": "lantern1"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 2",
+						"components": {
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									-5
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern2": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern2"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-lantern-shadows.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern2"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 2",
+						"parent": {
+							"$ref": "lantern2"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 3",
+						"components": {
+							"Transform": {
+								"Translation": [
+									4,
+									3.34,
+									-5
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern3": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern3"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-lantern-shadows.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern3"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 3",
+						"parent": {
+							"$ref": "lantern3"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 4",
+						"components": {
+							"Transform": {
+								"Translation": [
+									1.2,
+									0.38,
+									0
+								]
+							}
+						},
+						"parent": {
+							"$ref": "arm"
+						}
+					},
+					"bind": {
+						"lantern4": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern4"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-lantern-shadows.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern4"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 4",
+						"parent": {
+							"$ref": "lantern4"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "wet-glint",
+			"shows": "The lanterns over wet ground, each with a glint of its bulb",
+			"caption": "Wet ground mirrors each lantern as a soft glint, which its roughness spreads far wider than the bulb.",
+			"alt": "The night yard seen from higher up, over shiny wet ground. Each of the four lanterns shows a soft bright glint on the ground on the side toward the camera: two large ones in front, two smaller ones farther back. The sign board shows its spot's white patch.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					6,
+					12
+				],
+				"target": [
+					0,
+					0,
+					0
+				],
+				"fov": 42
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Hut"
+					},
+					"bind": {
+						"hut": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Back Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.25,
+									-4.9
+								],
+								"Scale": [
+									4,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Roof",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2.6,
+									-3.5
+								],
+								"Scale": [
+									4.4,
+									0.2,
+									3.4
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign"
+					},
+					"bind": {
+						"sign": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Post",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									0.75,
+									2.5
+								],
+								"Scale": [
+									0.1,
+									1.5,
+									0.1
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Board",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									1.6,
+									2.5
+								],
+								"Scale": [
+									1.6,
+									0.8,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Posts"
+					},
+					"bind": {
+						"posts": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm",
+						"components": {
+							"Transform": {
+								"Translation": [
+									4,
+									3,
+									1
+								]
+							}
+						}
+					},
+					"bind": {
+						"arm": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm Bar",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0.6,
+									0,
+									0
+								],
+								"Scale": [
+									1.2,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "arm"
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "DirectionalLight",
+						"values": {
+							"Intensity": 0.2
+						}
+					},
+					"entityName": "Sun"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposure": false,
+							"Exposure": 1
+						}
+					},
+					"entityName": "Post Process"
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Spot",
+						"components": {
+							"SpotLight": {
+								"Intensity": 60,
+								"InnerConeAngle": 8,
+								"OuterConeAngle": 12
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									3,
+									5
+								],
+								"Rotation": [
+									-29,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Bulb-wet-glint.stmat"
+					}
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Bulb-wet-glint.stmat",
+						"properties": {
+							"EmissiveColor": [
+								1,
+								0.8,
+								0.5
+							],
+							"EmissiveIntensity": 2000
+						}
+					}
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Ground.stmat",
+						"properties": {
+							"Roughness": 0.1
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 1",
+						"components": {
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									1
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern1": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern1"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-wet-glint.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern1"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 1",
+						"parent": {
+							"$ref": "lantern1"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 2",
+						"components": {
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									-5
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern2": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern2"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-wet-glint.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern2"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 2",
+						"parent": {
+							"$ref": "lantern2"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 3",
+						"components": {
+							"Transform": {
+								"Translation": [
+									4,
+									3.34,
+									-5
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern3": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern3"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-wet-glint.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern3"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 3",
+						"parent": {
+							"$ref": "lantern3"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 4",
+						"components": {
+							"Transform": {
+								"Translation": [
+									1.2,
+									0.38,
+									0
+								]
+							}
+						},
+						"parent": {
+							"$ref": "arm"
+						}
+					},
+					"bind": {
+						"lantern4": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern4"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-wet-glint.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern4"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 4",
+						"parent": {
+							"$ref": "lantern4"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "moving-lamp",
+			"shows": "The lantern on the arm turned a third of a turn from where it started",
+			"caption": "The arm has turned its lantern behind the post, and the post's long shadow now falls to the right.",
+			"alt": "The night yard with the arm on the front right post turned away from the camera, toward the hut. Its lantern hangs in a new place behind the post, and the long shadow of that post now falls to the right, toward the camera. The sign board shows its spot's white patch.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					3,
+					9
+				],
+				"target": [
+					0,
+					1.2,
+					-1
+				],
+				"fov": 45
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Hut"
+					},
+					"bind": {
+						"hut": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Back Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									1.25,
+									-4.9
+								],
+								"Scale": [
+									4,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.9,
+									1.25,
+									-3.5
+								],
+								"Scale": [
+									0.2,
+									2.5,
+									3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Left Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Front Right Wall",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									1.25,
+									1.25,
+									-2.1
+								],
+								"Scale": [
+									1.5,
+									2.5,
+									0.2
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Roof",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									2.6,
+									-3.5
+								],
+								"Scale": [
+									4.4,
+									0.2,
+									3.4
+								]
+							}
+						},
+						"parent": {
+							"$ref": "hut"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign"
+					},
+					"bind": {
+						"sign": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Post",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									0.75,
+									2.5
+								],
+								"Scale": [
+									0.1,
+									1.5,
+									0.1
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Board",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									1.6,
+									2.5
+								],
+								"Scale": [
+									1.6,
+									0.8,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "sign"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Posts"
+					},
+					"bind": {
+						"posts": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									1
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									-4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Post 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Transform": {
+								"Translation": [
+									4,
+									1.5,
+									-5
+								],
+								"Scale": [
+									0.14,
+									3,
+									0.14
+								]
+							}
+						},
+						"parent": {
+							"$ref": "posts"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm",
+						"components": {
+							"Transform": {
+								"Translation": [
+									4,
+									3,
+									1
+								]
+							}
+						}
+					},
+					"bind": {
+						"arm": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Arm Bar",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0.6,
+									0,
+									0
+								],
+								"Scale": [
+									1.2,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "arm"
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "DirectionalLight",
+						"values": {
+							"Intensity": 0.2
+						}
+					},
+					"entityName": "Sun"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "PostProcess",
+						"values": {
+							"AutoExposure": false,
+							"Exposure": 1
+						}
+					},
+					"entityName": "Post Process"
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Ground.stmat",
+						"properties": {
+							"Roughness": 0.9
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Sign Spot",
+						"components": {
+							"SpotLight": {
+								"Intensity": 60,
+								"InnerConeAngle": 8,
+								"OuterConeAngle": 12
+							},
+							"Transform": {
+								"Translation": [
+									-1.8,
+									3,
+									5
+								],
+								"Rotation": [
+									-29,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": {
+						"path": "Materials/Bulb-moving-lamp.stmat"
+					}
+				},
+				{
+					"command": "material.set",
+					"parameters": {
+						"material": "Materials/Bulb-moving-lamp.stmat",
+						"properties": {
+							"EmissiveColor": [
+								1,
+								0.8,
+								0.5
+							],
+							"EmissiveIntensity": 2000
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 1",
+						"components": {
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									1
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern1": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern1"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 1",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-moving-lamp.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern1"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 1",
+						"parent": {
+							"$ref": "lantern1"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 2",
+						"components": {
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									-5
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern2": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern2"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 2",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-moving-lamp.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern2"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 2",
+						"parent": {
+							"$ref": "lantern2"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 3",
+						"components": {
+							"Transform": {
+								"Translation": [
+									4,
+									3.34,
+									-5
+								]
+							}
+						}
+					},
+					"bind": {
+						"lantern3": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern3"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 3",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-moving-lamp.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern3"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 3",
+						"parent": {
+							"$ref": "lantern3"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lantern 4",
+						"components": {
+							"Transform": {
+								"Translation": [
+									1.2,
+									0.38,
+									0
+								]
+							}
+						},
+						"parent": {
+							"$ref": "arm"
+						}
+					},
+					"bind": {
+						"lantern4": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Housing 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder",
+								"CastShadows": false
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									-0.19,
+									0
+								],
+								"Scale": [
+									0.3,
+									0.3,
+									0.3
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern4"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Bulb 4",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere",
+								"Material": "Materials/Bulb-moving-lamp.stmat"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								],
+								"Scale": [
+									0.08,
+									0.08,
+									0.08
+								]
+							}
+						},
+						"parent": {
+							"$ref": "lantern4"
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Light 4",
+						"parent": {
+							"$ref": "lantern4"
+						},
+						"components": {
+							"PointLight": {
+								"Intensity": 64,
+								"Range": 8,
+								"Color": [
+									1,
+									0.85,
+									0.6
+								],
+								"SourceRadius": 0.04,
+								"CastShadows": true
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0,
+									0
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Rotation": [
+								0,
+								110,
+								0
+							]
+						}
+					},
+					"entityName": "Arm"
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "point-light-inspector",
+			"shows": "The Inspector with the lamp selected: its Point Light at the defaults, 10 cd and 10 m, with Cast Shadows off",
+			"caption": "The fields of a point light. The shadow fields stay gray until shadows are on.",
+			"alt": "The Inspector of a point light: a color box, an intensity of 10, a range of 10, a source radius of 0, an empty box for shadows and three grayed shadow fields.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lamp",
+						"components": {
+							"PointLight": {},
+							"Transform": {
+								"Translation": [
+									-4,
+									3.34,
+									1
+								]
+							}
+						}
+					}
+				}
+			],
+			"editorWindow": {
+				"layout": "layouts/make-lighting.ini",
+				"steps": [
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Lamp"
+						},
+						"bind": {
+							"lamp": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "lamp"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Inspector"
+						}
+					}
+				],
+				"windowSize": [
+					1280,
+					800
+				],
+				"panel": "Inspector"
+			}
+		}
+	]
+}

@@ -1,0 +1,94 @@
+{
+	"figures": [
+		{
+			"id": "problems-failed-build",
+			"shows": "The Problems panel after a script build failed, with its summary line and the row of its one error",
+			"caption": "The summary line names the build and counts its errors and warnings, and each row gives one diagnostic with its file and line.",
+			"alt": "The Problems panel. Beside the Build Scripts button a red line reads Build 1 failed: 1 error, 0 warnings. A table with the columns Problem, File and Line has one row: an error in the coin script at line 13.",
+			"kind": "editor",
+			"project": { "template": "basic3d" },
+			"files": [{ "from": "book:tutorials/make/first-script/CoinNoSemicolon.cpp", "to": "Scripts/Coin.cpp" }],
+			"editorWindow": {
+				"layout": "layouts/first-script.ini",
+				"panel": "Problems",
+				"steps": [
+					{ "command": "script.build", "parameters": { "wait": false } },
+					{ "command": "script.status", "until": { "seconds": 300 }, "expect": { "/build/running": { "equals": false }, "/build/last/errorCount": { "min": 1 } } }
+				]
+			}
+		},
+		{
+			"id": "console-source-reference",
+			"shows": "The Console after a failed script build, with the compiler's message that names a source file and a line",
+			"caption": "The compiler's message names the file and the line of the error, so a click on it opens that file in the external editor.",
+			"alt": "The Console panel with a Clear button, the Trace, Info, Warnings, Errors and Auto-scroll check boxes and a search field over a list of build messages. A red message reads that script build 1 failed and names the file of the coin script with line 13 and an error code.",
+			"kind": "editor",
+			"project": { "template": "basic3d" },
+			"files": [{ "from": "book:tutorials/make/first-script/CoinNoSemicolon.cpp", "to": "Scripts/Coin.cpp" }],
+			"editorWindow": {
+				"layout": "layouts/make-sound.ini",
+				"windowSize": [1280, 800],
+				"panel": "Console",
+				"steps": [
+					{ "command": "script.build", "parameters": { "wait": false } },
+					{ "command": "script.status", "until": { "seconds": 300 }, "expect": { "/build/running": { "equals": false }, "/build/last/errorCount": { "min": 1 } } },
+					{ "command": "editor.wait", "parameters": { "frames": 30 } }
+				]
+			}
+		},
+		{
+			"id": "activity-details",
+			"shows": "The Activity panel listing the commands that ran, with its filters above the rows",
+			"caption": "Each row is one command that ran: its source as an icon, the command, a one-line summary and its duration in milliseconds.",
+			"alt": "The Activity panel with a filter field, a source list that reads Every source and a Changes only check box. Below, a table lists the commands that created an entity, set its scale, created and deleted a second one and undid the delete, each with its summary and duration. The last rows are the commands that waited and took this picture.",
+			"kind": "editor",
+			"project": { "template": "basic3d" },
+			"editorWindow": {
+				"layout": "layouts/make-with-an-agent-activity.ini",
+				"windowSize": [960, 540],
+				"panel": "Activity",
+				"steps": [
+					{ "command": "entity.create", "parameters": { "name": "Crate", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube" }, "Transform": { "Translation": [0, 0.5, -6] } } }, "bind": { "crate": "/id" } },
+					{ "command": "component.set", "parameters": { "entity": { "$ref": "crate" }, "component": "Transform", "values": { "Scale": [2, 1, 1] } } },
+					{ "command": "entity.create", "parameters": { "name": "Lamp", "components": { "PointLight": {}, "Transform": { "Translation": [0, 3, -6] } } }, "bind": { "lamp": "/id" } },
+					{ "command": "entity.delete", "parameters": { "entities": [{ "$ref": "lamp" }] } },
+					{ "command": "edit.undo" }
+				]
+			}
+		},
+		{
+			"id": "performance-timeline",
+			"shows": "The Performance panel with the CPU chart and the GPU chart of 600 frames over the table of stages",
+			"caption": "Each column of a chart is one frame, the newest at the right edge, and a red marker at the top shows a frame above the spike threshold.",
+			"alt": "The Performance panel with two charts, CPU above and GPU below. The CPU chart has gray and red columns and one red marker at its top, and the GPU columns barely rise above the base line. Under them is a table of stages with their average, median, 95th percentile and largest times in milliseconds.",
+			"kind": "editor",
+			"project": { "sample": "ThirdPerson" },
+			"editorWindow": {
+				"layout": "layouts/make-performance-tall.ini",
+				"windowSize": [1280, 1040],
+				"panel": "Performance",
+				"steps": [
+					{ "command": "play.start" },
+					{ "command": "editor.wait", "parameters": { "frames": 300 } }
+				]
+			}
+		},
+		{
+			"id": "streaming-cell-map",
+			"shows": "The Streaming panel with the World section's cell map and the asset table beside it",
+			"caption": "The cell map shows which cells of the world are loaded, and the table beside it lists the assets that are resident, loading, failed or pinned.",
+			"alt": "The Streaming panel. On the left the World section shows a grid of cells and the blue circle of the camera's streaming distance. The loaded cells are orange and lie inside the circle, the others are dark gray, and a legend counts the cells of the three layers together: 45 loaded and 52 unloaded. The Memory and Loads and uploads sections follow below. On the right a table lists assets with their type, their state and the memory they use on the graphics card.",
+			"kind": "editor",
+			"project": { "sample": "OpenWorld" },
+			"editorWindow": {
+				"layout": "layouts/instrument-panels.ini",
+				"windowSize": [1280, 1040],
+				"panel": "Streaming",
+				"steps": [
+					{ "command": "camera.set", "parameters": { "position": [40, 45, 135], "target": [0, 0, 0], "fov": 50 } },
+					{ "command": "editor.wait", "parameters": { "frames": 300 } }
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,354 @@
+{
+	"page": "make/with-an-agent",
+	"startsFrom": {
+		"template": "basic3d"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Crate",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.3,
+									-8
+								],
+								"Scale": [
+									0.6,
+									0.6,
+									0.6
+								]
+							}
+						}
+					},
+					"bind": {
+						"crate": "/id"
+					}
+				},
+				{
+					"command": "prefab.create",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "crate"
+							}
+						],
+						"path": "Prefabs/Crate.stprefab"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Barrel",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.4,
+									-8
+								],
+								"Scale": [
+									0.5,
+									0.8,
+									0.5
+								]
+							}
+						}
+					},
+					"bind": {
+						"barrel": "/id"
+					}
+				},
+				{
+					"command": "prefab.create",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "barrel"
+							}
+						],
+						"path": "Prefabs/Barrel.stprefab"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lamp",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.8,
+									-8
+								],
+								"Scale": [
+									0.15,
+									1.6,
+									0.15
+								]
+							}
+						}
+					},
+					"bind": {
+						"lamp": "/id"
+					}
+				},
+				{
+					"command": "prefab.create",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "lamp"
+							}
+						],
+						"path": "Prefabs/Lamp.stprefab"
+					}
+				},
+				{
+					"command": "entity.delete",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "crate"
+							},
+							{
+								"$ref": "barrel"
+							},
+							{
+								"$ref": "lamp"
+							}
+						]
+					}
+				},
+				{
+					"command": "editor.status",
+					"checks": [
+						{
+							"pointer": "/project/name",
+							"equals": "WithAnAgent"
+						},
+						{
+							"pointer": "/scene/name",
+							"equals": "Main"
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"commands": [],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"commands": [
+				{
+					"command": "editor.activity",
+					"parameters": {
+						"newest": true,
+						"limit": 1
+					},
+					"expect": {
+						"/journal/latest": {
+							"min": 0
+						}
+					}
+				},
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Prefabs/Crate.stprefab",
+						"point": [
+							-2,
+							0,
+							3
+						]
+					},
+					"expect": {
+						"/placedOn": {
+							"equals": "point"
+						}
+					}
+				},
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Prefabs/Barrel.stprefab",
+						"point": [
+							0,
+							0,
+							3
+						]
+					},
+					"expect": {
+						"/placedOn": {
+							"equals": "point"
+						}
+					}
+				},
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Prefabs/Lamp.stprefab",
+						"point": [
+							2,
+							0,
+							3
+						]
+					},
+					"expect": {
+						"/placedOn": {
+							"equals": "point"
+						}
+					}
+				},
+				{
+					"command": "scene.hierarchy",
+					"checks": [
+						{
+							"pointer": "/entities",
+							"contains": "Crate"
+						},
+						{
+							"pointer": "/entities",
+							"contains": "Barrel"
+						},
+						{
+							"pointer": "/entities",
+							"contains": "Lamp"
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"commands": [
+				{
+					"command": "editor.activity",
+					"parameters": {
+						"source": "Automation"
+					},
+					"checks": [
+						{
+							"pointer": "/entries",
+							"contains": "asset.place"
+						}
+					]
+				},
+				{
+					"command": "editor.activity",
+					"parameters": {
+						"command": "asset.place",
+						"limit": 1
+					},
+					"checks": [
+						{
+							"pointer": "/entries/0/parameters/asset",
+							"equals": "Prefabs/Crate.stprefab"
+						},
+						{
+							"pointer": "/entries/0/result/placedOn",
+							"equals": "point"
+						}
+					]
+				},
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Prefabs/Lamp.stprefab",
+						"point": [
+							2,
+							0,
+							3
+						]
+					}
+				},
+				{
+					"command": "edit.undo"
+				},
+				{
+					"command": "scene.hierarchy",
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 8
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 5,
+			"commands": [
+				{
+					"command": "editor.status",
+					"checks": [
+						{
+							"pointer": "/errors/unread",
+							"equals": 0
+						},
+						{
+							"pointer": "/scene/entityCount",
+							"equals": 8
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 6,
+			"commands": [
+				{
+					"command": "editor.activity.export",
+					"parameters": {
+						"path": "Regression/Props.json"
+					},
+					"checks": [
+						{
+							"pointer": "/path",
+							"contains": "Props.json"
+						},
+						{
+							"pointer": "/steps",
+							"equals": 14
+						},
+						{
+							"pointer": "/edits",
+							"equals": 14
+						},
+						{
+							"pointer": "/editsOutsideCommands",
+							"equals": 0
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 7,
+			"commands": [],
+			"endState": true
+		}
+	]
+}

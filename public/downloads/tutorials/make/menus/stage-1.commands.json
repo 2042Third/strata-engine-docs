@@ -1,0 +1,358 @@
+[
+	{
+		"command": "scene.new",
+		"parameters": {
+			"name": "MainMenu"
+		}
+	},
+	{
+		"command": "scene.saveAs",
+		"parameters": {
+			"path": "Scenes/MainMenu.stscene"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "canvas",
+			"name": "Menu"
+		},
+		"bind": {
+			"menu": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "panel",
+			"name": "MenuPanel",
+			"parent": {
+				"$ref": "menu"
+			},
+			"anchor": "middleCenter",
+			"size": [
+				500,
+				520
+			]
+		},
+		"bind": {
+			"panel": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "verticalLayout",
+			"name": "Column",
+			"parent": {
+				"$ref": "panel"
+			},
+			"anchor": "stretch",
+			"size": [
+				0,
+				0
+			]
+		},
+		"bind": {
+			"column": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "text",
+			"name": "Title",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "Strata Course",
+			"size": [
+				460,
+				80
+			]
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"name": "Play",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "Play",
+			"size": [
+				400,
+				70
+			]
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"name": "Settings",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "Settings",
+			"size": [
+				400,
+				70
+			]
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"name": "Quit",
+			"parent": {
+				"$ref": "column"
+			},
+			"text": "Quit",
+			"size": [
+				400,
+				70
+			]
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"entity": {
+				"$ref": "column"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"component": "Camera"
+		}
+	},
+	{
+		"command": "scene.save"
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/MainMenu.stscene"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Menu"
+		},
+		"bind": {
+			"menu": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Play"
+		},
+		"bind": {
+			"play": "/entities/0"
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "menu"
+			},
+			"class": "MainMenu",
+			"fields": {
+				"Level": "Scenes/Main.stscene",
+				"PlayButton": {
+					"$ref": "play"
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Play"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "UIButton",
+			"values": {
+				"EventTarget": {
+					"$ref": "menu"
+				}
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Settings"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "UIButton",
+			"values": {
+				"EventTarget": {
+					"$ref": "menu"
+				}
+			},
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Quit"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "UIButton",
+			"values": {
+				"EventTarget": {
+					"$ref": "menu"
+				}
+			},
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"entity": {
+				"$ref": "menu"
+			},
+			"class": "MainMenu"
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 2
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 2
+			}
+		}
+	},
+	{
+		"command": "input.click",
+		"parameters": {
+			"entity": {
+				"$ref": "play"
+			},
+			"wait": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 5
+		}
+	},
+	{
+		"command": "play.state"
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 2
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 2
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Quit"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "input.click",
+		"parameters": {
+			"wait": false,
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 3,
+			"wait": false
+		}
+	},
+	{
+		"command": "play.state",
+		"expect": {
+			"/state": {
+				"equals": "Edit"
+			}
+		},
+		"until": {
+			"seconds": 20
+		}
+	},
+	{
+		"command": "scene.save"
+	}
+]

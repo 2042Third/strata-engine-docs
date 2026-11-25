@@ -1,0 +1,32 @@
+{
+	"page": "make/characters-cameras",
+	"startsFrom": {
+		"tutorial": "make/characters-cameras"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"files": [ { "from": "book:tutorials/make/characters-cameras/exercise-2/PlayerController.cpp", "to": "Scripts/PlayerController.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.get", "entityName": "Player", "parameters": { "class": "PlayerController" },
+					"checks": [ { "pointer": "/scripts/0/fields/ExtraJumps", "equals": 1 } ] },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "input.key", "parameters": { "key": "Space", "steps": 1 } },
+				{ "command": "play.step", "parameters": { "steps": 15 }, "expect": { "/stepsRun": { "equals": 15 } } },
+				{ "command": "input.key", "parameters": { "key": "Space", "steps": 1 } },
+				{ "command": "play.step", "parameters": { "steps": 32 }, "expect": { "/stepsRun": { "equals": 32 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/1", "approx": 2.2, "tolerance": 0.2 } ] },
+				{ "command": "play.step", "parameters": { "steps": 30 }, "expect": { "/stepsRun": { "equals": 30 } } },
+				{ "command": "input.key", "parameters": { "key": "Space", "steps": 1 } },
+				{ "command": "play.step", "parameters": { "steps": 10 }, "expect": { "/stepsRun": { "equals": 10 } } },
+				{ "command": "component.get", "entityName": "Player", "parameters": { "component": "Transform" },
+					"checks": [ { "pointer": "/values/Translation/1", "approx": 0.1, "tolerance": 0.3 } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		}
+	]
+}

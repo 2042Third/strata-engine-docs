@@ -1,0 +1,18 @@
+{
+	"page": "basics/computer",
+	"startsFrom": { "tutorial": "start/first-game" },
+	"stages": [
+		{
+			"step": 1,
+			"files": [ { "from": "book:tutorials/basics/computer/exercise-3/Spinner.cpp", "to": "Scripts/Spinner.cpp" } ],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 200 },
+					"checks": [ { "pointer": "/messages", "contains": "[Scripts] > " }, { "pointer": "/messages", "contains": " --build " },
+						{ "pointer": "/messages", "contains": " --parallel --config " }, { "pointer": "/messages", "contains": " -- /nodeReuse:false" },
+						{ "pointer": "/messages", "contains": "Spinner.cpp" } ] }
+			]
+		}
+	]
+}

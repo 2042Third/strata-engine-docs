@@ -1,0 +1,206 @@
+{
+	"camera": "custom",
+	"complete": true,
+	"debugView": {
+		"entitiesPerLOD": [
+			0,
+			0,
+			0,
+			0
+		],
+		"entitiesPerMipShortfall": [
+			0,
+			0,
+			0,
+			0
+		],
+		"failedEntities": 0,
+		"lodErrorPixels": [
+			0.0,
+			0.0,
+			0.0,
+			0.0
+		],
+		"pendingEntities": 0,
+		"placeholderBoxes": 0,
+		"tintedEntities": 0,
+		"view": "none"
+	},
+	"globalIlluminationSettled": true,
+	"height": 720,
+	"hiddenScreenSpaceTexts": 0,
+	"incomplete": [],
+	"localShadowViewsPending": 0,
+	"overlays": false,
+	"path": "G:/GameEngineAI/.worktrees/docs-work/photo/image-lens-effects/log/image.lens-effects.flare-sun.off-0.png",
+	"pendingAssets": 0,
+	"pendingTextGlyphs": 0,
+	"preExposureSettled": true,
+	"previewLighting": false,
+	"reflectionProbesPending": 0,
+	"renderStats": {
+		"areaLightShading": false,
+		"areaLights": 0,
+		"areaShadowMasks": 0,
+		"areaShadowTiles": 0,
+		"cachedCascades": 5,
+		"cascades": [
+			{
+				"far": 1.5,
+				"near": 0.10000000149011612,
+				"texelSize": 0.0008068520110100508
+			},
+			{
+				"far": 7.5,
+				"near": 1.350000023841858,
+				"texelSize": 0.0039721946232020855
+			},
+			{
+				"far": 22.017742156982422,
+				"near": 6.900000095367432,
+				"texelSize": 0.011637289077043533
+			},
+			{
+				"far": 56.84547424316406,
+				"near": 20.565967559814453,
+				"texelSize": 0.02997765690088272
+			},
+			{
+				"far": 160.0,
+				"near": 53.362701416015625,
+				"texelSize": 0.08437810093164444
+			}
+		],
+		"colorLookup": false,
+		"culledProxies": 20161,
+		"deferredInstanceBytes": 0,
+		"depthOfField": null,
+		"drawCommands": 13,
+		"draws": 6,
+		"droppedLights": 0,
+		"exposure": {
+			"cardEv100": -0.5446689128875732,
+			"ev100": 0.40744590759277344,
+			"keyStops": 0.0
+		},
+		"extractMs": 0.04699999839067459,
+		"feedbackRequests": true,
+		"geometryPool": {
+			"allocations": 65,
+			"capacityMB": 4.25,
+			"fragmentation": 0.0,
+			"growths": 0,
+			"moves": 0,
+			"usedMB": 2.5390625
+		},
+		"globalIllumination": null,
+		"gpuCounts": true,
+		"gpuCulled": true,
+		"gpuDriven": true,
+		"gpuMs": {
+			"GPU.AO": 0.027583999559283257,
+			"GPU.Aerial": 0.0006079999729990959,
+			"GPU.Cull": 0.013120000250637531,
+			"GPU.Opaque": 0.023903999477624893,
+			"GPU.Post": 0.05276799947023392,
+			"GPU.Prepass": 0.05564799904823303,
+			"GPU.ScreenShadows": 0.016224000602960587,
+			"GPU.Setup": 0.002240000059828162,
+			"GPU.Shadows": 0.02175999991595745,
+			"GPU.TAA": 0.015456000342965126,
+			"GPU.Transparent": 0.017696000635623932
+		},
+		"gpuStatsFrame": 184,
+		"instanceBytesUploaded": 0,
+		"instances": 6,
+		"instancesPerLod": [
+			6,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0
+		],
+		"lensFlare": null,
+		"lights": 1,
+		"localShadowCasters": 0,
+		"localShadowFading": 0,
+		"localShadowLights": 0,
+		"localShadowRequested": 0,
+		"localShadowTileSizeCounts": {},
+		"localShadowTileSizes": [],
+		"localShadowViewsDrawn": 0,
+		"localShadowViewsPending": 0,
+		"materials": 2,
+		"motionBlur": null,
+		"occludedCasters": 0,
+		"occludedProxies": 0,
+		"opaqueDraws": 5,
+		"pendingAssets": 0,
+		"proxyUpdates": 0,
+		"quality": {
+			"AmbientOcclusionQuality": "High",
+			"AntiAliasing": "Scene",
+			"ChromaticAberration": "Scene",
+			"ContactShadows": 0,
+			"DepthOfField": "Scene",
+			"EnvironmentResolution": "512",
+			"FilmGrain": "Scene",
+			"GlobalIllumination": "High",
+			"LODErrorPixels": 1.0,
+			"LocalShadowAtlasSize": "4096",
+			"LocalShadowMaxTile": "1024",
+			"LocalShadowViewsPerFrame": 24,
+			"MaxShadowedLocalLights": 64,
+			"MinProjectedPixels": 0.5,
+			"MotionBlur": "Scene",
+			"MotionBlurQuality": "Samples12",
+			"Preset": "High",
+			"ReflectionProbeResolution": "256",
+			"Reflections": "Spatial",
+			"ShadowCascades": 5,
+			"ShadowFilterQuality": "24",
+			"ShadowResolution": "AutoFine"
+		},
+		"reflectionProbes": 0,
+		"reflectionProbesPending": 0,
+		"sceneMirrorMB": 6.07373046875,
+		"shadowCasters": 0,
+		"shadowDraws": 0,
+		"shadowMapSize": 4096,
+		"sizeCulledProxies": 0,
+		"sortMs": 0.0003000000142492354,
+		"triangles": 10242,
+		"visibleProxies": 6
+	},
+	"renderer": {},
+	"screenSpaceReflectionsPending": false,
+	"screenSpaceTexts": 0,
+	"stalePoses": 0,
+	"temporalFrames": 8,
+	"texturesBelowWanted": 0,
+	"ui": {
+		"canvases": 0,
+		"drawCalls": 0,
+		"elements": 0,
+		"hiddenCanvases": 1,
+		"pendingGlyphs": 0
+	},
+	"view": {
+		"forward": [
+			0.8179358839988708,
+			0.05199592933058739,
+			0.5729548931121826
+		],
+		"fov": 55.0,
+		"position": [
+			120.0,
+			36.599998474121094,
+			256.0
+		]
+	},
+	"waitedFrames": 7,
+	"width": 1280
+}

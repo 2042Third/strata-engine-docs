@@ -1,0 +1,14 @@
+---
+// The sidebar (plan/site.md, "Navigation"): Starlight's own, with its persister (which keeps the groups a reader opened
+// and the scroll position from page to page) and its mobile footer, drawn by src/components/SidebarList.astro instead
+// of Starlight's SidebarSublist, whose markup for the book's 395 links was 88 KB of every page (rulings-13, R59).
+import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
+import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
+import SidebarList from './SidebarList.astro';
+
+const { sidebar } = Astro.locals.starlightRoute;
+---
+
+<SidebarPersister><SidebarList sublist={sidebar} /></SidebarPersister>
+
+<div class="md:sl-hidden"><MobileMenuFooter /></div>

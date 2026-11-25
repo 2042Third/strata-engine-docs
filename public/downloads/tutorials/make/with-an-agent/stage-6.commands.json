@@ -1,0 +1,8 @@
+[
+	{
+		"command": "editor.activity.export",
+		"parameters": {
+			"path": "Regression/Props.json"
+		}
+	}
+]

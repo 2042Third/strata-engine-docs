@@ -1,0 +1,35 @@
+diff --git a/Strata/src/Strata/Core/StringUtils.h b/Strata/src/Strata/Core/StringUtils.h
+index d62e73dd..771614cf 100644
+--- a/Strata/src/Strata/Core/StringUtils.h
++++ b/Strata/src/Strata/Core/StringUtils.h
+@@ -39,6 +39,12 @@ namespace Strata::StringUtils
+ 		return true;
+ 	}
+ 
++	// StartsWith with ASCII letters compared without their case: "Gamepad.A" starts with "gamepad.".
++	inline bool StartsWithIgnoreCase(std::string_view text, std::string_view prefix)
++	{
++		return text.size() >= prefix.size() && EqualsIgnoreCase(text.substr(0, prefix.size()), prefix);
++	}
++
+ 	inline bool StartsWith(std::string_view text, std::string_view prefix)
+ 	{
+ 		return text.size() >= prefix.size() && text.substr(0, prefix.size()) == prefix;
+diff --git a/StrataTests/src/Core/StringUtilsTests.cpp b/StrataTests/src/Core/StringUtilsTests.cpp
+index aa00554f..67776045 100644
+--- a/StrataTests/src/Core/StringUtilsTests.cpp
++++ b/StrataTests/src/Core/StringUtilsTests.cpp
+@@ -48,4 +48,13 @@ TEST_SUITE("Core.StringUtils")
+ 		CHECK(StringUtils::ToUpper("file.png") == "FILE.PNG");
+ 		CHECK(StringUtils::ToUpper("x64 build 2") == "X64 BUILD 2");
+ 	}
++
++	TEST_CASE("A prefix matches whatever the case of its letters")
++	{
++		CHECK(StringUtils::StartsWithIgnoreCase("Gamepad.A", "gamepad."));
++		CHECK(StringUtils::StartsWithIgnoreCase("KEY.SPACE", "Key."));
++		CHECK(StringUtils::StartsWithIgnoreCase("anything", ""));
++		CHECK_FALSE(StringUtils::StartsWithIgnoreCase("Key", "Keyboard."));
++		CHECK_FALSE(StringUtils::StartsWithIgnoreCase("Mouse.Left", "Key."));
++	}
+ }

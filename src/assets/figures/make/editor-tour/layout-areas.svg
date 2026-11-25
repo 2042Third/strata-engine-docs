@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 472">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: the editor window at 960 x 540 scaled to 736 wide (x 16 to 752, 0.767 per pixel). Menus y 16-46, button
+strip 46-96 (two rows), dock space 96-426 (330 high), status bar 426-456; H = 456 + 16. Widths from the pin's 960 layout
+ini: Hierarchy 223 px = 171 (x 16-187), Inspector and Asset 251 px = 192 (x 560-752), views between; bottom area 22 %
+of 330 = 73 under the views only (y 353-426). -->
+<rect class="line-ink" fill="none" x="16" y="16" width="736" height="440" rx="4"/>
+<line class="line-muted" x1="16" y1="46" x2="752" y2="46"/>
+<line class="line-muted" x1="16" y1="96" x2="752" y2="96"/>
+<line class="line-muted" x1="16" y1="426" x2="752" y2="426"/>
+<text class="ink small bold" x="28" y="36">Menus</text>
+<text class="ink small" x="84" y="36">File, Edit, View, Entity, Scripts, Help</text>
+<text class="ink small bold" x="28" y="66">Button strip</text>
+<text class="ink small" x="124" y="66">Select, Move, Rotate, Scale · World or Local, Snap and its steps</text>
+<text class="ink small" x="124" y="86">Play, Simulate, Pause, Step, Stop · Export, Build Scripts</text>
+<text class="ink small bold" x="28" y="446">Status bar</text>
+<text class="ink small" x="112" y="446">pills: play state, frame time, assets, saving, physics, automation, scripts, held keys, errors</text>
+<rect class="plate" x="19" y="99" width="165" height="324" rx="3"/>
+<rect class="plate" x="190" y="99" width="366" height="251" rx="3"/>
+<rect class="plate" x="190" y="356" width="366" height="67" rx="3"/>
+<rect class="plate" x="562" y="99" width="187" height="324" rx="3"/>
+<rect class="ground line-muted" x="25" y="105" width="86" height="24" rx="3"/>
+<text class="ink small" x="68" y="122" text-anchor="middle">Hierarchy</text>
+<rect class="ground line-muted" x="196" y="105" width="60" height="24" rx="3"/>
+<text class="ink small" x="226" y="122" text-anchor="middle">Scene</text>
+<rect class="ground line-muted" x="260" y="105" width="58" height="24" rx="3"/>
+<text class="ink small" x="289" y="122" text-anchor="middle">Game</text>
+<rect class="ground line-muted" x="568" y="105" width="78" height="24" rx="3"/>
+<text class="ink small" x="607" y="122" text-anchor="middle">Inspector</text>
+<rect class="ground line-muted" x="650" y="105" width="50" height="24" rx="3"/>
+<text class="ink small" x="675" y="122" text-anchor="middle">Asset</text>
+<rect class="ground line-muted" x="196" y="362" width="70" height="24" rx="3"/>
+<text class="ink small" x="231" y="379" text-anchor="middle">Console</text>
+<rect class="ground line-muted" x="270" y="362" width="78" height="24" rx="3"/>
+<text class="ink small" x="309" y="379" text-anchor="middle">Problems</text>
+<rect class="ground line-muted" x="352" y="362" width="132" height="24" rx="3"/>
+<text class="ink small" x="418" y="379" text-anchor="middle">Content Browser</text>
+<text class="ink small" x="101.5" y="236" text-anchor="middle">23 % of the width</text>
+<text class="ink small" x="101.5" y="254" text-anchor="middle">(16 text heights);</text>
+<text class="ink small" x="101.5" y="278" text-anchor="middle">15 % in a wider</text>
+<text class="ink small" x="101.5" y="296" text-anchor="middle">window</text>
+<text class="ink small" x="655.5" y="236" text-anchor="middle">26 % of the width</text>
+<text class="ink small" x="655.5" y="254" text-anchor="middle">(18 text heights);</text>
+<text class="ink small" x="655.5" y="278" text-anchor="middle">20 % in a wider</text>
+<text class="ink small" x="655.5" y="296" text-anchor="middle">window</text>
+<text class="ink small" x="373" y="236" text-anchor="middle">the views take the rest</text>
+<text class="ink small" x="373" y="409" text-anchor="middle">22 % of the height, under the views only</text>
+</svg>

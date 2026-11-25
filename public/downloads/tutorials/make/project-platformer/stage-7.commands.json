@@ -1,0 +1,101 @@
+[
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Platform",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"RigidBody": {
+					"Type": "Kinematic"
+				},
+				"Transform": {
+					"Translation": [
+						2,
+						-0.25,
+						-18
+					],
+					"Scale": [
+						4,
+						0.5,
+						4
+					]
+				}
+			}
+		},
+		"bind": {
+			"platform": "/id"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "platform"
+			},
+			"class": "MovingPlatform",
+			"fields": {
+				"Travel": [
+					0,
+					0,
+					-6
+				],
+				"Period": 8
+			}
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"entity": {
+				"$ref": "platform"
+			},
+			"class": "MovingPlatform"
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 240
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 240
+			}
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "platform"
+			},
+			"component": "Transform"
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

@@ -1,0 +1,177 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "The third-person sample, its start scene set to the course, exported and running in a window of 1280 by 720 pixels after six seconds, with its counters",
+			"caption": "An exported game plays without the editor, in a window of its own: here the third-person sample, started on its course, with its count of coins and its time.",
+			"alt": "A game window showing a robot on an island of grass and a course of floating islands with gold coins ahead. A box at the top left counts 0 of 12 coins and a time of 6 seconds, and a line of controls runs along the bottom.",
+			"kind": "runtime",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"runtime": {
+				"resolution": [
+					1280,
+					720
+				],
+				"seconds": 6,
+				"quality": "high"
+			},
+			"expect": "complete",
+			"setup": [
+				{
+					"command": "project.setStartScene",
+					"parameters": {
+						"scene": "Scenes/Course.stscene"
+					}
+				},
+				{
+					"command": "project.save"
+				}
+			]
+		},
+		{
+			"id": "game-page",
+			"shows": "The Game page of Project Settings after step 1: the start scene Main, no loading scene, the title, version, company and copyright of Coin Run, and the icon with its preview",
+			"caption": "The Game page holds the start scene and the identity; the icon's preview sits under the fields.",
+			"alt": "The Project Settings panel with the Game page selected in its list. The start scene is Main and the loading scene is None. The title reads Coin Run, the version 1.0.0, the company Your Name and the copyright line (c) 2026 Your Name. Under the icon field, a small square previews the icon, a robot in a garden.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"panel": "ProjectSettings",
+				"steps": [
+					{
+						"command": "scene.saveAs",
+						"parameters": {
+							"path": "Scenes/Main.stscene"
+						}
+					},
+					{
+						"command": "project.setStartScene",
+						"parameters": {
+							"scene": "Scenes/Main.stscene"
+						}
+					},
+					{
+						"command": "project.setExportSettings",
+						"parameters": {
+							"loadingScene": null
+						}
+					},
+					{
+						"command": "project.setGameInfo",
+						"parameters": {
+							"title": "Coin Run",
+							"version": "1.0.0",
+							"company": "Your Name",
+							"copyright": "(c) 2026 Your Name",
+							"icon": "Icon.png"
+						},
+						"expect": {
+							"/game/title": {
+								"equals": "Coin Run"
+							}
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "ProjectSettings"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "export-dialog",
+			"shows": "The Export Game dialog of a copy of the third-person sample whose identity is Coin Run, before the run: its folder, the sample's folder plus Build, then the window size, loading scene, identity line and three boxes above the Export button",
+			"caption": "The dialog lists its fields above the Export button: the folder, the window, the loading scene, a line with the identity and three boxes. Taken on a copy of the third-person sample, its folder is that project's folder plus Build.",
+			"alt": "The Export Game dialog over the editor holds at its top a folder field that ends in the name of the sample and Build, beside a Browse button. Below it come a window of 1280 by 720 with an empty Fullscreen box, and the loading scene None. A line reads Coin Run 1.0.0 by Your Name and names the file of the icon, above a link to Project Settings. The boxes that copy the runtime and the script symbols are ticked and the one that omits unused assets is not. A line under them says where the game goes, and Cancel and Export close the dialog.",
+			"kind": "editor",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/first-game-960.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "project.setExportSettings",
+						"parameters": {
+							"loadingScene": null
+						}
+					},
+					{
+						"command": "project.setGameInfo",
+						"parameters": {
+							"title": "Coin Run",
+							"version": "1.0.0",
+							"company": "Your Name",
+							"copyright": "(c) 2026 Your Name",
+							"icon": "Icon.png"
+						},
+						"expect": {
+							"/game/title": {
+								"equals": "Coin Run"
+							}
+						}
+					},
+					{
+						"command": "editor.showDialog",
+						"parameters": {
+							"dialog": "export"
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "game-running",
+			"shows": "The Tetris sample exported and run for ten seconds of game time: the last frame, which the screenshot option saved",
+			"caption": "The screenshot option saves the last frame of a run, as it did for this export of the Tetris sample after ten seconds of game time; your file shows Coin Run.",
+			"alt": "A frame of the Tetris sample: a dark well with a blue piece halfway down and its grey ghost at the bottom. A box at the top left reads a score of 0, level 1 and 0 lines, the next piece waits at the top right and the controls are listed at the bottom left.",
+			"kind": "runtime",
+			"project": {
+				"sample": "Tetris"
+			},
+			"runtime": {
+				"resolution": [
+					1280,
+					720
+				],
+				"seconds": 10,
+				"quality": "high"
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "export-settings",
+			"shows": "The Export page of Project Settings with three always-include entries",
+			"caption": "The Export page lists what a pruned export keeps although no scene uses it; a text field and an Add button extend the list.",
+			"alt": "The Project Settings panel with the Export page open: a list of three paths, each with a remove button, and a text field with an Add button below it.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"waitsFor": "tier 3: the Export page of Project Settings; no command selects a Project Settings page (editor.showPanel takes no page, and the panel opens on Game)",
+			"editorWindow": {
+				"layout": "layouts/first-game.ini",
+				"steps": []
+			},
+			"standIn": "pruned-pack"
+		},
+		{
+			"id": "pruned-pack",
+			"shows": "What a pruned export packs: what the scenes use, and the assets the scripts load by path only when the always include list names them",
+			"caption": "At this point a pruned export packs what the scenes use and, through the always include list, the assets that the scripts load by path.",
+			"alt": "A diagram of two rows that lead into one box on the right, the pruned pack. Top row: the start scene uses meshes, materials and textures, and they go into the pack. Bottom row: two scripts load the coin prefab and the gold material by path, and the always include list names them, with the folder of sounds that it keeps for a later script. An arrow takes the list into the pack. A line under the rows says that no scene references the bottom row, so a pruned export packs it only when the list names it.",
+			"kind": "diagram"
+		}
+	]
+}

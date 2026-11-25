@@ -1,0 +1,422 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "The Basic 3D scene after two seconds of play: the metal ball at rest on the ground after its fall, a gold coin hanging above the ground beside it, clear of the pale ghost wall on the right",
+			"caption": "The result: the ball has fallen and rests on the ground, a gold coin hangs beside it as a trigger, and the pale wall on the right is on a layer the ball passes through.",
+			"alt": "A grey metal ball rests on grey-brown stone ground under a blue sky. A small pale gold coin stands in the air to its right, and a long pale blue-grey wall stands farther right with ground between them.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [-2.5, 2.4, 6.5],
+				"target": [2.0, 0.8, 0.0],
+				"fov": 36
+			},
+			"size": [1920, 1080],
+			"quality": "high",
+			"expect": "complete",
+			"setup": [
+				{
+					"command": "project.setCollisionLayers",
+					"parameters": {
+						"layerNames": { "1": "Ball", "2": "Ghost" },
+						"layerCollisions": [ { "layers": [1, 2], "collide": false } ]
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": { "path": "Materials/Ball.stmat", "properties": { "BaseColor": [0.55, 0.56, 0.58, 1.0], "Metallic": 1.0, "Roughness": 0.45 } }
+				},
+				{
+					"command": "material.create",
+					"parameters": { "path": "Materials/Gold.stmat", "properties": { "BaseColor": [1.0, 0.77, 0.34, 1.0], "Metallic": 1.0, "Roughness": 0.3 } }
+				},
+				{
+					"command": "material.create",
+					"parameters": { "path": "Materials/Wall.stmat", "properties": { "BaseColor": [0.55, 0.6, 0.7, 1.0], "Roughness": 0.8 } }
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/Ball.stmat" },
+							"SphereCollider": { "Radius": 0.5 },
+							"Transform": { "Translation": [0, 3, 0] }
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Ball",
+					"parameters": { "component": "RigidBody" }
+				},
+				{
+					"command": "component.set",
+					"entityName": "Ball",
+					"parameters": { "component": "RigidBody", "values": { "Layer": 1 } }
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Cylinder", "Material": "Materials/Gold.stmat" },
+							"SphereCollider": { "Radius": 0.3 },
+							"Transform": { "Translation": [1.1, 1, 0.5], "Rotation": [70, 0, 0], "Scale": [0.6, 0.06, 0.6] }
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Coin",
+					"parameters": { "component": "RigidBody" }
+				},
+				{
+					"command": "component.set",
+					"entityName": "Coin",
+					"parameters": { "component": "RigidBody", "values": { "Type": "Kinematic", "IsTrigger": true } }
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "GhostWall",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Cube", "Material": "Materials/Wall.stmat" },
+							"BoxCollider": { "HalfExtents": [0.5, 0.5, 0.5] },
+							"Transform": { "Translation": [4, 1, 0], "Scale": [0.5, 2, 4] }
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "GhostWall",
+					"parameters": { "component": "RigidBody" }
+				},
+				{
+					"command": "component.set",
+					"entityName": "GhostWall",
+					"parameters": { "component": "RigidBody", "values": { "Type": "Static", "Layer": 2 } }
+				}
+			],
+			"play": {
+				"steps": 120
+			}
+		},
+		{
+			"id": "ball-falls",
+			"shows": "The ball after two seconds of play, at rest on the ground it fell onto from 3 m, its shadow under it",
+			"caption": "After its fall the ball rests on the ground, its shadow touching it: physics alone moved it, with no script.",
+			"alt": "A grey metal ball resting on grey-brown stone ground under a blue sky, its shadow beside it on the ground.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [0, 1.4, 3.6],
+				"target": [0, 0.5, 0],
+				"fov": 34
+			},
+			"size": [1920, 1080],
+			"quality": "high",
+			"expect": "complete",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": { "path": "Materials/Ball-ball-falls.stmat", "properties": { "BaseColor": [0.55, 0.56, 0.58, 1.0], "Metallic": 1.0, "Roughness": 0.45 } }
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/Ball-ball-falls.stmat" },
+							"SphereCollider": { "Radius": 0.5 },
+							"Transform": { "Translation": [0, 3, 0] }
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Ball",
+					"parameters": { "component": "RigidBody" }
+				}
+			],
+			"play": {
+				"steps": 120
+			}
+		},
+		{
+			"id": "ball-rolls",
+			"shows": "The ball about 3 m to the right of its start, which a pale disc on the ground marks, after a steady push to the right",
+			"caption": "A steady push has rolled the ball a few metres from its start, the pale disc on the left.",
+			"alt": "A pale round disc flat on grey-brown stone ground at the left, and a grey metal ball resting on the ground some metres to its right.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [1.5, 1.8, 5.5],
+				"target": [1.5, 0.4, 0],
+				"fov": 36
+			},
+			"size": [1920, 1080],
+			"quality": "high",
+			"expect": "complete",
+			"setup": [
+				{
+					"command": "scene.setSettings",
+					"parameters": { "gravity": [4, -9.81, 0] }
+				},
+				{
+					"command": "material.create",
+					"parameters": { "path": "Materials/Ball-ball-rolls.stmat", "properties": { "BaseColor": [0.55, 0.56, 0.58, 1.0], "Metallic": 1.0, "Roughness": 0.45 } }
+				},
+				{
+					"command": "material.create",
+					"parameters": { "path": "Materials/Marker-ball-rolls.stmat", "properties": { "BaseColor": [0.8, 0.78, 0.72, 1.0], "Roughness": 0.8 } }
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Start",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Cylinder", "Material": "Materials/Marker-ball-rolls.stmat" },
+							"Transform": { "Translation": [0, 0.005, 0], "Scale": [0.8, 0.01, 0.8] }
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/Ball-ball-rolls.stmat" },
+							"SphereCollider": { "Radius": 0.5 },
+							"Transform": { "Translation": [0, 0.5, 0] }
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Ball",
+					"parameters": { "component": "RigidBody" }
+				}
+			],
+			"play": {
+				"steps": 90
+			}
+		},
+		{
+			"id": "ball-jumps",
+			"shows": "The ball at the top of a 1.27 m jump, standing clear in the sky, its shadow on the ground well to its left",
+			"caption": "The top of the jump: the ball hangs a little more than its own height above where it rests, and its shadow, cast well to the left on the ground, shows the gap below it.",
+			"alt": "A grey metal ball high in a blue sky above grey-brown stone ground, its round shadow on the ground well to its left.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [0, 0.5, 4.5],
+				"target": [0, 1.0, 0],
+				"fov": 40
+			},
+			"size": [1920, 1080],
+			"quality": "high",
+			"expect": "complete",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": { "path": "Materials/Ball-ball-jumps.stmat", "properties": { "BaseColor": [0.55, 0.56, 0.58, 1.0], "Metallic": 1.0, "Roughness": 0.45 } }
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/Ball-ball-jumps.stmat" },
+							"SphereCollider": { "Radius": 0.5 },
+							"Transform": { "Translation": [0, 1.77, 0] }
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Ball",
+					"parameters": { "component": "RigidBody" }
+				}
+			]
+		},
+		{
+			"id": "coins-collected",
+			"shows": "Two gold coins that are kinematic triggers above the ground; the ball, dropped onto the left one, fell through it and rests on the ground with the coin cutting into its top",
+			"caption": "A trigger pushes nothing: dropped onto the left coin, the ball fell straight through it and rests with the coin inside its top. With the Coin script running, that entry would have collected the coin.",
+			"alt": "Two small gold coins standing upright in the air above grey-brown stone ground; a grey metal ball rests on the ground under the left coin, whose lower half disappears into the ball.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [-2.2, 1.7, 3.2],
+				"target": [0.6, 0.75, 0],
+				"fov": 34
+			},
+			"size": [1920, 1080],
+			"quality": "high",
+			"expect": "complete",
+			"setup": [
+				{
+					"command": "material.create",
+					"parameters": { "path": "Materials/Ball-coins-collected.stmat", "properties": { "BaseColor": [0.55, 0.56, 0.58, 1.0], "Metallic": 1.0, "Roughness": 0.45 } }
+				},
+				{
+					"command": "material.create",
+					"parameters": { "path": "Materials/Gold-coins-collected.stmat", "properties": { "BaseColor": [1.0, 0.77, 0.34, 1.0], "Metallic": 1.0, "Roughness": 0.3 } }
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Cylinder", "Material": "Materials/Gold-coins-collected.stmat" },
+							"SphereCollider": { "Radius": 0.3 },
+							"Transform": { "Translation": [0, 1, 0], "Rotation": [90, 0, 0], "Scale": [0.6, 0.06, 0.6] }
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Coin",
+					"parameters": { "component": "RigidBody" }
+				},
+				{
+					"command": "component.set",
+					"entityName": "Coin",
+					"parameters": { "component": "RigidBody", "values": { "Type": "Kinematic", "IsTrigger": true } }
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin 2",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Cylinder", "Material": "Materials/Gold-coins-collected.stmat" },
+							"SphereCollider": { "Radius": 0.3 },
+							"Transform": { "Translation": [1.6, 1, 0], "Rotation": [90, 0, 0], "Scale": [0.6, 0.06, 0.6] }
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Coin 2",
+					"parameters": { "component": "RigidBody" }
+				},
+				{
+					"command": "component.set",
+					"entityName": "Coin 2",
+					"parameters": { "component": "RigidBody", "values": { "Type": "Kinematic", "IsTrigger": true } }
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/Ball-coins-collected.stmat" },
+							"SphereCollider": { "Radius": 0.5 },
+							"Transform": { "Translation": [0, 3, 0] }
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Ball",
+					"parameters": { "component": "RigidBody" }
+				}
+			],
+			"play": {
+				"steps": 120
+			}
+		},
+		{
+			"id": "ghost-wall",
+			"shows": "The sunlit wall on layer Ghost with the ball on layer Ball sunk into it: dropped onto the wall, the ball fell through it and rests on the ground with its centre in the wall's face, the wall cutting it in half",
+			"caption": "Ball and Ghost do not collide, so the ball, dropped onto the wall, fell through it and rests on the ground half inside it, the other half bulging out of the wall's bright face.",
+			"alt": "A long pale grey wall lit by the sun on grey-brown stone ground; a grey metal ball sits on the ground against the wall's face, cut off by it so only its near half shows.",
+			"kind": "scene",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [7.6, 1.9, -4.4],
+				"target": [4.1, 0.7, 0.2],
+				"fov": 34
+			},
+			"size": [1920, 1080],
+			"quality": "high",
+			"expect": "complete",
+			"setup": [
+				{
+					"command": "project.setCollisionLayers",
+					"parameters": {
+						"layerNames": { "1": "Ball", "2": "Ghost" },
+						"layerCollisions": [ { "layers": [1, 2], "collide": false } ]
+					}
+				},
+				{
+					"command": "material.create",
+					"parameters": { "path": "Materials/Ball-ghost-wall.stmat", "properties": { "BaseColor": [0.55, 0.56, 0.58, 1.0], "Metallic": 1.0, "Roughness": 0.45 } }
+				},
+				{
+					"command": "material.create",
+					"parameters": { "path": "Materials/Wall-ghost-wall.stmat", "properties": { "BaseColor": [0.55, 0.6, 0.7, 1.0], "Roughness": 0.8 } }
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Sphere", "Material": "Materials/Ball-ghost-wall.stmat" },
+							"SphereCollider": { "Radius": 0.5 },
+							"Transform": { "Translation": [4.25, 3.5, 0] }
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "Ball",
+					"parameters": { "component": "RigidBody" }
+				},
+				{
+					"command": "component.set",
+					"entityName": "Ball",
+					"parameters": { "component": "RigidBody", "values": { "Layer": 1 } }
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "GhostWall",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Cube", "Material": "Materials/Wall-ghost-wall.stmat" },
+							"BoxCollider": { "HalfExtents": [0.5, 0.5, 0.5] },
+							"Transform": { "Translation": [4, 1, 0], "Scale": [0.5, 2, 4] }
+						}
+					}
+				},
+				{
+					"command": "component.add",
+					"entityName": "GhostWall",
+					"parameters": { "component": "RigidBody" }
+				},
+				{
+					"command": "component.set",
+					"entityName": "GhostWall",
+					"parameters": { "component": "RigidBody", "values": { "Type": "Static", "Layer": 2 } }
+				}
+			],
+			"play": {
+				"steps": 120
+			}
+		}
+	]
+}

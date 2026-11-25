@@ -1,0 +1,33 @@
+diff --git a/StrataTests/src/Asset/AssetPackTests.cpp b/StrataTests/src/Asset/AssetPackTests.cpp
+--- a/StrataTests/src/Asset/AssetPackTests.cpp
++++ b/StrataTests/src/Asset/AssetPackTests.cpp
+@@ -1029,6 +1029,29 @@ TEST_SUITE("Asset.Pack.Sweep")
+ 		}
+ 	}
+ 
++	TEST_CASE("A changed byte inside a block opens, and reading that block fails with its checksum")
++	{
++		const std::vector<PackSource> sources = MakeCorruptionSources();
++		const std::filesystem::path directory = CreateTemporaryDirectory("PackBlockChecksum");
++		const std::filesystem::path path = WritePack(directory / "Game.stpak", sources);
++		const std::optional<std::vector<uint8_t>> bytes = FileSystem::ReadBytes(path);
++		REQUIRE(bytes);
++		const PackImage image = PackImage::Read(path);
++		std::vector<uint8_t> changed = *bytes;
++		changed[image.Blocks[0].Offset] ^= 0xA5; // The first byte of the first block of the first entry
++		const std::filesystem::path corrupt = directory / "Corrupt.stpak";
++		REQUIRE(FileSystem::WriteBytes(corrupt, changed));
++
++		std::string error;
++		const Scope<AssetPack> pack = AssetPack::Open(corrupt, &error);
++		REQUIRE(pack); // The header and the tables are untouched
++		std::vector<uint8_t> data;
++		CHECK_FALSE(pack->ReadData(pack->GetEntries()[0], data, &error));
++		CHECK(error.find("checksum mismatch") != std::string::npos);
++		error.clear();
++		CHECK(pack->ReadData(pack->GetEntries()[1], data, &error));
++	}
++
+ 	TEST_CASE("Version 1 packs that are corrupt are still refused")
+ 	{
+ 		std::vector<PackSource> sources;

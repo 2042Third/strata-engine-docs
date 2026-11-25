@@ -1,0 +1,49 @@
+{
+	"page": "make/assets",
+	"startsFrom": {
+		"tutorial": "make/assets"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "asset.import",
+					"parameters": {
+						"file": "@RELEASE@/Samples/ThirdPerson/Assets/Models/Platformer/barrel.glb",
+						"directory": "Models"
+					}
+				},
+				{
+					"command": "asset.info",
+					"parameters": {
+						"asset": "Models/barrel/barrel.glb"
+					},
+					"checks": [
+						{
+							"pointer": "/bounds/size/0",
+							"approx": 0.52,
+							"tolerance": 0.02
+						},
+						{
+							"pointer": "/bounds/size/1",
+							"approx": 0.48,
+							"tolerance": 0.02
+						}
+					]
+				},
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Models/barrel/barrel.glb",
+						"point": [
+							-2,
+							0,
+							2
+						]
+					}
+				}
+			]
+		}
+	]
+}

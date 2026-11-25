@@ -1,0 +1,24 @@
+{
+	"figures": [
+		{
+			"id": "hierarchy-inspector",
+			"shows": "The editor with the ThirdPerson sample's Course scene open: the Hierarchy lists the camera, sun, sky and post process entities and the Course tree opened to Island A, whose first BlockTall (1) is selected; the Inspector shows its name, Transform, Mesh Renderer and the top of its Rigid Body, with its Mesh Collider below the panel's edge",
+			"caption": "The Hierarchy shows the scene as a tree of named things, opened down to the selected block. The Inspector shows the parts of that block: its name, its position, its mesh and its body.",
+			"alt": "The editor window. The Hierarchy on the left lists a camera, a sun, a sky, a post process entry and a course. The course is open to its first island, whose blocks are listed below it, and the first block is selected. The Inspector on the right shows that block's name, then its position, its mesh and the top of its body.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": { "sample": "ThirdPerson" },
+			"scene": "Scenes/Course.stscene",
+			"editorWindow": {
+				"layout": "layouts/what-a-world-is.ini",
+				"windowSize": [960, 540],
+				"steps": [
+					{ "command": "entity.find", "parameters": { "name": "BlockTall (1)", "limit": 1 }, "bind": { "block": "/entities/0" } },
+					{ "command": "selection.set", "parameters": { "entities": [{ "$ref": "block" }] } },
+					{ "command": "editor.showPanel", "parameters": { "panel": "Hierarchy" } },
+					{ "command": "editor.showPanel", "parameters": { "panel": "Inspector" } }
+				]
+			}
+		}
+	]
+}

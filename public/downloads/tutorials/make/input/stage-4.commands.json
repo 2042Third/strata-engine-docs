@@ -1,0 +1,117 @@
+[
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Jump",
+			"kind": "Button",
+			"bindings": [
+				"Key/Space",
+				"Gamepad/A"
+			]
+		},
+		"expect": {
+			"/created": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Boost",
+			"kind": "Button",
+			"bindings": [
+				"Key/LeftShift"
+			]
+		},
+		"expect": {
+			"/created": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ball"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"class": "BallControl",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ball"
+		},
+		"bind": {
+			"ball": "/entities/0"
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "LeftShift",
+			"action": "press"
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "W",
+			"steps": 60
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "LeftShift",
+			"action": "release"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "ball"
+			},
+			"component": "Transform"
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "Space"
+		}
+	},
+	{
+		"command": "log.read",
+		"parameters": {
+			"newest": true,
+			"limit": 50
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

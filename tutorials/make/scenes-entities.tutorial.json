@@ -1,0 +1,470 @@
+{
+	"page": "make/scenes-entities",
+	"startsFrom": {
+		"tutorial": "make/editor-tour"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Ground"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "component.get",
+					"parameters": {
+						"component": "Transform"
+					},
+					"entityName": "Ground",
+					"checks": [
+						{
+							"pointer": "/values/Scale/0",
+							"approx": 20,
+							"tolerance": 0.001
+						},
+						{
+							"pointer": "/values/Rotation",
+							"length": 4
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"commands": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Walls"
+					},
+					"bind": {
+						"walls": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									10
+								],
+								"Scale": [
+									20,
+									1,
+									0.5
+								]
+							}
+						}
+					},
+					"bind": {
+						"w0": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall (1)",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									-10
+								],
+								"Scale": [
+									20,
+									1,
+									0.5
+								]
+							}
+						}
+					},
+					"bind": {
+						"w1": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall (2)",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									10,
+									0.5,
+									0
+								],
+								"Scale": [
+									0.5,
+									1,
+									20
+								]
+							}
+						}
+					},
+					"bind": {
+						"w2": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Wall (3)",
+						"parent": {
+							"$ref": "walls"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									-10,
+									0.5,
+									0
+								],
+								"Scale": [
+									0.5,
+									1,
+									20
+								]
+							}
+						}
+					},
+					"bind": {
+						"w3": "/id"
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								16,
+								13
+							],
+							"Rotation": [
+								-0.4617,
+								0,
+								0,
+								0.887
+							]
+						}
+					},
+					"entityName": "Main Camera"
+				},
+				{
+					"command": "component.get",
+					"parameters": {
+						"component": "Transform"
+					},
+					"entityName": "Main Camera",
+					"checks": [
+						{
+							"pointer": "/values/Translation/1",
+							"approx": 16,
+							"tolerance": 0.001
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"commands": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Ball",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Sphere"
+							},
+							"SphereCollider": {
+								"Radius": 0.5
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.5,
+									6
+								]
+							}
+						}
+					},
+					"bind": {
+						"ball": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Coin",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cylinder"
+							},
+							"Tag": {
+								"Tag": "Coin"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.8,
+									-4
+								],
+								"Rotation": [
+									0.7071,
+									0,
+									0,
+									0.7071
+								],
+								"Scale": [
+									0.8,
+									0.1,
+									0.8
+								]
+							}
+						}
+					},
+					"bind": {
+						"coin": "/id"
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"tag": "Coin"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"commands": [
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0.75,
+								10
+							],
+							"Scale": [
+								20,
+								1.5,
+								0.5
+							]
+						}
+					},
+					"entityName": "Wall"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								0.75,
+								-10
+							],
+							"Scale": [
+								20,
+								1.5,
+								0.5
+							]
+						}
+					},
+					"entityName": "Wall (1)"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								10,
+								0.75,
+								0
+							],
+							"Scale": [
+								0.5,
+								1.5,
+								20
+							]
+						}
+					},
+					"entityName": "Wall (2)"
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								-10,
+								0.75,
+								0
+							],
+							"Scale": [
+								0.5,
+								1.5,
+								20
+							]
+						}
+					},
+					"entityName": "Wall (3)"
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"component": "BoxCollider"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 5
+						}
+					]
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Wall"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "Walls"
+				},
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": true
+					},
+					"entityName": "Walls"
+				}
+			],
+			"endState": true
+		},
+		{
+			"step": 5,
+			"commands": [
+				{
+					"command": "scene.save"
+				},
+				{
+					"command": "scene.new"
+				},
+				{
+					"command": "scene.saveAs",
+					"parameters": {
+						"path": "Scenes/Test.stscene"
+					}
+				},
+				{
+					"command": "scene.open",
+					"parameters": {
+						"scene": "Scenes/Main.stscene"
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Ball"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				}
+			],
+			"endState": true
+		}
+	]
+}

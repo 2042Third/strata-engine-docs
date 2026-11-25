@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 388">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: menu bar y 16 to 48 (x 16 to 400), the Edit menu x 76 to 376 from y 52, rows 28 high (text baseline row + 19),
+separators 12 high; notes from x 420 with arrows ending 2 short of the menu's edge (x 378). H = 372 + 16. Items, shortcuts and
+grey states from StrataEditor/src/EditorLayer.cpp:1824-1853 and UI/EditorActions.cpp:226 (Paste needs copied entities). -->
+<rect class="plate" x="16" y="16" width="384" height="32" rx="4"/>
+<text class="ink" x="32" y="37">File</text>
+<rect class="orange-area" x="76" y="20" width="52" height="24" rx="3"/>
+<text class="orange bold" x="86" y="37">Edit</text>
+<text class="ink" x="144" y="37">View</text>
+<text class="ink" x="200" y="37">Entity</text>
+<text class="ink" x="268" y="37">Scripts</text>
+<text class="ink" x="346" y="37">Help</text>
+<rect class="ground line-muted" x="76" y="52" width="300" height="320" rx="4"/>
+<rect class="orange-area" x="80" y="60" width="292" height="28" rx="3"/>
+<text class="orange bold" x="92" y="79">Undo Move Entity</text>
+<text class="orange" x="364" y="79" text-anchor="end">Ctrl+Z</text>
+<text class="muted" x="92" y="107">Redo</text>
+<text class="muted" x="364" y="107" text-anchor="end">Ctrl+Y</text>
+<line class="line-faint" x1="84" y1="122" x2="368" y2="122" stroke-width="1"/>
+<text class="ink" x="92" y="147">Cut</text>
+<text class="muted" x="364" y="147" text-anchor="end">Ctrl+X</text>
+<text class="ink" x="92" y="175">Copy</text>
+<text class="muted" x="364" y="175" text-anchor="end">Ctrl+C</text>
+<text class="muted" x="92" y="203">Paste</text>
+<text class="muted" x="364" y="203" text-anchor="end">Ctrl+V</text>
+<text class="ink" x="92" y="231">Duplicate</text>
+<text class="muted" x="364" y="231" text-anchor="end">Ctrl+D</text>
+<text class="ink" x="92" y="259">Rename</text>
+<text class="muted" x="364" y="259" text-anchor="end">F2</text>
+<text class="ink" x="92" y="287">Delete</text>
+<text class="muted" x="364" y="287" text-anchor="end">Del</text>
+<text class="ink" x="92" y="315">Drop to Ground</text>
+<text class="muted" x="364" y="315" text-anchor="end">End</text>
+<line class="line-faint" x1="84" y1="330" x2="368" y2="330" stroke-width="1"/>
+<text class="ink" x="92" y="355">Select All</text>
+<text class="muted" x="364" y="355" text-anchor="end">Ctrl+A</text>
+<line class="line-orange" x1="412" y1="74" x2="388" y2="74"/>
+<polygon class="orange" points="378,74 388,70.5 388,77.5"/>
+<text class="orange" x="420" y="79">the latest step: Undo takes it back</text>
+<line class="line-muted" x1="412" y1="102" x2="388" y2="102"/>
+<polygon class="muted" points="378,102 388,98.5 388,105.5"/>
+<text class="ink" x="420" y="107">grey: nothing to redo yet</text>
+<line class="line-muted" x1="412" y1="198" x2="388" y2="198"/>
+<polygon class="muted" points="378,198 388,194.5 388,201.5"/>
+<text class="ink" x="420" y="203">grey: no entity was copied</text>
+</svg>

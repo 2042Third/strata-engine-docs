@@ -1,0 +1,336 @@
+id	type	heading	label
+render-image:27	feature	1.1 The HDR image and the post chain	HDR scene color target
+render-image:30	feature	1.1 The HDR image and the post chain	`SanitizeHDR`
+render-image:33	feature	1.1 The HDR image and the post chain	`c_MaxExposedValue` = 1e8 and `ExposeSceneColor`
+render-image:35	feature	1.1 The HDR image and the post chain	HDR alpha convention
+render-image:38	feature	1.1 The HDR image and the post chain	Post chain order and `PostSource`
+render-image:44	feature	1.1 The HDR image and the post chain	`HDROutput` frames
+render-image:46	feature	1.1 The HDR image and the post chain	Fullscreen pass machinery
+render-image:49	feature	1.1 The HDR image and the post chain	Post GPU data
+render-image:51	feature	1.1 The HDR image and the post chain	Tone mapping's volatile constant buffer
+render-image:53	feature	1.1 The HDR image and the post chain	CPU twins of shader math
+render-image:55	feature	1.1 The HDR image and the post chain	GPU stages
+render-image:57	feature	1.1 The HDR image and the post chain	Statistics
+render-image:66	feature	1.2 Exposure	Manual exposure
+render-image:68	feature	1.2 Exposure	Exposure buffer
+render-image:70	feature	1.2 Exposure	Pre-exposure
+render-image:77	feature	1.2 Exposure	Luminance histogram
+render-image:80	feature	1.2 Exposure	Metering modes
+render-image:82	feature	1.2 Exposure	Percentile metering window
+render-image:84	feature	1.2 Exposure	Adaptation (light/dark speeds)
+render-image:88	feature	1.2 Exposure	Min/Max EV clamp
+render-image:89	feature	1.2 Exposure	Exposure key
+render-image:93	feature	1.2 Exposure	Exposure reset / jump
+render-image:95	feature	1.2 Exposure	EV100 conversion and reference table
+render-image:97	feature	1.2 Exposure	Light units
+render-image:99	feature	1.2 Exposure	Sky presets that set exposure safely
+render-image:101	feature	1.2 Exposure	Luminance lighting view
+render-image:106	feature	1.3 Tone curves	`TonemapOperator`
+render-image:109	feature	1.3 Tone curves	Reinhard
+render-image:111	feature	1.3 Tone curves	Filmic
+render-image:116	feature	1.3 Tone curves	Contrast
+render-image:118	feature	1.3 Tone curves	Middle-gray display values per curve
+render-image:123	feature	1.4 Color	White balance
+render-image:127	feature	1.4 Color	Slope/offset/power grading
+render-image:130	feature	1.4 Color	sRGB encoding
+render-image:131	feature	1.4 Color	Color lookup (3D LUT) asset
+render-image:140	feature	1.5 Display output	Dither
+render-image:144	feature	1.5 Display output	10-bit LDR intermediate
+render-image:149	feature	1.6 Lens and film effects	Bloom
+render-image:155	feature	1.6 Lens and film effects	Vignette
+render-image:158	feature	1.6 Lens and film effects	Chromatic aberration
+render-image:161	feature	1.6 Lens and film effects	Film grain
+render-image:164	feature	1.6 Lens and film effects	Lens flares
+render-image:171	feature	1.7 Motion blur and depth of field (post effects that need geometry data)	Motion vectors / velocity target
+render-image:174	feature	1.7 Motion blur and depth of field (post effects that need geometry data)	Motion debug view
+render-image:175	feature	1.7 Motion blur and depth of field (post effects that need geometry data)	Motion blur
+render-image:182	feature	1.7 Motion blur and depth of field (post effects that need geometry data)	Depth of field
+render-image:189	feature	1.7 Motion blur and depth of field (post effects that need geometry data)	Blur mask in alpha
+render-image:194	feature	1.8 Anti-aliasing	`PostProcessComponent::AntiAliasing` + `AntiAliasingMethod`
+render-image:196	feature	1.8 Anti-aliasing	FXAA
+render-image:198	feature	1.8 Anti-aliasing	Morphological AA
+render-image:203	feature	1.8 Anti-aliasing	Temporal AA (TAA)
+render-image:204	feature	1.8 Anti-aliasing	Jitter: 8 phases of Halton(2,3) `GetTemporalJitter` (`R/SceneRenderer.cpp:2800-2816`), applied…
+render-image:206	feature	1.8 Anti-aliasing	History lifetime/reset rules (`R/SceneRenderer.cpp:3006-3043`), `ResetHistory`…
+render-image:208	feature	1.8 Anti-aliasing	Resources: ping-pong RGBA16F history and per-texture post sets (`EnsureTemporalResources`,…
+render-image:209	feature	1.8 Anti-aliasing	Resolve: `ResolveTemporal` (1685-1714) and `S/PostProcess/TAA.comp.slang` (whole file):…
+render-image:213	feature	1.8 Anti-aliasing	Golden-ratio noise turn for other effects' noise (`TemporalParams.z`,…
+render-image:214	feature	1.8 Anti-aliasing	Settings: `TemporalAntiAliasingSettings`, `TemporalHistoryClamp`, `TemporalAntiAliasingPreset`…
+render-image:218	feature	1.8 Anti-aliasing	Sharpening of the displayed image only (`Sharpen`, Tonemap.frag 91-119; exponent from CPU…
+render-image:220	feature	1.8 Anti-aliasing	Settling of single images (`c_TemporalSettleFrames` 8, capture/thumbnail rules): DG "Motion…
+render-image:221	feature	1.8 Anti-aliasing	DG "Motion vectors and TAA" (4349-4487); Manual `Docs/Manual/AntiAliasing.md`. TAA 0.6.0 (with…
+render-image:223	feature	1.8 Anti-aliasing	Overlays keep unjittered matrices
+render-image:227	feature	1.9 Quality settings and players' options	`RendererQualitySettings`
+render-image:232	feature	1.9 Quality settings and players' options	Preset table
+render-image:234	feature	1.9 Quality settings and players' options	`Renderer.Quality` settings section
+render-image:236	feature	1.9 Quality settings and players' options	Row traits
+render-image:238	feature	1.9 Quality settings and players' options	Players' rows
+render-image:242	feature	1.9 Quality settings and players' options	`SceneRenderer::SetQuality`
+render-image:243	feature	1.9 Quality settings and players' options	Who follows what quality
+render-image:246	feature	1.9 Quality settings and players' options	Players' graphics options service
+render-image:250	feature	1.9 Quality settings and players' options	Script SDK
+render-image:254	feature	1.9 Quality settings and players' options	Editor
+render-image:258	feature	1.9 Quality settings and players' options	Runtime
+render-image:260	feature	1.9 Quality settings and players' options	No render scale
+render-image:268	feature	1.10 The component and its editor surface	`PostProcessComponent`
+render-image:273	feature	1.10 The component and its editor surface	Test helpers
+render-image:278	feature	1.11 Generators (committed outputs, never hand-edited)	`Tools/FitFilmic.py` -> `S/Include/FilmicConstants.slang`, `R/FilmicConstants.h` (`--check`,…
+render-image:280	feature	1.11 Generators (committed outputs, never hand-edited)	`Tools/GenerateWhiteBalance.py` -> `R/WhiteBalanceLocus.inl` (91 entries, 60-510 mireds).
+render-image:281	feature	1.11 Generators (committed outputs, never hand-edited)	`Tools/GenerateAreaTable.py` -> `R/MorphologicalAreaTable.inl`.
+render-image:282	feature	1.11 Generators (committed outputs, never hand-edited)	`Tools/GenerateBlueNoise.py` -> `R/BlueNoise.h` (void-and-cluster 64x64): used by the *sun shadow…
+render-image:286	feature	1.11 Generators (committed outputs, never hand-edited)	`Tools/LookDev.py` + `Tools/LookDev/Shots.json`: the look-dev harness that captures the sample…
+render-image:313	concept		A frame is an array of numbers, and "light" is not "color"
+render-image:318	concept		Floating-point formats and their limits
+render-image:322	concept		Photometric units and the camera exposure model
+render-image:326	concept		Pre-exposure
+render-image:330	concept		Automatic exposure: metering
+render-image:334	concept		Automatic exposure: adaptation and intent
+render-image:339	concept		Tone mapping
+render-image:345	concept		Display encoding and quantization
+render-image:349	concept		Color grading and white balance
+render-image:354	concept		Convolution, mip chains and bloom
+render-image:358	concept		Lens models for vignette, chromatic aberration, flares
+render-image:362	concept		Sampling and aliasing
+render-image:364	concept		Spatial post AA
+render-image:368	concept		Motion vectors and reprojection
+render-image:371	concept		Temporal anti-aliasing
+render-image:378	concept		Motion blur
+render-image:381	concept		Depth of field
+render-image:384	concept		Quality presets as a product concept
+render-image:395	code		1: `R/SceneRendererPost.cpp:22-31`
+render-image:396	code		2: `R/SceneRenderer.cpp:3582-3629`
+render-image:397	code		3: `S/Include/Common.slang:49-57`
+render-image:398	code		4: `R/SceneRenderer.cpp:1514-1520` and `1531-1598`
+render-image:399	code		5: `S/Include/Exposure.slang:23-37`
+render-image:400	code		6: `S/PostProcess/Histogram.comp.slang:39-71`
+render-image:401	code		7: `S/PostProcess/Exposure.comp.slang:40-98`
+render-image:402	code		8: `R/SceneRendererPost.cpp:921-976`
+render-image:403	code		9: `S/Include/Filmic.slang:11-40`
+render-image:404	code		10: `R/PostProcessMath.cpp:111-137`
+render-image:405	code		11: `S/PostProcess/Tonemap.frag.slang:121-171`
+render-image:406	code		12: `S/PostProcess/Tonemap.frag.slang:173-275`
+render-image:407	code		13: `R/PostProcessMath.cpp:163-201`
+render-image:408	code		14: `S/Include/Dither.slang:10-51`
+render-image:409	code		15: `S/Include/Grain.slang:17-25`
+render-image:410	code		16: `S/PostProcess/Bloom.comp.slang:38-100`
+render-image:411	code		17: `R/SceneRendererPost.cpp:999-1047`
+render-image:412	code		18: `R/SceneRendererPost.cpp:1220-1333`
+render-image:413	code		19: `S/PostProcess/FXAA.frag.slang:51-169`
+render-image:414	code		20: `S/PostProcess/MorphologicalWeights.frag.slang:17-78`
+render-image:415	code		21: `R/SceneRenderer.cpp:2800-2816`
+render-image:416	code		22: `R/SceneRenderer.cpp:3006-3043` and `3092-3117`
+render-image:417	code		23: `S/PostProcess/TAA.comp.slang:162-190`
+render-image:418	code		24: `S/PostProcess/TAA.comp.slang:192-272`
+render-image:419	code		25: `S/PostProcess/TAA.comp.slang:83-142`
+render-image:420	code		26: `S/PostProcess/Tonemap.frag.slang:91-119`
+render-image:421	code		27: `R/RendererComponents.h:220-256` and `R/RendererComponents.cpp:680-718`
+render-image:422	code		28: `S/Include/MotionBlur.slang:25-39` and `S/PostProcess/MotionBlur.comp.slang:25-54`
+render-image:423	code		29: `R/SceneRendererPost.cpp:254-299`
+render-image:424	code		30: `R/RendererQuality.cpp:32-55` and `156-179`; `R/SceneRendererPost.cpp:458-486`
+render-image:426	code		Small pieces suitable as inline snippets: `GetDitherLevels` (`R/SceneRendererPost.cpp:60-75`),…
+render-image:437	figure	Diagrams	The post chain data flow
+render-image:442	figure	Diagrams	Inside the tone-mapping pass
+render-image:444	figure	Diagrams	Exposure timeline
+render-image:446	figure	Diagrams	Exposure state machine
+render-image:448	figure	Diagrams	Histogram and percentile window
+render-image:450	figure	Diagrams	Tone curves plot
+render-image:452	figure	Diagrams	Hue skew vs. Filmic's per-channel shoulder
+render-image:454	figure	Diagrams	White locus
+render-image:456	figure	Diagrams	Dither
+render-image:458	figure	Diagrams	Bloom mip chain
+render-image:460	figure	Diagrams	Lens flare geometry
+render-image:462	figure	Diagrams	FXAA steps
+render-image:463	figure	Diagrams	Morphological AA
+render-image:465	figure	Diagrams	TAA overview
+render-image:467	figure	Diagrams	Catmull-Rom weight merging
+render-image:468	figure	Diagrams	Variance clipping in YCoCg
+render-image:469	figure	Diagrams	Disocclusion test
+render-image:470	figure	Diagrams	TAA history lifecycle
+render-image:472	figure	Diagrams	Motion blur
+render-image:473	figure	Diagrams	Depth of field
+render-image:475	figure	Diagrams	Quality layers
+render-image:477	figure	Diagrams	Where quality is chosen in the editor
+render-image:485	figure	Screenshots (each with how to isolate it)	HDR without tone mapping vs. with: `Tonemapper None` + `Exposure 0` vs. Filmic; the clipped sky.
+render-image:486	figure	Screenshots (each with how to isolate it)	Exposure sweep: manual `Exposure` -16, -14, -12 on a sunlit sample (AutoExposure false).
+render-image:487	figure	Screenshots (each with how to isolate it)	Auto exposure on/off and metering Average vs. CenterWeighted on a shot with a bright sky in the…
+render-image:488	figure	Screenshots (each with how to isolate it)	The exposure key: `lookdev.room` with `AutoExposureKey` 0 vs. 0.12 (interior reads darker); add…
+render-image:489	figure	Screenshots (each with how to isolate it)	Luminance debug view (`debugView: "luminance"`, EV100 bands) of lookdev.overview and lookdev.room.
+render-image:490	figure	Screenshots (each with how to isolate it)	Adaptation: a sequence leaving a tunnel/interior (live capture `{live, frames}`) at light speed 3…
+render-image:491	figure	Screenshots (each with how to isolate it)	Tone curves side by side: same shot under None, Reinhard, ACES (Exposure +0.8), AgX,…
+render-image:493	figure	Screenshots (each with how to isolate it)	Filmic Toe 0/0.5/1 and Shoulder 0/0.5/1 on a high-contrast scene (lookdev.night or a sunset).
+render-image:494	figure	Screenshots (each with how to isolate it)	White balance 3200, 6500, 9000 K and tint -1/+1 on an interior lit by lamps.
+render-image:495	figure	Screenshots (each with how to isolate it)	Slope/offset/power examples (warm shadows via ColorOffset) vs. defaults.
+render-image:496	figure	Screenshots (each with how to isolate it)	Color lookup: Feature test's `Warm.cube` at intensity 0, 0.5, 1 (StrataTests/FeatureTest,…
+render-image:497	figure	Screenshots (each with how to isolate it)	Banding vs. dither: a dark sky gradient with `DitherOutput` off (needs a renderer spec: only via…
+render-image:499	figure	Screenshots (each with how to isolate it)	Bloom: off, default 0.04, intensity 0.2, threshold 1 vs. 0; BloomRadius 0.02 vs. 0.06 vs. 0.15;…
+render-image:501	figure	Screenshots (each with how to isolate it)	Vignette 0, 0.12, 1 on a flat bright wall at 60 degree FOV; and an orthographic view.
+render-image:502	figure	Screenshots (each with how to isolate it)	Chromatic aberration 0 vs. 1 cropped at a corner (4x crop).
+render-image:503	figure	Screenshots (each with how to isolate it)	Film grain 0, 0.3, 1 on mid-gray (crop).
+render-image:504	figure	Screenshots (each with how to isolate it)	Lens flare 0 vs. 0.5 with the sun in view (lookdev.overview or Showcase) and with the sun behind a…
+render-image:506	figure	Screenshots (each with how to isolate it)	Aliasing: AntiAliasing off vs. FXAA vs. Morphological vs. TAA Sharp at 4x crops (`--aa…
+render-image:508	figure	Screenshots (each with how to isolate it)	FXAA subpixel 0.25 vs. 0.75 (needs a shader edit: an engine-dev exercise screenshot).
+render-image:509	figure	Screenshots (each with how to isolate it)	TAA Original vs. Sharp vs. Custom in a slow pan (`viewport.capture {live}`), fine texture.
+render-image:510	figure	Screenshots (each with how to isolate it)	TAA trail: a moving object over glints, MinMax vs. Variance; and disocclusion ghost on/off.
+render-image:511	figure	Screenshots (each with how to isolate it)	Transparent surface under TAA with TransparentWeight 0 vs. 0.5.
+render-image:512	figure	Screenshots (each with how to isolate it)	Motion vectors debug view (`debugView: "motion"` / `ShowMotionVectors`) while the camera turns.
+render-image:513	figure	Screenshots (each with how to isolate it)	Motion blur: `tp.live.turn` with `.mb180` / `.mb90` / off (DG lists the shots), crop of the far…
+render-image:514	figure	Screenshots (each with how to isolate it)	Depth of field: `tp.dof` (robot at f/2) vs. off; f/1.4 vs. f/8; FocusEntity.
+render-image:515	figure	Screenshots (each with how to isolate it)	Quality presets Low/Medium/High/Ultra of one shot (`viewport.capture {quality: "low"...}`), noting…
+render-image:517	figure	Screenshots (each with how to isolate it)	The editor: Project Settings > Graphics Quality page (columns, Custom, players' choices, GPU stage…
+render-image:519	figure	Screenshots (each with how to isolate it)	The Third-Person sample's in-game Graphics settings menu (made with `StrataScript/Graphics.h`).
+render-image:525	rule		Every HDR writer clamps with `SanitizeHDR`
+render-image:527	rule		Pre-exposure is a power of two and is divided out exactly
+render-image:529	rule		Never read the exposure back synchronously
+render-image:531	rule		Adaptation is frame-rate independent and pauses are capped
+render-image:533	rule		The exposure key only darkens
+render-image:535	rule		Post passes take parameters by push constants or their own buffers, never new `FrameConstants`…
+render-image:538	rule		`TonemapConstants` grows only by appending vec4-aligned blocks
+render-image:540	rule		NVRHI places barriers only when binding sets change
+render-image:542	rule		A new post effect runs between the TAA resolve and the tone mapping, reads the frame's…
+render-image:545	rule		Neutral settings render bit-identically
+render-image:547	rule		Generated constants are never hand-edited
+render-image:549	rule		Dither once, in the last pass, in the encoded domain; grain just before it
+render-image:551	rule		The dither is static, not temporal
+render-image:553	rule		Jitter only the frame's copy of the camera
+render-image:555	rule		Motion vectors use unjittered matrices built in double
+render-image:557	rule		Sharpen only the displayed image, never the history
+render-image:559	rule		TAA history is counted in frames, not time, and belongs to the renderer
+render-image:561	rule		Single images settle or turn TAA off
+render-image:563	rule		The HDR alpha convention is load-bearing
+render-image:565	rule		Quality rows never change a scene's look
+render-image:567	rule		Adding a quality row
+render-image:570	rule		Preset numbers and enum values are file and script API
+render-image:572	rule		Only `GameGraphicsService` touches `GraphicsOptions.json`
+render-image:574	rule		Never render below native resolution
+render-image:577	rule		Color lookup loads asynchronously
+render-image:579	rule		Motion blur skips the first frame and camera cuts
+render-image:587	hands-on	For game developers (editor, scripts)	Find your exposure
+render-image:589	hands-on	For game developers (editor, scripts)	Interior vs. exterior
+render-image:591	hands-on	For game developers (editor, scripts)	Pick a tone curve
+render-image:593	hands-on	For game developers (editor, scripts)	A night look
+render-image:595	hands-on	For game developers (editor, scripts)	Import a LUT
+render-image:597	hands-on	For game developers (editor, scripts)	Anti-aliasing shoot-out
+render-image:599	hands-on	For game developers (editor, scripts)	Tune TAA Custom
+render-image:601	hands-on	For game developers (editor, scripts)	Motion blur and DoF for a racing camera
+render-image:603	hands-on	For game developers (editor, scripts)	A Graphics options menu
+render-image:609	hands-on	For engine developers	Add a debug curve
+render-image:611	hands-on	For engine developers	CPU twin test
+render-image:613	hands-on	For engine developers	Spot metering
+render-image:616	hands-on	For engine developers	Prove the pre-exposure is exact
+render-image:618	hands-on	For engine developers	A new post effect
+render-image:621	hands-on	For engine developers	Change FXAA's subpixel and measure
+render-image:623	hands-on	For engine developers	TAA without clamping
+render-image:625	hands-on	For engine developers	Add a quality row
+render-image:627	hands-on	For engine developers	Refit Filmic
+render-image:634	term		HDR (high dynamic range) image
+render-image:635	term		LDR / display-referred
+render-image:636	term		Scene-linear / display-linear / encoded
+render-image:638	term		Half float (RGBA16F)
+render-image:639	term		NaN / Inf
+render-image:640	term		`SanitizeHDR`
+render-image:641	term		Nit (cd/m^2); Lux; Candela
+render-image:642	term		Luminance (Y)
+render-image:643	term		Luma
+render-image:644	term		Exposure / EV / stop
+render-image:645	term		EV100
+render-image:646	term		Middle gray
+render-image:647	term		Exposure compensation
+render-image:648	term		Metering
+render-image:649	term		Percentile window
+render-image:650	term		Light/dark adaptation
+render-image:651	term		Exposure key
+render-image:652	term		Gray card
+render-image:653	term		Pre-exposure
+render-image:654	term		Readback
+render-image:655	term		Histogram
+render-image:656	term		Tone mapping / tone curve / operator
+render-image:657	term		Toe / shoulder
+render-image:658	term		Reinhard, ACES, AgX, Khronos PBR Neutral
+render-image:659	term		Filmic (Strata)
+render-image:660	term		Inset / outset (gamut compression)
+render-image:661	term		Hue skew
+render-image:662	term		ICtCp
+render-image:663	term		Saturation / contrast
+render-image:664	term		White balance
+render-image:665	term		Color temperature / kelvin / mired
+render-image:666	term		Planckian locus / daylight locus
+render-image:667	term		CIE 1931 xy, CIE 1960 uv
+render-image:668	term		Tint
+render-image:669	term		Chromatic adaptation, von Kries, CAT02
+render-image:670	term		D65
+render-image:671	term		Slope / offset / power (CDL)
+render-image:672	term		3D LUT / color lookup / `.cube`
+render-image:673	term		Trilinear interpolation
+render-image:674	term		Half-texel remap
+render-image:675	term		sRGB transfer function
+render-image:676	term		Banding / quantization
+render-image:677	term		Dither / TPDF
+render-image:678	term		Noise modulation
+render-image:679	term		10-bit intermediate (R10G10B10A2)
+render-image:680	term		Film grain
+render-image:681	term		Bloom
+render-image:682	term		Mip chain / pyramid
+render-image:683	term		Karis average
+render-image:684	term		Firefly
+render-image:685	term		Tent filter
+render-image:686	term		Soft knee
+render-image:687	term		Vignette / cos^4 law
+render-image:688	term		Field angle
+render-image:689	term		Chromatic aberration (lateral)
+render-image:690	term		Lens flare / ghost / halo / starburst
+render-image:691	term		Aliasing
+render-image:692	term		Supersampling (SSAA) / MSAA
+render-image:693	term		FXAA
+render-image:694	term		MLAA / SMAA / morphological AA
+render-image:695	term		Area table
+render-image:696	term		Z, L, U shapes
+render-image:697	term		Subpixel blend
+render-image:698	term		TAA
+render-image:699	term		Jitter / Halton sequence / radical inverse
+render-image:700	term		History
+render-image:701	term		Reprojection
+render-image:702	term		Motion vector / velocity target
+render-image:703	term		Motion history
+render-image:704	term		Catmull-Rom filter
+render-image:705	term		Neighborhood clamp / variance clipping
+render-image:706	term		YCoCg
+render-image:707	term		Ghosting / trail
+render-image:708	term		Disocclusion
+render-image:709	term		Reactive mask
+render-image:710	term		Resampling blur
+render-image:711	term		Sharpening (TAA)
+render-image:712	term		Camera cut
+render-image:713	term		Settle frames
+render-image:714	term		Golden-ratio turn
+render-image:715	term		Shutter angle
+render-image:716	term		Tile max / neighbor max
+render-image:717	term		Sample-and-hold blur
+render-image:718	term		Circle of confusion (CoC)
+render-image:719	term		Thin lens / f-number / focal length / sensor height
+render-image:720	term		Near field / far field
+render-image:721	term		Vogel (golden-angle) disk
+render-image:722	term		Scatter-as-gather
+render-image:723	term		Post source
+render-image:724	term		Fullscreen triangle
+render-image:725	term		Push constants / volatile constant buffer
+render-image:726	term		std140
+render-image:727	term		Uniform branch
+render-image:728	term		Quality preset / row / knob
+render-image:729	term		Custom (preset)
+render-image:730	term		Row traits (`FollowsPreset`, `GPUStage`, `MemoryBytes`)
+render-image:731	term		Players' rows
+render-image:732	term		Graphics options
+render-image:733	term		Settings section (`Renderer.Quality`)
+render-image:734	term		Render scale / dynamic resolution / temporal upscaling
+render-image:736	term		Look-dev
+render-image:783	open		Not read line by line
+render-image:787	open		`R/RendererQuality.cpp` 200-972 (parsers, `Clamp`, `MakeSection` field texts, `Normalize`,…
+render-image:789	open		`Strata/src/Strata/Runtime/GameGraphicsService.cpp`, `Scripting/ScriptHostAPI.cpp`'s graphics…
+render-image:792	open		`R/ColorLookup.cpp` and `Asset/ColorLookupImporter` (cube parsing, resampling): from DG only.
+render-image:793	open		Tests: only the test-case names of PostProcessMath, GPUScenePostProcess, GPUSceneCamera,…
+render-image:796	open		`Docs/DeveloperGuide.md` "Look-dev harness" section, "Interpolation", "Sun shadows" (static noise…
+render-image:798	open		Documentation drift found
+render-image:804	open		Release attribution is partly inferred: bloom, tone mapping, "color grading" and FXAA appear in…
+render-image:808	open		Exact GPU costs are from the docs (RTX 5090, M2 Max), several marked provisional; not verified (no…
+render-image:809	open		Whether the editor exposes `DitherOutput` (it seems not: a specification field only) - affects…
+render-image:810	open		Ownership boundaries to settle with the planner: depth of field (Camera area?), motion vectors and…

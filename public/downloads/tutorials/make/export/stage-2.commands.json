@@ -1,0 +1,8 @@
+[
+	{
+		"command": "scene.save"
+	},
+	{
+		"command": "project.exportStatus"
+	}
+]

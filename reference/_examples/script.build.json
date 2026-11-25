@@ -1,0 +1,34 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"command": "script.build",
+	"parameters": {},
+	"result": {
+		"build": 1,
+		"buildDirectory": "…",
+		"cancelled": false,
+		"configured": true,
+		"diagnostics": [],
+		"error": "",
+		"errorCount": 0,
+		"loadError": "",
+		"loaded": true,
+		"log": "…",
+		"module": "…",
+		"moduleChanged": true,
+		"reloaded": false,
+		"seconds": 4.4181259,
+		"success": true,
+		"toolchain": {
+			"cmake": "…",
+			"configuration": "Release",
+			"cxxCompiler": "…",
+			"engineDirectory": "…",
+			"generator": "Visual Studio 18 2026",
+			"generatorInstance": "",
+			"makeProgram": "…",
+			"platform": "x64",
+			"toolset": ""
+		},
+		"warningCount": 0
+	}
+}

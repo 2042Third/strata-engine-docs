@@ -1,0 +1,306 @@
+{
+	"files": {
+		"asset-audio.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				462
+			],
+			"figure": "asset-audio",
+			"variant": null,
+			"crop": null,
+			"original": "904b508beeb9eafa1c500f1de0a53a08f8b268efdf965e02c267f5f2a5568cb2",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "9d138564321889ee5d60e5a829deb535d69dd6690ad95219f98a103ed8f30181"
+		},
+		"asset-material.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				722
+			],
+			"figure": "asset-material",
+			"variant": null,
+			"crop": null,
+			"original": "c9ac8f6f01b0f8c2f30e1823839ef726f8aa6b23e2672eed4c5ae3500ac0509b",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "c28f328d69c51b3d8fd62f058b100e58dcfdc97caf62072f6e9a48279272509e"
+		},
+		"asset-normal-map.avif": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				862
+			],
+			"figure": "asset-normal-map",
+			"variant": null,
+			"crop": null,
+			"original": "dd61689af8f92dd41ff0c970516db1bab892c3d45f969117a51283c6383a4178",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 90,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "1459b95c7683e56d70700b7437497a0456ccf30d30669fc270f3a4cd1f34c501"
+		},
+		"camera-orthographic.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				722
+			],
+			"figure": "camera-orthographic",
+			"variant": null,
+			"crop": null,
+			"original": "1d52b4743368acfb156d2c7e991249d5e5e0efd32e33f25b69c514581e46fda0",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "42e90bd26ced467a3283d97b659e1ad511caf627404ce7058d3e7395907c24ca"
+		},
+		"inactive-property-lookup.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				69
+			],
+			"figure": "inactive-property",
+			"variant": null,
+			"crop": "lookup",
+			"original": "4993c566d4378ff570562ce01e531d0f957a2200d60730a7d2922430848e15c1",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "16225cab90e82b9b8db4c484cd83315bc754c7081b158b178a0d92f9ca0215b1"
+		},
+		"inactive-property.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				722
+			],
+			"figure": "inactive-property",
+			"variant": null,
+			"crop": null,
+			"original": "13a86d3204c91bad29f57580c152887abece08841cfc19fd8ce6a44f9a6272c3",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "238f0b33084675cfca7f436f2804a5ce1f336f30c4881c995fd651ba87e60400"
+		},
+		"mixed-values.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				722
+			],
+			"figure": "mixed-values",
+			"variant": null,
+			"crop": null,
+			"original": "077f5af753c67263406f6672b6f0687278c73e3e1eb21afe8235fc5f4456b734",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "2d3531b1a574691422ca73d6afb3b63a36aa143431fbde9c9e223d9876b41e61"
+		},
+		"one-entity.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				722
+			],
+			"figure": "one-entity",
+			"variant": null,
+			"crop": null,
+			"original": "1a0a532a538a9f8a8ec9181b9f4c0a0bdeea57963d4c0e8298b2e457d460c4d5",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "87cd413e0ebcd79b81effd129b26941b463d96c1600596aa2fe469fe9cc55b55"
+		},
+		"prefab-instance.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				722
+			],
+			"figure": "prefab-instance",
+			"variant": null,
+			"crop": null,
+			"original": "0c0193c57be2c5920089c495ed7f791a5bfa8f7fabaaef8842041b30423e84bc",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "b4929f56c2476248c4544cf334290ae77fc6e84f9d609ca9895efb772ffd9b6e"
+		},
+		"ui-rect-drawer.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				380,
+				722
+			],
+			"figure": "ui-rect-drawer",
+			"variant": null,
+			"crop": null,
+			"original": "1bd12965b2a384da03c5f78b005cd8cf09f39f1efe5ca6aa06d3481cd692f426",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "8face556b3f4ef7ed25861a92468409c0dca1db3b73c325f603f7018b9af353f"
+		}
+	}
+}

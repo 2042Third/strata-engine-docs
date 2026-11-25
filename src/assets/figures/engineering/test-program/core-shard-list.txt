@@ -1,0 +1,15 @@
+…  Test  #1: StrataTests.Core.Core
+…  Test  #2: StrataTests.Core.Asset
+…  Test  #3: StrataTests.Core.Scene
+…  Test  #4: StrataTests.Core.SceneTiming
+…  Test  #5: StrataTests.Core.Systems
+…  Test  #6: StrataTests.Core.Settling
+…  Test  #7: StrataTests.Core.LoaderFaults
+…  Test  #8: StrataTests.Core.Renderer
+…  Test  #9: StrataTests.Core.Network
+…  Test #10: StrataTests.Core.Samples
+…  Test #11: StrataTests.Core.EditorUI
+…  Test #12: StrataTests.Core.EditorData
+…  Test #13: StrataTests.Core.Editor
+
+Total Tests: 13

@@ -1,0 +1,82 @@
+[
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/Chalk.stmat",
+			"properties": {
+				"BaseColor": [
+					1,
+					1,
+					1,
+					1
+				]
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Wall",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Chalk.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						1.0,
+						-1.5
+					],
+					"Scale": [
+						4,
+						2,
+						0.2
+					]
+				}
+			}
+		},
+		"bind": {
+			"wall": "/id"
+		}
+	},
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"debugView": "albedo"
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Chalk.stmat",
+			"properties": {
+				"BaseColor": [
+					0.8,
+					0.8,
+					0.8,
+					1
+				]
+			}
+		}
+	},
+	{
+		"command": "entity.delete",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "wall"
+				}
+			]
+		}
+	},
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"debugView": "none"
+		}
+	},
+	{
+		"command": "scene.save"
+	}
+]

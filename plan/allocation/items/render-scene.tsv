@@ -1,0 +1,322 @@
+id	type	heading	label
+render-scene:30	feature	1.1 The render scene (CPU side)	Render proxy
+render-scene:31	feature	1.1 The render scene (CPU side)	One render scene per scene
+render-scene:32	feature	1.1 The render scene (CPU side)	Proxy flags
+render-scene:33	feature	1.1 The render scene (CPU side)	Signal-driven sync
+render-scene:34	feature	1.1 The render scene (CPU side)	Full refresh fallback
+render-scene:35	feature	1.1 The render scene (CPU side)	Drawn transforms
+render-scene:36	feature	1.1 The render scene (CPU side)	Render transforms
+render-scene:37	feature	1.1 The render scene (CPU side)	Proxy placement
+render-scene:38	feature	1.1 The render scene (CPU side)	Dense mesh and material slots
+render-scene:39	feature	1.1 The render scene (CPU side)	Material users
+render-scene:40	feature	1.1 The render scene (CPU side)	Mesh layouts
+render-scene:41	feature	1.1 The render scene (CPU side)	Recorded bounds before load
+render-scene:42	feature	1.1 The render scene (CPU side)	Unknown bounds are visible
+render-scene:43	feature	1.1 The render scene (CPU side)	Instance data
+render-scene:44	feature	1.1 The render scene (CPU side)	Instance limit
+render-scene:45	feature	1.1 The render scene (CPU side)	Three change logs
+render-scene:46	feature	1.1 The render scene (CPU side)	Debug validation
+render-scene:47	feature	1.1 The render scene (CPU side)	Prepared loads
+render-scene:48	feature	1.1 The render scene (CPU side)	Clones at play start
+render-scene:49	feature	1.1 The render scene (CPU side)	Point and spot light records
+render-scene:50	feature	1.1 The render scene (CPU side)	Statistics
+render-scene:56	feature	1.2 Spatial index and CPU culling	Loose two-level grid
+render-scene:57	feature	1.2 Spatial index and CPU culling	Exact queries
+render-scene:58	feature	1.2 Spatial index and CPU culling	Constant-time edits, lazy shrink
+render-scene:59	feature	1.2 Spatial index and CPU culling	View frustum culling (CPU)
+render-scene:60	feature	1.2 Spatial index and CPU culling	Screen-size culling
+render-scene:61	feature	1.2 Spatial index and CPU culling	Shadow caster search
+render-scene:62	feature	1.2 Spatial index and CPU culling	Off-view casters for animators
+render-scene:68	feature	1.3 Requests, the resolve cache and residency at draw time	Requests follow visibility
+render-scene:69	feature	1.3 Requests, the resolve cache and residency at draw time	Asset resolve cache
+render-scene:70	feature	1.3 Requests, the resolve cache and residency at draw time	Recording and replay
+render-scene:71	feature	1.3 Requests, the resolve cache and residency at draw time	Default material fallback
+render-scene:72	feature	1.3 Requests, the resolve cache and residency at draw time	Visible materials and textures published
+render-scene:73	feature	1.3 Requests, the resolve cache and residency at draw time	Drawn only when resident
+render-scene:79	feature	1.4 Batching and draw submission (CPU path)	Parallel extraction
+render-scene:80	feature	1.4 Batching and draw submission (CPU path)	64-bit sort key
+render-scene:81	feature	1.4 Batching and draw submission (CPU path)	Byte-skipping radix sort
+render-scene:82	feature	1.4 Batching and draw submission (CPU path)	Material-free instancing
+render-scene:83	feature	1.4 Batching and draw submission (CPU path)	Batches and draw list
+render-scene:84	feature	1.4 Batching and draw submission (CPU path)	Draw-list entry
+render-scene:85	feature	1.4 Batching and draw submission (CPU path)	Transparent draws
+render-scene:86	feature	1.4 Batching and draw submission (CPU path)	Changed-range uploads
+render-scene:87	feature	1.4 Batching and draw submission (CPU path)	Indirect arguments per batch
+render-scene:88	feature	1.4 Batching and draw submission (CPU path)	Buckets of pipeline state
+render-scene:89	feature	1.4 Batching and draw submission (CPU path)	Pipeline cache by key
+render-scene:90	feature	1.4 Batching and draw submission (CPU path)	Geometry pool
+render-scene:91	feature	1.4 Batching and draw submission (CPU path)	Culling tables in the pool
+render-scene:92	feature	1.4 Batching and draw submission (CPU path)	Vertex layouts
+render-scene:98	feature	1.5 Levels of detail	Screen fraction
+render-scene:99	feature	1.5 Levels of detail	Halving rule
+render-scene:100	feature	1.5 Levels of detail	Error rule
+render-scene:101	feature	1.5 Levels of detail	LOD cross-fades
+render-scene:102	feature	1.5 Levels of detail	LOD criteria
+render-scene:103	feature	1.5 Levels of detail	Editor LOD debug view
+render-scene:104	feature	1.5 Levels of detail	GPU/CPU LOD agreement test shader
+render-scene:110	feature	1.6 The render scene's GPU copy (RenderSceneGPU)	Shared mirror
+render-scene:111	feature	1.6 The render scene's GPU copy (RenderSceneGPU)	Log-driven update
+render-scene:112	feature	1.6 The render scene's GPU copy (RenderSceneGPU)	Residency budget for new proxies
+render-scene:113	feature	1.6 The render scene's GPU copy (RenderSceneGPU)	Growth by GPU copy
+render-scene:114	feature	1.6 The render scene's GPU copy (RenderSceneGPU)	Asset tables
+render-scene:115	feature	1.6 The render scene's GPU copy (RenderSceneGPU)	Clone mirror
+render-scene:116	feature	1.6 The render scene's GPU copy (RenderSceneGPU)	Release and recycle
+render-scene:117	feature	1.6 The render scene's GPU copy (RenderSceneGPU)	Write logs for readers
+render-scene:123	feature	1.7 The GPU-driven path	Mode switch
+render-scene:124	feature	1.7 The GPU-driven path	Cull.comp
+render-scene:125	feature	1.7 The GPU-driven path	Count / build / write
+render-scene:126	feature	1.7 The GPU-driven path	Buckets
+render-scene:127	feature	1.7 The GPU-driven path	Indirect modes
+render-scene:128	feature	1.7 The GPU-driven path	Culling constants
+render-scene:129	feature	1.7 The GPU-driven path	GPU counters
+render-scene:130	feature	1.7 The GPU-driven path	Empty render scene skip
+render-scene:131	feature	1.7 The GPU-driven path	Transparent stays on CPU
+render-scene:132	feature	1.7 The GPU-driven path	Order-independent shading rule
+render-scene:138	feature	1.8 Occlusion culling	Two-phase view occlusion
+render-scene:139	feature	1.8 Occlusion culling	Depth pyramid (HZB)
+render-scene:140	feature	1.8 Occlusion culling	Visibility bits
+render-scene:141	feature	1.8 Occlusion culling	Cascade occlusion
+render-scene:142	feature	1.8 Occlusion culling	Shadow cascade cache
+render-scene:148	feature	1.9 Visibility feedback	GPU marks requests
+render-scene:149	feature	1.9 Visibility feedback	CPU applies the newest feedback
+render-scene:150	feature	1.9 Visibility feedback	When the CPU walks instead
+render-scene:151	feature	1.9 Visibility feedback	Texture streaming port
+render-scene:157	feature	1.10 Skinned meshes in the renderer	Skin proxies
+render-scene:158	feature	1.10 Skinned meshes in the renderer	Palettes
+render-scene:159	feature	1.10 Skinned meshes in the renderer	Posed bounds
+render-scene:160	feature	1.10 Skinned meshes in the renderer	Recompute only on change, in parallel
+render-scene:161	feature	1.10 Skinned meshes in the renderer	Skinned variants
+render-scene:162	feature	1.10 Skinned meshes in the renderer	Skinned bucketing
+render-scene:163	feature	1.10 Skinned meshes in the renderer	Unskinned scenes pay nothing
+render-scene:164	feature	1.10 Skinned meshes in the renderer	Visibility reports
+render-scene:170	feature	1.11 Mirrored instances, camera-relative positions and motion vectors	Mirrored instances
+render-scene:171	feature	1.11 Mirrored instances, camera-relative positions and motion vectors	Normal matrix from rows
+render-scene:172	feature	1.11 Mirrored instances, camera-relative positions and motion vectors	Camera-relative space
+render-scene:173	feature	1.11 Mirrored instances, camera-relative positions and motion vectors	Motion vectors
+render-scene:174	feature	1.11 Mirrored instances, camera-relative positions and motion vectors	Motion history
+render-scene:175	feature	1.11 Mirrored instances, camera-relative positions and motion vectors	Velocity in both passes
+render-scene:181	feature	1.12 User-visible surfaces	`renderStats` in `viewport.capture` / `editor.state`
+render-scene:182	feature	1.12 User-visible surfaces	Viewport debug views
+render-scene:183	feature	1.12 User-visible surfaces	Quality rows
+render-scene:184	feature	1.12 User-visible surfaces	Viewport stats overlay
+render-scene:215	concept		What a draw call is and why its count matters
+render-scene:221	concept		Retained vs immediate scene representation for rendering
+render-scene:228	concept		Structure of arrays and stable indices
+render-scene:233	concept		Bounding volumes and their transforms
+render-scene:238	concept		Frustum culling
+render-scene:243	concept		Spatial acceleration structures
+render-scene:248	concept		Screen-space size: the projected fraction
+render-scene:253	concept		Levels of detail
+render-scene:261	concept		Asset streaming meets rendering
+render-scene:267	concept		Sorting draws: sort keys and radix sort
+render-scene:272	concept		Instancing and per-instance data
+render-scene:278	concept		Shared geometry buffers
+render-scene:282	concept		Indirect drawing
+render-scene:287	concept		The GPU scene and GPU-driven culling
+render-scene:294	concept		Change logs and versioned mirrors
+render-scene:299	concept		Occlusion culling with a hierarchical depth buffer
+render-scene:306	concept		Feedback loops from GPU to CPU
+render-scene:311	concept		Skinning on the GPU
+render-scene:317	concept		Handedness and mirrored transforms
+render-scene:321	concept		Floating-point precision far from the origin
+render-scene:326	concept		Motion vectors
+render-scene:331	concept		Determinism and agreement as a design constraint
+render-scene:341	code		1: `Strata/src/Strata/Renderer/SceneRenderData.h:160-216`
+render-scene:342	code		2: `Strata/src/Strata/Renderer/RenderScene.h:73-113`
+render-scene:343	code		3: `Strata/src/Strata/Renderer/RenderScene.cpp:130-140, 188-236`
+render-scene:344	code		4: `Strata/src/Strata/Renderer/RenderScene.cpp:316-401`
+render-scene:345	code		5: `Strata/src/Strata/Renderer/RenderScene.cpp:647-711`
+render-scene:346	code		6: `Strata/src/Strata/Renderer/RenderScene.cpp:1106-1132, 1168-1239`
+render-scene:347	code		7: `Strata/src/Strata/Renderer/SpatialIndex.cpp:56-107`
+render-scene:348	code		8: `Strata/src/Strata/Renderer/SpatialIndex.cpp:303-345, 406-438`
+render-scene:349	code		9: `Strata/src/Strata/Renderer/SceneRendererExtraction.cpp:249-328`
+render-scene:350	code		10: `Strata/src/Strata/Renderer/AssetResolveCache.cpp:87-130`
+render-scene:351	code		11: `Strata/src/Strata/Renderer/SceneRendererExtraction.cpp:701-743`
+render-scene:352	code		12: `Strata/src/Strata/Renderer/SceneRendererExtraction.cpp:961-1047`
+render-scene:353	code		13: `Strata/src/Strata/Renderer/SceneDrawKey.h:9-43`
+render-scene:354	code		14: `Strata/src/Strata/Core/RadixSort.cpp:14-67`
+render-scene:355	code		15: `Strata/src/Strata/Renderer/SceneRendererExtraction.cpp:845-869`
+render-scene:356	code		16: `Strata/src/Strata/Renderer/SceneRendererExtraction.cpp:1271-1302`
+render-scene:357	code		17: `Strata/src/Strata/Renderer/SceneRenderer.cpp:2042-2111`
+render-scene:358	code		18: `Strata/src/Strata/Renderer/SceneRenderer.cpp:2464-2469`
+render-scene:359	code		19: `Strata/src/Strata/Renderer/LODSelection.cpp:19-34, 60-87`
+render-scene:360	code		20: `Strata/src/Strata/Renderer/LODSelection.cpp:99-159` with…
+render-scene:361	code		21: `Strata/src/Strata/Renderer/RenderSceneGPU.cpp:679-782`
+render-scene:362	code		22: `Strata/shaders/Scene/Cull.comp.slang:448-511`
+render-scene:363	code		23: `Strata/shaders/Scene/Cull.comp.slang:58-80, 195-232`
+render-scene:364	code		24: `Strata/shaders/Scene/CullBuild.comp.slang:49-110`
+render-scene:365	code		25: `Strata/src/Strata/Renderer/SceneRendererGPUDriven.cpp:923-1026`
+render-scene:366	code		26: `Strata/shaders/Scene/HZBBuild.comp.slang:36-80` with `Strata/shaders/Include/Culling.slang:225…
+render-scene:367	code		27: `Strata/src/Strata/Renderer/SceneRendererGPUDriven.cpp:1028-1064` and `Cull.comp.slang:516-547`
+render-scene:368	code		28: `Strata/shaders/Scene/Cull.comp.slang:84-100` and `Strata/src/Strata/Renderer/SceneRendererExtr…
+render-scene:369	code		29: `Strata/src/Strata/Renderer/RenderScene.cpp:1322-1339` and…
+render-scene:370	code		30: `Strata/shaders/Scene/Mesh.vert.slang:35-82`
+render-scene:371	code		(test): `StrataTests/src/Renderer/RenderSceneTests.cpp:384-435`
+render-scene:373	code		Also useful, shorter: `Strata/src/Strata/Renderer/GPUSceneData.h:113-151` (bucket index bit…
+render-scene:383	figure	Diagrams	The frame's extraction timeline
+render-scene:388	figure	Diagrams	Entity to pixels
+render-scene:390	figure	Diagrams	Structure of arrays of proxies
+render-scene:392	figure	Diagrams	`InstanceData` 64-byte layout and draw-list entry bits
+render-scene:394	figure	Diagrams	`SceneDrawKey` 64-bit layout
+render-scene:395	figure	Diagrams	GPU bucket index layout
+render-scene:397	figure	Diagrams	Loose grid spatial index
+render-scene:399	figure	Diagrams	Change logs and versions
+render-scene:401	figure	Diagrams	RenderSceneGPU residency state machine
+render-scene:403	figure	Diagrams	Geometry pool memory map
+render-scene:405	figure	Diagrams	GPU-driven passes
+render-scene:407	figure	Diagrams	Two-phase occlusion culling
+render-scene:409	figure	Diagrams	Depth pyramid construction and footprint
+render-scene:411	figure	Diagrams	LOD selection by error
+render-scene:413	figure	Diagrams	LOD cross-fade
+render-scene:415	figure	Diagrams	Visibility feedback loop
+render-scene:417	figure	Diagrams	Skinning palette
+render-scene:419	figure	Diagrams	Motion history
+render-scene:421	figure	Diagrams	CPU path vs GPU-driven path decision tree
+render-scene:430	figure	Screenshots (what each must show, and how to isolate it)	LOD debug view
+render-scene:433	figure	Screenshots (what each must show, and how to isolate it)	LOD cross-fade mid-transition
+render-scene:436	figure	Screenshots (what each must show, and how to isolate it)	Streaming debug view
+render-scene:438	figure	Screenshots (what each must show, and how to isolate it)	Request priorities
+render-scene:440	figure	Screenshots (what each must show, and how to isolate it)	Material-free instancing
+render-scene:442	figure	Screenshots (what each must show, and how to isolate it)	Mirrored instance
+render-scene:444	figure	Screenshots (what each must show, and how to isolate it)	Skinned character with swung limb
+render-scene:446	figure	Screenshots (what each must show, and how to isolate it)	Occlusion culling
+render-scene:448	figure	Screenshots (what each must show, and how to isolate it)	Shadow cascade caching
+render-scene:450	figure	Screenshots (what each must show, and how to isolate it)	Motion debug view
+render-scene:451	figure	Screenshots (what each must show, and how to isolate it)	Camera-relative precision
+render-scene:454	figure	Screenshots (what each must show, and how to isolate it)	Placeholder/unknown bounds
+render-scene:461	rule		Signal every write to `MeshRendererComponent` and transforms
+render-scene:464	rule		Never resolve assets per entity in renderer code; go through proxies and the frame's…
+render-scene:467	rule		Hold `AssetHandle`s across frames, not `Ref`s
+render-scene:469	rule		Record every change of instances or proxies in the logs
+render-scene:472	rule		`InstanceData` stays 64 bytes; per-instance additions go to parallel buffers
+render-scene:474	rule		Change the CPU rule and the GPU rule together
+render-scene:477	rule		Shading must not depend on draw order or instance order
+render-scene:479	rule		The prepass and forward pass must produce bit-identical positions
+render-scene:482	rule		Read mesh geometry through the pool every frame
+render-scene:484	rule		Occlusion culling must stay conservative
+render-scene:487	rule		Anything new that reads the view's depth runs after the second phase's prepass
+render-scene:489	rule		A new input of how casters are drawn changes a version the shadow caches compare
+render-scene:491	rule		Every skin influence names a joint of the skin, even with zero weight
+render-scene:493	rule		Anything that adds skinning work must cost unskinned scenes nothing
+render-scene:495	rule		Cull skinned proxies with posed bounds, not bind-pose bounds
+render-scene:497	rule		Never store "previous frame" data in the shared GPU copy
+render-scene:499	rule		Mirrored instances need clockwise pipelines and flipped tangents
+render-scene:501	rule		Positions uploaded to scene shaders are camera-relative, subtracted in double
+render-scene:503	rule		Compare buffer versions, never mirrors or scene ids, to know when to rebuild binding sets
+render-scene:505	rule		Tests that count draws render a frame more first, or turn occlusion off; tests of requests wait…
+render-scene:507	rule		Code that renders a single picture renders again until no proxy waits
+render-scene:509	rule		A new GPU-culling resource that matters without proxies is cleared in the empty-scene branch too
+render-scene:511	rule		Never `writeBuffer` the scene's GPU copy; go through staging
+render-scene:513	rule		Explicit UAV barriers between culling dispatches through one binding set
+render-scene:522	hands-on	For engine developers	Read a frame's statistics
+render-scene:524	hands-on	For engine developers	Write a spatial-index test
+render-scene:526	hands-on	For engine developers	Brute force vs loose grid
+render-scene:528	hands-on	For engine developers	Trace a signal
+render-scene:530	hands-on	For engine developers	Change the sort key
+render-scene:532	hands-on	For engine developers	Radix sort exercise
+render-scene:534	hands-on	For engine developers	Add a per-instance value the right way
+render-scene:536	hands-on	For engine developers	Port a CPU culling rule to the GPU
+render-scene:539	hands-on	For engine developers	Occlusion pyramid on paper
+render-scene:541	hands-on	For engine developers	LOD fade simulation
+render-scene:543	hands-on	For engine developers	Feedback latency experiment
+render-scene:545	hands-on	For engine developers	Skinned bounds
+render-scene:550	hands-on	For game developers	Is my scene drawing efficiently?
+render-scene:553	hands-on	For game developers	Use the LOD view
+render-scene:555	hands-on	For game developers	Mesh renderer settings
+render-scene:557	hands-on	For game developers	Watch streaming
+render-scene:559	hands-on	For game developers	Mirroring safely
+render-scene:561	hands-on	For game developers	Skinned character culling
+render-scene:569	term		Render proxy
+render-scene:570	term		Render scene
+render-scene:571	term		Structure of arrays (SoA)
+render-scene:572	term		Slot (mesh slot, material slot)
+render-scene:573	term		Instance (`InstanceData`)
+render-scene:574	term		Submesh
+render-scene:575	term		Draw list
+render-scene:576	term		Draw entry
+render-scene:577	term		Batch
+render-scene:578	term		Bucket
+render-scene:579	term		Pipeline key
+render-scene:580	term		Sort key
+render-scene:581	term		Radix sort (LSD)
+render-scene:582	term		Material-free instancing
+render-scene:583	term		Indirect draw
+render-scene:584	term		`drawIndexedIndirectCount`
+render-scene:585	term		`multiDrawIndirect`, `drawIndirectFirstInstance`, `maxDrawIndirectCount`
+render-scene:586	term		Base instance / first instance
+render-scene:587	term		`SV_VulkanInstanceID`
+render-scene:588	term		Geometry pool
+render-scene:589	term		Arena (Static, Skinned)
+render-scene:590	term		`GeometryHandle`
+render-scene:591	term		Compaction (defragmentation)
+render-scene:592	term		LOD record (`GeometryLOD`)
+render-scene:593	term		Frustum
+render-scene:594	term		AABB
+render-scene:595	term		Positive vertex test
+render-scene:596	term		Loose grid
+render-scene:597	term		Spatial index
+render-scene:598	term		Screen fraction
+render-scene:599	term		Size culling
+render-scene:600	term		Level of detail (LOD)
+render-scene:601	term		Geometric error (LOD error)
+render-scene:602	term		Relative error
+render-scene:603	term		Error threshold
+render-scene:604	term		LOD cross-fade
+render-scene:605	term		Ordered dither / Bayer matrix
+render-scene:606	term		EQUAL depth test
+render-scene:607	term		Depth prepass
+render-scene:608	term		Reversed-Z
+render-scene:609	term		Occlusion culling
+render-scene:610	term		Hierarchical Z-buffer (HZB) / depth pyramid
+render-scene:611	term		Two-phase occlusion culling
+render-scene:612	term		Visibility parity
+render-scene:613	term		Conservative test
+render-scene:614	term		Min/max sampler (`samplerFilterMinmax`)
+render-scene:615	term		GPU-driven rendering
+render-scene:616	term		GPU copy / mirror
+render-scene:617	term		Resident (proxy)
+render-scene:618	term		Change log
+render-scene:619	term		Version / floor
+render-scene:620	term		Staging buffer
+render-scene:621	term		Upload budget
+render-scene:622	term		Culling record (`GPUProxy`)
+render-scene:623	term		Mesh table / material table
+render-scene:624	term		Counting pass / write pass
+render-scene:625	term		Prefix allocation
+render-scene:626	term		Overflow
+render-scene:627	term		Readback
+render-scene:628	term		Visibility feedback
+render-scene:629	term		Request priority (High, Normal, Low)
+render-scene:630	term		Prefetch distance
+render-scene:631	term		Asset resolve cache
+render-scene:632	term		Replay
+render-scene:633	term		Placeholder bounds
+render-scene:634	term		Mesh layout
+render-scene:635	term		Recorded bounds
+render-scene:636	term		Skin, joint, skeleton
+render-scene:637	term		Inverse bind matrix
+render-scene:638	term		Palette
+render-scene:639	term		Linear blend skinning
+render-scene:640	term		Posed bounds
+render-scene:641	term		`ISkinningPoses`
+render-scene:642	term		WhenVisible animator
+render-scene:643	term		Mirrored transform
+render-scene:644	term		Winding / front face
+render-scene:645	term		Tangent handedness
+render-scene:646	term		Cofactor matrix
+render-scene:647	term		Camera-relative space
+render-scene:648	term		Motion vector / velocity target
+render-scene:649	term		Motion history
+render-scene:650	term		Write version / write log
+render-scene:651	term		Clone (render scene)
+render-scene:652	term		Shadow caster / cascade
+render-scene:653	term		Sub-texel caster
+render-scene:654	term		Shadow cascade cache
+render-scene:706	open		Not read in full
+render-scene:715	open		Tests
+render-scene:718	open		Releases
+render-scene:722	open		No UI or command switch
+render-scene:725	open		Device reach
+render-scene:727	open		Which sample shows LOD best
+render-scene:729	open		Local light shadow views' culling
+render-scene:731	open		Light records' GPU culling

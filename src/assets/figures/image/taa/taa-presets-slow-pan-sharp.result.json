@@ -1,0 +1,34 @@
+{
+	"camera": "scene",
+	"images": [
+		{
+			"fixedSteps": 600,
+			"height": 1080,
+			"path": "G:/GameEngineAI/.worktrees/docs-work/photo/last-image-taa/r3/live/image.taa.taa-presets-slow-pan.sharp/take-1/frame-1.png",
+			"temporalFrames": 600,
+			"width": 1920
+		},
+		{
+			"fixedSteps": 601,
+			"height": 1080,
+			"path": "G:/GameEngineAI/.worktrees/docs-work/photo/last-image-taa/r3/live/image.taa.taa-presets-slow-pan.sharp/take-1/frame-2.png",
+			"temporalFrames": 601,
+			"width": 1920
+		},
+		{
+			"fixedSteps": 602,
+			"height": 1080,
+			"path": "G:/GameEngineAI/.worktrees/docs-work/photo/last-image-taa/r3/live/image.taa.taa-presets-slow-pan.sharp/take-1/frame-3.png",
+			"temporalFrames": 602,
+			"width": 1920
+		},
+		{
+			"fixedSteps": 603,
+			"height": 1080,
+			"path": "G:/GameEngineAI/.worktrees/docs-work/photo/last-image-taa/r3/live/image.taa.taa-presets-slow-pan.sharp/take-1/frame-4.png",
+			"temporalFrames": 603,
+			"width": 1920
+		}
+	],
+	"live": true
+}

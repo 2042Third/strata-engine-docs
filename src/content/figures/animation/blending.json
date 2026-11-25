@@ -1,0 +1,128 @@
+{
+	"figures": [
+		{
+			"id": "halfway",
+			"shows": "The robot of the Third-Person sample from the side, from one follow camera: walking at fixed step 39, and seven fixed steps after Run is pressed, about halfway through its 0.2 second cross-fade from walking to running",
+			"caption": "At fixed step 39 the robot walks, arms low, both feet down. Seven steps after Run is pressed, both clips weigh about one half: the arms swing wide and the feet leave the grass. The run began at its first frame, so the pose mixes unrelated moments of two cycles.",
+			"alt": "The robot from the side, facing left: walking with arms low and both feet down, then with arms swung wide and its shadow apart from its feet.",
+			"numbers": "From the recipe and the sample at the pin: the walk side is fixed step 39, before any press; Run is pressed at fixed step 40 and the halfway side is step 47 (fixed steps of 1/60 second, the scene default); the Walk to Run transition of Samples/ThirdPerson/Assets/Animations/Robot.stanimator lasts 0.2 seconds (12 steps). The robot's speed reaches the threshold of 4.5 one or two steps after the press, so 5 to 7 of the 12 steps have run: a progress of 0.42 to 0.58. The camera: FollowCamera Yaw -120, Distance 4.6, PivotHeight 1.0, Pitch -6, field of view 40 degrees; Move held at (-0.866, -0.5), so the robot heads along -Z at 120 degrees to the view.",
+			"kind": "live",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"camera": "scene",
+			"size": [
+				960,
+				720
+			],
+			"setup": [
+				{
+					"command": "script.build",
+					"parameters": {
+						"wait": true
+					}
+				},
+				{
+					"command": "script.setField",
+					"parameters": {
+						"entity": "350D7DDD7ED21DD5",
+						"class": "FollowCamera",
+						"field": "Distance",
+						"value": 4.6
+					}
+				},
+				{
+					"command": "script.setField",
+					"parameters": {
+						"entity": "350D7DDD7ED21DD5",
+						"class": "FollowCamera",
+						"field": "Pitch",
+						"value": -6.0
+					}
+				},
+				{
+					"command": "script.setField",
+					"parameters": {
+						"entity": "350D7DDD7ED21DD5",
+						"class": "FollowCamera",
+						"field": "Yaw",
+						"value": -120.0
+					}
+				},
+				{
+					"command": "script.setField",
+					"parameters": {
+						"entity": "350D7DDD7ED21DD5",
+						"class": "FollowCamera",
+						"field": "PivotHeight",
+						"value": 1.0
+					}
+				},
+				{
+					"command": "component.set",
+					"parameters": {
+						"entity": "350D7DDD7ED21DD5",
+						"component": "Camera",
+						"values": {
+							"PerspectiveFOV": 40
+						}
+					}
+				}
+			],
+			"postProcess": {
+				"AutoExposureSpeed": 0,
+				"AutoExposureLightSpeed": 0,
+				"MotionBlur": false
+			},
+			"play": {
+				"steps": 47,
+				"input": [
+					{
+						"step": 1,
+						"action": "Gameplay/Move",
+						"mode": "press",
+						"value": [
+							-0.866,
+							-0.5
+						]
+					},
+					{
+						"step": 40,
+						"action": "Gameplay/Run",
+						"mode": "press"
+					}
+				]
+			},
+			"live": {
+				"atFixedStep": 47,
+				"frames": 1
+			},
+			"variants": {
+				"walk": {
+					"play": {
+						"steps": 39,
+						"input": [
+							{
+								"step": 1,
+								"action": "Gameplay/Move",
+								"mode": "press",
+								"value": [
+									-0.866,
+									-0.5
+								]
+							}
+						]
+					},
+					"live": {
+						"atFixedStep": 39,
+						"frames": 1
+					}
+				},
+				"halfway": {}
+			},
+			"publish": "lossless",
+			"expect": "complete"
+		}
+	]
+}

@@ -1,0 +1,121 @@
+{
+	"page": "make/scenes-entities",
+	"startsFrom": {
+		"tutorial": "make/scenes-entities"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "scene.open",
+					"parameters": {
+						"scene": "Scenes/Test.stscene"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Table"
+					},
+					"bind": {
+						"table": "/id"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Top",
+						"parent": {
+							"$ref": "table"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.8,
+									0
+								],
+								"Scale": [
+									1.6,
+									0.1,
+									1
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Leg",
+						"parent": {
+							"$ref": "table"
+						},
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"BoxCollider": {
+								"HalfExtents": [
+									0.5,
+									0.5,
+									0.5
+								]
+							},
+							"Transform": {
+								"Translation": [
+									0.7,
+									0.375,
+									0.4
+								],
+								"Scale": [
+									0.1,
+									0.75,
+									0.1
+								]
+							}
+						}
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Leg"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": false
+					},
+					"entityName": "Table"
+				},
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"active": true
+					},
+					"entityName": "Table"
+				}
+			],
+			"endState": true
+		}
+	]
+}

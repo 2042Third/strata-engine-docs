@@ -1,0 +1,64 @@
+{
+	"files": {
+		"cornell-notches.webp": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1280,
+				720
+			],
+			"figure": "cornell-notches",
+			"variant": null,
+			"crop": null,
+			"original": "1a5e9f009057c0556a8a10dd98e2c62d173d2e78ab2e9088a9eabbcb83ab1219",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "c6cdd3db8cb9788a8d11aedadc61dfd2d300c9fb378798ae9d99d1b2a72e805d"
+		},
+		"thin-wall-voxels.webp": {
+			"kind": "scene",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1280,
+				720
+			],
+			"figure": "thin-wall-voxels",
+			"variant": null,
+			"crop": null,
+			"original": "7f718e77ea4e15c03cdc43c64c72d31939522691712cbe2f2f750add93602abf",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "1e6eb3f2d6a74f720b940b0de9e6b8ade2b31dd26d4da0e18fc1b589e0c317be"
+		}
+	}
+}

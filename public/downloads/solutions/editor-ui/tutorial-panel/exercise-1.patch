@@ -1,0 +1,85 @@
+diff --git a/StrataEditor/src/Panels/SelectionSummaryPanel.cpp b/StrataEditor/src/Panels/SelectionSummaryPanel.cpp
+index 818d1435..43513d78 100644
+--- a/StrataEditor/src/Panels/SelectionSummaryPanel.cpp
++++ b/StrataEditor/src/Panels/SelectionSummaryPanel.cpp
+@@ -79,21 +79,26 @@ namespace Strata
+ 			m_HistoryVersion = historyVersion;
+ 		}
+ 
+-		if (m_SelectedCount == 0)
++		const bool selected = m_SelectedCount > 0;
++		if (!selected)
+ 		{
+ 			UI::CenteredText("SelectionSummary.Empty", "Select entities in the Hierarchy or the Scene view to summarize them.", colors.TextSecondary);
+-			return;
+ 		}
+-
+-		ImGui::TextUnformatted(fmt::format("{} {} selected", m_SelectedCount, m_SelectedCount == 1 ? "entity" : "entities").c_str());
+-		ImGui::TextColored(colors.TextSecondary, "Components all of them have");
+-		for (const std::string& name : m_SharedComponents)
+-			ImGui::BulletText("%s", name.c_str());
++		else
++		{
++			ImGui::TextUnformatted(fmt::format("{} {} selected", m_SelectedCount, m_SelectedCount == 1 ? "entity" : "entities").c_str());
++			ImGui::TextColored(colors.TextSecondary, "Components all of them have");
++			for (const std::string& name : m_SharedComponents)
++				ImGui::BulletText("%s", name.c_str());
++		}
+ 
+ 		ImGui::Spacing();
+ 		UI::ButtonStyle style;
+-		style.Primary = true;
+-		if (UI::ActionButton("SelectionSummary.Frame", Icons::Focus, "Frame selection", "Point the Scene view at the selected entities", style))
++		style.Enabled = selected;
++		style.Primary = selected;
++		// The kit shows a disabled button's tooltip too: that is where the reason goes.
++		const char* tooltip = selected ? "Point the Scene view at the selected entities" : "Nothing to frame: select entities first";
++		if (UI::ActionButton("SelectionSummary.Frame", Icons::Focus, "Frame selection", tooltip, style))
+ 			FrameSelection(panelContext);
+ 	}
+ 
+diff --git a/StrataTests/src/Editor/SelectionSummaryUITests.cpp b/StrataTests/src/Editor/SelectionSummaryUITests.cpp
+index 14cdae50..06608861 100644
+--- a/StrataTests/src/Editor/SelectionSummaryUITests.cpp
++++ b/StrataTests/src/Editor/SelectionSummaryUITests.cpp
+@@ -4,6 +4,7 @@
+ #include "Editor/EditorContext.h"
+ #include "Editor/HarnessEditor.h"
+ #include "Panels/SelectionSummaryPanel.h"
++#include "UI/ItemProbe.h"
+ 
+ #include <Strata/Reflection/PropertyJson.h>
+ #include <Strata/Scene/Scene.h>
+@@ -12,6 +13,7 @@
+ 
+ #include <algorithm>
+ #include <initializer_list>
++#include <optional>
+ #include <string>
+ #include <string_view>
+ #include <vector>
+@@ -127,6 +129,24 @@ TEST_SUITE("Editor.UI.SelectionSummary")
+ 		CHECK(entry->Parameters["entities"].size() == 2);
+ 	}
+ 
++	TEST_CASE("The Frame button is disabled while nothing is selected")
++	{
++		HarnessEditor editor({}, WithFeatureProject("SelectionSummaryDisabled"));
++		editor.Frames(2);
++		MakeEntities(editor);
++		editor.Run("editor.showPanel", { { "panel", "SelectionSummary" } });
++		editor.Run("selection.set", { { "entities", nlohmann::json::array() } });
++		editor.Frames(2);
++		std::optional<UI::ItemProbe::Item> button = UI::ItemProbe::Find("SelectionSummary.Frame");
++		REQUIRE(button.has_value());
++		CHECK_FALSE(button->Enabled);
++
++		Select(editor, { "SummaryLamp" });
++		button = UI::ItemProbe::Find("SelectionSummary.Frame");
++		REQUIRE(button.has_value());
++		CHECK(button->Enabled);
++	}
++
+ 	TEST_CASE("A layout saved before the panel gives way to the default layout, which docks it beside the Inspector")
+ 	{
+ 		std::string settings;

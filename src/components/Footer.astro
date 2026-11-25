@@ -1,0 +1,32 @@
+---
+// Starlight's footer (its previous and next, which the Pagination override draws; the book has no edit link and no
+// last-updated date) and, below it, the copyright line built from site.json with its links to the license and the
+// third-party notices at the base (plan/site.md, "Navigation"; rulings 6, R20). Every page renders it, the print
+// views and the 404 page included, and the print style sheet keeps it; search leaves it out.
+import Default from '@astrojs/starlight/components/Footer.astro';
+import site from '../../site.json';
+import { c_FooterFiles, copyrightLine, withBase } from '../lib/settings.mjs';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const links = c_FooterFiles.map(({ label, file }) => ({ label, href: withBase(base, `/${file}`) }));
+---
+
+<Default />
+<p class="book-footer" data-pagefind-ignore>
+	<span>{copyrightLine(site.copyright)}</span>
+	{links.map((link) => <a href={link.href}>{link.label}</a>)}
+</p>
+
+<style>
+	.book-footer {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 1.5rem;
+		margin-top: 2rem;
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-3);
+	}
+	.book-footer a {
+		color: var(--sl-color-gray-2);
+	}
+</style>

@@ -1,0 +1,377 @@
+id	type	heading	label
+render-core:28	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	`GraphicsDevice` interface
+render-core:29	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	`GraphicsDeviceSpecification`
+render-core:30	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	`GraphicsDeviceInfo`
+render-core:31	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	`VulkanGraphicsDevice`
+render-core:32	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	Device selection and requirements
+render-core:33	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	Swapchain
+render-core:34	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	Deferred acquire wait
+render-core:35	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	Frame pacing
+render-core:36	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	Present
+render-core:37	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	Device lost
+render-core:38	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	`VulkanPresentation` seam
+render-core:39	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	`VulkanLoader`
+render-core:40	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	Bindless table sizing
+render-core:41	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	Validation message classification
+render-core:42	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	NVRHI message callback
+render-core:43	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	Memory budget
+render-core:44	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	GPU timestamp pool
+render-core:45	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	Queue ownership transfer
+render-core:46	feature	1.1 The graphics device and presentation (Vulkan through NVRHI)	MoltenVK specifics
+render-core:52	feature	1.2 The Graphics engine module and the frame	`GraphicsModule`
+render-core:53	feature	1.2 The Graphics engine module and the frame	Back-buffer capture
+render-core:54	feature	1.2 The Graphics engine module and the frame	Programs' module lists
+render-core:55	feature	1.2 The Graphics engine module and the frame	Frame order
+render-core:61	feature	1.3 Process-wide renderer services (`Renderer`)	`Renderer` static service hub
+render-core:62	feature	1.3 Process-wide renderer services (`Renderer`)	Common samplers
+render-core:63	feature	1.3 Process-wide renderer services (`Renderer`)	Fallback textures
+render-core:64	feature	1.3 Process-wide renderer services (`Renderer`)	`Renderer::BeginFrame`
+render-core:65	feature	1.3 Process-wide renderer services (`Renderer`)	`Renderer::PrepareBackBuffer`
+render-core:66	feature	1.3 Process-wide renderer services (`Renderer`)	`Renderer::ReadTexture`
+render-core:67	feature	1.3 Process-wide renderer services (`Renderer`)	Frame number
+render-core:73	feature	1.4 Command lists, synchronisation and lifetime	NVRHI command lists
+render-core:74	feature	1.4 Command lists, synchronisation and lifetime	Automatic and explicit barriers
+render-core:75	feature	1.4 Command lists, synchronisation and lifetime	`DeferredReleaseQueue`
+render-core:76	feature	1.4 Command lists, synchronisation and lifetime	`Renderer::ReleaseDeferred`
+render-core:77	feature	1.4 Command lists, synchronisation and lifetime	Volatile constant buffer pacing
+render-core:78	feature	1.4 Command lists, synchronisation and lifetime	Event queries
+render-core:84	feature	1.5 Uploads and staging	`GPUUploadQueue`
+render-core:85	feature	1.5 Uploads and staging	`PlanStep`
+render-core:86	feature	1.5 Uploads and staging	Transfer queue uploads (off by default)
+render-core:87	feature	1.5 Uploads and staging	`StagingPool`
+render-core:88	feature	1.5 Uploads and staging	`RendererUploadContext` and `IAssetGraphics`
+render-core:94	feature	1.6 Pipelines, binding layouts and bindless textures	Scene pipelines by key
+render-core:95	feature	1.6 Pipelines, binding layouts and bindless textures	Fullscreen pipelines
+render-core:96	feature	1.6 Pipelines, binding layouts and bindless textures	Compute pipelines
+render-core:97	feature	1.6 Pipelines, binding layouts and bindless textures	Scene binding layout
+render-core:98	feature	1.6 Pipelines, binding layouts and bindless textures	Push constants
+render-core:99	feature	1.6 Pipelines, binding layouts and bindless textures	Scene vertex layouts
+render-core:100	feature	1.6 Pipelines, binding layouts and bindless textures	`BindlessTextureTable`
+render-core:101	feature	1.6 Pipelines, binding layouts and bindless textures	`TextureTable`
+render-core:102	feature	1.6 Pipelines, binding layouts and bindless textures	Bindless in shaders
+render-core:108	feature	1.7 Textures and meshes as GPU resources; the geometry pool	`Texture` asset (GPU side)
+render-core:109	feature	1.7 Textures and meshes as GPU resources; the geometry pool	Block-compression support flag
+render-core:110	feature	1.7 Textures and meshes as GPU resources; the geometry pool	`Mesh` asset (GPU side)
+render-core:111	feature	1.7 Textures and meshes as GPU resources; the geometry pool	`GeometryPool`
+render-core:112	feature	1.7 Textures and meshes as GPU resources; the geometry pool	`MeshGeometryRegistry` reader
+render-core:113	feature	1.7 Textures and meshes as GPU resources; the geometry pool	`MeshFactory`
+render-core:119	feature	1.8 Shaders: sources, build, embedding, dialect	Shader source tree
+render-core:120	feature	1.8 Shaders: sources, build, embedding, dialect	Shader entry list
+render-core:121	feature	1.8 Shaders: sources, build, embedding, dialect	Build pipeline
+render-core:122	feature	1.8 Shaders: sources, build, embedding, dialect	slangc flags
+render-core:123	feature	1.8 Shaders: sources, build, embedding, dialect	Slang pin
+render-core:124	feature	1.8 Shaders: sources, build, embedding, dialect	`StrataShaderTool`
+render-core:125	feature	1.8 Shaders: sources, build, embedding, dialect	`EmbeddedShaders` / `ShaderLibrary`
+render-core:126	feature	1.8 Shaders: sources, build, embedding, dialect	`Include/Common.slang`
+render-core:127	feature	1.8 Shaders: sources, build, embedding, dialect	`Include/Scene.slang`
+render-core:128	feature	1.8 Shaders: sources, build, embedding, dialect	Dialect rules
+render-core:129	feature	1.8 Shaders: sources, build, embedding, dialect	Shader checks
+render-core:130	feature	1.8 Shaders: sources, build, embedding, dialect	Conversion-slip diagnosis
+render-core:131	feature	1.8 Shaders: sources, build, embedding, dialect	Other targets
+render-core:137	feature	1.9 Coordinate conventions	D3D-style clip space via NVRHI
+render-core:138	feature	1.9 Coordinate conventions	Reversed-Z
+render-core:139	feature	1.9 Coordinate conventions	Fullscreen UVs
+render-core:140	feature	1.9 Coordinate conventions	Front faces CCW (glTF)
+render-core:141	feature	1.9 Coordinate conventions	Right-handed, +Y up, -Z forward
+render-core:142	feature	1.9 Coordinate conventions	Camera-relative space
+render-core:143	feature	1.9 Coordinate conventions	Matrices column-major
+render-core:144	feature	1.9 Coordinate conventions	GPU struct layouts
+render-core:155	feature	1.10 The frame of `SceneRenderer` (pass order)	0: Resolve GPU stats of earlier frames; validate viewport, targets, target framebuffer
+render-core:156	feature	1.10 The frame of `SceneRenderer` (pass order)	1: `RenderScene::Sync` and extraction prep (`Render.Extract` CPU stage)
+render-core:157	feature	1.10 The frame of `SceneRenderer` (pass order)	2: Render scene's GPU mirror update (`RenderSceneGPU::Update`)
+render-core:158	feature	1.10 The frame of `SceneRenderer` (pass order)	3: Lights collected, assets resolved (`ResolveAssets`), local shadow data, draw arguments built…
+render-core:159	feature	1.10 The frame of `SceneRenderer` (pass order)	4: `ReserveFrameConstantVersions`, open command list, `GPUPassTimer` starts
+render-core:160	feature	1.10 The frame of `SceneRenderer` (pass order)	5: Motion history growth, environment (IBL / procedural sky / atmosphere tables), height fog,…
+render-core:161	feature	1.10 The frame of `SceneRenderer` (pass order)	6: GPU culling (`RunGPUCulling`) on the GPU-driven path
+render-core:162	feature	1.10 The frame of `SceneRenderer` (pass order)	7: Light culling (GPU) and light clusters
+render-core:163	feature	1.10 The frame of `SceneRenderer` (pass order)	8: Aerial perspective volume (atmosphere skies)
+render-core:164	feature	1.10 The frame of `SceneRenderer` (pass order)	9: Sun cascades (fit, draw, ranges) and local light shadows
+render-core:165	feature	1.10 The frame of `SceneRenderer` (pass order)	10: Clears (depth to 0, normals, entity IDs), depth/normal/entity-ID prepass (two phases on the…
+render-core:166	feature	1.10 The frame of `SceneRenderer` (pass order)	11: Sun screen-space shadow mask
+render-core:167	feature	1.10 The frame of `SceneRenderer` (pass order)	12: Ambient occlusion (GTAO + denoise)
+render-core:168	feature	1.10 The frame of `SceneRenderer` (pass order)	13: Global illumination voxelization (when wanted)
+render-core:169	feature	1.10 The frame of `SceneRenderer` (pass order)	14: Reflection probes' conversions and screen-space reflection trace
+render-core:170	feature	1.10 The frame of `SceneRenderer` (pass order)	15: Opaque forward pass (EQUAL depth test)
+render-core:171	feature	1.10 The frame of `SceneRenderer` (pass order)	16: Sky (fullscreen triangle at depth 0, `GreaterOrEqual`)
+render-core:172	feature	1.10 The frame of `SceneRenderer` (pass order)	17: Scene colour copy (glass, next frame's spatial reflections) then transparent pass (glass…
+render-core:173	feature	1.10 The frame of `SceneRenderer` (pass order)	18: Motion history copy and TAA resolve
+render-core:174	feature	1.10 The frame of `SceneRenderer` (pass order)	19: Depth of field
+render-core:175	feature	1.10 The frame of `SceneRenderer` (pass order)	20: Motion blur
+render-core:176	feature	1.10 The frame of `SceneRenderer` (pass order)	21: Exposure, bloom, lens flares (`RenderPostHDR`), colour lookup, tone mapping + FXAA/SMAA-style…
+render-core:177	feature	1.10 The frame of `SceneRenderer` (pass order)	22: Overlays: GI debug views, lighting view, entity tints, motion view, grid, outline, debug…
+render-core:178	feature	1.10 The frame of `SceneRenderer` (pass order)	23: Close and execute (`ExecuteFrame` sets the constants' event query)
+render-core:180	feature	1.10 The frame of `SceneRenderer` (pass order)	Related renderer-level features: `SceneRenderer` API (output, HDR, depth, normal, entity-ID, AO…
+render-core:187	feature	1.10 The frame of `SceneRenderer` (pass order)	File split of the frame: `SceneRenderer.cpp` (frame and shared), `SceneRendererPost.cpp`,…
+render-core:193	feature	1.10 The frame of `SceneRenderer` (pass order)	`GameRenderer` (Strata/src/Strata/Runtime/) draws a game into the back buffer at the project's…
+render-core:201	feature	1.11 Readback	`TextureReadback`
+render-core:202	feature	1.11 Readback	`BufferReadback`
+render-core:203	feature	1.11 Readback	Picking
+render-core:204	feature	1.11 Readback	`ImageWriter` / `ImageReader`
+render-core:210	feature	1.12 GPU timing	`GPUProfiler`
+render-core:211	feature	1.12 GPU timing	`GPUPassTimer`
+render-core:212	feature	1.12 GPU timing	`RendererGPUStages`
+render-core:213	feature	1.12 GPU timing	`GPUTimerRecord` / `GetGPUStats`
+render-core:214	feature	1.12 GPU timing	Present stage
+render-core:220	feature	1.13 Overlays and debug drawing	Overlay set
+render-core:221	feature	1.13 Overlays and debug drawing	`DebugDraw`
+render-core:222	feature	1.13 Overlays and debug drawing	`DrawSceneGizmos`
+render-core:223	feature	1.13 Overlays and debug drawing	`ISceneOverlayPass` / `SceneOverlayRegistry` / `SceneOverlayFrame`
+render-core:224	feature	1.13 Overlays and debug drawing	`SceneScreenView`
+render-core:225	feature	1.13 Overlays and debug drawing	`SetJitteredDepthBias`
+render-core:226	feature	1.13 Overlays and debug drawing	LOD selection as pure functions
+render-core:232	feature	1.14 Text and fonts	`Font` asset
+render-core:233	feature	1.14 Text and fonts	Font validation
+render-core:234	feature	1.14 Text and fonts	`FontFace`
+render-core:235	feature	1.14 Text and fonts	`ShapeText` / `LayoutText` / `MeasureCaretStops` / `DecodeUTF8`
+render-core:236	feature	1.14 Text and fonts	`FontAtlas`
+render-core:237	feature	1.14 Text and fonts	`FontAtlasCache`
+render-core:238	feature	1.14 Text and fonts	`TextRenderer`
+render-core:239	feature	1.14 Text and fonts	SDF coverage in the shader
+render-core:245	feature	1.15 Module registration and data plumbing owned by the renderer	`RegisterRendererModule`
+render-core:246	feature	1.15 Module registration and data plumbing owned by the renderer	Registered asset types (this area)
+render-core:247	feature	1.15 Module registration and data plumbing owned by the renderer	Registered components (this area)
+render-core:286	concept		What a GPU is and why an engine talks to it through commands
+render-core:291	concept		Graphics APIs and abstraction layers (RHI)
+render-core:298	concept		Instance, physical device, logical device, queues
+render-core:304	concept		Validation layers and error counting
+render-core:309	concept		The swap chain, presentation and vsync
+render-core:314	concept		Frames in flight and CPU/GPU pacing
+render-core:320	concept		Acquire, render, present, and the "display wait" placement
+render-core:325	concept		Command lists, recording vs execution, immediate lists
+render-core:329	concept		Resource states and barriers
+render-core:335	concept		GPU resource lifetime: reference counting and deferred destruction
+render-core:341	concept		CPU-to-GPU uploads: staging memory and budgets
+render-core:346	concept		Event queries/fences as the universal "done" signal
+render-core:350	concept		Shaders: stages, entry points, inputs and outputs
+render-core:354	concept		Shading languages and offline compilation
+render-core:360	concept		HLSL vs GLSL semantic traps
+render-core:364	concept		Resource binding models: descriptor sets, binding layouts, registers, push constants
+render-core:369	concept		Bindless textures
+render-core:374	concept		Pipeline state objects
+render-core:378	concept		Coordinate systems and clip space
+render-core:382	concept		Depth buffers and reversed-Z
+render-core:387	concept		Triangle winding, culling and mirrored transforms
+render-core:391	concept		Floating-point precision far from the origin; camera-relative rendering
+render-core:397	concept		Vertex data layout: streams and shared geometry
+render-core:402	concept		Instancing, draw lists and indirect draws (foundation level)
+render-core:406	concept		GPU struct layout rules (std140/std430) and CPU mirrors
+render-core:409	concept		Multi-pass frame architecture: forward with depth prepass
+render-core:414	concept		HDR rendering and the display transform (foundation level)
+render-core:418	concept		Readback
+render-core:420	concept		GPU timing with timestamps
+render-core:425	concept		Text rendering: fonts, shaping, glyph atlases, signed distance fields
+render-core:430	concept		Untrusted input in the renderer: font files
+render-core:433	concept		Overlays and editor visualisation
+render-core:442	code		1: SH/Debug/ColorTriangle.vert.slang:1-35 with T/Renderer/GPURendererTests.cpp:131-172
+render-core:443	code		2: R/GraphicsDevice.h:128-199
+render-core:444	code		3: PV/VulkanGraphicsDevice.cpp:657-713
+render-core:445	code		4: PV/VulkanGraphicsDevice.cpp:744-750
+render-core:446	code		5: PV/VulkanGraphicsDevice.cpp:1129-1170
+render-core:447	code		6: PV/VulkanGraphicsDevice.cpp:1438-1513
+render-core:448	code		7: PV/VulkanGraphicsDevice.cpp:1515-1605
+render-core:449	code		8: PV/VulkanGraphicsDevice.cpp:946-990
+render-core:450	code		9: R/GraphicsModule.cpp:26-77
+render-core:451	code		10: R/Renderer.cpp:84-168
+render-core:452	code		11: R/Renderer.cpp:267-310
+render-core:453	code		12: R/DeferredReleaseQueue.h:16-30 and .cpp:14-76
+render-core:454	code		13: R/BindlessTextureTable.cpp:23-108
+render-core:455	code		14: R/GPUUploadQueue.cpp:228-277
+render-core:456	code		15: R/StagingPool.h:11-30
+render-core:457	code		16: R/ShaderLibrary.cpp:47-88 and R/EmbeddedShaders.h
+render-core:458	code		17: CMake/StrataShaders.cmake:64-85 and 165-218
+render-core:459	code		18: SH/Include/Common.slang:4-57
+render-core:460	code		19: SH/Include/Common.slang:194-215
+render-core:461	code		20: SH/Include/Scene.slang:53-133
+render-core:462	code		21: SH/Include/Scene.slang:238-260
+render-core:463	code		22: SH/Scene/Mesh.vert.slang:35-60, 85-137
+render-core:464	code		23: SH/PostProcess/Fullscreen.vert.slang:8-13
+render-core:465	code		24: Strata/src/Strata/Math/Math.cpp:70-91
+render-core:466	code		25: R/SceneRenderer.cpp:2424-2527
+render-core:467	code		26: R/SceneRenderer.cpp:2901-3735 (excerpted: 3283-3289, 3360-3420, 3489-3541)
+render-core:468	code		27: R/SceneRenderer.cpp:2247-2275 (`ReleaseRenderTargets`)
+render-core:469	code		28: R/SceneRenderer.cpp:1457-1504
+render-core:470	code		29: R/GPUProfiler.cpp:357-394
+render-core:471	code		30: R/TextureReadback.cpp:7-74
+render-core:472	code		31: R/SceneVertexLayouts.h:23-89
+render-core:473	code		32: SH/Include/SDFText.slang:4-15 + SH/Overlay/Text.frag.slang:17-26
+render-core:474	code		33: R/FontValidation.h:58-71 (comment) and an excerpt of FontValidation.cpp
+render-core:484	figure	Diagrams	Layer and ownership map
+render-core:487	figure	Diagrams	CPU/GPU timeline with two frames in flight
+render-core:490	figure	Diagrams	Swapchain state machine
+render-core:492	figure	Diagrams	Resource lifetime / deferred release
+render-core:494	figure	Diagrams	Upload path data flow
+render-core:496	figure	Diagrams	Register/binding mapping
+render-core:498	figure	Diagrams	Bindless indirection
+render-core:500	figure	Diagrams	Geometry pool memory layout
+render-core:502	figure	Diagrams	Shader build pipeline
+render-core:505	figure	Diagrams	Coordinate spaces chain
+render-core:507	figure	Diagrams	Reversed-Z precision plot
+render-core:509	figure	Diagrams	The frame's pass graph
+render-core:511	figure	Diagrams	GPU profiler ring
+render-core:513	figure	Diagrams	Font pipeline
+render-core:515	figure	Diagrams	Overlay order
+render-core:524	figure	Screenshots	The editor viewport with Showcase
+render-core:525	figure	Screenshots	The same view's intermediate targets
+render-core:528	figure	Screenshots	Overlays isolated
+render-core:530	figure	Screenshots	Entity tints / streaming debug view
+render-core:532	figure	Screenshots	Motion view
+render-core:533	figure	Screenshots	Camera-relative rendering
+render-core:536	figure	Screenshots	Text
+render-core:538	figure	Screenshots	Mirrored instance
+render-core:540	figure	Screenshots	Editor Performance panel / `editor.perf` output
+render-core:542	figure	Screenshots	Validation-layer error example
+render-core:543	figure	Screenshots	The black frame
+render-core:549	rule		Never take the address of an NVRHI handle (`&m_Pipeline`)
+render-core:551	rule		Same-binding-set UAV chains need explicit barriers
+render-core:553	rule		Drop render targets through `Renderer::ReleaseDeferred`
+render-core:556	rule		Destroying a texture costs ~0.1 ms
+render-core:558	rule		Leave a compute-written texture's undefined layout whole first
+render-core:560	rule		A list that may open while another is open must be non-immediate
+render-core:562	rule		Volatile constant buffers have a fixed number of versions
+render-core:565	rule		Call `Renderer::PrepareBackBuffer()` before rendering into the back buffer
+render-core:567	rule		Command lists that copy from released staging must execute before `SubmitBatch`/next `BeginFrame`
+render-core:569	rule		Never block a frame on an asset or the GPU
+render-core:571	rule		Bindless slots are written only at allocation and recycled after frames in flight
+render-core:574	rule		Read mesh geometry through the pool every frame
+render-core:576	rule		Every shader entry is listed in `strata_add_shaders`; re-run configure
+render-core:578	rule		`mul` only with a matrix
+render-core:580	rule		Vector comparisons through `all()`/`any()`; matrix constructors take rows; `select` reverses…
+render-core:582	rule		`SampleLevel` or `Load` in compute
+render-core:584	rule		Every storage image states its format
+render-core:586	rule		`SV_VulkanInstanceID`, not `SV_InstanceID`
+render-core:587	rule		Derivatives before the first `discard`
+render-core:589	rule		Push-constant slot must not equal another layout's CB slot
+render-core:590	rule		`__target_switch`/`spirv_asm` only in `Include/Common.slang`, no generics/modules/interfaces
+render-core:592	rule		The prepass and forward pass must produce bit-identical positions
+render-core:595	rule		A scene vertex shader reads exactly its input layout
+render-core:597	rule		Reversed-Z: clear depth to 0, test `GreaterOrEqual`, sky at depth 0
+render-core:598	rule		Front faces are CCW; mirrored instances use clockwise pipelines and flip tangent handedness;…
+render-core:600	rule		Never upload a world position to a scene shader
+render-core:602	rule		Fullscreen UVs `(ndc.x*0.5+0.5, 0.5-ndc.y*0.5)`
+render-core:603	rule		HDR writers clamp with `SanitizeHDR`
+render-core:604	rule		A target framebuffer must be the viewport's size and non-sRGB UNORM
+render-core:606	rule		Gate on device features, never on the OS
+render-core:607	rule		GPU tests share one device (`Tests::GPUContext`) and end with zero new errors
+render-core:609	rule		Time every new pass in a GPU stage and register the stage in frame order
+render-core:611	rule		A new scene resource takes the next free slot in the `Include/Scene.slang` ledger; a pass that…
+render-core:613	rule		Font files are untrusted: extend `FontValidation` (with crafted-font tests) before calling another…
+render-core:615	rule		Measure text with `ShapeText`, never by rasterizing; passes share the renderer's `FontAtlasCache`
+render-core:616	rule		The renderer reaches higher modules only through registries
+render-core:618	rule		Exceptions from NVRHI/vulkan.hpp are caught at the call site
+render-core:627	hands-on	For engine developers	Read the triangle test
+render-core:630	hands-on	For engine developers	Add a new debug shader entry
+render-core:634	hands-on	For engine developers	Break and observe a dialect trap
+render-core:636	hands-on	For engine developers	Derive the fullscreen triangle
+render-core:638	hands-on	For engine developers	Reversed-Z precision experiment
+render-core:640	hands-on	For engine developers	Deferred release experiment
+render-core:643	hands-on	For engine developers	Add a GPU stage
+render-core:646	hands-on	For engine developers	Write a non-blocking screenshot tool
+render-core:648	hands-on	For engine developers	Camera-relative audit
+render-core:651	hands-on	For engine developers	Font validation exercise
+render-core:653	hands-on	For engine developers	Geometry pool compaction
+render-core:656	hands-on	For engine developers	Map a frame in RenderDoc or Nsight
+render-core:661	hands-on	For game developers	Choose vsync and see the cost
+render-core:663	hands-on	For game developers	Debug draw from a script or C++ layer
+render-core:665	hands-on	For game developers	World and screen text
+render-core:667	hands-on	For game developers	Capture screenshots for a store page
+render-core:668	hands-on	For game developers	Mirroring safely
+render-core:670	hands-on	For game developers	Big worlds
+render-core:672	hands-on	For game developers	Read the GPU stages of your game
+render-core:679	term		GPU
+render-core:680	term		Graphics API
+render-core:681	term		Vulkan
+render-core:682	term		MoltenVK
+render-core:683	term		NVRHI
+render-core:685	term		RHI
+render-core:686	term		Instance (VkInstance)
+render-core:687	term		Physical device / logical device
+render-core:688	term		Queue / queue family
+render-core:690	term		Transfer queue
+render-core:691	term		Validation layer
+render-core:692	term		Swapchain
+render-core:693	term		Surface
+render-core:694	term		Present mode
+render-core:695	term		Back buffer
+render-core:696	term		Acquire / present
+render-core:697	term		Semaphore
+render-core:698	term		Fence / event query
+render-core:699	term		Frames in flight
+render-core:700	term		Command list / command buffer
+render-core:701	term		Immediate command list
+render-core:702	term		Barrier / resource state
+render-core:703	term		Descriptor / descriptor set
+render-core:704	term		Binding layout / binding set
+render-core:705	term		Register (tN, sN, bN, uN) and space
+render-core:707	term		Push constants
+render-core:708	term		Constant buffer / volatile constant buffer
+render-core:709	term		Structured buffer
+render-core:710	term		UAV / storage image
+render-core:711	term		std140 / std430
+render-core:712	term		Bindless
+render-core:713	term		Update-after-bind / partially bound
+render-core:715	term		Texture table (Strata)
+render-core:716	term		Pipeline (PSO)
+render-core:717	term		Input layout
+render-core:718	term		Shader
+render-core:719	term		Entry point
+render-core:720	term		SPIR-V
+render-core:721	term		Slang / slangc
+render-core:722	term		HLSL / GLSL
+render-core:723	term		Variant (shader)
+render-core:724	term		Invariant position
+render-core:725	term		Interpolant
+render-core:726	term		Derivative (ddx/ddy/fwidth)
+render-core:727	term		Discard / clip
+render-core:728	term		Clip space / NDC
+render-core:729	term		Viewport flip
+render-core:730	term		Reversed-Z
+render-core:731	term		Infinite far plane
+render-core:732	term		Depth test functions
+render-core:733	term		Depth prepass
+render-core:734	term		Forward / deferred / clustered forward
+render-core:736	term		Winding order / front face / back-face culling
+render-core:738	term		Mirrored transform
+render-core:739	term		Tangent handedness
+render-core:740	term		Normal matrix / cofactor matrix
+render-core:741	term		Camera-relative rendering
+render-core:742	term		Origin rebasing
+render-core:743	term		Staging buffer
+render-core:744	term		Upload budget / step / granule
+render-core:746	term		Ticket (upload)
+render-core:747	term		Deferred release
+render-core:748	term		Geometry pool / arena
+render-core:749	term		Range allocator
+render-core:750	term		Compaction (defragmentation)
+render-core:751	term		Instance / InstanceData
+render-core:752	term		Draw list
+render-core:753	term		Indirect draw
+render-core:754	term		HDR / tone mapping / sRGB encoding
+render-core:756	term		UNORM / sRGB formats
+render-core:757	term		RGBA16F / half float
+render-core:758	term		Readback
+render-core:759	term		Timestamp query
+render-core:760	term		GPU stage (Strata)
+render-core:761	term		Tile-based renderer
+render-core:762	term		Font / glyph / code point
+render-core:763	term		TrueType / CFF / OTTO
+render-core:764	term		stb_truetype
+render-core:765	term		Kerning / GPOS
+render-core:766	term		Text shaping
+render-core:767	term		Signed distance field (SDF)
+render-core:768	term		Glyph atlas / page / cell
+render-core:769	term		LRU eviction
+render-core:770	term		Overlay
+render-core:771	term		Gizmo
+render-core:772	term		Entity ID buffer
+render-core:773	term		Picking
+render-core:774	term		Jitter (TAA)
+render-core:775	term		Device lost
+render-core:825	open		Not read in full
+render-core:833	open		Tests
+render-core:835	open		ImGui renderer
+render-core:837	open		Intermediate render targets as screenshots
+render-core:839	open		Camera-relative "off" comparison
+render-core:841	open		Whether games can reach `DebugDraw` from scripts
+render-core:843	open		Exact release of several features
+render-core:845	open		RenderDoc/Nsight usage
+render-core:847	open		Curiosity found, not verified as a problem

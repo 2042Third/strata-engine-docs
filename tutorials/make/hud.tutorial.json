@@ -1,0 +1,175 @@
+{
+	"page": "make/hud",
+	"startsFrom": {
+		"tutorial": "make/sound"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"setup": [
+				{ "command": "asset.import", "parameters": { "file": "@RELEASE@/Samples/ThirdPerson/Assets/UI/button_square_flat.png", "directory": "UI" } }
+			],
+			"commands": [
+				{ "command": "ui.create", "parameters": { "type": "canvas", "name": "HUD" }, "bind": { "hud": "/entity" } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "hud" }, "component": "UICanvas" },
+					"checks": [
+						{ "pointer": "/values/ReferenceResolution/0", "approx": 1920, "tolerance": 0.001 },
+						{ "pointer": "/values/ReferenceResolution/1", "approx": 1080, "tolerance": 0.001 }
+					] },
+				{ "command": "selection.set", "parameters": { "entities": [ { "$ref": "hud" } ] } },
+				{ "command": "viewport.setSettings", "parameters": { "canvasMode": true, "gameUI": true },
+					"checks": [ { "pointer": "/canvasMode", "equals": true }, { "pointer": "/gameUI", "equals": true } ] },
+				{ "command": "ui.create", "parameters": { "type": "text", "name": "CoinText", "parent": { "$ref": "hud" }, "text": "Coins left: 5",
+					"anchor": "topLeft", "position": [24, 24], "size": [360, 48] }, "bind": { "cointext": "/entity" } },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "cointext" }, "component": "UIText", "values": { "FontSize": 36, "Alignment": "Left" } } },
+				{ "command": "ui.create", "parameters": { "type": "text", "name": "TimerText", "parent": { "$ref": "hud" }, "text": "Time: 60",
+					"anchor": "topRight", "position": [-24, 24], "size": [360, 48] }, "bind": { "timertext": "/entity" } },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "timertext" }, "component": "UIText", "values": { "FontSize": 36, "Alignment": "Right" } } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "cointext" }, "component": "UIRect" },
+					"checks": [
+						{ "pointer": "/values/Position/0", "approx": 24, "tolerance": 0.001 },
+						{ "pointer": "/values/Pivot/0", "approx": 0, "tolerance": 0.001 },
+						{ "pointer": "/values/Pivot/1", "approx": 0, "tolerance": 0.001 }
+					] },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "cointext" }, "component": "UIText" },
+					"checks": [
+						{ "pointer": "/values/Text", "equals": "Coins left: 5" },
+						{ "pointer": "/values/Alignment", "equals": "Left" }
+					] },
+				{ "command": "ui.layout", "parameters": { "entity": { "$ref": "cointext" }, "screen": [1280, 720] },
+					"checks": [
+						{ "pointer": "/elements/0/rect/0", "approx": 16, "tolerance": 0.01 },
+						{ "pointer": "/elements/0/rect/1", "approx": 16, "tolerance": 0.01 },
+						{ "pointer": "/elements/0/rect/2", "approx": 240, "tolerance": 0.01 },
+						{ "pointer": "/elements/0/rect/3", "approx": 32, "tolerance": 0.01 }
+					] },
+				{ "command": "ui.layout", "parameters": { "entity": { "$ref": "timertext" }, "screen": [1280, 720] },
+					"checks": [
+						{ "pointer": "/elements/0/rect/0", "approx": 1024, "tolerance": 0.01 },
+						{ "pointer": "/elements/0/rect/1", "approx": 16, "tolerance": 0.01 }
+					] }
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"commands": [
+				{ "command": "entity.find", "parameters": { "name": "HUD" }, "bind": { "hud": "/entities/0" } },
+				{ "command": "ui.create", "parameters": { "type": "panel", "name": "Backdrop", "parent": { "$ref": "hud" }, "anchor": "topStretch", "size": [0, 90] },
+					"bind": { "backdrop": "/entity" } },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "backdrop" }, "component": "UIImage",
+					"values": { "Type": "Sliced", "Texture": "UI/button_square_flat.png", "SliceBorders": [12, 12, 12, 12], "Color": [0.1, 0.12, 0.18, 0.85] } } },
+				{ "command": "entity.setParent", "parameters": { "entity": { "$ref": "backdrop" }, "parent": { "$ref": "hud" }, "index": 0 } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "backdrop" }, "component": "UIImage" },
+					"checks": [
+						{ "pointer": "/values/Type", "equals": "Sliced" },
+						{ "pointer": "/values/SliceBorders/0", "approx": 12, "tolerance": 0.001 },
+						{ "pointer": "/values/SliceBorders/3", "approx": 12, "tolerance": 0.001 },
+						{ "pointer": "/values/Color/3", "approx": 0.85, "tolerance": 0.001 }
+					] },
+				{ "command": "ui.layout", "parameters": { "entity": { "$ref": "hud" }, "screen": [1920, 1080] },
+					"checks": [
+						{ "pointer": "/elements/1/name", "equals": "Backdrop" },
+						{ "pointer": "/elements/1/rect/0", "approx": 0, "tolerance": 0.01 },
+						{ "pointer": "/elements/1/rect/2", "approx": 1920, "tolerance": 0.01 },
+						{ "pointer": "/elements/1/rect/3", "approx": 90, "tolerance": 0.01 }
+					] },
+				{ "command": "ui.hitTest", "parameters": { "position": [960, 45], "screen": [1920, 1080] },
+					"checks": [
+						{ "pointer": "/name", "equals": "Backdrop" }
+					] },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "hud" }, "component": "UICanvas", "values": { "ReceivesInput": false } } },
+				{ "command": "ui.hitTest", "parameters": { "position": [960, 45], "screen": [1920, 1080] },
+					"checks": [
+						{ "pointer": "/entity", "equals": null }
+					] },
+				{ "command": "ui.create", "parameters": { "type": "image", "name": "TimeBar", "parent": { "$ref": "hud" }, "anchor": "bottomStretch",
+					"position": [0, -20], "size": [-80, 24] }, "bind": { "timebar": "/entity" } },
+				{ "command": "component.set", "parameters": { "entity": { "$ref": "timebar" }, "component": "UIImage",
+					"values": { "Type": "Filled", "FillAmount": 0.6, "Color": [0.95, 0.75, 0.2, 1] } } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "timebar" }, "component": "UIImage" },
+					"checks": [
+						{ "pointer": "/values/Type", "equals": "Filled" },
+						{ "pointer": "/values/FillAmount", "approx": 0.6, "tolerance": 0.001 }
+					] },
+				{ "command": "ui.layout", "parameters": { "entity": { "$ref": "timebar" }, "screen": [1920, 1080] },
+					"checks": [
+						{ "pointer": "/elements/0/rect/0", "approx": 40, "tolerance": 0.01 },
+						{ "pointer": "/elements/0/rect/2", "approx": 1840, "tolerance": 0.01 },
+						{ "pointer": "/elements/0/rect/3", "approx": 24, "tolerance": 0.01 }
+					] }
+			],
+			"endState": true
+		},
+		{
+			"step": 3,
+			"commands": [
+				{ "command": "script.create","parameters": { "class": "CoinHud" } },
+				{ "command": "script.build", "files": [ { "from": "book:tutorials/make/hud/CoinHud.cpp", "to": "Scripts/CoinHud.cpp" } ],
+					"expect": { "/success": { "equals": true } }, "checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "entity.find", "parameters": { "name": "HUD" }, "bind": { "hud": "/entities/0" } },
+				{ "command": "script.add", "parameters": { "entity": { "$ref": "hud" }, "class": "CoinHud", "fields": { "TimeLimit": 60 } } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "input.sequence", "parameters": { "events": [ { "step": 0, "key": "S", "action": "tap", "steps": 150 } ], "steps": 180 },
+					"expect": { "/stepsRun": { "equals": 180 } } },
+				{ "command": "component.get", "entityName": "CoinText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Text", "equals": "Coins left: 4" } ] },
+				{ "command": "component.get", "entityName": "TimerText", "parameters": { "component": "UIText" },
+					"checks": [ { "pointer": "/values/Text", "equals": "Time: 58" } ] },
+				{ "command": "component.get", "entityName": "TimeBar", "parameters": { "component": "UIImage" },
+					"checks": [ { "pointer": "/values/FillAmount", "approx": 0.95, "tolerance": 0.005 } ] },
+				{ "command": "play.step", "parameters": { "steps": 2910 }, "expect": { "/stepsRun": { "equals": 2910 } } },
+				{ "command": "component.get", "entityName": "TimerText", "parameters": { "component": "UIText" },
+					"checks": [
+						{ "pointer": "/values/Text", "equals": "Time: 9" },
+						{ "pointer": "/values/Color/0", "approx": 1, "tolerance": 0.001 },
+						{ "pointer": "/values/Color/1", "approx": 0.3, "tolerance": 0.001 },
+						{ "pointer": "/values/Color/2", "approx": 0.2, "tolerance": 0.001 }
+					] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		},
+		{
+			"step": 4,
+			"commands": [
+				{ "command": "viewport.setSettings", "parameters": { "gameView": { "mode": "16:9" } } },
+				{ "command": "viewport.setSettings", "parameters": { "gameView": { "mode": "4:3" } } },
+				{ "command": "viewport.setSettings", "parameters": { "gameView": { "mode": "21:9" } } },
+				{ "command": "ui.layout", "entityName": "CoinText", "parameters": { "screen": [1440, 1080] },
+					"checks": [
+						{ "pointer": "/elements/0/rect/0", "approx": 20.785, "tolerance": 0.01 },
+						{ "pointer": "/elements/0/rect/1", "approx": 20.785, "tolerance": 0.01 }
+					] },
+				{ "command": "ui.layout", "entityName": "CoinText", "parameters": { "screen": [2520, 1080] },
+					"checks": [
+						{ "pointer": "/elements/0/rect/0", "approx": 27.495, "tolerance": 0.01 }
+					] },
+				{ "command": "ui.layout", "entityName": "TimeBar", "parameters": { "screen": [1440, 1080] },
+					"checks": [
+						{ "pointer": "/elements/0/rect/0", "approx": 34.641, "tolerance": 0.01 }
+					] },
+				{ "command": "ui.layout", "entityName": "TimeBar", "parameters": { "screen": [2520, 1080] },
+					"checks": [
+						{ "pointer": "/elements/0/rect/0", "approx": 45.826, "tolerance": 0.01 }
+					] },
+				{ "command": "entity.create", "parameters": { "name": "StartSign", "components": {
+					"Text": { "Text": "Roll!", "ScreenSpace": false, "FontSize": 1 },
+					"Transform": { "Translation": [0, 1.5, 0], "Rotation": [-55, 0, 0] } } }, "bind": { "sign": "/id" } },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "sign" }, "component": "Text" },
+					"checks": [
+						{ "pointer": "/values/ScreenSpace", "equals": false },
+						{ "pointer": "/values/Text", "equals": "Roll!" },
+						{ "pointer": "/values/FontSize", "approx": 1, "tolerance": 0.001 }
+					] },
+				{ "command": "component.get", "parameters": { "entity": { "$ref": "sign" }, "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/1", "approx": 1.5, "tolerance": 0.001 },
+						{ "pointer": "/values/Rotation/0", "approx": -0.4617, "tolerance": 0.002 },
+						{ "pointer": "/values/Rotation/3", "approx": 0.887, "tolerance": 0.002 }
+					] }
+			],
+			"endState": true
+		}
+	]
+}

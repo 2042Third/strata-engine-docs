@@ -1,0 +1,36 @@
+{
+	"figures": [
+		{
+			"id": "aliasing-sine",
+			"shows": "Two graphs over one second: on top a fast sine of 9 Hz and the false slow sine of 1 Hz drawn through the same ten dots, the dots marked at every tenth of a second, with the fast wave in a second colour; below, the real 1 Hz sine through its own ten samples, which have the opposite sign",
+			"caption": "Ten samples a second cannot tell the slow wave from the fast one: both pass through every dot, so the samples show only the false, slow wave.",
+			"alt": "Two graphs over one second, one above the other. In the top graph a fast wave wiggles nine times and a slow wave falls once and rises once, and both curves pass through the same ten dots. The bottom graph shows the real slow wave, which rises first and then falls, and its ten dots have the opposite sign to those above.",
+			"kind": "diagram",
+			"numbers": "x axis 0 to 1 s with ticks every 0.1 s; dots at t = 0, 0.1, ..., 0.9 on the 9 Hz curve with values 0, -0.588, -0.951, -0.951, -0.588, 0, 0.588, 0.951, 0.951, 0.588; the 1 Hz curve drawn as sin(-2 pi t) (the same dots); a second panel with the 1 Hz curve drawn as sin(2 pi t) through the dots of the 1 Hz samples, 0, 0.588, 0.951, 0.951, 0.588, 0, -0.588, ..., to show the reversed sign; the Nyquist limit of 5 Hz noted."
+		},
+		{
+			"id": "kernels-three",
+			"shows": "The row 0, 0, 0, 16, 0, 0, 0 as one tall bar, and below it three rows of bars after a box, a tent and a bell kernel, with the heights written above each bar",
+			"caption": "One spike, three kernels: the box makes three equal bars, the tent a peak of 8 with two bars of 4, and the bell five bars; every row adds to 16.",
+			"alt": "Four small bar charts of seven bars each. The first has one tall bar in the middle. The second has three equal bars, the third a middle bar with two shorter ones, and the fourth five bars that fall off like a bell.",
+			"kind": "diagram",
+			"numbers": "Row 0: 0 0 0 16 0 0 0. Box (1/3 each): 0 0 5.33 5.33 5.33 0 0. Tent (1/4, 2/4, 1/4): 0 0 4 8 4 0 0. Bell (1/16, 4/16, 6/16, 4/16, 1/16): 0 1 4 6 4 1 0. Each row labelled with its total, 16."
+		},
+		{
+			"id": "floor-mips",
+			"shows": "A floor of black and white squares receding to the horizon drawn twice: on the left each pixel reads one texel of the full-size texture and the far squares break into flickering noise, on the right each pixel reads the mip level that matches its distance and the far floor fades smoothly to grey",
+			"caption": "Without mips the far squares turn to noise that moves when the camera moves; with mips the far floor settles to its average grey.",
+			"alt": "Two views of a floor of black and white squares going away from the viewer. In the left view the squares near the horizon are a broken, noisy pattern. In the right view the squares stay sharp up close and blend into an even grey in the distance.",
+			"kind": "diagram",
+			"numbers": "Two panels of the same perspective floor with 1 m squares; left panel: nearest read of level 0, moire and speckle from about 30 m; right panel: level chosen by texels per pixel, level 0 near, level 1 at 2 texels per pixel, level 2 at 4, up to an even grey; a strip under each panel shows one row of alternating 0 and 255 texels, sampled every fourth texel at 0, 4, 8 (all black) on the left, and the level 2 average 127.5 on the right."
+		},
+		{
+			"id": "dither-gradients",
+			"shows": "A smooth horizontal ramp from 100 to 110 shown three times as a strip of pixels: rounded to whole levels with 11 flat bands (nine full ones and a half one at each end), rounded after adding random noise with grain, and rounded after adding the 4 by 4 Bayer thresholds with a regular pattern",
+			"caption": "Plain rounding leaves visible bands, random noise turns them to grain that changes if drawn again, and the Bayer table turns them into a fixed regular pattern.",
+			"alt": "Three horizontal strips of the same gray ramp. The first has 11 flat blocks: nine of the same width and a half-wide one at each end. The second has random dots between neighbouring blocks. The third has a neat repeating dot pattern between neighbouring blocks.",
+			"kind": "diagram",
+			"numbers": "Three strips, each 1,920 pixels wide in the source and drawn about 480 wide, values 100 to 110. Strip 1: floor(value + 0.5), 11 levels 100 to 110: nine bands of 192 pixels and a half band of 96 at each end. Strip 2: floor(value + r) with r random in [0, 1). Strip 3: floor(value + (n + 0.5) / 16), n from the Bayer table at (x mod 4, y mod 4). A magnified inset of one transition (100.25 over a 4 by 4 block) shows 4 of 16 pixels at 101."
+		}
+	]
+}

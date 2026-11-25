@@ -1,0 +1,148 @@
+[
+	{
+		"command": "asset.import",
+		"parameters": {
+			"directories": [
+				"<release folder>/Samples/ThirdPerson/Assets/Models/Robot"
+			],
+			"directory": "Models"
+		}
+	},
+	{
+		"command": "asset.import",
+		"parameters": {
+			"directories": [
+				"<release folder>/Samples/ThirdPerson/Assets/Sounds/Footsteps"
+			],
+			"directory": "Sounds"
+		}
+	},
+	{
+		"command": "animation.info",
+		"parameters": {
+			"asset": "Models/Robot/RobotExpressive.glb"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Player"
+		},
+		"bind": {
+			"player": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Body"
+		},
+		"bind": {
+			"capsule": "/entities/0"
+		}
+	},
+	{
+		"command": "asset.place",
+		"parameters": {
+			"asset": "Models/Robot/RobotExpressive.glb",
+			"point": [
+				0,
+				0,
+				0
+			],
+			"rotation": [
+				0,
+				180,
+				0
+			],
+			"scale": 0.4
+		},
+		"bind": {
+			"robot": "/id"
+		}
+	},
+	{
+		"command": "entity.setParent",
+		"parameters": {
+			"entity": {
+				"$ref": "robot"
+			},
+			"parent": {
+				"$ref": "player"
+			},
+			"keepWorldTransform": false
+		}
+	},
+	{
+		"command": "entity.rename",
+		"parameters": {
+			"entity": {
+				"$ref": "robot"
+			},
+			"name": "Robot"
+		}
+	},
+	{
+		"command": "entity.delete",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "capsule"
+				}
+			]
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Animator",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "animation.info",
+		"parameters": {
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	}
+]

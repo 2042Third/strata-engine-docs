@@ -1,0 +1,67 @@
+[
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Ball",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Sphere"
+				},
+				"SphereCollider": {
+					"Radius": 0.5
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						0.5,
+						6
+					]
+				}
+			}
+		},
+		"bind": {
+			"ball": "/id"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Coin",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cylinder"
+				},
+				"Tag": {
+					"Tag": "Coin"
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						0.8,
+						-4
+					],
+					"Rotation": [
+						0.7071,
+						0,
+						0,
+						0.7071
+					],
+					"Scale": [
+						0.8,
+						0.1,
+						0.8
+					]
+				}
+			}
+		},
+		"bind": {
+			"coin": "/id"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"tag": "Coin"
+		}
+	}
+]

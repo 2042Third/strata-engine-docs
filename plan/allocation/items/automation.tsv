@@ -1,0 +1,340 @@
+id	type	heading	label
+automation:40	feature	1.1 Sockets (Network layer, platform code)	`TcpSocket`
+automation:41	feature	1.1 Sockets (Network layer, platform code)	`TcpListener`
+automation:42	feature	1.1 Sockets (Network layer, platform code)	`SocketPoller::Poll`
+automation:43	feature	1.1 Sockets (Network layer, platform code)	`SocketNotifier`
+automation:44	feature	1.1 Sockets (Network layer, platform code)	`IsLoopbackAddress`
+automation:45	feature	1.1 Sockets (Network layer, platform code)	Timeout clamping
+automation:46	feature	1.1 Sockets (Network layer, platform code)	Handle hygiene
+automation:47	feature	1.1 Sockets (Network layer, platform code)	Layer placement
+automation:53	feature	1.2 JSON-RPC 2.0 framing and messages	Newline-delimited framing
+automation:54	feature	1.2 JSON-RPC 2.0 framing and messages	`JsonLineReader`
+automation:55	feature	1.2 JSON-RPC 2.0 framing and messages	Message size limit
+automation:56	feature	1.2 JSON-RPC 2.0 framing and messages	Depth limit
+automation:57	feature	1.2 JSON-RPC 2.0 framing and messages	Builders
+automation:58	feature	1.2 JSON-RPC 2.0 framing and messages	Total serialization
+automation:59	feature	1.2 JSON-RPC 2.0 framing and messages	`ValidateRequest`
+automation:60	feature	1.2 JSON-RPC 2.0 framing and messages	Error codes
+automation:66	feature	1.3 RpcServer (the editor's server)	Threading model
+automation:67	feature	1.3 RpcServer (the editor's server)	Built-in methods
+automation:68	feature	1.3 RpcServer (the editor's server)	Method registry
+automation:69	feature	1.3 RpcServer (the editor's server)	`RpcResult`, `RpcError`
+automation:70	feature	1.3 RpcServer (the editor's server)	`RpcResponder`
+automation:71	feature	1.3 RpcServer (the editor's server)	Weak shared state
+automation:72	feature	1.3 RpcServer (the editor's server)	Handler exception containment
+automation:73	feature	1.3 RpcServer (the editor's server)	Per-connection guard
+automation:74	feature	1.3 RpcServer (the editor's server)	Pre-auth limits
+automation:75	feature	1.3 RpcServer (the editor's server)	Pending-slot eviction
+automation:76	feature	1.3 RpcServer (the editor's server)	Client limit
+automation:77	feature	1.3 RpcServer (the editor's server)	Backpressure
+automation:78	feature	1.3 RpcServer (the editor's server)	Stalled-client timeout
+automation:79	feature	1.3 RpcServer (the editor's server)	Bounded replies
+automation:80	feature	1.3 RpcServer (the editor's server)	Orderly close
+automation:81	feature	1.3 RpcServer (the editor's server)	Closing-connection cap
+automation:82	feature	1.3 RpcServer (the editor's server)	Rate-limited warnings
+automation:83	feature	1.3 RpcServer (the editor's server)	Graceful stop
+automation:84	feature	1.3 RpcServer (the editor's server)	Client presence
+automation:85	feature	1.3 RpcServer (the editor's server)	Wake-up notifier option
+automation:86	feature	1.3 RpcServer (the editor's server)	Start checks
+automation:92	feature	1.4 Authentication (the handshake)	Mutual challenge-response
+automation:93	feature	1.4 Authentication (the handshake)	Server proves first
+automation:94	feature	1.4 Authentication (the handshake)	Domain separation
+automation:95	feature	1.4 Authentication (the handshake)	Fixed-format nonces
+automation:96	feature	1.4 Authentication (the handshake)	Constant-time compare
+automation:97	feature	1.4 Authentication (the handshake)	One handshake per connection
+automation:98	feature	1.4 Authentication (the handshake)	Session token
+automation:99	feature	1.4 Authentication (the handshake)	HMAC and SHA-256
+automation:105	feature	1.5 RpcClient	Synchronous client
+automation:106	feature	1.5 RpcClient	Late-response tolerance
+automation:107	feature	1.5 RpcClient	Partial-send rule
+automation:108	feature	1.5 RpcClient	Client name
+automation:114	feature	1.6 Editor sessions and discovery	`EditorSessionInfo`
+automation:115	feature	1.6 Editor sessions and discovery	Per-user session file
+automation:116	feature	1.6 Editor sessions and discovery	Untrusted project pointer
+automation:117	feature	1.6 Editor sessions and discovery	Process identity
+automation:118	feature	1.6 Editor sessions and discovery	Stale-file pruning, race-safe
+automation:119	feature	1.6 Editor sessions and discovery	Pointer removal, race-safe
+automation:120	feature	1.6 Editor sessions and discovery	Write order
+automation:121	feature	1.6 Editor sessions and discovery	Discovery order
+automation:122	feature	1.6 Editor sessions and discovery	Trusted reads
+automation:123	feature	1.6 Editor sessions and discovery	`STRATA_SESSION_DIR`
+automation:124	feature	1.6 Editor sessions and discovery	`IsSameProject`
+automation:130	feature	1.7 EditorAutomation (editor binding)	Commands as methods
+automation:131	feature	1.7 EditorAutomation (editor binding)	Requests through the runner
+automation:132	feature	1.7 EditorAutomation (editor binding)	Error mapping
+automation:133	feature	1.7 EditorAutomation (editor binding)	Named parameters only
+automation:134	feature	1.7 EditorAutomation (editor binding)	Session follows the project
+automation:135	feature	1.7 EditorAutomation (editor binding)	Start/Stop
+automation:136	feature	1.7 EditorAutomation (editor binding)	Idle timeout
+automation:137	feature	1.7 EditorAutomation (editor binding)	Status section
+automation:138	feature	1.7 EditorAutomation (editor binding)	Trace log
+automation:139	feature	1.7 EditorAutomation (editor binding)	Frame placement
+automation:140	feature	1.7 EditorAutomation (editor binding)	Shutdown order
+automation:141	feature	1.7 EditorAutomation (editor binding)	Editor options
+automation:142	feature	1.7 EditorAutomation (editor binding)	Interrupt handling
+automation:148	feature	1.8 Commands relevant to automation (registered elsewhere, used here)	`editor.status`
+automation:149	feature	1.8 Commands relevant to automation (registered elsewhere, used here)	`editor.commands`
+automation:150	feature	1.8 Commands relevant to automation (registered elsewhere, used here)	`editor.batch`
+automation:151	feature	1.8 Commands relevant to automation (registered elsewhere, used here)	`editor.activity`
+automation:152	feature	1.8 Commands relevant to automation (registered elsewhere, used here)	`editor.activity.export`
+automation:153	feature	1.8 Commands relevant to automation (registered elsewhere, used here)	`editor.wait`, `editor.quit`
+automation:154	feature	1.8 Commands relevant to automation (registered elsewhere, used here)	`log.read`
+automation:155	feature	1.8 Commands relevant to automation (registered elsewhere, used here)	Command contract
+automation:156	feature	1.8 Commands relevant to automation (registered elsewhere, used here)	Commands wait for the asset scan
+automation:157	feature	1.8 Commands relevant to automation (registered elsewhere, used here)	Command scripts
+automation:166	feature	1.9 Activity journal and replay	`CommandJournal`
+automation:167	feature	1.9 Activity journal and replay	`CommandSource` / `CommandOrigin`
+automation:168	feature	1.9 Activity journal and replay	`EditorCommandKind`
+automation:169	feature	1.9 Activity journal and replay	`EditorCommandResults`
+automation:170	feature	1.9 Activity journal and replay	Recording in `Execute`
+automation:171	feature	1.9 Activity journal and replay	Edits outside commands
+automation:172	feature	1.9 Activity journal and replay	ID collection
+automation:173	feature	1.9 Activity journal and replay	Replay script (`BuildReplayScript`)
+automation:174	feature	1.9 Activity journal and replay	Latest automation activity
+automation:175	feature	1.9 Activity journal and replay	Summaries
+automation:176	feature	1.9 Activity journal and replay	Activity panel
+automation:182	feature	1.10 Presence in the editor UI	Automation pill
+automation:183	feature	1.10 Presence in the editor UI	Agent chip
+automation:184	feature	1.10 Presence in the editor UI	Agent flash
+automation:185	feature	1.10 Presence in the editor UI	"Connect an AI agent" card
+automation:191	feature	1.11 StrataCLI (command-line client)	Executable structure
+automation:192	feature	1.11 StrataCLI (command-line client)	Commands
+automation:193	feature	1.11 StrataCLI (command-line client)	Exit codes
+automation:194	feature	1.11 StrataCLI (command-line client)	Argument parsing
+automation:195	feature	1.11 StrataCLI (command-line client)	Image results
+automation:196	feature	1.11 StrataCLI (command-line client)	Logging
+automation:197	feature	1.11 StrataCLI (command-line client)	Endpoint discovery
+automation:198	feature	1.11 StrataCLI (command-line client)	Pinned editor
+automation:199	feature	1.11 StrataCLI (command-line client)	Launching
+automation:200	feature	1.11 StrataCLI (command-line client)	Editor path
+automation:201	feature	1.11 StrataCLI (command-line client)	Token on the command line
+automation:207	feature	1.12 MCP server (`StrataCLI mcp`)	Protocol
+automation:208	feature	1.12 MCP server (`StrataCLI mcp`)	Generic tools
+automation:209	feature	1.12 MCP server (`StrataCLI mcp`)	Commands become tools
+automation:210	feature	1.12 MCP server (`StrataCLI mcp`)	Result mapping
+automation:211	feature	1.12 MCP server (`StrataCLI mcp`)	Toolsets
+automation:212	feature	1.12 MCP server (`StrataCLI mcp`)	Compact definitions
+automation:213	feature	1.12 MCP server (`StrataCLI mcp`)	Budget
+automation:214	feature	1.12 MCP server (`StrataCLI mcp`)	`strata_describe`
+automation:215	feature	1.12 MCP server (`StrataCLI mcp`)	Launch from MCP
+automation:216	feature	1.12 MCP server (`StrataCLI mcp`)	Client name forwarding
+automation:217	feature	1.12 MCP server (`StrataCLI mcp`)	Stream runner
+automation:223	feature	1.13 Agent-facing documentation (skills, readme)	`strata-editor-automation` skill
+automation:224	feature	1.13 Agent-facing documentation (skills, readme)	`strata-make-a-game` skill
+automation:225	feature	1.13 Agent-facing documentation (skills, readme)	Package readme
+automation:226	feature	1.13 Agent-facing documentation (skills, readme)	Shipping
+automation:232	feature	1.14 Tests (what they pin down)	`Network.Socket`
+automation:233	feature	1.14 Tests (what they pin down)	`Network.JsonRpc`
+automation:234	feature	1.14 Tests (what they pin down)	`Network.RpcServer`, `Network.RpcPresence`
+automation:235	feature	1.14 Tests (what they pin down)	`Network.EditorSession`
+automation:236	feature	1.14 Tests (what they pin down)	`CLI.Commands`
+automation:237	feature	1.14 Tests (what they pin down)	`CLI.Discovery`
+automation:238	feature	1.14 Tests (what they pin down)	`CLI.Mcp`, `CLI.McpToolsets`, `CLI.McpPresence`
+automation:239	feature	1.14 Tests (what they pin down)	`Editor.Automation`
+automation:240	feature	1.14 Tests (what they pin down)	`Editor.Journal`
+automation:241	feature	1.14 Tests (what they pin down)	`Editor.CommandScriptBindings`, `Editor.Replay`
+automation:242	feature	1.14 Tests (what they pin down)	`EndToEnd.EditorAutomation`
+automation:243	feature	1.14 Tests (what they pin down)	CTest `ReplaySession`
+automation:244	feature	1.14 Tests (what they pin down)	Test helpers
+automation:269	concept	2.1 Why automate an editor at all	2.1 Why automate an editor at all
+automation:284	concept	2.2 Processes, sockets and ports (from nothing)	2.2 Processes, sockets and ports (from nothing)
+automation:298	concept	2.3 Framing and serialization	2.3 Framing and serialization
+automation:310	concept	2.4 Remote procedure calls and JSON-RPC 2.0	2.4 Remote procedure calls and JSON-RPC 2.0
+automation:324	concept	2.5 Threads and the main-thread rule	2.5 Threads and the main-thread rule
+automation:338	concept	2.6 Deferred (asynchronous) commands	2.6 Deferred (asynchronous) commands
+automation:350	concept	2.7 Robustness under load: limits and backpressure	2.7 Robustness under load: limits and backpressure
+automation:363	concept	2.8 Security model: who may drive the editor	2.8 Security model: who may drive the editor
+automation:381	concept	2.9 Discovery and session files	2.9 Discovery and session files
+automation:395	concept	2.10 Client connection policy: pinning	2.10 Client connection policy: pinning
+automation:404	concept	2.11 Lifecycle: launch, readiness, idle, shutdown	2.11 Lifecycle: launch, readiness, idle, shutdown
+automation:415	concept	2.12 The Model Context Protocol and tool design for language models	2.12 The Model Context Protocol and tool design for language models
+automation:430	concept	2.13 Accountability: the activity journal, presence and replay	2.13 Accountability: the activity journal, presence and replay
+automation:444	concept	2.14 Determinism for agents	2.14 Determinism for agents
+automation:458	code		Framing in three lines
+automation:460	code		`JsonLineReader::Append` and `NextLine`
+automation:462	code		Rejecting deep JSON before parsing
+automation:464	code		`ValidateRequest`
+automation:466	code		Error codes
+automation:468	code		The non-blocking socket contract
+automation:470	code		The self-pipe trick on Windows
+automation:472	code		`IsLoopbackAddress`
+automation:474	code		The handshake specification as a comment
+automation:476	code		Server side of the handshake
+automation:479	code		Client side of the handshake
+automation:480	code		Proof computation
+automation:481	code		The network thread's iteration
+automation:484	code		Eviction policy as a pure function
+automation:486	code		Backpressure in one predicate
+automation:488	code		`ProcessRequests`
+automation:490	code		`RpcResponder` and the "never hang" destructor
+automation:492	code		Orderly close
+automation:494	code		Session process identity
+automation:496	code		Race-safe stale removal
+automation:498	code		Untrusted pointer, trusted file
+automation:500	code		Commands become methods
+automation:502	code		A request runs a command
+automation:504	code		Error mapping
+automation:506	code		Execute journals every command
+automation:508	code		Replay script construction
+automation:511	code		Endpoint discovery and pinning
+automation:512	code		Readiness by progress, not time
+automation:514	code		Commands as MCP tools
+automation:516	code		Toolset mapping and compaction
+automation:518	code		Stdio runner with ticks
+automation:520	code		Tests as documentation
+automation:530	figure	Diagrams	The four layers
+automation:534	figure	Diagrams	Commands are the API
+automation:536	figure	Diagrams	Message framing
+automation:538	figure	Diagrams	Handshake sequence
+automation:541	figure	Diagrams	Connection state machine
+automation:544	figure	Diagrams	Threads and hand-offs
+automation:546	figure	Diagrams	A deferred request timeline
+automation:549	figure	Diagrams	Backpressure
+automation:551	figure	Diagrams	Graceful stop
+automation:553	figure	Diagrams	Session files and discovery
+automation:556	figure	Diagrams	Stale-file removal
+automation:558	figure	Diagrams	Pinning
+automation:560	figure	Diagrams	Launch and readiness
+automation:562	figure	Diagrams	Toolsets
+automation:564	figure	Diagrams	Replay export
+automation:566	figure	Diagrams	Error code map
+automation:574	figure	Screenshots	Launcher, "Connect an AI agent" card
+automation:577	figure	Screenshots	Status bar automation pill
+automation:579	figure	Screenshots	Viewport agent chip and flash
+automation:581	figure	Screenshots	Activity panel
+automation:584	figure	Screenshots	Toast naming the agent
+automation:586	figure	Screenshots	Terminal sessions
+automation:588	figure	Screenshots	An MCP client's view
+automation:590	figure	Screenshots	Raw wire traffic
+automation:597	rule		Loopback only, never another address
+automation:600	rule		No server without a token; the token never crosses the wire, is never logged or printed
+automation:603	rule		Server proves first
+automation:604	rule		Compare secrets in constant time
+automation:605	rule		The project's `.strata/EditorSession.json` is untrusted and never holds port or token
+automation:607	rule		Session files are private (owner-only, private directory, no shared fallback, no symlinked…
+automation:609	rule		A pid is not an identity: check the start time
+automation:611	rule		Never check-then-delete shared files: take them aside atomically and judge again
+automation:613	rule		Commands are the API: never write an RPC endpoint for a feature; register a command with an…
+automation:615	rule		Handlers run on the main thread; the network thread never touches engine state
+automation:617	rule		Commands never block a frame; use `Defer` and mark `MayDefer`
+automation:619	rule		Poll functions own their data
+automation:620	rule		Every request gets exactly one answer
+automation:622	rule		Bound everything a peer controls
+automation:624	rule		Throttle slow readers, drop only stalled ones
+automation:626	rule		Close in order: answers, half-close, wait for the peer, close
+automation:628	rule		Remove the session before stopping the server; cancel pending commands before that
+automation:630	rule		A connection never silently switches editors
+automation:632	rule		Readiness by progress, not by a fixed timeout
+automation:634	rule		MCP: at most 32 tools and 30 KiB by default; a command added to core takes another's place
+automation:636	rule		The first sentence of a command's description must say what it does
+automation:637	rule		Mark every command's kind (Edit/Query/Session) and session-following results
+automation:639	rule		UI code passes `CommandOrigin { CommandSource::UI }`
+automation:640	rule		Client names are shown, never trusted, and sanitized
+automation:642	rule		A CLI timeout (exit 4) does not mean failure; never start another editor
+automation:643	rule		Commands that replace the scene refuse unsaved changes unless `force`; never force away a person's…
+automation:645	rule		Stdout of StrataCLI is protocol; logs go to stderr; stdio is binary
+automation:647	rule		Tests never use a real user's session directory and never need a real editor for CLI/MCP tests
+automation:656	hands-on	For game developers (using automation)	First contact
+automation:658	hands-on	For game developers (using automation)	Build a scene from the shell
+automation:660	hands-on	For game developers (using automation)	Read an error
+automation:662	hands-on	For game developers (using automation)	Connect Claude Code
+automation:664	hands-on	For game developers (using automation)	Capture and look
+automation:666	hands-on	For game developers (using automation)	Deterministic play-test
+automation:668	hands-on	For game developers (using automation)	Turn a session into a regression test
+automation:671	hands-on	For game developers (using automation)	Atomic batch
+automation:673	hands-on	For game developers (using automation)	Make a whole game the agent way
+automation:678	hands-on	For engine developers (changing the engine)	Write a raw client
+automation:681	hands-on	For engine developers (changing the engine)	Add an editor command and see it everywhere
+automation:685	hands-on	For engine developers (changing the engine)	Make it deferred
+automation:687	hands-on	For engine developers (changing the engine)	Break backpressure on purpose
+automation:689	hands-on	For engine developers (changing the engine)	Remove the server-first check
+automation:692	hands-on	For engine developers (changing the engine)	A new MCP generic tool
+automation:694	hands-on	For engine developers (changing the engine)	Trace a request end to end
+automation:696	hands-on	For engine developers (changing the engine)	Session file race
+automation:703	term		Automation
+automation:704	term		Agent (AI agent)
+automation:705	term		Command
+automation:707	term		Command registry
+automation:708	term		Command kind
+automation:709	term		Deferred command
+automation:710	term		`MayDefer`
+automation:711	term		Command script
+automation:713	term		Binding / `$ref`
+automation:714	term		Process
+automation:715	term		Process start time
+automation:716	term		Socket
+automation:717	term		TCP
+automation:718	term		Port; ephemeral port
+automation:719	term		Loopback
+automation:720	term		Listener / accept
+automation:721	term		Non-blocking I/O, poll
+automation:722	term		Half-close
+automation:723	term		Connection reset
+automation:724	term		SIGPIPE
+automation:725	term		Nagle's algorithm
+automation:726	term		Self-pipe trick / notifier
+automation:727	term		Framing
+automation:728	term		JSON
+automation:729	term		JSON Schema
+automation:730	term		JSON pointer
+automation:731	term		RPC
+automation:732	term		JSON-RPC 2.0
+automation:733	term		Notification
+automation:734	term		Batch
+automation:735	term		Built-in methods
+automation:736	term		Responder
+automation:737	term		Network thread
+automation:738	term		Main thread
+automation:739	term		Backpressure
+automation:740	term		Requests in flight
+automation:741	term		Stall timeout
+automation:742	term		Graceful stop / grace period
+automation:743	term		Token (session token)
+automation:744	term		Nonce
+automation:745	term		Hash (SHA-256)
+automation:746	term		HMAC
+automation:747	term		Challenge-response
+automation:748	term		Mutual authentication
+automation:749	term		Replay attack
+automation:750	term		Reflection attack
+automation:751	term		Constant-time comparison
+automation:752	term		Domain separation label
+automation:753	term		CSPRNG
+automation:754	term		Threat model
+automation:755	term		Session file
+automation:756	term		Project pointer
+automation:757	term		Private directory / owner-only file
+automation:759	term		DACL
+automation:760	term		TOCTOU
+automation:761	term		Stale session
+automation:762	term		Discovery
+automation:763	term		Pinning
+automation:764	term		Headless; no-gpu
+automation:765	term		Idle timeout
+automation:766	term		StrataCLI
+automation:767	term		Exit code
+automation:768	term		stdio / stdin / stdout / stderr
+automation:769	term		MCP (Model Context Protocol)
+automation:770	term		MCP client / server
+automation:771	term		Tool
+automation:772	term		Toolset
+automation:773	term		Core toolset
+automation:774	term		Generic tools
+automation:775	term		Compact definition
+automation:776	term		Tokens (LLM)
+automation:777	term		`structuredContent`
+automation:778	term		`tools/list_changed`
+automation:779	term		Progress token / notifications/progress
+automation:780	term		Activity journal
+automation:781	term		Command origin / source
+automation:782	term		Presence
+automation:783	term		Replay script / export
+automation:784	term		Edits outside commands
+automation:785	term		Running copy
+automation:786	term		Fixed step
+automation:829	open		Read only in part
+automation:836	open		Not read
+automation:841	open		Release history
+automation:844	open		Counts quoted from the guide, not recomputed
+automation:847	open		Feature test
+automation:850	open		Screenshots

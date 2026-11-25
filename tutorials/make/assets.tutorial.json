@@ -1,0 +1,183 @@
+{
+	"page": "make/assets",
+	"startsFrom": {
+		"tutorial": "make/scenes-entities"
+	},
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{
+					"command": "asset.createFolder",
+					"parameters": {
+						"path": "Models"
+					}
+				},
+				{
+					"command": "asset.import",
+					"parameters": {
+						"file": "@RELEASE@/Samples/ThirdPerson/Assets/Models/Platformer/coin-gold.glb",
+						"directory": "Models"
+					}
+				},
+				{
+					"command": "asset.info",
+					"parameters": {
+						"asset": "Models/coin-gold/coin-gold.glb"
+					}
+				},
+				{
+					"command": "asset.info",
+					"parameters": {
+						"asset": "Models/coin-gold/coin-gold.glb",
+						"bounds": false
+					}
+				},
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Models/coin-gold/coin-gold.glb",
+						"point": [
+							2,
+							0,
+							2
+						]
+					},
+					"bind": {
+						"coin": "/id"
+					}
+				},
+				{
+					"command": "asset.info",
+					"parameters": {
+						"asset": "Models/coin-gold/coin-gold.glb"
+					},
+					"checks": [
+						{
+							"pointer": "/bounds/size/0",
+							"approx": 0.4,
+							"tolerance": 0.01
+						},
+						{
+							"pointer": "/bounds/size/1",
+							"approx": 0.4,
+							"tolerance": 0.01
+						},
+						{
+							"pointer": "/bounds/size/2",
+							"approx": 0.175,
+							"tolerance": 0.01
+						}
+					]
+				},
+				{
+					"command": "asset.info",
+					"parameters": {
+						"asset": "Models/coin-gold/coin-gold.glb",
+						"bounds": false
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Coin"
+					},
+					"bind": {
+						"old": "/entities/0"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "entity.delete",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "old"
+							}
+						]
+					}
+				},
+				{
+					"command": "component.add",
+					"parameters": {
+						"entity": {
+							"$ref": "coin"
+						},
+						"component": "Tag",
+						"values": {
+							"Tag": "Coin"
+						}
+					}
+				},
+				{
+					"command": "entity.rename",
+					"parameters": {
+						"entity": {
+							"$ref": "coin"
+						},
+						"name": "Coin"
+					}
+				},
+				{
+					"command": "entity.find",
+					"parameters": {
+						"name": "Coin"
+					},
+					"checks": [
+						{
+							"pointer": "/entities",
+							"length": 1
+						}
+					]
+				},
+				{
+					"command": "asset.moveFolder",
+					"parameters": {
+						"path": "Models",
+						"to": "Props"
+					}
+				},
+				{
+					"command": "asset.info",
+					"parameters": {
+						"asset": "Props/coin-gold/coin-gold.glb",
+						"bounds": false
+					},
+					"checks": [
+						{
+							"pointer": "/path",
+							"equals": "Props/coin-gold/coin-gold.glb"
+						}
+					],
+					"until": {
+						"seconds": 120
+					},
+					"expect": {
+						"/importing": {
+							"equals": false
+						}
+					}
+				},
+				{
+					"command": "asset.moveFolder",
+					"parameters": {
+						"path": "Props",
+						"to": "Models"
+					}
+				},
+				{
+					"command": "asset.findReferences",
+					"parameters": {
+						"asset": "Models/coin-gold/coin-gold.glb"
+					}
+				}
+			],
+			"endState": true
+		}
+	]
+}

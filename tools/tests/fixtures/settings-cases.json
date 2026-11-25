@@ -1,0 +1,40 @@
+{
+	"description": "Cases of site.json's values (rulings 6, R24) that tools/booklib/settings.py and src/lib/settings.mjs both pass: a base and what it becomes, an origin and what it becomes, an origin a release refuses. \"error\": true means the value is refused.",
+	"base": [
+		{"value": "/strata-engine-docs", "base": "/strata-engine-docs"},
+		{"value": " /strata-engine-docs/ ", "base": "/strata-engine-docs"},
+		{"value": "/", "base": ""},
+		{"value": "/a/b/", "base": "/a/b"},
+		{"value": "/x.y_z~-1", "base": "/x.y_z~-1"},
+		{"value": "", "error": true},
+		{"value": "   ", "error": true},
+		{"value": "docs", "error": true},
+		{"value": "//host/docs", "error": true},
+		{"value": "/a b", "error": true},
+		{"value": "/a?b", "error": true},
+		{"value": "/a//b", "error": true},
+		{"value": "/a/../b", "error": true},
+		{"value": "/a/./b", "error": true}
+	],
+	"origin": [
+		{"value": "https://books.example.org", "origin": "https://books.example.org"},
+		{"value": "https://Books.Example.ORG/", "origin": "https://books.example.org"},
+		{"value": "https://books.example.org:443", "origin": "https://books.example.org"},
+		{"value": "https://books.example.org:8443", "origin": "https://books.example.org:8443"},
+		{"value": "http://localhost:4321", "origin": "http://localhost:4321"},
+		{"value": "https://books.example.org/docs", "error": true},
+		{"value": "https://books.example.org?x=1", "error": true},
+		{"value": "https://books.example.org#top", "error": true},
+		{"value": "ftp://books.example.org", "error": true},
+		{"value": "books.example.org", "error": true},
+		{"value": "", "error": true},
+		{"value": "https://user:secret@books.example.org", "error": true}
+	],
+	"release": [
+		{"origin": "https://books.example.org", "refused": false},
+		{"origin": "http://books.example.org", "refused": true},
+		{"origin": "https://localhost", "refused": true},
+		{"origin": "https://127.0.0.1", "refused": true},
+		{"origin": "https://example.com", "refused": true}
+	]
+}

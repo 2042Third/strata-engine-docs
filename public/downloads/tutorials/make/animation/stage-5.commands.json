@@ -1,0 +1,252 @@
+[
+	{
+		"command": "animation.setController",
+		"parameters": {
+			"controller": "Animations/Player.stanimator",
+			"parameters": [
+				{
+					"Name": "Speed",
+					"Type": "Float"
+				},
+				{
+					"Name": "Grounded",
+					"Type": "Bool",
+					"Default": true
+				},
+				{
+					"Name": "Jump",
+					"Type": "Trigger"
+				}
+			],
+			"states": [
+				{
+					"Name": "Idle",
+					"Clip": "E9C1D4AC112447DE"
+				},
+				{
+					"Name": "Walk",
+					"Clip": "57D5825B3AB8DCFD"
+				},
+				{
+					"Name": "Run",
+					"Clip": "76CC7E24795F51DA"
+				},
+				{
+					"Name": "Jump",
+					"Clip": "5C84360EC5B352B3",
+					"Loop": false
+				}
+			]
+		}
+	},
+	{
+		"command": "animation.setController",
+		"parameters": {
+			"controller": "Animations/Player.stanimator",
+			"transitions": [
+				{
+					"AnyState": true,
+					"To": "Jump",
+					"Duration": 0.1,
+					"Conditions": [
+						{
+							"Parameter": "Jump",
+							"Mode": "Set"
+						}
+					]
+				},
+				{
+					"From": "Idle",
+					"To": "Walk",
+					"Duration": 0.15,
+					"Conditions": [
+						{
+							"Parameter": "Speed",
+							"Mode": "Greater",
+							"Threshold": 0.1
+						}
+					]
+				},
+				{
+					"From": "Walk",
+					"To": "Idle",
+					"Duration": 0.2,
+					"Conditions": [
+						{
+							"Parameter": "Speed",
+							"Mode": "Less",
+							"Threshold": 0.1
+						}
+					]
+				},
+				{
+					"From": "Walk",
+					"To": "Run",
+					"Duration": 0.2,
+					"Conditions": [
+						{
+							"Parameter": "Speed",
+							"Mode": "Greater",
+							"Threshold": 4.5
+						}
+					]
+				},
+				{
+					"From": "Run",
+					"To": "Walk",
+					"Duration": 0.2,
+					"Conditions": [
+						{
+							"Parameter": "Speed",
+							"Mode": "Less",
+							"Threshold": 4.5
+						}
+					]
+				},
+				{
+					"From": "Jump",
+					"To": "Idle",
+					"Duration": 0.15,
+					"ExitTime": 0.4,
+					"Conditions": [
+						{
+							"Parameter": "Grounded",
+							"Mode": "True"
+						},
+						{
+							"Parameter": "Speed",
+							"Mode": "Less",
+							"Threshold": 0.1
+						}
+					]
+				},
+				{
+					"From": "Jump",
+					"To": "Walk",
+					"Duration": 0.15,
+					"ExitTime": 0.4,
+					"Conditions": [
+						{
+							"Parameter": "Grounded",
+							"Mode": "True"
+						},
+						{
+							"Parameter": "Speed",
+							"Mode": "Greater",
+							"Threshold": 0.1
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 20
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 20
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "animation.info",
+		"parameters": {
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "Space",
+			"steps": 1
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 20
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 20
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "animation.info",
+		"parameters": {
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 180
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 180
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Robot"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "animation.info",
+		"parameters": {
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

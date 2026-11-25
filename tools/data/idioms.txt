@@ -1,0 +1,80 @@
+# Idioms a page never uses (plan/style.md §2.1 and §2.2, rule idiom). One phrase per line, matched as whole words in
+# any case; the first word may carry -s, -es, -ed, -d or -ing ("kicks off"). The provenance reviewer finds the idioms
+# this list misses, and they are added here.
+under the hood
+out of the box
+on the fly
+rule of thumb
+in a nutshell
+off the shelf
+the bottom line
+at the end of the day
+a piece of cake
+kick off
+behind the scenes
+by the same token
+in the long run
+in the same boat
+up to speed
+from scratch
+a drop in the bucket
+the tip of the iceberg
+cut corners
+hit the ground running
+low-hanging fruit
+food for thought
+a ballpark figure
+ballpark
+across the board
+back to square one
+bite the bullet
+break the ice
+by and large
+call it a day
+cross that bridge
+cutting edge
+cutting-edge
+fair and square
+first and foremost
+get the hang of
+go the extra mile
+hand in hand
+heavy lifting
+jump the gun
+keep an eye on
+last but not least
+learn the ropes
+make or break
+needle in a haystack
+no-brainer
+once in a blue moon
+on the nose
+out of the woods
+pull the plug
+rocket science
+silver bullet
+smoke and mirrors
+spill the beans
+state of the art
+state-of-the-art
+take a back seat
+the elephant in the room
+think outside the box
+through the roof
+to the letter
+touch base
+when push comes to shove
+win-win
+work like a charm
+works like a charm
+your mileage may vary
+bells and whistles
+belt and braces
+chicken and egg
+nuts and bolts
+the lion's share
+sweet spot
+game changer
+game-changer
+deep dive
+under the covers

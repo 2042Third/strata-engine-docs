@@ -1,0 +1,3339 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"components": [
+		{
+			"name": "Animator",
+			"type": "AnimatorComponent",
+			"file": "Strata/src/Strata/Animation/AnimationComponents.cpp",
+			"line": 33,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Skeleton",
+					"method": "AssetProperty",
+					"line": 36,
+					"flags": []
+				},
+				{
+					"name": "Controller",
+					"method": "AssetProperty",
+					"line": 37,
+					"flags": []
+				},
+				{
+					"name": "Clip",
+					"method": "AssetProperty",
+					"line": 38,
+					"flags": []
+				},
+				{
+					"name": "Speed",
+					"method": "Property",
+					"line": 39,
+					"flags": []
+				},
+				{
+					"name": "Loop",
+					"method": "Property",
+					"line": 40,
+					"flags": []
+				},
+				{
+					"name": "PlayOnStart",
+					"method": "Property",
+					"line": 41,
+					"flags": []
+				},
+				{
+					"name": "ApplyRootMotion",
+					"method": "Property",
+					"line": 42,
+					"flags": []
+				},
+				{
+					"name": "CullingMode",
+					"method": "EnumProperty",
+					"line": 43,
+					"flags": []
+				}
+			],
+			"category": "Animation",
+			"description": "Plays a skeleton's animations: an animation controller's states, or one clip"
+		},
+		{
+			"name": "AttachToJoint",
+			"type": "AttachToJointComponent",
+			"file": "Strata/src/Strata/Animation/AnimationComponents.cpp",
+			"line": 47,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Animator",
+					"method": "EntityProperty",
+					"line": 51,
+					"flags": []
+				},
+				{
+					"name": "Joint",
+					"method": "Property",
+					"line": 52,
+					"flags": []
+				}
+			],
+			"displayName": "Attach To Joint",
+			"category": "Animation",
+			"description": "Places the entity at a joint of an animator's pose (a sword in a hand)"
+		},
+		{
+			"name": "AudioListener",
+			"type": "AudioListenerComponent",
+			"file": "Strata/src/Strata/Audio/AudioComponents.cpp",
+			"line": 26,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Active",
+					"method": "Property",
+					"line": 29,
+					"flags": []
+				}
+			],
+			"displayName": "Audio Listener",
+			"category": "Audio"
+		},
+		{
+			"name": "AudioSource",
+			"type": "AudioSourceComponent",
+			"file": "Strata/src/Strata/Audio/AudioComponents.cpp",
+			"line": 13,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Clip",
+					"method": "AssetProperty",
+					"line": 16,
+					"flags": []
+				},
+				{
+					"name": "Volume",
+					"method": "Property",
+					"line": 17,
+					"flags": []
+				},
+				{
+					"name": "Pitch",
+					"method": "Property",
+					"line": 18,
+					"flags": []
+				},
+				{
+					"name": "Loop",
+					"method": "Property",
+					"line": 19,
+					"flags": []
+				},
+				{
+					"name": "PlayOnStart",
+					"method": "Property",
+					"line": 20,
+					"flags": []
+				},
+				{
+					"name": "Spatial",
+					"method": "Property",
+					"line": 21,
+					"flags": []
+				},
+				{
+					"name": "MinDistance",
+					"method": "Property",
+					"line": 22,
+					"flags": []
+				},
+				{
+					"name": "MaxDistance",
+					"method": "Property",
+					"line": 23,
+					"flags": []
+				},
+				{
+					"name": "Rolloff",
+					"method": "Property",
+					"line": 24,
+					"flags": []
+				}
+			],
+			"displayName": "Audio Source",
+			"category": "Audio"
+		},
+		{
+			"name": "BoxCollider",
+			"type": "BoxColliderComponent",
+			"file": "Strata/src/Strata/Physics/PhysicsComponents.cpp",
+			"line": 138,
+			"flags": [],
+			"properties": [
+				{
+					"name": "HalfExtents",
+					"method": "Property",
+					"line": 141,
+					"flags": []
+				},
+				{
+					"name": "Offset",
+					"method": "Property",
+					"line": 142,
+					"flags": []
+				}
+			],
+			"displayName": "Box Collider",
+			"category": "Physics"
+		},
+		{
+			"name": "Camera",
+			"type": "CameraComponent",
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 153,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Projection",
+					"method": "EnumProperty",
+					"line": 155,
+					"flags": []
+				},
+				{
+					"name": "PerspectiveFOV",
+					"method": "Property",
+					"line": 156,
+					"flags": []
+				},
+				{
+					"name": "PerspectiveNear",
+					"method": "Property",
+					"line": 157,
+					"flags": []
+				},
+				{
+					"name": "PerspectiveFar",
+					"method": "Property",
+					"line": 158,
+					"flags": []
+				},
+				{
+					"name": "OrthographicSize",
+					"method": "Property",
+					"line": 159,
+					"flags": []
+				},
+				{
+					"name": "OrthographicNear",
+					"method": "Property",
+					"line": 160,
+					"flags": []
+				},
+				{
+					"name": "OrthographicFar",
+					"method": "Property",
+					"line": 161,
+					"flags": []
+				},
+				{
+					"name": "Primary",
+					"method": "Property",
+					"line": 162,
+					"flags": []
+				},
+				{
+					"name": "ClearColor",
+					"method": "Property",
+					"line": 163,
+					"flags": []
+				},
+				{
+					"name": "DepthOfField",
+					"method": "Property",
+					"line": 165,
+					"flags": []
+				},
+				{
+					"name": "FocusDistance",
+					"method": "Property",
+					"line": 168,
+					"flags": []
+				},
+				{
+					"name": "FocusEntity",
+					"method": "EntityProperty",
+					"line": 170,
+					"flags": []
+				},
+				{
+					"name": "Aperture",
+					"method": "Property",
+					"line": 172,
+					"flags": []
+				},
+				{
+					"name": "SensorHeight",
+					"method": "Property",
+					"line": 175,
+					"flags": []
+				}
+			],
+			"category": "Rendering"
+		},
+		{
+			"name": "CapsuleCollider",
+			"type": "CapsuleColliderComponent",
+			"file": "Strata/src/Strata/Physics/PhysicsComponents.cpp",
+			"line": 152,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Radius",
+					"method": "Property",
+					"line": 155,
+					"flags": []
+				},
+				{
+					"name": "HalfHeight",
+					"method": "Property",
+					"line": 156,
+					"flags": []
+				},
+				{
+					"name": "Offset",
+					"method": "Property",
+					"line": 157,
+					"flags": []
+				}
+			],
+			"displayName": "Capsule Collider",
+			"category": "Physics"
+		},
+		{
+			"name": "CharacterController",
+			"type": "CharacterControllerComponent",
+			"file": "Strata/src/Strata/Physics/PhysicsComponents.cpp",
+			"line": 167,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Height",
+					"method": "Property",
+					"line": 172,
+					"flags": []
+				},
+				{
+					"name": "Radius",
+					"method": "Property",
+					"line": 174,
+					"flags": []
+				},
+				{
+					"name": "StepHeight",
+					"method": "Property",
+					"line": 175,
+					"flags": []
+				},
+				{
+					"name": "MaxSlopeDegrees",
+					"method": "Property",
+					"line": 177,
+					"flags": []
+				},
+				{
+					"name": "Layer",
+					"method": "Property",
+					"line": 179,
+					"flags": []
+				},
+				{
+					"name": "GravityScale",
+					"method": "Property",
+					"line": 180,
+					"flags": []
+				},
+				{
+					"name": "PushStrength",
+					"method": "Property",
+					"line": 181,
+					"flags": []
+				},
+				{
+					"name": "Enabled",
+					"method": "Property",
+					"line": 183,
+					"flags": []
+				}
+			],
+			"displayName": "Character Controller",
+			"category": "Physics",
+			"description": "An upright capsule that scripts walk, jump and teleport: it slides along walls, walks up steps and walkable slopes and pushes dynamic bodies; its bottom is the entity's origin"
+		},
+		{
+			"name": "DirectionalLight",
+			"type": "DirectionalLightComponent",
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 280,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Color",
+					"method": "Property",
+					"line": 285,
+					"flags": []
+				},
+				{
+					"name": "Intensity",
+					"method": "Property",
+					"line": 287,
+					"flags": []
+				},
+				{
+					"name": "ShadowSoftness",
+					"method": "Property",
+					"line": 291,
+					"flags": []
+				},
+				{
+					"name": "CastShadows",
+					"method": "Property",
+					"line": 296,
+					"flags": []
+				},
+				{
+					"name": "ShadowDistance",
+					"method": "Property",
+					"line": 298,
+					"flags": []
+				},
+				{
+					"name": "ShadowBias",
+					"method": "Property",
+					"line": 300,
+					"flags": []
+				},
+				{
+					"name": "ShadowNormalBias",
+					"method": "Property",
+					"line": 302,
+					"flags": []
+				},
+				{
+					"name": "CascadeBlend",
+					"method": "Property",
+					"line": 304,
+					"flags": []
+				},
+				{
+					"name": "ContactShadowLength",
+					"method": "Property",
+					"line": 307,
+					"flags": []
+				},
+				{
+					"name": "CascadeDistribution",
+					"method": "Property",
+					"line": 311,
+					"flags": []
+				}
+			],
+			"displayName": "Directional Light",
+			"category": "Lighting",
+			"description": "Sun-like light shining along the entity's forward (-Z) direction; its intensity is illuminance in lux"
+		},
+		{
+			"name": "HeightFog",
+			"type": "HeightFogComponent",
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 405,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Density",
+					"method": "Property",
+					"line": 409,
+					"flags": []
+				},
+				{
+					"name": "HeightFalloff",
+					"method": "Property",
+					"line": 411,
+					"flags": []
+				},
+				{
+					"name": "BaseHeight",
+					"method": "Property",
+					"line": 414,
+					"flags": []
+				},
+				{
+					"name": "StartDistance",
+					"method": "Property",
+					"line": 415,
+					"flags": []
+				},
+				{
+					"name": "MaxOpacity",
+					"method": "Property",
+					"line": 416,
+					"flags": []
+				},
+				{
+					"name": "Color",
+					"method": "Property",
+					"line": 418,
+					"flags": []
+				},
+				{
+					"name": "ColorFromSky",
+					"method": "Property",
+					"line": 419,
+					"flags": []
+				},
+				{
+					"name": "SunScattering",
+					"method": "Property",
+					"line": 422,
+					"flags": []
+				}
+			],
+			"displayName": "Height Fog",
+			"category": "Rendering",
+			"description": "Fog that thickens toward the ground, over the scene's surfaces and its sky (the first active one applies)"
+		},
+		{
+			"name": "ID",
+			"type": "IDComponent",
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 70,
+			"flags": [
+				"Hidden",
+				"NotRemovable",
+				"NoSerialize"
+			],
+			"properties": [
+				{
+					"name": "ID",
+					"method": "EntityProperty",
+					"line": 73,
+					"flags": [
+						"ReadOnly"
+					]
+				}
+			],
+			"category": "Core"
+		},
+		{
+			"name": "Inactive",
+			"type": "InactiveComponent",
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 98,
+			"flags": [
+				"Hidden"
+			],
+			"properties": [],
+			"category": "Core",
+			"description": "Deactivates the entity and its descendants"
+		},
+		{
+			"name": "MeshCollider",
+			"type": "MeshColliderComponent",
+			"file": "Strata/src/Strata/Physics/PhysicsComponents.cpp",
+			"line": 160,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Mesh",
+					"method": "AssetProperty",
+					"line": 163,
+					"flags": []
+				},
+				{
+					"name": "Convex",
+					"method": "Property",
+					"line": 164,
+					"flags": []
+				}
+			],
+			"displayName": "Mesh Collider",
+			"category": "Physics"
+		},
+		{
+			"name": "MeshRenderer",
+			"type": "MeshRendererComponent",
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 273,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Mesh",
+					"method": "AssetProperty",
+					"line": 276,
+					"flags": []
+				},
+				{
+					"name": "Material",
+					"method": "AssetProperty",
+					"line": 277,
+					"flags": []
+				},
+				{
+					"name": "CastShadows",
+					"method": "Property",
+					"line": 278,
+					"flags": []
+				}
+			],
+			"displayName": "Mesh Renderer",
+			"category": "Rendering"
+		},
+		{
+			"name": "Name",
+			"type": "NameComponent",
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 75,
+			"flags": [
+				"NotRemovable"
+			],
+			"properties": [
+				{
+					"name": "Name",
+					"method": "Property",
+					"line": 78,
+					"flags": []
+				}
+			],
+			"category": "Core"
+		},
+		{
+			"name": "PointLight",
+			"type": "PointLightComponent",
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 317,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Color",
+					"method": "Property",
+					"line": 322,
+					"flags": []
+				},
+				{
+					"name": "Intensity",
+					"method": "Property",
+					"line": 323,
+					"flags": []
+				},
+				{
+					"name": "Range",
+					"method": "Property",
+					"line": 326,
+					"flags": []
+				},
+				{
+					"name": "SourceRadius",
+					"method": "Property",
+					"line": 327,
+					"flags": []
+				},
+				{
+					"name": "CastShadows",
+					"method": "Property",
+					"line": 329,
+					"flags": []
+				},
+				{
+					"name": "ShadowBias",
+					"method": "Property",
+					"line": 330,
+					"flags": []
+				},
+				{
+					"name": "ShadowNormalBias",
+					"method": "Property",
+					"line": 331,
+					"flags": []
+				},
+				{
+					"name": "ShadowFilterRadius",
+					"method": "Property",
+					"line": 332,
+					"flags": []
+				}
+			],
+			"displayName": "Point Light",
+			"category": "Lighting",
+			"description": "Light shining in every direction from the entity's position, with shadows in six directions when it casts them; its intensity is luminous intensity in candela"
+		},
+		{
+			"name": "PostProcess",
+			"type": "PostProcessComponent",
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 447,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Tonemapper",
+					"method": "EnumProperty",
+					"line": 452,
+					"flags": []
+				},
+				{
+					"name": "Exposure",
+					"method": "Property",
+					"line": 459,
+					"flags": []
+				},
+				{
+					"name": "AutoExposure",
+					"method": "Property",
+					"line": 460,
+					"flags": []
+				},
+				{
+					"name": "AutoExposureMinEV",
+					"method": "Property",
+					"line": 462,
+					"flags": []
+				},
+				{
+					"name": "AutoExposureMaxEV",
+					"method": "Property",
+					"line": 464,
+					"flags": []
+				},
+				{
+					"name": "AutoExposureSpeed",
+					"method": "Property",
+					"line": 466,
+					"flags": []
+				},
+				{
+					"name": "Bloom",
+					"method": "Property",
+					"line": 469,
+					"flags": []
+				},
+				{
+					"name": "BloomIntensity",
+					"method": "Property",
+					"line": 470,
+					"flags": []
+				},
+				{
+					"name": "BloomThreshold",
+					"method": "Property",
+					"line": 471,
+					"flags": []
+				},
+				{
+					"name": "AmbientOcclusion",
+					"method": "Property",
+					"line": 474,
+					"flags": []
+				},
+				{
+					"name": "AmbientOcclusionRadius",
+					"method": "Property",
+					"line": 476,
+					"flags": []
+				},
+				{
+					"name": "AmbientOcclusionIntensity",
+					"method": "Property",
+					"line": 478,
+					"flags": []
+				},
+				{
+					"name": "AmbientOcclusionMultiBounce",
+					"method": "Property",
+					"line": 480,
+					"flags": []
+				},
+				{
+					"name": "GlobalIllumination",
+					"method": "Property",
+					"line": 484,
+					"flags": []
+				},
+				{
+					"name": "GlobalIlluminationIntensity",
+					"method": "Property",
+					"line": 487,
+					"flags": []
+				},
+				{
+					"name": "AntiAliasing",
+					"method": "Property",
+					"line": 490,
+					"flags": []
+				},
+				{
+					"name": "AntiAliasingMethod",
+					"method": "EnumProperty",
+					"line": 491,
+					"flags": []
+				},
+				{
+					"name": "TAAPreset",
+					"method": "EnumProperty",
+					"line": 497,
+					"flags": []
+				},
+				{
+					"name": "TAAHistoryFrames",
+					"method": "Property",
+					"line": 502,
+					"flags": []
+				},
+				{
+					"name": "TAAMotionResponse",
+					"method": "Property",
+					"line": 506,
+					"flags": []
+				},
+				{
+					"name": "TAAMaxMotionWeight",
+					"method": "Property",
+					"line": 510,
+					"flags": []
+				},
+				{
+					"name": "TAAResampleWeight",
+					"method": "Property",
+					"line": 513,
+					"flags": []
+				},
+				{
+					"name": "TAAHistoryClamp",
+					"method": "EnumProperty",
+					"line": 517,
+					"flags": []
+				},
+				{
+					"name": "TAAClipWidth",
+					"method": "Property",
+					"line": 521,
+					"flags": []
+				},
+				{
+					"name": "TAATransparentWeight",
+					"method": "Property",
+					"line": 524,
+					"flags": []
+				},
+				{
+					"name": "TAADisocclusionRejection",
+					"method": "Property",
+					"line": 528,
+					"flags": []
+				},
+				{
+					"name": "TAADisocclusionThreshold",
+					"method": "Property",
+					"line": 531,
+					"flags": []
+				},
+				{
+					"name": "TAASharpening",
+					"method": "Property",
+					"line": 535,
+					"flags": []
+				},
+				{
+					"name": "ScreenSpaceReflections",
+					"method": "Property",
+					"line": 539,
+					"flags": []
+				},
+				{
+					"name": "ScreenSpaceReflectionsIntensity",
+					"method": "Property",
+					"line": 543,
+					"flags": []
+				},
+				{
+					"name": "ScreenSpaceReflectionsMaxRoughness",
+					"method": "Property",
+					"line": 546,
+					"flags": []
+				},
+				{
+					"name": "Vignette",
+					"method": "Property",
+					"line": 550,
+					"flags": []
+				},
+				{
+					"name": "Saturation",
+					"method": "Property",
+					"line": 554,
+					"flags": []
+				},
+				{
+					"name": "Contrast",
+					"method": "Property",
+					"line": 556,
+					"flags": []
+				},
+				{
+					"name": "Toe",
+					"method": "Property",
+					"line": 557,
+					"flags": []
+				},
+				{
+					"name": "Shoulder",
+					"method": "Property",
+					"line": 559,
+					"flags": []
+				},
+				{
+					"name": "WhiteBalanceTemperature",
+					"method": "Property",
+					"line": 561,
+					"flags": []
+				},
+				{
+					"name": "WhiteBalanceTint",
+					"method": "Property",
+					"line": 564,
+					"flags": []
+				},
+				{
+					"name": "ColorSlope",
+					"method": "Property",
+					"line": 565,
+					"flags": []
+				},
+				{
+					"name": "ColorOffset",
+					"method": "Property",
+					"line": 566,
+					"flags": []
+				},
+				{
+					"name": "ColorPower",
+					"method": "Property",
+					"line": 568,
+					"flags": []
+				},
+				{
+					"name": "AutoExposureMetering",
+					"method": "EnumProperty",
+					"line": 570,
+					"flags": []
+				},
+				{
+					"name": "AutoExposureLowPercentile",
+					"method": "Property",
+					"line": 573,
+					"flags": []
+				},
+				{
+					"name": "AutoExposureHighPercentile",
+					"method": "Property",
+					"line": 575,
+					"flags": []
+				},
+				{
+					"name": "AutoExposureLightSpeed",
+					"method": "Property",
+					"line": 578,
+					"flags": []
+				},
+				{
+					"name": "AutoExposureKey",
+					"method": "Property",
+					"line": 581,
+					"flags": []
+				},
+				{
+					"name": "BloomRadius",
+					"method": "Property",
+					"line": 586,
+					"flags": []
+				},
+				{
+					"name": "MotionBlur",
+					"method": "Property",
+					"line": 590,
+					"flags": []
+				},
+				{
+					"name": "MotionBlurShutterAngle",
+					"method": "Property",
+					"line": 593,
+					"flags": []
+				},
+				{
+					"name": "MotionBlurMaxLength",
+					"method": "Property",
+					"line": 596,
+					"flags": []
+				},
+				{
+					"name": "FilmGrain",
+					"method": "Property",
+					"line": 599,
+					"flags": []
+				},
+				{
+					"name": "ChromaticAberration",
+					"method": "Property",
+					"line": 602,
+					"flags": []
+				},
+				{
+					"name": "ColorLookup",
+					"method": "AssetProperty",
+					"line": 606,
+					"flags": []
+				},
+				{
+					"name": "ColorLookupIntensity",
+					"method": "Property",
+					"line": 609,
+					"flags": []
+				},
+				{
+					"name": "LensFlare",
+					"method": "Property",
+					"line": 613,
+					"flags": []
+				}
+			],
+			"displayName": "Post Process",
+			"category": "Rendering",
+			"description": "Tonemapping, exposure, bloom, ambient occlusion, anti-aliasing and screen-space reflection settings"
+		},
+		{
+			"name": "PrefabInstance",
+			"type": "PrefabInstanceComponent",
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 103,
+			"flags": [
+				"EngineAdded"
+			],
+			"properties": [
+				{
+					"name": "Prefab",
+					"method": "AssetProperty",
+					"line": 108,
+					"flags": [
+						"ReadOnly"
+					]
+				},
+				{
+					"name": "PrefabEntityID",
+					"method": "CustomProperty",
+					"line": 110,
+					"flags": [
+						"ReadOnly"
+					]
+				},
+				{
+					"name": "PrefabVersion",
+					"method": "CustomProperty",
+					"line": 119,
+					"flags": [
+						"ReadOnly",
+						"Hidden"
+					]
+				},
+				{
+					"name": "SyncedHash",
+					"method": "CustomProperty",
+					"line": 123,
+					"flags": [
+						"ReadOnly",
+						"Hidden"
+					]
+				}
+			],
+			"displayName": "Prefab Instance",
+			"category": "Core",
+			"description": "Links this entity to the prefab it was created from"
+		},
+		{
+			"name": "ReflectionProbe",
+			"type": "ReflectionProbeComponent",
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 426,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Capture",
+					"method": "AssetProperty",
+					"line": 431,
+					"flags": []
+				},
+				{
+					"name": "Extents",
+					"method": "Property",
+					"line": 433,
+					"flags": []
+				},
+				{
+					"name": "BlendDistance",
+					"method": "Property",
+					"line": 436,
+					"flags": []
+				},
+				{
+					"name": "BoxProjection",
+					"method": "Property",
+					"line": 439,
+					"flags": []
+				},
+				{
+					"name": "Intensity",
+					"method": "Property",
+					"line": 442,
+					"flags": []
+				},
+				{
+					"name": "Priority",
+					"method": "Property",
+					"line": 443,
+					"flags": []
+				}
+			],
+			"displayName": "Reflection Probe",
+			"category": "Rendering",
+			"description": "Reflections and ambient light inside a box from a capture of the scene around the entity (lighting.bakeProbes renders it); where boxes overlap the two strongest blend"
+		},
+		{
+			"name": "Relationship",
+			"type": "RelationshipComponent",
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 88,
+			"flags": [
+				"Hidden",
+				"NotRemovable",
+				"NoSerialize"
+			],
+			"properties": [
+				{
+					"name": "Parent",
+					"method": "EntityProperty",
+					"line": 91,
+					"flags": [
+						"ReadOnly"
+					]
+				}
+			],
+			"category": "Core"
+		},
+		{
+			"name": "RigidBody",
+			"type": "RigidBodyComponent",
+			"file": "Strata/src/Strata/Physics/PhysicsComponents.cpp",
+			"line": 121,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Type",
+					"method": "EnumProperty",
+					"line": 124,
+					"flags": []
+				},
+				{
+					"name": "Mass",
+					"method": "Property",
+					"line": 125,
+					"flags": []
+				},
+				{
+					"name": "LinearDamping",
+					"method": "Property",
+					"line": 126,
+					"flags": []
+				},
+				{
+					"name": "AngularDamping",
+					"method": "Property",
+					"line": 127,
+					"flags": []
+				},
+				{
+					"name": "GravityScale",
+					"method": "Property",
+					"line": 128,
+					"flags": []
+				},
+				{
+					"name": "Friction",
+					"method": "Property",
+					"line": 129,
+					"flags": []
+				},
+				{
+					"name": "Restitution",
+					"method": "Property",
+					"line": 130,
+					"flags": []
+				},
+				{
+					"name": "IsTrigger",
+					"method": "Property",
+					"line": 131,
+					"flags": []
+				},
+				{
+					"name": "ContinuousCollision",
+					"method": "Property",
+					"line": 132,
+					"flags": []
+				},
+				{
+					"name": "LockRotationX",
+					"method": "Property",
+					"line": 133,
+					"flags": []
+				},
+				{
+					"name": "LockRotationY",
+					"method": "Property",
+					"line": 134,
+					"flags": []
+				},
+				{
+					"name": "LockRotationZ",
+					"method": "Property",
+					"line": 135,
+					"flags": []
+				},
+				{
+					"name": "Layer",
+					"method": "Property",
+					"line": 136,
+					"flags": []
+				}
+			],
+			"displayName": "Rigid Body",
+			"category": "Physics"
+		},
+		{
+			"name": "Script",
+			"type": "ScriptComponent",
+			"file": "Strata/src/Strata/Scripting/ScriptingComponents.cpp",
+			"line": 282,
+			"flags": [],
+			"properties": [],
+			"category": "Scripting",
+			"description": "C++ behaviours from the project's script module"
+		},
+		{
+			"name": "Skin",
+			"type": "SkinComponent",
+			"file": "Strata/src/Strata/Animation/AnimationComponents.cpp",
+			"line": 27,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Animator",
+					"method": "EntityProperty",
+					"line": 30,
+					"flags": []
+				}
+			],
+			"category": "Animation",
+			"description": "Poses the entity's skinned mesh with an animator's joints"
+		},
+		{
+			"name": "SkyLight",
+			"type": "SkyLightComponent",
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 357,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Source",
+					"method": "EnumProperty",
+					"line": 363,
+					"flags": []
+				},
+				{
+					"name": "EnvironmentMap",
+					"method": "AssetProperty",
+					"line": 366,
+					"flags": []
+				},
+				{
+					"name": "Intensity",
+					"method": "Property",
+					"line": 367,
+					"flags": []
+				},
+				{
+					"name": "Rotation",
+					"method": "Property",
+					"line": 370,
+					"flags": []
+				},
+				{
+					"name": "ShowBackground",
+					"method": "Property",
+					"line": 371,
+					"flags": []
+				},
+				{
+					"name": "BackgroundBlur",
+					"method": "Property",
+					"line": 372,
+					"flags": []
+				},
+				{
+					"name": "AmbientColor",
+					"method": "Property",
+					"line": 373,
+					"flags": []
+				},
+				{
+					"name": "ZenithColor",
+					"method": "Property",
+					"line": 375,
+					"flags": []
+				},
+				{
+					"name": "HorizonColor",
+					"method": "Property",
+					"line": 377,
+					"flags": []
+				},
+				{
+					"name": "GroundColor",
+					"method": "Property",
+					"line": 379,
+					"flags": []
+				},
+				{
+					"name": "SunSize",
+					"method": "Property",
+					"line": 381,
+					"flags": []
+				},
+				{
+					"name": "SunIntensity",
+					"method": "Property",
+					"line": 383,
+					"flags": []
+				},
+				{
+					"name": "AtmosphereDensity",
+					"method": "Property",
+					"line": 386,
+					"flags": []
+				},
+				{
+					"name": "AtmosphereHaze",
+					"method": "Property",
+					"line": 388,
+					"flags": []
+				},
+				{
+					"name": "GroundAlbedo",
+					"method": "Property",
+					"line": 390,
+					"flags": []
+				},
+				{
+					"name": "AerialPerspective",
+					"method": "Property",
+					"line": 392,
+					"flags": []
+				},
+				{
+					"name": "AerialPerspectiveScale",
+					"method": "Property",
+					"line": 394,
+					"flags": []
+				}
+			],
+			"displayName": "Sky Light",
+			"category": "Lighting",
+			"description": "Image-based lighting and sky background from an HDR environment map, a procedural sky or a physical atmosphere lit by the directional light; its radiance is luminance in nits (cd/m²) times its intensity (the atmosphere's: per lux of the light's illuminance)"
+		},
+		{
+			"name": "SphereCollider",
+			"type": "SphereColliderComponent",
+			"file": "Strata/src/Strata/Physics/PhysicsComponents.cpp",
+			"line": 145,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Radius",
+					"method": "Property",
+					"line": 148,
+					"flags": []
+				},
+				{
+					"name": "Offset",
+					"method": "Property",
+					"line": 149,
+					"flags": []
+				}
+			],
+			"displayName": "Sphere Collider",
+			"category": "Physics"
+		},
+		{
+			"name": "SpotLight",
+			"type": "SpotLightComponent",
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 336,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Color",
+					"method": "Property",
+					"line": 341,
+					"flags": []
+				},
+				{
+					"name": "Intensity",
+					"method": "Property",
+					"line": 342,
+					"flags": []
+				},
+				{
+					"name": "Range",
+					"method": "Property",
+					"line": 345,
+					"flags": []
+				},
+				{
+					"name": "SourceRadius",
+					"method": "Property",
+					"line": 346,
+					"flags": []
+				},
+				{
+					"name": "InnerConeAngle",
+					"method": "Property",
+					"line": 348,
+					"flags": []
+				},
+				{
+					"name": "OuterConeAngle",
+					"method": "Property",
+					"line": 349,
+					"flags": []
+				},
+				{
+					"name": "CastShadows",
+					"method": "Property",
+					"line": 350,
+					"flags": []
+				},
+				{
+					"name": "ShadowBias",
+					"method": "Property",
+					"line": 351,
+					"flags": []
+				},
+				{
+					"name": "ShadowNormalBias",
+					"method": "Property",
+					"line": 352,
+					"flags": []
+				},
+				{
+					"name": "ShadowFilterRadius",
+					"method": "Property",
+					"line": 353,
+					"flags": []
+				}
+			],
+			"displayName": "Spot Light",
+			"category": "Lighting",
+			"description": "Cone light shining along the entity's forward (-Z) direction, with shadows when it casts them; its intensity is luminous intensity in candela along its axis"
+		},
+		{
+			"name": "StreamingSource",
+			"type": "StreamingSourceComponent",
+			"file": "Strata/src/Strata/World/WorldRegistration.cpp",
+			"line": 45,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Enabled",
+					"method": "Property",
+					"line": 49,
+					"flags": []
+				},
+				{
+					"name": "Radius",
+					"method": "Property",
+					"line": 50,
+					"flags": []
+				},
+				{
+					"name": "Layers",
+					"method": "Property",
+					"line": 52,
+					"flags": []
+				},
+				{
+					"name": "Priority",
+					"method": "Property",
+					"line": 53,
+					"flags": []
+				},
+				{
+					"name": "ViewBias",
+					"method": "Property",
+					"line": 54,
+					"flags": []
+				}
+			],
+			"displayName": "Streaming Source",
+			"category": "World",
+			"description": "A point the world's cells stream around; without an active one, the primary camera is"
+		},
+		{
+			"name": "Tag",
+			"type": "TagComponent",
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 93,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Tag",
+					"method": "Property",
+					"line": 96,
+					"flags": []
+				}
+			],
+			"category": "Core",
+			"description": "Gameplay label used to find groups of entities"
+		},
+		{
+			"name": "Text",
+			"type": "TextComponent",
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 641,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Text",
+					"method": "Property",
+					"line": 644,
+					"flags": [
+						"MultiLine"
+					]
+				},
+				{
+					"name": "Font",
+					"method": "AssetProperty",
+					"line": 645,
+					"flags": []
+				},
+				{
+					"name": "Color",
+					"method": "Property",
+					"line": 646,
+					"flags": []
+				},
+				{
+					"name": "FontSize",
+					"method": "Property",
+					"line": 647,
+					"flags": []
+				},
+				{
+					"name": "ScreenSpace",
+					"method": "Property",
+					"line": 648,
+					"flags": []
+				},
+				{
+					"name": "ScreenAnchor",
+					"method": "Property",
+					"line": 649,
+					"flags": []
+				},
+				{
+					"name": "ScreenOffset",
+					"method": "Property",
+					"line": 650,
+					"flags": []
+				},
+				{
+					"name": "Alignment",
+					"method": "EnumProperty",
+					"line": 651,
+					"flags": []
+				}
+			],
+			"category": "UI",
+			"description": "Text drawn in screen space (HUD) or in the world"
+		},
+		{
+			"name": "Transform",
+			"type": "TransformComponent",
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 80,
+			"flags": [
+				"NotRemovable"
+			],
+			"properties": [
+				{
+					"name": "Translation",
+					"method": "Property",
+					"line": 84,
+					"flags": []
+				},
+				{
+					"name": "Rotation",
+					"method": "Property",
+					"line": 85,
+					"flags": []
+				},
+				{
+					"name": "Scale",
+					"method": "Property",
+					"line": 86,
+					"flags": []
+				}
+			],
+			"category": "Core",
+			"description": "Position, rotation and scale relative to the parent entity"
+		},
+		{
+			"name": "UIButton",
+			"type": "UIButtonComponent",
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 333,
+			"flags": [],
+			"properties": [
+				{
+					"name": "EventTarget",
+					"method": "EntityProperty",
+					"line": 338,
+					"flags": []
+				}
+			],
+			"displayName": "UI Button",
+			"description": "Clicks on release over the button it was pressed on, or on Submit while focused: the scripts of its entity get OnUIClick"
+		},
+		{
+			"name": "UICanvas",
+			"type": "UICanvasComponent",
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 211,
+			"flags": [],
+			"properties": [
+				{
+					"name": "ScaleMode",
+					"method": "EnumProperty",
+					"line": 216,
+					"flags": []
+				},
+				{
+					"name": "ReferenceResolution",
+					"method": "Property",
+					"line": 220,
+					"flags": []
+				},
+				{
+					"name": "MatchWidthOrHeight",
+					"method": "Property",
+					"line": 222,
+					"flags": []
+				},
+				{
+					"name": "ScaleFactor",
+					"method": "Property",
+					"line": 224,
+					"flags": []
+				},
+				{
+					"name": "SafeAreaPadding",
+					"method": "Property",
+					"line": 225,
+					"flags": []
+				},
+				{
+					"name": "SortOrder",
+					"method": "Property",
+					"line": 227,
+					"flags": []
+				},
+				{
+					"name": "PixelSnap",
+					"method": "Property",
+					"line": 228,
+					"flags": []
+				},
+				{
+					"name": "ReceivesInput",
+					"method": "Property",
+					"line": 229,
+					"flags": []
+				},
+				{
+					"name": "FirstSelected",
+					"method": "EntityProperty",
+					"line": 231,
+					"flags": []
+				},
+				{
+					"name": "RenderMode",
+					"method": "EnumProperty",
+					"line": 232,
+					"flags": []
+				},
+				{
+					"name": "WorldUnitsPerUnit",
+					"method": "Property",
+					"line": 235,
+					"flags": []
+				}
+			],
+			"displayName": "UI Canvas",
+			"description": "A screen of game UI: lays its elements out for the screen it is shown on, scaled by its scale mode, and draws them over the scene"
+		},
+		{
+			"name": "UIImage",
+			"type": "UIImageComponent",
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 257,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Texture",
+					"method": "AssetProperty",
+					"line": 262,
+					"flags": []
+				},
+				{
+					"name": "Color",
+					"method": "Property",
+					"line": 263,
+					"flags": []
+				},
+				{
+					"name": "Type",
+					"method": "EnumProperty",
+					"line": 264,
+					"flags": []
+				},
+				{
+					"name": "UVRect",
+					"method": "Property",
+					"line": 266,
+					"flags": []
+				},
+				{
+					"name": "SliceBorders",
+					"method": "Property",
+					"line": 267,
+					"flags": []
+				},
+				{
+					"name": "SliceScale",
+					"method": "Property",
+					"line": 268,
+					"flags": []
+				},
+				{
+					"name": "FillAmount",
+					"method": "Property",
+					"line": 269,
+					"flags": []
+				},
+				{
+					"name": "FillDirection",
+					"method": "EnumProperty",
+					"line": 270,
+					"flags": []
+				},
+				{
+					"name": "PreserveAspect",
+					"method": "Property",
+					"line": 271,
+					"flags": []
+				},
+				{
+					"name": "CornerRadius",
+					"method": "Property",
+					"line": 272,
+					"flags": []
+				},
+				{
+					"name": "BorderWidth",
+					"method": "Property",
+					"line": 273,
+					"flags": []
+				},
+				{
+					"name": "BorderColor",
+					"method": "Property",
+					"line": 274,
+					"flags": []
+				},
+				{
+					"name": "RaycastTarget",
+					"method": "Property",
+					"line": 275,
+					"flags": []
+				}
+			],
+			"displayName": "UI Image",
+			"description": "Fills the element's rect with a texture or a solid color, optionally nine-sliced, filled, with rounded corners and a border"
+		},
+		{
+			"name": "UIInputField",
+			"type": "UIInputFieldComponent",
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 384,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Text",
+					"method": "Property",
+					"line": 389,
+					"flags": []
+				},
+				{
+					"name": "TextElement",
+					"method": "EntityProperty",
+					"line": 390,
+					"flags": []
+				},
+				{
+					"name": "Placeholder",
+					"method": "EntityProperty",
+					"line": 391,
+					"flags": []
+				},
+				{
+					"name": "CharacterLimit",
+					"method": "Property",
+					"line": 392,
+					"flags": []
+				},
+				{
+					"name": "CaretColor",
+					"method": "Property",
+					"line": 393,
+					"flags": []
+				},
+				{
+					"name": "SelectionColor",
+					"method": "Property",
+					"line": 394,
+					"flags": []
+				},
+				{
+					"name": "EventTarget",
+					"method": "EntityProperty",
+					"line": 395,
+					"flags": []
+				}
+			],
+			"displayName": "UI Input Field",
+			"description": "A line of text the player types while the field has the focus; Enter submits it (OnUISubmit)"
+		},
+		{
+			"name": "UILayout",
+			"type": "UILayoutComponent",
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 365,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Type",
+					"method": "EnumProperty",
+					"line": 370,
+					"flags": []
+				},
+				{
+					"name": "Padding",
+					"method": "Property",
+					"line": 371,
+					"flags": []
+				},
+				{
+					"name": "Spacing",
+					"method": "Property",
+					"line": 372,
+					"flags": []
+				},
+				{
+					"name": "ChildAlignment",
+					"method": "EnumProperty",
+					"line": 373,
+					"flags": []
+				},
+				{
+					"name": "StretchChildren",
+					"method": "Property",
+					"line": 378,
+					"flags": []
+				},
+				{
+					"name": "CellSize",
+					"method": "Property",
+					"line": 379,
+					"flags": []
+				},
+				{
+					"name": "Columns",
+					"method": "Property",
+					"line": 380,
+					"flags": []
+				}
+			],
+			"displayName": "UI Layout",
+			"description": "Places the element's children: stacked horizontally or vertically, or in a grid"
+		},
+		{
+			"name": "UIMask",
+			"type": "UIMaskComponent",
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 397,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Padding",
+					"method": "Property",
+					"line": 402,
+					"flags": []
+				},
+				{
+					"name": "Softness",
+					"method": "Property",
+					"line": 404,
+					"flags": []
+				}
+			],
+			"displayName": "UI Mask",
+			"description": "Clips the element's children to its rect: what lies outside is neither drawn nor hit"
+		},
+		{
+			"name": "UISelectable",
+			"type": "UISelectableComponent",
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 302,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Interactable",
+					"method": "Property",
+					"line": 307,
+					"flags": []
+				},
+				{
+					"name": "Transition",
+					"method": "EnumProperty",
+					"line": 308,
+					"flags": []
+				},
+				{
+					"name": "TargetImage",
+					"method": "EntityProperty",
+					"line": 310,
+					"flags": []
+				},
+				{
+					"name": "NormalColor",
+					"method": "Property",
+					"line": 311,
+					"flags": []
+				},
+				{
+					"name": "HoverColor",
+					"method": "Property",
+					"line": 312,
+					"flags": []
+				},
+				{
+					"name": "PressedColor",
+					"method": "Property",
+					"line": 313,
+					"flags": []
+				},
+				{
+					"name": "FocusedColor",
+					"method": "Property",
+					"line": 314,
+					"flags": []
+				},
+				{
+					"name": "DisabledColor",
+					"method": "Property",
+					"line": 315,
+					"flags": []
+				},
+				{
+					"name": "HoverImage",
+					"method": "AssetProperty",
+					"line": 316,
+					"flags": []
+				},
+				{
+					"name": "PressedImage",
+					"method": "AssetProperty",
+					"line": 317,
+					"flags": []
+				},
+				{
+					"name": "FocusedImage",
+					"method": "AssetProperty",
+					"line": 318,
+					"flags": []
+				},
+				{
+					"name": "DisabledImage",
+					"method": "AssetProperty",
+					"line": 319,
+					"flags": []
+				},
+				{
+					"name": "FadeDuration",
+					"method": "Property",
+					"line": 320,
+					"flags": []
+				},
+				{
+					"name": "Navigation",
+					"method": "EnumProperty",
+					"line": 321,
+					"flags": []
+				},
+				{
+					"name": "NavigateUp",
+					"method": "EntityProperty",
+					"line": 323,
+					"flags": []
+				},
+				{
+					"name": "NavigateDown",
+					"method": "EntityProperty",
+					"line": 324,
+					"flags": []
+				},
+				{
+					"name": "NavigateLeft",
+					"method": "EntityProperty",
+					"line": 325,
+					"flags": []
+				},
+				{
+					"name": "NavigateRight",
+					"method": "EntityProperty",
+					"line": 326,
+					"flags": []
+				}
+			],
+			"displayName": "UI Selectable",
+			"description": "How a widget shows hover, press, focus and disabled, and how keyboard and gamepad navigation leaves it"
+		},
+		{
+			"name": "UISlider",
+			"type": "UISliderComponent",
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 350,
+			"flags": [],
+			"properties": [
+				{
+					"name": "MinValue",
+					"method": "Property",
+					"line": 355,
+					"flags": []
+				},
+				{
+					"name": "MaxValue",
+					"method": "Property",
+					"line": 356,
+					"flags": []
+				},
+				{
+					"name": "Value",
+					"method": "Property",
+					"line": 357,
+					"flags": []
+				},
+				{
+					"name": "WholeNumbers",
+					"method": "Property",
+					"line": 358,
+					"flags": []
+				},
+				{
+					"name": "Direction",
+					"method": "EnumProperty",
+					"line": 359,
+					"flags": []
+				},
+				{
+					"name": "Fill",
+					"method": "EntityProperty",
+					"line": 360,
+					"flags": []
+				},
+				{
+					"name": "Handle",
+					"method": "EntityProperty",
+					"line": 361,
+					"flags": []
+				},
+				{
+					"name": "KeyboardStep",
+					"method": "Property",
+					"line": 362,
+					"flags": []
+				},
+				{
+					"name": "EventTarget",
+					"method": "EntityProperty",
+					"line": 363,
+					"flags": []
+				}
+			],
+			"displayName": "UI Slider",
+			"description": "A value between a minimum and a maximum, dragged with the pointer or stepped with the navigation keys"
+		},
+		{
+			"name": "UIText",
+			"type": "UITextComponent",
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 282,
+			"flags": [],
+			"properties": [
+				{
+					"name": "Text",
+					"method": "Property",
+					"line": 287,
+					"flags": [
+						"MultiLine"
+					]
+				},
+				{
+					"name": "Font",
+					"method": "AssetProperty",
+					"line": 288,
+					"flags": []
+				},
+				{
+					"name": "FontSize",
+					"method": "Property",
+					"line": 289,
+					"flags": []
+				},
+				{
+					"name": "Color",
+					"method": "Property",
+					"line": 290,
+					"flags": []
+				},
+				{
+					"name": "Alignment",
+					"method": "EnumProperty",
+					"line": 291,
+					"flags": []
+				},
+				{
+					"name": "VerticalAlignment",
+					"method": "EnumProperty",
+					"line": 292,
+					"flags": []
+				},
+				{
+					"name": "Wrap",
+					"method": "Property",
+					"line": 293,
+					"flags": []
+				},
+				{
+					"name": "Overflow",
+					"method": "EnumProperty",
+					"line": 294,
+					"flags": []
+				},
+				{
+					"name": "LineSpacing",
+					"method": "Property",
+					"line": 296,
+					"flags": []
+				},
+				{
+					"name": "OutlineWidth",
+					"method": "Property",
+					"line": 297,
+					"flags": []
+				},
+				{
+					"name": "OutlineColor",
+					"method": "Property",
+					"line": 298,
+					"flags": []
+				},
+				{
+					"name": "RaycastTarget",
+					"method": "Property",
+					"line": 299,
+					"flags": []
+				}
+			],
+			"displayName": "UI Text",
+			"description": "Text in the element's rect, aligned, wrapped and truncated in it"
+		},
+		{
+			"name": "UIToggle",
+			"type": "UIToggleComponent",
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 340,
+			"flags": [],
+			"properties": [
+				{
+					"name": "IsOn",
+					"method": "Property",
+					"line": 345,
+					"flags": []
+				},
+				{
+					"name": "Checkmark",
+					"method": "EntityProperty",
+					"line": 346,
+					"flags": []
+				},
+				{
+					"name": "Group",
+					"method": "EntityProperty",
+					"line": 347,
+					"flags": []
+				},
+				{
+					"name": "EventTarget",
+					"method": "EntityProperty",
+					"line": 348,
+					"flags": []
+				}
+			],
+			"displayName": "UI Toggle",
+			"description": "A switch that flips on click; toggles of one group are exclusive"
+		},
+		{
+			"name": "World",
+			"type": "WorldComponent",
+			"file": "Strata/src/Strata/World/WorldRegistration.cpp",
+			"line": 39,
+			"flags": [],
+			"properties": [
+				{
+					"name": "World",
+					"method": "AssetProperty",
+					"line": 42,
+					"flags": []
+				},
+				{
+					"name": "DistanceScale",
+					"method": "Property",
+					"line": 43,
+					"flags": []
+				}
+			],
+			"category": "World",
+			"description": "Makes the scene a world's persistent scene: its cells stream around the streaming sources while it runs"
+		}
+	],
+	"inactive": [
+		{
+			"component": "Animator",
+			"property": "Clip",
+			"function": "WithoutController",
+			"messages": [
+				"The controller's states choose the clips (Controller is set)"
+			],
+			"file": "Strata/src/Strata/Animation/AnimationComponents.cpp",
+			"line": 45
+		},
+		{
+			"component": "UICanvas",
+			"property": "ScaleMode",
+			"function": "ScreenSpaceOnly",
+			"messages": [
+				"A canvas in the world is laid out at its Reference Resolution, not for the screen"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 237
+		},
+		{
+			"component": "UICanvas",
+			"property": "ReferenceResolution",
+			"function": "ReferenceResolutionUsed",
+			"messages": [
+				"Only Scale With Screen and canvases in the world use it (Scale Mode is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 238
+		},
+		{
+			"component": "UICanvas",
+			"property": "MatchWidthOrHeight",
+			"function": "ScaleWithScreenOnly",
+			"messages": [
+				"Only Scale With Screen uses it (Scale Mode is {})",
+				"A canvas in the world is laid out at its Reference Resolution, not for the screen"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 239
+		},
+		{
+			"component": "UICanvas",
+			"property": "ScaleFactor",
+			"function": "ConstantModesOnly",
+			"messages": [
+				"Only the constant scale modes use it (Scale Mode is Scale With Screen)",
+				"A canvas in the world is laid out at its Reference Resolution, not for the screen"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 240
+		},
+		{
+			"component": "UICanvas",
+			"property": "PixelSnap",
+			"function": "ScreenPixelsOnly",
+			"messages": [
+				"A canvas in the world has no screen pixels to snap to"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 241
+		},
+		{
+			"component": "UICanvas",
+			"property": "WorldUnitsPerUnit",
+			"function": "WorldSpaceOnly",
+			"messages": [
+				"Only a canvas in the world uses it (Render Mode is Screen Space)"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 242
+		},
+		{
+			"component": "UIImage",
+			"property": "SliceBorders",
+			"function": "SlicedOnly",
+			"messages": [
+				"Only Sliced images use it (Type is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 276
+		},
+		{
+			"component": "UIImage",
+			"property": "SliceScale",
+			"function": "SlicedOnly",
+			"messages": [
+				"Only Sliced images use it (Type is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 276
+		},
+		{
+			"component": "UIImage",
+			"property": "FillAmount",
+			"function": "FilledOnly",
+			"messages": [
+				"Only Filled images use it (Type is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 277
+		},
+		{
+			"component": "UIImage",
+			"property": "FillDirection",
+			"function": "FilledOnly",
+			"messages": [
+				"Only Filled images use it (Type is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 277
+		},
+		{
+			"component": "UIImage",
+			"property": "PreserveAspect",
+			"function": "KeepsAspect",
+			"messages": [
+				"Sliced images stretch their edges and center to the rect"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 278
+		},
+		{
+			"component": "UIImage",
+			"property": "CornerRadius",
+			"function": "NotSlicedTexture",
+			"messages": [
+				"Sliced images draw no rounded corners or border"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 279
+		},
+		{
+			"component": "UIImage",
+			"property": "BorderWidth",
+			"function": "NotSlicedTexture",
+			"messages": [
+				"Sliced images draw no rounded corners or border"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 279
+		},
+		{
+			"component": "UIImage",
+			"property": "BorderColor",
+			"function": "WithBorder",
+			"messages": [
+				"Only a border uses it (Border Width is 0)",
+				"Sliced images draw no rounded corners or border"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 280
+		},
+		{
+			"component": "UIText",
+			"property": "OutlineColor",
+			"function": "WithOutline",
+			"messages": [
+				"Only an outline uses it (Outline Width is 0)"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 300
+		},
+		{
+			"component": "UISelectable",
+			"property": "NormalColor",
+			"function": "ColorTintOnly",
+			"messages": [
+				"Only the Color Tint transition uses it (Transition is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 327
+		},
+		{
+			"component": "UISelectable",
+			"property": "HoverColor",
+			"function": "ColorTintOnly",
+			"messages": [
+				"Only the Color Tint transition uses it (Transition is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 327
+		},
+		{
+			"component": "UISelectable",
+			"property": "PressedColor",
+			"function": "ColorTintOnly",
+			"messages": [
+				"Only the Color Tint transition uses it (Transition is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 327
+		},
+		{
+			"component": "UISelectable",
+			"property": "FocusedColor",
+			"function": "ColorTintOnly",
+			"messages": [
+				"Only the Color Tint transition uses it (Transition is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 327
+		},
+		{
+			"component": "UISelectable",
+			"property": "DisabledColor",
+			"function": "ColorTintOnly",
+			"messages": [
+				"Only the Color Tint transition uses it (Transition is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 327
+		},
+		{
+			"component": "UISelectable",
+			"property": "FadeDuration",
+			"function": "ColorTintOnly",
+			"messages": [
+				"Only the Color Tint transition uses it (Transition is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 327
+		},
+		{
+			"component": "UISelectable",
+			"property": "HoverImage",
+			"function": "ImageSwapOnly",
+			"messages": [
+				"Only the Image Swap transition uses it (Transition is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 329
+		},
+		{
+			"component": "UISelectable",
+			"property": "PressedImage",
+			"function": "ImageSwapOnly",
+			"messages": [
+				"Only the Image Swap transition uses it (Transition is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 329
+		},
+		{
+			"component": "UISelectable",
+			"property": "FocusedImage",
+			"function": "ImageSwapOnly",
+			"messages": [
+				"Only the Image Swap transition uses it (Transition is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 329
+		},
+		{
+			"component": "UISelectable",
+			"property": "DisabledImage",
+			"function": "ImageSwapOnly",
+			"messages": [
+				"Only the Image Swap transition uses it (Transition is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 329
+		},
+		{
+			"component": "UISelectable",
+			"property": "TargetImage",
+			"function": "WithTransition",
+			"messages": [
+				"The states show nothing (Transition is None)"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 330
+		},
+		{
+			"component": "UISelectable",
+			"property": "NavigateUp",
+			"function": "ExplicitNavigationOnly",
+			"messages": [
+				"Navigation is None: navigation never reaches or leaves it",
+				"Only Explicit navigation uses it (Navigation is Automatic: the nearest selectable in the direction)"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 331
+		},
+		{
+			"component": "UISelectable",
+			"property": "NavigateDown",
+			"function": "ExplicitNavigationOnly",
+			"messages": [
+				"Navigation is None: navigation never reaches or leaves it",
+				"Only Explicit navigation uses it (Navigation is Automatic: the nearest selectable in the direction)"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 331
+		},
+		{
+			"component": "UISelectable",
+			"property": "NavigateLeft",
+			"function": "ExplicitNavigationOnly",
+			"messages": [
+				"Navigation is None: navigation never reaches or leaves it",
+				"Only Explicit navigation uses it (Navigation is Automatic: the nearest selectable in the direction)"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 331
+		},
+		{
+			"component": "UISelectable",
+			"property": "NavigateRight",
+			"function": "ExplicitNavigationOnly",
+			"messages": [
+				"Navigation is None: navigation never reaches or leaves it",
+				"Only Explicit navigation uses it (Navigation is Automatic: the nearest selectable in the direction)"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 331
+		},
+		{
+			"component": "UILayout",
+			"property": "CellSize",
+			"function": "GridOnly",
+			"messages": [
+				"Only a Grid uses it (Type is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 381
+		},
+		{
+			"component": "UILayout",
+			"property": "Columns",
+			"function": "GridOnly",
+			"messages": [
+				"Only a Grid uses it (Type is {})"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 381
+		},
+		{
+			"component": "UILayout",
+			"property": "StretchChildren",
+			"function": "StackOnly",
+			"messages": [
+				"A Grid gives every child its Cell Size"
+			],
+			"file": "Strata/src/Strata/GameUI/GameUIComponents.cpp",
+			"line": 382
+		},
+		{
+			"component": "DirectionalLight",
+			"property": "ShadowDistance",
+			"function": "WithShadows",
+			"messages": [
+				"Cast Shadows is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 314
+		},
+		{
+			"component": "DirectionalLight",
+			"property": "ShadowBias",
+			"function": "WithShadows",
+			"messages": [
+				"Cast Shadows is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 314
+		},
+		{
+			"component": "DirectionalLight",
+			"property": "ShadowNormalBias",
+			"function": "WithShadows",
+			"messages": [
+				"Cast Shadows is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 314
+		},
+		{
+			"component": "DirectionalLight",
+			"property": "CascadeBlend",
+			"function": "WithShadows",
+			"messages": [
+				"Cast Shadows is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 314
+		},
+		{
+			"component": "DirectionalLight",
+			"property": "ContactShadowLength",
+			"function": "WithShadows",
+			"messages": [
+				"Cast Shadows is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 314
+		},
+		{
+			"component": "DirectionalLight",
+			"property": "CascadeDistribution",
+			"function": "WithShadows",
+			"messages": [
+				"Cast Shadows is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 314
+		},
+		{
+			"component": "PointLight",
+			"property": "ShadowBias",
+			"function": "WithShadows",
+			"messages": [
+				"Cast Shadows is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 334
+		},
+		{
+			"component": "PointLight",
+			"property": "ShadowNormalBias",
+			"function": "WithShadows",
+			"messages": [
+				"Cast Shadows is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 334
+		},
+		{
+			"component": "PointLight",
+			"property": "ShadowFilterRadius",
+			"function": "WithShadows",
+			"messages": [
+				"Cast Shadows is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 334
+		},
+		{
+			"component": "SpotLight",
+			"property": "ShadowBias",
+			"function": "WithShadows",
+			"messages": [
+				"Cast Shadows is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 355
+		},
+		{
+			"component": "SpotLight",
+			"property": "ShadowNormalBias",
+			"function": "WithShadows",
+			"messages": [
+				"Cast Shadows is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 355
+		},
+		{
+			"component": "SpotLight",
+			"property": "ShadowFilterRadius",
+			"function": "WithShadows",
+			"messages": [
+				"Cast Shadows is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 355
+		},
+		{
+			"component": "SkyLight",
+			"property": "EnvironmentMap",
+			"function": "EnvironmentMapOnly",
+			"messages": [
+				"Only an environment map uses it (Source is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 397
+		},
+		{
+			"component": "SkyLight",
+			"property": "Rotation",
+			"function": "EnvironmentMapOnly",
+			"messages": [
+				"Only an environment map uses it (Source is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 397
+		},
+		{
+			"component": "SkyLight",
+			"property": "ZenithColor",
+			"function": "ProceduralSkyOnly",
+			"messages": [
+				"Only the procedural sky uses it (Source is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 398
+		},
+		{
+			"component": "SkyLight",
+			"property": "HorizonColor",
+			"function": "ProceduralSkyOnly",
+			"messages": [
+				"Only the procedural sky uses it (Source is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 398
+		},
+		{
+			"component": "SkyLight",
+			"property": "GroundColor",
+			"function": "ProceduralSkyOnly",
+			"messages": [
+				"Only the procedural sky uses it (Source is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 398
+		},
+		{
+			"component": "SkyLight",
+			"property": "SunIntensity",
+			"function": "ProceduralSkyOnly",
+			"messages": [
+				"Only the procedural sky uses it (Source is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 398
+		},
+		{
+			"component": "SkyLight",
+			"property": "SunSize",
+			"function": "WithSunDisk",
+			"messages": [
+				"Only the procedural sky and the atmosphere draw a sun (Source is Environment Map)"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 399
+		},
+		{
+			"component": "SkyLight",
+			"property": "AtmosphereDensity",
+			"function": "AtmosphereOnly",
+			"messages": [
+				"Only the atmosphere uses it (Source is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 400
+		},
+		{
+			"component": "SkyLight",
+			"property": "AtmosphereHaze",
+			"function": "AtmosphereOnly",
+			"messages": [
+				"Only the atmosphere uses it (Source is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 400
+		},
+		{
+			"component": "SkyLight",
+			"property": "GroundAlbedo",
+			"function": "AtmosphereOnly",
+			"messages": [
+				"Only the atmosphere uses it (Source is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 400
+		},
+		{
+			"component": "SkyLight",
+			"property": "AerialPerspective",
+			"function": "AtmosphereOnly",
+			"messages": [
+				"Only the atmosphere uses it (Source is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 400
+		},
+		{
+			"component": "SkyLight",
+			"property": "AerialPerspectiveScale",
+			"function": "WithAerialPerspective",
+			"messages": [
+				"Aerial Perspective is off",
+				"Only the atmosphere uses it (Source is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 401
+		},
+		{
+			"component": "SkyLight",
+			"property": "BackgroundBlur",
+			"function": "WithoutAtmosphere",
+			"messages": [
+				"The atmosphere's background is always sharp (Source is Atmosphere)"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 402
+		},
+		{
+			"component": "SkyLight",
+			"property": "AmbientColor",
+			"function": "WithoutEnvironmentOnly",
+			"messages": [
+				"The procedural sky lights the scene: the ambient color applies only without an environment",
+				"The atmosphere lights the scene: the ambient color applies only without an environment",
+				"The environment map lights the scene: the ambient color applies only without one"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 403
+		},
+		{
+			"component": "PostProcess",
+			"property": "AutoExposureMinEV",
+			"function": "WithAutoExposure",
+			"messages": [
+				"Auto Exposure is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 617
+		},
+		{
+			"component": "PostProcess",
+			"property": "AutoExposureMaxEV",
+			"function": "WithAutoExposure",
+			"messages": [
+				"Auto Exposure is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 617
+		},
+		{
+			"component": "PostProcess",
+			"property": "AutoExposureSpeed",
+			"function": "WithAutoExposure",
+			"messages": [
+				"Auto Exposure is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 617
+		},
+		{
+			"component": "PostProcess",
+			"property": "AutoExposureMetering",
+			"function": "WithAutoExposure",
+			"messages": [
+				"Auto Exposure is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 617
+		},
+		{
+			"component": "PostProcess",
+			"property": "AutoExposureLowPercentile",
+			"function": "WithAutoExposure",
+			"messages": [
+				"Auto Exposure is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 617
+		},
+		{
+			"component": "PostProcess",
+			"property": "AutoExposureHighPercentile",
+			"function": "WithAutoExposure",
+			"messages": [
+				"Auto Exposure is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 617
+		},
+		{
+			"component": "PostProcess",
+			"property": "AutoExposureLightSpeed",
+			"function": "WithAutoExposure",
+			"messages": [
+				"Auto Exposure is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 617
+		},
+		{
+			"component": "PostProcess",
+			"property": "AutoExposureKey",
+			"function": "WithAutoExposure",
+			"messages": [
+				"Auto Exposure is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 617
+		},
+		{
+			"component": "PostProcess",
+			"property": "BloomIntensity",
+			"function": "WithBloom",
+			"messages": [
+				"Bloom is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 619
+		},
+		{
+			"component": "PostProcess",
+			"property": "BloomThreshold",
+			"function": "WithBloom",
+			"messages": [
+				"Bloom is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 619
+		},
+		{
+			"component": "PostProcess",
+			"property": "BloomRadius",
+			"function": "WithBloom",
+			"messages": [
+				"Bloom is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 619
+		},
+		{
+			"component": "PostProcess",
+			"property": "MotionBlurShutterAngle",
+			"function": "WithMotionBlur",
+			"messages": [
+				"Motion Blur is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 620
+		},
+		{
+			"component": "PostProcess",
+			"property": "MotionBlurMaxLength",
+			"function": "WithMotionBlur",
+			"messages": [
+				"Motion Blur is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 620
+		},
+		{
+			"component": "PostProcess",
+			"property": "ColorLookupIntensity",
+			"function": "WithColorLookup",
+			"messages": [
+				"No Color Lookup is set"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 621
+		},
+		{
+			"component": "PostProcess",
+			"property": "Toe",
+			"function": "WithFilmicToe",
+			"messages": [
+				"Only the Filmic curve has a toe (Tonemapper is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 622
+		},
+		{
+			"component": "PostProcess",
+			"property": "Shoulder",
+			"function": "WithFilmicShoulder",
+			"messages": [
+				"Only the Filmic curve has a shoulder (Tonemapper is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 623
+		},
+		{
+			"component": "PostProcess",
+			"property": "AmbientOcclusionRadius",
+			"function": "WithAmbientOcclusion",
+			"messages": [
+				"Ambient Occlusion is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 624
+		},
+		{
+			"component": "PostProcess",
+			"property": "AmbientOcclusionIntensity",
+			"function": "WithAmbientOcclusion",
+			"messages": [
+				"Ambient Occlusion is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 624
+		},
+		{
+			"component": "PostProcess",
+			"property": "AmbientOcclusionMultiBounce",
+			"function": "WithAmbientOcclusion",
+			"messages": [
+				"Ambient Occlusion is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 624
+		},
+		{
+			"component": "PostProcess",
+			"property": "GlobalIlluminationIntensity",
+			"function": "WithGlobalIllumination",
+			"messages": [
+				"Global Illumination is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 626
+		},
+		{
+			"component": "PostProcess",
+			"property": "AntiAliasingMethod",
+			"function": "WithAntiAliasing",
+			"messages": [
+				"Anti Aliasing is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 627
+		},
+		{
+			"component": "PostProcess",
+			"property": "TAAPreset",
+			"function": "WithTemporalAntiAliasing",
+			"messages": [
+				"Anti Aliasing is off",
+				"Only TAA uses it (Anti Aliasing Method is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 628
+		},
+		{
+			"component": "PostProcess",
+			"property": "TAAHistoryFrames",
+			"function": "WithCustomTunable",
+			"messages": [
+				"The {} preset sets it ({}): choose Custom to tune it",
+				"Anti Aliasing is off",
+				"Only TAA uses it (Anti Aliasing Method is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 629
+		},
+		{
+			"component": "PostProcess",
+			"property": "TAAMotionResponse",
+			"function": "WithCustomTunable",
+			"messages": [
+				"The {} preset sets it ({}): choose Custom to tune it",
+				"Anti Aliasing is off",
+				"Only TAA uses it (Anti Aliasing Method is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 630
+		},
+		{
+			"component": "PostProcess",
+			"property": "TAAMaxMotionWeight",
+			"function": "WithCustomTunable",
+			"messages": [
+				"The {} preset sets it ({}): choose Custom to tune it",
+				"Anti Aliasing is off",
+				"Only TAA uses it (Anti Aliasing Method is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 631
+		},
+		{
+			"component": "PostProcess",
+			"property": "TAAResampleWeight",
+			"function": "WithCustomTunable",
+			"messages": [
+				"The {} preset sets it ({}): choose Custom to tune it",
+				"Anti Aliasing is off",
+				"Only TAA uses it (Anti Aliasing Method is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 632
+		},
+		{
+			"component": "PostProcess",
+			"property": "TAAHistoryClamp",
+			"function": "WithCustomClamp",
+			"messages": [
+				"The {} preset sets it ({}): choose Custom to tune it",
+				"Anti Aliasing is off",
+				"Only TAA uses it (Anti Aliasing Method is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 633
+		},
+		{
+			"component": "PostProcess",
+			"property": "TAAClipWidth",
+			"function": "WithTightClipping",
+			"messages": [
+				"The Original preset clamps to the colors' range: choose Custom to tune it",
+				"Only Tight clipping uses it (TAA History Clamp is Range)",
+				"The {} preset sets it ({}): choose Custom to tune it",
+				"Anti Aliasing is off",
+				"Only TAA uses it (Anti Aliasing Method is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 634
+		},
+		{
+			"component": "PostProcess",
+			"property": "TAATransparentWeight",
+			"function": "WithCustomTunable",
+			"messages": [
+				"The {} preset sets it ({}): choose Custom to tune it",
+				"Anti Aliasing is off",
+				"Only TAA uses it (Anti Aliasing Method is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 635
+		},
+		{
+			"component": "PostProcess",
+			"property": "TAADisocclusionRejection",
+			"function": "WithCustomBool",
+			"messages": [
+				"The {} preset sets it ({}): choose Custom to tune it",
+				"Anti Aliasing is off",
+				"Only TAA uses it (Anti Aliasing Method is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 636
+		},
+		{
+			"component": "PostProcess",
+			"property": "TAADisocclusionThreshold",
+			"function": "WithDisocclusionRejection",
+			"messages": [
+				"The Original preset does not reject uncovered surfaces: choose Custom to tune it",
+				"TAA Disocclusion Rejection is off",
+				"The {} preset sets it ({}): choose Custom to tune it",
+				"Anti Aliasing is off",
+				"Only TAA uses it (Anti Aliasing Method is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 637
+		},
+		{
+			"component": "PostProcess",
+			"property": "TAASharpening",
+			"function": "WithCustomTunable",
+			"messages": [
+				"The {} preset sets it ({}): choose Custom to tune it",
+				"Anti Aliasing is off",
+				"Only TAA uses it (Anti Aliasing Method is {})"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 638
+		},
+		{
+			"component": "PostProcess",
+			"property": "ScreenSpaceReflectionsIntensity",
+			"function": "WithScreenSpaceReflections",
+			"messages": [
+				"Screen Space Reflections is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 639
+		},
+		{
+			"component": "PostProcess",
+			"property": "ScreenSpaceReflectionsMaxRoughness",
+			"function": "WithScreenSpaceReflections",
+			"messages": [
+				"Screen Space Reflections is off"
+			],
+			"file": "Strata/src/Strata/Renderer/RendererComponents.cpp",
+			"line": 639
+		},
+		{
+			"component": "Camera",
+			"property": "PerspectiveFOV",
+			"function": "PerspectiveOnly",
+			"messages": [
+				"The camera's projection is Orthographic"
+			],
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 179
+		},
+		{
+			"component": "Camera",
+			"property": "PerspectiveNear",
+			"function": "PerspectiveOnly",
+			"messages": [
+				"The camera's projection is Orthographic"
+			],
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 179
+		},
+		{
+			"component": "Camera",
+			"property": "PerspectiveFar",
+			"function": "PerspectiveOnly",
+			"messages": [
+				"The camera's projection is Orthographic"
+			],
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 179
+		},
+		{
+			"component": "Camera",
+			"property": "FocusEntity",
+			"function": "WithLens",
+			"messages": [
+				"Orthographic cameras have no depth of field",
+				"Depth Of Field is off"
+			],
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 181
+		},
+		{
+			"component": "Camera",
+			"property": "Aperture",
+			"function": "WithLens",
+			"messages": [
+				"Orthographic cameras have no depth of field",
+				"Depth Of Field is off"
+			],
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 181
+		},
+		{
+			"component": "Camera",
+			"property": "SensorHeight",
+			"function": "WithLens",
+			"messages": [
+				"Orthographic cameras have no depth of field",
+				"Depth Of Field is off"
+			],
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 181
+		},
+		{
+			"component": "Camera",
+			"property": "FocusDistance",
+			"function": "WithFocusDistance",
+			"messages": [
+				"A Focus Entity sets the distance",
+				"Orthographic cameras have no depth of field",
+				"Depth Of Field is off"
+			],
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 182
+		},
+		{
+			"component": "Camera",
+			"property": "DepthOfField",
+			"function": "PerspectiveOnly",
+			"messages": [
+				"The camera's projection is Orthographic"
+			],
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 183
+		},
+		{
+			"component": "Camera",
+			"property": "OrthographicSize",
+			"function": "OrthographicOnly",
+			"messages": [
+				"The camera's projection is Perspective"
+			],
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 185
+		},
+		{
+			"component": "Camera",
+			"property": "OrthographicNear",
+			"function": "OrthographicOnly",
+			"messages": [
+				"The camera's projection is Perspective"
+			],
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 185
+		},
+		{
+			"component": "Camera",
+			"property": "OrthographicFar",
+			"function": "OrthographicOnly",
+			"messages": [
+				"The camera's projection is Perspective"
+			],
+			"file": "Strata/src/Strata/Scene/ComponentRegistration.cpp",
+			"line": 185
+		}
+	]
+}

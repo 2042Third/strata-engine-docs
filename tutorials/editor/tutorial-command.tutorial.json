@@ -1,0 +1,8 @@
+{
+	"page": "editor/tutorial-command",
+	"startsFrom": { "tutorial": "scripting/tutorial-host-function" },
+	"patch": {
+		"file": "tutorials/editor/tutorial-command.patch",
+		"tests": [ "Editor.WindCommands", "Editor.Journal", "CLI.McpToolsets" ]
+	}
+}

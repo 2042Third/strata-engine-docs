@@ -1,0 +1,3 @@
+# Part review of `input/how-input-works`
+
+No corrections: the key callback (GLFWWindow.cpp:286-319), Key::Q 81 and Key::A 65, the Input stage's order in `Application::RunFrame`, the frame update before the fixed steps (`Scene::OnUpdateRuntime`), the typed-text rules and 1,024 bytes, the four captures and the raw reads, the Game view's enable rule (GameViewPanel.cpp:254), the Third-Person sample's Move and Jump bindings and its `Gameplay/Jump` and `Gameplay/Move` reads, actions reading the capture-aware key queries, and the exercise bindings (`Gamepad/RightTrigger+`, `1D:Key/S,Key/W`) hold at the pin; no contradiction with the other pages of the part.

@@ -1,0 +1,54 @@
+{
+	"page": "scripting/tutorial-host-function",
+	"runs": [
+		{
+			"build": {
+				"kind": "patch-build",
+				"configuration": "Release",
+				"buildDirectory": "build/docs-patch"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": null,
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"tutorials/gpu/debug-drawing.tutorial.json": "d39279290ff6b1e9433b0d4c2346a71e881ef64bbb7da6e71abd928ef356a984",
+				"tutorials/gpu/debug-drawing/exercise-3.patch": "f9de22d9596d38a4e8878197576ee375c2339f68ccebcc8064b285a8b176c263",
+				"tutorials/scripting/tutorial-host-function.patch": "746560c43e2492129ebbd3fed398873ffac2d220509ed72874c5bd70cfe8f47b",
+				"tutorials/scripting/tutorial-host-function.tutorial.json": "fea8571fcff451408ed022a7c2b1a82126923c852f1592b588a505b944139621",
+				"tutorials/scripting/tutorial-host-function/exercise-2.patch": "6231ec1694b809bdf364fcd45f3384fe23a9714e261aa7ce21b6a519bbba398c",
+				"tutorials/world/tutorial-component.patch": "66d3ef7a2cc098e5f42e5e8cb49eff70678f815799659f262e93f04bec980543",
+				"tutorials/world/tutorial-component.tutorial.json": "14cf38f4ba769e6ae5ae55ea0899db56681080862d77ca85ea857c31e324798e"
+			},
+			"stages": [],
+			"tests": [
+				{
+					"suite": "Architecture.Layering",
+					"testCases": 18,
+					"passed": true
+				},
+				{
+					"suite": "Scripting.Wind",
+					"testCases": 3,
+					"passed": true
+				},
+				{
+					"suite": "Scripting.Module",
+					"testCases": 25,
+					"passed": true
+				},
+				{
+					"suite": "FeatureTest",
+					"testCases": 10,
+					"passed": true
+				}
+			],
+			"ctest": {
+				"test": "StrataTests.FeatureTest",
+				"passed": true
+			},
+			"readerCopies": false,
+			"passed": true
+		}
+	]
+}

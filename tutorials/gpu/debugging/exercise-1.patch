@@ -1,0 +1,12 @@
+diff --git a/StrataTests/src/Renderer/GPURendererTests.cpp b/StrataTests/src/Renderer/GPURendererTests.cpp
+index 5594fca..7bb4c1f 100644
+--- a/StrataTests/src/Renderer/GPURendererTests.cpp
++++ b/StrataTests/src/Renderer/GPURendererTests.cpp
+@@ -154,7 +154,6 @@ TEST_SUITE("GPU.Renderer")
+ 		state.pipeline = pipeline;
+ 		state.framebuffer = framebuffer;
+ 		state.viewport.addViewportAndScissorRect(nvrhi::Viewport(static_cast<float>(size), static_cast<float>(size)));
+-		commandList->setGraphicsState(state);
+ 		commandList->draw(nvrhi::DrawArguments().setVertexCount(3));
+ 		commandList->close();
+ 		device->executeCommandList(commandList);

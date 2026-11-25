@@ -1,0 +1,101 @@
+{
+	"page": "make/prefabs",
+	"runs": [
+		{
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/tutorials/make/prefabs/stage-1.commands.json": "c77a2e3b4af5a235834c0941860596cda531f7820183960aa381ab7bc10fc550",
+				"public/downloads/tutorials/make/prefabs/stage-2.commands.json": "6ccf4542204227ab5564a02fba829ac172e49eb0ecf809b7dfd00d8f87c772b1",
+				"public/downloads/tutorials/make/prefabs/stage-3.commands.json": "37bfbb562628af538b559384313e6b96609e3b67f96aeada28ef12ad0817d36a",
+				"public/downloads/tutorials/make/prefabs/stage-4.commands.json": "c5363a0dd6062a8fa2a58683533a58b3c3b827a6e3e6ee0a97022f69dce95df3",
+				"public/downloads/tutorials/make/prefabs/stage-5.commands.json": "d11a24365a83974c135a0251b1d98ccd304ab0e7ba5c1202d3584576d17ba7b1",
+				"tutorials/make/assets.tutorial.json": "4ca95ec83abb4ec06329fe655787097c61515dd7abc7a242f6878ddae2e634e0",
+				"tutorials/make/editor-tour.tutorial.json": "9a35f25c6c18ee8694c1a03c82e70dca9319f5b82e4490eb91a631df0315c7d9",
+				"tutorials/make/materials.tutorial.json": "665e8963c08fb733be0ea70101d115ff9dd598e9861b8f2f84485ee64956f82b",
+				"tutorials/make/prefabs.tutorial.json": "952d54fbcb5624c1ead06de18d9b4e7faae8349c5cf020fbac6c95285222aa26",
+				"tutorials/make/scenes-entities.tutorial.json": "e28779abad6402d7c853f0d75f1af7749feac58663486024c9bbea500be09005"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				},
+				{
+					"step": 2,
+					"passed": true
+				},
+				{
+					"step": 3,
+					"passed": true
+				},
+				{
+					"step": 4,
+					"passed": true
+				},
+				{
+					"step": 5,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		},
+		{
+			"build": {
+				"kind": "package",
+				"configuration": "Strata-0.8.0-windows-x64",
+				"editorSha256": "bcff21bcd56e8f51003861fc7aafb4b8ab638ad7cc521c8c0c7829c4361673be",
+				"package": "Strata-0.8.0-windows-x64.zip",
+				"packageSha256": "47a151b64d0d6bb6f2c77147ca4b477b5eaa479b7dfeafee07ccec3911a00d11"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/tutorials/make/prefabs/stage-1.commands.json": "c77a2e3b4af5a235834c0941860596cda531f7820183960aa381ab7bc10fc550",
+				"public/downloads/tutorials/make/prefabs/stage-2.commands.json": "6ccf4542204227ab5564a02fba829ac172e49eb0ecf809b7dfd00d8f87c772b1",
+				"public/downloads/tutorials/make/prefabs/stage-3.commands.json": "37bfbb562628af538b559384313e6b96609e3b67f96aeada28ef12ad0817d36a",
+				"public/downloads/tutorials/make/prefabs/stage-4.commands.json": "c5363a0dd6062a8fa2a58683533a58b3c3b827a6e3e6ee0a97022f69dce95df3",
+				"public/downloads/tutorials/make/prefabs/stage-5.commands.json": "d11a24365a83974c135a0251b1d98ccd304ab0e7ba5c1202d3584576d17ba7b1",
+				"tutorials/make/assets.tutorial.json": "4ca95ec83abb4ec06329fe655787097c61515dd7abc7a242f6878ddae2e634e0",
+				"tutorials/make/editor-tour.tutorial.json": "9a35f25c6c18ee8694c1a03c82e70dca9319f5b82e4490eb91a631df0315c7d9",
+				"tutorials/make/materials.tutorial.json": "665e8963c08fb733be0ea70101d115ff9dd598e9861b8f2f84485ee64956f82b",
+				"tutorials/make/prefabs.tutorial.json": "952d54fbcb5624c1ead06de18d9b4e7faae8349c5cf020fbac6c95285222aa26",
+				"tutorials/make/scenes-entities.tutorial.json": "e28779abad6402d7c853f0d75f1af7749feac58663486024c9bbea500be09005"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				},
+				{
+					"step": 2,
+					"passed": true
+				},
+				{
+					"step": 3,
+					"passed": true
+				},
+				{
+					"step": 4,
+					"passed": true
+				},
+				{
+					"step": 5,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		}
+	]
+}

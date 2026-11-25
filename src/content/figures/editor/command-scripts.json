@@ -1,0 +1,17 @@
+{
+	"figures": [
+		{
+			"id": "script-run",
+			"kind": "text",
+			"shows": "The log of the editor run without a window on the falling ball script: start-up lines, each step's answer and the line that says the script finished",
+			"caption": "After its start-up lines, the editor logs each step's answer and how the script ended.",
+			"alt": "Lines of log text. After the start-up lines, each command is followed by its result; the last gives the ball a height of 5.16. A line says that the script finished with five commands.",
+			"files": [{ "from": "book:tutorials/editor/command-scripts/FallTest.json", "to": "FallTest.json" }],
+			"text": {
+				"program": "StrataEditor",
+				"arguments": ["--no-gpu", "--no-automation", "--quit-after-commands", "--commands", "FallTest.json"],
+				"redact": ["\\[[0-9]{2}:[0-9]{2}:[0-9]{2}\\]", "(?<=\"id\":\")[0-9A-F]{16}", "(?<=Started in )[0-9.]+ s"]
+			}
+		}
+	]
+}

@@ -1,0 +1,11 @@
+[…] [info] App: Strata Editor 0.8.0 (Windows)
+[…] [info] Strata: Engine modules: Input, Scene, Renderer, Physics, Audio, Animation, Scripting, World, GameUI. Scene systems update in the order UI, Scripting, Animation, World, Physics, Audio
+[…] [info] Strata: JobSystem: 23 worker threads, 2 I/O threads, 20 background threads
+[…] [info] Strata: Graphics device: NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)
+[…] [info] Strata: AudioEngine: mixing without an output device (48000 Hz, 2 channels)
+[…] [info] Strata: RpcServer: listening on 127.0.0.1:…
+[…] [info] App: Automation: listening on 127.0.0.1:… (StrataCLI and its MCP server find this editor through its session file)
+[…] [info] App: Started in … s
+[…] [info] Strata: RpcServer: stopped
+[…] [info] App: Automation: stopped (0 requests answered)
+[…] [info] Strata: AudioEngine: shut down

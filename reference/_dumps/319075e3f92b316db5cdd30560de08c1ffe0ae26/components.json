@@ -1,0 +1,2698 @@
+{
+	"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+	"engineCommit": "319075e3f92b",
+	"command": "component.list",
+	"result": {
+		"components": [
+			{
+				"addable": true,
+				"category": "Core",
+				"description": "",
+				"displayName": "Name",
+				"name": "Name",
+				"properties": [
+					{
+						"DisplayName": "Name",
+						"Name": "Name",
+						"Type": "String"
+					}
+				],
+				"removable": false
+			},
+			{
+				"addable": true,
+				"category": "Core",
+				"description": "Position, rotation and scale relative to the parent entity",
+				"displayName": "Transform",
+				"name": "Transform",
+				"properties": [
+					{
+						"DisplayName": "Translation",
+						"Name": "Translation",
+						"Type": "Vec3"
+					},
+					{
+						"Description": "Edited as Euler angles in degrees",
+						"DisplayName": "Rotation",
+						"Name": "Rotation",
+						"Type": "Quat"
+					},
+					{
+						"DisplayName": "Scale",
+						"Name": "Scale",
+						"Type": "Vec3"
+					}
+				],
+				"removable": false
+			},
+			{
+				"addable": true,
+				"category": "Core",
+				"description": "Gameplay label used to find groups of entities",
+				"displayName": "Tag",
+				"name": "Tag",
+				"properties": [
+					{
+						"DisplayName": "Tag",
+						"Name": "Tag",
+						"Type": "String"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": false,
+				"category": "Core",
+				"description": "Links this entity to the prefab it was created from",
+				"displayName": "Prefab Instance",
+				"name": "PrefabInstance",
+				"properties": [
+					{
+						"AssetType": "Prefab",
+						"DisplayName": "Prefab",
+						"Name": "Prefab",
+						"ReadOnly": true,
+						"Type": "Asset"
+					},
+					{
+						"DisplayName": "Prefab Entity ID",
+						"Name": "PrefabEntityID",
+						"ReadOnly": true,
+						"Type": "String"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Rendering",
+				"description": "",
+				"displayName": "Camera",
+				"name": "Camera",
+				"properties": [
+					{
+						"DisplayName": "Projection",
+						"Name": "Projection",
+						"Options": [
+							"Perspective",
+							"Orthographic"
+						],
+						"Type": "Enum"
+					},
+					{
+						"Description": "Vertical field of view in degrees",
+						"DisplayName": "Perspective FOV",
+						"Max": 179.0,
+						"Min": 1.0,
+						"Name": "PerspectiveFOV",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Perspective Near",
+						"Max": 1000000.0,
+						"Min": 0.0010000000474974513,
+						"Name": "PerspectiveNear",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Perspective Far",
+						"Max": 1000000.0,
+						"Min": 0.009999999776482582,
+						"Name": "PerspectiveFar",
+						"Type": "Float"
+					},
+					{
+						"Description": "Vertical extent in world units",
+						"DisplayName": "Orthographic Size",
+						"Max": 1000000.0,
+						"Min": 0.0010000000474974513,
+						"Name": "OrthographicSize",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Orthographic Near",
+						"Max": 1000000.0,
+						"Min": -1000000.0,
+						"Name": "OrthographicNear",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Orthographic Far",
+						"Max": 1000000.0,
+						"Min": -1000000.0,
+						"Name": "OrthographicFar",
+						"Type": "Float"
+					},
+					{
+						"Description": "The first active primary camera renders the game view",
+						"DisplayName": "Primary",
+						"Name": "Primary",
+						"Type": "Bool"
+					},
+					{
+						"DisplayName": "Clear Color",
+						"Name": "ClearColor",
+						"Type": "Color4"
+					},
+					{
+						"Description": "Blurs what lies nearer or farther than the focus, as a camera's lens does (perspective cameras); players can turn it off",
+						"DisplayName": "Depth Of Field",
+						"Name": "DepthOfField",
+						"Section": "Depth of field",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Meters from the camera to the sharpest plane",
+						"DisplayName": "Focus Distance",
+						"Max": 10000.0,
+						"Min": 0.10000000149011612,
+						"Name": "FocusDistance",
+						"Section": "Depth of field",
+						"Type": "Float"
+					},
+					{
+						"Description": "Keeps this entity in focus (its distance along the camera's view, at least the near plane); none: Focus Distance",
+						"DisplayName": "Focus Entity",
+						"Name": "FocusEntity",
+						"Section": "Depth of field",
+						"Type": "Entity"
+					},
+					{
+						"Description": "The lens's f-number: lower blurs more (f/1.4 a portrait lens wide open), higher keeps more in focus (f/16)",
+						"DisplayName": "Aperture",
+						"Max": 32.0,
+						"Min": 1.0,
+						"Name": "Aperture",
+						"Section": "Depth of field",
+						"Type": "Float"
+					},
+					{
+						"Description": "Millimeters: with the field of view it sets the focal length; larger sensors blur more at the same view (24 full frame, 15.6 APS-C, 8.8 a 1-inch sensor)",
+						"DisplayName": "Sensor Height",
+						"Max": 100.0,
+						"Min": 4.0,
+						"Name": "SensorHeight",
+						"Section": "Depth of field",
+						"Type": "Float"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Rendering",
+				"description": "",
+				"displayName": "Mesh Renderer",
+				"name": "MeshRenderer",
+				"properties": [
+					{
+						"AssetType": "Mesh",
+						"DisplayName": "Mesh",
+						"Name": "Mesh",
+						"Type": "Asset"
+					},
+					{
+						"AssetType": "Material",
+						"Description": "Overrides every submesh material when set",
+						"DisplayName": "Material",
+						"Name": "Material",
+						"Type": "Asset"
+					},
+					{
+						"DisplayName": "Cast Shadows",
+						"Name": "CastShadows",
+						"Type": "Bool"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Lighting",
+				"description": "Sun-like light shining along the entity's forward (-Z) direction; its intensity is illuminance in lux",
+				"displayName": "Directional Light",
+				"name": "DirectionalLight",
+				"properties": [
+					{
+						"Description": "Linear color of the light, times Intensity: (1, 1, 1) for the midday sun; the physical atmosphere dims and reddens it toward the horizon itself, so tint it only for a look",
+						"DisplayName": "Color",
+						"Name": "Color",
+						"Section": "Light",
+						"Type": "Color3"
+					},
+					{
+						"Description": "Illuminance in lux on a surface facing the light, times Color: direct sun about 100,000, an overcast day 1,000 to 10,000, a full moon 0.25",
+						"DisplayName": "Intensity",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "Intensity",
+						"Section": "Light",
+						"Type": "Float"
+					},
+					{
+						"Description": "Angular diameter of the light's disk in degrees (the sun: about 0.53; an overcast sky's soft sun up to 10): its shadows' penumbra widens with the distance from the caster, and its highlight on smooth surfaces takes the disk's size. 0: the hardest shadow the filter allows and a point-like highlight",
+						"DisplayName": "Angular Diameter",
+						"Max": 10.0,
+						"Min": 0.0,
+						"Name": "ShadowSoftness",
+						"Section": "Light",
+						"Type": "Float"
+					},
+					{
+						"Description": "Whether the light casts shadows: cascaded shadow maps out to Shadow Distance, their resolution and number set by Project Settings > Graphics Quality",
+						"DisplayName": "Cast Shadows",
+						"Name": "CastShadows",
+						"Section": "Shadows",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Meters from the camera the shadows reach; the last cascade fades out before it. Shorter spends the same shadow-map texels on less ground: sharper near shadows",
+						"DisplayName": "Shadow Distance",
+						"Max": 10000.0,
+						"Min": 1.0,
+						"Name": "ShadowDistance",
+						"Section": "Shadows",
+						"Type": "Float"
+					},
+					{
+						"Description": "Depth offset toward the light in shadow-map texels: raise it against shadow acne (stripes on lit surfaces), lower it when shadows detach from their casters",
+						"DisplayName": "Shadow Bias",
+						"Max": 10.0,
+						"Min": 0.0,
+						"Name": "ShadowBias",
+						"Section": "Shadows",
+						"Type": "Float"
+					},
+					{
+						"Description": "Offset of the lookup along the surface normal in shadow-map texels: raise it against acne on surfaces at grazing angles to the light",
+						"DisplayName": "Shadow Normal Bias",
+						"Max": 10.0,
+						"Min": 0.0,
+						"Name": "ShadowNormalBias",
+						"Section": "Shadows",
+						"Type": "Float"
+					},
+					{
+						"Description": "Fraction of each shadow cascade's depth range over which it blends into the next one, hiding the seams between them; the last one fades out by the Shadow Distance. 0 switches at once",
+						"DisplayName": "Cascade Blend",
+						"Max": 0.5,
+						"Min": 0.0,
+						"Name": "CascadeBlend",
+						"Section": "Shadows",
+						"Type": "Float"
+					},
+					{
+						"Description": "Meters toward the light over which contact shadows ground objects smaller than the shadow cascades' texels, when Graphics Quality's Contact Shadows has steps (Custom; no preset draws them); 0 off",
+						"DisplayName": "Contact Shadow Length",
+						"Max": 2.0,
+						"Min": 0.0,
+						"Name": "ContactShadowLength",
+						"Section": "Shadows",
+						"Type": "Float"
+					},
+					{
+						"Description": "How the cascades share the distance from 1.5 m to the Shadow Distance: 0 evenly, 1 each cascade the same ratio farther than the previous. Higher puts more detail near the camera",
+						"DisplayName": "Cascade Distribution",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "CascadeDistribution",
+						"Section": "Shadows",
+						"Type": "Float"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Lighting",
+				"description": "Light shining in every direction from the entity's position, with shadows in six directions when it casts them; its intensity is luminous intensity in candela",
+				"displayName": "Point Light",
+				"name": "PointLight",
+				"properties": [
+					{
+						"DisplayName": "Color",
+						"Name": "Color",
+						"Type": "Color3"
+					},
+					{
+						"Description": "Luminous intensity in candela, times Color, falling off with the square of the distance: a bulb of P lumens has P / 12.57 cd (800 lm, about 64 cd), a candle about 1",
+						"DisplayName": "Intensity",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "Intensity",
+						"Type": "Float"
+					},
+					{
+						"Description": "Light fades to zero at this distance",
+						"DisplayName": "Range",
+						"Max": 1000000.0,
+						"Min": 0.009999999776482582,
+						"Name": "Range",
+						"Type": "Float"
+					},
+					{
+						"Description": "Radius in meters of the light's bulb or flame: smooth and wet surfaces show its highlight at that size, the same light spread wider (a lantern about 0.05, a fire about 0.25). Its diffuse light and shadows do not change. 0: a point",
+						"DisplayName": "Source Radius",
+						"Max": 2.0,
+						"Min": 0.0,
+						"Name": "SourceRadius",
+						"Type": "Float"
+					},
+					{
+						"Description": "Casts shadows: the renderer gives the most relevant shadowed lights in view (16) tiles of its shadow atlas, six for a point light, one for a spot light; each costs drawing its casters again when they move",
+						"DisplayName": "Cast Shadows",
+						"Name": "CastShadows",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Depth offset toward the light, in texels of the light's shadow tiles: raise it if lit surfaces show stripes of shadow (acne)",
+						"DisplayName": "Shadow Bias",
+						"Max": 10.0,
+						"Min": 0.0,
+						"Name": "ShadowBias",
+						"Type": "Float"
+					},
+					{
+						"Description": "Offset along the surface normal, in texels of the light's shadow tiles: raise it against acne on surfaces lit at grazing angles; too much detaches shadows from their casters",
+						"DisplayName": "Shadow Normal Bias",
+						"Max": 10.0,
+						"Min": 0.0,
+						"Name": "ShadowNormalBias",
+						"Type": "Float"
+					},
+					{
+						"Description": "Radius of the shadow's soft edge, in texels of the light's shadow tiles (0 to 8)",
+						"DisplayName": "Shadow Filter Radius",
+						"Max": 8.0,
+						"Min": 0.0,
+						"Name": "ShadowFilterRadius",
+						"Type": "Float"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Lighting",
+				"description": "Cone light shining along the entity's forward (-Z) direction, with shadows when it casts them; its intensity is luminous intensity in candela along its axis",
+				"displayName": "Spot Light",
+				"name": "SpotLight",
+				"properties": [
+					{
+						"DisplayName": "Color",
+						"Name": "Color",
+						"Type": "Color3"
+					},
+					{
+						"Description": "Luminous intensity in candela along the axis, times Color, falling off with the square of the distance; a narrower cone does not make it brighter",
+						"DisplayName": "Intensity",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "Intensity",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Range",
+						"Max": 1000000.0,
+						"Min": 0.009999999776482582,
+						"Name": "Range",
+						"Type": "Float"
+					},
+					{
+						"Description": "Radius in meters of the light's bulb or flame: smooth and wet surfaces show its highlight at that size, the same light spread wider (a lantern about 0.05, a fire about 0.25). Its diffuse light and shadows do not change. 0: a point",
+						"DisplayName": "Source Radius",
+						"Max": 2.0,
+						"Min": 0.0,
+						"Name": "SourceRadius",
+						"Type": "Float"
+					},
+					{
+						"Description": "Half angle in degrees",
+						"DisplayName": "Inner Cone Angle",
+						"Max": 89.0,
+						"Min": 0.0,
+						"Name": "InnerConeAngle",
+						"Type": "Float"
+					},
+					{
+						"Description": "Half angle in degrees",
+						"DisplayName": "Outer Cone Angle",
+						"Max": 89.9000015258789,
+						"Min": 0.10000000149011612,
+						"Name": "OuterConeAngle",
+						"Type": "Float"
+					},
+					{
+						"Description": "Casts shadows: the renderer gives the most relevant shadowed lights in view (16) tiles of its shadow atlas, six for a point light, one for a spot light; each costs drawing its casters again when they move",
+						"DisplayName": "Cast Shadows",
+						"Name": "CastShadows",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Depth offset toward the light, in texels of the light's shadow tiles: raise it if lit surfaces show stripes of shadow (acne)",
+						"DisplayName": "Shadow Bias",
+						"Max": 10.0,
+						"Min": 0.0,
+						"Name": "ShadowBias",
+						"Type": "Float"
+					},
+					{
+						"Description": "Offset along the surface normal, in texels of the light's shadow tiles: raise it against acne on surfaces lit at grazing angles; too much detaches shadows from their casters",
+						"DisplayName": "Shadow Normal Bias",
+						"Max": 10.0,
+						"Min": 0.0,
+						"Name": "ShadowNormalBias",
+						"Type": "Float"
+					},
+					{
+						"Description": "Radius of the shadow's soft edge, in texels of the light's shadow tiles (0 to 8)",
+						"DisplayName": "Shadow Filter Radius",
+						"Max": 8.0,
+						"Min": 0.0,
+						"Name": "ShadowFilterRadius",
+						"Type": "Float"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Lighting",
+				"description": "Rectangle light shining along the entity's forward (-Z) direction from its X-Y plane, lighting every pixel with its face's diffuse light and highlight; its intensity is the luminance of its face in nits, or its power in lumens",
+				"displayName": "Rect Light",
+				"name": "RectLight",
+				"properties": [
+					{
+						"Description": "Linear color of the light, times Intensity",
+						"DisplayName": "Color",
+						"Name": "Color",
+						"Type": "Color3"
+					},
+					{
+						"Description": "Luminance of the face in nits (cd/m²), times Color, with Units Nits (an LED ceiling panel about 3,000, a lit sign 1,000, a softbox 10,000); its power in lumens with Units Lumens (an LED panel of 60 x 60 cm about 3,600 lm)",
+						"DisplayName": "Intensity",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "Intensity",
+						"Type": "Float"
+					},
+					{
+						"Description": "Nits: Intensity is the face's luminance, as an emissive material's (resizing keeps its brightness); Lumens: the power the light emits, spread over its face (resizing keeps its power; a two-sided light shares it between its faces)",
+						"DisplayName": "Units",
+						"Name": "Units",
+						"Options": [
+							"Nits",
+							"Lumens"
+						],
+						"Type": "Enum"
+					},
+					{
+						"Description": "Meters along the entity's X axis, times its scale",
+						"DisplayName": "Width",
+						"Max": 100.0,
+						"Min": 0.0010000000474974513,
+						"Name": "Width",
+						"Type": "Float"
+					},
+					{
+						"Description": "Meters along the entity's Y axis, times its scale",
+						"DisplayName": "Height",
+						"Max": 100.0,
+						"Min": 0.0010000000474974513,
+						"Name": "Height",
+						"Type": "Float"
+					},
+					{
+						"Description": "Emits from both faces. Nits: each face has the Intensity's luminance (twice the power); Lumens: the faces share the power (each half as bright)",
+						"DisplayName": "Two Sided",
+						"Name": "TwoSided",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Light fades to zero at this distance from the rectangle",
+						"DisplayName": "Range",
+						"Max": 1000000.0,
+						"Min": 0.009999999776482582,
+						"Name": "Range",
+						"Type": "Float"
+					},
+					{
+						"Description": "Soft shadows, filtered with the light's own size: sharp where an object meets the floor, wider further away. Takes six views of the local shadow atlas (five for a one-sided ceiling panel) from Max Shadowed Local Lights' budget",
+						"DisplayName": "Cast Shadows",
+						"Name": "CastShadows",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Depth offset toward the light, in texels of the light's shadow tiles: raise it if lit surfaces show stripes of shadow (acne)",
+						"DisplayName": "Shadow Bias",
+						"Max": 10.0,
+						"Min": 0.0,
+						"Name": "ShadowBias",
+						"Type": "Float"
+					},
+					{
+						"Description": "Offset along the surface normal, in texels of the light's shadow tiles: raise it against acne on surfaces lit at grazing angles; too much detaches shadows from their casters",
+						"DisplayName": "Shadow Normal Bias",
+						"Max": 10.0,
+						"Min": 0.0,
+						"Name": "ShadowNormalBias",
+						"Type": "Float"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Lighting",
+				"description": "Marks this emissive mesh as the face of an area light (Make Area Light adds it): screen-space reflections, reflection probe captures and area lights' shadows leave its emission out, so the panel is not counted twice. The mesh still draws, casts the sun's and other lights' shadows and is picked as before",
+				"displayName": "Light Surface",
+				"name": "LightSurface",
+				"properties": [],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Lighting",
+				"description": "Image-based lighting and sky background from an HDR environment map, a procedural sky or a physical atmosphere lit by the directional light; its radiance is luminance in nits (cd/m²) times its intensity (the atmosphere's: per lux of the light's illuminance)",
+				"displayName": "Sky Light",
+				"name": "SkyLight",
+				"properties": [
+					{
+						"Description": "EnvironmentMap: an HDR texture; Procedural: a sky computed from the colors below and the directional light; Atmosphere: Earth's sky lit by the directional light, which it dims and reddens toward the horizon",
+						"DisplayName": "Source",
+						"Name": "Source",
+						"Options": [
+							"EnvironmentMap",
+							"Procedural",
+							"Atmosphere"
+						],
+						"Type": "Enum"
+					},
+					{
+						"AssetType": "Texture",
+						"Description": "Equirectangular HDR texture",
+						"DisplayName": "Environment Map",
+						"Name": "EnvironmentMap",
+						"Type": "Asset"
+					},
+					{
+						"Description": "Multiplies the sky's luminance in nits (cd/m²): an environment map's values, the procedural colors, the ambient color, and the atmosphere's sky (nits per lux of the directional light)",
+						"DisplayName": "Intensity",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "Intensity",
+						"Type": "Float"
+					},
+					{
+						"Description": "Degrees around +Y (environment maps only)",
+						"DisplayName": "Rotation",
+						"Max": 360.0,
+						"Min": -360.0,
+						"Name": "Rotation",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Show Background",
+						"Name": "ShowBackground",
+						"Type": "Bool"
+					},
+					{
+						"DisplayName": "Background Blur",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "BackgroundBlur",
+						"Type": "Float"
+					},
+					{
+						"Description": "Ambient sky luminance in nits (linear, times Intensity) while there is no environment (no map set)",
+						"DisplayName": "Ambient Color",
+						"Name": "AmbientColor",
+						"Type": "Color3"
+					},
+					{
+						"Description": "Procedural sky: luminance straight up in nits (linear, times Intensity)",
+						"DisplayName": "Zenith Color",
+						"Name": "ZenithColor",
+						"Type": "Color3"
+					},
+					{
+						"Description": "Procedural sky: luminance at the horizon in nits (linear, times Intensity)",
+						"DisplayName": "Horizon Color",
+						"Name": "HorizonColor",
+						"Type": "Color3"
+					},
+					{
+						"Description": "Procedural sky: luminance below the horizon in nits (linear, times Intensity)",
+						"DisplayName": "Ground Color",
+						"Name": "GroundColor",
+						"Type": "Color3"
+					},
+					{
+						"Description": "Procedural sky and atmosphere: angular diameter of the sun's disk in degrees (0 hides it)",
+						"DisplayName": "Sun Size",
+						"Max": 20.0,
+						"Min": 0.0,
+						"Name": "SunSize",
+						"Type": "Float"
+					},
+					{
+						"Description": "Procedural sky: luminance of the sun's disk in nits, times the directional light's color (not its intensity) and this sky's Intensity",
+						"DisplayName": "Sun Intensity",
+						"Max": 60000.0,
+						"Min": 0.0,
+						"Name": "SunIntensity",
+						"Type": "Float"
+					},
+					{
+						"Description": "Atmosphere: density of its air and aerosols (1: Earth's); thicker air reddens the sun sooner",
+						"DisplayName": "Atmosphere Density",
+						"Max": 10.0,
+						"Min": 0.0,
+						"Name": "AtmosphereDensity",
+						"Type": "Float"
+					},
+					{
+						"Description": "Atmosphere: amount of aerosols (1: a clear day), the whitish haze and glow around the sun",
+						"DisplayName": "Atmosphere Haze",
+						"Max": 10.0,
+						"Min": 0.0,
+						"Name": "AtmosphereHaze",
+						"Type": "Float"
+					},
+					{
+						"Description": "Atmosphere: diffuse reflectance of the planet's ground, which lights the sky from below",
+						"DisplayName": "Ground Albedo",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "GroundAlbedo",
+						"Type": "Float"
+					},
+					{
+						"Description": "Atmosphere: distant surfaces fade into the air's haze, as the sky does (aerial perspective)",
+						"DisplayName": "Aerial Perspective",
+						"Name": "AerialPerspective",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Atmosphere: distances multiplied by this for the haze: 1 is Earth's air, 4 makes a 1 km view look like 4 km",
+						"DisplayName": "Aerial Perspective Scale",
+						"Max": 64.0,
+						"Min": 0.0,
+						"Name": "AerialPerspectiveScale",
+						"Type": "Float"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Rendering",
+				"description": "Fog that thickens toward the ground, over the scene's surfaces and its sky (the first active one applies)",
+				"displayName": "Height Fog",
+				"name": "HeightFog",
+				"properties": [
+					{
+						"Description": "Extinction per meter at the base height: 0.02 hides half of what lies 35 m away",
+						"DisplayName": "Density",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "Density",
+						"Type": "Float"
+					},
+					{
+						"Description": "Per meter: the density falls by the factor e every 1 / falloff meters above the base height and rises below it",
+						"DisplayName": "Height Falloff",
+						"Max": 1000000.0,
+						"Min": 9.999999747378752e-05,
+						"Name": "HeightFalloff",
+						"Type": "Float"
+					},
+					{
+						"Description": "World height in meters where the density is Density",
+						"DisplayName": "Base Height",
+						"Max": 1000000.0,
+						"Min": -1000000.0,
+						"Name": "BaseHeight",
+						"Type": "Float"
+					},
+					{
+						"Description": "Meters from the camera before which there is no fog",
+						"DisplayName": "Start Distance",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "StartDistance",
+						"Type": "Float"
+					},
+					{
+						"Description": "The most the fog hides of what lies behind it; the sky at the horizon gets this much",
+						"DisplayName": "Max Opacity",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "MaxOpacity",
+						"Type": "Float"
+					},
+					{
+						"Description": "Linear albedo: the fraction of its light the fog scatters toward the viewer",
+						"DisplayName": "Color",
+						"Name": "Color",
+						"Type": "Color3"
+					},
+					{
+						"Description": "The sky lights the fog: the procedural sky's horizon color, an environment map's light from above, or the ambient color without either; off, Color is the fog's own radiance. The directional light lights it either way",
+						"DisplayName": "Color From Sky",
+						"Name": "ColorFromSky",
+						"Type": "Bool"
+					},
+					{
+						"Description": "How strongly the fog scatters the directional light toward a viewer looking at it: 0 equally in every direction, 1 into a glow around the light",
+						"DisplayName": "Sun Scattering",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "SunScattering",
+						"Type": "Float"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Rendering",
+				"description": "Reflections and ambient light inside a box from a capture of the scene around the entity (lighting.bakeProbes renders it); where boxes overlap the two strongest blend",
+				"displayName": "Reflection Probe",
+				"name": "ReflectionProbe",
+				"properties": [
+					{
+						"AssetType": "Texture",
+						"Description": "Equirectangular HDR texture of the scene seen from the probe (luminance in nits): Bake writes one",
+						"DisplayName": "Capture",
+						"Name": "Capture",
+						"Type": "Asset"
+					},
+					{
+						"Description": "Half size of the influence box in meters, along the entity's axes (times its scale)",
+						"DisplayName": "Extents",
+						"Max": 1000000.0,
+						"Min": 0.009999999776482582,
+						"Name": "Extents",
+						"Type": "Vec3"
+					},
+					{
+						"Description": "Meters inside the box's faces over which the probe fades into the sky's lighting (or a weaker probe's)",
+						"DisplayName": "Blend Distance",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "BlendDistance",
+						"Type": "Float"
+					},
+					{
+						"Description": "Reflections are projected onto the box's faces, so walls near the box's faces reflect where they are (rooms); off, the capture is seen as if infinitely far (open spaces)",
+						"DisplayName": "Box Projection",
+						"Name": "BoxProjection",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Multiplies the capture's luminance",
+						"DisplayName": "Intensity",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "Intensity",
+						"Type": "Float"
+					},
+					{
+						"Description": "Where boxes overlap the higher priority wins (then the smaller box); with more probes in view than the renderer keeps, the strongest stay",
+						"DisplayName": "Priority",
+						"Max": 1000.0,
+						"Min": -1000.0,
+						"Name": "Priority",
+						"Type": "Int"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Rendering",
+				"description": "Tonemapping, exposure, bloom, ambient occlusion, anti-aliasing and screen-space reflection settings",
+				"displayName": "Post Process",
+				"name": "PostProcess",
+				"properties": [
+					{
+						"Description": "Filmic: the engine's camera-like curve, middle gray shown as middle gray, a soft shoulder that takes bright colors to white without changing their hue (Toe and Shoulder shape it); ACES: punchier, darker mid-tones (needs about +0.8 EV for the same brightness); AgX: flatter and less saturated; Khronos Neutral: keeps base colors up to the highlights; Reinhard; None: the exposed colors clipped",
+						"DisplayName": "Tonemapper",
+						"Name": "Tonemapper",
+						"Options": [
+							"None",
+							"Reinhard",
+							"ACES",
+							"AgX",
+							"KhronosNeutral",
+							"Filmic"
+						],
+						"Section": "Tone and color",
+						"Type": "Enum"
+					},
+					{
+						"Description": "Exposure compensation in EV",
+						"DisplayName": "Exposure",
+						"Max": 16.0,
+						"Min": -16.0,
+						"Name": "Exposure",
+						"Section": "Exposure",
+						"Type": "Float"
+					},
+					{
+						"Description": "Adapts the exposure to the scene's brightness over time, as an eye or a camera's meter does, within Auto Exposure Min and Max EV; off, Exposure alone sets it",
+						"DisplayName": "Auto Exposure",
+						"Name": "AutoExposure",
+						"Section": "Exposure",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Darkest average scene luminance (log2) automatic exposure brightens up to",
+						"DisplayName": "Auto Exposure Min EV",
+						"Max": 16.0,
+						"Min": -12.0,
+						"Name": "AutoExposureMinEV",
+						"Section": "Exposure",
+						"Type": "Float"
+					},
+					{
+						"Description": "Brightest average scene luminance (log2) automatic exposure darkens down to",
+						"DisplayName": "Auto Exposure Max EV",
+						"Max": 16.0,
+						"Min": -12.0,
+						"Name": "AutoExposureMaxEV",
+						"Section": "Exposure",
+						"Type": "Float"
+					},
+					{
+						"Description": "How fast the exposure follows a darker scene (the image brightens), per second; 0 jumps at once",
+						"DisplayName": "Auto Exposure Speed",
+						"Max": 20.0,
+						"Min": 0.0,
+						"Name": "AutoExposureSpeed",
+						"Section": "Exposure",
+						"Type": "Float"
+					},
+					{
+						"Description": "A soft glow around bright light: the light a camera's lens scatters",
+						"DisplayName": "Bloom",
+						"Name": "Bloom",
+						"Section": "Bloom",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Fraction of the light scattered into the glow",
+						"DisplayName": "Bloom Intensity",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "BloomIntensity",
+						"Section": "Bloom",
+						"Type": "Float"
+					},
+					{
+						"Description": "Only light brighter than this (after exposure) blooms; 0 = all light, physically based",
+						"DisplayName": "Bloom Threshold",
+						"Max": 20.0,
+						"Min": 0.0,
+						"Name": "BloomThreshold",
+						"Section": "Bloom",
+						"Type": "Float"
+					},
+					{
+						"Description": "Darkens creases, corners and contacts that ambient light reaches less (screen-space ambient occlusion)",
+						"DisplayName": "Ambient Occlusion",
+						"Name": "AmbientOcclusion",
+						"Section": "Ambient occlusion",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Meters: how far around a surface occluders darken it; on screen kept between 0.3% and 12% of the view's height",
+						"DisplayName": "Ambient Occlusion Radius",
+						"Max": 10.0,
+						"Min": 0.009999999776482582,
+						"Name": "AmbientOcclusionRadius",
+						"Section": "Ambient occlusion",
+						"Type": "Float"
+					},
+					{
+						"Description": "How strongly the occlusion darkens ambient light: 1 as measured, 0 none, above 1 stronger",
+						"DisplayName": "Ambient Occlusion Intensity",
+						"Max": 4.0,
+						"Min": 0.0,
+						"Name": "AmbientOcclusionIntensity",
+						"Section": "Ambient occlusion",
+						"Type": "Float"
+					},
+					{
+						"Description": "Occluded corners of bright surfaces keep the light their walls reflect into them: white plaster stays light in its creases, dark soil darkens fully",
+						"DisplayName": "Ambient Occlusion Multi Bounce",
+						"Name": "AmbientOcclusionMultiBounce",
+						"Section": "Ambient occlusion",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Experimental. Bounce light and sky occlusion traced in the world around the camera: sunlit floors light the walls, colored surfaces tint their neighbors, closed rooms stay dark, whether the source is on screen or not. Graphics Quality High and Ultra; off at Low and Medium",
+						"DisplayName": "Global Illumination",
+						"Name": "GlobalIllumination",
+						"Section": "Global illumination",
+						"Type": "Bool"
+					},
+					{
+						"Description": "How much of the traced indirect light shades surfaces: 1 as traced",
+						"DisplayName": "Global Illumination Intensity",
+						"Max": 4.0,
+						"Min": 0.0,
+						"Name": "GlobalIlluminationIntensity",
+						"Section": "Global illumination",
+						"Type": "Float"
+					},
+					{
+						"Description": "Smooths jagged edges, by the method below",
+						"DisplayName": "Anti Aliasing",
+						"Name": "AntiAliasing",
+						"Section": "Anti-aliasing",
+						"Type": "Bool"
+					},
+					{
+						"Description": "FXAA: fast approximate anti-aliasing of each frame; TAA: temporal anti-aliasing, each frame sampled at another sub-pixel offset and blended with the earlier ones along their motion: smoother, steadier edges and thin details, and point and spot lights' soft shadow edges without their grain (the sun's are the same with any method). TAA Preset chooses how the TAA looks. Morphological: non-temporal, finds edges and blends along them, keeping texture detail",
+						"DisplayName": "Anti Aliasing Method",
+						"Name": "AntiAliasingMethod",
+						"Options": [
+							"FXAA",
+							"TAA",
+							"Morphological"
+						],
+						"Section": "Anti-aliasing",
+						"Type": "Enum"
+					},
+					{
+						"Description": "How the TAA looks. Sharp: tighter history clipping, slow pans resampled less, uncovered surfaces drop their history, transparent surfaces take mostly the current frame, a faster response to motion and a light sharpening of the displayed image. Original: the first TAA, softer and steadier. Custom: the tunables below (choosing it in the Inspector starts from the look in effect)",
+						"DisplayName": "TAA Preset",
+						"Name": "TAAPreset",
+						"Options": [
+							"Sharp",
+							"Original",
+							"Custom"
+						],
+						"Section": "Anti-aliasing",
+						"Type": "Enum"
+					},
+					{
+						"Description": "About how many frames the image averages: the current frame weighs at least 1 / this. At 8, every jitter position counts once. More is smoother and steadier but lags behind lighting changes; fewer reacts faster but edges crawl",
+						"DisplayName": "TAA History Frames",
+						"Max": 32.0,
+						"Min": 2.0,
+						"Name": "TAAHistoryFrames",
+						"Section": "Anti-aliasing",
+						"Type": "UInt"
+					},
+					{
+						"Description": "How quickly moving surfaces let go of the history. At 0.0625, motion of 8 pixels a frame weighs the current frame 0.5. Higher keeps moving things crisper and their trails shorter, but they get less anti-aliasing while they move. 0: motion does not matter",
+						"DisplayName": "TAA Motion Response",
+						"Max": 0.25,
+						"Min": 0.0,
+						"Name": "TAAMotionResponse",
+						"Section": "Anti-aliasing",
+						"Type": "Float"
+					},
+					{
+						"Description": "The most the current frame weighs, however fast things move. 1 lets very fast motion drop the history: sharp, but aliased",
+						"DisplayName": "TAA Max Motion Weight",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "TAAMaxMotionWeight",
+						"Section": "Anti-aliasing",
+						"Type": "Float"
+					},
+					{
+						"Description": "The current frame's least weight where the history is read between pixels, as in slow pans; it is largest halfway between them. Higher keeps slowly moving texture crisper, but its edges get less anti-aliasing while they move. 0: off",
+						"DisplayName": "TAA Resample Weight",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "TAAResampleWeight",
+						"Section": "Anti-aliasing",
+						"Type": "Float"
+					},
+					{
+						"Description": "How the history is kept consistent with what the pixel shows now. Range limits it to the range of the colors around the pixel. Tight limits it to a narrower box around their average, which removes more ghosting and trails, most where the surroundings are smooth and less beside glints",
+						"DisplayName": "TAA History Clamp",
+						"Name": "TAAHistoryClamp",
+						"Options": [
+							"MinMax",
+							"Variance"
+						],
+						"Section": "Anti-aliasing",
+						"Type": "Enum"
+					},
+					{
+						"Description": "Tight only: the box's half width, in standard deviations of the colors around the pixel. Lower removes more trails, but lets edges flicker and lets noise through",
+						"DisplayName": "TAA Clip Width",
+						"Max": 4.0,
+						"Min": 0.5,
+						"Name": "TAAClipWidth",
+						"Section": "Anti-aliasing",
+						"Type": "Float"
+					},
+					{
+						"Description": "The current frame's least weight where a blended transparent surface covers the pixel (half cover or more counts as full). Transparent surfaces have no motion vectors of their own. 0 treats them like everything else, so they ghost when they move; 1 drops their history, so they never ghost, but their edges shimmer",
+						"DisplayName": "TAA Transparent Weight",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "TAATransparentWeight",
+						"Section": "Anti-aliasing",
+						"Type": "Float"
+					},
+					{
+						"Description": "Drop the history where a surface was just uncovered (something nearer covered it in the previous frame), so moving objects leave no ghost on what they uncover",
+						"DisplayName": "TAA Disocclusion Rejection",
+						"Name": "TAADisocclusionRejection",
+						"Section": "Anti-aliasing",
+						"Type": "Bool"
+					},
+					{
+						"Description": "How much nearer the previous frame's surface must have been, as a fraction of the distance, for the pixel to count as uncovered. Lower catches thin gaps, such as a hand in front of a wall, but may drop the history of surfaces moving fast away from the camera",
+						"DisplayName": "TAA Disocclusion Threshold",
+						"Max": 0.5,
+						"Min": 0.009999999776482582,
+						"Name": "TAADisocclusionThreshold",
+						"Section": "Anti-aliasing",
+						"Type": "Float"
+					},
+					{
+						"Description": "Sharpens the displayed image after TAA, never the history, to restore texture detail the averaging softens. Strong edges are sharpened much less and overshoot is bounded, so halos stay faint. 0 is off",
+						"DisplayName": "TAA Sharpening",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "TAASharpening",
+						"Section": "Anti-aliasing",
+						"Type": "Float"
+					},
+					{
+						"Description": "Reflections of what the screen shows, found each frame: smooth floors, water and metal reflect what stands near them. At Graphics Quality Medium (Reflections Checkerboard) only with TAA; High and Ultra trace every pixel with or without it. Where they find nothing (off screen, hidden, the sky) the reflection probes and the sky reflect as before",
+						"DisplayName": "Screen Space Reflections",
+						"Name": "ScreenSpaceReflections",
+						"Section": "Reflections",
+						"Type": "Bool"
+					},
+					{
+						"Description": "How much the screen-space reflections replace the probes' and the sky's reflection where they find something; 1: fully",
+						"DisplayName": "Screen Space Reflections Intensity",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "ScreenSpaceReflectionsIntensity",
+						"Section": "Reflections",
+						"Type": "Float"
+					},
+					{
+						"Description": "Surfaces rougher than this get none, and they fade out over the last quarter below it: rough surfaces blur what they reflect, which screen-space reflections do not",
+						"DisplayName": "Screen Space Reflections Max Roughness",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "ScreenSpaceReflectionsMaxRoughness",
+						"Section": "Reflections",
+						"Type": "Float"
+					},
+					{
+						"Description": "Natural darkening toward the image's corners, as a lens's (cos^4 of the field angle): 0 none, 1 a lens's full fall-off; 0.12 darkens the corners of a 60 degree view by about 10%",
+						"DisplayName": "Vignette",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "Vignette",
+						"Section": "Lens",
+						"Type": "Float"
+					},
+					{
+						"Description": "Color saturation after the tone curve: 1 unchanged, 0 gray, 2 twice as vivid",
+						"DisplayName": "Saturation",
+						"Max": 2.0,
+						"Min": 0.0,
+						"Name": "Saturation",
+						"Section": "Tone and color",
+						"Type": "Float"
+					},
+					{
+						"Description": "Around middle gray; 1 = unchanged",
+						"DisplayName": "Contrast",
+						"Max": 2.0,
+						"Min": 0.5,
+						"Name": "Contrast",
+						"Section": "Tone and color",
+						"Type": "Float"
+					},
+					{
+						"Description": "How deep the shadows go: higher crushes the darkest tones toward black, lower keeps more detail in them (Filmic only)",
+						"DisplayName": "Toe",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "Toe",
+						"Section": "Tone and color",
+						"Type": "Float"
+					},
+					{
+						"Description": "How softly highlights roll off to white: higher reaches white more stops above middle gray (5 at 0, 6.5 at 0.5, 8 at 1), keeping more highlight detail (Filmic only)",
+						"DisplayName": "Shoulder",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "Shoulder",
+						"Section": "Tone and color",
+						"Type": "Float"
+					},
+					{
+						"Description": "Temperature in kelvin of the light that shows as white: lower values cool the image (3200 for tungsten light), higher warm it; 6500 is neutral",
+						"DisplayName": "White Balance Temperature",
+						"Max": 15000.0,
+						"Min": 2000.0,
+						"Name": "WhiteBalanceTemperature",
+						"Section": "Tone and color",
+						"Type": "Float"
+					},
+					{
+						"Description": "Tint: positive adds magenta, negative green",
+						"DisplayName": "White Balance Tint",
+						"Max": 1.0,
+						"Min": -1.0,
+						"Name": "WhiteBalanceTint",
+						"Section": "Tone and color",
+						"Type": "Float"
+					},
+					{
+						"Description": "Slope: per-channel gain before the tone curve",
+						"DisplayName": "Color Slope",
+						"Max": 4.0,
+						"Min": 0.0,
+						"Name": "ColorSlope",
+						"Section": "Tone and color",
+						"Type": "Vec3"
+					},
+					{
+						"Description": "Offset: light added per channel, in fractions of middle gray (tints the shadows most)",
+						"DisplayName": "Color Offset",
+						"Max": 0.10000000149011612,
+						"Min": -0.10000000149011612,
+						"Name": "ColorOffset",
+						"Section": "Tone and color",
+						"Type": "Vec3"
+					},
+					{
+						"Description": "Power: per-channel contrast around middle gray",
+						"DisplayName": "Color Power",
+						"Max": 5.0,
+						"Min": 0.20000000298023224,
+						"Name": "ColorPower",
+						"Section": "Tone and color",
+						"Type": "Vec3"
+					},
+					{
+						"Description": "How the image is metered: Average weighs every pixel alike; CenterWeighted counts the middle of the image most and its edges a quarter, as a camera's center-weighted meter",
+						"DisplayName": "Auto Exposure Metering",
+						"Name": "AutoExposureMetering",
+						"Options": [
+							"Average",
+							"CenterWeighted"
+						],
+						"Section": "Exposure",
+						"Type": "Enum"
+					},
+					{
+						"Description": "The darkest share of the metered pixels that is ignored, so deep shadows do not move the exposure",
+						"DisplayName": "Auto Exposure Low Percentile",
+						"Max": 0.49000000953674316,
+						"Min": 0.0,
+						"Name": "AutoExposureLowPercentile",
+						"Section": "Exposure",
+						"Type": "Float"
+					},
+					{
+						"Description": "The brightest share of the metered pixels below this is kept: the pixels above it (light sources) do not move the exposure",
+						"DisplayName": "Auto Exposure High Percentile",
+						"Max": 1.0,
+						"Min": 0.5099999904632568,
+						"Name": "AutoExposureHighPercentile",
+						"Section": "Exposure",
+						"Type": "Float"
+					},
+					{
+						"Description": "How fast it follows a brighter scene (the image darkens), per second, as eyes leaving a tunnel; 0 jumps at once",
+						"DisplayName": "Auto Exposure Light Speed",
+						"Max": 20.0,
+						"Min": 0.0,
+						"Name": "AutoExposureLightSpeed",
+						"Section": "Exposure",
+						"Type": "Float"
+					},
+					{
+						"Description": "How much a scene's brightness against a gray card in the sun shows: 0 meters every scene to middle gray; 0.12 shows an interior 5 stops below the sun's card 0.6 stops darker (at most 2); scenes above the card are not brightened. Needs a directional light",
+						"DisplayName": "Auto Exposure Key",
+						"Max": 0.5,
+						"Min": 0.0,
+						"Name": "AutoExposureKey",
+						"Section": "Exposure",
+						"Type": "Float"
+					},
+					{
+						"Description": "How far the glow reaches, as a fraction of the image height: the same share of the image at every resolution",
+						"DisplayName": "Bloom Radius",
+						"Max": 0.25,
+						"Min": 0.009999999776482582,
+						"Name": "BloomRadius",
+						"Section": "Bloom",
+						"Type": "Float"
+					},
+					{
+						"Description": "Blurs what moves on screen over the shutter's share of each frame, as a film camera does; editor views never blur, and players can turn it off",
+						"DisplayName": "Motion Blur",
+						"Name": "MotionBlur",
+						"Section": "Motion",
+						"Type": "Bool"
+					},
+					{
+						"Description": "How long the shutter stays open, in degrees of the frame: 180 blurs over half a frame's motion, as film cameras do; 0 none",
+						"DisplayName": "Motion Blur Shutter Angle",
+						"Max": 360.0,
+						"Min": 0.0,
+						"Name": "MotionBlurShutterAngle",
+						"Section": "Motion",
+						"Type": "Float"
+					},
+					{
+						"Description": "The longest blur, as a fraction of the image height: 0.02 is 43 pixels at 2160 rows",
+						"DisplayName": "Motion Blur Max Length",
+						"Max": 0.05000000074505806,
+						"Min": 0.004999999888241291,
+						"Name": "MotionBlurMaxLength",
+						"Section": "Motion",
+						"Type": "Float"
+					},
+					{
+						"Description": "Film's grain, new every frame, most visible in the mid-tones; 1 spreads them by about 10 codes. Players can turn it off",
+						"DisplayName": "Film Grain",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "FilmGrain",
+						"Section": "Lens",
+						"Type": "Float"
+					},
+					{
+						"Description": "A lens's lateral color fringes, red and blue drawn apart toward the corners; 1 shifts each half a pixel at a 3840x2160 image's corners. Players can turn it off",
+						"DisplayName": "Chromatic Aberration",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "ChromaticAberration",
+						"Section": "Lens",
+						"Type": "Float"
+					},
+					{
+						"AssetType": "ColorLookup",
+						"Description": "A grade made in another tool (a .cube file's 3D lookup table), applied to the finished image after the tone curve and the saturation. Nothing applies while it loads",
+						"DisplayName": "Color Lookup",
+						"Name": "ColorLookup",
+						"Section": "Tone and color",
+						"Type": "Asset"
+					},
+					{
+						"Description": "How much of the color lookup's grade shows: 1 all of it, 0.5 halfway between the image and the graded image",
+						"DisplayName": "Color Lookup Intensity",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "ColorLookupIntensity",
+						"Section": "Tone and color",
+						"Type": "Float"
+					},
+					{
+						"Description": "A lens's flares around very bright light, with restraint: faint tinted ghosts mirrored through the image's center, a halo, and six rays around the sun's disk while it is in view and not covered. 0 none",
+						"DisplayName": "Lens Flare",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "LensFlare",
+						"Section": "Lens",
+						"Type": "Float"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "UI",
+				"description": "Text drawn in screen space (HUD) or in the world",
+				"displayName": "Text",
+				"name": "Text",
+				"properties": [
+					{
+						"DisplayName": "Text",
+						"Name": "Text",
+						"Type": "String"
+					},
+					{
+						"AssetType": "Font",
+						"DisplayName": "Font",
+						"Name": "Font",
+						"Type": "Asset"
+					},
+					{
+						"DisplayName": "Color",
+						"Name": "Color",
+						"Type": "Color4"
+					},
+					{
+						"DisplayName": "Font Size",
+						"Max": 1024.0,
+						"Min": 1.0,
+						"Name": "FontSize",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Screen Space",
+						"Name": "ScreenSpace",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Normalized viewport position; (0,0) is the top-left corner",
+						"DisplayName": "Screen Anchor",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "ScreenAnchor",
+						"Type": "Vec2"
+					},
+					{
+						"Description": "Pixel offset from the anchor (+Y down)",
+						"DisplayName": "Screen Offset",
+						"Name": "ScreenOffset",
+						"Type": "Vec2"
+					},
+					{
+						"DisplayName": "Alignment",
+						"Name": "Alignment",
+						"Options": [
+							"Left",
+							"Center",
+							"Right"
+						],
+						"Type": "Enum"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Physics",
+				"description": "",
+				"displayName": "Rigid Body",
+				"name": "RigidBody",
+				"properties": [
+					{
+						"DisplayName": "Type",
+						"Name": "Type",
+						"Options": [
+							"Static",
+							"Dynamic",
+							"Kinematic"
+						],
+						"Type": "Enum"
+					},
+					{
+						"DisplayName": "Mass",
+						"Max": 1000000.0,
+						"Min": 0.0010000000474974513,
+						"Name": "Mass",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Linear Damping",
+						"Max": 100.0,
+						"Min": 0.0,
+						"Name": "LinearDamping",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Angular Damping",
+						"Max": 100.0,
+						"Min": 0.0,
+						"Name": "AngularDamping",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Gravity Scale",
+						"Max": 100.0,
+						"Min": -100.0,
+						"Name": "GravityScale",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Friction",
+						"Max": 10.0,
+						"Min": 0.0,
+						"Name": "Friction",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Restitution",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "Restitution",
+						"Type": "Float"
+					},
+					{
+						"Description": "Reports overlaps without colliding",
+						"DisplayName": "Is Trigger",
+						"Name": "IsTrigger",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Also swept against kinematic and dynamic bodies, for bullets (every dynamic body is swept against static ones anyway)",
+						"DisplayName": "Continuous Collision",
+						"Name": "ContinuousCollision",
+						"Type": "Bool"
+					},
+					{
+						"DisplayName": "Lock Rotation X",
+						"Name": "LockRotationX",
+						"Type": "Bool"
+					},
+					{
+						"DisplayName": "Lock Rotation Y",
+						"Name": "LockRotationY",
+						"Type": "Bool"
+					},
+					{
+						"DisplayName": "Lock Rotation Z",
+						"Name": "LockRotationZ",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Collision layer: it collides with the layers the project's layer matrix lets it",
+						"DisplayName": "Layer",
+						"Max": 31.0,
+						"Min": 0.0,
+						"Name": "Layer",
+						"PhysicsLayer": true,
+						"Type": "UInt"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Physics",
+				"description": "",
+				"displayName": "Box Collider",
+				"name": "BoxCollider",
+				"properties": [
+					{
+						"DisplayName": "Half Extents",
+						"Name": "HalfExtents",
+						"Type": "Vec3"
+					},
+					{
+						"DisplayName": "Offset",
+						"Name": "Offset",
+						"Type": "Vec3"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Physics",
+				"description": "",
+				"displayName": "Sphere Collider",
+				"name": "SphereCollider",
+				"properties": [
+					{
+						"DisplayName": "Radius",
+						"Max": 1000000.0,
+						"Min": 0.0010000000474974513,
+						"Name": "Radius",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Offset",
+						"Name": "Offset",
+						"Type": "Vec3"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Physics",
+				"description": "",
+				"displayName": "Capsule Collider",
+				"name": "CapsuleCollider",
+				"properties": [
+					{
+						"DisplayName": "Radius",
+						"Max": 1000000.0,
+						"Min": 0.0010000000474974513,
+						"Name": "Radius",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Half Height",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "HalfHeight",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Offset",
+						"Name": "Offset",
+						"Type": "Vec3"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Physics",
+				"description": "",
+				"displayName": "Mesh Collider",
+				"name": "MeshCollider",
+				"properties": [
+					{
+						"AssetType": "Mesh",
+						"Description": "Uses the Mesh Renderer's mesh when unset",
+						"DisplayName": "Mesh",
+						"Name": "Mesh",
+						"Type": "Asset"
+					},
+					{
+						"Description": "Non-convex meshes are only supported on static bodies",
+						"DisplayName": "Convex",
+						"Name": "Convex",
+						"Type": "Bool"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Physics",
+				"description": "An upright capsule that scripts walk, jump and teleport: it slides along walls, walks up steps and walkable slopes and pushes dynamic bodies; its bottom is the entity's origin",
+				"displayName": "Character Controller",
+				"name": "CharacterController",
+				"properties": [
+					{
+						"Description": "Total height of the capsule in world units; its bottom is the entity's origin",
+						"DisplayName": "Height",
+						"Max": 1000.0,
+						"Min": 0.009999999776482582,
+						"Name": "Height",
+						"Type": "Float"
+					},
+					{
+						"Description": "World units",
+						"DisplayName": "Radius",
+						"Max": 500.0,
+						"Min": 0.004999999888241291,
+						"Name": "Radius",
+						"Type": "Float"
+					},
+					{
+						"Description": "Highest step it walks up, and how far it follows the ground down (world units)",
+						"DisplayName": "Step Height",
+						"Max": 100.0,
+						"Min": 0.0,
+						"Name": "StepHeight",
+						"Type": "Float"
+					},
+					{
+						"Description": "Steepest slope it walks up, in degrees from the horizontal",
+						"DisplayName": "Max Slope Degrees",
+						"Max": 89.0,
+						"Min": 0.0,
+						"Name": "MaxSlopeDegrees",
+						"Type": "Float"
+					},
+					{
+						"Description": "Collision layer: it collides with the layers the project's layer matrix lets it",
+						"DisplayName": "Layer",
+						"Max": 31.0,
+						"Min": 0.0,
+						"Name": "Layer",
+						"PhysicsLayer": true,
+						"Type": "UInt"
+					},
+					{
+						"Description": "Times the scene's gravity",
+						"DisplayName": "Gravity Scale",
+						"Max": 100.0,
+						"Min": -100.0,
+						"Name": "GravityScale",
+						"Type": "Float"
+					},
+					{
+						"Description": "Largest force with which it pushes dynamic bodies, in newtons",
+						"DisplayName": "Push Strength",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "PushStrength",
+						"Type": "Float"
+					},
+					{
+						"Description": "A disabled controller neither moves nor collides",
+						"DisplayName": "Enabled",
+						"Name": "Enabled",
+						"Type": "Bool"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Audio",
+				"description": "",
+				"displayName": "Audio Source",
+				"name": "AudioSource",
+				"properties": [
+					{
+						"AssetType": "AudioClip",
+						"DisplayName": "Clip",
+						"Name": "Clip",
+						"Type": "Asset"
+					},
+					{
+						"DisplayName": "Volume",
+						"Max": 4.0,
+						"Min": 0.0,
+						"Name": "Volume",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Pitch",
+						"Max": 8.0,
+						"Min": 0.009999999776482582,
+						"Name": "Pitch",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Loop",
+						"Name": "Loop",
+						"Type": "Bool"
+					},
+					{
+						"DisplayName": "Play On Start",
+						"Name": "PlayOnStart",
+						"Type": "Bool"
+					},
+					{
+						"DisplayName": "Spatial",
+						"Name": "Spatial",
+						"Type": "Bool"
+					},
+					{
+						"DisplayName": "Min Distance",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "MinDistance",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Max Distance",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "MaxDistance",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Rolloff",
+						"Max": 100.0,
+						"Min": 0.0,
+						"Name": "Rolloff",
+						"Type": "Float"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Audio",
+				"description": "",
+				"displayName": "Audio Listener",
+				"name": "AudioListener",
+				"properties": [
+					{
+						"DisplayName": "Active",
+						"Name": "Active",
+						"Type": "Bool"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Animation",
+				"description": "Poses the entity's skinned mesh with an animator's joints",
+				"displayName": "Skin",
+				"name": "Skin",
+				"properties": [
+					{
+						"Description": "The entity with the Animator whose pose moves this mesh",
+						"DisplayName": "Animator",
+						"Name": "Animator",
+						"Type": "Entity"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Animation",
+				"description": "Plays a skeleton's animations: an animation controller's states, or one clip",
+				"displayName": "Animator",
+				"name": "Animator",
+				"properties": [
+					{
+						"AssetType": "Skeleton",
+						"Description": "The joints the animations move (a model's Skeleton)",
+						"DisplayName": "Skeleton",
+						"Name": "Skeleton",
+						"Type": "Asset"
+					},
+					{
+						"AssetType": "AnimationController",
+						"Description": "States, transitions and parameters; without one the animator plays Clip",
+						"DisplayName": "Controller",
+						"Name": "Controller",
+						"Type": "Asset"
+					},
+					{
+						"AssetType": "AnimationClip",
+						"Description": "The clip played without a controller",
+						"DisplayName": "Clip",
+						"Name": "Clip",
+						"Type": "Asset"
+					},
+					{
+						"Description": "Playback rate; negative plays backwards",
+						"DisplayName": "Speed",
+						"Max": 100.0,
+						"Min": -100.0,
+						"Name": "Speed",
+						"Type": "Float"
+					},
+					{
+						"Description": "Whether the clip (without a controller) repeats",
+						"DisplayName": "Loop",
+						"Name": "Loop",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Starts playing when the scene starts",
+						"DisplayName": "Play On Start",
+						"Name": "PlayOnStart",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Moves the entity by the root joint's horizontal motion and turn",
+						"DisplayName": "Apply Root Motion",
+						"Name": "ApplyRootMotion",
+						"Type": "Bool"
+					},
+					{
+						"Description": "When Visible poses the skeleton only while a renderer draws a mesh it skins or its shadow; one that skins no mesh but moves attached parts poses always",
+						"DisplayName": "Culling Mode",
+						"Name": "CullingMode",
+						"Options": [
+							"AlwaysAnimate",
+							"WhenVisible"
+						],
+						"Type": "Enum"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Animation",
+				"description": "Places the entity at a joint of an animator's pose (a sword in a hand)",
+				"displayName": "Attach To Joint",
+				"name": "AttachToJoint",
+				"properties": [
+					{
+						"Description": "The entity with the Animator",
+						"DisplayName": "Animator",
+						"Name": "Animator",
+						"Type": "Entity"
+					},
+					{
+						"Description": "The joint's name in the animator's skeleton",
+						"DisplayName": "Joint",
+						"Name": "Joint",
+						"Type": "String"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "Scripting",
+				"description": "C++ behaviours from the project's script module",
+				"displayName": "Script",
+				"name": "Script",
+				"properties": [],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "World",
+				"description": "Makes the scene a world's persistent scene: its cells stream around the streaming sources while it runs",
+				"displayName": "World",
+				"name": "World",
+				"properties": [
+					{
+						"AssetType": "World",
+						"Description": "The world whose cells stream (a .stworld asset)",
+						"DisplayName": "World",
+						"Name": "World",
+						"Type": "Asset"
+					},
+					{
+						"Description": "Multiplies every layer's streaming distance: lower on devices with less memory",
+						"DisplayName": "Distance Scale",
+						"Max": 10.0,
+						"Min": 0.10000000149011612,
+						"Name": "DistanceScale",
+						"Type": "Float"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "World",
+				"description": "A point the world's cells stream around; without an active one, the primary camera is",
+				"displayName": "Streaming Source",
+				"name": "StreamingSource",
+				"properties": [
+					{
+						"Description": "Whether the source streams",
+						"DisplayName": "Enabled",
+						"Name": "Enabled",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Streams the cells within this distance on every layer; 0: each layer's streaming distance",
+						"DisplayName": "Radius",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "Radius",
+						"Type": "Float"
+					},
+					{
+						"Description": "The layers it streams, separated by commas; empty: every enabled layer",
+						"DisplayName": "Layers",
+						"Name": "Layers",
+						"Type": "String"
+					},
+					{
+						"Description": "Higher-priority sources' cells load first",
+						"DisplayName": "Priority",
+						"Max": 100.0,
+						"Min": -100.0,
+						"Name": "Priority",
+						"Type": "Int"
+					},
+					{
+						"Description": "Cells ahead of the source (its -Z axis) load as if this share of the radius nearer",
+						"DisplayName": "View Bias",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "ViewBias",
+						"Type": "Float"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "UI",
+				"description": "A screen of game UI: lays its elements out for the screen it is shown on, scaled by its scale mode, and draws them over the scene",
+				"displayName": "UI Canvas",
+				"name": "UICanvas",
+				"properties": [
+					{
+						"Description": "Constant Pixel Size: a canvas unit is Scale Factor pixels; Scale With Screen: the layout keeps the reference resolution's proportions on every screen; Constant Physical Size: a canvas unit is Scale Factor pixels at 96 DPI",
+						"DisplayName": "Scale Mode",
+						"Name": "ScaleMode",
+						"Options": [
+							"ConstantPixelSize",
+							"ScaleWithScreen",
+							"ConstantPhysicalSize"
+						],
+						"Type": "Enum"
+					},
+					{
+						"Description": "Scale With Screen: the screen size in pixels the layout is designed for",
+						"DisplayName": "Reference Resolution",
+						"Max": 16384.0,
+						"Min": 1.0,
+						"Name": "ReferenceResolution",
+						"Type": "Vec2"
+					},
+					{
+						"Description": "Scale With Screen: 0 follows the screen's width, 1 its height, between them both",
+						"DisplayName": "Match Width Or Height",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "MatchWidthOrHeight",
+						"Type": "Float"
+					},
+					{
+						"Description": "Multiplies the scale of the constant modes",
+						"DisplayName": "Scale Factor",
+						"Max": 100.0,
+						"Min": 0.009999999776482582,
+						"Name": "ScaleFactor",
+						"Type": "Float"
+					},
+					{
+						"Description": "Left, top, right and bottom insets of the canvas's rect, in canvas units",
+						"DisplayName": "Safe Area Padding",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "SafeAreaPadding",
+						"Type": "Vec4"
+					},
+					{
+						"Description": "Canvases with a higher order draw over the others and get input first",
+						"DisplayName": "Sort Order",
+						"Name": "SortOrder",
+						"Type": "Int"
+					},
+					{
+						"Description": "Rect edges and text baselines on whole pixels",
+						"DisplayName": "Pixel Snap",
+						"Name": "PixelSnap",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Off: drawn, but never hit by the pointer or reached by navigation (a HUD that never blocks clicks)",
+						"DisplayName": "Receives Input",
+						"Name": "ReceivesInput",
+						"Type": "Bool"
+					},
+					{
+						"Description": "The selectable focused when keyboard or gamepad navigation starts",
+						"DisplayName": "First Selected",
+						"Name": "FirstSelected",
+						"Type": "Entity"
+					},
+					{
+						"Description": "Screen Space: over the scene, laid out for the screen; World Space: a plane in the scene at the entity's transform, Reference Resolution canvas units wide and high, depth-tested like world text",
+						"DisplayName": "Render Mode",
+						"Name": "RenderMode",
+						"Options": [
+							"ScreenSpace",
+							"WorldSpace"
+						],
+						"Type": "Enum"
+					},
+					{
+						"Description": "World Space: world units per canvas unit (0.01: a canvas 100 units wide is a meter)",
+						"DisplayName": "World Units Per Unit",
+						"Max": 100.0,
+						"Min": 9.999999747378752e-06,
+						"Name": "WorldUnitsPerUnit",
+						"Type": "Float"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "UI",
+				"description": "The rectangle of a UI element: anchored in its parent's rect, offset and sized in canvas units",
+				"displayName": "UI Rect",
+				"name": "UIRect",
+				"properties": [
+					{
+						"Description": "Lower anchor in the parent's rect (0, 0 is its top-left corner)",
+						"DisplayName": "Anchor Min",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "AnchorMin",
+						"Type": "Vec2"
+					},
+					{
+						"Description": "Upper anchor in the parent's rect (1, 1 is its bottom-right corner)",
+						"DisplayName": "Anchor Max",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "AnchorMax",
+						"Type": "Vec2"
+					},
+					{
+						"Description": "The point of the rect Position places, in the rect (0, 0 is its top-left corner)",
+						"DisplayName": "Pivot",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "Pivot",
+						"Type": "Vec2"
+					},
+					{
+						"Description": "The pivot's offset from the anchor point, in canvas units (+Y down)",
+						"DisplayName": "Position",
+						"Name": "Position",
+						"Type": "Vec2"
+					},
+					{
+						"Description": "Added to the span between the anchors, in canvas units",
+						"DisplayName": "Size",
+						"Name": "Size",
+						"Type": "Vec2"
+					},
+					{
+						"Description": "The rect takes its content's size on these axes: its text, or the children its layout places",
+						"DisplayName": "Fit Content",
+						"Name": "FitContent",
+						"Options": [
+							"None",
+							"Width",
+							"Height",
+							"Both"
+						],
+						"Type": "Enum"
+					},
+					{
+						"Description": "A parent's layout leaves this element where its anchors put it",
+						"DisplayName": "Ignore Layout",
+						"Name": "IgnoreLayout",
+						"Type": "Bool"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "UI",
+				"description": "Fills the element's rect with a texture or a solid color, optionally nine-sliced, filled, with rounded corners and a border",
+				"displayName": "UI Image",
+				"name": "UIImage",
+				"properties": [
+					{
+						"AssetType": "Texture",
+						"Description": "None: a solid color",
+						"DisplayName": "Texture",
+						"Name": "Texture",
+						"Type": "Asset"
+					},
+					{
+						"Description": "Tints the texture (display color)",
+						"DisplayName": "Color",
+						"Name": "Color",
+						"Type": "Color4"
+					},
+					{
+						"Description": "Sliced: nine-slice, the borders keep their size; Filled: cut to Fill Amount (health bars)",
+						"DisplayName": "Type",
+						"Name": "Type",
+						"Options": [
+							"Simple",
+							"Sliced",
+							"Filled"
+						],
+						"Type": "Enum"
+					},
+					{
+						"Description": "The part of the texture shown: u0, v0, u1, v1",
+						"DisplayName": "UV Rect",
+						"Max": 1000000.0,
+						"Min": -1000000.0,
+						"Name": "UVRect",
+						"Type": "Vec4"
+					},
+					{
+						"Description": "Sliced: left, top, right and bottom borders in texels",
+						"DisplayName": "Slice Borders",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "SliceBorders",
+						"Type": "Vec4"
+					},
+					{
+						"Description": "Sliced: canvas units per border texel",
+						"DisplayName": "Slice Scale",
+						"Max": 1000.0,
+						"Min": 0.0010000000474974513,
+						"Name": "SliceScale",
+						"Type": "Float"
+					},
+					{
+						"Description": "Filled: the fraction shown",
+						"DisplayName": "Fill Amount",
+						"Max": 1.0,
+						"Min": 0.0,
+						"Name": "FillAmount",
+						"Type": "Float"
+					},
+					{
+						"Description": "Filled: where the shown part starts",
+						"DisplayName": "Fill Direction",
+						"Name": "FillDirection",
+						"Options": [
+							"LeftToRight",
+							"RightToLeft",
+							"TopToBottom",
+							"BottomToTop"
+						],
+						"Type": "Enum"
+					},
+					{
+						"Description": "Keeps the texture's aspect ratio, centered in the rect",
+						"DisplayName": "Preserve Aspect",
+						"Name": "PreserveAspect",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Canvas units",
+						"DisplayName": "Corner Radius",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "CornerRadius",
+						"Type": "Float"
+					},
+					{
+						"Description": "Canvas units, inside the rect",
+						"DisplayName": "Border Width",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "BorderWidth",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Border Color",
+						"Name": "BorderColor",
+						"Type": "Color4"
+					},
+					{
+						"Description": "Hit by the pointer, so the game does not get clicks on it",
+						"DisplayName": "Raycast Target",
+						"Name": "RaycastTarget",
+						"Type": "Bool"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "UI",
+				"description": "Text in the element's rect, aligned, wrapped and truncated in it",
+				"displayName": "UI Text",
+				"name": "UIText",
+				"properties": [
+					{
+						"DisplayName": "Text",
+						"Name": "Text",
+						"Type": "String"
+					},
+					{
+						"AssetType": "Font",
+						"Description": "None: the engine's default font",
+						"DisplayName": "Font",
+						"Name": "Font",
+						"Type": "Asset"
+					},
+					{
+						"Description": "Canvas units per em",
+						"DisplayName": "Font Size",
+						"Max": 1024.0,
+						"Min": 1.0,
+						"Name": "FontSize",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Color",
+						"Name": "Color",
+						"Type": "Color4"
+					},
+					{
+						"DisplayName": "Alignment",
+						"Name": "Alignment",
+						"Options": [
+							"Left",
+							"Center",
+							"Right"
+						],
+						"Type": "Enum"
+					},
+					{
+						"DisplayName": "Vertical Alignment",
+						"Name": "VerticalAlignment",
+						"Options": [
+							"Top",
+							"Middle",
+							"Bottom"
+						],
+						"Type": "Enum"
+					},
+					{
+						"Description": "Lines wrap at the rect's width",
+						"DisplayName": "Wrap",
+						"Name": "Wrap",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Lines beyond the rect's height: drawn outside it, left out, or left out with \"...\" ending the last line shown",
+						"DisplayName": "Overflow",
+						"Name": "Overflow",
+						"Options": [
+							"Overflow",
+							"Truncate",
+							"Ellipsis"
+						],
+						"Type": "Enum"
+					},
+					{
+						"Description": "Times the font's line height",
+						"DisplayName": "Line Spacing",
+						"Max": 3.0,
+						"Min": 0.5,
+						"Name": "LineSpacing",
+						"Type": "Float"
+					},
+					{
+						"Description": "Em",
+						"DisplayName": "Outline Width",
+						"Max": 0.10000000149011612,
+						"Min": 0.0,
+						"Name": "OutlineWidth",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Outline Color",
+						"Name": "OutlineColor",
+						"Type": "Color4"
+					},
+					{
+						"Description": "Hit by the pointer, so the game does not get clicks on it",
+						"DisplayName": "Raycast Target",
+						"Name": "RaycastTarget",
+						"Type": "Bool"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "UI",
+				"description": "How a widget shows hover, press, focus and disabled, and how keyboard and gamepad navigation leaves it",
+				"displayName": "UI Selectable",
+				"name": "UISelectable",
+				"properties": [
+					{
+						"Description": "Off: disabled, never hovered, pressed or focused, and raises no events",
+						"DisplayName": "Interactable",
+						"Name": "Interactable",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Color Tint multiplies the target image's color by the state's; Image Swap shows the state's texture",
+						"DisplayName": "Transition",
+						"Name": "Transition",
+						"Options": [
+							"None",
+							"ColorTint",
+							"ImageSwap"
+						],
+						"Type": "Enum"
+					},
+					{
+						"Description": "The element whose image shows the states; none: this entity's",
+						"DisplayName": "Target Image",
+						"Name": "TargetImage",
+						"Type": "Entity"
+					},
+					{
+						"DisplayName": "Normal Color",
+						"Name": "NormalColor",
+						"Type": "Color4"
+					},
+					{
+						"DisplayName": "Hover Color",
+						"Name": "HoverColor",
+						"Type": "Color4"
+					},
+					{
+						"DisplayName": "Pressed Color",
+						"Name": "PressedColor",
+						"Type": "Color4"
+					},
+					{
+						"DisplayName": "Focused Color",
+						"Name": "FocusedColor",
+						"Type": "Color4"
+					},
+					{
+						"DisplayName": "Disabled Color",
+						"Name": "DisabledColor",
+						"Type": "Color4"
+					},
+					{
+						"AssetType": "Texture",
+						"DisplayName": "Hover Image",
+						"Name": "HoverImage",
+						"Type": "Asset"
+					},
+					{
+						"AssetType": "Texture",
+						"DisplayName": "Pressed Image",
+						"Name": "PressedImage",
+						"Type": "Asset"
+					},
+					{
+						"AssetType": "Texture",
+						"DisplayName": "Focused Image",
+						"Name": "FocusedImage",
+						"Type": "Asset"
+					},
+					{
+						"AssetType": "Texture",
+						"DisplayName": "Disabled Image",
+						"Name": "DisabledImage",
+						"Type": "Asset"
+					},
+					{
+						"Description": "Seconds of unscaled time a color change takes",
+						"DisplayName": "Fade Duration",
+						"Max": 60.0,
+						"Min": 0.0,
+						"Name": "FadeDuration",
+						"Type": "Float"
+					},
+					{
+						"Description": "Automatic: the nearest selectable in the direction; Explicit: the entities below; None: never reached or left by navigation",
+						"DisplayName": "Navigation",
+						"Name": "Navigation",
+						"Options": [
+							"Automatic",
+							"Explicit",
+							"None"
+						],
+						"Type": "Enum"
+					},
+					{
+						"Description": "Explicit navigation",
+						"DisplayName": "Navigate Up",
+						"Name": "NavigateUp",
+						"Type": "Entity"
+					},
+					{
+						"Description": "Explicit navigation",
+						"DisplayName": "Navigate Down",
+						"Name": "NavigateDown",
+						"Type": "Entity"
+					},
+					{
+						"Description": "Explicit navigation",
+						"DisplayName": "Navigate Left",
+						"Name": "NavigateLeft",
+						"Type": "Entity"
+					},
+					{
+						"Description": "Explicit navigation",
+						"DisplayName": "Navigate Right",
+						"Name": "NavigateRight",
+						"Type": "Entity"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "UI",
+				"description": "Clicks on release over the button it was pressed on, or on Submit while focused: the scripts of its entity get OnUIClick",
+				"displayName": "UI Button",
+				"name": "UIButton",
+				"properties": [
+					{
+						"Description": "Its scripts get the button's events too",
+						"DisplayName": "Event Target",
+						"Name": "EventTarget",
+						"Type": "Entity"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "UI",
+				"description": "A switch that flips on click; toggles of one group are exclusive",
+				"displayName": "UI Toggle",
+				"name": "UIToggle",
+				"properties": [
+					{
+						"DisplayName": "Is On",
+						"Name": "IsOn",
+						"Type": "Bool"
+					},
+					{
+						"Description": "An element drawn only while the toggle is on",
+						"DisplayName": "Checkmark",
+						"Name": "Checkmark",
+						"Type": "Entity"
+					},
+					{
+						"Description": "Toggles naming the same group are exclusive",
+						"DisplayName": "Group",
+						"Name": "Group",
+						"Type": "Entity"
+					},
+					{
+						"Description": "Its scripts get the toggle's events too",
+						"DisplayName": "Event Target",
+						"Name": "EventTarget",
+						"Type": "Entity"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "UI",
+				"description": "A value between a minimum and a maximum, dragged with the pointer or stepped with the navigation keys",
+				"displayName": "UI Slider",
+				"name": "UISlider",
+				"properties": [
+					{
+						"DisplayName": "Min Value",
+						"Max": 1000000.0,
+						"Min": -1000000.0,
+						"Name": "MinValue",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Max Value",
+						"Max": 1000000.0,
+						"Min": -1000000.0,
+						"Name": "MaxValue",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Value",
+						"Max": 1000000.0,
+						"Min": -1000000.0,
+						"Name": "Value",
+						"Type": "Float"
+					},
+					{
+						"DisplayName": "Whole Numbers",
+						"Name": "WholeNumbers",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Where the minimum is",
+						"DisplayName": "Direction",
+						"Name": "Direction",
+						"Options": [
+							"LeftToRight",
+							"RightToLeft",
+							"TopToBottom",
+							"BottomToTop"
+						],
+						"Type": "Enum"
+					},
+					{
+						"Description": "An element anchored from the slider's start to the value",
+						"DisplayName": "Fill",
+						"Name": "Fill",
+						"Type": "Entity"
+					},
+					{
+						"Description": "An element anchored at the value",
+						"DisplayName": "Handle",
+						"Name": "Handle",
+						"Type": "Entity"
+					},
+					{
+						"Description": "The navigation keys' step; 0: a tenth of the range",
+						"DisplayName": "Keyboard Step",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "KeyboardStep",
+						"Type": "Float"
+					},
+					{
+						"Description": "Its scripts get the slider's events too",
+						"DisplayName": "Event Target",
+						"Name": "EventTarget",
+						"Type": "Entity"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "UI",
+				"description": "Places the element's children: stacked horizontally or vertically, or in a grid",
+				"displayName": "UI Layout",
+				"name": "UILayout",
+				"properties": [
+					{
+						"DisplayName": "Type",
+						"Name": "Type",
+						"Options": [
+							"Horizontal",
+							"Vertical",
+							"Grid"
+						],
+						"Type": "Enum"
+					},
+					{
+						"Description": "Left, top, right and bottom, in canvas units",
+						"DisplayName": "Padding",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "Padding",
+						"Type": "Vec4"
+					},
+					{
+						"Description": "Between children (x: horizontal, y: vertical), in canvas units",
+						"DisplayName": "Spacing",
+						"Max": 1000000.0,
+						"Min": -1000000.0,
+						"Name": "Spacing",
+						"Type": "Vec2"
+					},
+					{
+						"Description": "Where the block of children sits in the padded rect",
+						"DisplayName": "Child Alignment",
+						"Name": "ChildAlignment",
+						"Options": [
+							"TopLeft",
+							"TopCenter",
+							"TopRight",
+							"MiddleLeft",
+							"MiddleCenter",
+							"MiddleRight",
+							"BottomLeft",
+							"BottomCenter",
+							"BottomRight"
+						],
+						"Type": "Enum"
+					},
+					{
+						"Description": "Children fill the cross axis",
+						"DisplayName": "Stretch Children",
+						"Name": "StretchChildren",
+						"Type": "Bool"
+					},
+					{
+						"Description": "Grid: the size of a cell, in canvas units",
+						"DisplayName": "Cell Size",
+						"Max": 1000000.0,
+						"Min": 1.0,
+						"Name": "CellSize",
+						"Type": "Vec2"
+					},
+					{
+						"Description": "Grid: 0 fits as many columns as the width holds",
+						"DisplayName": "Columns",
+						"Max": 4096.0,
+						"Min": 0.0,
+						"Name": "Columns",
+						"Type": "UInt"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "UI",
+				"description": "A line of text the player types while the field has the focus; Enter submits it (OnUISubmit)",
+				"displayName": "UI Input Field",
+				"name": "UIInputField",
+				"properties": [
+					{
+						"DisplayName": "Text",
+						"Name": "Text",
+						"Type": "String"
+					},
+					{
+						"Description": "An element with a UI Text that shows the text, the caret and the selection",
+						"DisplayName": "Text Element",
+						"Name": "TextElement",
+						"Type": "Entity"
+					},
+					{
+						"Description": "An element shown while the text is empty",
+						"DisplayName": "Placeholder",
+						"Name": "Placeholder",
+						"Type": "Entity"
+					},
+					{
+						"Description": "Characters at most; 0: no limit",
+						"DisplayName": "Character Limit",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "CharacterLimit",
+						"Type": "UInt"
+					},
+					{
+						"DisplayName": "Caret Color",
+						"Name": "CaretColor",
+						"Type": "Color4"
+					},
+					{
+						"DisplayName": "Selection Color",
+						"Name": "SelectionColor",
+						"Type": "Color4"
+					},
+					{
+						"Description": "Its scripts get the field's events too",
+						"DisplayName": "Event Target",
+						"Name": "EventTarget",
+						"Type": "Entity"
+					}
+				],
+				"removable": true
+			},
+			{
+				"addable": true,
+				"category": "UI",
+				"description": "Clips the element's children to its rect: what lies outside is neither drawn nor hit",
+				"displayName": "UI Mask",
+				"name": "UIMask",
+				"properties": [
+					{
+						"Description": "Left, top, right and bottom insets of the clip rect, in canvas units (negative: outside the rect)",
+						"DisplayName": "Padding",
+						"Max": 1000000.0,
+						"Min": -1000000.0,
+						"Name": "Padding",
+						"Type": "Vec4"
+					},
+					{
+						"Description": "Canvas units over which the children fade out toward the clip rect's edges (0: a hard edge)",
+						"DisplayName": "Softness",
+						"Max": 1000000.0,
+						"Min": 0.0,
+						"Name": "Softness",
+						"Type": "Float"
+					}
+				],
+				"removable": true
+			}
+		]
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"figures": [
+		{
+			"id": "position-slope",
+			"shows": "The graph of the cart's position x = t² over 4 seconds as five marked points, with a right triangle on the step from 2 s to 3 s whose rise is 5 m and whose run is 1 s",
+			"caption": "The slope between two points of the position graph is the rise divided by the run, here 5 metres in 1 second.",
+			"alt": "A curve that bends upward through the points 0, 0 and 1, 1 and 2, 4 and 3, 9 and 4, 16 on a graph of time across and position up. A small triangle between the points at 2 and 3 seconds is labelled rise 5 metres, run 1 second.",
+			"kind": "diagram",
+			"numbers": "t from 0 to 4 s across, x from 0 to 16 m up; points (0, 0), (1, 1), (2, 4), (3, 9), (4, 16) joined by the curve x = t²; triangle with corners (2, 4), (3, 4), (3, 9), the sides labelled run 1 s and rise 5 m, the hypotenuse labelled slope 5 m/s."
+		},
+		{
+			"id": "speed-rectangles",
+			"shows": "The speed graph v = 2 t from 0 to 4 s with four rectangles one second wide under it, each as high as the speed at its start, and the gaps between the rectangles and the line shaded",
+			"caption": "Each rectangle is a speed times a time, a distance; the shaded gaps are why the sum of 12 metres is below the true 16.",
+			"alt": "A straight line rising from 0 to 8 metres per second over 4 seconds. Four columns stand under it, with heights 0, 2, 4 and 6. Small triangles between the tops of the columns and the line are shaded.",
+			"kind": "diagram",
+			"numbers": "v = 2 t from t = 0 to 4 s; rectangles [0,1] x 0, [1,2] x 2, [2,3] x 4, [3,4] x 6 with areas 0, 2, 4, 6 summing to 12 m; the four gap triangles of area 1 each shaded in a second colour; the area under the whole line is 16 m."
+		},
+		{
+			"id": "two-springs",
+			"shows": "The position of a spring over 10 seconds as three curves: the exact cosine wave of height 1, the explicit Euler curve with a step of 0.5 s whose swings grow to about 9, and the semi-implicit curve that stays near the wave",
+			"caption": "The explicit step adds energy and its swings grow; the semi-implicit step keeps the swings the size of the exact wave.",
+			"alt": "A wave between 1 and minus 1 over 10 seconds. A second curve follows it but swings wider and wider, up to about 9. A third curve stays close to the wave all the way.",
+			"kind": "diagram",
+			"numbers": "t from 0 to 10 s, 20 steps of 0.5 s; x(0) = 1; exact x = cos t; explicit and semi-implicit points from the spring program, explicit x(10 s) = -9.206 and semi-implicit x(10 s) = -0.613; y axis from -10 to 10."
+		},
+		{
+			"id": "exploding-step",
+			"shows": "The position of the spring over 20 semi-implicit steps with the step 2.1 s, drawn as points that jump from side to side and grow, beside the same spring with the step 0.5 s whose points stay near the band from 1 to -1, never farther out than 1.04",
+			"caption": "With a step beyond the limit of 2 seconds the swings multiply in every step instead of staying near 1.",
+			"alt": "Two small graphs. The left one shows a spring with a step of 0.5 seconds whose points stay near the band from 1 to minus 1, a few slightly beyond it. The right one shows a step of 2.1 seconds, whose points jump from side to side and grow past 600 thousand.",
+			"kind": "diagram",
+			"numbers": "Left: 20 steps of 0.5 s, largest |x| 1.0322. Right: 20 steps of 2.1 s, x(1) = -3.41, x(2) = 7.218, largest |x| 632673 (log scale, alternating sign); axis labelled number of steps from 0 to 20."
+		}
+	]
+}

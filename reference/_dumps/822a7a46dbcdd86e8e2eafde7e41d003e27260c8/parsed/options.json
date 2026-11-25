@@ -1,0 +1,349 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"programs": {
+		"StrataEditor": {
+			"": [
+				"--automation-port",
+				"--commands",
+				"--frames",
+				"--headless",
+				"--help",
+				"--idle-timeout",
+				"--imgui-demo",
+				"--layout",
+				"--no-automation",
+				"--no-gpu",
+				"--project",
+				"--quit-after-commands",
+				"--screenshot",
+				"--ui-scale",
+				"--version",
+				"--windowed"
+			]
+		},
+		"StrataRuntime": {
+			"": [
+				"--asset-budget-mb",
+				"--frames",
+				"--game",
+				"--headless",
+				"--help",
+				"--perf-log",
+				"--quality",
+				"--resolution",
+				"--save-directory",
+				"--screenshot",
+				"--seconds",
+				"--windowed"
+			]
+		},
+		"StrataCLI": {
+			"": [
+				"--help",
+				"--verbose",
+				"--version"
+			],
+			"call": [
+				"--host",
+				"--port",
+				"--project",
+				"--save-image",
+				"--timeout",
+				"--token",
+				"--verbose"
+			],
+			"list": [
+				"--host",
+				"--json",
+				"--port",
+				"--project",
+				"--token",
+				"--verbose"
+			],
+			"status": [
+				"--host",
+				"--port",
+				"--project",
+				"--token",
+				"--verbose"
+			],
+			"launch": [
+				"--editor",
+				"--headless",
+				"--idle-timeout",
+				"--no-gpu",
+				"--no-wait-scan",
+				"--project",
+				"--stall-timeout",
+				"--verbose",
+				"--wait-timeout"
+			],
+			"mcp": [
+				"--editor",
+				"--host",
+				"--idle-timeout",
+				"--port",
+				"--project",
+				"--stall-timeout",
+				"--timeout",
+				"--token",
+				"--toolsets",
+				"--verbose"
+			]
+		}
+	},
+	"details": {
+		"StrataEditor": {
+			"file": "StrataEditor/src/EditorApplication.cpp",
+			"options": [
+				{
+					"option": "--project",
+					"value": "<directory or .stproj>",
+					"description": "Open this project",
+					"line": 65
+				},
+				{
+					"option": "--commands",
+					"value": "<script.json>",
+					"description": "Run a command script at startup (a JSON array of {command, parameters, expect, bind})",
+					"line": 66
+				},
+				{
+					"option": "--quit-after-commands",
+					"value": null,
+					"description": "Close once the command script finished",
+					"line": 67
+				},
+				{
+					"option": "--frames",
+					"value": "<count>",
+					"description": "Stop after this many frames",
+					"line": 68
+				},
+				{
+					"option": "--screenshot",
+					"value": "<file.png>",
+					"description": "Save the last frame (with --frames or --quit-after-commands)",
+					"line": 69
+				},
+				{
+					"option": "--headless",
+					"value": null,
+					"description": "Run without a window (rendering stays available for captures)",
+					"line": 70
+				},
+				{
+					"option": "--no-gpu",
+					"value": null,
+					"description": "Run without a graphics device (implies --headless)",
+					"line": 71
+				},
+				{
+					"option": "--windowed",
+					"value": null,
+					"description": "Open a 1600x900 window instead of a maximized one",
+					"line": 72
+				},
+				{
+					"option": "--ui-scale",
+					"value": "<factor>",
+					"description": "Draw the UI at this scale instead of the display's (1 is 100%)",
+					"line": 73
+				},
+				{
+					"option": "--layout",
+					"value": "<file.ini>",
+					"description": "Keep the panel layout in this file",
+					"line": 74
+				},
+				{
+					"option": "--no-automation",
+					"value": null,
+					"description": "Do not serve automation (StrataCLI, MCP)",
+					"line": 75
+				},
+				{
+					"option": "--automation-port",
+					"value": "<port>",
+					"description": "Serve automation on this port (0, the default, picks a free one)",
+					"line": 76
+				},
+				{
+					"option": "--idle-timeout",
+					"value": "<seconds>",
+					"description": "Close after this long without an automation client (0: never)",
+					"line": 77
+				},
+				{
+					"option": "--imgui-demo",
+					"value": null,
+					"description": "Offer ImGui's demo window in the Help menu",
+					"line": 78
+				},
+				{
+					"option": "--version",
+					"value": null,
+					"description": "Print the version and exit",
+					"line": 79
+				},
+				{
+					"option": "--help",
+					"value": null,
+					"description": "Print this help and exit",
+					"line": 80
+				}
+			]
+		},
+		"StrataRuntime": {
+			"file": "StrataRuntime/src/RuntimeApplication.cpp",
+			"options": [
+				{
+					"option": "--game",
+					"value": "<file.stgame>",
+					"description": "Play this game (default: the one .stgame manifest next to the executable)",
+					"line": 341
+				},
+				{
+					"option": "--headless",
+					"value": null,
+					"description": "Run the game without a window or graphics, like a dedicated server (60 frames per second)",
+					"line": 342
+				},
+				{
+					"option": "--windowed",
+					"value": null,
+					"description": "Open a window even when the game asks for fullscreen",
+					"line": 343
+				},
+				{
+					"option": "--resolution",
+					"value": "<width>x<height>",
+					"description": "Open a window of exactly this many pixels",
+					"line": 344
+				},
+				{
+					"option": "--frames",
+					"value": "<count>",
+					"description": "Stop after this many frames (every fixed step runs: checks, screenshots)",
+					"line": 345
+				},
+				{
+					"option": "--seconds",
+					"value": "<count>",
+					"description": "Stop once the game played this many seconds of game time, in fixed steps from its start (every fixed step runs: checks, screenshots)",
+					"line": 346
+				},
+				{
+					"option": "--screenshot",
+					"value": "<file.png>",
+					"description": "Save the last frame (with --frames or --seconds, and a window)",
+					"line": 348
+				},
+				{
+					"option": "--asset-budget-mb",
+					"value": "<megabytes>",
+					"description": "The GPU texture budget of the game's assets",
+					"line": 349
+				},
+				{
+					"option": "--perf-log",
+					"value": "<file.csv>",
+					"description": "Write a row of frame timings per frame",
+					"line": 350
+				},
+				{
+					"option": "--save-directory",
+					"value": "<folder>",
+					"description": "Keep the game's save files in this folder (default: the player's data)",
+					"line": 351
+				},
+				{
+					"option": "--quality",
+					"value": "<low|medium|high|ultra>",
+					"description": "Draw with this Graphics Quality preset for this run (default: the project's, with the players' saved options over it); nothing is saved",
+					"line": 352
+				},
+				{
+					"option": "--help",
+					"value": null,
+					"description": "Print this help and exit",
+					"line": 354
+				}
+			]
+		},
+		"StrataCLI": {
+			"line": 570,
+			"usage": [
+				"StrataCLI call <method> [params] [connection options] [--timeout <ms>] [--save-image <file>]",
+				"StrataCLI list [connection options] [--json]",
+				"StrataCLI status [connection options]",
+				"StrataCLI launch [--project <dir>] [--headless | --no-gpu] [--idle-timeout <s>] [--editor <path>] [--wait-timeout <ms>] [--stall-timeout <s>] [--no-wait-scan]",
+				"StrataCLI mcp [connection options] [--editor <path>] [--timeout <ms>] [--idle-timeout <s>] [--stall-timeout <s>] [--toolsets <name,...> | all]",
+				"StrataCLI --help | --version"
+			],
+			"commands": [
+				{
+					"name": "call",
+					"description": "Call an editor method and print its JSON result. params is a JSON object, '-' to read it from standard input, or @<file> to read it from a file. Commands that take frames answer when they finish; --timeout (default 30000 ms) bounds the wait. --save-image writes an image result ({\"Image\": {\"MimeType\", \"Data\"}}) to a file and prints its path instead of the data"
+				},
+				{
+					"name": "list",
+					"description": "List the editor's methods and their descriptions (--json: with parameter schemas)"
+				},
+				{
+					"name": "status",
+					"description": "Show whether an editor is reachable, and the known editor sessions"
+				},
+				{
+					"name": "launch",
+					"description": "Start an editor (for a project, if given) and wait until it accepts connections (at most --wait-timeout, default 60000 ms), then until the project is ready: its assets scanned and its start scene open, printing the progress to stderr, for as long as it progresses (it fails when nothing progressed for --stall-timeout seconds, default 60). --no-wait-scan returns once it accepts connections. It keeps running until 'call editor.quit', or until no client has been connected for --idle-timeout seconds. --headless runs without a window, --no-gpu also without a graphics device"
+				},
+				{
+					"name": "mcp",
+					"description": "Serve the Model Context Protocol on stdin/stdout (for AI agents). Editors it starts close themselves after --idle-timeout seconds without a client (default 600, 0: never). Only the commands of --toolsets are tools (default core: about 30; all: every command); the tools strata_describe and strata_toolsets show and enable the others, strata_call runs any"
+				}
+			],
+			"connection": [
+				{
+					"name": "--port <n>",
+					"description": "Explicit endpoint (else STRATA_EDITOR_PORT), authenticated with the STRATA_EDITOR_TOKEN environment variable (preferred) or --token <t>"
+				},
+				{
+					"name": "--project <dir>",
+					"description": "The editor that has this project open (<dir>/.strata/EditorSession.json)"
+				},
+				{
+					"name": "(none)",
+					"description": "The newest running editor session that accepts a connection"
+				},
+				{
+					"name": "--host <address>",
+					"description": "Host of the explicit endpoint (default 127.0.0.1; requires --port)"
+				}
+			],
+			"connectionNotes": [],
+			"other": [
+				{
+					"name": "--verbose",
+					"description": "Log diagnostics to stderr"
+				}
+			],
+			"environment": [
+				{
+					"name": "STRATA_EDITOR_PORT, STRATA_EDITOR_TOKEN",
+					"description": "Explicit editor endpoint"
+				},
+				{
+					"name": "STRATA_EDITOR_PATH",
+					"description": "Editor executable for launch/mcp (default: StrataEditor next to StrataCLI)"
+				},
+				{
+					"name": "STRATA_SESSION_DIR",
+					"description": "Private directory of editor session files (default: %LOCALAPPDATA%\\Strata\\Sessions, ~/.local/share/Strata/Sessions or ~/Library/Application Support/Strata/Sessions)"
+				}
+			],
+			"exitCodes": "0 success; 1 the editor answered with an error; 2 no editor reachable or the connection was lost; 3 invalid command line; 4 no answer within --timeout (the command may still be running in the editor: do not start another one); 5 --save-image could not save the image.",
+			"file": "StrataCLI/src/CLI/CliApplication.cpp"
+		}
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"figures": [
+		{
+			"id": "gpu-stages-panel",
+			"kind": "editor",
+			"shows": "The editor's Performance panel with the Showcase sample open, its table listing the frame's CPU stages and, under them, the GPU section with a row per GPU stage",
+			"caption": "Each GPU stage has a row in the table, with the times the profiler resolved a few frames after the passes ran. The GPU strip is nearly flat: the GPU is busy only about 0.25 ms of each frame, on a 5 ms scale.",
+			"alt": "The editor's Performance panel while the Showcase sample is open, with strips of frames for the CPU and the GPU above a table of stages; the GPU strip holds only marks a pixel tall. Under the CPU stages, the GPU section gives how many frames late the times are known, then a line cut by the next column, then a row per stage with the prefix GPU. The rows of stages that did not run, such as the radiance cascades and motion blur, are dimmed at 0.000.",
+			"numbers": "5 ms is the scale both strips share, which the picture labels GPU · 5 ms (PerformancePanel::GetTimelineScale: the larger P95 of CPU and GPU times 1.25). 0.25 ms is the GPU busy row of that picture (Avg 0.251 ms, p50 0.250 ms), which its Capped line rounds to GPU 0.3 ms busy.",
+			"project": { "sample": "Showcase" },
+			"editorWindow": {
+				"layout": "layouts/gpu-stages.ini",
+				"windowSize": [1280, 1220],
+				"panel": "Performance",
+				"steps": [
+					{ "command": "editor.showPanel", "parameters": { "panel": "Performance" } },
+					{ "command": "editor.wait", "parameters": { "frames": 700 } }
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,49 @@
+diff --git a/StrataEditor/src/EditorApplication.cpp b/StrataEditor/src/EditorApplication.cpp
+index 6bc6e8bd..1c6e2a0c 100644
+--- a/StrataEditor/src/EditorApplication.cpp
++++ b/StrataEditor/src/EditorApplication.cpp
+@@ -26,6 +26,7 @@
+ #include "UI/EditorFonts.h"
+ #include "UI/Theme.h"
+ 
++#include <imgui.h>
+ #include <nlohmann/json.hpp>
+ 
+ #include <cmath>
+@@ -239,6 +240,28 @@ namespace Strata
+ 		Application& m_Application;
+ 	};
+ 
++	// A scratch layer for learning Dear ImGui: one window with a counter.
++	class ScratchLayer : public Layer
++	{
++	public:
++		ScratchLayer()
++			: Layer("Scratch")
++		{
++		}
++
++		void OnImGuiRender() override
++		{
++			ImGui::Begin("Scratch");
++			ImGui::Text("Count: %d", m_Count);
++			ImGui::SameLine();
++			if (ImGui::Button("Add"))
++				m_Count++;
++			ImGui::End();
++		}
++	private:
++		int m_Count = 0;
++	};
++
+ 	class EditorApplication : public Application
+ 	{
+ 	public:
+@@ -265,6 +288,7 @@ namespace Strata
+ 			}
+ 			// The layer owns its host; the application outlives its layers.
+ 			PushLayer(new EditorLayer(options, CreateScope<ApplicationEditorHost>(*this)));
++			PushLayer(new ScratchLayer());
+ 		}
+ 	private:
+ 		// --window-size promises a window of exactly that many pixels, so that its pictures have that size: a window the system

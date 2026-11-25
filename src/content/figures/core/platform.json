@@ -1,0 +1,16 @@
+{
+	"figures": [
+		{
+			"id": "headless-run",
+			"kind": "text",
+			"shows": "The output of the editor run headless for 120 frames from a terminal and left alone (no Ctrl+C): its log lines, one per line, with the time, the level and the message",
+			"caption": "Left alone (no Ctrl+C), a headless editor logs into the terminal and ends after its last frame without a warning; the shell, not the log, reports its exit code. Strata logs the engine's lines, App the editor's. Times, port and start time vary and show as …; threads and graphics device are the book machine's.",
+			"alt": "Lines of text from a terminal, each with a time (left out here), a level, the logger's name and a message. They give the editor's version, engine modules, threads, graphics device and automation port, then the lines that close the run.",
+			"text": {
+				"program": "StrataEditor",
+				"arguments": ["--headless", "--frames", "120"],
+				"redact": ["(?<=\\[)[0-9]{2}:[0-9]{2}:[0-9]{2}(?=\\])", "(?<=127\\.0\\.0\\.1:)[0-9]+", "(?<=Started in )[0-9.]+(?= s)"]
+			}
+		}
+	]
+}

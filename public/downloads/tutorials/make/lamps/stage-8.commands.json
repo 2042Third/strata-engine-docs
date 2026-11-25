@@ -1,0 +1,127 @@
+[
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/Panel.stmat"
+		}
+	},
+	{
+		"command": "material.set",
+		"parameters": {
+			"material": "Materials/Panel.stmat",
+			"properties": {
+				"EmissiveColor": [
+					1,
+					0.95,
+					0.85
+				],
+				"EmissiveIntensity": 796
+			}
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Ceiling Panel",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube",
+					"Material": "Materials/Panel.stmat"
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						2.48,
+						-3.5
+					],
+					"Scale": [
+						0.8,
+						0.04,
+						0.4
+					]
+				}
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ceiling Panel"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "lighting.makeAreaLight",
+		"parameters": {
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ceiling Panel Light"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "RectLight",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Post Process"
+		},
+		"bind": {
+			"entityName.3": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "PostProcess",
+			"values": {
+				"AutoExposure": true,
+				"Exposure": 0.25
+			},
+			"entity": {
+				"$ref": "entityName.3"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Post Process"
+		},
+		"bind": {
+			"entityName.4": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "PostProcess",
+			"values": {
+				"AutoExposureMinEV": 0
+			},
+			"entity": {
+				"$ref": "entityName.4"
+			}
+		}
+	},
+	{
+		"command": "scene.save"
+	}
+]

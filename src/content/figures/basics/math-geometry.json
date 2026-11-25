@@ -1,0 +1,44 @@
+{
+	"figures": [
+		{
+			"id": "plane-side",
+			"shows": "A side view of the floor plane at height 2 drawn as a horizontal line with its normal arrow pointing up, and two points: A at (3, 5) with a vertical dashed segment of length 3 to the plane, and B at (0, 0) with a dashed segment of length 2 up to the plane",
+			"caption": "A point above the plane has a positive signed distance, a point below it a negative one.",
+			"alt": "A horizontal line marks the floor, with an arrow rising from it. A point above is joined to the line by a dashed segment marked plus 3. A point below is joined by one marked minus 2.",
+			"kind": "diagram",
+			"numbers": "Axes x and y from -1 to 6; the plane as the line y = 2; normal arrow (0, 1) drawn from (1, 2); point A (3, 5) with the label +3; point B (0, 0) with the label -2; the side above the line tinted, the side below in a second tint."
+		},
+		{
+			"id": "ray-meets-plane",
+			"shows": "A side view of the ray from (0, 5) along (0.6, -0.8) meeting the floor at height 2 at the point (2.25, 2), with tick marks at t = 1, 2 and 3 and a mark at t = 3.75, and a second faint ray going up from the same origin that never meets the floor",
+			"caption": "The ray reaches the floor after 3.75 steps; a ray that points away from the floor needs a negative t.",
+			"alt": "A horizontal line marks the floor. A slanted arrow runs from above down to the line, with tick marks along it, and ends at a dot. A faint dashed arrow from the same start goes upward.",
+			"kind": "diagram",
+			"numbers": "Floor y = 2 from x = -1 to 5; ray origin (0, 5), direction (0.6, -0.8), ticks at t = 1 (0.6, 4.2), 2 (1.2, 3.4), 3 (1.8, 2.6), hit at t = 3.75 (2.25, 2); the upward ray (0, 1) from (0, 5) dashed and labelled t = -3 at (0, 2)."
+		},
+		{
+			"id": "slab-2d",
+			"shows": "A 2D box from (2, 1) to (4, 3) with its x slab (the vertical band between x = 2 and x = 4) and its y slab (the horizontal band between y = 1 and y = 3) tinted in two colours, and the ray from (0, 0) along (0.8, 0.6) entering the box at t = 2.5, with the entry and exit of each slab marked on the ray",
+			"caption": "The ray is inside the box only where both bands overlap: it enters at the later entry and leaves at the earlier exit.",
+			"alt": "A rectangle crossed by a vertical band and a horizontal band. A slanted ray from the lower left enters the rectangle at its left side, with marks where it enters and leaves each band.",
+			"kind": "diagram",
+			"numbers": "Axes 0 to 6 on both; box (2, 1)-(4, 3); x slab entry t = 2.5, exit t = 5; y slab entry t = 1.67, exit t = 5; hit point (2, 1.5) at t = 2.5; a second, dashed box (2, 4)-(4, 6) with the same ray passing below it."
+		},
+		{
+			"id": "frustum-spheres",
+			"shows": "A top view of a camera frustum as a wedge of planes, with three circles: one fully inside, one fully outside beyond a side, and one across a side",
+			"caption": "A sphere across a plane is kept; only a sphere wholly beyond one plane is dropped.",
+			"alt": "A wedge opens from a camera point. One circle lies inside it, one crosses its left side and one lies clear of its right side. The first two are marked kept, the last dropped.",
+			"kind": "diagram",
+			"numbers": "Camera at the apex; near and far planes as short and long edges; inside circle radius 0.5 at the middle; crossing circle centered 0.2 beyond the left edge (signed distance -0.2) with radius 0.5; outside circle centered 1.0 beyond the right edge with radius 0.5; labels kept, kept, dropped."
+		},
+		{
+			"id": "separating-axis",
+			"shows": "A 2D box from (0, 0) to (2, 2) and the triangle with the corners (3, 1.5), (1.5, 3) and (3, 3), with the axis (1, 1) drawn as a diagonal line and the two shadows of the shapes on it, the box's from 0 to 4 and the triangle's from 4.5 to 6, with the gap of 0.5 marked",
+			"caption": "The shapes cast shadows on the diagonal axis, and a gap between the shadows proves that they do not touch.",
+			"alt": "A square and a triangle near its upper right corner. A diagonal line passes beside them. Two thick segments on the line show the two shadows, with a gap between them.",
+			"kind": "diagram",
+			"numbers": "Axes 0 to 4 on both; box (0, 0)-(2, 2); triangle (3, 1.5), (1.5, 3), (3, 3); axis along (1, 1), drawn on the parallel line y = x - 3 so that it passes beside both shapes; box shadow from 0 to 4 and triangle shadow from 4.5 to 6 in dot-product units, with perpendicular dashed lines from the corners; gap 0.5."
+		}
+	]
+}

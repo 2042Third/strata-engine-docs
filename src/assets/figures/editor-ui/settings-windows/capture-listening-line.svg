@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 388">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!--
+Plan. The Jump action of the ThirdPerson sample's Gameplay map while its capture listens. Heading at y 32; the
+property rows Action (y 44), Kind (y 80) and Bindings (y 116): label x 24, value x 132 to 552. Chips Key/Space and
+Gamepad/A at y 120 to 144; the capture line at y 172 in the accent; Cancel at y 184 to 212. Notes from y 256, a
+marker beside each; H = 368 + 20.
+Facts (StrataEditor/src/UI/InputActionsPage.cpp at 319075e3): DrawActions draws "Actions of <map>", then Action, Kind
+and, for a Button, no dead zone; DrawBindings draws a chip with a remove button per binding, and while the action's
+capture listens DrawCaptureListening instead of the add and capture buttons: "Press a key, mouse button or gamepad
+control to bind (<n> s)" in the accent and Cancel, whose rectangle it keeps (m_CancelRect). BindingCapture: 10 s
+(c_TimeoutSeconds), HoldKeyboard. Jump's bindings Key/Space and Gamepad/A: Samples/ThirdPerson/ThirdPerson.stproj.
+-->
+<text x="24" y="32" class="muted small">Actions of Gameplay</text>
+<text x="24" y="65" class="ink small">Action</text>
+<rect x="132" y="47" width="420" height="26" rx="3" class="plate line-faint"/>
+<text x="140" y="65" class="ink small">Jump</text>
+<text x="24" y="101" class="ink small">Kind</text>
+<rect x="132" y="83" width="420" height="26" rx="3" class="plate line-faint"/>
+<text x="140" y="101" class="ink small">Button</text>
+<polygon points="536,93 544,93 540,98" class="muted"/>
+<text x="24" y="137" class="ink small">Bindings</text>
+<rect x="132" y="120" width="100" height="24" rx="12" class="plate line-faint"/>
+<text x="182" y="137" text-anchor="middle" class="ink small">Key/Space</text>
+<text x="246" y="138" text-anchor="middle" class="muted">×</text>
+<rect x="264" y="120" width="104" height="24" rx="12" class="plate line-faint"/>
+<text x="316" y="137" text-anchor="middle" class="ink small">Gamepad/A</text>
+<text x="382" y="138" text-anchor="middle" class="muted">×</text>
+<text x="132" y="172" class="blue small">Press a key, mouse button or gamepad control to bind (7 s)</text>
+<circle cx="552" cy="167" r="10" class="ground line-orange"/><text x="552" y="172" text-anchor="middle" class="orange small bold">1</text>
+<rect x="132" y="184" width="76" height="28" rx="4" class="plate line-muted"/>
+<text x="170" y="203" text-anchor="middle" class="ink small">Cancel</text>
+<circle cx="226" cy="198" r="10" class="ground line-orange"/><text x="226" y="203" text-anchor="middle" class="orange small bold">2</text>
+<line x1="16" y1="232" x2="752" y2="232" class="line-faint" stroke-width="1"/>
+<circle cx="28" cy="251" r="10" class="ground line-orange"/><text x="28" y="256" text-anchor="middle" class="orange small bold">1</text>
+<text x="48" y="256" class="ink small">The seconds left. The capture ends with no binding when ten seconds pass.</text>
+<circle cx="28" cy="275" r="10" class="ground line-orange"/><text x="28" y="280" text-anchor="middle" class="orange small bold">2</text>
+<text x="48" y="280" class="ink small">Cancel ends it too. The page keeps the button's rectangle, so a press inside it</text>
+<text x="48" y="300" class="ink small">cancels instead of binding the left mouse button.</text>
+<text x="48" y="324" class="ink small">The first key, mouse button or gamepad control pressed becomes the action's third binding.</text>
+<text x="48" y="348" class="ink small">While the line shows, the editor's shortcuts, focus moves and fields see no key, and the</text>
+<text x="48" y="368" class="ink small">buttons that add or capture a binding are not drawn.</text>
+</svg>

@@ -1,0 +1,44 @@
+{
+	"figures": [
+		{
+			"id": "three-turns",
+			"shows": "A model aeroplane drawn three times on a common set of axes with X to the right, Y up and Z toward the viewer: once with its nose swung left around the vertical axis (yaw), once with its nose tipped up around the wing-to-wing axis (pitch) and once with a wing lowered around the nose axis (roll), each turn marked by a curved arrow",
+			"caption": "Yaw turns the nose left or right, pitch tips it up or down and roll tilts the wings; each turn goes around one of the three axes.",
+			"alt": "Three small aeroplanes on the same axes. The first has its nose turned to the left around the vertical axis. The second has its nose tipped upward around the axis through its wings. The third has its left wing lowered around the axis through its nose. A curved arrow marks each turn.",
+			"kind": "diagram",
+			"numbers": "Axes X right, Y up, Z toward the viewer, so the nose points along minus Z at rest; arrows of 45 degrees each, labelled yaw (around Y), pitch (around X) and roll (around Z)."
+		},
+		{
+			"id": "gimbal-lock",
+			"shows": "A plane with its nose pointing straight up, drawn beside its three turn axes: the yaw axis (vertical) and the roll axis (along the nose) are drawn as one line, and the pitch axis stands across it, with a note that two angles now make the same turn",
+			"caption": "With the nose straight up, the yaw axis and the roll axis are one line: turning either gives the same spin, and one direction of turning is lost.",
+			"alt": "A plane pointing straight up. A vertical line runs through it and carries two labels, yaw axis and roll axis. A horizontal line across the wings is labelled pitch axis. Two curved arrows around the vertical line, one for yaw and one for roll, turn the plane the same way.",
+			"kind": "diagram",
+			"numbers": "Pitch of 90 degrees; the vertical line carries both labels; the two curved arrows are drawn in two colours and point the same way."
+		},
+		{
+			"id": "half-angle",
+			"shows": "A flat view of a turn around the Y axis with the angle 90 degrees drawn as an arc, and beside it a unit circle in which the point (cos 45 degrees, sin 45 degrees) = (0.7071, 0.7071) is marked, with the angle 45 degrees at its centre drawn as half the turn",
+			"caption": "The quaternion holds the cosine and the sine of half the turn: the angle at the centre of the small circle is half the angle of the rotation.",
+			"alt": "Two panels. The left shows two arrows from one point with an arc of 90 degrees between them. The right shows a unit circle with a point at 0.7071 along w and 0.7071 along y, and the angle 45 degrees marked between the horizontal axis and the line to that point.",
+			"kind": "diagram",
+			"numbers": "Left panel: turn of 90 degrees around Y. Right panel: unit circle, horizontal axis w from -1 to 1, vertical axis y from -1 to 1, point (0.7071, 0.7071), angle 45 degrees; the identity (1, 0) and the half turn (0, 1) marked."
+		},
+		{
+			"id": "slerp-arc",
+			"shows": "A circle standing for the sphere of unit quaternions with two points a and b on it; the arc between them is marked with equal steps (slerp) and the straight chord is marked with equal steps whose projections on the circle are not equal (lerp and then normalize)",
+			"caption": "Slerp walks the arc in equal steps; a straight blend walks the chord, which leaves the circle and, once pushed back to it, makes unequal steps.",
+			"alt": "A circle with two points a and b. A curved arc joins them along the circle with five evenly spaced dots. A straight chord joins them inside the circle with five evenly spaced dots. Dashed lines from the centre push each chord dot out to the circle, where the dots are closer near the ends and farther apart in the middle.",
+			"kind": "diagram",
+			"numbers": "Unit circle of quaternions, on which an angle is half the turn; a at 0 degrees, b at 80 degrees for a turn of 160 degrees; dots at t = 0, 0.25, 0.5, 0.75 and 1 on the arc (20 degrees apart, turns of 40) and on the chord, whose pushed-out dots lie at 0, 17.25, 40, 62.75 and 80 degrees (turns of 0, 34.5, 80, 125.5 and 160)."
+		},
+		{
+			"id": "short-arc",
+			"shows": "The circle of unit quaternions with a at 5 degrees and b at 175 degrees marked (the half angles of the yaws 10 and 350 degrees), and the point minus b on the opposite side; the short arc from a to minus b is drawn solid, the long arc from a to b dashed, with a note that the dot product of a and b is negative",
+			"caption": "Two arcs lead to the same rotation, because b and minus b are one rotation; the solid short arc is the one to take, and the dot product tells which.",
+			"alt": "A circle with the point a a little above its right end and the point b a little above its left end. They are close to each other as rotations but far apart on the circle. The point minus b lies a little below the right end, beside a. A solid short arc runs from a to minus b. A dashed long arc runs from a to b the other way round.",
+			"kind": "diagram",
+			"numbers": "Quaternions around Y: a = (0.9962, 0, 0.0872, 0), b = (-0.9962, 0, 0.0872, 0); dot of a and b = -0.985; minus b = (0.9962, 0, -0.0872, 0); short arc 20 degrees of rotation, long arc 340 degrees."
+		}
+	]
+}

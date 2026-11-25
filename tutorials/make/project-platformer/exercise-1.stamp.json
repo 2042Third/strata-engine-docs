@@ -1,0 +1,85 @@
+{
+	"page": "make/project-platformer",
+	"runs": [
+		{
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/solutions/make/project-platformer/exercise-1.zip": "5708acfa70ff56e4a80c1ba49d73e0f380adc2ae3004ff3ed145e307fcd73f36",
+				"tutorials/make/project-platformer.tutorial.json": "64832d62e65bf88c48d47d9550de56bbd14e8fef9b50c79f462bd28e09e029df",
+				"tutorials/make/project-platformer/Coin.cpp": "9da4d14a1c6d13f9663670556b9d4099dc1d0f4605c50b1d02f194c331926c04",
+				"tutorials/make/project-platformer/CourseState.cpp": "18f2b68d778dbe4fa7a1144865fe76ed0ad137b7a87f75eab63344a2daa64d28",
+				"tutorials/make/project-platformer/CourseState.h": "e7c02560e773ce0d261717298650f6e33c84a2552c1e331e96d9937833833579",
+				"tutorials/make/project-platformer/FollowCamera.cpp": "c3e46373ba99b32aef00b52f1c47625e99da7bac3d1aaf5c63b846c07cbe39bb",
+				"tutorials/make/project-platformer/Footsteps.cpp": "8099b089a2694b52eead197018ba81df076a03734c90a9332b882c6afea0514c",
+				"tutorials/make/project-platformer/Goal.cpp": "7c77d9ac221bc07ccedd714f5bbf027dbbb813029df7b17518628c67c0ce4bc3",
+				"tutorials/make/project-platformer/JumpPad.cpp": "cd391f308439cd1fcf6dabbdf2570b3b488705390a59122546d97bc30ee902e5",
+				"tutorials/make/project-platformer/LoadingScreen.cpp": "a6ce37081ab1f43f5707ab32403fc81a29dc263d4a7b089d706638aa4495b4c4",
+				"tutorials/make/project-platformer/MainMenu.cpp": "bf683de86d675a6ab75defd3fe2c62f6dfe7935239b726dbe2b4014587b303f5",
+				"tutorials/make/project-platformer/MovingPlatform.cpp": "e15fc02367535dfa9d355acce88c3a4b2ba554201efafebf29a1b52c7ee77947",
+				"tutorials/make/project-platformer/PauseMenu.cpp": "0eb238deebee607a38a21d8bd0b55a2497e7c02e1b456a0bb09db86a7e817639",
+				"tutorials/make/project-platformer/ThirdPersonPlayer.cpp": "5f8700367c7b0a72641f196d9c5e62fac3d62c4ca9f783ca1daf438ee0f32a47",
+				"tutorials/make/project-platformer/ThirdPersonPlayer.h": "f5d73a1fdf578e05b990a8694d89f53a7b3ab6d06eadeb65e4a308a3610be6d3",
+				"tutorials/make/project-platformer/ThirdPersonPlayer.step3.cpp": "cc36621a4cf07ba7b23bf63a793d75f7bb2dc033ac9ab1d8921961c2f4cc640a",
+				"tutorials/make/project-platformer/ThirdPersonPlayer.step5.cpp": "985cbe4977cfe61637ded822e1cbaea96033ce88c35e91560e346b28d4024155",
+				"tutorials/make/project-platformer/exercise-1.tutorial.json": "ade0fe3510fe4e611b2bb4bacb9950747344d7a7309d7aa3d38b51069dd73611"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		},
+		{
+			"build": {
+				"kind": "package",
+				"configuration": "Strata-0.8.0-windows-x64",
+				"editorSha256": "bcff21bcd56e8f51003861fc7aafb4b8ab638ad7cc521c8c0c7829c4361673be",
+				"package": "Strata-0.8.0-windows-x64.zip",
+				"packageSha256": "47a151b64d0d6bb6f2c77147ca4b477b5eaa479b7dfeafee07ccec3911a00d11"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"public/downloads/solutions/make/project-platformer/exercise-1.zip": "5708acfa70ff56e4a80c1ba49d73e0f380adc2ae3004ff3ed145e307fcd73f36",
+				"tutorials/make/project-platformer.tutorial.json": "64832d62e65bf88c48d47d9550de56bbd14e8fef9b50c79f462bd28e09e029df",
+				"tutorials/make/project-platformer/Coin.cpp": "9da4d14a1c6d13f9663670556b9d4099dc1d0f4605c50b1d02f194c331926c04",
+				"tutorials/make/project-platformer/CourseState.cpp": "18f2b68d778dbe4fa7a1144865fe76ed0ad137b7a87f75eab63344a2daa64d28",
+				"tutorials/make/project-platformer/CourseState.h": "e7c02560e773ce0d261717298650f6e33c84a2552c1e331e96d9937833833579",
+				"tutorials/make/project-platformer/FollowCamera.cpp": "c3e46373ba99b32aef00b52f1c47625e99da7bac3d1aaf5c63b846c07cbe39bb",
+				"tutorials/make/project-platformer/Footsteps.cpp": "8099b089a2694b52eead197018ba81df076a03734c90a9332b882c6afea0514c",
+				"tutorials/make/project-platformer/Goal.cpp": "7c77d9ac221bc07ccedd714f5bbf027dbbb813029df7b17518628c67c0ce4bc3",
+				"tutorials/make/project-platformer/JumpPad.cpp": "cd391f308439cd1fcf6dabbdf2570b3b488705390a59122546d97bc30ee902e5",
+				"tutorials/make/project-platformer/LoadingScreen.cpp": "a6ce37081ab1f43f5707ab32403fc81a29dc263d4a7b089d706638aa4495b4c4",
+				"tutorials/make/project-platformer/MainMenu.cpp": "bf683de86d675a6ab75defd3fe2c62f6dfe7935239b726dbe2b4014587b303f5",
+				"tutorials/make/project-platformer/MovingPlatform.cpp": "e15fc02367535dfa9d355acce88c3a4b2ba554201efafebf29a1b52c7ee77947",
+				"tutorials/make/project-platformer/PauseMenu.cpp": "0eb238deebee607a38a21d8bd0b55a2497e7c02e1b456a0bb09db86a7e817639",
+				"tutorials/make/project-platformer/ThirdPersonPlayer.cpp": "5f8700367c7b0a72641f196d9c5e62fac3d62c4ca9f783ca1daf438ee0f32a47",
+				"tutorials/make/project-platformer/ThirdPersonPlayer.h": "f5d73a1fdf578e05b990a8694d89f53a7b3ab6d06eadeb65e4a308a3610be6d3",
+				"tutorials/make/project-platformer/ThirdPersonPlayer.step3.cpp": "cc36621a4cf07ba7b23bf63a793d75f7bb2dc033ac9ab1d8921961c2f4cc640a",
+				"tutorials/make/project-platformer/ThirdPersonPlayer.step5.cpp": "985cbe4977cfe61637ded822e1cbaea96033ce88c35e91560e346b28d4024155",
+				"tutorials/make/project-platformer/exercise-1.tutorial.json": "ade0fe3510fe4e611b2bb4bacb9950747344d7a7309d7aa3d38b51069dd73611"
+			},
+			"stages": [
+				{
+					"step": 1,
+					"passed": true
+				}
+			],
+			"readerCopies": true,
+			"passed": true
+		}
+	]
+}

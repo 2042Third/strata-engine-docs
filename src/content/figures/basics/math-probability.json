@@ -1,0 +1,52 @@
+{
+	"figures": [
+		{
+			"id": "dice-sums",
+			"shows": "A bar chart of the sums of two dice from 2 to 12, each bar as high as its count of pairs out of 36, symmetric around the sum 7 which has 6 pairs",
+			"caption": "The sums of two dice: the middle sums come up most often because more pairs of faces make them.",
+			"alt": "A bar chart with eleven bars for the sums 2 to 12. The heights are 1, 2, 3, 4, 5, 6, 5, 4, 3, 2 and 1 pairs of 36, rising to a peak at 7 and falling again.",
+			"kind": "diagram",
+			"numbers": "Bars at 2..12 with heights 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1 (pairs of 36); vertical axis labelled pairs, with the chance 6/36 marked at the peak."
+		},
+		{
+			"id": "triangle-density",
+			"shows": "The density of the sum of two uniform numbers on a horizontal axis from 0 to 2: a triangle rising from 0 at 0 to height 1 at 1 and back to 0 at 2, with the part between 1 and 1.5 shaded",
+			"caption": "The area under the density over a part of the range is the chance that the value falls in that part; the whole triangle has area one.",
+			"alt": "A triangle on an axis from 0 to 2 with its peak of height 1 above the value 1. The strip between 1 and 1.5 under the sloping right side is shaded and labelled 0.375.",
+			"kind": "diagram",
+			"numbers": "Triangle corners (0, 0), (1, 1), (2, 0); shaded trapezoid between x = 1 and x = 1.5, heights 1 and 0.5, area 0.375; total area 1 stated."
+		},
+		{
+			"id": "darts",
+			"shows": "A unit square with a quarter circle of radius 1 drawn from the lower left corner, 200 random dots in the square, the dots inside the circle in one color and the others in a second color",
+			"caption": "Random darts in a square: the share that lands inside the quarter circle estimates its area, and four times the share estimates pi.",
+			"alt": "A square with an arc running from its top left corner to its bottom right corner. Scattered dots fill the square; those under the arc are drawn in one color and those above it in another.",
+			"kind": "diagram",
+			"numbers": "Square from (0, 0) to (1, 1); arc x^2 + y^2 = 1; 200 uniformly random dots from a fixed seed; label the counts inside and outside and the estimate 4 times inside over 200."
+		},
+		{
+			"id": "hammersley",
+			"shows": "Two squares side by side with 64 points each: on the left 64 random points with clumps and gaps, on the right the 64 points of the Hammersley set, spread evenly with no clumps",
+			"caption": "The same number of points in a square: random points leave gaps and clumps, while the Hammersley set covers the square evenly.",
+			"alt": "Two unit squares. The left square holds 64 randomly placed dots with visible clumps and empty patches. The right square holds 64 dots in a regular, even-looking pattern.",
+			"kind": "diagram",
+			"numbers": "Left: 64 uniform random points from a fixed seed. Right: points (i / 64, reversed bits of i over 2^32) for i = 0 to 63. Both in the unit square, same dot size."
+		},
+		{
+			"id": "white-blue",
+			"shows": "Two squares side by side with 256 points each: on the left white noise with clumps and holes, on the right blue noise where no two points are close and none of the holes is large",
+			"caption": "White noise leaves clumps and holes; blue noise keeps the points apart, which looks finer and averages out faster.",
+			"alt": "Two squares of dots. The left square shows 256 randomly placed dots with clumps and bare patches. The right square shows 256 dots spaced almost evenly with a similar distance to the nearest neighbor everywhere.",
+			"kind": "diagram",
+			"numbers": "Left: 256 independent uniform points. Right: 256 points by void and cluster on a toroidal grid (or best-candidate sampling), minimum distance about 0.04 of the side."
+		},
+		{
+			"id": "vogel-spiral",
+			"shows": "A circle of radius 1 with 32 points of the Vogel disk drawn as dots, numbered in order along the spiral, each turned by 137.5 degrees from the one before",
+			"caption": "The Vogel disk puts each point a golden angle past the one before and pushes it outward, so the points spread evenly without lining up in spokes.",
+			"alt": "A circle with 32 dots spiralling out from the center. The dots are numbered 0 to 31 in order, and neighbors in the spiral are about 137.5 degrees apart around the center.",
+			"kind": "diagram",
+			"numbers": "N = 32; tap i at radius sqrt((i + 0.5) / 32) and angle i times 2.39996 radians; number the taps 0 to 31 and draw the unit circle."
+		}
+	]
+}

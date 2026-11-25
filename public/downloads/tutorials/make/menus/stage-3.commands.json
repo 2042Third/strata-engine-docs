@@ -1,0 +1,224 @@
+[
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Scenes/Main.stscene"
+		}
+	},
+	{
+		"command": "inputActions.setAction",
+		"parameters": {
+			"action": "Gameplay/Pause",
+			"kind": "Button",
+			"bindings": [
+				"Key/Escape",
+				"Gamepad/Start"
+			]
+		},
+		"expect": {
+			"/created": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "canvas",
+			"name": "Pause"
+		},
+		"bind": {
+			"pause": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "panel",
+			"name": "PausePanel",
+			"parent": {
+				"$ref": "pause"
+			},
+			"anchor": "stretch",
+			"size": [
+				0,
+				0
+			]
+		},
+		"bind": {
+			"pausePanel": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "text",
+			"name": "PauseTitle",
+			"parent": {
+				"$ref": "pausePanel"
+			},
+			"text": "Paused",
+			"anchor": "topCenter",
+			"position": [
+				0,
+				120
+			],
+			"size": [
+				600,
+				100
+			]
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "button",
+			"name": "Resume",
+			"parent": {
+				"$ref": "pausePanel"
+			},
+			"text": "Resume",
+			"size": [
+				400,
+				80
+			]
+		},
+		"bind": {
+			"resume": "/entity"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "pause"
+			},
+			"component": "UICanvas",
+			"values": {
+				"SortOrder": 10
+			}
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "pause"
+			},
+			"class": "PauseMenu",
+			"fields": {
+				"Panel": {
+					"$ref": "pausePanel"
+				},
+				"ResumeButton": {
+					"$ref": "resume"
+				}
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "resume"
+			},
+			"component": "UIButton",
+			"values": {
+				"EventTarget": {
+					"$ref": "pause"
+				}
+			}
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"entity": {
+				"$ref": "pause"
+			},
+			"class": "PauseMenu"
+		}
+	},
+	{
+		"command": "play.start",
+		"parameters": {
+			"paused": true,
+			"build": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 2
+		},
+		"expect": {
+			"/stepsRun": {
+				"equals": 2
+			}
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"entity": {
+				"$ref": "pausePanel"
+			}
+		}
+	},
+	{
+		"command": "input.action",
+		"parameters": {
+			"action": "Gameplay/Pause",
+			"steps": 2
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 4
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"entity": {
+				"$ref": "pausePanel"
+			}
+		}
+	},
+	{
+		"command": "input.key",
+		"parameters": {
+			"key": "Enter",
+			"wait": false
+		}
+	},
+	{
+		"command": "play.step",
+		"parameters": {
+			"steps": 3
+		}
+	},
+	{
+		"command": "ui.layout",
+		"parameters": {
+			"entity": {
+				"$ref": "pausePanel"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	},
+	{
+		"command": "scene.save"
+	}
+]

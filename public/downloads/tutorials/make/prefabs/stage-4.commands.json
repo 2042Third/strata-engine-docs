@@ -1,0 +1,128 @@
+[
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin (2)"
+		},
+		"bind": {
+			"second": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.get",
+		"parameters": {
+			"entity": {
+				"$ref": "second"
+			}
+		},
+		"bind": {
+			"mesh": "/children/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "mesh"
+			},
+			"component": "Transform",
+			"values": {
+				"Scale": [
+					1.5,
+					1.5,
+					1.5
+				]
+			}
+		}
+	},
+	{
+		"command": "prefab.status",
+		"parameters": {
+			"entity": {
+				"$ref": "second"
+			}
+		}
+	},
+	{
+		"command": "prefab.apply",
+		"parameters": {
+			"entity": {
+				"$ref": "second"
+			}
+		}
+	},
+	{
+		"command": "prefab.status",
+		"parameters": {
+			"entity": {
+				"$ref": "second"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin (1)"
+		},
+		"bind": {
+			"first": "/entities/0"
+		}
+	},
+	{
+		"command": "prefab.status",
+		"parameters": {
+			"entity": {
+				"$ref": "first"
+			}
+		}
+	},
+	{
+		"command": "entity.get",
+		"parameters": {
+			"entity": {
+				"$ref": "first"
+			}
+		},
+		"bind": {
+			"firstMesh": "/children/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "firstMesh"
+			},
+			"component": "Transform"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin"
+		},
+		"bind": {
+			"original": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.get",
+		"parameters": {
+			"entity": {
+				"$ref": "original"
+			}
+		},
+		"bind": {
+			"originalMesh": "/children/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"entity": {
+				"$ref": "originalMesh"
+			},
+			"component": "Transform"
+		}
+	}
+]

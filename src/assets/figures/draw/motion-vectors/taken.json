@@ -1,0 +1,36 @@
+{
+	"files": {
+		"motion-view.avif": {
+			"kind": "live",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": "NVIDIA GeForce RTX 5090 (Vulkan 1.3.0, driver 621.1.0)",
+			"size": [
+				1280,
+				720
+			],
+			"figure": "motion-view",
+			"variant": null,
+			"crop": null,
+			"original": "33ad9f59da20323ff9ac11206a37f99064583d9f9fd64aa656ae3b5231f8533b",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "avif",
+				"lossless": false,
+				"quality": 80,
+				"chromaSubsampling": "4:4:4",
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "f53695a772272c0beb648dc2d30a3186e4ab968ed9d535374c1c42b6775d1aed"
+		}
+	}
+}

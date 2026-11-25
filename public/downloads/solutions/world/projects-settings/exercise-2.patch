@@ -1,0 +1,71 @@
+diff --git a/StrataTests/src/Core/GameTuningTests.cpp b/StrataTests/src/Core/GameTuningTests.cpp
+new file mode 100644
+index 00000000..4d29ae73
+--- /dev/null
++++ b/StrataTests/src/Core/GameTuningTests.cpp
+@@ -0,0 +1,65 @@
++#include <doctest/doctest.h>
++
++#include "Strata/Core/SettingsRegistry.h"
++
++#include <nlohmann/json.hpp>
++
++#include <optional>
++#include <string>
++#include <utility>
++
++using namespace Strata;
++
++namespace
++{
++
++	// An Int field with its range and default, and the title and description that Register asks of every field.
++	SettingsField MakeIntField(std::string name, double min, double max, int defaultValue)
++	{
++		SettingsField field;
++		field.Name = std::move(name);
++		field.Title = field.Name;
++		field.Description = "The " + field.Name + " of the game's tuning.";
++		field.Type = SettingsFieldType::Int;
++		field.Min = min;
++		field.Max = max;
++		field.Default = defaultValue;
++		return field;
++	}
++
++}
++
++TEST_SUITE("Core.Settings")
++{
++	TEST_CASE("Game.Tuning upgrades version 1, refuses a value out of range and refuses version 3")
++	{
++		SettingsSection section;
++		section.Id = "Game.Tuning";
++		section.Title = "Tuning";
++		section.Category = "Gameplay";
++		section.Description = "How many enemies a wave holds and how long the spawner waits.";
++		section.Version = 2;
++		section.Fields = { MakeIntField("MaxEnemies", 1, 50, 10), MakeIntField("SpawnDelay", 0, 10, 2) };
++		SettingsRegistry registry;
++		REQUIRE(registry.Register(std::move(section)));
++		const SettingsSection* tuning = registry.Find("Game.Tuning");
++		REQUIRE(tuning);
++
++		const std::optional<nlohmann::json> upgraded = tuning->Validate({ { "MaxEnemies", 20 } }, 1);
++		REQUIRE(upgraded);
++		CHECK(*upgraded == nlohmann::json { { "MaxEnemies", 20 }, { "SpawnDelay", 2 } });
++
++		std::string error;
++		CHECK_FALSE(tuning->Validate({ { "MaxEnemies", 60 } }, 2, &error));
++		CHECK(error == "'MaxEnemies' must be a whole number from 1 to 50");
++		CHECK_FALSE(tuning->Validate({ { "MaxEnemies", 5 } }, 3, &error));
++		CHECK(error == "the value is of version 3 of the section, newer than this engine reads (up to 2)");
++
++		// A member that names no field: dropped from an older version, refused at the current one.
++		const std::optional<nlohmann::json> dropped = tuning->Validate({ { "Legacy", 1 } }, 1);
++		REQUIRE(dropped);
++		CHECK(*dropped == nlohmann::json { { "MaxEnemies", 10 }, { "SpawnDelay", 2 } });
++		CHECK_FALSE(tuning->Validate({ { "Legacy", 1 } }, 2, &error));
++		CHECK(error == "'Legacy' is no field of the section (its fields: 'MaxEnemies', 'SpawnDelay')");
++	}
++}

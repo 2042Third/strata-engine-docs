@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 268">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: the slice seen from its side, the pixel at (384, 222), up is the normal. A wall 120 left of the pixel rises 160 (left horizon 36.9 degrees from the normal), a box 150 right rises 60 (right horizon 68.2 degrees). The view direction leans 25 degrees right, so n = -25, h0 = -61.9 and h1 = 43.2 degrees, all from it. -->
+<polygon points="16,222 234,222 234,62 264,62 264,222 534,222 534,162 654,162 654,222 752,222 752,252 16,252" class="plate"/>
+<polyline points="16,222 234,222 234,62 264,62 264,222 534,222 534,162 654,162 654,222 752,222" class="line-ink" fill="none" stroke-width="2"/>
+<path d="M 384 222 L 306 118 A 130 130 0 0 1 504.7 173.7 Z" class="blue-area"/>
+<path d="M 306 118 A 130 130 0 0 1 504.7 173.7" class="line-blue" fill="none" stroke-width="2"/>
+<line x1="384" y1="222" x2="246" y2="38" class="line-blue" stroke-width="2"/>
+<text x="238" y="36" class="blue" text-anchor="end">horizon</text>
+<line x1="384" y1="222" x2="597.5" y2="136.6" class="line-blue" stroke-width="2"/>
+<text x="605.5" y="134.6" class="blue">horizon</text>
+<path d="M 410.2 165.8 A 62 62 0 0 0 384 160" class="line-ink" fill="none"/>
+<text x="400" y="154.8" class="ink" text-anchor="middle">n</text>
+<path d="M 451.6 77 A 160 160 0 0 0 288 94" class="line-ink" fill="none"/>
+<text x="318.8" y="65.7" class="ink" text-anchor="middle">h<tspan class="small" dy="5">0</tspan></text>
+<path d="M 462.2 54.3 A 185 185 0 0 1 555.8 153.3" class="line-ink" fill="none"/>
+<text x="540.8" y="104.5" class="ink" text-anchor="middle">h<tspan class="small" dy="5">1</tspan></text>
+<line x1="384" y1="222" x2="384" y2="114" class="line-ink" stroke-width="2.5"/>
+<polygon points="384,102 388.5,114 379.5,114" class="ink"/>
+<text x="376" y="132" class="ink" text-anchor="end">normal</text>
+<line x1="384" y1="222" x2="472.7" y2="31.7" class="line-green" stroke-width="2.5"/>
+<polygon points="477.8,20.8 476.8,33.6 468.7,29.8" class="green"/>
+<text x="487.8" y="24.8" class="green">view direction</text>
+<text x="456" y="166" class="blue small" text-anchor="middle">visible arc</text>
+<circle cx="384" cy="222" r="4" class="ink"/>
+<text x="384" y="244" class="ink" text-anchor="middle">pixel</text>
+<text x="100" y="244" class="ink" text-anchor="middle">surface</text>
+</svg>

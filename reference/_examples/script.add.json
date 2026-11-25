@@ -1,0 +1,20 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"command": "script.add",
+	"parameters": {
+		"entity": "…",
+		"class": "Spinner",
+		"fields": {
+			"DegreesPerSecond": 45
+		}
+	},
+	"result": {
+		"entity": "…",
+		"script": {
+			"class": "Spinner",
+			"fields": {
+				"DegreesPerSecond": 45
+			}
+		}
+	}
+}

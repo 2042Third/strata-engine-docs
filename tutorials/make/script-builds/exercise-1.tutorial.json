@@ -1,0 +1,49 @@
+{
+	"page": "make/script-builds",
+	"startsFrom": { "tutorial": "make/project-coin-run" },
+	"stages": [
+		{
+			"step": 1,
+			"files": [
+				{ "from": "book:tutorials/make/script-builds/exercise-1/Libraries/Triple/Triple.h", "to": "Libraries/Triple/Triple.h" },
+				{ "from": "book:tutorials/make/script-builds/exercise-1/Libraries/Triple/Triple.cpp", "to": "Libraries/Triple/Triple.cpp" },
+				{ "from": "book:tutorials/make/script-builds/exercise-1/Libraries/Triple/CMakeLists.txt", "to": "Libraries/Triple/CMakeLists.txt" },
+				{ "from": "book:tutorials/make/script-builds/exercise-1/Scripts/CMakeLists.txt", "to": "Scripts/CMakeLists.txt" },
+				{ "from": "book:tutorials/make/script-builds/exercise-1/Scripts/TripleLog.cpp", "to": "Scripts/TripleLog.cpp" }
+			],
+			"commands": [
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 } ] },
+				{ "command": "script.add", "entityName": "Game", "parameters": { "class": "TripleLog" } },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 5 }, "expect": { "/stepsRun": { "equals": 5 } } },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 50 },
+					"checks": [ { "pointer": "/messages", "contains": "Triple of 14 is 42" } ] },
+				{ "command": "play.stop" },
+				{ "command": "scene.save" }
+			],
+			"endState": true
+		},
+		{
+			"step": 2,
+			"files": [
+				{ "from": "book:tutorials/make/script-builds/exercise-1/TripleFour.cpp", "to": "Libraries/Triple/Triple.cpp" }
+			],
+			"commands": [
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 5 }, "expect": { "/stepsRun": { "equals": 5 } } },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 50 },
+					"checks": [ { "pointer": "/messages", "contains": "Triple of 14 is 42" } ] },
+				{ "command": "script.build", "expect": { "/success": { "equals": true } },
+					"checks": [ { "pointer": "/diagnostics", "length": 0 }, { "pointer": "/reloaded", "equals": true } ] },
+				{ "command": "play.stop" },
+				{ "command": "play.start", "parameters": { "paused": true, "build": false } },
+				{ "command": "play.step", "parameters": { "steps": 5 }, "expect": { "/stepsRun": { "equals": 5 } } },
+				{ "command": "log.read", "parameters": { "newest": true, "limit": 50 },
+					"checks": [ { "pointer": "/messages", "contains": "Triple of 14 is 56" } ] },
+				{ "command": "play.stop" }
+			],
+			"endState": true
+		}
+	]
+}

@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 532">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!--
+Plan. Five chips at y 20 to 48. The table from x 16 to 751: the setting column 16 to 266, then Low, Medium, High,
+Ultra and Custom, 97 each (centers 314.5, 411.5, 508.5, 605.5, 702.5). Header y 64 to 92, the first five rows of 32 to 252,
+a row naming the rest to 280, the two memory lines to 328. High, the default preset, is the chosen column: its band
+runs from the header to the memory lines. Players' choices at y 356 and 378. Notes from y 416, 24 apart; H = 512 + 20.
+Facts (StrataEditor/src/UI/GraphicsQualityPage.cpp at 319075e3): chips and columns Low, Medium, High, Ultra, Custom;
+chosen column on AccentMuted with the accent header; preset cells as text, Custom's cell a widget in secondary text
+under a named preset; after the rows the lines "Memory at 1920 x 1080" and "at 3840 x 2160", one value per column;
+then "Players' choices". Rows and values: c_*Row in Strata/src/Strata/Renderer/RendererQuality.cpp; 16 rows follow
+the preset (c_RowTraits), 5 do not (AntiAliasing, MotionBlur, DepthOfField, FilmGrain, ChromaticAberration).
+-->
+<rect x="24" y="20" width="68" height="28" rx="14" class="plate line-faint"/>
+<text x="58.0" y="39" text-anchor="middle" class="ink">Low</text>
+<rect x="100" y="20" width="96" height="28" rx="14" class="plate line-faint"/>
+<text x="148.0" y="39" text-anchor="middle" class="ink">Medium</text>
+<rect x="204" y="20" width="72" height="28" rx="14" class="blue-area line-blue"/>
+<text x="240.0" y="39" text-anchor="middle" class="blue bold">High</text>
+<rect x="284" y="20" width="72" height="28" rx="14" class="plate line-faint"/>
+<text x="320.0" y="39" text-anchor="middle" class="ink">Ultra</text>
+<rect x="364" y="20" width="92" height="28" rx="14" class="plate line-faint"/>
+<text x="410.0" y="39" text-anchor="middle" class="ink">Custom</text>
+<circle cx="478" cy="34" r="10" class="ground line-orange"/><text x="478" y="39" text-anchor="middle" class="orange small bold">1</text>
+<rect x="460" y="64" width="97" height="264" class="blue-area"/>
+<text x="24" y="83" class="muted small bold">Setting</text>
+<text x="314.5" y="83" text-anchor="middle" class="muted small bold">Low</text>
+<text x="411.5" y="83" text-anchor="middle" class="muted small bold">Medium</text>
+<text x="508.5" y="83" text-anchor="middle" class="blue small bold">High</text>
+<text x="605.5" y="83" text-anchor="middle" class="muted small bold">Ultra</text>
+<text x="702.5" y="83" text-anchor="middle" class="muted small bold">Custom</text>
+<circle cx="702.5" cy="266" r="10" class="ground line-orange"/><text x="702.5" y="271" text-anchor="middle" class="orange small bold">2</text>
+<line x1="16" y1="92" x2="751" y2="92" class="line-faint" stroke-width="1"/>
+<text x="24" y="113" class="ink small">Shadow resolution</text>
+<text x="314.5" y="113" text-anchor="middle" class="muted small">1024</text>
+<text x="411.5" y="113" text-anchor="middle" class="muted small">2048</text>
+<text x="508.5" y="113" text-anchor="middle" class="ink small">AutoFine</text>
+<text x="605.5" y="113" text-anchor="middle" class="muted small">8192</text>
+<rect x="659" y="97" width="87" height="22" rx="3" class="ground line-muted" stroke-width="1"/>
+<text x="667" y="113" class="muted small">AutoFine</text>
+<polygon points="732,106 740,106 736,111" class="muted"/>
+<line x1="16" y1="124" x2="751" y2="124" class="line-faint" stroke-width="1"/>
+<text x="24" y="145" class="ink small">Shadow cascades</text>
+<text x="314.5" y="145" text-anchor="middle" class="muted small">3</text>
+<text x="411.5" y="145" text-anchor="middle" class="muted small">4</text>
+<text x="508.5" y="145" text-anchor="middle" class="ink small">5</text>
+<text x="605.5" y="145" text-anchor="middle" class="muted small">5</text>
+<rect x="659" y="129" width="87" height="22" rx="3" class="ground line-muted" stroke-width="1"/>
+<text x="667" y="145" class="muted small">5</text>
+<line x1="16" y1="156" x2="751" y2="156" class="line-faint" stroke-width="1"/>
+<text x="24" y="177" class="ink small">Point and spot shadow atlas</text>
+<text x="314.5" y="177" text-anchor="middle" class="muted small">2048</text>
+<text x="411.5" y="177" text-anchor="middle" class="muted small">4096</text>
+<text x="508.5" y="177" text-anchor="middle" class="ink small">4096</text>
+<text x="605.5" y="177" text-anchor="middle" class="muted small">8192</text>
+<rect x="659" y="161" width="87" height="22" rx="3" class="ground line-muted" stroke-width="1"/>
+<text x="667" y="177" class="muted small">4096</text>
+<polygon points="732,170 740,170 736,175" class="muted"/>
+<line x1="16" y1="188" x2="751" y2="188" class="line-faint" stroke-width="1"/>
+<text x="24" y="209" class="ink small">Largest point and spot shadow tile</text>
+<text x="314.5" y="209" text-anchor="middle" class="muted small">512</text>
+<text x="411.5" y="209" text-anchor="middle" class="muted small">1024</text>
+<text x="508.5" y="209" text-anchor="middle" class="ink small">1024</text>
+<text x="605.5" y="209" text-anchor="middle" class="muted small">2048</text>
+<rect x="659" y="193" width="87" height="22" rx="3" class="ground line-muted" stroke-width="1"/>
+<text x="667" y="209" class="muted small">1024</text>
+<polygon points="732,202 740,202 736,207" class="muted"/>
+<line x1="16" y1="220" x2="751" y2="220" class="line-faint" stroke-width="1"/>
+<text x="24" y="241" class="ink small">Shadowed point and spot lights</text>
+<text x="314.5" y="241" text-anchor="middle" class="muted small">4</text>
+<text x="411.5" y="241" text-anchor="middle" class="muted small">16</text>
+<text x="508.5" y="241" text-anchor="middle" class="ink small">64</text>
+<text x="605.5" y="241" text-anchor="middle" class="muted small">256</text>
+<rect x="659" y="225" width="87" height="22" rx="3" class="ground line-muted" stroke-width="1"/>
+<text x="667" y="241" class="muted small">64</text>
+<line x1="16" y1="252" x2="751" y2="252" class="line-faint" stroke-width="1"/>
+<text x="24" y="271" class="muted small">and the other 11 rows</text>
+<line x1="16" y1="280" x2="751" y2="280" class="line-faint" stroke-width="1"/>
+<text x="24" y="298" class="muted small">Memory at 1920 x 1080</text>
+<text x="24" y="322" class="muted small">at 3840 x 2160</text>
+<circle cx="222" cy="304" r="10" class="ground line-orange"/><text x="222" y="309" text-anchor="middle" class="orange small bold">3</text>
+<rect x="284.5" y="287" width="60" height="12" rx="2" class="line-muted" fill="none" stroke-width="1" stroke-dasharray="4 3"/>
+<rect x="284.5" y="311" width="60" height="12" rx="2" class="line-muted" fill="none" stroke-width="1" stroke-dasharray="4 3"/>
+<rect x="381.5" y="287" width="60" height="12" rx="2" class="line-muted" fill="none" stroke-width="1" stroke-dasharray="4 3"/>
+<rect x="381.5" y="311" width="60" height="12" rx="2" class="line-muted" fill="none" stroke-width="1" stroke-dasharray="4 3"/>
+<rect x="478.5" y="287" width="60" height="12" rx="2" class="line-muted" fill="none" stroke-width="1" stroke-dasharray="4 3"/>
+<rect x="478.5" y="311" width="60" height="12" rx="2" class="line-muted" fill="none" stroke-width="1" stroke-dasharray="4 3"/>
+<rect x="575.5" y="287" width="60" height="12" rx="2" class="line-muted" fill="none" stroke-width="1" stroke-dasharray="4 3"/>
+<rect x="575.5" y="311" width="60" height="12" rx="2" class="line-muted" fill="none" stroke-width="1" stroke-dasharray="4 3"/>
+<rect x="672.5" y="287" width="60" height="12" rx="2" class="line-muted" fill="none" stroke-width="1" stroke-dasharray="4 3"/>
+<rect x="672.5" y="311" width="60" height="12" rx="2" class="line-muted" fill="none" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="363" y1="64" x2="363" y2="328" class="line-faint" stroke-width="1"/>
+<line x1="460" y1="64" x2="460" y2="328" class="line-faint" stroke-width="1"/>
+<line x1="557" y1="64" x2="557" y2="328" class="line-faint" stroke-width="1"/>
+<line x1="654" y1="64" x2="654" y2="328" class="line-faint" stroke-width="1"/>
+<line x1="16" y1="328" x2="751" y2="328" class="line-faint" stroke-width="1"/>
+<text x="24" y="362" class="ink small bold">Players' choices</text>
+<circle cx="150" cy="357" r="10" class="ground line-orange"/><text x="150" y="362" text-anchor="middle" class="orange small bold">4</text>
+<text x="24" y="384" class="muted small">Anti-aliasing, Motion blur, Depth of field, Film grain and Chromatic aberration, each with its own field</text>
+<circle cx="28" cy="411" r="10" class="ground line-orange"/><text x="28" y="416" text-anchor="middle" class="orange small bold">1</text>
+<text x="48" y="416" class="ink small">The chosen preset: its chip is on, and its column is highlighted.</text>
+<circle cx="28" cy="435" r="10" class="ground line-orange"/><text x="28" y="440" text-anchor="middle" class="orange small bold">2</text>
+<text x="48" y="440" class="ink small">Custom's column can be edited. Under a named preset it shows, dimmed, the values</text>
+<text x="48" y="460" class="ink small">that a switch to Custom starts from.</text>
+<circle cx="28" cy="479" r="10" class="ground line-orange"/><text x="28" y="484" text-anchor="middle" class="orange small bold">3</text>
+<text x="48" y="484" class="ink small">Under the rows, one value per column (dashed here): the total memory of its rows in one view.</text>
+<circle cx="28" cy="503" r="10" class="ground line-orange"/><text x="28" y="508" text-anchor="middle" class="orange small bold">4</text>
+<text x="48" y="508" class="ink small">Under the table, the rows that no preset changes.</text>
+</svg>

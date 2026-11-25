@@ -1,0 +1,5 @@
+{
+	"page": "gpu/debug-drawing",
+	"startsFrom": { "tutorial": "world/tutorial-component" },
+	"exercises": { "3": { "tests": [ "Physics.WindZone" ] } }
+}

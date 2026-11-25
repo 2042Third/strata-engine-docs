@@ -1,0 +1,172 @@
+{
+	"figures": [
+		{
+			"id": "performance-panel",
+			"kind": "editor",
+			"shows": "The Performance panel while the Physics Playground plays, cut above the GPU section of its table: the summary line with Pause and Copy as JSON, the CPU and GPU strips at one scale (the GPU's nearly flat), and the CPU's stage rows with their average, median, 95th percentile and largest times",
+			"caption": "The panel while the game plays: the summary line with the Pause and Copy as JSON buttons on top, then the CPU's strip and the GPU's. The GPU's strip is nearly flat because its work, about 0.5 ms a frame, is small on the shared 5 ms scale. Below, the table gives each stage's average, median, 95th percentile and largest time; the GPU's rows follow further down the panel.",
+			"alt": "The Performance panel: a summary line and two buttons, a strip of colored bars stacked by stage for the CPU, and a nearly flat one for the GPU, both at one scale. A table below lists the CPU's stages with four columns of times.",
+			"numbers": "Read from the taken picture: both strips are labelled 5 ms, the height they share (the panel's 1-2-5 step above the 95th percentile frame, StrataEditor/src/Panels/PerformancePanel.h), and the table's GPU busy row, just below the crop, averages about 0.5 ms. The 95th percentile is the p95 column.",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-performance-tall.ini",
+				"windowSize": [
+					1280,
+					1040
+				],
+				"panel": "Performance",
+				"steps": [
+					{
+						"command": "play.start"
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 700
+						}
+					}
+				]
+			},
+			"crops": [
+				{
+					"name": "top",
+					"rect": [
+						0,
+						0,
+						1,
+						0.779
+					],
+					"scale": 1
+				}
+			],
+			"variants": {
+				"playing": {
+					"editorWindow": {
+						"layout": "layouts/make-performance-tall.ini",
+						"windowSize": [
+							1280,
+							1040
+						],
+						"panel": "Performance",
+						"steps": [
+							{
+								"command": "play.start"
+							},
+							{
+								"command": "editor.wait",
+								"parameters": {
+									"frames": 700
+								}
+							}
+						]
+					}
+				},
+				"paused": {
+					"editorWindow": {
+						"layout": "layouts/make-performance-tall.ini",
+						"windowSize": [
+							1280,
+							1040
+						],
+						"panel": "Performance",
+						"steps": [
+							{
+								"command": "play.start"
+							},
+							{
+								"command": "editor.wait",
+								"parameters": {
+									"frames": 700
+								}
+							}
+						]
+					},
+					"waitsFor": "tier 3: the Performance panel paused by its Pause button; no command pauses the panel (play.pause pauses the game, and the panel keeps recording)"
+				}
+			}
+		},
+		{
+			"id": "frame-pill",
+			"kind": "editor",
+			"publish": "lossy",
+			"shows": "The editor's window while the Physics Playground plays, with the frame pill second from the left in the status bar: the work time, the frame rate and the jobs",
+			"caption": "The frame pill, second from the left in the status bar: the work time of a frame, the frame rate and the jobs in hand.",
+			"alt": "The editor's window while a game plays. In the status bar, the second pill from the left shows a time in milliseconds, a frame rate and a job count.",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-performance-960.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "play.start"
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 700
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "editor-perf-json",
+			"kind": "text",
+			"shows": "The result of editor.perf for the latest 60 frames of the editor with the Physics Playground open, reduced to the frame, interval and stage sum and to one stage",
+			"caption": "The same numbers as the panel, as a command returns them: each time has a mean, a median, a 95th percentile and a maximum. The times are one run's measurements; another run gives other values.",
+			"alt": "A block of JSON text with the fields for frames, frame, interval, stage sum and the stage that updates the physics. Each time field holds four numbers in milliseconds.",
+			"project": {
+				"sample": "PhysicsPlayground"
+			},
+			"play": {
+				"steps": 120
+			},
+			"text": {
+				"command": {
+					"command": "editor.perf",
+					"parameters": {
+						"frames": 60
+					}
+				},
+				"keep": [
+					"/frames",
+					"/frame",
+					"/interval",
+					"/stageSum",
+					"/stages/Scene.Physics"
+				],
+				"measured": [
+					"/frame",
+					"/interval",
+					"/stageSum",
+					"/stages/Scene.Physics"
+				]
+			}
+		},
+		{
+			"id": "tracy-capture",
+			"kind": "tool",
+			"shows": "A Tracy capture of the editor built with the Tracy option: the stage zones on the main thread and the zones of the other threads",
+			"caption": "In the Tracy viewer each stage is a zone on the main thread, and the other threads show their own zones.",
+			"alt": "The Tracy viewer with a time line. The main thread's row holds nested zones named after frame stages. Rows of other threads show shorter zones.",
+			"takenBy": "owner",
+			"waitsFor": "tier 3: a Tracy capture of the editor built with the Tracy option; the viewer is another program and no debug view shows it",
+			"standIn": "tracy-frame"
+		},
+		{
+			"id": "tracy-frame",
+			"kind": "diagram",
+			"shows": "A sketch, not to scale, of one frame as the Tracy viewer lays it out at the pin: between two frame marks, the main thread's zones of the stages Scene.Animation, Scene.Physics and Render.Submit, the zone PhysicsWorld::Simulate - box3d inside Scene.Physics, and the zones AnimationSystem::Evaluate on two worker threads during Scene.Animation",
+			"caption": "A sketch, not to scale, of one frame in the Tracy viewer: a zone for each stage on the main thread, a zone inside a stage, and the zones of jobs on two worker threads. The gaps hold the stages and work the sketch omits.",
+			"alt": "A time line between two dashed frame marks, under a band for one frame. The main thread's row holds three zones named after stages, and a zone inside the middle one. Below, two rows of worker threads each hold one zone, at the time of the first stage.",
+			"numbers": "The order of the stages comes from the scene systems at the pin: animation runs after the scripts and before physics (Strata/src/Strata/Animation/AnimationRegistration.cpp), rendering after both. The frame mark is ST_PROFILE_FRAME in Application::Run (Strata/src/Strata/Core/Application.cpp:236). The zone names are the ST_PROFILE_SCOPE strings of Strata/src/Strata/Physics/PhysicsWorld.cpp:5019 and Strata/src/Strata/Animation/AnimationSystem.cpp:610, whose ParallelFor runs on the job system's workers. Widths are not times."
+		}
+	]
+}

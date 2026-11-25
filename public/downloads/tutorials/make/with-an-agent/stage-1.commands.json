@@ -1,0 +1,132 @@
+[
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Crate",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						0.3,
+						-8
+					],
+					"Scale": [
+						0.6,
+						0.6,
+						0.6
+					]
+				}
+			}
+		},
+		"bind": {
+			"crate": "/id"
+		}
+	},
+	{
+		"command": "prefab.create",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "crate"
+				}
+			],
+			"path": "Prefabs/Crate.stprefab"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Barrel",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						0.4,
+						-8
+					],
+					"Scale": [
+						0.5,
+						0.8,
+						0.5
+					]
+				}
+			}
+		},
+		"bind": {
+			"barrel": "/id"
+		}
+	},
+	{
+		"command": "prefab.create",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "barrel"
+				}
+			],
+			"path": "Prefabs/Barrel.stprefab"
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "Lamp",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"Transform": {
+					"Translation": [
+						0,
+						0.8,
+						-8
+					],
+					"Scale": [
+						0.15,
+						1.6,
+						0.15
+					]
+				}
+			}
+		},
+		"bind": {
+			"lamp": "/id"
+		}
+	},
+	{
+		"command": "prefab.create",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "lamp"
+				}
+			],
+			"path": "Prefabs/Lamp.stprefab"
+		}
+	},
+	{
+		"command": "entity.delete",
+		"parameters": {
+			"entities": [
+				{
+					"$ref": "crate"
+				},
+				{
+					"$ref": "barrel"
+				},
+				{
+					"$ref": "lamp"
+				}
+			]
+		}
+	},
+	{
+		"command": "editor.status"
+	}
+]

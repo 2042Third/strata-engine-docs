@@ -1,0 +1,88 @@
+{
+	"figures": [
+		{
+			"id": "editor-docked",
+			"shows": "The whole editor with its panels docked: Hierarchy, Scene view, Inspector, Content Browser and the toolbar with Play. The Crate is selected, and the Inspector shows its Translation.",
+			"caption": "The editor with the Third Person sample's course open: one window, one program, whose parts come from the interface layer, which draws state the core holds. A crate stands in for the cube; it is selected, so the Inspector shows its position.",
+			"alt": "The editor window with a list of objects on the left, a 3D scene in the middle, a property panel on the right and a file browser at the bottom. The Crate is selected in the list and in the scene, and the property panel shows its position.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"editorWindow": {
+				"layout": "layouts/editor-program.ini",
+				"windowSize": [
+					960,
+					540
+				],
+				"steps": [
+					{
+						"command": "scene.open",
+						"parameters": {
+							"scene": "Scenes/Course.stscene"
+						}
+					},
+					{
+						"command": "scene.loadStatus",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "script.build",
+						"parameters": {
+							"wait": true
+						}
+					},
+					{
+						"command": "entity.find",
+						"parameters": {
+							"name": "Crate"
+						},
+						"bind": {
+							"crate": "/entities/0"
+						}
+					},
+					{
+						"command": "selection.set",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								}
+							]
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								2.5,
+								3,
+								-26
+							],
+							"target": [
+								0,
+								1,
+								-30.5
+							]
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "ContentBrowser"
+						}
+					},
+					{
+						"command": "editor.wait",
+						"parameters": {
+							"frames": 600
+						}
+					}
+				]
+			}
+		}
+	]
+}

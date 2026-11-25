@@ -1,0 +1,225 @@
+{
+	"pin": "822a7a46dbcdd86e8e2eafde7e41d003e27260c8",
+	"file": "Strata/src/Strata/Runtime/FramePerfLog.cpp",
+	"columns": [
+		{
+			"name": "Frame",
+			"part": "frame",
+			"line": 103,
+			"description": "the frame (FrameSample: index, work time, time since the previous frame)"
+		},
+		{
+			"name": "WorkMs",
+			"part": "frame",
+			"line": 103,
+			"description": "the frame (FrameSample: index, work time, time since the previous frame)"
+		},
+		{
+			"name": "IntervalMs",
+			"part": "frame",
+			"line": 103,
+			"description": "the frame (FrameSample: index, work time, time since the previous frame)"
+		},
+		{
+			"name": "<stage>",
+			"part": "stages",
+			"line": 103,
+			"description": "each stage the profiler had registered when the log was created (the built-in ones first: Input, Assets.Update, ...; Create registers every registered scene system's stage first), in milliseconds; GPU stages (GPU.Shadows...) are the GPU's time, empty in a row without GPU times"
+		},
+		{
+			"name": "WorkerBusyPercent",
+			"part": "built-in",
+			"line": 111,
+			"description": "the job system's threads"
+		},
+		{
+			"name": "IOBusyPercent",
+			"part": "built-in",
+			"line": 111,
+			"description": "the job system's threads"
+		},
+		{
+			"name": "LoadingAssets",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "QueuedLoads",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "InFlightLoads",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "InFlightMB",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "UploadedMB",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "FinalizeMs",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "UploadMs",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "ResidentGpuTexturesMB",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "ResidentGpuBuffersMB",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "ResidentCpuMB",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "Evictions",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "StreamedMB",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "MipLevelsRaised",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "MipLevelsDropped",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "MipsBelowWanted",
+			"part": "built-in",
+			"line": 111,
+			"description": "the asset manager after the frame (AssetManagerStats; MB are 2^20 bytes, empty without an asset manager); the last four are its texture streamer's (AssetManagerStats::Detail): the frame's bytes read for raised mip levels, the levels raised and dropped so far, and the textures below the level their views need"
+		},
+		{
+			"name": "UploadQueueMB",
+			"part": "built-in",
+			"line": 111,
+			"description": "the frame's steps through the renderer's upload queue: bytes, CPU time and count (GPUUploadQueueStats; empty without a renderer)"
+		},
+		{
+			"name": "UploadQueueMs",
+			"part": "built-in",
+			"line": 111,
+			"description": "the frame's steps through the renderer's upload queue: bytes, CPU time and count (GPUUploadQueueStats; empty without a renderer)"
+		},
+		{
+			"name": "UploadQueueSteps",
+			"part": "built-in",
+			"line": 111,
+			"description": "the frame's steps through the renderer's upload queue: bytes, CPU time and count (GPUUploadQueueStats; empty without a renderer)"
+		},
+		{
+			"name": "DeviceMB",
+			"part": "built-in",
+			"line": 111,
+			"description": "the graphics device's memory in use and the staging of it (FramePerfDeviceMemory; empty without a renderer): with the resident pools above they tell what render targets and the swapchain take"
+		},
+		{
+			"name": "StagingMB",
+			"part": "built-in",
+			"line": 111,
+			"description": "the graphics device's memory in use and the staging of it (FramePerfDeviceMemory; empty without a renderer): with the resident pools above they tell what render targets and the swapchain take"
+		},
+		{
+			"name": "PrivateMB",
+			"part": "built-in",
+			"line": 111,
+			"description": "the process's private memory after the frame and its peak so far (Platform::GetProcessMemory; empty where the system does not report it)"
+		},
+		{
+			"name": "PeakPrivateMB",
+			"part": "built-in",
+			"line": 111,
+			"description": "the process's private memory after the frame and its peak so far (Platform::GetProcessMemory; empty where the system does not report it)"
+		},
+		{
+			"name": "GPUFrame",
+			"part": "built-in",
+			"line": 111,
+			"description": "1 when the frame's GPU times arrived (else 0), and its GPU stages added up (empty without them)"
+		},
+		{
+			"name": "GPUBusyMs",
+			"part": "built-in",
+			"line": 111,
+			"description": "1 when the frame's GPU times arrived (else 0), and its GPU stages added up (empty without them)"
+		}
+	],
+	"groups": [
+		{
+			"owner": "GameRuntime",
+			"file": "Strata/src/Strata/Runtime/GameRuntime.cpp",
+			"line": 367,
+			"names": [
+				"WorldCellsWanted",
+				"WorldCellsLoading",
+				"WorldCellsLoaded",
+				"WorldCellsUnloading",
+				"PhysicsBodies",
+				"PhysicsBodiesWaiting",
+				"PhysicsBodiesPending",
+				"PhysicsMaxBodies",
+				"PhysicsStepMs",
+				"PhysicsLibraryMs",
+				"PhysicsAwakeBodies",
+				"PhysicsSleepingBodies",
+				"PhysicsContacts",
+				"PhysicsRecycledContacts",
+				"PhysicsMaxBodySpeed"
+			]
+		},
+		{
+			"owner": "GameRenderer",
+			"file": "Strata/src/Strata/Runtime/GameRenderer.cpp",
+			"line": 181,
+			"names": [
+				"DrawCalls",
+				"Instances",
+				"Triangles",
+				"VisibleProxies",
+				"OccludedProxies",
+				"InstanceUploadMB",
+				"LocalShadowLights",
+				"LocalShadowViewsDrawn"
+			]
+		}
+	]
+}

@@ -1,0 +1,38 @@
+{
+  "voices": [
+    {
+      "clip": {
+        "handle": "E77575181E2BE37E",
+        "path": "Sounds/Lock.wav"
+      },
+      "entity": null,
+      "looping": false,
+      "paused": true,
+      "pitch": 1.0,
+      "playing": true,
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seconds": 0.06965986639261246,
+      "spatial": false,
+      "volume": 1.0,
+      "waiting": false
+    }
+  ],
+  "oneShots": {
+    "dropped": 0,
+    "played": 1,
+    "playing": 1
+  },
+  "listener": {
+    "entity": "528432BE84E14409",
+    "position": [
+      5.5,
+      9.5,
+      30.0
+    ]
+  },
+  "masterVolume": 1.0
+}

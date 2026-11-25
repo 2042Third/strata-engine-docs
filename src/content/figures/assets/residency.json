@@ -1,0 +1,28 @@
+{
+	"figures": [
+		{
+			"id": "streaming-evictions",
+			"kind": "editor",
+			"shows": "The editor's Streaming panel in the Showcase with the texture budget set to 32 MB, after the Loading scene and then the Outpost scene were opened, showing the pools against their budgets, the eviction count and the table of assets with the frames since each request",
+			"caption": "Under a tight texture budget the texture pool sits at its limit and the eviction count reaches the hundreds, while every texture left in the table was requested this frame. Meshes not requested for hundreds of frames stay, because their own pool is far below its budget.",
+			"alt": "The Streaming panel of the editor. The bar for textures is full and yellow, at its budget, and the bar for buffers is almost empty. A line below counts the evictions. A table lists the assets with their type, state and memory and the frame of their last request: this frame for the textures, hundreds of frames ago for some meshes. The column for pins is empty.",
+			"project": { "sample": "Showcase" },
+			"setup": [
+				{ "command": "asset.setBudget", "parameters": { "gpuTexturesMB": 32 } }
+			],
+			"editorWindow": {
+				"layout": "layouts/residency-streaming.ini",
+				"windowSize": [1280, 1040],
+				"panel": "Streaming",
+				"steps": [
+					{ "command": "editor.showPanel", "parameters": { "panel": "Streaming" } },
+					{ "command": "editor.wait", "parameters": { "frames": 120 } },
+					{ "command": "scene.open", "parameters": { "scene": "Scenes/Loading.stscene" } },
+					{ "command": "editor.wait", "parameters": { "frames": 120 } },
+					{ "command": "scene.open", "parameters": { "scene": "Scenes/Outpost.stscene" } },
+					{ "command": "editor.wait", "parameters": { "frames": 300 } }
+				]
+			}
+		}
+	]
+}

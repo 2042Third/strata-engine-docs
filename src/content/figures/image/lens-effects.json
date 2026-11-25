@@ -1,0 +1,91 @@
+{
+	"figures": [
+		{
+			"id": "bloom-intensity",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The Showcase hut's door at dusk with its lantern, with bloom off, at the default intensity 0.04 and at 0.2, and a crop of the lantern and the doorway's top enlarged three times",
+			"caption": "With bloom off the lantern's bright glass and metal stop at their edges, and the doorway, the window's opening and the beams under the roof are nearly black. At the default intensity the change is hard to see. At five times that, with the threshold at zero, every dark area next to the lit wall lifts to a dim brown: the doorway's sides, the window's opening and the beams under the roof. Most of that glow is the lit wall's own light spread over its neighbors. The lantern's own halo is small, and the crop shows it with the glass's details softened; the evenly lit wall does not change.",
+			"alt": "Three pictures of a hut's lit wall at dusk with a lantern hanging over a dark doorway, and enlarged crops of the lantern. The first two look the same. In the third the dark doorway, window opening and roof beams are a little lighter near the lit wall, and a small soft glow surrounds the lantern.",
+			"project": { "sample": "Showcase" },
+			"station": "Dusk",
+			"camera": { "position": [-17.4, 1.9, -13.5], "target": [-20.76, 1.8, -15.63], "fov": 35 },
+			"size": [1280, 720],
+			"quality": "high",
+			"crops": [
+				{ "name": "lantern", "rect": [0.4, 0.25, 0.62, 0.6], "scale": 3 }
+			],
+			"variants": {
+				"off": { "postProcess": { "Bloom": false } },
+				"default": { "postProcess": { "Bloom": true, "BloomIntensity": 0.04 } },
+				"strong": { "postProcess": { "Bloom": true, "BloomIntensity": 0.2 } }
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "vignette-sweep",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "A flat, evenly lit ground seen from 6 m above at a 60 degree field of view, with the vignette at 0, 0.12 and 1",
+			"caption": "At zero the ground is even from the center to the corners. At the default the light in the corners is about a tenth lower, a step the eye barely sees. At one the corners keep about a sixth of the center's light and turn dark. The middles of the top and bottom edges stay much brighter; the middles of the left and right edges, farther from the center in a wide image, are nearly as dark as the corners.",
+			"alt": "Three pictures of the same plain gray-brown ground. The first is even. The second has slightly darker corners. The third is bright in the center and falls off to dark corners and nearly as dark left and right sides; only the middles of the top and bottom edges stay fairly bright.",
+			"project": { "template": "basic3d" },
+			"camera": { "position": [0, 6, 1], "target": [0, 0, 0], "fov": 60 },
+			"size": [1280, 720],
+			"quality": "high",
+			"variants": {
+				"none": { "postProcess": { "Vignette": 0 } },
+				"default": { "postProcess": { "Vignette": 0.12 } },
+				"full": { "postProcess": { "Vignette": 1 } }
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "aberration-corner",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The Third Person sample's course at 3840 by 2160 without anti-aliasing, with chromatic aberration at 0 and at 1, and a crop of a fence near the right edge enlarged five times",
+			"caption": "A fence near the right edge of the frame, drawn without anti-aliasing and enlarged five times. At zero every edge is a clean step between two colors; at one each upright edge gains a line one pixel wide. The line is red where a dark board meets a lit one on its right, dark violet where the gray sky meets a dark board, and olive where a lit board meets a dark one. Each pixel takes its red from half a pixel farther from the center, here to the right, and its blue from half a pixel nearer. So the sky's last pixel before the first board also loses a little red.",
+			"alt": "Two enlarged crops of brown fence boards against a gray sky, made of large square pixels. In the first the edges of the boards are clean. In the second a thin dark red line runs down the right side of each dark board. A dark violet line runs down the left side of the first dark board, next to the sky, and an olive line down the left side of the second.",
+			"project": { "sample": "ThirdPerson" },
+			"scene": "Scenes/Course.stscene",
+			"camera": { "position": [1.5, 1, 11], "target": [0, 1.6, 4], "fov": 45 },
+			"size": [3840, 2160],
+			"quality": "high",
+			"antiAliasing": "off",
+			"crops": [
+				{ "name": "edge", "rect": [0.9375, 0.606, 0.96875, 0.657], "scale": 5 }
+			],
+			"variants": {
+				"off": { "postProcess": { "ChromaticAberration": 0 } },
+				"on": { "postProcess": { "ChromaticAberration": 1 } }
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "flare-sun",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The Open World sample looking toward the sun with lens flares off and at 1, with crops of the sun and of the ghosts",
+			"caption": "With flares off the sun is a bright disk. At one six rays leave the disk. Faint tinted ghosts lie on the line through the sun and the image's center, two on the sun's side and one past the center. Longer ghosts copy the sun's streak on the water.",
+			"alt": "Two pictures of a landscape with the sun low in the view. The first shows a plain bright disk. The second adds six thin rays around the disk and faint colored circles across the image.",
+			"project": { "sample": "OpenWorld" },
+			"world": { "loadAll": true },
+			"camera": { "position": [120, 36.6, 256], "target": [201.8, 41.8, 313.3], "fov": 55 },
+			"size": [1280, 720],
+			"quality": "high",
+			"setup": [
+				{ "command": "component.set", "entityName": "Sun", "parameters": { "component": "Transform", "values": { "Rotation": [-10, 70, 0] } } }
+			],
+			"crops": [
+				{ "name": "sun", "rect": [0.2, 0.15, 0.52, 0.55], "scale": 2 },
+				{ "name": "ghosts", "rect": [0.5, 0.15, 0.9, 0.75], "scale": 2 }
+			],
+			"variants": {
+				"off": { "postProcess": { "LensFlare": 0 } },
+				"on": { "postProcess": { "LensFlare": 1 } }
+			},
+			"expect": "complete"
+		}
+	]
+}

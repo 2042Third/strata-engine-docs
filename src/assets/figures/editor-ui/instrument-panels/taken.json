@@ -1,0 +1,154 @@
+{
+	"files": {
+		"activity-details.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				596,
+				340
+			],
+			"figure": "activity-details",
+			"variant": null,
+			"crop": null,
+			"original": "cacd67c05ed199682954629a61b8622d88cbb7d626b146333f382e6c8846313e",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "fa18ea79d4ca6e433459ddb2ca945bd7d7ad4322881f37ffee5a9b0448ee1a01"
+		},
+		"console-source-reference.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				673,
+				300
+			],
+			"figure": "console-source-reference",
+			"variant": null,
+			"crop": null,
+			"original": "c4087949243b100f6b76ef15afb88ed0bdf221f48b15fd47ae285e3bc76c6c2a",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "03ed26a42c6df6256d4576138b371706a038445648aaecb6394f6963fa817138"
+		},
+		"performance-timeline.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				860,
+				760
+			],
+			"figure": "performance-timeline",
+			"variant": null,
+			"crop": null,
+			"original": "d80f0e5afdede907bf7ee5de236a58edb2c597fe9904fd7ce47f8dbc2b974aec",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "7aa45f05e05eae030018eea158fca8f4999c1a429cff0932bb62e8026c27f8a7"
+		},
+		"problems-failed-build.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				673,
+				240
+			],
+			"figure": "problems-failed-build",
+			"variant": null,
+			"crop": null,
+			"original": "de1b9fcf2a3cfbaac079039804e06ca96c851ec4ef53400e379bd626f8b1282e",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "c1df81f520f4eb4d874c30574f1b52739ea3abc18aa13dc6ac58713579dddb2b"
+		},
+		"streaming-cell-map.webp": {
+			"kind": "editor",
+			"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"build": {
+				"kind": "pin-build",
+				"configuration": "Release",
+				"editorSha256": "f91172923fec8d190c6bfb80c66aec0175708eb6ac8ccba20f683cea0d573209"
+			},
+			"reportedCommit": "319075e3f92b",
+			"os": "Windows",
+			"gpu": null,
+			"size": [
+				862,
+				760
+			],
+			"figure": "streaming-cell-map",
+			"variant": null,
+			"crop": null,
+			"original": "32ec8910349cb5ea0e69f29da5d560588edc384bb9c6532e32206adb4f36f37b",
+			"recorded": {},
+			"checkedAt": [],
+			"encoder": {
+				"format": "webp",
+				"lossless": true,
+				"effort": 4,
+				"sharp": "0.35.5",
+				"libvips": "8.18.7"
+			},
+			"sha256": "ab26ec9ec17e643fb00b256e196892ba51f217a3cc166aac3604139779783c43"
+		}
+	}
+}

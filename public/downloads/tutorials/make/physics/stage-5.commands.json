@@ -1,0 +1,113 @@
+[
+	{
+		"command": "project.setCollisionLayers",
+		"parameters": {
+			"layerNames": {
+				"1": "Ball",
+				"2": "Ghost"
+			},
+			"layerCollisions": [
+				{
+					"layers": [
+						"Ball",
+						"Ghost"
+					],
+					"collide": false
+				}
+			]
+		}
+	},
+	{
+		"command": "entity.create",
+		"parameters": {
+			"name": "GhostWall",
+			"components": {
+				"MeshRenderer": {
+					"Mesh": "Builtin/Cube"
+				},
+				"BoxCollider": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					]
+				},
+				"Transform": {
+					"Translation": [
+						4,
+						1,
+						0
+					],
+					"Scale": [
+						0.5,
+						2,
+						4
+					]
+				}
+			}
+		},
+		"bind": {
+			"wall": "/id"
+		}
+	},
+	{
+		"command": "component.add",
+		"parameters": {
+			"entity": {
+				"$ref": "wall"
+			},
+			"component": "RigidBody"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "wall"
+			},
+			"component": "RigidBody",
+			"values": {
+				"Type": "Static",
+				"Layer": "Ghost"
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ball"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"component": "RigidBody",
+			"values": {
+				"Layer": "Ball"
+			},
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "wall"
+			},
+			"class": "GhostSwitch"
+		}
+	}
+]

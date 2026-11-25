@@ -1,0 +1,16 @@
+{
+	"page": "image/tutorial-post-effect",
+	"startsFrom": {
+		"pin": true
+	},
+	"patch": {
+		"file": "tutorials/image/tutorial-post-effect.patch",
+		"tests": [
+			"Renderer.PostProcessMath",
+			"GPU.SceneRenderer.Letterbox",
+			"Editor.Commands",
+			"Renderer.Components",
+			"Scene.InactiveProperties"
+		]
+	}
+}

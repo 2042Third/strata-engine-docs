@@ -1,0 +1,69 @@
+[
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ball"
+		},
+		"bind": {
+			"entityName.1": "/entities/0"
+		}
+	},
+	{
+		"command": "script.get",
+		"parameters": {
+			"class": "BallControl",
+			"entity": {
+				"$ref": "entityName.1"
+			}
+		}
+	},
+	{
+		"command": "play.start"
+	},
+	{
+		"command": "input.gamepadAxis",
+		"parameters": {
+			"axis": "LeftY",
+			"value": 0.6,
+			"steps": 60,
+			"wait": false
+		}
+	},
+	{
+		"command": "input.gamepadAxis",
+		"parameters": {
+			"axis": "LeftX",
+			"value": 0.3,
+			"steps": 60
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Ball"
+		},
+		"bind": {
+			"entityName.2": "/entities/0"
+		}
+	},
+	{
+		"command": "component.get",
+		"parameters": {
+			"component": "Transform",
+			"entity": {
+				"$ref": "entityName.2"
+			}
+		}
+	},
+	{
+		"command": "play.stop"
+	}
+]

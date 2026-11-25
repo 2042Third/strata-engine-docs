@@ -1,0 +1,1359 @@
+{
+	"figures": [
+		{
+			"id": "result",
+			"shows": "Three props standing on the ground in front of the camera: the crate, the barrel and the lamp from left to right",
+			"kind": "scene",
+			"caption": "The result: a crate, a barrel and a lamp that an agent placed, plain boxes for now.",
+			"alt": "Three light grey objects in a row on grey-brown ground under a blue sky, each with a shadow to the left: a cube, a taller box and a thin post.",
+			"project": {
+				"template": "basic3d"
+			},
+			"camera": {
+				"position": [
+					0,
+					1.4,
+					8.5
+				],
+				"target": [
+					0,
+					0.55,
+					3
+				],
+				"fov": 34
+			},
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"setup": [
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Crate",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.3,
+									-8
+								],
+								"Scale": [
+									0.6,
+									0.6,
+									0.6
+								]
+							}
+						}
+					},
+					"bind": {
+						"crate": "/id"
+					}
+				},
+				{
+					"command": "prefab.create",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "crate"
+							}
+						],
+						"path": "Prefabs/Crate.stprefab"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Barrel",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.4,
+									-8
+								],
+								"Scale": [
+									0.5,
+									0.8,
+									0.5
+								]
+							}
+						}
+					},
+					"bind": {
+						"barrel": "/id"
+					}
+				},
+				{
+					"command": "prefab.create",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "barrel"
+							}
+						],
+						"path": "Prefabs/Barrel.stprefab"
+					}
+				},
+				{
+					"command": "entity.create",
+					"parameters": {
+						"name": "Lamp",
+						"components": {
+							"MeshRenderer": {
+								"Mesh": "Builtin/Cube"
+							},
+							"Transform": {
+								"Translation": [
+									0,
+									0.8,
+									-8
+								],
+								"Scale": [
+									0.15,
+									1.6,
+									0.15
+								]
+							}
+						}
+					},
+					"bind": {
+						"lamp": "/id"
+					}
+				},
+				{
+					"command": "prefab.create",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "lamp"
+							}
+						],
+						"path": "Prefabs/Lamp.stprefab"
+					}
+				},
+				{
+					"command": "entity.delete",
+					"parameters": {
+						"entities": [
+							{
+								"$ref": "crate"
+							},
+							{
+								"$ref": "barrel"
+							},
+							{
+								"$ref": "lamp"
+							}
+						]
+					}
+				},
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Prefabs/Crate.stprefab",
+						"point": [
+							-2,
+							0,
+							3
+						]
+					}
+				},
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Prefabs/Barrel.stprefab",
+						"point": [
+							0,
+							0,
+							3
+						]
+					}
+				},
+				{
+					"command": "asset.place",
+					"parameters": {
+						"asset": "Prefabs/Lamp.stprefab",
+						"point": [
+							2,
+							0,
+							3
+						]
+					}
+				}
+			],
+			"expect": "complete"
+		},
+		{
+			"id": "connected",
+			"shows": "The whole editor after the agent connected, made the three prefabs and asked for the status: the pill, the agent chip and the agent's rows in the Activity panel",
+			"caption": "The pill names the connected agent, and the chip above the Scene view its latest change. The robot rows are its commands, most from props it makes later; the last row took this picture.",
+			"alt": "The editor with an empty level. The status bar reads Agent connected and the agent's name, a chip above the view names its last change, and the Activity panel lists rows with a robot icon.",
+			"kind": "editor",
+			"automation": {
+				"client": "claude-code"
+			},
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-with-an-agent-connected.ini",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Crate",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.3,
+										-8
+									],
+									"Scale": [
+										0.6,
+										0.6,
+										0.6
+									]
+								}
+							}
+						},
+						"bind": {
+							"crate": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								}
+							],
+							"path": "Prefabs/Crate.stprefab"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Barrel",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.4,
+										-8
+									],
+									"Scale": [
+										0.5,
+										0.8,
+										0.5
+									]
+								}
+							}
+						},
+						"bind": {
+							"barrel": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "barrel"
+								}
+							],
+							"path": "Prefabs/Barrel.stprefab"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Lamp",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.8,
+										-8
+									],
+									"Scale": [
+										0.15,
+										1.6,
+										0.15
+									]
+								}
+							}
+						},
+						"bind": {
+							"lamp": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "lamp"
+								}
+							],
+							"path": "Prefabs/Lamp.stprefab"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								},
+								{
+									"$ref": "barrel"
+								},
+								{
+									"$ref": "lamp"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.status"
+					}
+				],
+				"windowSize": [
+					960,
+					540
+				]
+			}
+		},
+		{
+			"id": "toolsets",
+			"blocked": "Toolsets live in StrataCLI mcp, not in the editor: no editor window shows which are enabled, and strata_describe and strata_toolsets run no command, so they leave no row in the Activity panel (2026-11-24, pin 319075e3). A picture would need the agent program's own window.",
+			"standIn": "toolsets-drawing",
+			"shows": "The whole editor while the agent has the scene toolset enabled, with the Activity panel showing the agent's first rows",
+			"caption": "The agent's first calls appear in the Activity panel as rows, before any prop exists.",
+			"alt": "The editor window with the Activity panel at the bottom listing a few rows, each marked with the icon of its source.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-with-an-agent.ini",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Crate",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.3,
+										-8
+									],
+									"Scale": [
+										0.6,
+										0.6,
+										0.6
+									]
+								}
+							}
+						},
+						"bind": {
+							"crate": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								}
+							],
+							"path": "Prefabs/Crate.stprefab"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Barrel",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.4,
+										-8
+									],
+									"Scale": [
+										0.5,
+										0.8,
+										0.5
+									]
+								}
+							}
+						},
+						"bind": {
+							"barrel": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "barrel"
+								}
+							],
+							"path": "Prefabs/Barrel.stprefab"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Lamp",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.8,
+										-8
+									],
+									"Scale": [
+										0.15,
+										1.6,
+										0.15
+									]
+								}
+							}
+						},
+						"bind": {
+							"lamp": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "lamp"
+								}
+							],
+							"path": "Prefabs/Lamp.stprefab"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								},
+								{
+									"$ref": "barrel"
+								},
+								{
+									"$ref": "lamp"
+								}
+							]
+						}
+					},
+					{
+						"command": "editor.showPanel",
+						"parameters": {
+							"panel": "Activity"
+						}
+					}
+				],
+				"windowSize": [
+					960,
+					540
+				]
+			}
+		},
+		{
+			"id": "toolsets-drawing",
+			"shows": "The tools an agent sees: core enabled with its 27 commands and the five generic tools, at most 32; the other toolsets listed but not shown as tools until strata_toolsets enables one; strata_call reaching every command",
+			"caption": "At first the agent sees core and the generic tools. Enabling scene adds its commands as tools, and the call tool reaches every command.",
+			"alt": "A box of the tools the agent sees holds core and five generic tools. The other toolsets wait beside it. An arrow brings scene into the box, and a dashed arrow reaches every command.",
+			"kind": "diagram",
+			"numbers": "core: 27 commands plus 5 generic tools (strata_status, strata_launch_editor, strata_describe, strata_toolsets, strata_call), at most 32 tools; 13 toolsets at the pin: core, scene, assets, play, scripts, animation, viewport, streaming, perf, editor, ui, world, settings; asset.place is in scene (McpToolsets.cpp:35)."
+		},
+		{
+			"id": "placed",
+			"shows": "The whole editor after three prefabs were placed: the props in the Scene view and their rows in the Hierarchy",
+			"caption": "Three props in the Scene view, each listed in the Hierarchy under its prefab's name. A command script placed them, so the pill reads Automation off.",
+			"alt": "The editor with three grey objects in the Scene view and the rows Crate, Barrel and Lamp in blue in the Hierarchy.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-with-an-agent.ini",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Crate",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.3,
+										-8
+									],
+									"Scale": [
+										0.6,
+										0.6,
+										0.6
+									]
+								}
+							}
+						},
+						"bind": {
+							"crate": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								}
+							],
+							"path": "Prefabs/Crate.stprefab"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Barrel",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.4,
+										-8
+									],
+									"Scale": [
+										0.5,
+										0.8,
+										0.5
+									]
+								}
+							}
+						},
+						"bind": {
+							"barrel": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "barrel"
+								}
+							],
+							"path": "Prefabs/Barrel.stprefab"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Lamp",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.8,
+										-8
+									],
+									"Scale": [
+										0.15,
+										1.6,
+										0.15
+									]
+								}
+							}
+						},
+						"bind": {
+							"lamp": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "lamp"
+								}
+							],
+							"path": "Prefabs/Lamp.stprefab"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								},
+								{
+									"$ref": "barrel"
+								},
+								{
+									"$ref": "lamp"
+								}
+							]
+						}
+					},
+					{
+						"command": "asset.place",
+						"parameters": {
+							"asset": "Prefabs/Crate.stprefab",
+							"point": [
+								-2,
+								0,
+								3
+							]
+						},
+						"bind": {
+							"placedCrate": "/id"
+						}
+					},
+					{
+						"command": "asset.place",
+						"parameters": {
+							"asset": "Prefabs/Barrel.stprefab",
+							"point": [
+								0,
+								0,
+								3
+							]
+						},
+						"bind": {
+							"placedBarrel": "/id"
+						}
+					},
+					{
+						"command": "asset.place",
+						"parameters": {
+							"asset": "Prefabs/Lamp.stprefab",
+							"point": [
+								2,
+								0,
+								3
+							]
+						},
+						"bind": {
+							"placedLamp": "/id"
+						}
+					},
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"sceneGizmos": false,
+							"grid": false
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								0,
+								1.4,
+								7
+							],
+							"target": [
+								0,
+								0.7,
+								3
+							],
+							"fov": 40
+						}
+					}
+				],
+				"windowSize": [
+					960,
+					540
+				]
+			}
+		},
+		{
+			"id": "activity",
+			"shows": "The Activity panel after the fourth step: the four placements and the undo, each row with the icon of a command script, then the rows of the commands that took the picture",
+			"caption": "Each command has a row, newest at the end: four placements and the undo. A command script ran them, so each shows a scroll; the last three rows took this picture.",
+			"alt": "The Activity panel: four placement rows, an undo row and three more rows below.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-with-an-agent-activity.ini",
+				"panel": "Activity",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Crate",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.3,
+										-8
+									],
+									"Scale": [
+										0.6,
+										0.6,
+										0.6
+									]
+								}
+							}
+						},
+						"bind": {
+							"crate": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								}
+							],
+							"path": "Prefabs/Crate.stprefab"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Barrel",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.4,
+										-8
+									],
+									"Scale": [
+										0.5,
+										0.8,
+										0.5
+									]
+								}
+							}
+						},
+						"bind": {
+							"barrel": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "barrel"
+								}
+							],
+							"path": "Prefabs/Barrel.stprefab"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Lamp",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.8,
+										-8
+									],
+									"Scale": [
+										0.15,
+										1.6,
+										0.15
+									]
+								}
+							}
+						},
+						"bind": {
+							"lamp": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "lamp"
+								}
+							],
+							"path": "Prefabs/Lamp.stprefab"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								},
+								{
+									"$ref": "barrel"
+								},
+								{
+									"$ref": "lamp"
+								}
+							]
+						}
+					},
+					{
+						"command": "asset.place",
+						"parameters": {
+							"asset": "Prefabs/Crate.stprefab",
+							"point": [
+								-2,
+								0,
+								3
+							]
+						},
+						"bind": {
+							"placedCrate": "/id"
+						}
+					},
+					{
+						"command": "asset.place",
+						"parameters": {
+							"asset": "Prefabs/Barrel.stprefab",
+							"point": [
+								0,
+								0,
+								3
+							]
+						},
+						"bind": {
+							"placedBarrel": "/id"
+						}
+					},
+					{
+						"command": "asset.place",
+						"parameters": {
+							"asset": "Prefabs/Lamp.stprefab",
+							"point": [
+								2,
+								0,
+								3
+							]
+						},
+						"bind": {
+							"placedLamp": "/id"
+						}
+					},
+					{
+						"command": "asset.place",
+						"parameters": {
+							"asset": "Prefabs/Lamp.stprefab",
+							"point": [
+								2,
+								0,
+								3
+							]
+						}
+					},
+					{
+						"command": "edit.undo"
+					}
+				],
+				"windowSize": [
+					960,
+					540
+				]
+			}
+		},
+		{
+			"id": "steering",
+			"shows": "The whole editor right after a command replaced the scene by force, with the toast that names who did it and offers Recover",
+			"caption": "A command replaced the scene by force: the toast names who did it, here a command script, and offers to recover the changes.",
+			"alt": "The editor with a message card over the Scene view: a command script discarded unsaved changes, with the buttons Show in Activity and Recover.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-with-an-agent.ini",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Crate",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.3,
+										-8
+									],
+									"Scale": [
+										0.6,
+										0.6,
+										0.6
+									]
+								}
+							}
+						},
+						"bind": {
+							"crate": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								}
+							],
+							"path": "Prefabs/Crate.stprefab"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Barrel",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.4,
+										-8
+									],
+									"Scale": [
+										0.5,
+										0.8,
+										0.5
+									]
+								}
+							}
+						},
+						"bind": {
+							"barrel": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "barrel"
+								}
+							],
+							"path": "Prefabs/Barrel.stprefab"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Lamp",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.8,
+										-8
+									],
+									"Scale": [
+										0.15,
+										1.6,
+										0.15
+									]
+								}
+							}
+						},
+						"bind": {
+							"lamp": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "lamp"
+								}
+							],
+							"path": "Prefabs/Lamp.stprefab"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								},
+								{
+									"$ref": "barrel"
+								},
+								{
+									"$ref": "lamp"
+								}
+							]
+						}
+					},
+					{
+						"command": "asset.place",
+						"parameters": {
+							"asset": "Prefabs/Crate.stprefab",
+							"point": [
+								-2,
+								0,
+								3
+							]
+						},
+						"bind": {
+							"placedCrate": "/id"
+						}
+					},
+					{
+						"command": "asset.place",
+						"parameters": {
+							"asset": "Prefabs/Barrel.stprefab",
+							"point": [
+								0,
+								0,
+								3
+							]
+						},
+						"bind": {
+							"placedBarrel": "/id"
+						}
+					},
+					{
+						"command": "asset.place",
+						"parameters": {
+							"asset": "Prefabs/Lamp.stprefab",
+							"point": [
+								2,
+								0,
+								3
+							]
+						},
+						"bind": {
+							"placedLamp": "/id"
+						}
+					},
+					{
+						"command": "scene.open",
+						"parameters": {
+							"scene": "Scenes/Main.stscene",
+							"force": true
+						}
+					}
+				],
+				"windowSize": [
+					960,
+					540
+				]
+			}
+		},
+		{
+			"id": "regression",
+			"shows": "The Activity panel after the session was exported: the export row below the three placements, then the rows of the commands that took the picture",
+			"caption": "The export is a command too: its row follows the three placements, above the rows that took this picture.",
+			"alt": "The Activity panel with three placement rows, the export row and three more rows below.",
+			"kind": "editor",
+			"project": {
+				"template": "basic3d"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-with-an-agent-regression.ini",
+				"panel": "Activity",
+				"steps": [
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Crate",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.3,
+										-8
+									],
+									"Scale": [
+										0.6,
+										0.6,
+										0.6
+									]
+								}
+							}
+						},
+						"bind": {
+							"crate": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								}
+							],
+							"path": "Prefabs/Crate.stprefab"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Barrel",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.4,
+										-8
+									],
+									"Scale": [
+										0.5,
+										0.8,
+										0.5
+									]
+								}
+							}
+						},
+						"bind": {
+							"barrel": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "barrel"
+								}
+							],
+							"path": "Prefabs/Barrel.stprefab"
+						}
+					},
+					{
+						"command": "entity.create",
+						"parameters": {
+							"name": "Lamp",
+							"components": {
+								"MeshRenderer": {
+									"Mesh": "Builtin/Cube"
+								},
+								"Transform": {
+									"Translation": [
+										0,
+										0.8,
+										-8
+									],
+									"Scale": [
+										0.15,
+										1.6,
+										0.15
+									]
+								}
+							}
+						},
+						"bind": {
+							"lamp": "/id"
+						}
+					},
+					{
+						"command": "prefab.create",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "lamp"
+								}
+							],
+							"path": "Prefabs/Lamp.stprefab"
+						}
+					},
+					{
+						"command": "entity.delete",
+						"parameters": {
+							"entities": [
+								{
+									"$ref": "crate"
+								},
+								{
+									"$ref": "barrel"
+								},
+								{
+									"$ref": "lamp"
+								}
+							]
+						}
+					},
+					{
+						"command": "asset.place",
+						"parameters": {
+							"asset": "Prefabs/Crate.stprefab",
+							"point": [
+								-2,
+								0,
+								3
+							]
+						},
+						"bind": {
+							"placedCrate": "/id"
+						}
+					},
+					{
+						"command": "asset.place",
+						"parameters": {
+							"asset": "Prefabs/Barrel.stprefab",
+							"point": [
+								0,
+								0,
+								3
+							]
+						},
+						"bind": {
+							"placedBarrel": "/id"
+						}
+					},
+					{
+						"command": "asset.place",
+						"parameters": {
+							"asset": "Prefabs/Lamp.stprefab",
+							"point": [
+								2,
+								0,
+								3
+							]
+						},
+						"bind": {
+							"placedLamp": "/id"
+						}
+					},
+					{
+						"command": "editor.activity.export",
+						"parameters": {
+							"path": "Regression/Props.json",
+							"overwrite": true
+						}
+					}
+				],
+				"windowSize": [
+					960,
+					540
+				]
+			}
+		},
+		{
+			"id": "tetris",
+			"shows": "The editor with a copy of the Tetris sample open, its well in the Scene view and its entities in the Hierarchy",
+			"caption": "A copy of the Tetris sample, which an agent made through the editor. A fresh copy has not built its scripts, so the status bar reads Scripts not built.",
+			"alt": "The editor with a tall well of grey walls in the Scene view, a box marked Next beside it, and the rows Well and Board in the Hierarchy.",
+			"kind": "editor",
+			"publish": "lossy",
+			"project": {
+				"sample": "Tetris"
+			},
+			"editorWindow": {
+				"layout": "layouts/make-with-an-agent-tall.ini",
+				"steps": [
+					{
+						"command": "viewport.setSettings",
+						"parameters": {
+							"sceneGizmos": false,
+							"grid": false
+						}
+					},
+					{
+						"command": "camera.set",
+						"parameters": {
+							"position": [
+								7.25,
+								9.5,
+								43
+							],
+							"target": [
+								7.25,
+								9.5,
+								0
+							],
+							"fov": 30
+						}
+					}
+				],
+				"windowSize": [
+					960,
+					540
+				]
+			}
+		}
+	]
+}

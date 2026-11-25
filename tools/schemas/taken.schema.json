@@ -1,0 +1,95 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "tools/schemas/taken.schema.json",
+	"title": "The stamps of one chapter's published figures",
+	"description": "src/assets/figures/<part>/<chapter>/taken.json, written only by tools/figures.py publish (plan/pipelines.md §5.7; .tools/handover/figures-format.md): per published file, where and how it was taken and encoded.",
+	"type": "object",
+	"required": ["files"],
+	"additionalProperties": false,
+	"properties": {
+		"files": {
+			"type": "object",
+			"propertyNames": { "pattern": "^[a-z0-9]+(-[a-z0-9]+)*\\.(avif|webp|txt)$" },
+			"additionalProperties": { "$ref": "#/$defs/file" }
+		}
+	},
+	"$defs": {
+		"sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+		"commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+		"file": {
+			"type": "object",
+			"required": ["figure", "variant", "crop", "kind", "pin", "build", "reportedCommit", "os", "gpu", "size", "original", "sha256", "encoder", "recorded", "checkedAt"],
+			"additionalProperties": false,
+			"properties": {
+				"figure": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+				"variant": { "type": ["string", "null"] },
+				"crop": { "type": ["string", "null"] },
+				"kind": { "enum": ["scene", "live", "editor", "runtime", "text", "reference", "tool"] },
+				"pin": { "$ref": "#/$defs/commit" },
+				"build": {
+					"type": ["object", "null"],
+					"required": ["kind", "configuration", "editorSha256"],
+					"additionalProperties": false,
+					"properties": {
+						"kind": { "enum": ["pin-build", "package", "patch-build"] },
+						"configuration": { "type": "string", "minLength": 1 },
+						"editorSha256": { "$ref": "#/$defs/sha256" },
+						"package": { "type": "string", "minLength": 1 }
+					}
+				},
+				"reportedCommit": { "type": ["string", "null"], "pattern": "^[0-9a-f]{7,40}$" },
+				"os": { "type": ["string", "null"] },
+				"gpu": { "type": ["string", "null"] },
+				"size": {
+					"type": ["array", "null"],
+					"minItems": 2,
+					"maxItems": 2,
+					"items": { "type": "integer", "minimum": 1 }
+				},
+				"original": { "$ref": "#/$defs/sha256" },
+				"sha256": { "$ref": "#/$defs/sha256" },
+				"encoder": {
+					"type": ["object", "null"],
+					"required": ["format", "lossless", "effort", "sharp"],
+					"additionalProperties": false,
+					"properties": {
+						"format": { "enum": ["avif", "webp"] },
+						"lossless": { "type": "boolean" },
+						"quality": { "type": "integer", "minimum": 1, "maximum": 100 },
+						"chromaSubsampling": { "enum": ["4:4:4", "4:2:0"] },
+						"effort": { "type": "integer", "minimum": 0, "maximum": 9 },
+						"sharp": { "type": "string", "minLength": 1 },
+						"libvips": { "type": "string", "minLength": 1 }
+					}
+				},
+				"recorded": { "type": "object" },
+				"pairDifference": {
+					"description": "How the two captures of a scene figure differed, within R57's rule (plan/pipelines.md §5.6): the pixels that differ, their share in per cent and the largest difference of a channel in levels. Absent when the two were byte-identical.",
+					"type": "object",
+					"required": ["pixels", "percent", "largest"],
+					"additionalProperties": false,
+					"properties": {
+						"pixels": { "type": "integer", "minimum": 1 },
+						"percent": { "type": "number", "minimum": 0, "maximum": 100 },
+						"largest": { "type": "integer", "minimum": 1, "maximum": 255 }
+					}
+				},
+				"renderer": {
+					"description": "The renderer switches of viewport.capture the picture was drawn with (the recipe's renderer, plan/pipelines.md §5.2). Absent when it set none.",
+					"type": "object", "minProperties": 1
+				},
+				"baseline": {
+					"type": "object",
+					"required": ["set", "file", "sha256"],
+					"additionalProperties": false,
+					"properties": {
+						"set": { "enum": ["v0.6.0", "v0.7.0", "v0.7.0-medium"] },
+						"file": { "type": "string", "minLength": 1 },
+						"sha256": { "$ref": "#/$defs/sha256" }
+					}
+				},
+				"checkedAt": { "type": "array", "items": { "$ref": "#/$defs/commit" } }
+			}
+		}
+	}
+}

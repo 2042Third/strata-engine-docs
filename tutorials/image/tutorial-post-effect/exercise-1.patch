@@ -1,0 +1,216 @@
+diff --git a/Strata/shaders/PostProcess/Letterbox.comp.slang b/Strata/shaders/PostProcess/Letterbox.comp.slang
+index c4dab9c..9397584 100644
+--- a/Strata/shaders/PostProcess/Letterbox.comp.slang
++++ b/Strata/shaders/PostProcess/Letterbox.comp.slang
+@@ -1,6 +1,6 @@
+ #include "Include/Common.slang"
+ 
+-// The letterbox: black bars over the first and the last BarRows rows of the post source, written into the next source. Every
++// The letterbox: bars of one color (black by default) over the first and the last BarRows rows of the post source, written into the next source. Every
+ // other texel is copied as it is, alpha included (the depth of field's and the motion blur's mark of what they blurred).
+ 
+ Texture2D<float4> u_Source : register(t0);
+@@ -12,6 +12,7 @@ struct LetterboxParameters
+ 	uint Padding0;
+ 	uint Padding1;
+ 	uint Padding2;
++	float4 Color; // xyz: the bars' light
+ };
+ [[vk::push_constant]] ConstantBuffer<LetterboxParameters> u_Parameters;
+ 
+@@ -24,5 +25,5 @@ void main(uint3 globalID : SV_DispatchThreadID)
+ 		return;
+ 	float4 color = u_Source.Load(int3(globalID.xy, 0));
+ 	bool inBar = globalID.y < u_Parameters.BarRows || globalID.y >= size.y - u_Parameters.BarRows;
+-	o_Output[globalID.xy] = float4(inBar ? float3(0.0) : SanitizeHDR(color.rgb), color.a);
++	o_Output[globalID.xy] = float4(inBar ? u_Parameters.Color.xyz : SanitizeHDR(color.rgb), color.a);
+ }
+diff --git a/Strata/src/Strata/Renderer/PostProcessData.h b/Strata/src/Strata/Renderer/PostProcessData.h
+index 249a1e7..841a736 100644
+--- a/Strata/src/Strata/Renderer/PostProcessData.h
++++ b/Strata/src/Strata/Renderer/PostProcessData.h
+@@ -123,9 +123,10 @@ namespace Strata
+ 			uint32_t Padding0;
+ 			uint32_t Padding1;
+ 			uint32_t Padding2;
++			glm::vec4 Color;  // 16: xyz: the bars' light, with the pre-exposure the scene color carries
+ 		};
+-		static_assert(sizeof(LetterboxParameters) == 16);
+-		static_assert(offsetof(LetterboxParameters, BarRows) == 0);
++		static_assert(sizeof(LetterboxParameters) == 32);
++		static_assert(offsetof(LetterboxParameters, BarRows) == 0 && offsetof(LetterboxParameters, Color) == 16);
+ 
+ 		// PostProcess/MorphologicalEdges.frag and MorphologicalBlend.frag (push constants): the edges' thresholds (a luma
+ 		// difference of the display-encoded image; a depth jump beyond the neighboring steps, relative to the depth) and the blend's
+diff --git a/Strata/src/Strata/Renderer/RendererComponents.cpp b/Strata/src/Strata/Renderer/RendererComponents.cpp
+index 8ca55e7..f506339 100644
+--- a/Strata/src/Strata/Renderer/RendererComponents.cpp
++++ b/Strata/src/Strata/Renderer/RendererComponents.cpp
+@@ -622,13 +622,15 @@ namespace Strata
+ 				WithTooltip({}, "Black bars at the top and bottom crop the image to the aspect ratio below, as a cinema screen does; a view "
+ 					"that is already that wide shows none"))
+ 			.Property("LetterboxAspect", &PostProcessComponent::LetterboxAspect,
+-				WithTooltip(Range(1.0f, 4.0f, 0.01f), "The aspect ratio (width over height) of the picture between the bars: 2.39 is wide cinema"));
++				WithTooltip(Range(1.0f, 4.0f, 0.01f), "The aspect ratio (width over height) of the picture between the bars: 2.39 is wide cinema"))
++			.Property("LetterboxColor", &PostProcessComponent::LetterboxColor,
++				WithTooltip(Range(0.0f, 1.0f, 0.001f), "The light of the bars, per channel: 0 is black, 1 is the white of an unlit surface"));
+ 		// Exposure is the compensation SceneRenderer applies with automatic exposure too: always active.
+ 		SetInactiveReasons<PostProcessComponent>({ "AutoExposureMinEV", "AutoExposureMaxEV", "AutoExposureSpeed", "AutoExposureMetering",
+ 			"AutoExposureLowPercentile", "AutoExposureHighPercentile", "AutoExposureLightSpeed", "AutoExposureKey" }, &WithAutoExposure);
+ 		SetInactiveReasons<PostProcessComponent>({ "BloomIntensity", "BloomThreshold", "BloomRadius" }, &WithBloom);
+ 		SetInactiveReasons<PostProcessComponent>({ "MotionBlurShutterAngle", "MotionBlurMaxLength" }, &WithMotionBlur);
+-		SetInactiveReasons<PostProcessComponent>({ "LetterboxAspect" }, &WithLetterbox);
++		SetInactiveReasons<PostProcessComponent>({ "LetterboxAspect", "LetterboxColor" }, &WithLetterbox);
+ 		SetInactiveReasons<PostProcessComponent>({ "ColorLookupIntensity" }, &WithColorLookup);
+ 		SetInactiveReasons<PostProcessComponent>({ "Toe" }, &WithFilmicToe);
+ 		SetInactiveReasons<PostProcessComponent>({ "Shoulder" }, &WithFilmicShoulder);
+diff --git a/Strata/src/Strata/Renderer/RendererComponents.h b/Strata/src/Strata/Renderer/RendererComponents.h
+index 46e4caa..b7fb1be 100644
+--- a/Strata/src/Strata/Renderer/RendererComponents.h
++++ b/Strata/src/Strata/Renderer/RendererComponents.h
+@@ -335,6 +335,7 @@ namespace Strata
+ 		// view that is already that wide or wider shows no bars.
+ 		bool Letterbox = false;
+ 		float LetterboxAspect = 2.39f;
++		glm::vec3 LetterboxColor = glm::vec3(0.0f); // The bars' light, in the scene's linear units: black by default
+ 		float Saturation = 1.0f;
+ 		float Contrast = 1.0f; // Around middle gray; 1 = unchanged
+ 		// The Filmic curve's look, each in [0, 1]: how deep the shadows go (higher crushes the darkest tones) and how softly the
+diff --git a/Strata/src/Strata/Renderer/SceneRenderer.cpp b/Strata/src/Strata/Renderer/SceneRenderer.cpp
+index f17d48d..90ba67a 100644
+--- a/Strata/src/Strata/Renderer/SceneRenderer.cpp
++++ b/Strata/src/Strata/Renderer/SceneRenderer.cpp
+@@ -3613,7 +3613,7 @@ namespace Strata
+ 		if (letterboxRows > 0)
+ 		{
+ 			commandList->beginMarker("Letterbox");
+-			if (RenderLetterbox(commandList, postSource, letterboxRows))
++			if (RenderLetterbox(commandList, postSource, letterboxRows, postProcess.LetterboxColor))
+ 				postSource = PostSource::Letterbox;
+ 			else
+ 				degraded = true;
+diff --git a/Strata/src/Strata/Renderer/SceneRenderer.h b/Strata/src/Strata/Renderer/SceneRenderer.h
+index cbd641b..bd663c0 100644
+--- a/Strata/src/Strata/Renderer/SceneRenderer.h
++++ b/Strata/src/Strata/Renderer/SceneRenderer.h
+@@ -1647,7 +1647,7 @@ namespace Strata
+ 		void ReleaseMotionBlurTargets(std::vector<nvrhi::ResourceHandle>& released);
+ 		// The letterbox of the post source (HDR, History, DepthOfField or MotionBlur) into m_LetterboxTexture: `barRows` black rows at
+ 		// the top and at the bottom. False (reported) when its resources cannot be made: the frame shows the image without bars.
+-		bool RenderLetterbox(nvrhi::ICommandList* commandList, PostSource source, uint32_t barRows);
++		bool RenderLetterbox(nvrhi::ICommandList* commandList, PostSource source, uint32_t barRows, const glm::vec3& color);
+ 		bool EnsureLetterboxResources();
+ 		// The target and the sets of its output.
+ 		bool CreateLetterboxTarget();
+diff --git a/Strata/src/Strata/Renderer/SceneRendererPost.cpp b/Strata/src/Strata/Renderer/SceneRendererPost.cpp
+index b1b5c45..a9aa303 100644
+--- a/Strata/src/Strata/Renderer/SceneRendererPost.cpp
++++ b/Strata/src/Strata/Renderer/SceneRendererPost.cpp
+@@ -965,7 +965,7 @@ namespace Strata
+ 		return true;
+ 	}
+ 
+-	bool SceneRenderer::RenderLetterbox(nvrhi::ICommandList* commandList, PostSource source, uint32_t barRows)
++	bool SceneRenderer::RenderLetterbox(nvrhi::ICommandList* commandList, PostSource source, uint32_t barRows, const glm::vec3& color)
+ 	{
+ 		ST_CORE_ASSERT(source != PostSource::Letterbox, "SceneRenderer: the letterbox does not read its own output");
+ 		if (!EnsureLetterboxResources())
+@@ -995,6 +995,10 @@ namespace Strata
+ 		}
+ 		RenderData::LetterboxParameters parameters = {};
+ 		parameters.BarRows = barRows;
++		// The scene color carries the pre-exposure: the bars' light does too, so the exposure and the tone mapping meet it as they
++		// meet the scene's. A color that is not a number is black.
++		auto unit = [](float value) { return std::isfinite(value) ? std::clamp(value, 0.0f, 1.0f) : 0.0f; };
++		parameters.Color = glm::vec4(unit(color.r), unit(color.g), unit(color.b), 0.0f) * glm::vec4(glm::vec3(m_PreExposure), 1.0f);
+ 		nvrhi::ComputeState state;
+ 		state.pipeline = m_LetterboxPipeline;
+ 		state.bindings = { m_LetterboxSets[sourceIndex] };
+diff --git a/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene b/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
+index ab7d9d4..2ce59fd 100644
+--- a/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
++++ b/StrataTests/FeatureTest/Assets/Scenes/Feature.stscene
+@@ -289,6 +289,11 @@
+ 						"LensFlare": 0.5,
+ 						"Letterbox": true,
+ 						"LetterboxAspect": 2.0,
++						"LetterboxColor": [
++							0.1,
++							0.0,
++							0.0
++						],
+ 						"ColorOffset": [
+ 							0.0,
+ 							0.0,
+diff --git a/StrataTests/src/Editor/EditorCommandTests.cpp b/StrataTests/src/Editor/EditorCommandTests.cpp
+index 47a8156..02cef46 100644
+--- a/StrataTests/src/Editor/EditorCommandTests.cpp
++++ b/StrataTests/src/Editor/EditorCommandTests.cpp
+@@ -939,7 +939,7 @@ TEST_SUITE("Editor.Commands")
+ 		CHECK(post["inactive"] == WithTemporalRows({ { "BloomIntensity", "Bloom is off" }, { "BloomThreshold", "Bloom is off" }, { "BloomRadius", "Bloom is off" },
+ 			{ "MotionBlurShutterAngle", "Motion Blur is off" }, { "MotionBlurMaxLength", "Motion Blur is off" },
+ 			{ "ColorLookupIntensity", "No Color Lookup is set" }, { "GlobalIlluminationIntensity", "Global Illumination is off" },
+-			{ "LetterboxAspect", "Letterbox is off" } }, c_OnlyTAA));
++			{ "LetterboxAspect", "Letterbox is off" }, { "LetterboxColor", "Letterbox is off" } }, c_OnlyTAA));
+ 		CHECK(harness.Run("entity.get", { { "entity", c } })["inactive"] == nlohmann::json { { "PostProcess", post["inactive"] } });
+ 		harness.Run("component.remove", { { "entity", c }, { "component", "PostProcess" } });
+ 		CHECK_FALSE(harness.Run("entity.get", { { "entity", c } }).contains("inactive"));
+@@ -959,7 +959,7 @@ TEST_SUITE("Editor.Commands")
+ 			== WithTemporalRows({ { "AntiAliasingMethod", "Anti Aliasing is off" }, { "MotionBlurShutterAngle", "Motion Blur is off" },
+ 				{ "MotionBlurMaxLength", "Motion Blur is off" }, { "ColorLookupIntensity", "No Color Lookup is set" },
+ 				{ "GlobalIlluminationIntensity", "Global Illumination is off" },
+-				{ "LetterboxAspect", "Letterbox is off" } }, "Anti Aliasing is off"));
++				{ "LetterboxAspect", "Letterbox is off" }, { "LetterboxColor", "Letterbox is off" } }, "Anti Aliasing is off"));
+ 		harness.Run("component.remove", { { "entity", c }, { "component", "PostProcess" } });
+ 
+ 		// The TAA's preset and tunables: Custom with tunables in one step, undone in one; out-of-range values refused without
+@@ -985,7 +985,7 @@ TEST_SUITE("Editor.Commands")
+ 			{ "TAADisocclusionThreshold", "TAA Disocclusion Rejection is off" }, { "ScreenSpaceReflectionsIntensity", "Screen Space Reflections is off" },
+ 			{ "ScreenSpaceReflectionsMaxRoughness", "Screen Space Reflections is off" }, { "MotionBlurShutterAngle", "Motion Blur is off" },
+ 			{ "MotionBlurMaxLength", "Motion Blur is off" }, { "ColorLookupIntensity", "No Color Lookup is set" },
+-			{ "GlobalIlluminationIntensity", "Global Illumination is off" }, { "LetterboxAspect", "Letterbox is off" } });
++			{ "GlobalIlluminationIntensity", "Global Illumination is off" }, { "LetterboxAspect", "Letterbox is off" }, { "LetterboxColor", "Letterbox is off" } });
+ 		for (const auto& [property, value] : { std::pair<const char*, nlohmann::json> { "TAAHistoryFrames", 40 }, { "TAAHistoryFrames", 1 },
+ 				 { "TAAMotionResponse", 0.5 }, { "TAAClipWidth", 0.25 }, { "TAADisocclusionThreshold", 0.6 }, { "TAASharpening", 1.5 }, { "TAAHistoryClamp", "Box" },
+ 				 { "TAAPreset", "Blurry" }, { "ScreenSpaceReflectionsIntensity", 1.5 }, { "ScreenSpaceReflectionsMaxRoughness", -0.1 } })
+diff --git a/StrataTests/src/Renderer/GPUSceneLetterboxTests.cpp b/StrataTests/src/Renderer/GPUSceneLetterboxTests.cpp
+index c55a8d8..47bf536 100644
+--- a/StrataTests/src/Renderer/GPUSceneLetterboxTests.cpp
++++ b/StrataTests/src/Renderer/GPUSceneLetterboxTests.cpp
+@@ -91,4 +91,23 @@ TEST_SUITE("GPU.SceneRenderer.Letterbox")
+ 		CHECK(MaxDifference(RenderWall(renderer, wall), plain) == 0);
+ 		CHECK(gpu.GetNewErrorCount() == 0);
+ 	}
++
++	TEST_CASE("The bars take the color the component sets")
++	{
++		GPUContext gpu;
++		REQUIRE(gpu.IsValid());
++		SceneTestAssets assets;
++		GrayWall wall(assets);
++		wall.PostProcess->Letterbox = true;
++		wall.PostProcess->LetterboxAspect = 2.0f;
++		wall.PostProcess->LetterboxColor = glm::vec3(1.0f, 0.0f, 0.0f);
++		SceneRenderer renderer(ExactSpecification());
++		renderer.SetViewportSize(c_Width, c_Height);
++		const ReadbackImage image = RenderWall(renderer, wall);
++		// Full red in the bars, the wall's gray between them.
++		CHECK(GetPixelRGBA8(image, c_Width / 2, 10) == glm::u8vec4(255, 0, 0, 255));
++		CHECK(GetPixelRGBA8(image, c_Width / 2, c_Height - 10) == glm::u8vec4(255, 0, 0, 255));
++		CHECK(Red(image, c_Width / 2, c_Height / 2) == c_Code);
++		CHECK(gpu.GetNewErrorCount() == 0);
++	}
+ }
+diff --git a/StrataTests/src/Renderer/RendererComponentsTests.cpp b/StrataTests/src/Renderer/RendererComponentsTests.cpp
+index 36adcfa..0ec0206 100644
+--- a/StrataTests/src/Renderer/RendererComponentsTests.cpp
++++ b/StrataTests/src/Renderer/RendererComponentsTests.cpp
+@@ -191,7 +191,7 @@ TEST_SUITE("Renderer.Components")
+ 			{ "Toe", "Tone and color" }, { "WhiteBalanceTemperature", "Tone and color" }, { "ColorPower", "Tone and color" },
+ 			{ "AutoExposureMetering", "Exposure" }, { "AutoExposureKey", "Exposure" }, { "BloomRadius", "Bloom" }, { "MotionBlur", "Motion" },
+ 			{ "MotionBlurMaxLength", "Motion" }, { "FilmGrain", "Lens" }, { "ChromaticAberration", "Lens" }, { "ColorLookup", "Tone and color" },
+-			{ "ColorLookupIntensity", "Tone and color" }, { "LensFlare", "Lens" }, { "Letterbox", "Lens" }, { "LetterboxAspect", "Lens" } };
++			{ "ColorLookupIntensity", "Tone and color" }, { "LensFlare", "Lens" }, { "Letterbox", "Lens" }, { "LetterboxAspect", "Lens" }, { "LetterboxColor", "Lens" } };
+ 		for (const auto& [property, section] : c_Groups)
+ 		{
+ 			CAPTURE(property);

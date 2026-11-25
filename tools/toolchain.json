@@ -1,0 +1,84 @@
+{
+	"comment": "Tools the book's build downloads into .tools/ (git-ignored). Every archive is checked against the SHA-256 recorded here; for Node.js the official SHASUMS256.txt must agree too. CI and the Dockerfile read the same values.",
+	"node": {
+		"version": "26.13.0",
+		"base_url": "https://nodejs.org/dist/v26.13.0/",
+		"sums_file": "SHASUMS256.txt",
+		"archives": {
+			"windows-x64": {
+				"file": "node-v26.13.0-win-x64.zip",
+				"sha256": "dcc60d59a0746999f99064a01c020445d54d84228c691cdbf25b49ac3b59150a"
+			},
+			"linux-x64": {
+				"file": "node-v26.13.0-linux-x64.tar.xz",
+				"sha256": "d28a96af6c38596f6d9d97c0ee531c13d238d757742387d1928de822d959e997"
+			}
+		}
+	},
+	"typos": {
+		"version": "1.52.1",
+		"base_url": "https://github.com/crate-ci/typos/releases/download/v1.52.1/",
+		"archives": {
+			"windows-x64": {
+				"file": "typos-v1.52.1-x86_64-pc-windows-msvc.zip",
+				"sha256": "adb3ac98b0ca8964a23b984c786c2116a25b3665e070f2a4f8156e2d6d4df2e3"
+			},
+			"linux-x64": {
+				"file": "typos-v1.52.1-x86_64-unknown-linux-musl.tar.gz",
+				"sha256": "c034dbec8797cfa0c4548b3726c1eebbafcf703b8a17f15a961b037788eebcdd"
+			}
+		}
+	},
+	"lychee": {
+		"comment": "Gate (a)'s offline link check of the staged site and links.yml's weekly check of the pages' external links (plan/site.md, 'The three gates', 'CI'). Each SHA-256 is the digest GitHub's release API publishes for the asset, which equals the release's own <file>.sha256.",
+		"version": "0.24.2",
+		"base_url": "https://github.com/lycheeverse/lychee/releases/download/lychee-v0.24.2/",
+		"archives": {
+			"windows-x64": {
+				"file": "lychee-x86_64-pc-windows-msvc.zip",
+				"sha256": "32975d1493ee1a975d6bb41e4fb56fe419cb442ded628bb772ba2e614acfacad"
+			},
+			"linux-x64": {
+				"file": "lychee-x86_64-unknown-linux-musl.tar.gz",
+				"sha256": "73657a111819a30c47c08352896796f23d64e4eb2b3ed39b6d32149241566fc5"
+			}
+		}
+	},
+	"actionlint": {
+		"comment": "Checks .github/workflows/*.yml (CI's lint job). Each SHA-256 is the digest GitHub's release API publishes for the asset, which equals the release's actionlint_1.7.12_checksums.txt.",
+		"version": "1.7.12",
+		"base_url": "https://github.com/rhysd/actionlint/releases/download/v1.7.12/",
+		"archives": {
+			"windows-x64": {
+				"file": "actionlint_1.7.12_windows_amd64.zip",
+				"sha256": "6e7241b51e6817ea6a047693d8e6fed13b31819c9a0dd6c5a726e1592d22f6e9"
+			},
+			"linux-x64": {
+				"file": "actionlint_1.7.12_linux_amd64.tar.gz",
+				"sha256": "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
+			}
+		}
+	},
+	"nginx": {
+		"comment": "Only to test deploy/ on Windows (tools/bootstrap.py --servers, tools/servertest.py), in the two versions the book is tested with (plan/critique/rulings-6.md, R23): 1.30.6, the container's version, and 1.20.1, what the owner's host runs. nginx.org publishes PGP signatures (<file>.asc) but no SHA-256: each hash is that of an archive whose signature was verified on 2026-11-10: 1.30.6 against Sergey Kandaurov's key D678 6CE3 03D9 A902 2998 DC6C C846 4D54 9AF7 5C0A (nginx.org/keys/pluknet.key), 1.20.1 against Maxim Dounin's key B0F4 2533 73F8 F6F5 10D4 2178 520A 9993 A1C0 52F8.",
+		"base_url": "https://nginx.org/download/",
+		"versions": {
+			"1.30.6": {
+				"archives": {
+					"windows-x64": {
+						"file": "nginx-1.30.6.zip",
+						"sha256": "c6ee35edb0a861063323f709192ae50d1eefaf2ea7d00678bd2b22d8542dc61e"
+					}
+				}
+			},
+			"1.20.1": {
+				"archives": {
+					"windows-x64": {
+						"file": "nginx-1.20.1.zip",
+						"sha256": "0da02eed3e7e11883ecc0a80cd62ffa28e9862c58f23658bd3a3c92a36110459"
+					}
+				}
+			}
+		}
+	}
+}

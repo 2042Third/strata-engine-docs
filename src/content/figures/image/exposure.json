@@ -1,0 +1,44 @@
+{
+	"figures": [
+		{
+			"id": "exposure-sweep",
+			"shows": "The same Basic 3D view with manual exposure at -16, -14 and -12",
+			"caption": "Top to bottom: Exposure -16, -14 and -12, the same scene and sun, each step letting in two stops more light. At -16 the stone ground is dark gray under a deep blue sky, at -14 it is balanced gray, and at -12 the ground is pale and the horizon sky almost white.",
+			"numbers": "-16, -14 and -12 are the variants' manual Exposure values (stops); each step of 2 is two stops, a factor of 4 in light.",
+			"alt": "A flat stone ground under a clear sky, shown three times, top to bottom at Exposure -16, -14 and -12. At -16 the picture is dark with a deep blue sky, and at -14 it is balanced with a mid-gray ground and a blue sky. At -12 it is washed out, with a pale ground and a sky nearly white at the horizon.",
+			"kind": "scene",
+			"project": { "template": "basic3d" },
+			"camera": "scene",
+			"size": [1280, 720],
+			"quality": "high",
+			"publish": "lossless",
+			"variants": {
+				"minus16": { "postProcess": { "AutoExposure": false, "Exposure": -16 } },
+				"minus14": { "postProcess": { "AutoExposure": false, "Exposure": -14 } },
+				"minus12": { "postProcess": { "AutoExposure": false, "Exposure": -12 } }
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "metering-modes",
+			"shows": "Basic 3D with a 3 m block of the ground's own stone, the sun behind it, so its face toward the camera is in its own shade, with automatic exposure metered as Average, then as CenterWeighted",
+			"caption": "A block of the ground's own stone, its face toward us in its own shade (the sun is behind it), metered two ways. Average weighs the bright sky and the bright ground at the edges as much as the block's shaded face in the middle, so the face stays a dark charcoal. The center weighted mode counts the middle most: it reads about half a stop less light (EV100 14.0 against 14.6), so the whole picture brightens, the block's face lifts toward gray and the sky pales.",
+			"numbers": "EV100 14.6 (Average) and 14.0 (CenterWeighted) are renderStats.exposure.ev100 of the variants' results at the pin (14.59 and 14.02); half a stop is their difference rounded.",
+			"alt": "Two pictures of a large cube made of the same pale stone as the ground, under a blue sky. The sun is behind the cube, so its face toward the camera is in shade and its shadow reaches forward. In the first the shaded face is a dark charcoal gray and the sky a deeper blue; in the second the face is a lighter gray and the sky and ground are paler.",
+			"kind": "scene",
+			"project": { "template": "basic3d" },
+			"camera": { "position": [-7.5, 1.5, -2.7], "target": [0, 1.5, 0], "fov": 40 },
+			"size": [1280, 720],
+			"quality": "high",
+			"publish": "lossless",
+			"setup": [
+				{ "command": "entity.create", "parameters": { "name": "Block", "components": { "MeshRenderer": { "Mesh": "Builtin/Cube", "Material": "Materials/Ground.stmat" }, "Transform": { "Translation": [0, 1.5, 0], "Scale": [3, 3, 3] } } } }
+			],
+			"variants": {
+				"average": { "postProcess": { "AutoExposure": true, "AutoExposureMetering": "Average" } },
+				"center": { "postProcess": { "AutoExposure": true, "AutoExposureMetering": "CenterWeighted" } }
+			},
+			"expect": "complete"
+		}
+	]
+}

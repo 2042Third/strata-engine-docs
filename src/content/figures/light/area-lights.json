@@ -1,0 +1,199 @@
+{
+	"figures": [
+		{
+			"id": "sun-angular-diameter",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "The look-dev mirror scene's polished black floor reflecting the sun at one fixed exposure, with the sun's Angular Diameter at 0, 0.53 and 10 degrees",
+			"caption": "The same sun reflected in the same polished floor, at one exposure. With no size its reflection is a small bright spot, and with the sun's real size the spot is a little larger. With a very large size it is a wide glow over most of the picture. The small spots are far brighter than the picture can show and clip to white; the wide glow spreads the same light.",
+			"alt": "Three pictures of a dark gray polished floor. In the first a small white spot is in the middle. In the second the white spot is a little larger. In the third a wide pale glow covers most of the picture.",
+			"project": {
+				"lookdev": true
+			},
+			"scene": "Scenes/Mirror.stscene",
+			"camera": {
+				"position": [
+					-5.15,
+					1.93,
+					-0.49
+				],
+				"target": [
+					-4.0,
+					0.0,
+					1.5
+				],
+				"fov": 18
+			},
+			"postProcess": {
+				"AutoExposure": false,
+				"Exposure": -12.9
+			},
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"variants": {
+				"diameter-0": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Sun",
+							"parameters": {
+								"component": "DirectionalLight",
+								"values": {
+									"ShadowSoftness": 0.0
+								}
+							}
+						}
+					]
+				},
+				"diameter-053": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Sun",
+							"parameters": {
+								"component": "DirectionalLight",
+								"values": {
+									"ShadowSoftness": 0.53
+								}
+							}
+						}
+					]
+				},
+				"diameter-10": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Sun",
+							"parameters": {
+								"component": "DirectionalLight",
+								"values": {
+									"ShadowSoftness": 10.0
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "lantern-source-radius",
+			"kind": "scene",
+			"publish": "lossless",
+			"shows": "A look-dev lantern's reflection on wet ground at dusk, close up and at one fixed exposure, with its Source Radius at 0, 0.05 and 0.3 m",
+			"caption": "The same lantern reflected in wet ground, close up. With no radius the reflection is a thin bright streak, and with a bulb's radius the streak is only a little longer: a bulb is small. With a flame's radius it is a wide, dim patch: the light has not changed, only its spread.",
+			"alt": "Three close views of purple wet ground at dusk. In the first a thin white streak is in the middle. In the second the streak is a little longer and wider. In the third a wide, dim, pale patch replaces it.",
+			"project": {
+				"lookdev": true
+			},
+			"scene": "Scenes/Specular.stscene",
+			"camera": {
+				"position": [
+					-13,
+					1,
+					20
+				],
+				"target": [
+					-12.15,
+					0.01,
+					16.6
+				],
+				"fov": 6
+			},
+			"postProcess": {
+				"AutoExposure": false,
+				"Exposure": -7.85
+			},
+			"setup": [
+				{
+					"command": "lighting.applySkyPreset",
+					"parameters": {
+						"preset": "Clear",
+						"sunElevation": -3
+					}
+				}
+			],
+			"size": [
+				1280,
+				720
+			],
+			"quality": "high",
+			"variants": {
+				"radius-0": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Lantern",
+							"parameters": {
+								"component": "PointLight",
+								"values": {
+									"SourceRadius": 0.0
+								}
+							}
+						},
+						{
+							"command": "component.set",
+							"entityName": "Lantern 2",
+							"parameters": {
+								"component": "PointLight",
+								"values": {
+									"SourceRadius": 0.0
+								}
+							}
+						}
+					]
+				},
+				"radius-005": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Lantern",
+							"parameters": {
+								"component": "PointLight",
+								"values": {
+									"SourceRadius": 0.05
+								}
+							}
+						},
+						{
+							"command": "component.set",
+							"entityName": "Lantern 2",
+							"parameters": {
+								"component": "PointLight",
+								"values": {
+									"SourceRadius": 0.05
+								}
+							}
+						}
+					]
+				},
+				"radius-03": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Lantern",
+							"parameters": {
+								"component": "PointLight",
+								"values": {
+									"SourceRadius": 0.3
+								}
+							}
+						},
+						{
+							"command": "component.set",
+							"entityName": "Lantern 2",
+							"parameters": {
+								"component": "PointLight",
+								"values": {
+									"SourceRadius": 0.3
+								}
+							}
+						}
+					]
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 358">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- Plan: chips y 16-48 (Low 16, Medium 88, High 188, Ultra 264, Custom 340, 8 apart).
+Table x 16-749: Setting 16-276, Low 276-352, Medium 352-462, High 462-557, Ultra 557-653, Custom 653-749;
+header 72-104, five rows of 36 (104-284). High, the default preset, is chosen: its chip and column are blue.
+Custom's cells are fields (boxes) showing High's values in muted text. Values from Strata/src/Strata/Renderer/RendererQuality.cpp:40-56.
+Under the table, in secondary text (baseline 306): the rows left out, 11 more settings among these and the two memory rows (GraphicsQualityPage.cpp:476-500).
+Note below: arrow up to the Custom column, text baseline 338. H = 358. -->
+<g>
+<rect class="plate line-muted" x="16" y="16" width="64" height="32" rx="16"/>
+<text class="ink" x="48" y="37" text-anchor="middle">Low</text>
+<rect class="plate line-muted" x="88" y="16" width="92" height="32" rx="16"/>
+<text class="ink" x="134" y="37" text-anchor="middle">Medium</text>
+<rect class="blue-area line-blue" x="188" y="16" width="68" height="32" rx="16" stroke-width="2"/>
+<text class="blue bold" x="222" y="37" text-anchor="middle">High</text>
+<rect class="plate line-muted" x="264" y="16" width="68" height="32" rx="16"/>
+<text class="ink" x="298" y="37" text-anchor="middle">Ultra</text>
+<rect class="plate line-muted" x="340" y="16" width="86" height="32" rx="16"/>
+<text class="ink" x="383" y="37" text-anchor="middle">Custom</text>
+<text class="small muted" x="442" y="37">High, the default, is chosen</text>
+</g>
+<rect class="blue-area" x="462" y="72" width="95" height="212"/>
+<g fill="none" stroke-width="1">
+<line class="line-faint" x1="276" y1="72" x2="276" y2="284"/>
+<line class="line-faint" x1="352" y1="72" x2="352" y2="284"/>
+<line class="line-faint" x1="462" y1="72" x2="462" y2="284"/>
+<line class="line-faint" x1="557" y1="72" x2="557" y2="284"/>
+<line class="line-faint" x1="653" y1="72" x2="653" y2="284"/>
+<line class="line-muted" x1="16" y1="104" x2="749" y2="104"/>
+<line class="line-faint" x1="16" y1="140" x2="749" y2="140"/>
+<line class="line-faint" x1="16" y1="176" x2="749" y2="176"/>
+<line class="line-faint" x1="16" y1="212" x2="749" y2="212"/>
+<line class="line-faint" x1="16" y1="248" x2="749" y2="248"/>
+<line class="line-faint" x1="16" y1="284" x2="749" y2="284"/>
+</g>
+<g>
+<text class="muted" x="24" y="93">Setting</text>
+<text class="muted" x="314" y="93" text-anchor="middle">Low</text>
+<text class="muted" x="407" y="93" text-anchor="middle">Medium</text>
+<text class="blue bold" x="509.5" y="93" text-anchor="middle">High</text>
+<text class="muted" x="605" y="93" text-anchor="middle">Ultra</text>
+<text class="muted" x="701" y="93" text-anchor="middle">Custom</text>
+</g>
+<g>
+<text class="ink" x="24" y="127">Shadow cascades</text>
+<text class="ink" x="24" y="163">Shadowed point and spot lights</text>
+<text class="ink" x="24" y="199">Ambient occlusion quality</text>
+<text class="ink" x="24" y="235">Screen-space reflections</text>
+<text class="ink" x="24" y="271">Global illumination</text>
+</g>
+<g class="small">
+<text class="small muted" x="314" y="127" text-anchor="middle">3</text>
+<text class="small muted" x="407" y="127" text-anchor="middle">4</text>
+<text class="small ink" x="509.5" y="127" text-anchor="middle">5</text>
+<text class="small muted" x="605" y="127" text-anchor="middle">5</text>
+<text class="small muted" x="314" y="163" text-anchor="middle">4</text>
+<text class="small muted" x="407" y="163" text-anchor="middle">16</text>
+<text class="small ink" x="509.5" y="163" text-anchor="middle">64</text>
+<text class="small muted" x="605" y="163" text-anchor="middle">256</text>
+<text class="small muted" x="314" y="199" text-anchor="middle">Low</text>
+<text class="small muted" x="407" y="199" text-anchor="middle">Medium</text>
+<text class="small ink" x="509.5" y="199" text-anchor="middle">High</text>
+<text class="small muted" x="605" y="199" text-anchor="middle">Ultra</text>
+<text class="small muted" x="314" y="235" text-anchor="middle">Off</text>
+<text class="small muted" x="407" y="235" text-anchor="middle">Checkerboard</text>
+<text class="small ink" x="509.5" y="235" text-anchor="middle">Spatial</text>
+<text class="small muted" x="605" y="235" text-anchor="middle">SpatialHigh</text>
+<text class="small muted" x="314" y="271" text-anchor="middle">Off</text>
+<text class="small muted" x="407" y="271" text-anchor="middle">Off</text>
+<text class="small ink" x="509.5" y="271" text-anchor="middle">High</text>
+<text class="small muted" x="605" y="271" text-anchor="middle">High</text>
+</g>
+<g stroke-width="1">
+<rect class="ground line-muted" x="659" y="109" width="84" height="26" rx="3"/>
+<rect class="ground line-muted" x="659" y="145" width="84" height="26" rx="3"/>
+<rect class="ground line-muted" x="659" y="181" width="84" height="26" rx="3"/>
+<rect class="ground line-muted" x="659" y="217" width="84" height="26" rx="3"/>
+<rect class="ground line-muted" x="659" y="253" width="84" height="26" rx="3"/>
+</g>
+<g>
+<text class="small muted" x="701" y="127" text-anchor="middle">5</text>
+<text class="small muted" x="701" y="163" text-anchor="middle">64</text>
+<text class="small muted" x="701" y="199" text-anchor="middle">High</text>
+<text class="small muted" x="701" y="235" text-anchor="middle">Spatial</text>
+<text class="small muted" x="701" y="271" text-anchor="middle">High</text>
+</g>
+<text class="small muted" x="24" y="306">… 11 more settings among these rows, then two rows of memory per preset</text>
+<line class="line-orange" x1="701" y1="322" x2="701" y2="296" fill="none"/>
+<polygon class="orange" points="701,286 697.5,296 704.5,296"/>
+<text class="orange" x="749" y="338" text-anchor="end">Edit a Custom cell and the page switches to Custom</text>
+</svg>

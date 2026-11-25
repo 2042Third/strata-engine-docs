@@ -1,0 +1,60 @@
+[
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Worlds/Meadow.stscene"
+		}
+	},
+	{
+		"command": "viewport.setSettings",
+		"parameters": {
+			"cellBounds": true
+		}
+	},
+	{
+		"command": "world.status",
+		"parameters": {}
+	},
+	{
+		"command": "scene.save",
+		"parameters": {}
+	},
+	{
+		"command": "world.status",
+		"parameters": {
+			"cells": true
+		}
+	},
+	{
+		"command": "world.loadCells",
+		"parameters": {
+			"cells": [
+				{
+					"layer": "Terrain",
+					"x": 0,
+					"z": 0
+				}
+			],
+			"wait": true
+		}
+	},
+	{
+		"command": "scene.open",
+		"parameters": {
+			"scene": "Worlds/Meadow.stscene"
+		}
+	},
+	{
+		"command": "world.loadCells",
+		"parameters": {
+			"cells": [
+				{
+					"layer": "Terrain",
+					"x": 0,
+					"z": 0
+				}
+			],
+			"wait": true
+		}
+	}
+]

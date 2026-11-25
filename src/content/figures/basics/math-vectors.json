@@ -1,0 +1,60 @@
+{
+	"figures": [
+		{
+			"id": "points-on-graph",
+			"shows": "A flat graph with an x axis to the right and a y axis up, the origin marked, and three labelled points: A at (1, 2), B at (4, 6) and C at (-3, 1), each with dashed lines down to the x axis and across to the y axis",
+			"caption": "Each point is two numbers: how far along x and how far along y it lies from the origin.",
+			"alt": "A graph with two axes that cross at the origin. Point A sits at 1 along x and 2 up y, point B at 4 and 6, point C at minus 3 and 1, each joined to the axes by dashed lines.",
+			"kind": "diagram",
+			"numbers": "Axes from -4 to 6 on both; origin labelled (0, 0); A (1, 2), B (4, 6), C (-3, 1); dashed lines from each point to both axes."
+		},
+		{
+			"id": "adding-arrows",
+			"shows": "Two arrows on a flat graph placed tip to tail, a = (3, 1) from the origin and b = (1, 2) from the tip of a, and their sum a + b = (4, 3) drawn from the origin to the tip of b",
+			"caption": "Adding two steps: walk the first, then the second from where the first ended; the sum goes straight from start to finish.",
+			"alt": "Three arrows on a graph. The first goes from the origin to the point 3, 1. The second starts there and goes to 4, 3. A third, longer arrow goes straight from the origin to 4, 3.",
+			"kind": "diagram",
+			"numbers": "a = (3, 1) from (0, 0); b = (1, 2) from (3, 1); a + b = (4, 3) from (0, 0), drawn in a second colour; grid from 0 to 5."
+		},
+		{
+			"id": "three-four-five",
+			"shows": "A right triangle on a grid with a side of 3 along x, a side of 4 along y and the long side of 5 from the origin to (3, 4), each side labelled with its length, and a square drawn on each side",
+			"caption": "The squares on the two short sides, 9 and 16, add up to the square on the long side, 25.",
+			"alt": "A right triangle with sides 3, 4 and 5. A square of 9 grid cells stands on the side of 3, a square of 16 cells on the side of 4, and a square of 25 cells on the long side.",
+			"kind": "diagram",
+			"numbers": "Corners (0, 0), (3, 0), (3, 4); right angle marked at (3, 0); squares of 3 by 3, 4 by 4 and 5 by 5 cells on the outside of each side."
+		},
+		{
+			"id": "unit-circle",
+			"shows": "A circle of radius 1 around the origin, a radius drawn at 60 degrees to the point (0.5, 0.866), the angle marked from the x axis, and dashed lines from the point down to x (labelled cos) and across to y (labelled sin)",
+			"caption": "The point at an angle on the circle of radius 1 is the cosine of the angle across and the sine of the angle up.",
+			"alt": "A circle of radius 1 centred on the origin. A line from the centre at 60 degrees meets the circle at 0.5 across and 0.866 up. Dashed lines show the across part as the cosine and the up part as the sine.",
+			"kind": "diagram",
+			"numbers": "Radius 1; angle 60 degrees (1.047 radians) from +x, turning toward +y; point (0.5, 0.866); also mark the four quarters with angles 0, 90, 180 and 270 degrees and the points (1, 0), (0, 1), (-1, 0), (0, -1)."
+		},
+		{
+			"id": "sine-wave",
+			"shows": "The graph of a coin's height y = 1 + 0.25 sin(2 pi t / 2) over 4 seconds, with the amplitude of 0.25 marked from the middle line to a peak and the period of 2 seconds marked from one peak to the next",
+			"caption": "The amplitude is how far the wave reaches from its middle line; the period is how long one full wave takes.",
+			"alt": "A smooth wave that rises and falls between a height of 0.75 and 1.25 around a middle line at 1, over a time axis from 0 to 4 seconds. One arrow marks the reach of 0.25 above the middle; another marks 2 seconds between two peaks.",
+			"kind": "diagram",
+			"numbers": "t from 0 to 4 s; middle line at 1; peaks at t = 0.5 s and 2.5 s (height 1.25); lowest points at 1.5 s and 3.5 s (0.75)."
+		},
+		{
+			"id": "dot-shadow",
+			"shows": "A vector v = (3, 2) and a unit axis u = (1, 0) from the same point, with light falling straight down onto the axis so that v casts a shadow of length 3 on it, the shadow drawn as the projection and the leftover part (0, 2) drawn from the shadow's end to the tip of v",
+			"caption": "The dot product of a vector with a unit axis is the length of its shadow on that axis; the leftover part stands at a right angle to the axis.",
+			"alt": "An arrow from the origin to the point 3, 2 above a horizontal axis. A thick part of the axis from 0 to 3 shows its shadow. A short arrow goes straight up from 3, 0 to 3, 2 and is marked as the part left over.",
+			"kind": "diagram",
+			"numbers": "v = (3, 2); u = (1, 0); shadow (3, 0), labelled dot(v, u) u; leftover (0, 2), labelled v - dot(v, u) u; right angle marked at (3, 0)."
+		},
+		{
+			"id": "right-hand",
+			"shows": "A right hand with the index finger along a = (1, 0, 0), the middle finger along b = (0, 1, 0) and the thumb pointing along cross(a, b) = (0, 0, 1), beside the parallelogram that a and b span with its area shaded",
+			"caption": "Point the first finger along a, the middle finger along b, and the thumb points along the cross product; its length is the shaded area.",
+			"alt": "A drawing of a right hand. The first finger points along the x axis, the middle finger along the y axis and the thumb along the z axis. Next to it, the two arrows along x and y form a shaded square.",
+			"kind": "diagram",
+			"numbers": "a = (1, 0, 0), b = (0, 1, 0), cross(a, b) = (0, 0, 1); a second small panel with a = (2, 0, 0), b = (1, 1, 0): parallelogram of area 2, cross (0, 0, 2)."
+		}
+	]
+}

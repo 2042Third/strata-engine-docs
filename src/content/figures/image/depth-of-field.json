@@ -1,0 +1,245 @@
+{
+	"figures": [
+		{
+			"id": "coc-curve",
+			"kind": "diagram",
+			"shows": "The signed circle of confusion against the distance of a point, for a 50 mm lens at f/2 focused 2 m away on an image 1,000 pixels tall, with the near field, the far field, the cap and the in-focus band",
+			"caption": "The disk is zero at the focus, grows fast in front of it and slowly behind it, and is cut at 20 pixels. The thin band around the focus is where the composite keeps the sharp image.",
+			"alt": "A curve of disk size against distance. It crosses zero at 2 m, falls steeply below zero for nearer points and rises gently above zero for farther ones. Horizontal lines at 20 and minus 20 cut the curve, and the near side and far side are labelled.",
+			"numbers": "x axis: distance 0.8 m to 12 m (linear, with 2 m marked as the focus); y axis: signed diameter in pixels, -30 to 30. Points: (1, -26.7), (1.5, -8.9), (2, 0), (3, 8.9), (4, 13.4), (10, 21.4), far limit 26.7. Horizontal cap lines at +20 and -20 (2 % of 1,000 rows), the curve drawn flat at the caps. Left of x = 2 labelled near field, right of it far field. A thin band where the diameter is under 1 pixel (|c| < 1) labelled in focus."
+		},
+		{
+			"id": "dof-pair",
+			"shows": "The Third-Person course through the sample's own camera (a 60 degree view), with depth of field off, then on at f/2 with the focus entity the robot, the game's HUD hidden",
+			"caption": "The same camera and view, the lens off and then on at f/2, focused on the robot about 6 m away: a point at infinity spreads over about 1.5 pixels. The crops enlarge the far course twice. The robot stays sharp and the far islands soften a little.",
+			"numbers": "f/2: the Aperture the variant on sets. About 6 m: the robot stands at the origin and the sample's camera at (0, 2, 6), pitched down 18.4 degrees, so the focus distance along the camera's forward axis is 6.33 m. About 1.5 pixels: the page's formula for a point at infinity, 20.78 mm squared over 2 times (6,330 - 20.78) mm, over the 24 mm sensor, times 1,080 rows, is 1.54 pixels. Twice: the crop's scale 2.",
+			"alt": "A robot seen from behind on a green island, with islands, coins and trees rising behind it. First the whole scene is sharp, then the far islands, trees and coins are slightly soft.",
+			"kind": "scene",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"camera": "scene",
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"publish": "lossless",
+			"crops": [
+				{
+					"name": "far",
+					"rect": [
+						0.4042,
+						0.037,
+						0.6,
+						0.315
+					],
+					"scale": 2
+				}
+			],
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"entities": [
+							"DE51A38543E46F78"
+						],
+						"active": false
+					}
+				}
+			],
+			"variants": {
+				"off": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Camera",
+							"parameters": {
+								"component": "Camera",
+								"values": {
+									"DepthOfField": false
+								}
+							}
+						}
+					]
+				},
+				"on": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Camera",
+							"parameters": {
+								"component": "Camera",
+								"values": {
+									"DepthOfField": true,
+									"Aperture": 2.0,
+									"FocusEntity": "A94EC4E371BEB484"
+								}
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "aperture-sweep",
+			"shows": "The robot through a long lens (a 25 degree view, about 54 mm, from 7.5 m back), focused on the robot, at f/1.4 and at f/8, the game's HUD hidden",
+			"caption": "A long lens focused on the robot, at f/1.4 (first) and f/8 (second). At f/1.4 the chest at the left of the island behind the robot, seen from behind, the barrel at its right, the coins and the trees are much softer. The robot is sharp in both.",
+			"numbers": "f/1.4 and f/8: the Aperture the variants f14 and f8 set.",
+			"alt": "A robot seen from behind, twice. First the island behind it is blurred: a chest seen from behind at its left, like a log with blue ends, a barrel at its right, coins and trees. Then the island is nearly as sharp as the robot.",
+			"kind": "scene",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"camera": "scene",
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"publish": "lossless",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"entities": [
+							"DE51A38543E46F78"
+						],
+						"active": false
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Camera",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								2.1,
+								10.4
+							],
+							"Rotation": [
+								-0.0871557,
+								0,
+								0,
+								0.9961947
+							]
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Camera",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"PerspectiveFOV": 25
+						}
+					}
+				}
+			],
+			"variants": {
+				"f14": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Camera",
+							"parameters": {
+								"component": "Camera",
+								"values": {
+									"DepthOfField": true,
+									"Aperture": 1.4,
+									"FocusEntity": "A94EC4E371BEB484"
+								}
+							}
+						}
+					]
+				},
+				"f8": {
+					"setup": [
+						{
+							"command": "component.set",
+							"entityName": "Camera",
+							"parameters": {
+								"component": "Camera",
+								"values": {
+									"DepthOfField": true,
+									"Aperture": 8.0,
+									"FocusEntity": "A94EC4E371BEB484"
+								}
+							}
+						}
+					]
+				}
+			},
+			"expect": "complete"
+		},
+		{
+			"id": "focus-entity",
+			"shows": "The same long-lens view at f/1.4 with the focus entity set to the barrel 25 m away, to the right of the screen's center, so the robot nearer the camera softens, the game's HUD hidden",
+			"caption": "Focused on the barrel right of the robot's head, the lens keeps the barrel sharp and the robot soft: the focus follows the entity, not the screen's center. The chest at the island's left edge, seen from behind, stands at the barrel's depth and is sharp too.",
+			"alt": "A blurred robot seen from behind in the middle. Beyond it, on a farther island, a barrel right of its head, a chest seen from behind at the left edge, like a log with blue ends, and the coins are sharp.",
+			"kind": "scene",
+			"project": {
+				"sample": "ThirdPerson"
+			},
+			"scene": "Scenes/Course.stscene",
+			"camera": "scene",
+			"size": [
+				1920,
+				1080
+			],
+			"quality": "high",
+			"publish": "lossless",
+			"setup": [
+				{
+					"command": "entity.setActive",
+					"parameters": {
+						"entities": [
+							"DE51A38543E46F78"
+						],
+						"active": false
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Camera",
+					"parameters": {
+						"component": "Transform",
+						"values": {
+							"Translation": [
+								0,
+								2.1,
+								10.4
+							],
+							"Rotation": [
+								-0.0871557,
+								0,
+								0,
+								0.9961947
+							]
+						}
+					}
+				},
+				{
+					"command": "component.set",
+					"entityName": "Camera",
+					"parameters": {
+						"component": "Camera",
+						"values": {
+							"PerspectiveFOV": 25,
+							"DepthOfField": true,
+							"Aperture": 1.4,
+							"FocusEntity": "3E91A1A4E85F13E5"
+						}
+					}
+				}
+			],
+			"expect": "complete"
+		}
+	]
+}

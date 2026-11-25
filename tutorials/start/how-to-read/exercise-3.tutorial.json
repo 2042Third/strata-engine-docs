@@ -1,0 +1,24 @@
+{
+	"page": "start/how-to-read",
+	"startsFrom": { "template": "basic3d" },
+	"stages": [
+		{
+			"step": 1,
+			"commands": [
+				{ "command": "entity.create",
+					"parameters": {
+						"name": "Crate",
+						"components": {
+							"MeshRenderer": { "Mesh": "Builtin/Cube" },
+							"Transform": { "Translation": [2, 0.5, 0] }
+						}
+					} },
+				{ "command": "component.get", "entityName": "Crate", "parameters": { "component": "Transform" },
+					"checks": [
+						{ "pointer": "/values/Translation/0", "approx": 2, "tolerance": 0.001 },
+						{ "pointer": "/values/Translation/1", "approx": 0.5, "tolerance": 0.001 }
+					] }
+			]
+		}
+	]
+}

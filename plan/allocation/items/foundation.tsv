@@ -1,0 +1,345 @@
+id	type	heading	label
+foundation:30	feature	1.1 Program start and the composition root	Entry point
+foundation:31	feature	1.1 Program start and the composition root	`ApplicationLaunch`
+foundation:32	feature	1.1 Program start and the composition root	`GetProgramRun` / `ProgramRun`
+foundation:33	feature	1.1 Program start and the composition root	Composition root `Engine::RegisterBuiltinModules`
+foundation:34	feature	1.1 Program start and the composition root	`ModuleRegistrationOptions`
+foundation:35	feature	1.1 Program start and the composition root	`GetBuiltinModuleNames`, `GetRegisteredModules`, `AreBuiltinModulesRegistered`
+foundation:36	feature	1.1 Program start and the composition root	Optional modules (`ST_WITH_PHYSICS/AUDIO/ANIMATION`)
+foundation:37	feature	1.1 Program start and the composition root	Registration state machine
+foundation:43	feature	1.2 Application shell (App layer)	`ApplicationSpecification`
+foundation:44	feature	1.2 Application shell (App layer)	`Application` singleton
+foundation:45	feature	1.2 Application shell (App layer)	Startup order
+foundation:46	feature	1.2 Application shell (App layer)	Frame loop `Run` / `RunFrame`
+foundation:47	feature	1.2 Application shell (App layer)	Frame skipping
+foundation:48	feature	1.2 Application shell (App layer)	Frame work time
+foundation:49	feature	1.2 Application shell (App layer)	`SubmitToMainThread`
+foundation:50	feature	1.2 Application shell (App layer)	`ReportFatalError`
+foundation:51	feature	1.2 Application shell (App layer)	Exit codes
+foundation:52	feature	1.2 Application shell (App layer)	Shutdown order
+foundation:53	feature	1.2 Application shell (App layer)	`Layer` / `LayerStack`
+foundation:54	feature	1.2 Application shell (App layer)	`FramePacer` and `SetMaxFrameRate`
+foundation:55	feature	1.2 Application shell (App layer)	`Timer`, `Time::GetTime`, `Timestep`
+foundation:56	feature	1.2 Application shell (App layer)	`CommandLine`, `CommandLineOptions`
+foundation:57	feature	1.2 Application shell (App layer)	Interrupt handling
+foundation:58	feature	1.2 Application shell (App layer)	Windows GUI subsystem and `ConnectStandardStreams`
+foundation:59	feature	1.2 Application shell (App layer)	Power-throttling opt-out
+foundation:65	feature	1.3 Engine modules	`EngineModule` interface
+foundation:66	feature	1.3 Engine modules	`EngineContext`, `EngineFrame`, `EngineFrameAction`, `EngineModuleStartFailure`
+foundation:67	feature	1.3 Engine modules	`EngineModuleRegistry`
+foundation:68	feature	1.3 Engine modules	Built-in modules
+foundation:69	feature	1.3 Engine modules	Programs' module lists
+foundation:70	feature	1.3 Engine modules	Where the device is made
+foundation:71	feature	1.3 Engine modules	`EngineServices`
+foundation:77	feature	1.4 Events and window (Input and App layers)	Event classes
+foundation:78	feature	1.4 Events and window (Input and App layers)	`EventDispatcher`
+foundation:79	feature	1.4 Events and window (Input and App layers)	Event propagation
+foundation:80	feature	1.4 Events and window (Input and App layers)	`Window` interface and `WindowSpecification`
+foundation:81	feature	1.4 Events and window (Input and App layers)	GLFW backend
+foundation:82	feature	1.4 Events and window (Input and App layers)	No-window backend
+foundation:83	feature	1.4 Events and window (Input and App layers)	`WindowFactory` / `Tests::StubWindow`
+foundation:84	feature	1.4 Events and window (Input and App layers)	`VulkanLoader`, `VulkanPresentation`
+foundation:90	feature	1.5 Diagnostics: logging, asserts, profiling	`Log`
+foundation:91	feature	1.5 Diagnostics: logging, asserts, profiling	`LogBuffer`
+foundation:92	feature	1.5 Diagnostics: logging, asserts, profiling	`BackgroundLogSink`
+foundation:93	feature	1.5 Diagnostics: logging, asserts, profiling	Asserts and verifies
+foundation:94	feature	1.5 Diagnostics: logging, asserts, profiling	`ErrorThrottle`
+foundation:95	feature	1.5 Diagnostics: logging, asserts, profiling	Tracy macros
+foundation:96	feature	1.5 Diagnostics: logging, asserts, profiling	`ST_PROFILE_STAGE` and `FrameProfiler`
+foundation:97	feature	1.5 Diagnostics: logging, asserts, profiling	`Symbolizer`, `CrashGuard`
+foundation:103	feature	1.6 Threads and jobs	`JobSystem` pools
+foundation:104	feature	1.6 Threads and jobs	`Submit`, `SubmitIO`, `SubmitBackgroundPart`, `JobPriority`
+foundation:105	feature	1.6 Threads and jobs	`JobHandle`, `Wait`, `WaitAll`
+foundation:106	feature	1.6 Threads and jobs	`ParallelFor`
+foundation:107	feature	1.6 Threads and jobs	Inline fallback
+foundation:108	feature	1.6 Threads and jobs	Exception containment in jobs
+foundation:109	feature	1.6 Threads and jobs	`GetStats` and `ThreadActivity`
+foundation:110	feature	1.6 Threads and jobs	`SequenceLockedValue<T>`
+foundation:111	feature	1.6 Threads and jobs	`ParallelClone`
+foundation:112	feature	1.6 Threads and jobs	`Platform::SetCurrentThreadName/Priority`, `SleepUntil`
+foundation:113	feature	1.6 Threads and jobs	Threading model
+foundation:119	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	Platform detection
+foundation:120	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	`Platform` static class
+foundation:121	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	Private directories and files
+foundation:122	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	`FileSystem`
+foundation:123	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	`AtomicFileWriter`, `DocumentOutput`
+foundation:124	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	`FileReader`
+foundation:125	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	`FileWatcher`, `FileChangeNotifier`
+foundation:126	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	`FileLock`
+foundation:127	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	`BoundedRead`
+foundation:128	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	`Process`
+foundation:129	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	`DynamicLibrary`
+foundation:130	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	`SaveFiles` / `SaveDirectory`
+foundation:131	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	`SettingsRegistry`, `ProjectSettings`
+foundation:132	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	Sockets
+foundation:133	feature	1.7 Platform services, files and paths (Core layer + Platform/Windows, Platform/Posix)	`WindowsUtils`
+foundation:139	feature	1.8 Math (Core layer)	Conventions
+foundation:140	feature	1.8 Math (Core layer)	Transforms
+foundation:141	feature	1.8 Math (Core layer)	Projections
+foundation:142	feature	1.8 Math (Core layer)	Rotations
+foundation:143	feature	1.8 Math (Core layer)	`AABB`
+foundation:144	feature	1.8 Math (Core layer)	`Frustum`
+foundation:145	feature	1.8 Math (Core layer)	`Ray`
+foundation:146	feature	1.8 Math (Core layer)	`Random`
+foundation:152	feature	1.9 Core utilities	`Ref`/`Scope`/`WeakRef`, `CreateRef`/`CreateScope`
+foundation:153	feature	1.9 Core utilities	Base macros
+foundation:154	feature	1.9 Core utilities	`UUID`
+foundation:155	feature	1.9 Core utilities	`Hash`
+foundation:156	feature	1.9 Core utilities	`Crypto`
+foundation:157	feature	1.9 Core utilities	`Base64`
+foundation:158	feature	1.9 Core utilities	`BinaryWriter`/`BinaryReader`
+foundation:159	feature	1.9 Core utilities	`JsonUtils`, `JsonEvents`
+foundation:160	feature	1.9 Core utilities	`StringUtils`
+foundation:161	feature	1.9 Core utilities	`RadixSort`, `SortIndices`
+foundation:162	feature	1.9 Core utilities	`RangeAllocator`
+foundation:163	feature	1.9 Core utilities	`AmortizedCheck`
+foundation:164	feature	1.9 Core utilities	`Prefetch`
+foundation:165	feature	1.9 Core utilities	`EmbeddedFiles`
+foundation:166	feature	1.9 Core utilities	`Version.h`
+foundation:167	feature	1.9 Core utilities	Precompiled header `stpch.h`
+foundation:173	feature	1.10 Layers as the build	Layer table
+foundation:174	feature	1.10 Layers as the build	Per-layer static libraries
+foundation:175	feature	1.10 Layers as the build	`Architecture.Layering`, `.Libraries`, `.PrecompiledHeaders`, `.HeaderWeight` tests
+foundation:176	feature	1.10 Layers as the build	`ExternalOwners`
+foundation:177	feature	1.10 Layers as the build	Tooling-free runtime
+foundation:183	feature	1.11 Time and the fixed step (lives in Scene, used by every game)	Variable timestep
+foundation:184	feature	1.11 Time and the fixed step (lives in Scene, used by every game)	Fixed-step accumulator
+foundation:185	feature	1.11 Time and the fixed step (lives in Scene, used by every game)	Time dilation
+foundation:186	feature	1.11 Time and the fixed step (lives in Scene, used by every game)	Pause and `Step`
+foundation:187	feature	1.11 Time and the fixed step (lives in Scene, used by every game)	Project `Scene.Timing` `FixedRate`
+foundation:188	feature	1.11 Time and the fixed step (lives in Scene, used by every game)	Interpolation
+foundation:208	concept		What a program is, and what an engine adds
+foundation:214	concept		The game loop
+foundation:220	concept		Stages of a frame
+foundation:224	concept		Time
+foundation:228	concept		Fixed timestep, accumulator, spiral of death, interpolation, time scale
+foundation:234	concept		Frame pacing and vsync
+foundation:239	concept		Events vs polling
+foundation:245	concept		Layers and overlays
+foundation:249	concept		Subsystems and their lifecycles
+foundation:256	concept		Topological sorting
+foundation:259	concept		Layered architecture and dependency inversion
+foundation:264	concept		Composition root and registries
+foundation:270	concept		Ownership in C++
+foundation:275	concept		Errors: asserts, verifies, results, exceptions
+foundation:280	concept		Logging
+foundation:284	concept		Threads and synchronization basics
+foundation:288	concept		Job systems
+foundation:296	concept		Threading model of an engine
+foundation:300	concept		OS scheduling and power
+foundation:303	concept		Profiling
+foundation:308	concept		Platform abstraction
+foundation:313	concept		Program kinds on Windows
+foundation:317	concept		Text and paths
+foundation:321	concept		Safe file writing and trust
+foundation:325	concept		Math for engines
+foundation:332	concept		Utilities engines need
+foundation:342	code		1: `Strata/src/Strata/Engine/EntryPoint.h` 16-41
+foundation:343	code		2: `Strata/src/Strata/Engine/BuiltinModules.cpp` 61-77 and 118-174
+foundation:344	code		3: `Strata/src/Strata/Core/Application.cpp` 226-283
+foundation:345	code		4: `Strata/src/Strata/Core/Application.cpp` 285-344
+foundation:346	code		5: `Strata/src/Strata/Core/Application.cpp` 64-112, 126-160
+foundation:347	code		6: `Strata/src/Strata/Core/Application.cpp` 202-224
+foundation:348	code		7: `Strata/src/Strata/Core/EngineModule.h` 22-106
+foundation:349	code		8: `Strata/src/Strata/Core/EngineModule.cpp` 49-186 (Kahn 95-130, cycle report 131-160)
+foundation:350	code		9: `Strata/src/Strata/Events/Event.h` 15-81
+foundation:351	code		10: `Strata/src/Strata/Core/LayerStack.cpp` 7-54
+foundation:352	code		11: `Strata/src/Platform/GLFW/GLFWWindow.cpp` 225-330
+foundation:353	code		12: `Strata/src/Strata/Core/Base.h` 10-61
+foundation:354	code		13: `Strata/src/Strata/Core/Assert.h` 52-73 and `Assert.cpp` 32-66
+foundation:355	code		14: `Strata/src/Strata/Core/Log.cpp` 193-265
+foundation:356	code		15: `Strata/src/Strata/Core/BackgroundLogSink.h` 21-89
+foundation:357	code		16: `Strata/src/Strata/Core/JobSystem.cpp` 33-81 and 502-514 (`ExecuteJob`, `TryRunJob`,…
+foundation:358	code		17: `Strata/src/Strata/Core/JobSystem.cpp` 165-313 (`JobPool`, `ThreadMain` 274-304)
+foundation:359	code		18: `Strata/src/Strata/Core/JobSystem.cpp` 357-401 and 522-566
+foundation:360	code		19: `Strata/src/Strata/Core/JobSystem.cpp` 335-342, 460-474
+foundation:361	code		20: `Strata/src/Strata/Core/JobSystem.cpp` 88-163 or `Core/SequenceLock.h` 13-66
+foundation:362	code		21: `Strata/src/Strata/Core/FrameProfiler.cpp` 409-434 (with `Core/Profiling.h` 39-42 and…
+foundation:363	code		22: `Strata/src/Strata/Core/Timer.h` 51-104
+foundation:364	code		23: `Strata/src/Platform/Windows/WindowsPlatform.cpp` 337-380
+foundation:365	code		24: `Strata/src/Platform/Posix/PosixPlatform.cpp` 900-922 and 981-995
+foundation:366	code		25: `Strata/src/Platform/Windows/WindowsPlatform.cpp` 755-793
+foundation:367	code		26: `Strata/src/Strata/Core/FileSystem.cpp` 102-135 and 341-350
+foundation:368	code		27: `Strata/src/Strata/Core/Platform.h` 92-129
+foundation:369	code		28: `Strata/src/Strata/Scene/Scene.cpp` 2239-2329
+foundation:370	code		29: `Strata/src/Strata/Math/Math.cpp` 71-91 and `Math/Frustum.cpp` 12-35, 57-73
+foundation:371	code		30: `Strata/src/Strata/Core/EngineServices.h` 21-69
+foundation:373	code		Smaller supporting pieces: `Strata/src/Strata/Project/ProjectModule.cpp` 10-24 (the smallest real…
+foundation:385	figure		Executables and layer libraries
+foundation:388	figure		The layer DAG
+foundation:391	figure		Program start sequence
+foundation:395	figure		One frame timeline
+foundation:399	figure		Module hook order
+foundation:402	figure		Kahn's algorithm worked example
+foundation:404	figure		Event propagation
+foundation:406	figure		Fixed step on a time axis
+foundation:408	figure		Job system
+foundation:410	figure		JobState state machine
+foundation:412	figure		ParallelFor
+foundation:414	figure		Threads of the editor process and hand-offs
+foundation:416	figure		BackgroundLogSink pipeline
+foundation:418	figure		FrameProfiler nesting and self time
+foundation:420	figure		Console vs Interactive decision table/flowchart
+foundation:422	figure		Atomic write
+foundation:424	figure		Reversed Z depth precision
+foundation:425	figure		Frustum planes and the positive vertex test
+foundation:426	figure		Coordinate conventions
+foundation:431	figure		Editor Performance panel with the stacked stage timeline (Input, Assets.*, Scene.*, Render.*,…
+foundation:433	figure		The status bar's frame pill and its tooltip (CPU/GPU/Capped bound).
+foundation:434	figure		Tracy
+foundation:436	figure		The editor Console panel (backed by `LogBuffer`) showing core/App/Script loggers and levels.
+foundation:437	figure		A terminal running `StrataEditor --headless --frames 120` (Console run output with `[time] [level]…
+foundation:439	figure		The fatal-error dialog ("cannot start: no usable graphics device was found") as an Interactive run…
+foundation:441	figure		Optional: `editor.perf` JSON output via StrataCLI, next to the panel, to show the same numbers as…
+foundation:447	rule		The main thread owns the scene, input, scripts and rendering submission; workers hand results back…
+foundation:450	rule		Never block a frame on a job that might run long, and never let a waiting thread run other jobs
+foundation:452	rule		Long work goes to `JobPriority::Background`; frame work stays on normal-priority workers
+foundation:454	rule		What a job captures is released where it runs
+foundation:456	rule		Application never names a module; modules are found with `GetModules().Find<T>()`, which may be null
+foundation:458	rule		A module that fails `OnInit` cleans up what it started and describes the failure (`GetStartFailure`)
+foundation:461	rule		`OnRelease` (assets, project) comes before `JobSystem::Shutdown`, `OnShutdown` (device) after
+foundation:463	rule		Report waits in `EngineFrame::WaitSeconds`; time out-of-work waits as stages outside the work time
+foundation:465	rule		Registration only through the composition root, before anything reads a registry; nothing after…
+foundation:468	rule		`#if ST_WITH_<MODULE>` only in the composition root, the asset pipeline, the runtime and tests
+foundation:470	rule		Never widen `MayInclude` or add an allowlist line to make an upward or sideways include pass;…
+foundation:472	rule		Platform, window-system and graphics-API headers only in their `Platform/` folders; never…
+foundation:475	rule		Engine code does not throw; third-party exceptions are caught at the call site; recoverable…
+foundation:478	rule		Asserted conditions must have no side effects
+foundation:479	rule		Strings are UTF-8; convert at `std::filesystem` boundaries with `FromUTF8`/`ToUTF8`
+foundation:481	rule		Files only the current user may change go through the private-file functions; trusted files are…
+foundation:483	rule		All writes are atomic (temp + rename)
+foundation:485	rule		Do not log per frame; throttle repeating errors
+foundation:487	rule		Put `ST_PROFILE_STAGE` around a unit of frame work, not around calls that take nanoseconds
+foundation:489	rule		Timesteps are clamped (0.25 s); fixed-step backlogs are dropped
+foundation:491	rule		Read the fixed step through `Scene::GetFixedTimestep`/`GetMaxFixedSteps`, and count game time in…
+foundation:494	rule		Windows sleeps are coarse; never call `timeBeginPeriod`
+foundation:496	rule		GUI-subsystem programs and PowerShell
+foundation:498	rule		A second Ctrl+C ends the process at once; the signal handler only counts
+foundation:500	rule		One `Application` at a time; tests run several in sequence and must not create GPU devices…
+foundation:502	rule		Compose world matrices only through `Math::ComposeWorldTransform`
+foundation:514	hands-on		Trace a frame: build Debug, set breakpoints in `Application::RunFrame` and each built-in module's…
+foundation:515	hands-on		Write a `FrameCounterModule : EngineModule` (`c_Name`, `Factory`, `OnUpdate` counting frames,…
+foundation:516	hands-on		Make a module that depends on "Graphics" and one with `Required = false` on a missing module;…
+foundation:517	hands-on		Make a module return `EngineFrameAction::Skip` every 10th frame; confirm the frame count and…
+foundation:518	hands-on		Add a custom `ST_PROFILE_STAGE("Game.MyWork")` in a layer, run `editor.perf` or the Performance…
+foundation:519	hands-on		Build with `-DSTRATA_ENABLE_TRACY=ON`, capture with Tracy, compare `ST_PROFILE_SCOPE` zones with…
+foundation:520	hands-on		Parallelize a loop with `JobSystem::ParallelFor`, measure batch sizes 1/64/4096 with the…
+foundation:521	hands-on		Write a test that submits a job that waits on another job from inside a job, then explain why it…
+foundation:522	hands-on		Reproduce the "captured last reference" rule: submit a job holding the last `Ref` of an object…
+foundation:523	hands-on		Implement a tiny lock-free hand-off with `SequenceLockedValue<T>` between a producer thread and…
+foundation:524	hands-on		Write the fixed-step accumulator yourself in a toy loop (variable frames, max steps, drop backlog,…
+foundation:525	hands-on		Add a new `Platform::` function: declare in `Core/Platform.h`, implement in `WindowsPlatform.cpp`…
+foundation:526	hands-on		Try including `<GLFW/glfw3.h>` from a Scene file and read the `Architecture.Layering` failure;…
+foundation:527	hands-on		Register a game component through `ModuleRegistrationOptions::Extra`, then try registering after…
+foundation:528	hands-on		Use `Exclude = {"Physics"}` in a test helper and observe unknown components and the scripts' message
+foundation:529	hands-on		Write a file atomically with `FileSystem::WriteText`, kill the process mid-write in a loop (or…
+foundation:530	hands-on		Implement a frustum-culling test using `Frustum` and `AABB::Transformed` for a grid of boxes and a…
+foundation:531	hands-on		Derive `PerspectiveReverseZInfinite` on paper and check it against `MathTests.cpp` 79-93
+foundation:537	hands-on		Run `StrataRuntime --game <file> --headless --frames 300` and `--seconds 5`; explain why frames…
+foundation:538	hands-on		Change the project's `Scene.Timing` FixedRate (Project Settings) between 30 and 240 in…
+foundation:539	hands-on		In a script, move an object in `OnUpdate` vs `OnFixedUpdate`, play at different frame caps, compare
+foundation:540	hands-on		Use time scale 0 for a pause menu and drive a fade with unscaled time (scripts' unscaled delta)
+foundation:541	hands-on		Read the Performance panel during play and identify whether the game is CPU-bound, GPU-bound or…
+foundation:542	hands-on		Find the game's log file (user data dir `Logs/Game.log`) and read a warning a script produced
+foundation:548	term		Application
+foundation:549	term		Composition root
+foundation:551	term		Registry
+foundation:553	term		Freeze
+foundation:554	term		Engine module (EngineModule)
+foundation:555	term		Engine module registration (Register<Module>Module)
+foundation:557	term		Hook
+foundation:558	term		Layer (application); architecture layer
+foundation:560	term		Overlay
+foundation:561	term		Layer table / `Layers.json`
+foundation:562	term		Allowlist
+foundation:563	term		Tooling layer
+foundation:564	term		Dependency inversion
+foundation:565	term		Service / engine service
+foundation:566	term		Service locator
+foundation:567	term		Topological sort
+foundation:568	term		Kahn's algorithm
+foundation:569	term		Frame
+foundation:570	term		Frame loop / game loop
+foundation:571	term		Timestep / delta time
+foundation:572	term		Fixed timestep
+foundation:573	term		Accumulator
+foundation:574	term		Spiral of death
+foundation:575	term		Time dilation
+foundation:576	term		Interpolation (render)
+foundation:577	term		Time scale; unscaled time
+foundation:578	term		Frame pacing / frame-rate cap
+foundation:579	term		Vsync / FIFO present mode
+foundation:580	term		Swapchain
+foundation:581	term		Present
+foundation:582	term		Work time
+foundation:583	term		Headless
+foundation:584	term		Event
+foundation:585	term		Dispatcher
+foundation:586	term		Handled flag
+foundation:587	term		Polling input
+foundation:588	term		Main thread
+foundation:589	term		Main-thread queue
+foundation:590	term		Thread pool
+foundation:591	term		Job; job handle
+foundation:592	term		Worker / I/O / background thread
+foundation:593	term		ParallelFor
+foundation:594	term		Batch
+foundation:595	term		Claim
+foundation:596	term		Deadlock
+foundation:597	term		Data race
+foundation:598	term		Mutex / condition variable
+foundation:599	term		Atomic, memory order, fence
+foundation:600	term		Sequence lock
+foundation:601	term		Thread-local
+foundation:602	term		Thread priority / scheduling quantum
+foundation:603	term		Power throttling (EcoQoS)
+foundation:604	term		Profiler (instrumenting vs sampling)
+foundation:605	term		Tracy
+foundation:606	term		Frame stage
+foundation:607	term		Self time vs inclusive time
+foundation:608	term		Percentile (P50, P95), nearest rank
+foundation:609	term		CPU-bound / GPU-bound / capped
+foundation:610	term		GPU timestamp
+foundation:611	term		Assert / verify
+foundation:612	term		Dist
+foundation:613	term		Logger, sink, level
+foundation:614	term		Ring buffer
+foundation:615	term		Asynchronous logging
+foundation:616	term		RAII
+foundation:617	term		`Scope` / `Ref` / `WeakRef`
+foundation:618	term		Precompiled header (`stpch.h`)
+foundation:619	term		Platform layer / seam
+foundation:620	term		GLFW
+foundation:621	term		Window backend
+foundation:622	term		Console vs GUI subsystem
+foundation:623	term		Console run / Interactive run
+foundation:624	term		Signal (SIGINT, SIGTERM) / console control handler
+foundation:625	term		Async-signal-safe
+foundation:626	term		Exit code
+foundation:627	term		UTF-8 / UTF-16 / code page
+foundation:628	term		Atomic write
+foundation:629	term		TOCTOU
+foundation:630	term		DACL / file mode 0700
+foundation:631	term		Reparse point / junction / symbolic link
+foundation:632	term		Right-handed coordinates, +Y up, -Z forward
+foundation:633	term		NDC
+foundation:634	term		Reversed Z
+foundation:635	term		Infinite far plane
+foundation:636	term		Frustum / frustum culling
+foundation:637	term		AABB
+foundation:638	term		Quaternion
+foundation:639	term		Euler angles
+foundation:640	term		TRS
+foundation:641	term		FMA (fused multiply-add)
+foundation:642	term		UUID
+foundation:643	term		FNV-1a / CRC-32C / SHA-256 / HMAC
+foundation:644	term		Radix sort
+foundation:645	term		Offset (range) allocator
+foundation:688	open		`Core/BackgroundLogSink.cpp`, `Core/FrameProfiler.cpp` beyond the stage and frame functions…
+foundation:695	open		The tests were read by their case names (and EngineModuleTests in part), not in full.
+foundation:696	open		Release attribution is partial: the documents do not say when Application, layers, events,…
+foundation:699	open		Possible defect, not verified: `Core/Log.cpp` passes `specification.LogFile.string()` to spdlog's…
+foundation:702	open		Documentation drift seen in passing: the comment of `Engine/BuiltinModules.h` 26-27 lists the…
+foundation:707	open		`UUID.cpp` names its thread-local engine `s_Engine` where the style asks for `t_` (minor; not…
+foundation:708	open		Whether the editor's idle throttling preferences (`Editor.FrameRate`) and…
+foundation:710	open		The Hazel lineage of `Layer`/`LayerStack`/`Event`/`ST_BIND_EVENT_FN` is an observation from the…

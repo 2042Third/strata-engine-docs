@@ -1,0 +1,13 @@
+{
+	"camera": "scene",
+	"images": [
+		{
+			"fixedSteps": 30,
+			"height": 720,
+			"path": "G:/GameEngineAI/.worktrees/docs-work/photo/last-draw-motion-vectors/live/draw.motion-vectors.motion-view/take-1/frame.png",
+			"temporalFrames": 1985,
+			"width": 1280
+		}
+	],
+	"live": true
+}

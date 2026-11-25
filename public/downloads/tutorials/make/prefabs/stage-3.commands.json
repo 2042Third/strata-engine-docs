@@ -1,0 +1,114 @@
+[
+	{
+		"command": "material.create",
+		"parameters": {
+			"path": "Materials/Silver.stmat",
+			"properties": {
+				"BaseColor": [
+					0.8,
+					0.8,
+					0.82,
+					1
+				],
+				"Metallic": 1,
+				"Roughness": 0.25
+			}
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin (1)"
+		},
+		"bind": {
+			"first": "/entities/0"
+		}
+	},
+	{
+		"command": "entity.get",
+		"parameters": {
+			"entity": {
+				"$ref": "first"
+			}
+		},
+		"bind": {
+			"mesh": "/children/0"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "mesh"
+			},
+			"component": "MeshRenderer",
+			"values": {
+				"Material": "Materials/Silver.stmat"
+			}
+		}
+	},
+	{
+		"command": "prefab.status",
+		"parameters": {
+			"entity": {
+				"$ref": "mesh"
+			}
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "first"
+			},
+			"component": "Transform",
+			"values": {
+				"Translation": [
+					-2,
+					0,
+					0.3
+				]
+			}
+		}
+	},
+	{
+		"command": "entity.rename",
+		"parameters": {
+			"entity": {
+				"$ref": "first"
+			},
+			"name": "Silver Coin"
+		}
+	},
+	{
+		"command": "prefab.status",
+		"parameters": {
+			"entity": {
+				"$ref": "first"
+			}
+		}
+	},
+	{
+		"command": "entity.rename",
+		"parameters": {
+			"entity": {
+				"$ref": "first"
+			},
+			"name": "Coin (1)"
+		}
+	},
+	{
+		"command": "entity.find",
+		"parameters": {
+			"name": "Coin (1)"
+		}
+	},
+	{
+		"command": "prefab.status",
+		"parameters": {
+			"entity": {
+				"$ref": "first"
+			}
+		}
+	}
+]

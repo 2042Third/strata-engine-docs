@@ -1,0 +1,40 @@
+{
+	"page": "core/first-change",
+	"runs": [
+		{
+			"build": {
+				"kind": "patch-build",
+				"configuration": "Release",
+				"buildDirectory": "build/docs-patch"
+			},
+			"engineCommit": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+			"reportedCommit": null,
+			"os": "Windows",
+			"gpu": null,
+			"inputs": {
+				"tutorials/core/first-change.patch": "32bc961d01486ea2353a19381e20d2ac1cad1f062b0466e83f319f7fe99f150d",
+				"tutorials/core/first-change.tutorial.json": "83dc3bf68a7ca132e67e9d54cb6004c8c3f0a700063ff303593fe36724553b58",
+				"tutorials/core/first-change/exercise-2.patch": "0dc1dbbc67ac49be2d2fbbcb777465adaf953936568cf8a6976d51cec1dd648e"
+			},
+			"stages": [],
+			"tests": [
+				{
+					"suite": "Architecture.Layering",
+					"testCases": 18,
+					"passed": true
+				},
+				{
+					"suite": "Core.StringUtils",
+					"testCases": 4,
+					"passed": true
+				}
+			],
+			"ctest": {
+				"test": "StrataTests.FeatureTest",
+				"passed": true
+			},
+			"readerCopies": false,
+			"passed": true
+		}
+	]
+}

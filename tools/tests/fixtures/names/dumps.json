@@ -1,0 +1,54 @@
+{
+	"comment": "Small dumps and parsed tables of a pretend engine, in the shapes of tools/reference.py (plan/pipelines.md §7.2) and of the parsed tables tools/names.py reads. tools/tests/test_names.py writes each entry of \"files\" to reference/_dumps/<pin>/<name>, with @PIN@ replaced by the test engine's commit and @GLM@ by its vendor submodule's.",
+	"files": {
+		"commands.json": { "pin": "@PIN@", "engineCommit": "@PIN12@", "command": "editor.commands", "result": { "commands": [
+			{ "name": "editor.status", "description": "The editor's state.", "kind": "Query", "parameters": { "type": "object", "additionalProperties": false, "properties": {
+				"sections": { "type": "array", "items": { "type": "string", "enum": ["engine", "editor"] } } } } },
+			{ "name": "viewport.capture", "description": "A picture of the viewport.", "kind": "Query", "parameters": { "type": "object", "additionalProperties": false, "properties": {
+				"width": { "type": "integer" }, "height": { "type": "integer" },
+				"camera": { "type": "string", "enum": ["editor", "scene"] },
+				"debugView": { "type": "string", "enum": ["none", "lod", "shadows"] },
+				"gameView": { "type": "object", "additionalProperties": false, "properties": { "mode": { "type": "string", "enum": ["free", "fixed"] }, "width": { "type": "integer" } } } } } },
+			{ "name": "scene.open", "description": "Opens a scene.", "kind": "Session", "parameters": { "type": "object", "additionalProperties": false, "properties": {
+				"scene": { "type": "string" }, "force": { "type": "boolean" } } } },
+			{ "name": "entity.create", "description": "Creates an entity.", "kind": "Edit", "parameters": { "type": "object", "additionalProperties": false, "properties": {
+				"name": { "type": "string" }, "components": { "type": "object" } } } },
+			{ "name": "play.step", "description": "Steps the paused game.", "kind": "Session", "parameters": { "type": "object", "additionalProperties": false, "properties": {
+				"steps": { "type": "integer" } } } }
+		] } },
+		"components.json": { "pin": "@PIN@", "engineCommit": "@PIN12@", "command": "component.list", "result": { "components": [
+			{ "name": "Transform", "displayName": "Transform", "category": "Core", "description": "Where it is.", "addable": false, "removable": false, "properties": [
+				{ "Name": "Translation", "DisplayName": "Position", "Type": "Vec3" }, { "Name": "Rotation", "DisplayName": "Rotation", "Type": "Quat" } ] },
+			{ "name": "World", "displayName": "World", "category": "World", "description": "The cells.", "addable": true, "removable": true, "properties": [
+				{ "Name": "DistanceScale", "DisplayName": "Distance Scale", "Type": "Float" } ] },
+			{ "name": "PostProcess", "displayName": "Post Process", "category": "Rendering", "description": "The image.", "addable": true, "removable": true, "properties": [
+				{ "Name": "AntiAliasing", "DisplayName": "Anti-aliasing", "Type": "Bool" },
+				{ "Name": "AntiAliasingMethod", "DisplayName": "Method", "Type": "Enum", "Options": ["FXAA", "TAA", "Morphological"] } ] },
+			{ "name": "DirectionalLight", "displayName": "Directional Light", "category": "Rendering", "description": "The sun.", "addable": true, "removable": true, "properties": [
+				{ "Name": "Intensity", "DisplayName": "Intensity", "Type": "Float", "Min": 0, "Max": 100 } ] }
+		] } },
+		"settings.json": { "pin": "@PIN@", "engineCommit": "@PIN12@", "command": "project.settings", "result": { "project": { "name": "Empty" }, "unclaimed": [], "sections": [
+			{ "id": "Renderer.Quality", "title": "Rendering quality", "category": "Rendering", "description": "Presets.", "version": 1, "isDefault": true, "problem": null,
+				"schema": { "type": "object", "properties": { "Preset": { "title": "Preset", "type": "string", "enum": ["Low", "Medium", "High", "Ultra", "Custom"], "default": "Medium" } } }, "value": { "Preset": "Medium" } }
+		] } },
+		"preferences.json": { "pin": "@PIN@", "engineCommit": "@PIN12@", "command": "preferences.get", "result": { "unclaimed": [], "sections": [
+			{ "id": "Editor.ExternalEditor", "title": "External editor", "category": "Editor", "description": "The code editor.", "version": 1, "isDefault": true, "problem": null,
+				"schema": { "type": "object", "properties": { "Path": { "title": "Program", "type": "string", "default": "" } } }, "value": { "Path": "" } }
+		] } },
+		"templates.json": { "pin": "@PIN@", "engineCommit": "@PIN12@", "command": "project.templates", "result": { "default": "empty", "templates": [
+			{ "id": "empty", "name": "Empty", "description": "Nothing." }, { "id": "basic3d", "name": "Basic 3D", "description": "A lit scene." } ] } },
+		"samples.json": { "pin": "@PIN@", "engineCommit": "@PIN12@", "command": "project.samples", "result": { "samples": [
+			{ "id": "Tetris", "name": "Tetris", "description": "Blocks.", "picture": null } ] } },
+		"parsed/macros.json": { "pin": "@PIN@", "macros": ["ST_CORE_ASSERT", "ST_PROFILE_FUNCTION"] },
+		"parsed/frame-stages.json": { "pin": "@PIN@", "stages": ["GPU.AO", "Render.Extract", "Scene.Physics", "World.Streaming"] },
+		"parsed/tests.json": { "pin": "@PIN@", "suites": ["Architecture.Layering", "Editor.UI.Dialogs", "World.Coordinates"], "ctest": ["StrataTests.FeatureTest"] },
+		"parsed/options.json": { "pin": "@PIN@", "programs": {
+			"StrataEditor": { "": ["--project", "--no-gpu", "--commands", "--quit-after-commands"] },
+			"StrataRuntime": { "": ["--windowed", "--frames"] },
+			"StrataCLI": { "": ["--help", "--version"], "launch": ["--project", "--no-gpu", "--idle-timeout"], "call": ["--project", "--timeout"] } } },
+		"parsed/paths.json": { "pin": "@PIN@", "submodules": { "Strata/vendor/glm": "@GLM@" }, "paths": [
+			"CMakeLists.txt", "Strata/src/Strata/Scene/Scene.h", "Strata/src/Strata/Renderer/Renderer.cpp", "Tools/LookDev.py",
+			"Samples/Tetris/Assets/Block.png", "Samples/Coins/Assets/Coin.png", "Strata/src/Strata/Renderer/LodSelection.h" ] },
+		"parsed/ui-literals.json": { "pin": "@PIN@", "literals": ["File", "New Project...", "Add Component", "Play", "Inspector", "Content Browser"] }
+	}
+}

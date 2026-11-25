@@ -1,0 +1,45 @@
+# syntax=docker/dockerfile:1
+# The Strata Engine Book built on the server from a clone of its repository, then served like deploy/Dockerfile. Use
+# deploy/Dockerfile with a release instead when you can: this file builds the site, which needs about 4 GB of free
+# memory and up to 30 minutes on four cores when no cache is there yet (the derived pictures are encoded then).
+#
+#     docker build -f deploy/Dockerfile.build -t strata-engine-docs:<commit> .
+#     docker run -d --read-only --tmpfs /tmp --tmpfs /var/cache/nginx -p 127.0.0.1:8080:8080 strata-engine-docs:<commit>
+#
+# Without build arguments the site is built for the base and the origin of site.json. --build-arg DOCS_BASE=<base> and
+# --build-arg DOCS_SITE=<origin> build it for another place, and --build-arg DOCS_RELEASE=1 makes a release build,
+# which refuses draft pages and placeholders. Diagrams are committed, so the build starts no browser and installs none.
+# The final stage holds nginx's files and the built site only: no node_modules, no tool that only builds or tests.
+
+FROM node:26.13.0-trixie-slim AS build
+WORKDIR /book
+ENV ASTRO_TELEMETRY_DISABLED=1 DO_NOT_TRACK=1 npm_config_update_notifier=false npm_config_fund=false
+# Python runs tools/release.py, which writes the server files for the built site (its Content Security Policy and
+# its moved pages).
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends python3 \
+	&& rm -rf /var/lib/apt/lists/*
+COPY package.json package-lock.json ./
+RUN npm ci --no-audit
+COPY . .
+ARG DOCS_BASE
+ARG DOCS_SITE
+ARG DOCS_RELEASE=0
+# An argument left out or given empty takes site.json's value: an empty DOCS_BASE would otherwise be refused by the
+# build (only "/" names the root of a host). .cache keeps the encoded pictures between builds on the same machine.
+RUN --mount=type=cache,target=/book/.cache set -eu; \
+	if [ -z "${DOCS_BASE:-}" ]; then unset DOCS_BASE; fi; \
+	if [ -z "${DOCS_SITE:-}" ]; then unset DOCS_SITE; fi; \
+	export DOCS_RELEASE; \
+	npx astro build; \
+	node scripts/precompress.mjs; \
+	python3 tools/release.py layout --dist dist --out /book/serve ${DOCS_BASE:+"--base=$DOCS_BASE"}
+
+FROM nginxinc/nginx-unprivileged:1.30.6-alpine
+# /book/serve/nginx/ holds deploy/'s server files for the base of the build, with the generated policy and moved
+# pages, under the names deploy/Dockerfile gives them; /book/serve/www/ holds the built site under its base.
+COPY --from=build /book/serve/nginx/ /etc/nginx/
+COPY --from=build --chown=101:101 /book/serve/www/ /srv/www/
+RUN nginx -t
+EXPOSE 8080
+HEALTHCHECK --interval=30s --timeout=3s CMD wget -q --spider "http://127.0.0.1:8080$(cat /etc/nginx/strata-engine-docs-base)/" || exit 1

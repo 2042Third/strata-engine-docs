@@ -1,0 +1,8 @@
+{
+	"page": "editor-ui/tutorial-panel",
+	"startsFrom": { "pin": true },
+	"patch": {
+		"file": "tutorials/editor-ui/tutorial-panel.patch",
+		"tests": [ "Editor.UI.SelectionSummary", "Editor.UI", "Editor.UI.Source" ]
+	}
+}

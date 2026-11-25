@@ -1,0 +1,825 @@
+{
+	"pin": "319075e3f92b316db5cdd30560de08c1ffe0ae26",
+	"engineCommit": "319075e3f92b",
+	"command": "entity.get",
+	"result": {
+		"components": [
+			{
+				"component": "Name",
+				"values": {
+					"Name": "Defaults"
+				}
+			},
+			{
+				"component": "Transform",
+				"values": {
+					"Rotation": [
+						0,
+						0,
+						0,
+						1
+					],
+					"Scale": [
+						1,
+						1,
+						1
+					],
+					"Translation": [
+						0,
+						0,
+						0
+					]
+				}
+			},
+			{
+				"component": "Tag",
+				"values": {
+					"Tag": ""
+				}
+			},
+			{
+				"component": "Camera",
+				"values": {
+					"Aperture": 2.8,
+					"ClearColor": [
+						0.05,
+						0.05,
+						0.07,
+						1
+					],
+					"DepthOfField": false,
+					"FocusDistance": 10,
+					"FocusEntity": "0000000000000000",
+					"OrthographicFar": 1000,
+					"OrthographicNear": 0.1,
+					"OrthographicSize": 10,
+					"PerspectiveFOV": 60,
+					"PerspectiveFar": 1000,
+					"PerspectiveNear": 0.1,
+					"Primary": true,
+					"Projection": "Perspective",
+					"SensorHeight": 24
+				},
+				"inactive": {
+					"Aperture": "Depth Of Field is off",
+					"FocusDistance": "Depth Of Field is off",
+					"FocusEntity": "Depth Of Field is off",
+					"OrthographicFar": "The camera's projection is Perspective",
+					"OrthographicNear": "The camera's projection is Perspective",
+					"OrthographicSize": "The camera's projection is Perspective",
+					"SensorHeight": "Depth Of Field is off"
+				}
+			},
+			{
+				"component": "MeshRenderer",
+				"values": {
+					"CastShadows": true,
+					"Material": "0000000000000000",
+					"Mesh": "0000000000000000"
+				}
+			},
+			{
+				"component": "DirectionalLight",
+				"values": {
+					"CascadeBlend": 0.1,
+					"CascadeDistribution": 0.9,
+					"CastShadows": true,
+					"Color": [
+						1,
+						1,
+						1
+					],
+					"ContactShadowLength": 0.3,
+					"Intensity": 3,
+					"ShadowBias": 1,
+					"ShadowDistance": 80,
+					"ShadowNormalBias": 1.5,
+					"ShadowSoftness": 0.53
+				}
+			},
+			{
+				"component": "PointLight",
+				"values": {
+					"CastShadows": false,
+					"Color": [
+						1,
+						1,
+						1
+					],
+					"Intensity": 10,
+					"Range": 10,
+					"ShadowBias": 1,
+					"ShadowFilterRadius": 1.5,
+					"ShadowNormalBias": 1.5,
+					"SourceRadius": 0
+				},
+				"inactive": {
+					"ShadowBias": "Cast Shadows is off",
+					"ShadowFilterRadius": "Cast Shadows is off",
+					"ShadowNormalBias": "Cast Shadows is off"
+				}
+			},
+			{
+				"component": "SpotLight",
+				"values": {
+					"CastShadows": false,
+					"Color": [
+						1,
+						1,
+						1
+					],
+					"InnerConeAngle": 20,
+					"Intensity": 20,
+					"OuterConeAngle": 30,
+					"Range": 15,
+					"ShadowBias": 1,
+					"ShadowFilterRadius": 1.5,
+					"ShadowNormalBias": 1.5,
+					"SourceRadius": 0
+				},
+				"inactive": {
+					"ShadowBias": "Cast Shadows is off",
+					"ShadowFilterRadius": "Cast Shadows is off",
+					"ShadowNormalBias": "Cast Shadows is off"
+				}
+			},
+			{
+				"component": "RectLight",
+				"values": {
+					"CastShadows": false,
+					"Color": [
+						1,
+						1,
+						1
+					],
+					"Height": 0.5,
+					"Intensity": 25,
+					"Range": 10,
+					"ShadowBias": 1,
+					"ShadowNormalBias": 1.5,
+					"TwoSided": false,
+					"Units": "Nits",
+					"Width": 1
+				},
+				"inactive": {
+					"ShadowBias": "Cast Shadows is off",
+					"ShadowNormalBias": "Cast Shadows is off"
+				}
+			},
+			{
+				"component": "LightSurface",
+				"values": {}
+			},
+			{
+				"component": "SkyLight",
+				"values": {
+					"AerialPerspective": true,
+					"AerialPerspectiveScale": 1,
+					"AmbientColor": [
+						0.03,
+						0.03,
+						0.04
+					],
+					"AtmosphereDensity": 1,
+					"AtmosphereHaze": 1,
+					"BackgroundBlur": 0,
+					"EnvironmentMap": "0000000000000000",
+					"GroundAlbedo": 0.3,
+					"GroundColor": [
+						0.055,
+						0.05,
+						0.045
+					],
+					"HorizonColor": [
+						0.165,
+						0.185,
+						0.21
+					],
+					"Intensity": 1,
+					"Rotation": 0,
+					"ShowBackground": true,
+					"Source": "EnvironmentMap",
+					"SunIntensity": 20,
+					"SunSize": 0.53,
+					"ZenithColor": [
+						0.045,
+						0.08,
+						0.155
+					]
+				},
+				"inactive": {
+					"AerialPerspective": "Only the atmosphere uses it (Source is Environment Map)",
+					"AerialPerspectiveScale": "Only the atmosphere uses it (Source is Environment Map)",
+					"AtmosphereDensity": "Only the atmosphere uses it (Source is Environment Map)",
+					"AtmosphereHaze": "Only the atmosphere uses it (Source is Environment Map)",
+					"GroundAlbedo": "Only the atmosphere uses it (Source is Environment Map)",
+					"GroundColor": "Only the procedural sky uses it (Source is Environment Map)",
+					"HorizonColor": "Only the procedural sky uses it (Source is Environment Map)",
+					"SunIntensity": "Only the procedural sky uses it (Source is Environment Map)",
+					"SunSize": "Only the procedural sky and the atmosphere draw a sun (Source is Environment Map)",
+					"ZenithColor": "Only the procedural sky uses it (Source is Environment Map)"
+				}
+			},
+			{
+				"component": "HeightFog",
+				"values": {
+					"BaseHeight": 0,
+					"Color": [
+						0.7,
+						0.8,
+						0.9
+					],
+					"ColorFromSky": true,
+					"Density": 0.02,
+					"HeightFalloff": 0.2,
+					"MaxOpacity": 1,
+					"StartDistance": 0,
+					"SunScattering": 0.5
+				}
+			},
+			{
+				"component": "ReflectionProbe",
+				"values": {
+					"BlendDistance": 1,
+					"BoxProjection": true,
+					"Capture": "0000000000000000",
+					"Extents": [
+						5,
+						5,
+						5
+					],
+					"Intensity": 1,
+					"Priority": 0
+				}
+			},
+			{
+				"component": "PostProcess",
+				"values": {
+					"AmbientOcclusion": true,
+					"AmbientOcclusionIntensity": 1,
+					"AmbientOcclusionMultiBounce": true,
+					"AmbientOcclusionRadius": 1,
+					"AntiAliasing": true,
+					"AntiAliasingMethod": "FXAA",
+					"AutoExposure": true,
+					"AutoExposureHighPercentile": 0.9,
+					"AutoExposureKey": 0.12,
+					"AutoExposureLightSpeed": 3,
+					"AutoExposureLowPercentile": 0.1,
+					"AutoExposureMaxEV": 16,
+					"AutoExposureMetering": "CenterWeighted",
+					"AutoExposureMinEV": -4,
+					"AutoExposureSpeed": 1.5,
+					"Bloom": true,
+					"BloomIntensity": 0.04,
+					"BloomRadius": 0.05925926,
+					"BloomThreshold": 0,
+					"ChromaticAberration": 0,
+					"ColorLookup": "0000000000000000",
+					"ColorLookupIntensity": 1,
+					"ColorOffset": [
+						0,
+						0,
+						0
+					],
+					"ColorPower": [
+						1,
+						1,
+						1
+					],
+					"ColorSlope": [
+						1,
+						1,
+						1
+					],
+					"Contrast": 1,
+					"Exposure": 0,
+					"FilmGrain": 0,
+					"GlobalIllumination": false,
+					"GlobalIlluminationIntensity": 1,
+					"LensFlare": 0,
+					"MotionBlur": false,
+					"MotionBlurMaxLength": 0.02,
+					"MotionBlurShutterAngle": 180,
+					"Saturation": 1,
+					"ScreenSpaceReflections": false,
+					"ScreenSpaceReflectionsIntensity": 1,
+					"ScreenSpaceReflectionsMaxRoughness": 0.5,
+					"Shoulder": 0.5,
+					"TAAClipWidth": 1.25,
+					"TAADisocclusionRejection": true,
+					"TAADisocclusionThreshold": 0.05,
+					"TAAHistoryClamp": "Variance",
+					"TAAHistoryFrames": 8,
+					"TAAMaxMotionWeight": 0.5,
+					"TAAMotionResponse": 0.0625,
+					"TAAPreset": "Sharp",
+					"TAAResampleWeight": 0.25,
+					"TAASharpening": 0.5,
+					"TAATransparentWeight": 0.5,
+					"Toe": 0.5,
+					"Tonemapper": "Filmic",
+					"Vignette": 0.12,
+					"WhiteBalanceTemperature": 6500,
+					"WhiteBalanceTint": 0
+				},
+				"inactive": {
+					"ColorLookupIntensity": "No Color Lookup is set",
+					"GlobalIlluminationIntensity": "Global Illumination is off",
+					"MotionBlurMaxLength": "Motion Blur is off",
+					"MotionBlurShutterAngle": "Motion Blur is off",
+					"ScreenSpaceReflectionsIntensity": "Screen Space Reflections is off",
+					"ScreenSpaceReflectionsMaxRoughness": "Screen Space Reflections is off",
+					"TAAClipWidth": "Only TAA uses it (Anti Aliasing Method is FXAA)",
+					"TAADisocclusionRejection": "Only TAA uses it (Anti Aliasing Method is FXAA)",
+					"TAADisocclusionThreshold": "Only TAA uses it (Anti Aliasing Method is FXAA)",
+					"TAAHistoryClamp": "Only TAA uses it (Anti Aliasing Method is FXAA)",
+					"TAAHistoryFrames": "Only TAA uses it (Anti Aliasing Method is FXAA)",
+					"TAAMaxMotionWeight": "Only TAA uses it (Anti Aliasing Method is FXAA)",
+					"TAAMotionResponse": "Only TAA uses it (Anti Aliasing Method is FXAA)",
+					"TAAPreset": "Only TAA uses it (Anti Aliasing Method is FXAA)",
+					"TAAResampleWeight": "Only TAA uses it (Anti Aliasing Method is FXAA)",
+					"TAASharpening": "Only TAA uses it (Anti Aliasing Method is FXAA)",
+					"TAATransparentWeight": "Only TAA uses it (Anti Aliasing Method is FXAA)"
+				}
+			},
+			{
+				"component": "Text",
+				"values": {
+					"Alignment": "Center",
+					"Color": [
+						1,
+						1,
+						1,
+						1
+					],
+					"Font": "0000000000000000",
+					"FontSize": 32,
+					"ScreenAnchor": [
+						0.5,
+						0.5
+					],
+					"ScreenOffset": [
+						0,
+						0
+					],
+					"ScreenSpace": true,
+					"Text": "Text"
+				}
+			},
+			{
+				"component": "RigidBody",
+				"values": {
+					"AngularDamping": 0.05,
+					"ContinuousCollision": false,
+					"Friction": 0.5,
+					"GravityScale": 1,
+					"IsTrigger": false,
+					"Layer": 0,
+					"LinearDamping": 0.05,
+					"LockRotationX": false,
+					"LockRotationY": false,
+					"LockRotationZ": false,
+					"Mass": 1,
+					"Restitution": 0,
+					"Type": "Dynamic"
+				}
+			},
+			{
+				"component": "BoxCollider",
+				"values": {
+					"HalfExtents": [
+						0.5,
+						0.5,
+						0.5
+					],
+					"Offset": [
+						0,
+						0,
+						0
+					]
+				}
+			},
+			{
+				"component": "SphereCollider",
+				"values": {
+					"Offset": [
+						0,
+						0,
+						0
+					],
+					"Radius": 0.5
+				}
+			},
+			{
+				"component": "CapsuleCollider",
+				"values": {
+					"HalfHeight": 0.5,
+					"Offset": [
+						0,
+						0,
+						0
+					],
+					"Radius": 0.5
+				}
+			},
+			{
+				"component": "MeshCollider",
+				"values": {
+					"Convex": true,
+					"Mesh": "0000000000000000"
+				}
+			},
+			{
+				"component": "CharacterController",
+				"values": {
+					"Enabled": true,
+					"GravityScale": 1,
+					"Height": 1.8,
+					"Layer": 0,
+					"MaxSlopeDegrees": 45,
+					"PushStrength": 200,
+					"Radius": 0.3,
+					"StepHeight": 0.35
+				}
+			},
+			{
+				"component": "AudioSource",
+				"values": {
+					"Clip": "0000000000000000",
+					"Loop": false,
+					"MaxDistance": 50,
+					"MinDistance": 1,
+					"Pitch": 1,
+					"PlayOnStart": true,
+					"Rolloff": 1,
+					"Spatial": true,
+					"Volume": 1
+				}
+			},
+			{
+				"component": "AudioListener",
+				"values": {
+					"Active": true
+				}
+			},
+			{
+				"component": "Skin",
+				"values": {
+					"Animator": "0000000000000000"
+				}
+			},
+			{
+				"component": "Animator",
+				"values": {
+					"ApplyRootMotion": false,
+					"Clip": "0000000000000000",
+					"Controller": "0000000000000000",
+					"CullingMode": "AlwaysAnimate",
+					"Loop": true,
+					"PlayOnStart": true,
+					"Skeleton": "0000000000000000",
+					"Speed": 1
+				}
+			},
+			{
+				"component": "AttachToJoint",
+				"values": {
+					"Animator": "0000000000000000",
+					"Joint": ""
+				}
+			},
+			{
+				"component": "Script",
+				"values": {
+					"Scripts": []
+				}
+			},
+			{
+				"component": "World",
+				"values": {
+					"DistanceScale": 1,
+					"World": "0000000000000000"
+				}
+			},
+			{
+				"component": "StreamingSource",
+				"values": {
+					"Enabled": true,
+					"Layers": "",
+					"Priority": 0,
+					"Radius": 0,
+					"ViewBias": 0.25
+				}
+			},
+			{
+				"component": "UICanvas",
+				"values": {
+					"FirstSelected": "0000000000000000",
+					"MatchWidthOrHeight": 0.5,
+					"PixelSnap": true,
+					"ReceivesInput": true,
+					"ReferenceResolution": [
+						1920,
+						1080
+					],
+					"RenderMode": "ScreenSpace",
+					"SafeAreaPadding": [
+						0,
+						0,
+						0,
+						0
+					],
+					"ScaleFactor": 1,
+					"ScaleMode": "ScaleWithScreen",
+					"SortOrder": 0,
+					"WorldUnitsPerUnit": 0.01
+				},
+				"inactive": {
+					"ScaleFactor": "Only the constant scale modes use it (Scale Mode is Scale With Screen)",
+					"WorldUnitsPerUnit": "Only a canvas in the world uses it (Render Mode is Screen Space)"
+				},
+				"added": [
+					"UIRect"
+				]
+			},
+			{
+				"component": "UIRect",
+				"values": {
+					"AnchorMax": [
+						0.5,
+						0.5
+					],
+					"AnchorMin": [
+						0.5,
+						0.5
+					],
+					"FitContent": "None",
+					"IgnoreLayout": false,
+					"Pivot": [
+						0.5,
+						0.5
+					],
+					"Position": [
+						0,
+						0
+					],
+					"Size": [
+						100,
+						100
+					]
+				}
+			},
+			{
+				"component": "UIImage",
+				"values": {
+					"BorderColor": [
+						0,
+						0,
+						0,
+						1
+					],
+					"BorderWidth": 0,
+					"Color": [
+						1,
+						1,
+						1,
+						1
+					],
+					"CornerRadius": 0,
+					"FillAmount": 1,
+					"FillDirection": "LeftToRight",
+					"PreserveAspect": false,
+					"RaycastTarget": true,
+					"SliceBorders": [
+						0,
+						0,
+						0,
+						0
+					],
+					"SliceScale": 1,
+					"Texture": "0000000000000000",
+					"Type": "Simple",
+					"UVRect": [
+						0,
+						0,
+						1,
+						1
+					]
+				},
+				"inactive": {
+					"BorderColor": "Only a border uses it (Border Width is 0)",
+					"FillAmount": "Only Filled images use it (Type is Simple)",
+					"FillDirection": "Only Filled images use it (Type is Simple)",
+					"SliceBorders": "Only Sliced images use it (Type is Simple)",
+					"SliceScale": "Only Sliced images use it (Type is Simple)"
+				},
+				"added": [
+					"UIRect"
+				]
+			},
+			{
+				"component": "UIText",
+				"values": {
+					"Alignment": "Center",
+					"Color": [
+						1,
+						1,
+						1,
+						1
+					],
+					"Font": "0000000000000000",
+					"FontSize": 32,
+					"LineSpacing": 1,
+					"OutlineColor": [
+						0,
+						0,
+						0,
+						1
+					],
+					"OutlineWidth": 0,
+					"Overflow": "Overflow",
+					"RaycastTarget": false,
+					"Text": "Text",
+					"VerticalAlignment": "Middle",
+					"Wrap": true
+				},
+				"inactive": {
+					"OutlineColor": "Only an outline uses it (Outline Width is 0)"
+				},
+				"added": [
+					"UIRect"
+				]
+			},
+			{
+				"component": "UISelectable",
+				"values": {
+					"DisabledColor": [
+						0.75,
+						0.75,
+						0.75,
+						0.5
+					],
+					"DisabledImage": "0000000000000000",
+					"FadeDuration": 0.1,
+					"FocusedColor": [
+						0.95,
+						0.95,
+						0.95,
+						1
+					],
+					"FocusedImage": "0000000000000000",
+					"HoverColor": [
+						0.9,
+						0.9,
+						0.9,
+						1
+					],
+					"HoverImage": "0000000000000000",
+					"Interactable": true,
+					"NavigateDown": "0000000000000000",
+					"NavigateLeft": "0000000000000000",
+					"NavigateRight": "0000000000000000",
+					"NavigateUp": "0000000000000000",
+					"Navigation": "Automatic",
+					"NormalColor": [
+						1,
+						1,
+						1,
+						1
+					],
+					"PressedColor": [
+						0.75,
+						0.75,
+						0.75,
+						1
+					],
+					"PressedImage": "0000000000000000",
+					"TargetImage": "0000000000000000",
+					"Transition": "ColorTint"
+				},
+				"inactive": {
+					"DisabledImage": "Only the Image Swap transition uses it (Transition is Color Tint)",
+					"FocusedImage": "Only the Image Swap transition uses it (Transition is Color Tint)",
+					"HoverImage": "Only the Image Swap transition uses it (Transition is Color Tint)",
+					"NavigateDown": "Only Explicit navigation uses it (Navigation is Automatic: the nearest selectable in the direction)",
+					"NavigateLeft": "Only Explicit navigation uses it (Navigation is Automatic: the nearest selectable in the direction)",
+					"NavigateRight": "Only Explicit navigation uses it (Navigation is Automatic: the nearest selectable in the direction)",
+					"NavigateUp": "Only Explicit navigation uses it (Navigation is Automatic: the nearest selectable in the direction)",
+					"PressedImage": "Only the Image Swap transition uses it (Transition is Color Tint)"
+				},
+				"added": [
+					"UIRect"
+				]
+			},
+			{
+				"component": "UIButton",
+				"values": {
+					"EventTarget": "0000000000000000"
+				},
+				"added": [
+					"UIRect"
+				]
+			},
+			{
+				"component": "UIToggle",
+				"values": {
+					"Checkmark": "0000000000000000",
+					"EventTarget": "0000000000000000",
+					"Group": "0000000000000000",
+					"IsOn": false
+				},
+				"added": [
+					"UIRect"
+				]
+			},
+			{
+				"component": "UISlider",
+				"values": {
+					"Direction": "LeftToRight",
+					"EventTarget": "0000000000000000",
+					"Fill": "0000000000000000",
+					"Handle": "0000000000000000",
+					"KeyboardStep": 0,
+					"MaxValue": 1,
+					"MinValue": 0,
+					"Value": 0,
+					"WholeNumbers": false
+				},
+				"added": [
+					"UIRect"
+				]
+			},
+			{
+				"component": "UILayout",
+				"values": {
+					"CellSize": [
+						100,
+						100
+					],
+					"ChildAlignment": "TopLeft",
+					"Columns": 0,
+					"Padding": [
+						0,
+						0,
+						0,
+						0
+					],
+					"Spacing": [
+						0,
+						0
+					],
+					"StretchChildren": false,
+					"Type": "Vertical"
+				},
+				"inactive": {
+					"CellSize": "Only a Grid uses it (Type is Vertical)",
+					"Columns": "Only a Grid uses it (Type is Vertical)"
+				},
+				"added": [
+					"UIRect"
+				]
+			},
+			{
+				"component": "UIInputField",
+				"values": {
+					"CaretColor": [
+						1,
+						1,
+						1,
+						1
+					],
+					"CharacterLimit": 0,
+					"EventTarget": "0000000000000000",
+					"Placeholder": "0000000000000000",
+					"SelectionColor": [
+						0.3,
+						0.55,
+						1,
+						0.45
+					],
+					"Text": "",
+					"TextElement": "0000000000000000"
+				},
+				"added": [
+					"UIRect"
+				]
+			},
+			{
+				"component": "UIMask",
+				"values": {
+					"Padding": [
+						0,
+						0,
+						0,
+						0
+					],
+					"Softness": 0
+				},
+				"added": [
+					"UIRect"
+				]
+			}
+		]
+	}
+}

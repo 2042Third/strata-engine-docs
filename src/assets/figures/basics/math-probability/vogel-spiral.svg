@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="book-drawing" viewBox="0 0 768 564">
+<style>
+svg.book-drawing { font-family: var(--sl-font, 'Inter Variable', system-ui, sans-serif); font-size: 16px; fill: var(--sl-color-white, #17181c); stroke: none; stroke-width: 1.5px; stroke-linejoin: round; }
+svg.book-drawing text { stroke: none; }
+svg.book-drawing .ink { fill: var(--sl-color-white, #17181c); }
+svg.book-drawing .line-ink { stroke: var(--sl-color-white, #17181c); }
+svg.book-drawing .muted { fill: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .line-muted { stroke: var(--sl-color-gray-3, #555962); }
+svg.book-drawing .faint { fill: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .line-faint { stroke: var(--sl-color-gray-5, #c1c3c8); }
+svg.book-drawing .ground { fill: var(--sl-color-black, #ffffff); }
+svg.book-drawing .line-ground { stroke: var(--sl-color-black, #ffffff); }
+svg.book-drawing .plate { fill: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .line-plate { stroke: var(--sl-color-gray-6, #edeef3); }
+svg.book-drawing .blue { fill: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .line-blue { stroke: var(--sl-color-blue-high, #0f1c8a); }
+svg.book-drawing .blue-area { fill: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .line-blue-area { stroke: var(--sl-color-blue-low, #cfd4fc); }
+svg.book-drawing .green { fill: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .line-green { stroke: var(--sl-color-green-high, #28650b); }
+svg.book-drawing .green-area { fill: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .line-green-area { stroke: var(--sl-color-green-low, #defbd0); }
+svg.book-drawing .purple { fill: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .line-purple { stroke: var(--sl-color-purple-high, #660891); }
+svg.book-drawing .purple-area { fill: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .line-purple-area { stroke: var(--sl-color-purple-low, #edd1fa); }
+svg.book-drawing .orange { fill: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .line-orange { stroke: var(--sl-color-orange-high, #73520d); }
+svg.book-drawing .orange-area { fill: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .line-orange-area { stroke: var(--sl-color-orange-low, #fceac5); }
+svg.book-drawing .red { fill: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .line-red { stroke: var(--sl-color-red-high, #8a0f3a); }
+svg.book-drawing .red-area { fill: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .line-red-area { stroke: var(--sl-color-red-low, #fad1df); }
+svg.book-drawing .small { font-size: 14px; }
+svg.book-drawing .large { font-size: 20px; }
+svg.book-drawing .bold { font-weight: 600; }
+svg.book-drawing .mono { font-family: var(--sl-font-mono, 'JetBrains Mono Variable', ui-monospace, monospace); }
+svg.book-drawing .halo { paint-order: stroke; stroke: var(--sl-color-black, #ffffff); stroke-width: 5px; }
+</style>
+<!-- plan: unit circle at (384, 284), radius 260 px; tap i at radius sqrt((i + 0.5) / 32), angle i x 2.39996 rad (counterclockwise, y up); labels 17 px outward (tap 0 below, taps 24 to 31 inward, clear of the rim); N stated top left, clear of the circle (its left edge at y 80 is x 223); arc 0 to 137.5 degrees at 44 px; H = 564 -->
+<circle class="line-muted" fill="none" cx="384" cy="284" r="260"/>
+<text class="muted" x="654" y="289">radius 1</text>
+<line class="line-orange" stroke-dasharray="4 3" x1="384" y1="284" x2="440" y2="284"/>
+<line class="line-orange" stroke-dasharray="4 3" x1="384" y1="284" x2="346.4" y2="249.5"/>
+<path class="line-orange" fill="none" d="M 428 284 A 44 44 0 0 0 359.1 247.7"/>
+<polygon class="orange" points="351.6,254.3 356.8,245.1 361.4,250.4"/>
+<text class="orange bold" x="384" y="222" text-anchor="middle">137.5°</text>
+<circle class="ink" cx="384" cy="284" r="2.5"/>
+<circle class="orange" cx="416.5" cy="284" r="5"/>
+<text class="orange bold small" x="416.5" y="304" text-anchor="middle">0</text>
+<circle class="orange" cx="342.5" cy="246" r="5"/>
+<text class="orange bold small" x="330" y="239.5" text-anchor="middle">1</text>
+<circle class="ink" cx="390.4" cy="356.4" r="5"/>
+<text class="ink small" x="391.8" y="378.3" text-anchor="middle">2</text>
+<circle class="ink" cx="436.3" cy="215.8" r="5"/>
+<text class="ink small" x="446.7" y="207.3" text-anchor="middle">3</text>
+<circle class="ink" cx="288" cy="301" r="5"/>
+<text class="ink small" x="271.3" y="308.9" text-anchor="middle">4</text>
+<circle class="ink" cx="474.9" cy="341.9" r="5"/>
+<text class="ink small" x="489.3" y="356" text-anchor="middle">5</text>
+<circle class="ink" cx="353.6" cy="170.8" r="5"/>
+<text class="ink small" x="349.2" y="159.4" text-anchor="middle">6</text>
+<circle class="ink" cx="326" cy="395.7" r="5"/>
+<text class="ink small" x="318.1" y="415.8" text-anchor="middle">7</text>
+<circle class="ink" cx="509.9" cy="238" r="5"/>
+<text class="ink small" x="525.8" y="237.2" text-anchor="middle">8</text>
+<circle class="ink" cx="253.1" cy="229.9" r="5"/>
+<text class="ink small" x="237.3" y="228.5" text-anchor="middle">9</text>
+<circle class="ink" cx="447.1" cy="418.9" r="5"/>
+<text class="ink small" x="454.3" y="439.3" text-anchor="middle">10</text>
+<circle class="ink" cx="430.7" cy="135.3" r="5"/>
+<text class="ink small" x="435.7" y="124.1" text-anchor="middle">11</text>
+<circle class="ink" cx="243.4" cy="365.5" r="5"/>
+<text class="ink small" x="228.7" y="379" text-anchor="middle">12</text>
+<circle class="ink" cx="548.9" cy="320.3" r="5"/>
+<text class="ink small" x="565.5" y="328.9" text-anchor="middle">13</text>
+<circle class="ink" cx="283.3" cy="140.8" r="5"/>
+<text class="ink small" x="273.6" y="131.9" text-anchor="middle">14</text>
+<circle class="ink" cx="360.7" cy="463.5" r="5"/>
+<text class="ink small" x="358.6" y="485.3" text-anchor="middle">15</text>
+<circle class="ink" cx="526.8" cy="163.7" r="5"/>
+<text class="ink small" x="539.8" y="157.7" text-anchor="middle">16</text>
+<circle class="ink" cx="191.9" cy="276" r="5"/>
+<text class="ink small" x="174.9" y="280.3" text-anchor="middle">17</text>
+<circle class="ink" cx="524.1" cy="423.5" r="5"/>
+<text class="ink small" x="536.2" y="440.4" text-anchor="middle">18</text>
+<circle class="ink" cx="374.6" cy="81.3" r="5"/>
+<text class="ink small" x="373.9" y="69.3" text-anchor="middle">19</text>
+<circle class="ink" cx="250.7" cy="443.8" r="5"/>
+<text class="ink small" x="239.8" y="461.8" text-anchor="middle">20</text>
+<circle class="ink" cx="595.2" cy="255.6" r="5"/>
+<text class="ink small" x="612.1" y="258.3" text-anchor="middle">21</text>
+<circle class="ink" cx="205" cy="159.5" r="5"/>
+<text class="ink small" x="191.1" y="154.8" text-anchor="middle">22</text>
+<circle class="ink" cx="432.9" cy="501.4" r="5"/>
+<text class="ink small" x="436.6" y="523" text-anchor="middle">23</text>
+<circle class="ink" cx="497.1" cy="86.6" r="5"/>
+<text class="ink small" x="488.7" y="106.4" text-anchor="middle">24</text>
+<circle class="ink" cx="162.9" cy="354.5" r="5"/>
+<text class="ink small" x="179.1" y="354.4" text-anchor="middle">25</text>
+<circle class="ink" cx="598.8" cy="383.3" r="5"/>
+<text class="ink small" x="583.3" y="381.1" text-anchor="middle">26</text>
+<circle class="ink" cx="291" cy="61.7" r="5"/>
+<text class="ink small" x="297.5" y="82.3" text-anchor="middle">27</text>
+<circle class="ink" cx="300.9" cy="514.9" r="5"/>
+<text class="ink small" x="306.7" y="503.9" text-anchor="middle">28</text>
+<circle class="ink" cx="605" cy="167.9" r="5"/>
+<text class="ink small" x="589.9" y="180.8" text-anchor="middle">29</text>
+<circle class="ink" cx="138.6" cy="219.3" r="5"/>
+<text class="ink small" x="155" y="228.6" text-anchor="middle">30</text>
+<circle class="ink" cx="523.5" cy="501" r="5"/>
+<text class="ink small" x="514.3" y="491.7" text-anchor="middle">31</text>
+<text class="ink" x="16" y="36">N = 32 taps</text>
+<text class="muted" x="16" y="58">tap i at radius</text>
+<text class="muted" x="16" y="80">√((i + 0.5) / 32)</text>
+</svg>

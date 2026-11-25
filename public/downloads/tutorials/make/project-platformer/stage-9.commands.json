@@ -1,0 +1,110 @@
+[
+	{
+		"command": "scene.new"
+	},
+	{
+		"command": "scene.saveAs",
+		"parameters": {
+			"path": "Scenes/Loading.stscene"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "canvas",
+			"name": "Loading"
+		},
+		"bind": {
+			"loading": "/entity"
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "image",
+			"parent": {
+				"$ref": "loading"
+			},
+			"name": "Bar",
+			"anchor": "bottomStretch",
+			"position": [
+				0,
+				-60
+			],
+			"size": [
+				-200,
+				24
+			]
+		},
+		"bind": {
+			"bar": "/entity"
+		}
+	},
+	{
+		"command": "component.set",
+		"parameters": {
+			"entity": {
+				"$ref": "bar"
+			},
+			"component": "UIImage",
+			"values": {
+				"Type": "Filled",
+				"FillAmount": 0
+			}
+		}
+	},
+	{
+		"command": "ui.create",
+		"parameters": {
+			"type": "text",
+			"parent": {
+				"$ref": "loading"
+			},
+			"name": "Label",
+			"text": "Loading",
+			"anchor": "bottomCenter",
+			"position": [
+				0,
+				-100
+			],
+			"size": [
+				600,
+				48
+			]
+		},
+		"bind": {
+			"label": "/entity"
+		}
+	},
+	{
+		"command": "script.build",
+		"expect": {
+			"/success": {
+				"equals": true
+			}
+		}
+	},
+	{
+		"command": "script.add",
+		"parameters": {
+			"entity": {
+				"$ref": "loading"
+			},
+			"class": "LoadingScreen",
+			"fields": {
+				"Bar": {
+					"$ref": "bar"
+				},
+				"Label": {
+					"$ref": "label"
+				}
+			}
+		}
+	},
+	{
+		"command": "project.setExportSettings",
+		"parameters": {
+			"loadingScene": "Scenes/Loading.stscene"
+		}
+	}
+]
