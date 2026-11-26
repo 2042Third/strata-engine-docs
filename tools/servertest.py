@@ -293,11 +293,27 @@ class Server:
             except subprocess.TimeoutExpired:
                 os.killpg(self.process.pid, signal.SIGKILL)
                 self.process.wait()
-            try:
-                os.killpg(self.process.pid, 0)
-                left = [self.process.pid]
-            except ProcessLookupError:
-                left = []
+            # A member of the group that the signal ended may still be exiting, or waiting as a zombie for the process
+            # that adopted it to reap it: the group counts as gone only once kill finds none of them (CI saw a worker
+            # there right after its master's wait). One still there after 5 seconds gets SIGKILL.
+            deadline = time.monotonic() + 15
+            killed = False
+            while True:
+                try:
+                    os.killpg(self.process.pid, 0)
+                except ProcessLookupError:
+                    left = []
+                    break
+                if time.monotonic() > deadline:
+                    left = [self.process.pid]
+                    break
+                if not killed and time.monotonic() > deadline - 10:
+                    try:
+                        os.killpg(self.process.pid, signal.SIGKILL)
+                    except ProcessLookupError:
+                        pass
+                    killed = True
+                time.sleep(0.1)
         self.log.close()
         return left
 
