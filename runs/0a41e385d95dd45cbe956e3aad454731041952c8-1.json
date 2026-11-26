@@ -1,0 +1,57 @@
+{
+ "attempt": 1,
+ "commit": "0a41e385d95dd45cbe956e3aad454731041952c8",
+ "conclusion": "failure",
+ "jobs": [
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "build"
+  },
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "excerpts"
+  },
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "lint"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "release"
+  },
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 855,
+     "message": "Process completed with exit code 1.",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 843,
+     "message": "node scripts/lighthouse.mjs --url http://127.0.0.1:8080/strata-engine-docs/ --dist site/strata-engine-docs --json lighthouse.json exited 1:\n(home): accessibility 100\nbasics/build/: accessibility 100\nanimation/limits/: accessibility 100\nanimation/blending/: accessibility 100\nassets/extending/: accessibility 100\ncore/reading-code/: accessibility 100\nappendix/credits/: accessibility 100\nreference/glossary/: accessibility 100\nimage/spatial-aa/: accessibility 100, performance 98, CLS 0.08135811930720965, LCP 1505 ms (the heaviest figure page, row 14)\nimage/spatial-aa/: cumulative layout shift 0.08135811930720965, over 0.05\nlighthouse: 9 pages; 1 problem",
+     "path": ".github",
+     "title": "Lighthouse (check 9, row 14)"
+    }
+   ],
+   "failedSteps": [
+    "Search, axe on every page, the keyboard, Lighthouse (checks 9 and 11; budget rows 12 to 15)"
+   ],
+   "name": "serve-test"
+  }
+ ],
+ "run": {
+  "event": "push",
+  "ref": "refs/heads/ci/site",
+  "url": "https://github.com/2042Third/strata-engine-docs/actions/runs/45763491178"
+ }
+}
