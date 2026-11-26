@@ -1,0 +1,42 @@
+{
+ "attempt": 1,
+ "commit": "a3dcbfdcc8e0c925d78a9dfc84c643fa8e21ff36",
+ "conclusion": "success",
+ "jobs": [
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "build"
+  },
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "excerpts"
+  },
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "lint"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "release"
+  },
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "serve-test"
+  }
+ ],
+ "run": {
+  "event": "push",
+  "ref": "refs/heads/ci/site",
+  "url": "https://github.com/2042Third/strata-engine-docs/actions/runs/45802374392"
+ }
+}
