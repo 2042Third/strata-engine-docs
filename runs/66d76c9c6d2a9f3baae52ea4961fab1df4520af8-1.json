@@ -1,0 +1,66 @@
+{
+ "attempt": 1,
+ "commit": "66d76c9c6d2a9f3baae52ea4961fab1df4520af8",
+ "conclusion": "failure",
+ "jobs": [
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "build"
+  },
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 28,
+     "message": "Process completed with exit code 2.",
+     "path": ".github",
+     "title": ""
+    }
+   ],
+   "failedSteps": [
+    "Slang at the pin (the sketches' slangc)"
+   ],
+   "name": "excerpts"
+  },
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "lint"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "release"
+  },
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 1667,
+     "message": "Process completed with exit code 1.",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 35,
+     "message": "python -I tools/servertest.py url --wait 30 --runtime --url http://127.0.0.1:8080/strata-engine-docs/ --release release/main-66d76c9c --container --no-header Strict-Transport-Security exited 1:\nprint/animation/ (a print view): the diagram label \"events\" leaves its box by 0.8 px\nprint/animation/ (a print view): the diagram label \"inverse bind matrix B\" leaves its box by 1.6 px\nprint/animation/ (a print view): the diagram label \"posed model transform P\" leaves its box by 0.7 px\nruntime: note: the build has no moved page (src/redirects.json is empty; the build at /x/y adds the test entry): no 301 was checked\nruntime: 349 requests from 10 pages, two searches, the theme, track game, 0 moved pages; 3 problems\ncrawl: 1428 requests, 395 pages, 721 external links, 0 problems, 92.6 s\n  largest page: http://127.0.0.1:8080/strata-engine-docs/gpu/text/ 664762 bytes (181489 gzip)\n  largest page: http://127.0.0.1:8080/strata-engine-docs/reference/glossary/ 710953 bytes (144057 gzip)\n  largest page: http://127.0.0.1:8080/strata-engine-docs/reference/commands/ 1584216 bytes (136262 gzip)\n  largest print view: http://127.0.0.1:8080/strata-engine-docs/print/make/ 7151669 bytes (1042607 gzip)\n  site: 2716 files, 398.8 MB; search index 11.7 MB\n  HTML: chapter pages 102.6 MB, print views 82.4 MB; median page 42.8 KB gzip; scripts of the heaviest page 9.6 KB gzip; sidebar 37.5 KB (13 % of its page)\nservertest: the runtime check (gate (b)) failed (its problems are above)\nservertest: http://127.0.0.1:8080/strata-engine-docs/ FAILED",
+     "path": ".github",
+     "title": "The container"
+    }
+   ],
+   "failedSteps": [
+    "The container, gates (a) to (c)"
+   ],
+   "name": "serve-test"
+  }
+ ],
+ "run": {
+  "event": "push",
+  "ref": "refs/heads/ci/site",
+  "url": "https://github.com/2042Third/strata-engine-docs/actions/runs/45732630739"
+ }
+}
