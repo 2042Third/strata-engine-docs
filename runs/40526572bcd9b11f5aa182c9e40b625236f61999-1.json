@@ -1,0 +1,57 @@
+{
+ "attempt": 1,
+ "commit": "40526572bcd9b11f5aa182c9e40b625236f61999",
+ "conclusion": "failure",
+ "jobs": [
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "build"
+  },
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "excerpts"
+  },
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "lint"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "release"
+  },
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 876,
+     "message": "Process completed with exit code 1.",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 835,
+     "message": "node scripts/a11y.mjs --all --url http://127.0.0.1:8080/strata-engine-docs/ --dist site/strata-engine-docs exited 1:\nscripting/tutorial-host-function/ [light]: 0 serious or critical, 0 minor violations\nscripting/why-scripts/ [light]: 0 serious or critical, 0 minor violations\nstart/coming-from/ [light]: 0 serious or critical, 1 minor violation\nstart/first-game/ [light]: 0 serious or critical, 1 minor violation\nstart/how-to-read/ [light]: 0 serious or critical, 0 minor violations\nstart/install/ [light]: 0 serious or critical, 0 minor violations\nstart/welcome/ [light]: 0 serious or critical, 0 minor violations\nstart/what-an-engine-is/ [light]: 0 serious or critical, 0 minor violations\nui/contract/ [light]: 0 serious or critical, 0 minor violations\nui/drawing/ [light]: 0 serious or critical, 0 minor violations\nui/input/ [light]: 0 serious or critical, 0 minor violations\nui/layout/ [light]: 0 serious or critical, 0 minor violations\nui/text/ [light]: 0 serious or critical, 1 minor violation\nui/what-game-ui-does/ [light]: 0 serious or critical, 0 minor violations\nworld/ecs/ [light]: 0 serious or critical, 1 minor violation\nworld/ [light]: 0 serious or critical, 0 minor violations\nworld/interpolation/ [light]: 0 serious or critical, 0 minor violations\nworld/prefabs/ [light]: 0 serious or critical, 0 minor violations\nworld/projects-settings/ [light]: 0 serious or critical, 0 minor violations\nworld/reflection/ [light]: 0 serious or critical, 0 minor violations\nworld/review/ [light]: 0 serious or critical, 0 minor violations\nworld/scene-graph/ [light]: 0 serious or critical, 0 minor violations\nworld/serialization/ [light]: 0 serious or critical, 0 minor violations\nworld/sub-scenes/ [light]: 0 serious or critical, 0 minor violations\nworld/systems/ [light]: 0 serious or critical, 0 minor violations\nworld/tutorial-component/ [light]: 0 serious or critical, 0 minor violations\nworld/what-a-world-is/ [light]: 0 serious or critical, 0 minor violations\nworlds/export/ [light]: 0 serious or critical, 0 minor violations\nworlds/game-identity/ [light]: 0 serious or critical, 0 minor violations\nworlds/grids/ [light]: 0 serious or critical, 0 minor violations\nworlds/physics-scripts/ [light]: 0 serious or critical, 1 minor violation\nworlds/runtime/ [light]: 0 serious or critical, 0 minor violations\nworlds/streamer/ [light]: 0 serious or critical, 0 minor violations\nworlds/why-streaming/ [light]: 0 serious or critical, 0 minor violations\nthis-page-does-not-exist/ [light]: 0 serious or critical, 0 minor violations\nprint/assets/ [dark]: serious: link-name: Links must have discernible text\n    .level-h3.sl-heading-wrapper:nth-child(16) > .sl-anchor-link: Element is in tab order and does not have accessible text\nprint/make/ [light]: serious: link-name: Links must have discernible text\n    article:nth-child(24) > section > .level-h2.sl-heading-wrapper:nth-child(7) > .sl-anchor-link: Element is in tab order and does not have accessible text\na11y: 2 failures on 396 pages in two themes",
+     "path": ".github",
+     "title": "axe on every page (row 15)"
+    }
+   ],
+   "failedSteps": [
+    "Search, axe on every page, the keyboard, Lighthouse (checks 9 and 11; budget rows 12 to 15)"
+   ],
+   "name": "serve-test"
+  }
+ ],
+ "run": {
+  "event": "push",
+  "ref": "refs/heads/ci/site",
+  "url": "https://github.com/2042Third/strata-engine-docs/actions/runs/45747774475"
+ }
+}
