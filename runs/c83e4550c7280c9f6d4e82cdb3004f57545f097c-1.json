@@ -1,0 +1,72 @@
+{
+ "attempt": 1,
+ "commit": "c83e4550c7280c9f6d4e82cdb3004f57545f097c",
+ "conclusion": "failure",
+ "jobs": [
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 102,
+     "message": "Process completed with exit code 1.",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 71,
+     "message": "env DOCS_BASE=/ npx astro build --outDir dist-root exited 1:\n  src/content/docs/scripting/shared-libraries.md:113:1: :::tab belongs inside ::::tabs (four colons around the set, three around each tab)\n  src/content/docs/scripting/shared-libraries.md:123:1: :::tab belongs inside ::::tabs (four colons around the set, three around each tab)\n    at throwProblems (file:///home/runner/work/strata-engine-docs/strata-engine-docs/src/plugins/report.mjs:16:8)\n    at transformer (file:///home/runner/work/strata-engine-docs/strata-engine-docs/src/plugins/report.mjs:41:4)\n    at wrapped (file:///home/runner/work/strata-engine-docs/strata-engine-docs/node_modules/trough/lib/index.js:160:27)\n    at next (file:///home/runner/work/strata-engine-docs/strata-engine-docs/node_modules/trough/lib/index.js:86:23)\n    at done (file:///home/runner/work/strata-engine-docs/strata-engine-docs/node_modules/trough/lib/index.js:194:7)\n    at then (file:///home/runner/work/strata-engine-docs/strata-engine-docs/node_modules/trough/lib/index.js:204:5)\n    at wrapped (file:///home/runner/work/strata-engine-docs/strata-engine-docs/node_modules/trough/lib/index.js:181:9)\n    at next (file:///home/runner/work/strata-engine-docs/strata-engine-docs/node_modules/trough/lib/index.js:86:23)\n    at done (file:///home/runner/work/strata-engine-docs/strata-engine-docs/node_modules/trough/lib/index.js:194:7)\n    at then (file:///home/runner/work/strata-engine-docs/strata-engine-docs/node_modules/trough/lib/index.js:204:5)\n^[[31m^[[1m00:32:03^[[22m [ERROR] [starlight-docs-loader]^[[39m Error rendering scripting/shared-libraries.md: Failed to parse Markdown file \"/home/runner/work/strata-engine-docs/strata-engine-docs/src/content/docs/scripting/shared-libraries.md\":\nThe page src/content/docs/scripting/shared-libraries.md has 4 problems:\n  src/content/docs/scripting/shared-libraries.md:102:1: a tab set holds at least two tabs\n  src/content/docs/scripting/shared-libraries.md:102:1: a tab set with sync=os holds the tabs \"Windows\", \"Linux\", \"macOS\", in this order (style.md \u00a710); this one holds \"Windows\"\n  src/content/docs/scripting/shared-libraries.md:113:1: :::tab belongs inside ::::tabs (four colons around the set, three around each tab)\n  src/content/docs/scripting/shared-libraries.md:123:1: :::tab belongs inside ::::tabs (four colons around the set, three around each tab)\nFailed to parse Markdown file \"/home/runner/work/strata-engine-docs/strata-engine-docs/src/content/docs/scripting/shared-libraries.md\":\nThe page src/content/docs/scripting/shared-libraries.md has 4 problems:\n  src/content/docs/scripting/shared-libraries.md:102:1: a tab set holds at least two tabs\n  src/content/docs/scripting/shared-libraries.md:102:1: a tab set with sync=os holds the tabs \"Windows\", \"Linux\", \"macOS\", in this order (style.md \u00a710); this one holds \"Windows\"\n  src/content/docs/scripting/shared-libraries.md:113:1: :::tab belongs inside ::::tabs (four colons around the set, three around each tab)\n  src/content/docs/scripting/shared-libraries.md:123:1: :::tab belongs inside ::::tabs (four colons around the set, three around each tab)\n  ^[[1mStack trace:^[[22m\n^[[2m    at throwProblems (file:///home/runner/work/strata-engine-docs/strata-engine-docs/src/plugins/report.mjs:16:8)\n    at wrapped (file:///home/runner/work/strata-engine-docs/strata-engine-docs/node_modules/trough/lib/index.js:160:27)\n    at done (file:///home/runner/work/strata-engine-docs/strata-engine-docs/node_modules/trough/lib/index.js:194:7)\n    at wrapped (file:///home/runner/work/strata-engine-docs/strata-engine-docs/node_modules/trough/lib/index.js:181:9)\n    at done (file:///home/runner/work/strata-engine-docs/strata-engine-docs/node_modules/trough/lib/index.js:194:7)^[[22m",
+     "path": ".github",
+     "title": "Build at /"
+    }
+   ],
+   "failedSteps": [
+    "Build at the root of a host, and gate (a)"
+   ],
+   "name": "build"
+  },
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 23,
+     "message": "Process completed with exit code 1.",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 20,
+     "message": "python -I tools/sketches.py check --engine engine --slangc /home/runner/work/_temp/slang-2026.20/bin/slangc exited 1:\nsrc/content/docs/basics/threads.md:303: the fence differs from what sketches/basics-threads-deadlock.cpp prints: run python -I tools/sketches.py fill\nsketches: 1 problem",
+     "path": ".github",
+     "title": "Sketches (check 4)"
+    }
+   ],
+   "failedSteps": [
+    "Sketches compile and print what the pages show (check 4)"
+   ],
+   "name": "excerpts"
+  },
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "lint"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "release"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "serve-test"
+  }
+ ],
+ "run": {
+  "event": "push",
+  "ref": "refs/heads/ci/site",
+  "url": "https://github.com/2042Third/strata-engine-docs/actions/runs/45728755681"
+ }
+}
