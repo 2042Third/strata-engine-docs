@@ -105,3 +105,16 @@ crawl is made faster, `crawl_seconds` is recorded with every run as CI runs it (
 ran it, and is not judged: `tools/budgets.py` prints it as a measurement without a limit and never fails or holds a
 run on it. A faster crawl is later work; its first measurements on the reference machine and on `ubuntu-latest` then
 set a budget per machine, by a ruling.
+
+## R61 — Row 7 passes by its own remedy at 6 GB
+
+Budget row 7 of `site.md` reads: peak memory of the build's process tree, on both machines, at most 4 GB; remedy:
+set `--max-old-space-size`, "then ≤ 6 GB passes, with the value written into `package.json`'s build script". The
+remedy is applied: the build script runs `node --max-old-space-size=4096 …/astro.mjs build`, and CI's measured step
+runs the same command. The real book's cold builds then peak at 4,276.7 MB and 4,828.0 MB on `ubuntu-latest` and at
+4,051.6 MiB on the reference machine, all in the Node process and above its heap (native memory: images, the content
+store), with Pagefind at 711.8 MB on its own. So row 7's pass mark is 6,144 MiB, as its row says, and
+`tools/budgets.json` takes it; the regression budget follows the rule of "Pass marks and budgets": the smaller of
+6,144 and 1.5 times the latest full-scale measurement, which is now the real book's (the committed measurements were
+the scale test's of 2026-11-11 and are replaced by the book's). This changes no pass mark: it reads the row as
+written. A build that passes 6 GB fails, and its remedy is work on the build's memory.

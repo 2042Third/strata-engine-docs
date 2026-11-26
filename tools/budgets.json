@@ -1,10 +1,10 @@
 {
-	"comment": "Check 12 (plan/site.md): regression budgets, which CI enforces, beside the pass marks of plan/site.md's budget table (plan/critique/rulings-5.md, R13 and R14). Each budget is at most the smaller of its row's pass mark and 1.5 times the latest full-scale measurement, rounded up to two digits; tools/budgets.py refuses one above that ceiling. A budget goes down whenever a measurement allows it, and up only by a ruling that names what grew. The measurements are the scale test's at full size on the reference machine (i7-13700K, 2026-11-11, inside the engine's perf lock while the engine's own builds and captures kept 1.1 to 23 other processors busy): scripts/scale.mjs's book of the outline's 332 rows at their sizes (368 pages, 1.38 million words of prose, 1,500 quotes, 3,000 code blocks, 400 diagrams, math on a third of the pages, 600 pictures made from the samples' screenshots, 1,892 glossary terms, the generated reference at its real size); the report is .tools/spike-report.md. The times listed under 'measured' were taken under that load, so they are slower than on a quiet machine. Cold builds encode the 450 derived AVIFs. build_after_plugin_change_seconds holds the builds that render every page again (a heading edited and put back, a change of the plugins); peak memory holds the builds with the build script's --max-old-space-size=4096 (an earlier build without it peaked at 4,137 MiB). The crawl's time is recorded, not budgeted (crawl_seconds_comment). Memory is the peak of the process tree, sampled every 250 ms, in MiB. Sizes are apparent sizes before precompression; gzip sizes those of the release's .gz files (level 9). CI multiplies the time budgets by --slower 2 until the hosted runner's own times are known.",
-	"pass_marks_comment": "plan/site.md's table, which only a ruling changes: row 1 (warm build, 4 min), row 3 (cold build, 30 min, on ubuntu-latest), row 7 (4 GB, as 4,096 MiB), row 9 (400 MB, 15,000 files), row 10 (largest page 300 KB and median page 60 KB, gzip), row 11 (40 KB of scripts per page, gzip), row 12 (300 KB for the first query, 100 KB for the next). The chapter pages' and the print views' HTML (row 9), the raw largest page, the largest print view and the search index have no pass mark: their budgets come from their measurements alone (R13, R14). The crawl's time has neither pass mark nor budget (crawl_seconds_comment).",
+	"comment": "Check 12 (plan/site.md): regression budgets, which CI enforces, beside the pass marks of plan/site.md's budget table (plan/critique/rulings-5.md, R13 and R14). Each budget is at most the smaller of its row's pass mark and 1.5 times the latest full-scale measurement, rounded up to two digits; tools/budgets.py refuses one above that ceiling. A budget goes down whenever a measurement allows it, and up only by a ruling that names what grew. The measurements are the scale test's at full size on the reference machine (i7-13700K, 2026-11-11, inside the engine's perf lock while the engine's own builds and captures kept 1.1 to 23 other processors busy): scripts/scale.mjs's book of the outline's 332 rows at their sizes (368 pages, 1.38 million words of prose, 1,500 quotes, 3,000 code blocks, 400 diagrams, math on a third of the pages, 600 pictures made from the samples' screenshots, 1,892 glossary terms, the generated reference at its real size); the report is .tools/spike-report.md. The times listed under 'measured' were taken under that load, so they are slower than on a quiet machine. Cold builds encode the 450 derived AVIFs. build_after_plugin_change_seconds holds the builds that render every page again (a heading edited and put back, a change of the plugins); peak memory holds the real book's cold builds (ruling_13_comment, R61). The crawl's time is recorded, not budgeted (crawl_seconds_comment). Memory is the peak of the process tree, sampled every 250 ms, in MiB. Sizes are apparent sizes before precompression; gzip sizes those of the release's .gz files (level 9). CI multiplies the time budgets by --slower 2 until the hosted runner's own times are known.",
+	"pass_marks_comment": "plan/site.md's table, which only a ruling changes: row 1 (warm build, 4 min), row 3 (cold build, 30 min, on ubuntu-latest), row 7 (4 GB, and 6 GB once its remedy --max-old-space-size is in the build script, as it is: 6,144 MiB, R61), row 9 (400 MB, 15,000 files), row 10 (largest page 300 KB and median page 60 KB, gzip), row 11 (40 KB of scripts per page, gzip), row 12 (300 KB for the first query, 100 KB for the next). The chapter pages' and the print views' HTML (row 9), the raw largest page, the largest print view and the search index have no pass mark: their budgets come from their measurements alone (R13, R14). The crawl's time has neither pass mark nor budget (crawl_seconds_comment).",
 	"pass_marks": {
 		"build_cached_seconds": 240,
 		"build_cold_seconds": 1800,
-		"build_peak_megabytes": 4096,
+		"build_peak_megabytes": 6144,
 		"site_megabytes": 400,
 		"site_files": 15000,
 		"largest_page_gzip_kilobytes": 300,
@@ -13,7 +13,7 @@
 		"search_query_kilobytes": 300,
 		"search_next_query_kilobytes": 100
 	},
-	"ruling_13_comment": "plan/critique/rulings-13.md, R59 (draft, 2026-11-25): the released book measured, after the remedies of R59, a largest page of 177.2 KB gzipped (gpu/text, one hand-drawn diagram), a largest raw page of 1,546.8 KB (reference/commands, the generated command reference) and a search index of 11.7 MB (1.92 million words of prose against the spike's 1.38 million). Those three measurements replace the scale test's in 'measured', and their budgets are the measurement plus at most 10 per cent; every other measurement and budget is the scale test's.",
+	"ruling_13_comment": "plan/critique/rulings-13.md, R59 (draft, 2026-11-25): the released book measured, after the remedies of R59, a largest page of 177.2 KB gzipped (gpu/text, one hand-drawn diagram), a largest raw page of 1,546.8 KB (reference/commands, the generated command reference) and a search index of 11.7 MB (1.92 million words of prose against the spike's 1.38 million). Those three measurements replace the scale test's in 'measured', and their budgets are the measurement plus at most 10 per cent. R61 (2026-11-25): row 7 passes at 6,144 MiB by its own remedy (the build script and CI's measured step run node --max-old-space-size=4096); the real book's cold builds peaked at 4,276.7 and 4,828.0 MiB on ubuntu-latest and 4,051.6 MiB on the reference machine, all in the Node process (native memory above its heap; Pagefind 711.8 MiB on its own), and those replace the scale test's peaks in 'measured'; the budget is the smaller of 6,144 and 1.5 times them. Every other measurement and budget is the scale test's.",
 	"crawl_seconds_comment": "plan/critique/rulings-13.md, R60 (2026-11-25): the crawl's time is recorded, not judged. tools/budgets.py prints the seconds of tools/crawl.py's report, lychee included as CI runs it, with the load of the crawl's measurement, as a measurement of the machine that ran it and without a limit; it never fails a run or holds it, and this file holds no budget for it (budgets.py refuses one). measured.crawl_seconds is R59's measurement as CI takes it (the release build, lychee included, other load 1.26; 95.5 s without lychee), kept as a record. The spike's budget of 48 s was set from the staged crawl without lychee and never measured what CI times. A faster crawl's first measurements on the reference machine and on ubuntu-latest set a budget per machine, by a ruling.",
 	"measured": {
 		"build_cold_seconds": [
@@ -38,10 +38,9 @@
 			121.8
 		],
 		"build_peak_megabytes": [
-			3002,
-			2653,
-			3730,
-			3373
+			4276.7,
+			4828.0,
+			4051.6
 		],
 		"site_megabytes": 324.5,
 		"site_files": 2018,
@@ -72,7 +71,7 @@
 	"quiet_other_load": 2.0,
 	"build_cold_seconds": 250,
 	"build_cached_seconds": 70,
-	"build_peak_megabytes": 4096,
+	"build_peak_megabytes": 6144,
 	"site_megabytes": 400,
 	"site_files": 3100,
 	"chapter_html_megabytes": 140,

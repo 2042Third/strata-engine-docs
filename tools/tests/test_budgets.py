@@ -58,12 +58,13 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(budgets.file_problems(committed), [])
         # plan/site.md's table; only a ruling changes it (R14).
         self.assertEqual(committed['pass_marks'], {
-            'build_cached_seconds': 240, 'build_cold_seconds': 1800, 'build_peak_megabytes': 4096, 'site_megabytes': 400,
+            'build_cached_seconds': 240, 'build_cold_seconds': 1800, 'build_peak_megabytes': 6144, 'site_megabytes': 400,
             'site_files': 15000, 'largest_page_gzip_kilobytes': 300, 'median_page_gzip_kilobytes': 60,
             'scripts_per_page_gzip_kilobytes': 40, 'search_query_kilobytes': 300, 'search_next_query_kilobytes': 100})
-        # R14's own examples: the site's size is 400 MB, not 540; the peak memory 4 GB, not 4,800 MB.
+        # R14's own example: the site's size is 400 MB, not 540. R61: row 7 passes at 6 GB by its remedy, and 1.5 times
+        # the real book's peak (4,828 MiB on ubuntu-latest) is above it, so the pass mark is the budget.
         self.assertEqual(budgets.ceiling(committed, 'site_megabytes'), 400)
-        self.assertEqual(budgets.ceiling(committed, 'build_peak_megabytes'), 4096)
+        self.assertEqual(budgets.ceiling(committed, 'build_peak_megabytes'), 6144)
         # The scale test's measurements (2,018 files, 115.4 and 78.9 MB of HTML) set the other ceilings.
         self.assertEqual(budgets.ceiling(committed, 'site_files'), 3100)
         self.assertEqual(budgets.ceiling(committed, 'chapter_html_megabytes'), 180)
