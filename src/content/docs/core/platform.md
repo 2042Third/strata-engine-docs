@@ -348,7 +348,7 @@ At a cap of 60 the ordinary sleep keeps the count, 60 frames, but not the rhythm
 
 ## A toy version
 
-The toy has two parts that show the two mechanisms of this page in small form. The first is a seam: callers use a class `Platform`, and one block per system defines it. Strata lets the build choose between two files; the toy keeps both blocks in one file, so that `#if` chooses. Watch which lines hold a system name. The output depends on the computer, and this run was on Windows.
+The toy shows this page's two mechanisms in small form. The first is a seam: callers use a class `Platform`, and one block per system defines it. Strata's build chooses between two files; the toy keeps both blocks in one file, and `#if` chooses. Watch which lines hold a system name.
 
 ```cpp sketch="core-platform-toy.cpp"
 // A toy platform seam: one interface, two implementations, one of them chosen when the program is built.
@@ -405,17 +405,44 @@ int main()
 }
 ```
 
-```text output-of="core-platform-toy.cpp"
-Running on Windows
-Settings go to %LOCALAPPDATA%/Toy
-```
-
 1. **Lines 8–14:** detection. Exactly one macro is defined, and any other system stops the build.
 2. **Lines 17–22:** the seam. Callers see declarations only: no system header and no `#if`.
 3. **Lines 24–44:** the two implementations. In Strata they are two files and the build compiles one.
 4. **Lines 49–50:** the caller never asks which system it runs on.
 
-The second toy is the interrupt: a handler that only counts, and a loop that honours the request after its frame. It sends itself `SIGINT` with `raise` in the middle of frame 2, the same event as a person's **Ctrl+C**. It prints the exit code instead of returning it, because the book's sketches must end with 0. Watch the order of the lines in its output.
+Each system prints its own lines:
+
+::::tabs{sync=os}
+:::tab[Windows]
+
+```text output-of="core-platform-toy.cpp" platform="windows"
+Running on Windows
+Settings go to %LOCALAPPDATA%/Toy
+```
+
+The Windows block ran.
+:::
+:::tab[Linux]
+
+```text output-of="core-platform-toy.cpp" platform="linux"
+Running on a POSIX system
+Settings go to $XDG_DATA_HOME/Toy
+```
+
+The POSIX block ran.
+:::
+:::tab[macOS]
+
+```text output-of="core-platform-toy.cpp" platform="macos"
+Running on a POSIX system
+Settings go to $XDG_DATA_HOME/Toy
+```
+
+The POSIX block ran here too.
+:::
+::::
+
+The second toy is the interrupt: a handler that only counts, and a loop that honours the request after its frame. It sends itself `SIGINT` with `raise` in the middle of frame 2, the same event as a person's **Ctrl+C**. It prints the exit code instead of returning it, because the book's sketches must end with 0. Watch the order of its lines.
 
 ```cpp sketch="core-platform-interrupt.cpp"
 // A toy interrupt: the handler only counts, and the loop honours the request after its frame.

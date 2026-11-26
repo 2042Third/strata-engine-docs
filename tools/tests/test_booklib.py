@@ -377,7 +377,8 @@ class BootstrapTests(unittest.TestCase):
 
     def test_environment_scripts_keep_the_system_temp_for_the_perf_lock(self):
         env = bootstrap.environment('C:\\book\\.tools', {'node': {'archives': {'windows-x64': {'file': 'node-v26.13.0-win-x64.zip'}}}, 'typos': {'version': '1.52.1'}}, 'windows-x64')
-        self.assertEqual(env['paths'][0], 'C:\\book\\.tools\\node-v26.13.0-win-x64')
+        # The folders are joined as the machine that runs bootstrap joins them (a Windows key runs on Windows).
+        self.assertEqual(env['paths'][0], os.path.join('C:\\book\\.tools', 'node-v26.13.0-win-x64'))
         shell = bootstrap.shell_script(env, True)
         self.assertIn('STRATA_DOCS_SYSTEM_TEMP', shell)
         self.assertIn('export PATH="/c/book/.tools/node-v26.13.0-win-x64:', shell)
