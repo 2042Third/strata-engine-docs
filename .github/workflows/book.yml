@@ -204,6 +204,9 @@ jobs:
       # fetched from its URL and checked against its SHA-256 there, as the engine's own build does.
       - name: Slang at the pin (the sketches' slangc)
         run: |
+          # A command of this step that fails names itself in an annotation, which reaches ci-results (the job's log does
+          # not).
+          trap 'echo "::error title=Slang at the pin::line $LINENO: $BASH_COMMAND exited $?"' ERR
           . .tools/env.sh
           slang() { sed -n "s/^set(STRATA_SLANG_$1 \"\(.*\)\")$/\1/p" engine/CMake/StrataSlang.cmake; }
           version=$(slang VERSION)

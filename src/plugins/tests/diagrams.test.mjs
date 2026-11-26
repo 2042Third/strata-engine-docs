@@ -83,6 +83,22 @@ test('the page inlines a drawing as an image named by the fence\'s alt text', ()
 	assert.equal(ids(inlined).filter((id) => ids(second).includes(id)).length, 0);
 });
 
+test('an edge label\'s background gets room on each side of its words; other backgrounds stay', async () => {
+	const { c_EdgeLabelMargin, padEdgeLabels } = await import('../../lib/diagrams.mjs');
+	// Mermaid's markup of an edge label (htmlLabels false): the background is exactly the words' width.
+	const edge = '<g class="edgeLabel" transform="translate(328.6, 33)"><g class="label" data-id="L_A_B_0" transform="translate(0, -10)"><g>'
+		+ '<rect class="background" style="" x="-81.4140625" y="-2" width="162.828125" height="24"/><text y="-10.1">B</text></g></g></g>';
+	const cluster = '<g class="cluster-label" transform="translate(1, 2)"><g><rect class="background" x="-10" y="-2" width="20" height="24"/></g></g>';
+	const empty = '<g class="edgeLabel"><g class="label" transform="translate(0, 0)"><rect class="background" style="stroke: none"/></g></g>';
+	const padded = padEdgeLabels(edge + cluster + empty);
+	assert.equal(c_EdgeLabelMargin, 8);
+	assert.match(padded, /<rect class="background" style="" x="-89\.4141" y="-2" width="178\.8281" height="24"\/>/);
+	assert.match(padded, /<rect class="background" x="-10" y="-2" width="20" height="24"\/>/);
+	assert.match(padded, /<rect class="background" style="stroke: none"\/>/);
+	// The page inlines the padded drawing.
+	assert.match(inlineDrawing(`<svg id="dg-a-light">${edge}</svg>`, { hash: 'a', theme: 'light', alt: 'A.' }), /x="-89\.4141" y="-2" width="178\.8281"/);
+});
+
 test('paint that names an element the drawing lacks leaves its style sheet, paint that names one stays', () => {
 	// Mermaid styles the "neo" look's shapes with a gradient only drawings in that look define: gate (a)'s lychee reads
 	// url(#…) as a fragment of the page and fails on the missing one.

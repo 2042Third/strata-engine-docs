@@ -285,15 +285,35 @@ export function compactDrawing(svg) {
 	return result;
 }
 
+// The room, in the drawing's own units, that an edge label's background gets on each side of its words. Mermaid sizes
+// that background to the words' width as the drawing machine laid them out, with nothing to spare, and a reader's
+// browser may lay the same font out wider: Chromium on Linux rounds the letters' advances where a drawing shrunk to its
+// column draws them a few pixels high, so "inverse bind matrix B" drawn at 40 % stood 1.6 px past its box.
+export const c_EdgeLabelMargin = 8;
+
+/** A drawing whose edge labels' backgrounds stand c_EdgeLabelMargin wider on each side; the words stay centred. */
+export function padEdgeLabels(svg, margin = c_EdgeLabelMargin) {
+	const number = (value) => String(Number(value.toFixed(4)));
+	return svg.replace(/(<g class="edgeLabel"[^>]*>(?:<g\b[^>]*>){1,3})<rect class="background"([^>]*?)(\/?)>/g, (whole, before, attributes, end) => {
+		const x = /\sx="(-?[\d.]+)"/.exec(attributes);
+		const width = /\swidth="([\d.]+)"/.exec(attributes);
+		if (!x || !width || Number(width[1]) === 0) return whole;
+		const padded = attributes
+			.replace(x[0], ` x="${number(Number(x[1]) - margin)}"`)
+			.replace(width[0], ` width="${number(Number(width[1]) + 2 * margin)}"`);
+		return `${before}<rect class="background"${padded}${end}>`;
+	});
+}
+
 /**
  * A committed drawing as the page inlines it: the SVG is an image whose accessible name is the fence's alt text
  * (role="img", aria-label and a <title>), instead of Mermaid's document role and its description of the diagram type.
  * `occurrence` (2, 3, …) renames the drawing's ids when the same diagram stands on the page more than once. Paint that
  * names an element the drawing lacks is dropped (dropDanglingPaint), and so is the markup it never paints with
- * (compactDrawing).
+ * (compactDrawing); edge labels get room around their words (padEdgeLabels).
  */
 export function inlineDrawing(svg, { hash, theme, alt, occurrence = 1 }) {
-	let result = compactDrawing(dropDanglingPaint(svg));
+	let result = padEdgeLabels(compactDrawing(dropDanglingPaint(svg)));
 	if (occurrence > 1) {
 		const prefix = idPrefix(hash, theme);
 		result = result.replace(new RegExp(`${escapeRegExp(prefix)}(?![0-9a-z])`, 'g'), `${prefix}-${occurrence}`);
