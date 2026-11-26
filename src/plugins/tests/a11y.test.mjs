@@ -77,3 +77,24 @@ test('axe in Chromium fails a serious violation in the theme that has it and pas
 		rmSync(folder, { recursive: true, force: true });
 	}
 });
+
+test('axe waits until a page is parsed: a heading link whose words come late is not found empty', async () => {
+	// Busy scripts inside the link hold the parser for 8 s after every byte has arrived, as a 7 MB print view does in
+	// Chromium: the network is quiet long before the link's words are parsed.
+	const busy = '<script>{ const end = Date.now() + 250; while (Date.now() < end); }</script>';
+	const html = '<!doctype html><html lang="en"><head><meta charset="utf-8"><title>A page</title></head><body><main><h1>A page</h1>'
+		+ `<h2 id="end">The end</h2><a href="#end">${busy.repeat(32)}<span>Section titled “The end”</span></a></main></body></html>`;
+	const server = createServer((request, response) => {
+		const found = new URL(request.url, 'http://fixture').pathname === '/slow/';
+		response.writeHead(found ? 200 : 404, { 'Content-Type': 'text/html; charset=utf-8' });
+		response.end(found ? html : '<!doctype html><html lang="en"><head><title>Not found</title></head><body><main><h1>Not found</h1></main></body></html>');
+	});
+	await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
+	try {
+		const site = `http://127.0.0.1:${server.address().port}/`;
+		const { failures } = await runAxe({ site, routes: ['slow/'], themes: ['light'], log: () => {} });
+		assert.deepEqual(failures, []);
+	} finally {
+		server.close();
+	}
+});

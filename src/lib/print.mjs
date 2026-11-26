@@ -34,6 +34,24 @@ function elements(node, visit) {
 }
 
 /**
+ * Every chapter loads Expressive Code's script (<script type="module" src="…/ec.….js">) after its first code block,
+ * so a part's print view named it once per chapter: 45 times in print/make. A module script runs once however often
+ * it is named, but Chromium's parser yields at each such element and the page so far is laid out again, so the repeats
+ * made print/make (7 MB) parse in 24 s instead of 7 s. Only the first element of each external script is kept; inline
+ * scripts stay where they are.
+ */
+function dropRepeatedScripts(node, scripts) {
+	if (!node.children) return;
+	node.children = node.children.filter((child) => {
+		if (child.type !== 'element' || child.tagName !== 'script' || typeof child.properties?.src !== 'string') return true;
+		if (scripts.has(child.properties.src)) return false;
+		scripts.add(child.properties.src);
+		return true;
+	});
+	for (const child of node.children) dropRepeatedScripts(child, scripts);
+}
+
+/**
  * The front matter of the print view of the part with the label `label` (src/pages/print/[part].astro): left out of the
  * book's search, and "noindex" for search engines.
  */
@@ -51,11 +69,14 @@ export function printFrontmatter(label) {
  * pages turned into links within the page; every <details> open and every picture loaded eagerly. A diagram's ids
  * ("dg-<hash>-<theme>…", src/lib/diagrams.mjs) are named from inside its SVG too, in url(#…) and in its style sheet, so
  * they get the chapter's name in front as text, everywhere at once: two chapters that show one diagram share no id.
+ * `scripts` holds the addresses of the external scripts the view's earlier chapters load: the chapter's elements that
+ * load one of them again are left out, and its own addresses are added (dropRepeatedScripts).
  */
-export function prefixChapter(html, id, partPages, base) {
+export function prefixChapter(html, id, partPages, base, scripts = new Set()) {
 	const prefix = anchorOf(id);
 	const diagramIds = `${prefix}--dg-`;
 	const tree = fromHtml(html.replace(/\bdg-([0-9a-f]{16}-(?:light|dark))/g, `${diagramIds}$1`), { fragment: true });
+	dropRepeatedScripts(tree, scripts);
 	const ids = new Set();
 	elements(tree, (node) => {
 		if (node.tagName === 'details') node.properties.open = true;

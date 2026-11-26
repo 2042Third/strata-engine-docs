@@ -49,6 +49,23 @@ export function samplePages(distDir) {
 	return [...new Set(routes), c_MissingRoute];
 }
 
+// How long a page may take to finish loading: a print view of 7 MB parses for several seconds, more on a busy runner.
+export const c_LoadTimeout = 180000;
+
+/**
+ * Opens `url` in `page` and waits until the page is finished: its document parsed and its pictures loaded (the load
+ * event), the network quiet, the fonts in. Playwright's "networkidle" alone is no such wait: it comes 500 ms after the
+ * last request, and a large print view has all its bytes and pictures long before Chromium has parsed it, so axe ran
+ * on a page still growing and found heading links whose text the parser had not reached yet ("link-name" on an empty
+ * <a class="sl-anchor-link">). Returns the response of the navigation.
+ */
+export async function openFinished(page, url) {
+	const response = await page.goto(url, { waitUntil: 'load', timeout: c_LoadTimeout });
+	await page.waitForLoadState('networkidle', { timeout: c_LoadTimeout });
+	await page.evaluate(() => document.fonts.ready.then(() => true));
+	return response;
+}
+
 /** Runs axe on `routes` below `site` in both themes: `{ failures: [lines], checked }`. */
 export async function runAxe({ site, routes, themes = c_Themes, log = console.log }) {
 	const { chromium } = await import('playwright');
@@ -62,7 +79,7 @@ export async function runAxe({ site, routes, themes = c_Themes, log = console.lo
 			const page = await context.newPage();
 			for (const relative of routes) {
 				const where = `${relative || '(home)'} [${theme}]`;
-				const response = await page.goto(site + relative, { waitUntil: 'networkidle' });
+				const response = await openFinished(page, site + relative);
 				const expected = relative === c_MissingRoute ? 404 : 200;
 				if (response?.status() !== expected) {
 					failures.push(`${where}: answered ${response?.status()}, expected ${expected}`);

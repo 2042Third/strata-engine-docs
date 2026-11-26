@@ -22,10 +22,12 @@ const omitted = previewOmitted();
 const routes = part.pages.filter((id) => !omitted.has(id)).map(routeIdOf);
 const partPages = new Set<string>(routes);
 const chapters = [];
+// The external scripts of the chapters so far: each is loaded only where it first appears (prefixChapter).
+const scripts = new Set<string>();
 for (const id of routes) {
 	const entry = await getEntry('docs', id);
 	if (!entry?.rendered?.html) throw new Error(`print view of ${part.slug}: ${id} has no rendered HTML`);
-	chapters.push({ id, title: entry.data.title, html: prefixChapter(entry.rendered.html, id, partPages, base) });
+	chapters.push({ id, title: entry.data.title, html: prefixChapter(entry.rendered.html, id, partPages, base, scripts) });
 }
 const headings = chapters.map((chapter) => ({ depth: 2, slug: anchorOf(chapter.id), text: chapter.title }));
 ---

@@ -61,6 +61,20 @@ test('a print view shows what a page hides: every <details> is open and every pi
 	assert.doesNotMatch(out, /loading="lazy"/);
 });
 
+test('a print view loads each external script once, where its first chapter names it, and keeps inline scripts', () => {
+	const chapter = (word) => `<p>${word}</p><script type="module" src="/book/_astro/ec.abc.js"></script><script>window.seen = true;</script>`;
+	const scripts = new Set();
+	const first = prefixChapter(chapter('One') + '<div><script type="module" src="/book/_astro/ec.abc.js"></script></div>', 'core/time', new Set(['core/time']), '/book', scripts);
+	const second = prefixChapter(`<section>${chapter('Two')}</section><script type="module" src="/book/_astro/other.js"></script>`, 'core/probe', new Set(['core/probe']), '/book', scripts);
+	assert.equal(first.match(/src="\/book\/_astro\/ec\.abc\.js"/g).length, 1);
+	assert.doesNotMatch(second, /ec\.abc\.js/);
+	assert.match(second, /<section><p>Two<\/p><script>window\.seen = true;<\/script><\/section><script type="module" src="\/book\/_astro\/other\.js"><\/script>/);
+	assert.equal(first.match(/<script>window\.seen = true;<\/script>/g).length, 1);
+	assert.deepEqual([...scripts], ['/book/_astro/ec.abc.js', '/book/_astro/other.js']);
+	// Without a set of its own, a chapter keeps the first of its scripts.
+	assert.equal(prefixChapter(chapter('Alone'), 'core/time', new Set(['core/time']), '/book').match(/ec\.abc\.js/g).length, 1);
+});
+
 test('a print view is left out of the book\'s search and asks search engines not to index it', () => {
 	const frontmatter = printFrontmatter('Engine architecture');
 	assert.equal(frontmatter.pagefind, false);
