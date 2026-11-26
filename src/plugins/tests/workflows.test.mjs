@@ -102,6 +102,9 @@ test('a check that does not run through tools/cistatus.py step fails, and so doe
 		/runs "python -I tools\/crawl\.py --dist dist-root .*" without tools\/cistatus\.py step/);
 	assertOne(bookWith('python -I tools/cistatus.py step --title "Spelling (check 8)" -- typos', 'typos'), /runs "typos" without/);
 	assertOne(bookWith('python -I tools/cistatus.py step --title "Unit tests of the build (npm test)" -- timeout -k 20 600 npm test || status=1', 'npm test'), /runs "npm test" without/);
+	// The measured build runs Astro's script with Node directly, as the budgets' measurements did.
+	assertOne(bookWith('python -I tools/cistatus.py step --title "Build at /strata-engine-docs" -- python -I tools/measure.py --label build --json measure.jsonl -- \\\n            node', 'node'),
+		/runs "node --max-old-space-size=4096 node_modules\/astro\/bin\/astro\.mjs build" without/);
 });
 
 test('a cache whose key is not plan/site.md\'s fails, and Playwright\'s key names package.json\'s version', () => {

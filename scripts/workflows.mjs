@@ -49,6 +49,7 @@ const c_Check = new RegExp([
 	String.raw`\bnpm run diagrams\b`,
 	String.raw`\bnode scripts/`,
 	String.raw`\bastro build\b`,
+	String.raw`\bastro/bin/astro\.mjs build\b`,
 	String.raw`(?:^|[\s;&|(])(?:typos|markdownlint-cli2|actionlint)(?=\s|$)`,
 ].join('|'));
 const c_EnvLine = /^\s*(?:\.|source) \.tools\/env\.sh\s*$/m;

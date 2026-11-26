@@ -320,11 +320,14 @@ jobs:
           python -I tools/cistatus.py step --title "Build at /x/y" -- env DOCS_BASE=/x/y DOCS_EXTRA_REDIRECTS=tools/tests/release-redirects.json npx astro build --outDir dist-deep
           python -I tools/cistatus.py step --title "Gate (a) at /x/y" -- python -I tools/crawl.py --dist dist-deep --stage stage-deep --base=/x/y \
             --forbid-prefix /strata-engine-docs --lychee lychee
+      # The measured build runs as the budgets' measurements ran it (README, "Budgets and the scale test"): Node with
+      # --max-old-space-size=4096, as npm run build sets it, and no npm or npx process in the measured tree.
       - name: Build under /strata-engine-docs (math, diagrams, links, figures fail it; checks 2 and 4), and gate (a)
         run: |
           . .tools/env.sh
           if [ "$RELEASE_TAG" = true ]; then export DOCS_RELEASE=1; fi
-          python -I tools/cistatus.py step --title "Build at /strata-engine-docs" -- python -I tools/measure.py --label build --json measure.jsonl -- npx astro build
+          python -I tools/cistatus.py step --title "Build at /strata-engine-docs" -- python -I tools/measure.py --label build --json measure.jsonl -- \
+            node --max-old-space-size=4096 node_modules/astro/bin/astro.mjs build
           python -I tools/cistatus.py step --title "Gate (a) at /strata-engine-docs" -- python -I tools/measure.py --label crawl --json measure.jsonl -- \
             python -I tools/crawl.py --report crawl.json --lychee lychee
       - name: Diagrams and drawings, the notices of the built site, the budgets (checks 4, 1 and 12)
