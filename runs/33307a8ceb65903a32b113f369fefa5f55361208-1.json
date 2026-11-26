@@ -1,0 +1,57 @@
+{
+ "attempt": 1,
+ "commit": "33307a8ceb65903a32b113f369fefa5f55361208",
+ "conclusion": "failure",
+ "jobs": [
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "build"
+  },
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "excerpts"
+  },
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "lint"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "release"
+  },
+  {
+   "conclusion": "cancelled",
+   "errors": [
+    {
+     "line": 1,
+     "message": "The job has exceeded the maximum execution time of 1h0m0s",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 51,
+     "message": "The operation was canceled.",
+     "path": ".github",
+     "title": ""
+    }
+   ],
+   "failedSteps": [
+    "The proxy in front of the container, without and with a host-headers file"
+   ],
+   "name": "serve-test"
+  }
+ ],
+ "run": {
+  "event": "push",
+  "ref": "refs/heads/ci/site",
+  "url": "https://github.com/2042Third/strata-engine-docs/actions/runs/45789643257"
+ }
+}
