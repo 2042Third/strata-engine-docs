@@ -1,0 +1,72 @@
+{
+ "attempt": 1,
+ "commit": "9a2472b84e1dd0b7e8889775d5975c6ae1683d57",
+ "conclusion": "failure",
+ "jobs": [
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "build"
+  },
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 23,
+     "message": "Process completed with exit code 1.",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 20,
+     "message": "python -I tools/sketches.py check --engine engine --slangc /home/runner/work/_temp/slang-2026.20/bin/slangc exited 1:\nsrc/content/docs/core/platform.md:408: the fence differs from what sketches/core-platform-toy.cpp prints: run python -I tools/sketches.py fill\nsketches: 1 problem",
+     "path": ".github",
+     "title": "Sketches (check 4)"
+    }
+   ],
+   "failedSteps": [
+    "Sketches compile and print what the pages show (check 4)"
+   ],
+   "name": "excerpts"
+  },
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 1016,
+     "message": "Process completed with exit code 1.",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 977,
+     "message": "timeout -k 20 900 python -I -m unittest discover -v -s tools/tests -t . exited 1 (failing tests: FAIL: test_environment_scripts_keep_the_system_temp_for_the_perf_lock (tools.tests.test_booklib.BootstrapTests.test_environment_scripts_keep_the_system_temp_for_the_perf_lock)):\ntest_the_build_folder_is_never_the_pin_builds (tools.tests.test_tutorials.PatchTests.test_the_build_folder_is_never_the_pin_builds) ... ok\ntest_what_fails_a_patch_run (tools.tests.test_tutorials.PatchTests.test_what_fails_a_patch_run) ... ok\ntest_a_chain_runs_each_tutorial_once_and_a_sample_publishes_no_zip (tools.tests.test_tutorials.RunTests.test_a_chain_runs_each_tutorial_once_and_a_sample_publishes_no_zip) ... ok\ntest_a_command_s_files_and_the_release_folder (tools.tests.test_tutorials.RunTests.test_a_command_s_files_and_the_release_folder) ... ok\ntest_a_release_package_is_named_by_its_archive (tools.tests.test_tutorials.RunTests.test_a_release_package_is_named_by_its_archive) ... ok\ntest_a_run_that_passes (tools.tests.test_tutorials.RunTests.test_a_run_that_passes) ... ok\ntest_a_stage_zip_names_no_folder_of_this_machine (tools.tests.test_tutorials.RunTests.test_a_stage_zip_names_no_folder_of_this_machine) ... ok\ntest_a_tutorial_that_asks_for_automation (tools.tests.test_tutorials.RunTests.test_a_tutorial_that_asks_for_automation) ... ok\ntest_failures_name_the_stage_and_the_step (tools.tests.test_tutorials.RunTests.test_failures_name_the_stage_and_the_step) ... ok\ntest_preflight_and_what_waits_for_phase_b (tools.tests.test_tutorials.RunTests.test_preflight_and_what_waits_for_phase_b) ... ok\ntest_a_replaced_file_waits_until_it_is_newer_than_the_build (tools.tests.test_tutorials.TimeStepTests.test_a_replaced_file_waits_until_it_is_newer_than_the_build) ... ok\ntest_a_folder_of_this_machine_as_written_or_escaped (tools.tests.test_tutorials.ZipContentTests.test_a_folder_of_this_machine_as_written_or_escaped) ... ok\ntest_the_editors_presets_by_their_vendor_key (tools.tests.test_tutorials.ZipContentTests.test_the_editors_presets_by_their_vendor_key) ... ok\ntest_quotes_are_skipped_and_the_prose_around_them_is_checked (tools.tests.test_typos.TyposSettingsTests.test_quotes_are_skipped_and_the_prose_around_them_is_checked) ... ok\ntest_another_archive_is_refused (tools.tests.test_wordlists.WordListTests.test_another_archive_is_refused) ... ok\ntest_check_finds_a_stale_list (tools.tests.test_wordlists.WordListTests.test_check_finds_a_stale_list) ... ok\ntest_common_words_are_the_bands_with_their_forms (tools.tests.test_wordlists.WordListTests.test_common_words_are_the_bands_with_their_forms) ... ok\ntest_the_command_refuses_another_archive (tools.tests.test_wordlists.WordListTests.test_the_command_refuses_another_archive) ... ok\ntest_the_committed_lists (tools.tests.test_wordlists.WordListTests.test_the_committed_lists) ... ok\ntest_verbs_and_their_forms (tools.tests.test_wordlists.WordListTests.test_verbs_and_their_forms) ... ok\n\n======================================================================\nFAIL: test_environment_scripts_keep_the_system_temp_for_the_perf_lock (tools.tests.test_booklib.BootstrapTests.test_environment_scripts_keep_the_system_temp_for_the_perf_lock)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/strata-engine-docs/strata-engine-docs/tools/tests/test_booklib.py\", line 380, in test_environment_scripts_keep_the_system_temp_for_the_perf_lock\n    self.assertEqual(env['paths'][0], 'C:\\\\book\\\\.tools\\\\node-v26.13.0-win-x64')\nAssertionError: 'C:\\\\book\\\\.tools/node-v26.13.0-win-x64' != 'C:\\\\book\\\\.tools\\\\node-v26.13.0-win-x64'\n- C:\\book\\.tools/node-v26.13.0-win-x64\n?               ^\n+ C:\\book\\.tools\\node-v26.13.0-win-x64\n?               ^\n\n\n----------------------------------------------------------------------\nRan 492 tests in 58.326s\n\nFAILED (failures=1)",
+     "path": ".github",
+     "title": "Unit tests of the tools"
+    }
+   ],
+   "failedSteps": [
+    "Unit tests of the build and of the tools (check 13)"
+   ],
+   "name": "lint"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "release"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "serve-test"
+  }
+ ],
+ "run": {
+  "event": "push",
+  "ref": "refs/heads/ci/site",
+  "url": "https://github.com/2042Third/strata-engine-docs/actions/runs/45727435114"
+ }
+}
