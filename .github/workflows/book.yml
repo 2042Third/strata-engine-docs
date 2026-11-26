@@ -388,7 +388,10 @@ jobs:
   serve-test:
     needs: build
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    # The job's whole run is longer than an hour: on 33307a8c it reached the hour in the proxy step, after the browser
+    # checks passed, with the copied files' six runs and the two-pass copy still to come. Two hours bound a step that
+    # hangs without cutting the job's own work short.
+    timeout-minutes: 120
     env:
       TAG: ${{ needs.build.outputs.tag }}
     steps:
