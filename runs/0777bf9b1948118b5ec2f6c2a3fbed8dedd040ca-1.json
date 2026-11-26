@@ -1,0 +1,72 @@
+{
+ "attempt": 1,
+ "commit": "0777bf9b1948118b5ec2f6c2a3fbed8dedd040ca",
+ "conclusion": "failure",
+ "jobs": [
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 198,
+     "message": "Process completed with exit code 1.",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 180,
+     "message": "python -I tools/budgets.py --measure measure.jsonl --crawl crawl.json --slower 2 exited 1:\nbuild time (cold)                 122.8 s   budget    500.0 s   ok\nbuild peak memory                4828.0 MB  budget   4096.0 MB  OVER\nsite size                         398.8 MB  budget    400.0 MB  ok\nsite files                       2716.0     budget   3100.0     ok\nHTML of the chapter pages         102.5 MB  budget    140.0 MB  ok\nHTML of the print views            82.4 MB  budget     97.0 MB  ok\nlargest page (gzip)               177.2 KB  budget    190.0 KB  ok\nmedian page (gzip)                 42.8 KB  budget     60.0 KB  ok\nlargest page                     1547.1 KB  budget   1700.0 KB  ok\nlargest print view (gzip)        1018.2 KB  budget   2000.0 KB  ok\nscripts of a page (gzip)            9.6 KB  budget     15.0 KB  ok\nsearch index                       11.7 MB  budget     12.5 MB  ok\ncrawl time (lychee included): 102.2 s on this machine, other load 0.0 (recorded without a limit, rulings 13, R60)\nthe sidebar: 37.5 KB, 13.2 % of its page (recorded, plan/site.md row 10)\npass marks (plan/site.md, rows 1, 3, 7, 9, 10, 11, 12): build_cached_seconds 240, build_cold_seconds 1800, build_peak_megabytes 4096, largest_page_gzip_kilobytes 300, median_page_gzip_kilobytes 60, scripts_per_page_gzip_kilobytes 40, search_next_query_kilobytes 100, search_query_kilobytes 300, site_files 15000, site_megabytes 400\nbudgets: no search measurement given; its budgets were not checked\nbudgets: 1 of 12 over",
+     "path": ".github",
+     "title": "Budgets (check 12)"
+    }
+   ],
+   "failedSteps": [
+    "Diagrams and drawings, the notices of the built site, the budgets (checks 4, 1 and 12)"
+   ],
+   "name": "build"
+  },
+  {
+   "conclusion": "failure",
+   "errors": [
+    {
+     "line": 32,
+     "message": "Process completed with exit code 2.",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 31,
+     "message": "line 6: version=$(slang VERSION) exited 2",
+     "path": ".github",
+     "title": "Slang at the pin"
+    }
+   ],
+   "failedSteps": [
+    "Slang at the pin (the sketches' slangc)"
+   ],
+   "name": "excerpts"
+  },
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "lint"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "release"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "serve-test"
+  }
+ ],
+ "run": {
+  "event": "push",
+  "ref": "refs/heads/ci/site",
+  "url": "https://github.com/2042Third/strata-engine-docs/actions/runs/45741112107"
+ }
+}
