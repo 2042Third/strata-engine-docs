@@ -1,0 +1,57 @@
+{
+ "attempt": 1,
+ "commit": "6f1f623f38b13d0aa3dd92212c064a66b87efe87",
+ "conclusion": "failure",
+ "jobs": [
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "build"
+  },
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "excerpts"
+  },
+  {
+   "conclusion": "success",
+   "errors": [],
+   "failedSteps": [],
+   "name": "lint"
+  },
+  {
+   "conclusion": "skipped",
+   "errors": [],
+   "failedSteps": [],
+   "name": "release"
+  },
+  {
+   "conclusion": "cancelled",
+   "errors": [
+    {
+     "line": 1,
+     "message": "The job has exceeded the maximum execution time of 1h0m0s",
+     "path": ".github",
+     "title": ""
+    },
+    {
+     "line": 842,
+     "message": "The operation was canceled.",
+     "path": ".github",
+     "title": ""
+    }
+   ],
+   "failedSteps": [
+    "Search, axe on every page, the keyboard, Lighthouse (checks 9 and 11; budget rows 12 to 15)"
+   ],
+   "name": "serve-test"
+  }
+ ],
+ "run": {
+  "event": "push",
+  "ref": "refs/heads/ci/site",
+  "url": "https://github.com/2042Third/strata-engine-docs/actions/runs/45774411208"
+ }
+}
