@@ -171,11 +171,16 @@ def check(budgets, measure, crawl, search, cached, slower):
     return rows, failures, unjudged
 
 
-def recorded(crawl, crawl_measure=None):
+def recorded(crawl, crawl_measure=None, build_measure=None):
     """What is recorded without a budget: the crawl's time, lychee included, on the machine that ran it, with the load
-    of its measurement when there is one (R60); row 10's share of the sidebar in the page that carries the most of it."""
+    of its measurement when there is one (R60); row 10's share of the sidebar in the page that carries the most of it;
+    and the build's peak memory per program, so that a peak over its budget says which program held it."""
     summary = (crawl or {}).get('summary') or {}
     lines = []
+    programs = (build_measure or {}).get('peak_by_program') or {}
+    if programs:
+        lines.append('build peak memory by program: %s (each its own peak; recorded)' % ', '.join(
+            '%s %.1f MB' % (name, size / 2**20) for name, size in sorted(programs.items(), key=lambda item: -item[1])))
     if summary.get('seconds') is not None:
         load = (crawl_measure or {}).get('other_load')
         lines.append('crawl time (lychee included): %.1f s on this machine%s (recorded without a limit, rulings 13, R60)' % (
@@ -228,7 +233,7 @@ def main(argv=None):
     passes = budgets.get('pass_marks') or {}
     for name, measured, limit, unit, note in rows:
         print('%-28s %10.1f %-2s  budget %8.1f %-2s  %s' % (name, measured, unit, limit, unit, note or ('OVER' if measured > limit else 'ok')))
-    for line in recorded(crawl, crawl_measure):
+    for line in recorded(crawl, crawl_measure, measure):
         print(line)
     if passes:
         print('pass marks (plan/site.md, rows %s): %s' % (', '.join(str(row) for row in sorted({row for row in c_BudgetRows.values() if row})),

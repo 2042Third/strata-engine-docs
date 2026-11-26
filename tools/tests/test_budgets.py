@@ -176,6 +176,11 @@ class RowTests(unittest.TestCase):
         finally:
             shutil.rmtree(folder, ignore_errors=True)
 
+    def test_the_build_s_peak_memory_is_recorded_per_program(self):
+        lines = budgets.recorded(None, None, {'peak_by_program': {'pagefind': 700 * 2**20, 'node': 4100.25 * 2**20}})
+        self.assertEqual(lines, ['build peak memory by program: node 4100.2 MB, pagefind 700.0 MB (each its own peak; recorded)'])
+        self.assertEqual(budgets.recorded(None, None, {'peak_tree_bytes': 1}), [])
+
     def test_the_sidebar_s_share_is_recorded(self):
         lines = budgets.recorded(self.summary(sidebar_bytes=74 * 1024, sidebar_share=0.16))
         self.assertEqual(lines[1:], ['the sidebar: 74.0 KB, 16.0 % of its page (recorded, plan/site.md row 10)'])

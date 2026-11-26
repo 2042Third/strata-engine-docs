@@ -173,6 +173,10 @@ jobs:
           git -C engine fetch -q --filter=blob:none origin "$pin"
           git -C engine fetch -q --filter=blob:none origin 'refs/tags/v*:refs/tags/v*'
           git -C engine checkout -q --detach "$pin"
+          # The cache holds engine/.git alone: a restored clone's index already names the pin's files, so checkout
+          # leaves them missing from the working tree (CMake/StrataSlang.cmake was not there for the Slang step); reset
+          # writes every file of the sparse patterns.
+          git -C engine reset -q --hard "$pin"
           git -C engine backfill --no-sparse
           # Also each library whose files a page names by path (excerpts.py check verifies those paths): the folders
           # of Strata/vendor that pages name and that are submodules at the pin.
@@ -183,7 +187,8 @@ jobs:
               if git -C engine ls-tree "$pin" "Strata/vendor/$named" | grep -q '^160000 '; then echo "$named"; fi
             done
           } | sort -u | while read -r library; do
-            git -C engine submodule update --init --depth 1 "Strata/vendor/$library"
+            # --force checks the library out even when its restored module is at the commit already.
+            git -C engine submodule update --init --force --depth 1 "Strata/vendor/$library"
           done
           test "$(git -C engine rev-parse HEAD)" = "$pin"
       - name: The language lint, with the engine's own documents (check 8)
