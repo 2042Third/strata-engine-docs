@@ -82,7 +82,7 @@ The contract has many clauses, and C++ leaves each to the compiler.
 - **The standard library's layouts.** What bytes a `std::string` or `std::vector` holds.
 - **Build configuration.** A Debug build changes the layout of standard types.
 
-:::example[How padding changes a size]
+:::::example[How padding changes a size]
 Take three members: a one-byte flag, a four-byte count and a one-byte mode. A four-byte count must start at a multiple of four, so a compiler that keeps the written order puts the flag at byte 0 and skips three bytes. The count sits at byte 4 and the mode at byte 8. Three more bytes at the end keep the count aligned in an array of these :term[structs]{id=struct}.
 
 The size is 12 bytes. Written with the count first, the same three members take 4 + 1 + 1 = 6 bytes and two bytes of end padding, 8 in all.
@@ -159,7 +159,7 @@ bool 1, long 8, wchar_t 4, pointer 8
 On every platform the first two lines match the hand count, and only the last line differs.
 
 A struct with a `long` that crosses a boundary between a Windows file and a Linux file is a rare case. A struct built with another compiler on the same platform fails for the same reason, because the layout is a decision of the compiler, not of the header.
-:::
+:::::
 
 Names give a second concrete case. The method `Spinner::OnUpdate(float)` becomes `_ZN7Spinner8OnUpdateEf` with GCC and Clang, and `?OnUpdate@Spinner@@QEAAXM@Z` with Microsoft's compiler. A lookup by name finds one and never the other.
 

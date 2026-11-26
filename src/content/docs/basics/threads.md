@@ -270,12 +270,12 @@ sequenceDiagram
     B-->>A: wants first, waits
 ```
 
-A deadlock hides on most runs and strikes on a bad one, so the next sketch forces it. A latch makes both threads hold their first lock before either asks for the second. Instead of waiting forever, each thread then tries the other lock with a limit of 100 ms, so the program can report the deadlock and end.
+A deadlock hides on most runs and strikes on a bad one, so the next sketch forces it. A barrier makes both threads hold their first lock before either asks for the second. Instead of waiting forever, each thread then tries the other lock with a limit of 100 ms, so the program can report the deadlock and end.
 
 ```cpp sketch="basics-threads-deadlock.cpp"
+#include <barrier>
 #include <chrono>
 #include <iostream>
-#include <latch>
 #include <mutex>
 #include <thread>
 
@@ -283,14 +283,14 @@ int main()
 {
 	std::timed_mutex first;
 	std::timed_mutex second;
-	std::latch bothHold(2);
-	bool gotSecond = true;
-	bool gotFirst = true;
+	std::barrier meet(2);
+	bool gotSecond = true, gotFirst = true;
 	auto take = [&](std::timed_mutex& mine, std::timed_mutex& other, bool& got)
 	{
 		std::scoped_lock lock(mine);
-		bothHold.arrive_and_wait();
+		meet.arrive_and_wait(); // both threads hold their own lock
 		got = other.try_lock_for(std::chrono::milliseconds(100));
+		meet.arrive_and_wait(); // neither lets go of its own lock before both have tried
 	};
 	std::thread a([&]() { take(first, second, gotSecond); });
 	std::thread b([&]() { take(second, first, gotFirst); });
@@ -305,7 +305,7 @@ A got the second lock: false
 B got the first lock: false
 ```
 
-1. **Lines 14–19:** each thread locks its own mutex, waits at the latch until both threads hold one, and then tries the other mutex for at most 100 ms.
+1. **Lines 13–19:** each thread locks its own mutex, waits at the barrier until both threads hold one, and then tries the other mutex for at most 100 ms. It keeps its own until both have tried, so the run never depends on timing.
 2. **Lines 20–21:** the two calls name the mutexes in opposite orders. That is the whole bug.
 
 There are two reliable cures. The first is to hold one lock at a time: finish with the first mutex before you take the second, so no thread ever holds one lock while it waits for another. When you need two at once, the second cure is one order: every thread takes the locks in the same order, say always `first` before `second`. Then a thread that holds `second` has no reason to wait for `first`, because nobody holds `first` and waits for `second`.
