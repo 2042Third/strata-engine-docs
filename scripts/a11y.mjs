@@ -66,15 +66,20 @@ export async function openFinished(page, url) {
 	return response;
 }
 
-/** Runs axe on `routes` below `site` in both themes: `{ failures: [lines], checked }`. */
+/**
+ * Runs axe on `routes` below `site` in both themes: `{ failures: [lines], checked }`. The themes are checked at the
+ * same time, each in a browser context of its own: since every page is checked whole (openFinished), the print views'
+ * parsing and axe's run on them take most of the time, and two renderers halve it on CI's runner of four processors.
+ * The failures come in the order of `themes`, each theme's in the order of `routes`.
+ */
 export async function runAxe({ site, routes, themes = c_Themes, log = console.log }) {
 	const { chromium } = await import('playwright');
 	const { default: AxeBuilder } = await import('@axe-core/playwright');
 	const browser = await chromium.launch();
-	const failures = [];
-	try {
-		for (const theme of themes) {
-			const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+	const checkTheme = async (theme) => {
+		const failures = [];
+		const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+		try {
 			await context.addInitScript((value) => window.localStorage.setItem('starlight-theme', value), theme);
 			const page = await context.newPage();
 			for (const relative of routes) {
@@ -100,12 +105,20 @@ export async function runAxe({ site, routes, themes = c_Themes, log = console.lo
 				const minor = results.violations.length - serious.length;
 				log(`${where}: ${serious.length} serious or critical, ${minor} minor violation${minor === 1 ? '' : 's'}`);
 			}
+		} finally {
 			await context.close();
 		}
+		return failures;
+	};
+	try {
+		// allSettled: when one theme throws, the browser is closed only after the other theme has stopped using it.
+		const settled = await Promise.allSettled(themes.map(checkTheme));
+		const failed = settled.find((result) => result.status === 'rejected');
+		if (failed) throw failed.reason;
+		return { failures: settled.flatMap((result) => result.value), checked: routes.length };
 	} finally {
 		await browser.close();
 	}
-	return { failures, checked: routes.length };
 }
 
 async function main(argv) {

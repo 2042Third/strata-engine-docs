@@ -71,6 +71,8 @@ test('axe in Chromium fails a serious violation in the theme that has it and pas
 		assert.ok(lines.includes('bad/ [light]: critical: image-alt: Images must have alternative text'), lines.join('\n'));
 		assert.ok(lines.includes('bad/ [dark]: serious: color-contrast: Elements must meet minimum color contrast ratio thresholds'), lines.join('\n'));
 		assert.ok(!lines.some((line) => line.startsWith('bad/ [light]: serious: color-contrast')), lines.join('\n'));
+		// The themes are checked at the same time, and their failures still come in the order of the themes.
+		assert.ok(lines.findLastIndex((line) => line.includes(' [dark]: ')) < lines.findIndex((line) => line.includes(' [light]: ')), lines.join('\n'));
 		assert.ok(!lines.some((line) => line.startsWith('good/') || line.startsWith(c_MissingRoute)), lines.join('\n'));
 	} finally {
 		server.close();
