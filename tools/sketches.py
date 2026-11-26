@@ -12,7 +12,9 @@ pages never collide; check fails on a sketch fence whose file does not carry its
 C++ (.cpp, .cc, .cxx) is compiled by $CXX, else the first of g++, clang++ and c++ on the PATH, with -std=c++20 -Wall
 -Wextra -Werror, and with --engine also -isystem <clone>/Strata/vendor/glm: the clone's checkout of glm, which must be
 at the commit the pin records for it. A sketch whose output a page shows is run, at most 10 seconds, and its output is
-compared with the output-of fence.
+compared with the output-of fence. A sketch whose output differs by platform by design (the size of long, of wchar_t)
+shows one output fence per platform, each naming it: output-of="<file>" platform="windows|linux|macos". A run compares
+the fence of the platform it runs on (fill writes only that one) and leaves the others to the runs on theirs.
 
 Slang (<name>.<vert|frag|comp>.slang) is compiled by the slangc of the release that CMake/StrataSlang.cmake pins at the
 pin (STRATA_SLANG_VERSION): slangc <file> -target spirv -entry main -stage <vertex|fragment|compute>
@@ -45,6 +47,8 @@ c_CppExtensions = ('.cpp', '.cc', '.cxx')
 c_SlangStages = {'vert': 'vertex', 'frag': 'fragment', 'comp': 'compute'}
 c_RunSeconds = 10
 c_Glm = 'Strata/vendor/glm'
+# The platforms an output fence may name (platform="..."), in the order a page shows them (its sync=os tabs).
+c_Platforms = ('windows', 'linux', 'macos')
 
 
 class SketchError(Exception):
@@ -79,6 +83,49 @@ def sketch_fences(text):
         elif 'output-of' in fence.attributes:
             result.append((fence, 'output', fence.attributes['output-of']))
     return result
+
+
+def current_platform():
+    """The platform="..." name of the machine this check runs on (None on another system)."""
+    if sys.platform == 'win32':
+        return 'windows'
+    if sys.platform.startswith('linux'):
+        return 'linux'
+    if sys.platform == 'darwin':
+        return 'macos'
+    return None
+
+
+def platform_problems(path, fences):
+    """(path, line, message) for the output fences of a page that name platforms wrongly: a sketch whose output differs
+    by platform shows exactly one fence per platform, every one of them naming its platform."""
+    problems = []
+    by_name = {}
+    for fence, kind, name in fences:
+        if kind == 'output':
+            by_name.setdefault(name, []).append(fence)
+    for name, group in by_name.items():
+        named = [fence for fence in group if 'platform' in fence.attributes]
+        if not named:
+            continue
+        seen = set()
+        for fence in group:
+            platform = fence.attributes.get('platform')
+            if platform is None:
+                problems.append((path, fence.open_line, 'the output of sketches/%s is shown per platform: this fence names '
+                                 'its platform too (platform="windows", "linux" or "macos")' % name))
+            elif platform not in c_Platforms:
+                problems.append((path, fence.open_line, 'platform="%s" is not one of %s' % (platform, ', '.join(c_Platforms))))
+            elif platform in seen:
+                problems.append((path, fence.open_line, 'the output of sketches/%s on %s is shown twice: keep one fence per '
+                                 'platform' % (name, platform)))
+            else:
+                seen.add(platform)
+        missing = [platform for platform in c_Platforms if platform not in seen]
+        if missing:
+            problems.append((path, named[0].open_line, 'the output of sketches/%s is shown per platform, so every platform has '
+                             'its fence: add platform="%s"' % (name, '", "'.join(missing))))
+    return problems
 
 
 def page_prefix(page_id):
@@ -251,7 +298,12 @@ def process(layout, pages, mode, tools, named=False):
         for page, path in pages:
             text = repo.read_text(path)
             new_text = text
-            for fence, kind, name in reversed(sketch_fences(text)):
+            fences = sketch_fences(text)
+            problems.extend(platform_problems(path, fences))
+            for fence, kind, name in reversed(fences):
+                platform = fence.attributes.get('platform') if kind == 'output' else None
+                if platform is not None and platform != current_platform():
+                    continue  # the run on that platform compares it
                 try:
                     if not name.startswith(page_prefix(page)):
                         raise SketchError('the sketch "%s" of %s is named %s<name>.<ext> (pipelines.md §4): rename the file and the '

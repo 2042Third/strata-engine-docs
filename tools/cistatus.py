@@ -13,8 +13,11 @@ The other commands are CI's own; they run on GitHub's runners:
 
     python tools/cistatus.py step --title <title> -- <command> ...
         runs a step's command, passes its output through, and when it fails writes the reason as an ::error
-        annotation (the command, its exit code and the last lines it printed), which the report job collects: a job's
-        log needs a token to read, its annotations reach ci-results
+        annotation (the command, its exit code, the failing tests it reported and the last lines it printed), which the
+        report job collects: a job's log needs a token to read, its annotations reach ci-results. With
+        $GITHUB_STEP_SUMMARY set (on GitHub's runners), a failure also writes into the job's summary the name and the
+        report of each failing test the command printed (unittest's FAIL: and ERROR: blocks, node --test's failing
+        tests), or its last lines when it printed none, which the run's page shows without a login
     python tools/cistatus.py record --jobs <jobs.json> --annotations <folder> --commit <sha> --attempt <n>
             [--run-url <url>] [--event <event>] [--ref <ref>] --out <file>
         writes the run's record from GitHub's answers (the jobs of the run attempt, and <folder>/<job id>.json with
@@ -45,6 +48,11 @@ c_TailLines = 40
 c_MaxCommandCharacters = 300
 c_Passed = ('success', 'skipped', 'neutral')
 c_ReportJob = 'report'
+# The job summary of a failed step: the reports of at most this many failing tests, each cut to this many lines.
+c_SummaryTests = 30
+c_SummaryLines = 120
+c_UnittestRule = '=' * 70
+c_UnittestDivider = '-' * 70
 
 
 class CIStatusError(Exception):
@@ -71,14 +79,19 @@ def escape_property(text):
     return escape_data(text).replace(':', '%3A').replace(',', '%2C')
 
 
-def error_annotation(title, command, code, tail):
-    """The ::error line of a failed step: the command, its exit code and the last lines it printed, within GitHub's
-    size of a message."""
+def error_annotation(title, command, code, tail, failing=()):
+    """The ::error line of a failed step: the command, its exit code, the names of the failing tests it reported and the
+    last lines it printed, within GitHub's size of a message."""
     lines = list(tail)
     shown = ' '.join(command)
     if len(shown) > c_MaxCommandCharacters:
         shown = shown[:c_MaxCommandCharacters] + ' …'
     head = '%s exited %d' % (shown, code)
+    if failing:
+        names = '; '.join(failing)
+        if len(names) > c_MaxMessageBytes // 3:
+            names = names[:c_MaxMessageBytes // 3] + ' …'
+        head += ' (failing tests: %s)' % names
     while True:
         message = head + (':\n' + '\n'.join(lines) if lines else '')
         if len(message.encode('utf-8')) <= c_MaxMessageBytes or not lines:
@@ -89,11 +102,75 @@ def error_annotation(title, command, code, tail):
     return '::error title=%s::%s' % (escape_property(title), escape_data(message))
 
 
-def run_step(title, command, out=None):
+def failed_tests(lines):
+    """[(name, report lines)] of the failing tests a test runner printed: unittest's blocks (a rule of =, "FAIL: <test>"
+    or "ERROR: <test>", a rule of -, the traceback) and the entries of node --test's "failing tests:" list (a line
+    "✖ <test> (<time>)" and the indented lines under it)."""
+    found = []
+    index = 0
+    while index < len(lines):
+        line = lines[index]
+        following = lines[index + 1] if index + 1 < len(lines) else ''
+        if line == c_UnittestRule and following.startswith(('FAIL: ', 'ERROR: ')):
+            name = following
+            index += 2
+            if index < len(lines) and lines[index] == c_UnittestDivider:
+                index += 1
+            report = []
+            while index < len(lines) and lines[index] not in (c_UnittestRule, c_UnittestDivider):
+                report.append(lines[index])
+                index += 1
+            while report and not report[-1].strip():
+                report.pop()
+            found.append((name, report))
+            continue
+        if line.strip() == '✖ failing tests:':
+            index += 1
+            while index < len(lines):
+                entry = lines[index]
+                match = re.match(r'^✖ (.*?)(?: \([0-9.]+m?s\))?$', entry)
+                if match:
+                    report = []
+                    index += 1
+                    while index < len(lines) and (lines[index].startswith((' ', '\t')) or not lines[index].strip()):
+                        report.append(lines[index])
+                        index += 1
+                    while report and not report[-1].strip():
+                        report.pop()
+                    found.append((match.group(1), report))
+                    continue
+                index += 1
+            continue
+        index += 1
+    return found
+
+
+def write_summary(path, title, code, failing, tail):
+    """Appends a failed step's part of the job summary: each failing test with its report, or the last lines."""
+    parts = ['### %s: exit code %d' % (title, code), '']
+    if failing:
+        for name, report in failing[:c_SummaryTests]:
+            shown = report[:c_SummaryLines] + (['… (%d more lines in the log)' % (len(report) - c_SummaryLines)] if len(report) > c_SummaryLines else [])
+            parts += ['#### %s' % name, '', '````text'] + [line.replace('````', '` ` ` `') for line in shown] + ['````', '']
+        if len(failing) > c_SummaryTests:
+            parts += ['and %d more failing tests (in the log)' % (len(failing) - c_SummaryTests), '']
+    else:
+        parts += ['No failing test was reported. The last lines it printed:', '', '````text'] + [line.replace('````', '` ` ` `') for line in tail] + ['````', '']
+    try:
+        with open(path, 'a', encoding='utf-8', newline='\n') as file:
+            file.write('\n'.join(parts) + '\n')
+    except OSError as error:
+        print('cistatus: the job summary could not be written: %s' % error, file=sys.stderr)
+
+
+def run_step(title, command, out=None, summary=None):
     """Runs `command`, writing its output (standard error merged into it) through; returns its exit code, after
-    writing an ::error annotation when it is not 0."""
+    writing an ::error annotation when it is not 0, and the failing tests into the job summary (summary: its file,
+    default $GITHUB_STEP_SUMMARY)."""
     out = out or sys.stdout
+    summary = summary if summary is not None else os.environ.get('GITHUB_STEP_SUMMARY')
     tail = collections.deque(maxlen=c_TailLines)
+    printed = []
     try:
         process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding='utf-8', errors='replace', bufsize=1)
     except OSError as error:
@@ -105,10 +182,14 @@ def run_step(title, command, out=None):
             out.write(line)
             out.flush()
             tail.append(line.rstrip('\r\n'))
+            printed.append(line.rstrip('\r\n'))
     code = process.wait()
     if code != 0:
-        out.write(error_annotation(title, command, code, tail) + '\n')
+        failing = failed_tests(printed)
+        out.write(error_annotation(title, command, code, tail, [name for name, _ in failing]) + '\n')
         out.flush()
+        if summary:
+            write_summary(summary, title, code, failing, list(tail))
     return code
 
 

@@ -7,21 +7,21 @@ passes `tools/pagecheck.py`; the final walks of tracks G and E were answered and
 
 ## Checks
 
-Release build of 6dc9885f (`book-v0.8.0-r2`). Passing, with `--release` where it applies: pages, outline, notices A
-to C, typos, markdownlint, actionlint, both unit suites, the lint, quotes, sketches (`CXX` and `--slangc` as full
-paths: not on this shell's PATH), figures, tutorials, the reference, names, `pin.py report`, diagrams,
-drawings. The builds at `/`, `/x/y` and `/strata-engine-docs` with gate (a); gates (a), (b) and (c) through nginx
-1.30.6 and 1.20.1 (copied, container, hostile, proxy, with and without host headers); axe on 396 pages in both
-themes; keyboard; Lighthouse accessibility 100.
+Release build of 768efd13 (`book-v0.8.0-r3`; its tree is that of the published commit 47dcdd8c). Passing, with
+`--release` where it applies: pages, outline, notices A to C, typos, markdownlint, actionlint, both unit suites, the
+lint, quotes, sketches (`CXX` and `--slangc` as full paths), figures, tutorials, the reference, names, `pin.py
+report`, diagrams, drawings. The builds at `/`, `/x/y` and `/strata-engine-docs` with gate (a); gates (a), (b) and
+(c) through nginx 1.30.6 and 1.20.1; keyboard; Lighthouse accessibility 100. Axe: 791 of 792 page-themes; the one,
+`print/editor-ui/` (a link with text reported as empty), flakes: reruns of every print view pass; r2's page flakes
+alike.
 
-Check 12, budgets as committed (R59 still a draft): 0 of 15 over. Site 398.8 MB (row 9: 400), chapter
-HTML 102.5 MB, print views 82.4 MB, largest page 177.2 KB gzip and 1,547 KB raw, search index 11.7 MB, peak memory
-3,732 MB. Check 11: first query 207.4 KB, next 91.9 KB (row 12: 300, 100); 55 of 60 queries (row 13: 54).
+Check 12: 0 of 12 budgets over (R59, R60). Site 398.8 MB, largest page 177.2 KB gzip, search index 11.7 MB, peak
+memory 3,700 MB; the crawl took 119.1 s (recorded). Check 11: first query 207.4 KB, next 91.9 KB; 55 of 60 queries.
 
 Open:
 
-- the crawl took 117.8 s against 48 s, not judged (other load 2.5); for the planner (R59);
-- row 14 on this machine: `image/spatial-aa` performance 79, LCP 4.5 s (CI's runner is row 14's machine).
+- row 14 on this machine: `image/spatial-aa` performance 79, LCP 4.2 s;
+- the axe flake on the large print views.
 
 ## Figures
 
@@ -30,14 +30,16 @@ their pages show stand-ins (R55).
 
 ## Release
 
-`book-v0.8.0-r2` in `docs-work/release/out/book-v0.8.0-r2/`, replacing r1: site (266.8 MB), deploy folder,
+`book-v0.8.0-r3` in `docs-work/release/out/book-v0.8.0-r3/`, replacing r2: site (266.8 MB), deploy folder,
 `SHA256SUMS`, PNG originals (588.5 MB) with their `.sha256`, and a copy of `deploy/README.md`. No token or path of
 this machine's user folders ships; the only e-mail addresses are Pagefind's translators' and `you@example.com`.
 
 ## Repository
 
-Local `main` is at 90d8017d (r1), behind `book/write`; nothing is pushed. A push needs a credential that may write
-contents and workflows: first `ci/site`, then `main` by fast-forward once its CI is green (R56).
+The book is on GitHub as `ci/site` (47dcdd8c); `main` there is still the repository's first commit. CI of 47dcdd8c
+fails: on Linux `sketches/draw-batching-passes.cpp` converts its lambda to `uint64_t (*)(uint32_t)` only where
+`uint64_t` is `unsigned long long`, two sketch fences differ, and a unit suite fails. `main` moves by fast-forward once
+CI is green (R56).
 
 ## For a later edition
 

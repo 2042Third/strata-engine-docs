@@ -8,7 +8,8 @@
 // file at the submodule's commit). The anchors that tools/excerpts.py keeps on a quote (symbol, from, to, overload,
 // command) are its own.
 // Fences of the book's own code are labelled: sketch="<file>" (a copy of sketches/<file>, compared here),
-// output-of="<file>" (what the sketch prints) and pseudocode. A text figure, capture="<figure>" with variant="<name>"
+// output-of="<file>" (what the sketch prints; with platform="windows|linux|macos" when the output differs by platform by
+// design, one fence per platform, which tools/sketches.py compares on its platform) and pseudocode. A text figure, capture="<figure>" with variant="<name>"
 // when its recipe has variants, shows the published text of a recipe of kind text (a command's result or a program's
 // output, which tools/figures.py takes and fill copies into the fence; pipelines.md §5). Every other attribute of a
 // fence is Expressive Code's; a name neither knows fails the build, so that a mistyped attribute is not ignored.
@@ -24,7 +25,9 @@ export const c_MaxQuoteLines = 60;
 export const c_MinInternalsQuotes = 3;
 // The anchors tools/excerpts.py writes and keeps on a quote (pipelines.md §3.1 and §3.3).
 export const c_QuoteAnchors = ['symbol', 'from', 'to', 'overload', 'command'];
-const c_Own = ['src', 'mark', 'sketch', 'output-of', 'pseudocode', 'capture', 'variant', ...c_QuoteAnchors];
+const c_Own = ['src', 'mark', 'sketch', 'output-of', 'platform', 'pseudocode', 'capture', 'variant', ...c_QuoteAnchors];
+// The platforms a sketch's output may name (tools/sketches.py, c_Platforms).
+export const c_OutputPlatforms = ['windows', 'linux', 'macos'];
 // Expressive Code's own props (its core, text markers, frames, line numbers, collapsible sections): with a value, and
 // on their own.
 export const c_CodeProps = ['title', 'frame', 'wrap', 'preserveIndent', 'hangingIndent', 'showLineNumbers', 'startLineNumber', 'collapse', 'collapseStyle', 'collapsePreserveIndent', 'lang', 'useDiffSyntax', 'ins', 'del', 'add', 'rem'];
@@ -37,7 +40,7 @@ export function codePropsProblem(rest) {
 		if (/^\{.*\}$/.test(token) || /^(["']).*\1$/.test(token) || /^\/.+\/$/.test(token)) continue;
 		const name = /^([A-Za-z_][\w-]*)=/.exec(token)?.[1];
 		if (name ? c_CodeProps.includes(name) : c_CodeFlags.includes(token)) continue;
-		return `a code fence has no attribute "${name ?? token}": the book's are src, mark, sketch, output-of, pseudocode, capture and variant (with a quote's ${c_QuoteAnchors.join(', ')}), Expressive Code's are ${c_CodeProps.join(', ')} and {line ranges}`;
+		return `a code fence has no attribute "${name ?? token}": the book's are src, mark, sketch, output-of (with platform), pseudocode, capture and variant (with a quote's ${c_QuoteAnchors.join(', ')}), Expressive Code's are ${c_CodeProps.join(', ')} and {line ranges}`;
 	}
 	return null;
 }
@@ -381,6 +384,8 @@ export function remarkBookExcerpts(context) {
 					}
 					const kinds = ['src', 'sketch', 'output-of', 'capture'].filter((name) => attributes.has(name)).concat(flags.has('pseudocode') ? ['pseudocode'] : []);
 					if (kinds.length > 1) report(file, node, `a fence is one of a quote (src), a sketch, a sketch's output, a text figure (capture) or pseudocode, not ${kinds.join(' and ')}`);
+					if (attributes.has('platform') && !attributes.has('output-of')) report(file, node, `platform="${attributes.get('platform')}" names the platform of a sketch's output: it goes with output-of="<file>"`);
+					else if (attributes.has('platform') && !c_OutputPlatforms.includes(attributes.get('platform'))) report(file, node, `platform="${attributes.get('platform')}" is not one of ${c_OutputPlatforms.join(', ')}`);
 					if (attributes.has('variant') && !attributes.has('capture')) report(file, node, `variant="${attributes.get('variant')}" chooses a variant of a text figure: it goes with capture="<figure>"`);
 					if (attributes.has('src')) {
 						const wrapped = quote(context, file, node, attributes, rest);

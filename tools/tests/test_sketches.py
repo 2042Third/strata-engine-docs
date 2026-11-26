@@ -138,6 +138,51 @@ class SketchTests(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertIn('does not compile', output)
 
+    def per_platform_page(self, windows='wrong', linux='wrong', macos='wrong'):
+        fences = ''.join('\n```text output-of="core-time-hello.cpp" platform="%s"\n%s\n```\n' % (platform, body)
+                         for platform, body in (('windows', windows), ('linux', linux), ('macos', macos)))
+        self.book.page('core/time', helpers.frontmatter() + '\n```cpp sketch="core-time-hello.cpp"\n```\n' + fences)
+
+    @unittest.skipUnless(has_compiler(), 'no C++ compiler on the PATH')
+    def test_a_per_platform_output_is_compared_on_its_own_platform(self):
+        # An output that differs by platform by design has a fence per platform; a run fills and compares only its own
+        # (fill also copied the sketch's two lines into its fence, so the windows fence opens at line 24).
+        self.per_platform_page()
+        with mock.patch.object(sketches, 'current_platform', return_value='linux'):
+            code, output = self.run_tool('fill')
+            self.assertEqual(code, 0, output)
+            page = self.book.read('src/content/docs/core/time.md')
+            self.assertIn('```text output-of="core-time-hello.cpp" platform="linux"\nhello\n```', page)
+            self.assertIn('```text output-of="core-time-hello.cpp" platform="windows"\nwrong\n```', page)
+            self.assertIn('```text output-of="core-time-hello.cpp" platform="macos"\nwrong\n```', page)
+            code, output = self.run_tool('check')
+            self.assertEqual(code, 0, output)
+        with mock.patch.object(sketches, 'current_platform', return_value='windows'):
+            code, output = self.run_tool('check')
+            self.assertEqual(code, 1)
+            self.assertIn('time.md:24: the fence differs from what sketches/core-time-hello.cpp prints', output)
+            self.assertNotIn('time.md:28:', output)
+            self.assertNotIn('time.md:32:', output)
+
+    def test_per_platform_outputs_name_every_platform_once(self):
+        self.book.page('core/time', helpers.frontmatter() + '\n```cpp sketch="core-time-hello.cpp"\n```\n'
+                       '\n```text output-of="core-time-hello.cpp" platform="linux"\nhello\n```\n'
+                       '\n```text output-of="core-time-hello.cpp" platform="linux"\nhello\n```\n'
+                       '\n```text output-of="core-time-hello.cpp" platform="bsd"\nhello\n```\n'
+                       '\n```text output-of="core-time-hello.cpp"\nhello\n```\n')
+        code, output = self.run_tool('check', '--no-compile')
+        self.assertEqual(code, 1)
+        self.assertIn('time.md:26: the output of sketches/core-time-hello.cpp on linux is shown twice: keep one fence per platform', output)
+        self.assertIn('time.md:30: platform="bsd" is not one of windows, linux, macos', output)
+        self.assertIn('time.md:34: the output of sketches/core-time-hello.cpp is shown per platform: this fence names its platform too', output)
+        self.assertIn('time.md:22: the output of sketches/core-time-hello.cpp is shown per platform, so every platform has its fence: '
+                      'add platform="windows", "macos"', output)
+
+    def test_the_platform_names_the_machine_the_check_runs_on(self):
+        for system, name in (('win32', 'windows'), ('linux', 'linux'), ('darwin', 'macos'), ('freebsd14', None)):
+            with mock.patch.object(sketches.sys, 'platform', system):
+                self.assertEqual(sketches.current_platform(), name)
+
     @unittest.skipUnless(has_compiler(), 'no C++ compiler on the PATH')
     def test_a_check_of_pages_compiles_only_their_own_sketch_files(self):
         # Another page's broken sketch file fails the whole book's check, not a check of this page (and compiling

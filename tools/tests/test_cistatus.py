@@ -58,6 +58,41 @@ class StepTests(unittest.TestCase):
         self.assertTrue(message.rstrip().endswith('line 99 ' + 'x' * 200))
         self.assertNotIn('line 50 ', message)
 
+    def test_a_failed_test_run_names_its_failing_tests_in_the_annotation_and_the_summary(self):
+        # CI's unit-test step failed with no word but its exit code: the job summary and the annotation (which reaches
+        # ci-results) now carry each failing test's name and report.
+        unittest_output = ['test_a (t.A.test_a) ... ok', 'test_b (t.A.test_b) ... FAIL', 'test_c (t.A.test_c) ... ERROR', '',
+                           '=' * 70, 'FAIL: test_b (t.A.test_b)', '-' * 70, 'Traceback (most recent call last):',
+                           '  File "t.py", line 9, in test_b', 'AssertionError: 1 != 2', '',
+                           '=' * 70, 'ERROR: test_c (t.A.test_c)', '-' * 70, 'Traceback (most recent call last):',
+                           'OSError: gone', '', '-' * 70, 'Ran 3 tests in 0.1s', '', 'FAILED (failures=1, errors=1)']
+        node_output = ['✔ passes (1.2ms)', '✖ fails (3.4ms)', 'ℹ tests 2', 'ℹ fail 1', '', '✖ failing tests:', '',
+                       'test at src/plugins/tests/a.test.mjs:5:1', '✖ fails (3.4ms)', '  AssertionError [ERR_ASSERTION]: no',
+                       '      at a.test.mjs:6:9']
+        self.assertEqual(cistatus.failed_tests(unittest_output), [
+            ('FAIL: test_b (t.A.test_b)', ['Traceback (most recent call last):', '  File "t.py", line 9, in test_b', 'AssertionError: 1 != 2']),
+            ('ERROR: test_c (t.A.test_c)', ['Traceback (most recent call last):', 'OSError: gone'])])
+        self.assertEqual(cistatus.failed_tests(node_output), [('fails', ['  AssertionError [ERR_ASSERTION]: no', '      at a.test.mjs:6:9'])])
+        folder = tempfile.mkdtemp(prefix='summary-')
+        try:
+            summary = os.path.join(folder, 'summary.md')
+            script = 'import sys\n' + ''.join('print(%r)\n' % line for line in unittest_output) + 'sys.exit(1)\n'
+            out = io.StringIO()
+            self.assertEqual(cistatus.run_step('Unit tests of the tools', [sys.executable, '-c', script], out, summary), 1)
+            self.assertIn('(failing tests: FAIL: test_b (t.A.test_b); ERROR: test_c (t.A.test_c))', out.getvalue().splitlines()[-1])
+            with open(summary, encoding='utf-8') as file:
+                written = file.read()
+            self.assertIn('### Unit tests of the tools: exit code 1', written)
+            self.assertIn('#### FAIL: test_b (t.A.test_b)\n\n````text\nTraceback (most recent call last):\n  File "t.py", line 9, in test_b\nAssertionError: 1 != 2\n````', written)
+            self.assertIn('#### ERROR: test_c (t.A.test_c)', written)
+            # A run that ends without a report (killed) leaves its last lines.
+            self.assertEqual(cistatus.run_step('Killed', [sys.executable, '-c', 'import sys; print("test_d ... "); sys.exit(137)'], io.StringIO(), summary), 137)
+            with open(summary, encoding='utf-8') as file:
+                written = file.read()
+            self.assertIn('### Killed: exit code 137\n\nNo failing test was reported. The last lines it printed:\n\n````text\ntest_d ... \n````', written)
+        finally:
+            shutil.rmtree(folder, ignore_errors=True)
+
     def test_a_command_that_does_not_start_is_a_failure_with_its_reason(self):
         out = io.StringIO()
         self.assertEqual(cistatus.run_step('Lint', ['a-program-that-does-not-exist-here'], out), 127)

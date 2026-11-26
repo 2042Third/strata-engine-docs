@@ -141,13 +141,15 @@ The engine keeps running because nothing else has to change. The instances of th
 
 ## A toy version
 
-The sketch below is a toy guard of about 80 lines. It uses the C library's `signal`, `raise`, `setjmp` and `longjmp`, which exist on every platform, so it compiles everywhere. It differs from the real guard in two ways that matter, and the output below comes from a Windows build. The faults are raised with `raise`, so that every run is the same; a real crash arrives from the processor but reaches the same handler. And the toy has no alternate stack and does not allow the signal again, so on Linux it contains only the first fault of each kind.
+The sketch below is a toy guard of about 90 lines. It saves and jumps with `setjmp` and `longjmp` on Windows, and with `sigsetjmp` and `siglongjmp` on Linux and macOS. On POSIX the system blocks a signal while its handler runs, and a plain `longjmp` out of the handler leaves it blocked, so the next fault of that kind would end the process. `sigsetjmp(buffer, 1)` saves the signal mask and `siglongjmp` restores it; the real guard repairs the mask on the fault path instead.
+
+The toy differs from the real guard in two more ways. The faults are raised with `raise`, so that every run is the same; a real crash arrives from the processor but reaches the same handler. And the toy has no alternate stack, so a stack overflow is beyond it.
 
 :::question
 The sketch calls functions through pointers and writes calls such as `std::raise(` and `x.f(`. Read [C++ memory](../basics/cpp-memory.md) and [classes and calls](../basics/programming-3.md) first.
 :::
 
-Read the sketch for three things. The guard frame holds the jump buffer and links to the previous frame. The handler pops the frame before it jumps, and `Invoke` tells the two returns of `setjmp` apart.
+Read the sketch for three things. The guard frame holds the jump buffer and links to the previous frame. The handler pops the frame before it jumps, and `Invoke` tells the two returns of `SAVE_PLACE` apart.
 
 ```cpp sketch="scripting-crash-containment-toy.cpp"
 // A toy crash guard: a call runs under a guard, a signal ends it, and Invoke returns false. The faults are raised by
@@ -158,12 +160,25 @@ Read the sketch for three things. The guard frame holds the jump buffer and link
 #include <cstdio>
 #include <initializer_list>
 
+// POSIX blocks a signal while its handler runs, and a plain longjmp out of the handler leaves it blocked, so the next
+// fault of that kind would not reach the handler. sigsetjmp(buffer, 1) saves the signal mask and siglongjmp restores it.
+#if defined(_WIN32)
+#define SAVE_PLACE(buffer) setjmp(buffer)
+#define JUMP_BACK(buffer) std::longjmp(buffer, 1)
+using JumpBuffer = std::jmp_buf;
+#else
+#include <setjmp.h>
+#define SAVE_PLACE(buffer) sigsetjmp(buffer, 1)
+#define JUMP_BACK(buffer) siglongjmp(buffer, 1)
+using JumpBuffer = sigjmp_buf;
+#endif
+
 namespace
 {
 
 	struct GuardFrame
 	{
-		std::jmp_buf JumpBuffer;
+		JumpBuffer Place;
 		GuardFrame* Previous = nullptr;
 		volatile std::sig_atomic_t Signal = 0;
 	};
@@ -182,7 +197,7 @@ namespace
 		}
 		frame->Signal = signal;
 		s_CurrentFrame = frame->Previous;
-		std::longjmp(frame->JumpBuffer, 1);
+		JUMP_BACK(frame->Place);
 	}
 
 	struct Noisy
@@ -205,7 +220,7 @@ namespace
 	{
 		GuardFrame frame;
 		frame.Previous = s_CurrentFrame;
-		if (setjmp(frame.JumpBuffer) == 0)
+		if (SAVE_PLACE(frame.Place) == 0)
 		{
 			s_CurrentFrame = &frame;
 			function();
@@ -247,12 +262,13 @@ returned false
 returned true
 ```
 
-1. **Lines 12-17:** the guard frame holds the jump buffer and a link to the guard that was active before it, so guards nest.
-2. **Lines 31-33:** the handler records the signal, pops the frame so that a second crash finds the previous guard, and jumps.
-3. **Lines 45-47:** the destructor of `noisy` does not run and the last line does not print, because the jump skipped both.
-4. **Line 56:** `setjmp` returns 0 on the way in and 1 after the jump, so the code after the `if` is the fault path.
+1. **Lines 9-20:** `SAVE_PLACE` and `JUMP_BACK` are `setjmp` and `longjmp` on Windows, and `sigsetjmp` and `siglongjmp` elsewhere, which also restore the signal mask.
+2. **Lines 25-30:** the guard frame holds the jump buffer and a link to the guard that was active before it, so guards nest.
+3. **Lines 44-46:** the handler records the signal, pops the frame so that a second crash finds the previous guard, and jumps.
+4. **Lines 58-60:** the destructor of `noisy` does not run and the last line does not print, because the jump skipped both.
+5. **Line 69:** `SAVE_PLACE` returns 0 on the way in and 1 after the jump, so the code after the `if` is the fault path.
 
-The output shows the contract in miniature. A healthy call returns true. A crashing call returns false, and the second crash is contained too, because the handler registered itself again. In the nested case the inner guard catches the division, and the outer function continues and returns true.
+The output shows the contract in miniature. A healthy call returns true. A crashing call returns false, and the second crash is contained too: the handler registered itself again, which Windows needs, and on POSIX the jump restored the signal mask. In the nested case the inner guard catches the division, and the outer function continues and returns true.
 
 ## The real code
 
@@ -394,7 +410,7 @@ bool CrashGuard::Invoke(GuardedFunction function, void* userData, CrashInfo* out
 3. **Lines 380-383:** the handler ran with the delivered signal blocked, and the jump did not restore the mask. Without this step, the next crash of the same kind could not be delivered, and the kernel ends a process whose crash signal is blocked.
 4. **Lines 387-388:** a sanity check that the thread has left the alternate stack. If it has not, the next stack overflow could not be contained, so the guard logs an error instead of hiding it.
 
-The toy registers its handler again because Windows resets it, and it has no signal mask to repair. The real guard solves both problems for its platform, in a handler that must also run on a full stack.
+The toy registers its handler again because Windows resets it, and on POSIX it lets `siglongjmp` restore the mask, at the cost of a system call on every guarded call. The real guard solves both problems for its platform, in a handler that must also run on a full stack.
 
 ### Abort: why the module needs its own handler
 

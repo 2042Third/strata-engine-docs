@@ -117,17 +117,46 @@ int main()
 }
 ```
 
-```text output-of="scripting-shared-libraries-layout.cpp"
+1. **Lines 5–10:** the flag comes first, so three bytes of padding sit before the count.
+2. **Lines 12–17:** the count comes first, so the two small members share the space after it.
+3. **Line 23:** the sizes of `bool`, `long`, `wchar_t` and a pointer, which depend on the platform.
+
+The sketch prints this on each platform:
+
+::::tabs{sync=os}
+:::tab[Windows]
+
+```text output-of="scripting-shared-libraries-layout.cpp" platform="windows"
 Loose: size 12, Count at 4, Mode at 8
 Tight: size 8, Flag at 4, Mode at 5
 bool 1, long 4, wchar_t 2, pointer 8
 ```
 
-1. **Lines 5–10:** the flag comes first, so three bytes of padding sit before the count.
-2. **Lines 12–17:** the count comes first, so the two small members share the space after it.
-3. **Line 23:** the sizes of `bool`, `long`, `wchar_t` and a pointer, which depend on the platform.
+`long` is 4 bytes and `wchar_t` is 2.
+:::
+:::tab[Linux]
 
-In the output, the first two lines match the hand count. The last line shows that `long` is 4 bytes on Windows and 8 on Linux, and `wchar_t` is 2 and 4.
+```text output-of="scripting-shared-libraries-layout.cpp" platform="linux"
+Loose: size 12, Count at 4, Mode at 8
+Tight: size 8, Flag at 4, Mode at 5
+bool 1, long 8, wchar_t 4, pointer 8
+```
+
+`long` is 8 bytes and `wchar_t` is 4.
+:::
+:::tab[macOS]
+
+```text output-of="scripting-shared-libraries-layout.cpp" platform="macos"
+Loose: size 12, Count at 4, Mode at 8
+Tight: size 8, Flag at 4, Mode at 5
+bool 1, long 8, wchar_t 4, pointer 8
+```
+
+`long` is 8 bytes and `wchar_t` is 4, as on Linux.
+:::
+::::
+
+On every platform the first two lines match the hand count, and only the last line differs.
 
 A struct with a `long` that crosses a boundary between a Windows file and a Linux file is a rare case. A struct built with another compiler on the same platform fails for the same reason, because the layout is a decision of the compiler, not of the header.
 :::

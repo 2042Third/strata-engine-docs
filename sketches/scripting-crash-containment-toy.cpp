@@ -6,12 +6,25 @@
 #include <cstdio>
 #include <initializer_list>
 
+// POSIX blocks a signal while its handler runs, and a plain longjmp out of the handler leaves it blocked, so the next
+// fault of that kind would not reach the handler. sigsetjmp(buffer, 1) saves the signal mask and siglongjmp restores it.
+#if defined(_WIN32)
+#define SAVE_PLACE(buffer) setjmp(buffer)
+#define JUMP_BACK(buffer) std::longjmp(buffer, 1)
+using JumpBuffer = std::jmp_buf;
+#else
+#include <setjmp.h>
+#define SAVE_PLACE(buffer) sigsetjmp(buffer, 1)
+#define JUMP_BACK(buffer) siglongjmp(buffer, 1)
+using JumpBuffer = sigjmp_buf;
+#endif
+
 namespace
 {
 
 	struct GuardFrame
 	{
-		std::jmp_buf JumpBuffer;
+		JumpBuffer Place;
 		GuardFrame* Previous = nullptr;
 		volatile std::sig_atomic_t Signal = 0;
 	};
@@ -30,7 +43,7 @@ namespace
 		}
 		frame->Signal = signal;
 		s_CurrentFrame = frame->Previous;
-		std::longjmp(frame->JumpBuffer, 1);
+		JUMP_BACK(frame->Place);
 	}
 
 	struct Noisy
@@ -53,7 +66,7 @@ namespace
 	{
 		GuardFrame frame;
 		frame.Previous = s_CurrentFrame;
-		if (setjmp(frame.JumpBuffer) == 0)
+		if (SAVE_PLACE(frame.Place) == 0)
 		{
 			s_CurrentFrame = &frame;
 			function();

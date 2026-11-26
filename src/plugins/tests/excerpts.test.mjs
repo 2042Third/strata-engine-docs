@@ -165,7 +165,7 @@ test('a sketch takes no engine marks, and a quote no block-relative markers', as
 test('a fence attribute neither the book nor Expressive Code knows fails; Expressive Code\'s own pass', async () => {
 	const { codePropsProblem } = await import('../excerpts.mjs');
 	assert.equal(codePropsProblem(['title="main.cpp"', '{3-5}', 'ins={2}', '"two words"', '/re gex/', 'wrap', 'collapse={1-4}', 'frame="terminal"', 'showLineNumbers']), null);
-	assert.match(codePropsProblem(['heading="main.cpp"']), /a code fence has no attribute "heading": the book's are src, mark, sketch, output-of, pseudocode, capture and variant/);
+	assert.match(codePropsProblem(['heading="main.cpp"']), /a code fence has no attribute "heading": the book's are src, mark, sketch, output-of \(with platform\), pseudocode, capture and variant/);
 	assert.match(codePropsProblem(['pseudo']), /no attribute "pseudo"/);
 	const page = `${frontmatter()}\n\`\`\`cpp snippet="core-time-toy.cpp"\nint x;\n\`\`\`\n\n\`\`\`json title="A command" {1}\n{ "command": "play.start" }\n\`\`\`\n${c_BottomStrip}`;
 	const book = makeBook({ pages: { 'core/time': page } });
@@ -195,6 +195,20 @@ test('a quote keeps the anchors tools/excerpts.py writes; other fences take none
 	}
 });
 
+test('a sketch\'s output may be shown per platform, each fence naming its platform', async () => {
+	const outputs = ['windows', 'linux', 'macos'].map((platform, index) => `:::tab[${['Windows', 'Linux', 'macOS'][index]}]\n\n\`\`\`text output-of="core-time-toy.cpp" platform="${platform}"\nlong ${index ? 8 : 4}\n\`\`\`\n\n:::`);
+	const page = `${frontmatter()}\n${fence('sketch="core-time-toy.cpp"', ['int main() { return 0; }'])}\n\n::::tabs{sync=os}\n${outputs.join('\n')}\n::::\n${c_BottomStrip}`;
+	const book = makeBook({ pages: { 'core/time': page }, files: { 'sketches/core-time-toy.cpp': 'int main() { return 0; }\n' } });
+	try {
+		const html = await render(book.root, 'core/time');
+		assert.equal(html.match(/Output of the sketch/g)?.length, 3);
+		assert.match(html, /long 4/);
+		assert.match(html, /long 8/);
+	} finally {
+		book.remove();
+	}
+});
+
 test('a sketch\'s file starts with its page\'s id, and its output follows it as a text fence', async () => {
 	const page = (body) => makeBook({ pages: { 'core/time': `${frontmatter()}\n${body}\n${c_BottomStrip}` }, files: { 'sketches/core-time-toy.cpp': 'int main() { return 0; }\n', 'sketches/toy.cpp': 'int main() { return 0; }\n' } });
 	const cases = [
@@ -202,6 +216,8 @@ test('a sketch\'s file starts with its page\'s id, and its output follows it as 
 		[fence('sketch="core-time-toy"', ['int main() { return 0; }']), /sketch="core-time-toy" must name a file of sketches\/ with its extension/],
 		['```text output-of="core-time-toy.cpp"\nhello\n```', /output-of="core-time-toy\.cpp" shows what a sketch prints: the page shows that sketch first, in a fence with sketch="core-time-toy\.cpp"/],
 		[`${fence('sketch="core-time-toy.cpp"', ['int main() { return 0; }'])}\n\n\`\`\`cpp output-of="core-time-toy.cpp"\nhello\n\`\`\``, /the output of a sketch is a text fence: ```text output-of="core-time-toy\.cpp"/],
+		[`${fence('sketch="core-time-toy.cpp"', ['int main() { return 0; }'])}\n\n\`\`\`text output-of="core-time-toy.cpp" platform="bsd"\nhello\n\`\`\``, /platform="bsd" is not one of windows, linux, macos/],
+		[fence('sketch="core-time-toy.cpp" platform="linux"', ['int main() { return 0; }']), /platform="linux" names the platform of a sketch's output: it goes with output-of="<file>"/],
 		[fence('sketch="core-time-toy.cpp" pseudocode', ['int main() { return 0; }']), /a fence is one of a quote \(src\), a sketch, a sketch's output, a text figure \(capture\) or pseudocode, not sketch and pseudocode/],
 	];
 	for (const [body, pattern] of cases) {

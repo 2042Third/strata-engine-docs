@@ -166,19 +166,34 @@ def process_alive(pid):
     return True
 
 
+def own_group():
+    """Popen's options that start a program as the leader of a process group of its own on POSIX (a new session), so
+    that end_process_tree ends it with what it started and nothing else. Windows ends a tree by its parent links."""
+    return {} if os.name == 'nt' else {'start_new_session': True}
+
+
 def end_process_tree(pid):
-    """Ends a process and everything it started."""
+    """Ends a process and everything it started. On POSIX the process's group is ended only when the process leads it
+    (started with own_group()): a program that shares the caller's group is ended alone, because signalling that
+    group would end the caller too (CI's unit-test step died so, without a word)."""
     if os.name == 'nt':
         subprocess.run(['taskkill', '/T', '/F', '/PID', str(pid)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     else:
         import signal
         try:
-            os.killpg(os.getpgid(pid), signal.SIGKILL)
+            group = os.getpgid(pid)
         except OSError:
+            group = None
+        if group == pid and group != os.getpgrp():
             try:
-                os.kill(pid, signal.SIGKILL)
+                os.killpg(group, signal.SIGKILL)
+                return
             except OSError:
                 pass
+        try:
+            os.kill(pid, signal.SIGKILL)
+        except OSError:
+            pass
 
 
 class Log:
@@ -205,7 +220,7 @@ def run_program(arguments, env, log, name, timeout, cwd=None, merge=True):
     says so."""
     try:
         process = subprocess.Popen(arguments, stdout=subprocess.PIPE, stderr=subprocess.STDOUT if merge else subprocess.PIPE,
-                                   env=env, cwd=cwd)
+                                   env=env, cwd=cwd, **own_group())
     except OSError as error:
         raise EditorError('%s could not start: %s' % (arguments[0], error))
     try:
@@ -240,7 +255,8 @@ class Program:
         self.path = os.path.join(log.folder, '%04d-%s.out' % (log.number, safe))
         self.file = open(self.path, 'wb')
         try:
-            self.process = subprocess.Popen(self.arguments, stdout=self.file, stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL, env=env, cwd=cwd)
+            self.process = subprocess.Popen(self.arguments, stdout=self.file, stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL, env=env, cwd=cwd,
+                                            **own_group())
         except OSError as error:
             self.file.close()
             raise EditorError('%s could not start: %s' % (self.arguments[0], error))
@@ -451,7 +467,8 @@ class McpClient:
         self.errors_path = os.path.join(log.folder, '%04d-mcp.err' % log.number)
         self.errors = open(self.errors_path, 'wb')
         try:
-            self.process = subprocess.Popen(self.arguments, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=self.errors, env=env)
+            self.process = subprocess.Popen(self.arguments, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=self.errors, env=env,
+                                            **own_group())
         except OSError as error:
             self.errors.close()
             raise EditorError('%s could not start: %s' % (self.arguments[0], error))

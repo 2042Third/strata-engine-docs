@@ -312,8 +312,10 @@ python -I tools/sketches.py check [--no-compile] [--engine <clone>] [--slangc <p
 
 - **C++:** compiled by `$CXX` (else the first of `g++`, `clang++`, `c++`) with `-std=c++20 -Wall -Wextra -Werror` and
   `-isystem <engine>/Strata/vendor/glm`, glm at the commit the pin records. A sketch whose output a page shows is run
-  and its output compared with the `output-of` fence; a run may take 10 seconds. (spike: compiles and runs; the glm
-  include is new.)
+  and its output compared with the `output-of` fence; a run may take 10 seconds. An output that differs by platform by
+  design has one fence per platform, each naming it (`platform="windows"`, `"linux"`, `"macos"`, shown in `sync=os`
+  tabs); a run compares, and `fill` writes, only the fence of the platform it runs on. (spike: compiles and runs; the
+  glm include is new.)
 - **Slang:** compiled by the slangc of the release that `CMake/StrataSlang.cmake` pins (`STRATA_SLANG_VERSION`
   `2026.20` at 822a7a46, with a SHA-256 per platform): `slangc <file> -target spirv -entry main -stage <stage>
   -I <engine>/Strata/shaders -o <scratch file>`, where the file is named `<name>.<vert|frag|comp>.slang`. `check` first

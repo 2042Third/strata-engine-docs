@@ -286,6 +286,38 @@ class ProgramTests(unittest.TestCase):
             shutil.rmtree(folder, ignore_errors=True)
 
 
+    @unittest.skipIf(os.name == 'nt', 'process groups are POSIX\'s')
+    def test_ending_a_program_of_the_caller_s_group_leaves_the_caller_running(self):
+        # A program that shares its caller's process group is ended alone: ending its group would end the caller, as it
+        # ended CI's unit-test step. The caller runs in a session of its own here, so that a failure ends only it.
+        tools = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        caller = ('import subprocess, sys\n'
+                  'sys.path.insert(0, sys.argv[1])\n'
+                  'from booklib import editor\n'
+                  'program = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(120)"])\n'
+                  'editor.end_process_tree(program.pid)\n'
+                  'print("the caller still runs; the program ended with", program.wait(timeout=30), flush=True)\n')
+        result = subprocess.run([sys.executable, '-I', '-c', caller, tools], capture_output=True, text=True, timeout=60, start_new_session=True)
+        self.assertEqual(result.returncode, 0, 'the caller ended with %s: %s' % (result.returncode, result.stderr))
+        self.assertIn('the caller still runs; the program ended with -9', result.stdout)
+
+    @unittest.skipIf(os.name == 'nt', 'process groups are POSIX\'s')
+    def test_programs_lead_a_process_group_of_their_own(self):
+        from booklib import editor
+        folder = tempfile.mkdtemp(prefix='programs-')
+        try:
+            program = editor.Program([sys.executable, '-c', 'import time; time.sleep(120)'], os.environ.copy(), editor.Log(folder), 'leader')
+            try:
+                self.assertEqual(os.getpgid(program.pid), program.pid)
+                self.assertNotEqual(os.getpgid(program.pid), os.getpgrp())
+            finally:
+                editor.end_process_tree(program.pid)
+                program.finish(30)
+            self.assertFalse(program.alive())
+        finally:
+            shutil.rmtree(folder, ignore_errors=True)
+
+
 class EngineTests(unittest.TestCase):
     def test_reads_through_one_process_and_closes_its_pipes(self):
         engine_repo = helpers.TempEngine()

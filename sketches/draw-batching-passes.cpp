@@ -63,6 +63,6 @@ int main()
 {
 	Report("low byte only", [](uint32_t i) { return static_cast<uint64_t>(0x1200 + i); });
 	Report("bytes 0, 3 and 6", [](uint32_t i) { return static_cast<uint64_t>(i) | (static_cast<uint64_t>(i) << 24) | (static_cast<uint64_t>(i) << 48); });
-	Report("all eight bytes", [](uint32_t i) { return static_cast<uint64_t>(i) * 0x0101010101010101ull; });
+	Report("all eight bytes", [](uint32_t i) -> uint64_t { return static_cast<uint64_t>(i) * 0x0101010101010101ull; });
 	return 0;
 }
