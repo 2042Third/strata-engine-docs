@@ -1,0 +1,15 @@
+---
+// Starlight's head with the two fonts of the first screen preloaded: Inter (the title, the top strip and the interface)
+// and Source Serif 4 (the prose), their Latin files. Without the preload a browser asks for a font only once its style
+// sheet has been read and a text uses it, so a fast first paint draws the fallback font and the text moves when the
+// font swaps in; on Linux, whose fallbacks are wider, the title and the top strip of image/spatial-aa/ moved down
+// enough to count 0.08 of layout shift in Lighthouse (budget row 14: at most 0.05). The URLs are the build's own
+// files, the ones the style sheets name.
+import Default from '@astrojs/starlight/components/Head.astro';
+import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import serifLatin from '@fontsource-variable/source-serif-4/files/source-serif-4-latin-wght-normal.woff2?url';
+---
+
+<Default />
+<link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={serifLatin} as="font" type="font/woff2" crossorigin />

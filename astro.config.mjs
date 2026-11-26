@@ -74,6 +74,8 @@ export default defineConfig({
 				'./src/styles/print.css',
 			],
 			components: {
+				// The first screen's fonts preloaded (budget row 14's layout shift).
+				Head: './src/components/Head.astro',
 				PageTitle: './src/components/PageTitle.astro',
 				// The sidebar's markup without Starlight's scoped classes and inline carets (rulings-13, R59).
 				Sidebar: './src/components/Sidebar.astro',
